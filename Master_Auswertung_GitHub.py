@@ -31,6 +31,7 @@ upload_folder = BASE_DIR / "uploads"
 archiv_folder = upload_folder / "archiv"
 output_folder = BASE_DIR / "output"
 score_history_path = BASE_DIR / "score_history.csv"
+urlaub_path = BASE_DIR / "urlaub.txt" 
 
 # Pfad zum Hintergrundbild für den Header-Bereich
 HEADER_IMAGE_PATH = BASE_DIR / "clash_pix.jpg"
@@ -141,7 +142,7 @@ def fetch_and_build_player_csv() -> bool:
     print(f"✅ Spieler-Daten erfolgreich exportiert nach: {filename}\n")
     return True
 
-# === 3. Auswertung & kreatives HTML-Design ===
+# === 3. Auswertung & HTML-Design ===
 
 def get_encoded_header_image(path: Path) -> str:
     if not path.exists():
@@ -172,9 +173,15 @@ def berechne_score(participation: int, decks_total: int) -> float:
     if max_mögliche_decks <= 0: return 0.0
     return round((decks_total / max_mögliche_decks) * 100, 2)
 
-def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str) -> Tuple[str, pd.DataFrame]:
+def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str) -> Tuple[str, pd.DataFrame, str]:
     player_stats = []
     
+    # Urlauber auslesen
+    urlauber_liste = []
+    if urlaub_path.exists():
+        with urlaub_path.open("r", encoding="utf-8") as f:
+            urlauber_liste = [line.strip() for line in f if line.strip()]
+
     role_map = {
         "member": "Mitglied", "elder": "Ältester", "coLeader": "Vize",
         "leader": "Anführer", "unknown": "Ehemalig"
@@ -182,50 +189,84 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
     for _, row in df_active.iterrows():
         raw_role = row.get("player_role", "unknown")
-        
-        # DOPPELTER SCHUTZ: Ehemalige Spieler werden knallhart aussortiert
         if raw_role == "unknown":
             continue
             
         name = row.get("player_name", "Unbekannt")
         role_de = role_map.get(raw_role, raw_role)
+        is_urlaub = name in urlauber_liste
         
         participation = int(row.get("player_contribution_count", 0) or 0)
         decks_total = int(row.get("player_total_decks_used", 0) or 0)
         score = berechne_score(participation, decks_total)
         aktueller_fame = int(row.get(fame_spalte, 0) or 0)
         
-        if raw_role == "member" and aktueller_fame >= 2800:
-            status_html = f"{role_de} <span class='badge-ja'>➔ BEFÖRDERN</span>"
+        # Leecher-Erkennung (Punkte pro gespieltem Deck)
+        fame_per_deck = round(aktueller_fame / decks_total) if decks_total > 0 else 0
+        leecher_warnung = " <span title='Verdacht: Zieht nur Punkte ab (verliert absichtlich/greift Boote an)'>⚠️</span>" if (0 < fame_per_deck < 115) else ""
+        
+        # Trendberechnung der letzten 4 Wochen
+        vergangene_scores = df_history[df_history["player_name"] == name].sort_values("date").tail(3)["score"].tolist()
+        trend_scores = vergangene_scores + [score]
+        trend_str = ""
+        for s in trend_scores[-4:]:
+            if s >= 80: trend_str += "🟢"
+            elif s >= 50: trend_str += "🟡"
+            else: trend_str += "🔴"
+
+        # Delta zum direkten Vorgänger
+        delta = round(score - vergangene_scores[-1], 2) if vergangene_scores else 0.0
+
+        if is_urlaub:
+            status_html = "🏖️ Urlaub"
+            tier = "🏖️ Im Urlaub (Pausiert)"
         else:
-            status_html = role_de
+            if raw_role == "member" and aktueller_fame >= 2800:
+                status_html = f"{role_de} <span class='badge-ja'>➔ BEFÖRDERN</span>"
+            else:
+                status_html = role_de
 
-        vorher = df_history[df_history["player_name"] == name].sort_values("date").tail(1)
-        delta = round(score - vorher["score"].values[0], 2) if not vorher.empty else 0.0
-
-        if score >= 95: tier = "🌟 Elite (95-100%)"
-        elif score >= 80: tier = "✅ Solides Mittelfeld (80-94%)"
-        elif score >= 50: tier = "⚠️ Unter Beobachtung (50-79%)"
-        else: tier = "🚫 Kritisch (< 50%)"
+            if score >= 95: tier = "🌟 Elite (95-100%)"
+            elif score >= 80: tier = "✅ Solides Mittelfeld (80-94%)"
+            elif score >= 50: tier = "⚠️ Unter Beobachtung (50-79%)"
+            else: tier = "🚫 Kritisch (< 50%)"
 
         player_stats.append({
             "name": name, "status": status_html, "score": score, "delta": delta,
             "teilnahme": f"{participation}/{int(row.get('player_participating_count', 0) or 0)}",
             "teilnahme_int": participation,  
-            "fame": aktueller_fame, "tier": tier
+            "fame": aktueller_fame, "tier": tier,
+            "is_urlaub": is_urlaub, "trend_str": trend_str, 
+            "fame_per_deck": fame_per_deck, "leecher_warnung": leecher_warnung
         })
 
         df_history = pd.concat([
             df_history, pd.DataFrame([{"player_name": name, "score": score, "date": heute_datum}])
         ], ignore_index=True)
 
-    clan_avg = round(sum([p["score"] for p in player_stats]) / len(player_stats), 2) if player_stats else 0
-    top_performers = sorted(player_stats, key=lambda x: x["score"], reverse=True)[:3]
-    top_aufsteiger = sorted([p for p in player_stats if p["delta"] > 0], key=lambda x: x["delta"], reverse=True)[:3]
-    
-    kritisch = sorted([p for p in player_stats if p["score"] < 50 and p["teilnahme_int"] > 3], key=lambda x: x["score"])
+    # Dashboard Metriken berechnen (Urlauber fließen nicht in die Top-Flop Liste ein)
+    aktive_spieler = [p for p in player_stats if not p["is_urlaub"]]
+    clan_avg = round(sum([p["score"] for p in aktive_spieler]) / len(aktive_spieler), 2) if aktive_spieler else 0
+    top_performers = sorted(aktive_spieler, key=lambda x: x["score"], reverse=True)[:3]
+    top_aufsteiger = sorted([p for p in aktive_spieler if p["delta"] > 0], key=lambda x: x["delta"], reverse=True)[:3]
+    kritisch = sorted([p for p in aktive_spieler if p["score"] < 50 and p["teilnahme_int"] > 3], key=lambda x: x["score"])
 
-    tiers = ["🌟 Elite (95-100%)", "✅ Solides Mittelfeld (80-94%)", "⚠️ Unter Beobachtung (50-79%)", "🚫 Kritisch (< 50%)"]
+    # --- WHATSAPP TEXT GENERIEREN ---
+    wa_text = f"📊 *Clan-Auswertung: {CLAN_NAME}* ({heute_datum})\n\n"
+    wa_text += f"📈 Durchschnitt: {clan_avg}%\n\n"
+    wa_text += "🏆 *Top Performer:*\n"
+    for p in top_performers: wa_text += f"• {p['name']} ({p['score']}%)\n"
+    
+    if kritisch:
+        wa_text += "\n⚠️ *Achtung (Kritische Fälle):*\n"
+        for p in kritisch: wa_text += f"• {p['name']} ({p['score']}%)\n"
+            
+    if urlauber_liste:
+        wa_text += "\n🏖️ *Im Urlaub (Pausiert):*\n"
+        for name in urlauber_liste: wa_text += f"• {name}\n"
+    # --------------------------------
+
+    tiers = ["🌟 Elite (95-100%)", "✅ Solides Mittelfeld (80-94%)", "⚠️ Unter Beobachtung (50-79%)", "🚫 Kritisch (< 50%)", "🏖️ Im Urlaub (Pausiert)"]
     
     html = f"""
     <html>
@@ -260,8 +301,8 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             }}
 
-            .header-title {{ font-weight: 800; color: #ffffff; font-size: 2.2em; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }}
-            .header-date {{ font-weight: 400; font-size: 0.45em; color: #cbd5e1; display: block; margin-top: 10px; }}
+            .header-title {{ font-weight: 800; color: #ffffff; font-size: 2.2em; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.5); letter-spacing: 1px; }}
+            .header-date {{ font-weight: 400; font-size: 0.45em; color: #cbd5e1; display: block; margin-top: 10px; letter-spacing: 0px; }}
 
             .info-box {{
                 background: rgba(30, 41, 59, 0.85);
@@ -273,12 +314,10 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 color: #e2e8f0;
                 line-height: 1.6;
                 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-                border-top: 1px solid rgba(255, 255, 255, 0.05);
-                border-right: 1px solid rgba(255, 255, 255, 0.05);
-                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.05);
             }}
 
-            .dashboard {{ display: flex; gap: 20px; margin-bottom: 50px; flex-wrap: wrap; }}
+            .dashboard {{ display: flex; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }}
             .card {{ 
                 flex: 1; min-width: 240px; 
                 background: rgba(30, 41, 59, 0.8); 
@@ -293,6 +332,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .card.top {{ border-top: 4px solid #fbbf24; }}
             .card.aufsteiger {{ border-top: 4px solid #10b981; }}
             .card.kritisch {{ border-top: 4px solid #ef4444; }}
+            .card.whatsapp {{ border-top: 4px solid #25D366; width: 100%; flex: 100%; }}
             
             .card h1 {{ font-weight: 800; font-size: 2.5em; margin: 10px 0; color: #38bdf8; }}
             .card ul {{ margin: 0; padding-left: 20px; font-size: 1.05em; line-height: 1.6; color: #f1f5f9; }}
@@ -328,9 +368,10 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             
             <div class="info-box">
                 <h3 style="margin-top: 0; color: #38bdf8; margin-bottom: 12px; font-size: 1.2em;">💡 Hinweise zur Auswertung</h3>
-                <p style="margin: 0 0 10px 0;"><b>📊 Faire Score-Berechnung:</b> Die Prozentzahl bemisst sich <i>nur</i> an den Wochen, in denen ein Mitglied tatsächlich im Clan war. Ein Score von 100% bei <i>1/10 Teilnahme</i> bedeutet: Der Spieler ist brandneu, hat aber in seiner allerersten Woche fehlerfrei (16/16 Kämpfe) gespielt.</p>
-                <p style="margin: 0 0 10px 0;"><b>🌱 Welpenschutz:</b> Spieler mit einer sehr kurzen Historie (3 oder weniger Kriege) sind mit einem Pflanzen-Symbol markiert. Sie werden automatisch aus der Liste der "Kritischen Fälle" (Kick-Kandidaten) oben im Dashboard gefiltert.</p>
-                <p style="margin: 0;"><b>🖥️ Tipp für die beste Ansicht:</b> Für eine optimale Lesbarkeit empfehlen wir, die an diese E-Mail angehängte HTML-Datei herunterzuladen und direkt in einem Webbrowser (z.B. Chrome oder Safari) zu öffnen.</p>
+                <p style="margin: 0 0 10px 0;"><b>📊 Faire Berechnung & Welpenschutz:</b> Die Prozentzahl bemisst sich nur an den aktiven Wochen im Clan. Spieler mit ≤ 3 Kriegen erhalten das 🌱-Symbol und sind vor Kick-Warnungen geschützt.</p>
+                <p style="margin: 0 0 10px 0;"><b>🔍 Trend & Qualität:</b> Die Spalte "Trend" zeigt die letzten 4 Wochen (🟢🟡🔴). "Ø Punkte" zeigt die Punkte pro Deck – Werte unter 115 (⚠️) deuten auf reine Niederlagen oder Bootsangriffe hin.</p>
+                <p style="margin: 0 0 10px 0;"><b>🏖️ Urlaubs-Modus:</b> Spieler in der Datei 'urlaub.txt' werden im Dashboard automatisch pausiert und fließen nicht negativ in die Wertung ein.</p>
+                <p style="margin: 0;"><b>🖥️ Tipp für die beste Ansicht:</b> Lade die HTML-Datei im Anhang herunter und öffne sie im Browser.</p>
             </div>
             
             <div class="dashboard">
@@ -350,6 +391,11 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                     <h3>⚠️ Kritische Fälle</h3>
                     <ul>{''.join([f"<li><b>{p['name']}</b> ({p['score']}%)</li>" for p in kritisch]) if kritisch else "<li>Alles im grünen Bereich!</li>"}</ul>
                 </div>
+                
+                <div class="card whatsapp">
+                    <h3 style="color: #25D366; margin-bottom: 10px;">📱 WhatsApp Zusammenfassung (Klicken, Kopieren & Einfügen)</h3>
+                    <textarea readonly style="width: 100%; height: 160px; background: rgba(0,0,0,0.3); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 12px; font-family: inherit; font-size: 1em; resize: vertical;">{wa_text}</textarea>
+                </div>
             </div>
 
             <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 60px; color: #ffffff;">📋 Detaillierte Spielerliste</h2>
@@ -359,19 +405,19 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         players_in_tier = sorted([p for p in player_stats if p["tier"] == t], key=lambda x: x["score"], reverse=True)
         if players_in_tier:
             html += f"<div class='tier-title'>{t}</div>"
-            html += "<table><tr><th>Spieler</th><th>Status</th><th>Score</th><th>Delta</th><th>Teilnahme</th><th>Fame</th></tr>"
+            html += "<table><tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>Teiln.</th><th>Kriegspunkte</th></tr>"
             for p in players_in_tier:
                 delta_s = f"+{p['delta']}" if p['delta']>0 else f"{p['delta']}"
                 color = "#10b981" if p['delta'] > 0 else "#ef4444" if p['delta'] < 0 else "#94a3b8"
                 
-                neu_badge = " <span title='Neu im Clan / Wenig Kriege' style='opacity:0.8;'>🌱</span>" if p['teilnahme_int'] <= 3 else ""
+                neu_badge = " <span title='Neu im Clan / Wenig Kriege' style='opacity:0.8;'>🌱</span>" if p['teilnahme_int'] <= 3 and not p['is_urlaub'] else ""
                 
-                html += f"<tr><td class='name-col'>{p['name']}{neu_badge}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
+                html += f"<tr><td class='name-col'>{p['name']}{neu_badge}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td style='letter-spacing: 2px; font-size: 0.8em;'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
             html += "</table>"
             
     html += "</div></body></html>"
 
-    return html, df_history
+    return html, df_history, wa_text
 
 def speichere_html_bericht(html_content: str, df_history: pd.DataFrame, file_suffix: str) -> Path:
     html_path = output_folder / f"auswertung_{file_suffix}.html"
@@ -389,7 +435,7 @@ def archiviere_alte_auswertungen(output_dir: Path, anzahl: int = 2):
     for file in alte_htmls[:-anzahl]:
         shutil.move(str(file), archiv_output / file.name)
 
-def sende_bericht_per_mail(absender: str, empfänger: str, smtp_server: str, port: int, passwort: str, html_path: Path):
+def sende_bericht_per_mail(absender: str, empfänger: str, smtp_server: str, port: int, passwort: str, html_path: Path, wa_text: str):
     if not passwort: return
 
     msg = EmailMessage()
@@ -400,7 +446,7 @@ def sende_bericht_per_mail(absender: str, empfänger: str, smtp_server: str, por
     with html_path.open("r", encoding="utf-8") as f:
         html_content = f.read()
 
-    text_fallback = f"Hallo Clan-Führung,\ndie Berechnungen für '{CLAN_NAME}' sind abgeschlossen. Bitte aktiviere HTML in deinem E-Mail-Programm, um das Dashboard zu sehen. Du findest es zusätzlich als Datei im Anhang."
+    text_fallback = f"Hallo Clan-Führung,\ndie Berechnungen für '{CLAN_NAME}' sind abgeschlossen.\n\nHIER IST DEIN WHATSAPP TEXT:\n{wa_text}\n\nBitte aktiviere HTML in deinem E-Mail-Programm, um das volle grafische Dashboard zu sehen. Du findest es zusätzlich als Datei im Anhang."
     
     msg.set_content(text_fallback)
     msg.add_alternative(html_content, subtype='html')
@@ -437,7 +483,6 @@ def main():
         print(f"Fehler beim Einlesen der CSV: {e}")
         return
 
-    # NEUER STRIKTER FILTER: Interpretiert True auch als Text absolut zuverlässig
     is_current_mask = df["player_is_current_member"].astype(str).str.strip().str.lower().isin(["true", "1", "yes"])
     df_active = df[is_current_mask].copy()
     
@@ -454,7 +499,7 @@ def main():
     
     encoded_header_img = get_encoded_header_image(HEADER_IMAGE_PATH)
     
-    html_bericht, df_history = generate_html_report(df_active, df_history, fame_spalte, heute_datum, encoded_header_img)
+    html_bericht, df_history, wa_text = generate_html_report(df_active, df_history, fame_spalte, heute_datum, encoded_header_img)
 
     html_path = speichere_html_bericht(html_bericht, df_history, jetzt_datei)
 
@@ -467,7 +512,8 @@ def main():
         smtp_server="mx.freenet.de",
         port=587,
         passwort=os.environ.get("EMAIL_PASS"),
-        html_path=html_path
+        html_path=html_path,
+        wa_text=wa_text 
     )
     
     print("\n=== ALLES ERFOLGREICH ABGESCHLOSSEN ===")
