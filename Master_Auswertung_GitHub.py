@@ -254,7 +254,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     cr_text = f"📊 Auswertung da! Clan-Ø: {clan_avg}%. Top 3: {cr_top_names} 🏆"
     if kritisch:
         cr_text += f" | Achtung: {len(kritisch)} Spieler auf der Kick-Liste. Bitte ranhalten! ⚠️"
-    cr_text += " Alle Details in euren E-Mails!"
     # ---------------------------------------------------------------
 
     tiers = ["🌟 Elite (95-100%)", "✅ Solides Mittelfeld (80-94%)", "⚠️ Unter Beobachtung (50-79%)", "🚫 Kritisch (< 50%)", "🏖️ Im Urlaub (Pausiert)"]
@@ -513,3 +512,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
