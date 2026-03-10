@@ -19,14 +19,14 @@ from dotenv import load_dotenv
 # === 1. Konfiguration & Pfade ===
 load_dotenv()
 
-# API Settings (Token unbedingt eintragen!)
+# API Settings (Token unbedingt in GitHub Secrets oder hier eintragen!)
 API_TOKEN = os.environ.get("SUPERCELL_API_TOKEN", "DEIN_TOKEN_HIER")
 BASE_URL = "https://proxy.royaleapi.dev/v1"
 CLAN_TAG = "%23Y9YQC8UG"
 CLAN_NAME = "HAMBURG"
 
-# Feste Ordnerstruktur in C:\WarLog Paul
-BASE_DIR = Path(r"C:\WarLog Paul")
+# Cloud-taugliche Pfade (relativ zur Skript-Datei)
+BASE_DIR = Path(__file__).parent.resolve()
 upload_folder = BASE_DIR / "uploads"
 archiv_folder = upload_folder / "archiv"
 output_folder = BASE_DIR / "output"
@@ -206,6 +206,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         player_stats.append({
             "name": name, "status": status_html, "score": score, "delta": delta,
             "teilnahme": f"{participation}/{int(row.get('player_participating_count', 0) or 0)}",
+            "teilnahme_int": participation,  # NEU: Als Zahl gespeichert für die Neu-Prüfung
             "fame": aktueller_fame, "tier": tier
         })
 
@@ -247,20 +248,25 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 border-radius: 12px; 
                 padding: 40px 20px;
                 margin-top: 20px;
-                margin-bottom: 40px;
+                margin-bottom: 30px;
                 text-align: center; 
                 border: 1px solid rgba(255, 255, 255, 0.1); 
                 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             }}
 
-            .header-title {{ 
-                font-weight: 800;
-                color: #ffffff; 
-                font-size: 2.2em; 
-                margin: 0;
-                text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-            }}
+            .header-title {{ font-weight: 800; color: #ffffff; font-size: 2.2em; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }}
             .header-date {{ font-weight: 400; font-size: 0.45em; color: #cbd5e1; display: block; margin-top: 10px; }}
+
+            .info-box {{
+                background: rgba(56, 189, 248, 0.1);
+                border-left: 4px solid #38bdf8;
+                padding: 15px 20px;
+                border-radius: 8px;
+                margin-bottom: 40px;
+                font-size: 0.95em;
+                color: #e2e8f0;
+                line-height: 1.5;
+            }}
 
             .dashboard {{ display: flex; gap: 20px; margin-bottom: 50px; flex-wrap: wrap; }}
             .card {{ 
@@ -282,23 +288,16 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .card ul {{ margin: 0; padding-left: 20px; font-size: 1.05em; line-height: 1.6; color: #f1f5f9; }}
             
             .tier-title {{ 
-                font-weight: 800;
-                font-size: 1.4em; 
-                color: #fbbf24; 
-                margin-top: 45px; 
-                margin-bottom: 15px;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-                padding-bottom: 8px;
+                font-weight: 800; font-size: 1.4em; color: #fbbf24; 
+                margin-top: 45px; margin-bottom: 15px;
+                border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px;
             }}
             
             table {{ 
                 width: 100%; border-collapse: collapse; 
-                background: rgba(15, 23, 42, 0.9); 
-                border-radius: 8px; 
-                overflow: hidden; margin-bottom: 30px; 
-                border: 1px solid rgba(255, 255, 255, 0.1); 
+                background: rgba(15, 23, 42, 0.9); border-radius: 8px; 
+                overflow: hidden; margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.1); 
             }}
-            
             tr:nth-child(odd) {{ background-color: rgba(0, 0, 0, 0.45); }}
             tr:nth-child(even) {{ background-color: rgba(255, 255, 255, 0.15); }}
             tr:hover {{ background-color: rgba(255, 255, 255, 0.3); }}
@@ -307,13 +306,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             th {{ background-color: rgba(0, 0, 0, 0.6); font-weight: 600; font-size: 0.9em; color: #94a3b8; border-bottom: 1px solid rgba(255,255,255,0.1); }}
             td {{ border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-size: 1.05em; }}
             
-            .badge-ja {{ 
-                background-color: #10b981; color: #ffffff; 
-                padding: 4px 10px; border-radius: 6px; 
-                font-weight: 800; font-size: 0.8em; 
-                margin-left: 8px;
-                letter-spacing: 0.5px;
-            }}
+            .badge-ja {{ background-color: #10b981; color: #ffffff; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 0.8em; margin-left: 8px; }}
             .name-col {{ font-weight: 800; color: #ffffff; }}
         </style>
     </head>
@@ -321,6 +314,10 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         <div class="container">
             <div class="header-container">
                 <h1 class="header-title">📊 Clan-Auswertung: {CLAN_NAME} <br><span class="header-date">{heute_datum}</span></h1>
+            </div>
+            
+            <div class="info-box">
+                <b>💡 Wichtige Info zur Score-Berechnung:</b> Der Score basiert immer auf den individuell gespielten Wochen. Ein Score von 100% bei 1/10 Teilnahme bedeutet, dass das Mitglied in seiner einen Woche fehlerfrei gespielt hat. Spieler mit wenig Historie (≤ 3 Kriege) sind in der Liste zur besseren Erkennung mit 🌱 markiert.
             </div>
             
             <div class="dashboard">
@@ -354,7 +351,10 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 delta_s = f"+{p['delta']}" if p['delta']>0 else f"{p['delta']}"
                 color = "#10b981" if p['delta'] > 0 else "#ef4444" if p['delta'] < 0 else "#94a3b8"
                 
-                html += f"<tr><td class='name-col'>{p['name']}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
+                # NEU: Das Pflänzchen-Symbol für neue Mitglieder
+                neu_badge = " <span title='Neu im Clan / Wenig Kriege' style='opacity:0.8;'>🌱</span>" if p['teilnahme_int'] <= 3 else ""
+                
+                html += f"<tr><td class='name-col'>{p['name']}{neu_badge}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
             html += "</table>"
             
     html += "</div></body></html>"
@@ -385,26 +385,19 @@ def sende_bericht_per_mail(absender: str, empfänger: str, smtp_server: str, por
     msg["From"] = absender
     msg["To"] = empfänger
     
-    # NEU: Professioneller und ausführlicher Begleittext für die E-Mail
-    email_text = f"""Hallo Clan-Führung,
+    # NEU: HTML direkt auslesen
+    with html_path.open("r", encoding="utf-8") as f:
+        html_content = f.read()
 
-die Berechnungen für die aktuelle Kriegswoche von "{CLAN_NAME}" sind abgeschlossen. Das vollständige Dashboard liegt im Anhang für dich bereit!
+    # Text-Fallback (falls das E-Mail-Programm kein HTML unterstützt)
+    text_fallback = f"Hallo Clan-Führung,\ndie Berechnungen für '{CLAN_NAME}' sind abgeschlossen. Bitte aktiviere HTML in deinem E-Mail-Programm, um das Dashboard zu sehen. Du findest es zusätzlich als Datei im Anhang."
+    
+    msg.set_content(text_fallback)
+    
+    # NEU: HTML direkt in den Body der E-Mail injizieren
+    msg.add_alternative(html_content, subtype='html')
 
-Hier ist ein kurzer Überblick, was dich in der Auswertung erwartet:
-📈 Der aktuelle Clan-Durchschnitts-Score
-🏆 Die Top-Performer und größten Aufsteiger der Woche
-🚀 Klare Beförderungs-Empfehlungen (Mitglied ➔ Ältester)
-⚠️ Die Liste der kritischen Fälle (Kick-Kandidaten)
-
-Lade die angehängte HTML-Datei einfach herunter und öffne sie in einem beliebigen Webbrowser (Chrome, Safari, Firefox etc.). Das Dashboard passt sich automatisch an deinen PC-Bildschirm oder dein Smartphone an.
-
-Viel Erfolg bei der Clan-Verwaltung!
-
-Beste Grüße
-Dein automatischer Auswertungs-Bot 🤖
-"""
-    msg.set_content(email_text)
-
+    # Die HTML-Datei als Sicherheit (und fürs Archiv) zusätzlich anhängen
     with html_path.open("rb") as f:
         msg.add_attachment(f.read(), maintype="text", subtype="html", filename=html_path.name)
 
@@ -457,14 +450,10 @@ def main():
 
     archiviere_alte_auswertungen(output_folder)
     
-    print("Öffne HTML-Bericht im Browser...")
-    if platform.system() == "Windows":
-        os.startfile(html_path)
-
     print("Sende E-Mail...")
     sende_bericht_per_mail(
         absender="bassabello@bossmail.de",
-        empfänger="strike2005-2012@yahoo.de",
+        empfänger="strike2005-2012@yahoo.de", # Empfänger können hier mit Komma getrennt hinzugefügt werden
         smtp_server="mx.freenet.de",
         port=587,
         passwort=os.environ.get("EMAIL_PASS"),
