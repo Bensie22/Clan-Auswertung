@@ -176,7 +176,6 @@ def berechne_score(participation: int, decks_total: int) -> float:
 def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str) -> Tuple[str, pd.DataFrame, str]:
     player_stats = []
     
-    # Urlauber auslesen
     urlauber_liste = []
     if urlaub_path.exists():
         with urlaub_path.open("r", encoding="utf-8") as f:
@@ -199,13 +198,19 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         participation = int(row.get("player_contribution_count", 0) or 0)
         decks_total = int(row.get("player_total_decks_used", 0) or 0)
         score = berechne_score(participation, decks_total)
+        
+        # --- KORREKTUR DER LEECHER-BERECHNUNG ---
         aktueller_fame = int(row.get(fame_spalte, 0) or 0)
         
-        # Leecher-Erkennung (Punkte pro gespieltem Deck)
-        fame_per_deck = round(aktueller_fame / decks_total) if decks_total > 0 else 0
-        leecher_warnung = " <span title='Verdacht: Zieht nur Punkte ab (verliert absichtlich/greift Boote an)'>⚠️</span>" if (0 < fame_per_deck < 115) else ""
+        # Holt sich den korrekten Spaltennamen für die Decks der AKTUELLEN Woche
+        aktueller_decks_spalte = fame_spalte.replace("_fame", "_decks_used")
+        aktueller_decks = int(row.get(aktueller_decks_spalte, 0) or 0)
         
-        # Trendberechnung der letzten 4 Wochen
+        # Berechnet den Durchschnitt nur anhand der aktuellen Woche
+        fame_per_deck = round(aktueller_fame / aktueller_decks) if aktueller_decks > 0 else 0
+        leecher_warnung = " <span title='Verdacht: Zieht nur Punkte ab (verliert absichtlich/greift Boote an)'>⚠️</span>" if (0 < fame_per_deck < 115) else ""
+        # -----------------------------------------
+        
         vergangene_scores = df_history[df_history["player_name"] == name].sort_values("date").tail(3)["score"].tolist()
         trend_scores = vergangene_scores + [score]
         trend_str = ""
@@ -214,7 +219,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             elif s >= 50: trend_str += "🟡"
             else: trend_str += "🔴"
 
-        # Delta zum direkten Vorgänger
         delta = round(score - vergangene_scores[-1], 2) if vergangene_scores else 0.0
 
         if is_urlaub:
@@ -244,14 +248,12 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             df_history, pd.DataFrame([{"player_name": name, "score": score, "date": heute_datum}])
         ], ignore_index=True)
 
-    # Dashboard Metriken berechnen (Urlauber fließen nicht in die Top-Flop Liste ein)
     aktive_spieler = [p for p in player_stats if not p["is_urlaub"]]
     clan_avg = round(sum([p["score"] for p in aktive_spieler]) / len(aktive_spieler), 2) if aktive_spieler else 0
     top_performers = sorted(aktive_spieler, key=lambda x: x["score"], reverse=True)[:3]
     top_aufsteiger = sorted([p for p in aktive_spieler if p["delta"] > 0], key=lambda x: x["delta"], reverse=True)[:3]
     kritisch = sorted([p for p in aktive_spieler if p["score"] < 50 and p["teilnahme_int"] > 3], key=lambda x: x["score"])
 
-    # --- WHATSAPP TEXT GENERIEREN ---
     wa_text = f"📊 *Clan-Auswertung: {CLAN_NAME}* ({heute_datum})\n\n"
     wa_text += f"📈 Durchschnitt: {clan_avg}%\n\n"
     wa_text += "🏆 *Top Performer:*\n"
@@ -264,7 +266,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     if urlauber_liste:
         wa_text += "\n🏖️ *Im Urlaub (Pausiert):*\n"
         for name in urlauber_liste: wa_text += f"• {name}\n"
-    # --------------------------------
 
     tiers = ["🌟 Elite (95-100%)", "✅ Solides Mittelfeld (80-94%)", "⚠️ Unter Beobachtung (50-79%)", "🚫 Kritisch (< 50%)", "🏖️ Im Urlaub (Pausiert)"]
     
