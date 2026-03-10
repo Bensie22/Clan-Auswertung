@@ -10,7 +10,7 @@ from datetime import datetime
 from typing import List, Tuple
 from pathlib import Path
 
-import pandas as pd  # <--- Diese wichtige Zeile hat gefehlt!
+import pandas as pd
 
 from email.message import EmailMessage
 import smtplib
@@ -25,10 +25,9 @@ BASE_URL = "https://proxy.royaleapi.dev/v1"
 CLAN_TAG = "%23Y9YQC8UG"
 CLAN_NAME = "HAMBURG"
 
-# Feste Ordnerstruktur (Cloud-tauglich gemacht)
-BASE_DIR = Path(__file__).parent.resolve()
+# Feste Ordnerstruktur in C:\WarLog Paul
+BASE_DIR = Path(r"C:\WarLog Paul")
 upload_folder = BASE_DIR / "uploads"
-# ... der Rest bleibt exakt gleich
 archiv_folder = upload_folder / "archiv"
 output_folder = BASE_DIR / "output"
 score_history_path = BASE_DIR / "score_history.csv"
@@ -382,10 +381,29 @@ def sende_bericht_per_mail(absender: str, empfänger: str, smtp_server: str, por
     if not passwort: return
 
     msg = EmailMessage()
-    msg["Subject"] = "📊 Clan-Auswertung"
+    msg["Subject"] = f"📊 Clan-Auswertung: {CLAN_NAME}"
     msg["From"] = absender
     msg["To"] = empfänger
-    msg.set_content("Hallo,\n\nanbei die aktuelle Clan-Auswertung als formatierte HTML-Webseite im Anhang.\n\nBeste Grüße\nDein Auswertungstool")
+    
+    # NEU: Professioneller und ausführlicher Begleittext für die E-Mail
+    email_text = f"""Hallo Clan-Führung,
+
+die Berechnungen für die aktuelle Kriegswoche von "{CLAN_NAME}" sind abgeschlossen. Das vollständige Dashboard liegt im Anhang für dich bereit!
+
+Hier ist ein kurzer Überblick, was dich in der Auswertung erwartet:
+📈 Der aktuelle Clan-Durchschnitts-Score
+🏆 Die Top-Performer und größten Aufsteiger der Woche
+🚀 Klare Beförderungs-Empfehlungen (Mitglied ➔ Ältester)
+⚠️ Die Liste der kritischen Fälle (Kick-Kandidaten)
+
+Lade die angehängte HTML-Datei einfach herunter und öffne sie in einem beliebigen Webbrowser (Chrome, Safari, Firefox etc.). Das Dashboard passt sich automatisch an deinen PC-Bildschirm oder dein Smartphone an.
+
+Viel Erfolg bei der Clan-Verwaltung!
+
+Beste Grüße
+Dein automatischer Auswertungs-Bot 🤖
+"""
+    msg.set_content(email_text)
 
     with html_path.open("rb") as f:
         msg.add_attachment(f.read(), maintype="text", subtype="html", filename=html_path.name)
@@ -456,4 +474,4 @@ def main():
     print("\n=== ALLES ERFOLGREICH ABGESCHLOSSEN ===")
 
 if __name__ == "__main__":
-    main()
+    main() 
