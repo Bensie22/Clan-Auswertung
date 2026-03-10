@@ -199,17 +199,12 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         decks_total = int(row.get("player_total_decks_used", 0) or 0)
         score = berechne_score(participation, decks_total)
         
-        # --- KORREKTUR DER LEECHER-BERECHNUNG ---
         aktueller_fame = int(row.get(fame_spalte, 0) or 0)
-        
-        # Holt sich den korrekten Spaltennamen für die Decks der AKTUELLEN Woche
         aktueller_decks_spalte = fame_spalte.replace("_fame", "_decks_used")
         aktueller_decks = int(row.get(aktueller_decks_spalte, 0) or 0)
         
-        # Berechnet den Durchschnitt nur anhand der aktuellen Woche
         fame_per_deck = round(aktueller_fame / aktueller_decks) if aktueller_decks > 0 else 0
         leecher_warnung = " <span title='Verdacht: Zieht nur Punkte ab (verliert absichtlich/greift Boote an)'>⚠️</span>" if (0 < fame_per_deck < 115) else ""
-        # -----------------------------------------
         
         vergangene_scores = df_history[df_history["player_name"] == name].sort_values("date").tail(3)["score"].tolist()
         trend_scores = vergangene_scores + [score]
@@ -254,18 +249,44 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     top_aufsteiger = sorted([p for p in aktive_spieler if p["delta"] > 0], key=lambda x: x["delta"], reverse=True)[:3]
     kritisch = sorted([p for p in aktive_spieler if p["score"] < 50 and p["teilnahme_int"] > 3], key=lambda x: x["score"])
 
-    wa_text = f"📊 *Clan-Auswertung: {CLAN_NAME}* ({heute_datum})\n\n"
-    wa_text += f"📈 Durchschnitt: {clan_avg}%\n\n"
-    wa_text += "🏆 *Top Performer:*\n"
+    # --- NEUER, MOTIVIERENDER WHATSAPP TEXT ---
+    # Dynamischer Motivationssatz basierend auf dem Clan-Durchschnitt
+    if clan_avg >= 90:
+        motivation = "Überragende Leistung des gesamten Clans! 🔥 Genau so holen wir uns Platz 1!"
+    elif clan_avg >= 80:
+        motivation = "Sehr starker Durchschnitt! Wir sind auf einem richtig guten Weg. 💪"
+    elif clan_avg >= 60:
+        motivation = "Solide Woche, aber da ist noch Luft nach oben! Jeder Kampf zählt. ⚔️"
+    else:
+        motivation = "Diese Woche war leider etwas durchwachsen. Lasst uns die Aktivität wieder hochfahren! Zusammen schaffen wir das. 🛡️"
+
+    wa_text = f"Hallo Clan {CLAN_NAME}! ⚔️🛡️\n"
+    wa_text += f"Die neue Kriegswoche ist ausgewertet und hier ist euer Update:\n\n"
+    wa_text += f"📈 *Unser Clan-Durchschnitt:* {clan_avg}%\n"
+    wa_text += f"{motivation}\n\n"
+    
+    wa_text += "🏆 *MVP's der Woche (100% Einsatz!):*\n"
     for p in top_performers: wa_text += f"• {p['name']} ({p['score']}%)\n"
+    wa_text += "Ein riesiges Dankeschön für euren unermüdlichen Einsatz für den Clan! 🔥\n\n"
+    
+    wa_text += "🚀 *Unsere Durchstarter (Größte Steigerung):*\n"
+    if top_aufsteiger:
+        for p in top_aufsteiger: wa_text += f"• {p['name']} (+{p['delta']}%)\n"
+        wa_text += "Starkes Comeback, weiter so! 💪\n"
+    else:
+        wa_text += "• Diese Woche keine, aber nächste Woche greifen wir wieder an!\n"
     
     if kritisch:
-        wa_text += "\n⚠️ *Achtung (Kritische Fälle):*\n"
-        for p in kritisch: wa_text += f"• {p['name']} ({p['score']}%)\n"
+        wa_text += "\n⚠️ *Wir brauchen euch! (Achtung):*\n"
+        for p in kritisch: wa_text += f"• @{p['name']} ({p['score']}%)\n"
+        wa_text += "Bitte denkt an eure täglichen Kriegskämpfe! Jeder Punkt ist wichtig für den gemeinsamen Sieg. Wenn ihr im Urlaub seid, meldet euch bitte kurz ab. 🙏\n"
             
     if urlauber_liste:
-        wa_text += "\n🏖️ *Im Urlaub (Pausiert):*\n"
+        wa_text += "\n🏖️ *Im wohlverdienten Urlaub:*\n"
         for name in urlauber_liste: wa_text += f"• {name}\n"
+        
+    wa_text += "\nLasst uns diese Woche wieder voll angreifen! Für HAMBURG! 👑"
+    # -------------------------------------------
 
     tiers = ["🌟 Elite (95-100%)", "✅ Solides Mittelfeld (80-94%)", "⚠️ Unter Beobachtung (50-79%)", "🚫 Kritisch (< 50%)", "🏖️ Im Urlaub (Pausiert)"]
     
@@ -359,6 +380,9 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             
             .badge-ja {{ background-color: #10b981; color: #ffffff; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 0.8em; margin-left: 8px; }}
             .name-col {{ font-weight: 800; color: #ffffff; }}
+            
+            /* NEU: Fix für das E-Mail Rendering von Emojis */
+            .trend-cell {{ font-size: 16px !important; white-space: nowrap; line-height: 1; }}
         </style>
     </head>
     <body>
@@ -395,7 +419,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 
                 <div class="card whatsapp">
                     <h3 style="color: #25D366; margin-bottom: 10px;">📱 WhatsApp Zusammenfassung (Klicken, Kopieren & Einfügen)</h3>
-                    <textarea readonly style="width: 100%; height: 160px; background: rgba(0,0,0,0.3); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 12px; font-family: inherit; font-size: 1em; resize: vertical;">{wa_text}</textarea>
+                    <textarea readonly style="width: 100%; height: 250px; background: rgba(0,0,0,0.3); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 12px; font-family: inherit; font-size: 1em; resize: vertical;">{wa_text}</textarea>
                 </div>
             </div>
 
@@ -413,7 +437,8 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 
                 neu_badge = " <span title='Neu im Clan / Wenig Kriege' style='opacity:0.8;'>🌱</span>" if p['teilnahme_int'] <= 3 and not p['is_urlaub'] else ""
                 
-                html += f"<tr><td class='name-col'>{p['name']}{neu_badge}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td style='letter-spacing: 2px; font-size: 0.8em;'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
+                # NEU: Das Trend-Emoji bekommt die neue Klasse 'trend-cell', die E-Mail Programme zwingt, es bei 16px zu belassen
+                html += f"<tr><td class='name-col'>{p['name']}{neu_badge}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
             html += "</table>"
             
     html += "</div></body></html>"
