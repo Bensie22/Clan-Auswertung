@@ -1,0 +1,33 @@
+name: Clan Auswertung Automatisierung
+
+on:
+  schedule:
+    # 10:30 UTC entspricht 11:30 Uhr MEZ (Winterzeit) bzw. 12:30 Uhr MESZ (Sommerzeit)
+    - cron: '30 10 * * 1' 
+  workflow_dispatch: # Erlaubt dir, das Skript jederzeit per Klick manuell zu starten
+
+jobs:
+  run-auswertung:
+    runs-on: ubuntu-latest
+    
+    # Hier werden deine sicheren Secrets an das Skript übergeben
+    env:
+      SUPERCELL_API_TOKEN: ${{ secrets.SUPERCELL_API_TOKEN }}
+      EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+
+    steps:
+      - name: Repository klonen
+        uses: actions/checkout@v4
+
+      - name: Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Abhängigkeiten installieren
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pandas python-dotenv
+
+      - name: Auswertung starten
+        run: python Master_Auswertung.py
