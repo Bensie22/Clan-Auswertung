@@ -30,4 +30,4 @@ jobs:
           pip install requests pandas python-dotenv
 
       - name: Auswertung starten
-        run: python Master_Auswertung.py
+        run: python Master_Auswertung_GitHub.py
