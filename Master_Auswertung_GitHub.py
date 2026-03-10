@@ -19,7 +19,7 @@ from dotenv import load_dotenv
 # === 1. Konfiguration & Pfade ===
 load_dotenv()
 
-# API Settings (Token unbedingt in GitHub Secrets oder hier eintragen!)
+# API Settings (Token unbedingt eintragen!)
 API_TOKEN = os.environ.get("SUPERCELL_API_TOKEN", "DEIN_TOKEN_HIER")
 BASE_URL = "https://proxy.royaleapi.dev/v1"
 CLAN_TAG = "%23Y9YQC8UG"
@@ -181,8 +181,13 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     }
 
     for _, row in df_active.iterrows():
-        name = row.get("player_name", "Unbekannt")
         raw_role = row.get("player_role", "unknown")
+        
+        # DOPPELTER SCHUTZ: Ehemalige Spieler werden knallhart aussortiert
+        if raw_role == "unknown":
+            continue
+            
+        name = row.get("player_name", "Unbekannt")
         role_de = role_map.get(raw_role, raw_role)
         
         participation = int(row.get("player_contribution_count", 0) or 0)
@@ -206,7 +211,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         player_stats.append({
             "name": name, "status": status_html, "score": score, "delta": delta,
             "teilnahme": f"{participation}/{int(row.get('player_participating_count', 0) or 0)}",
-            "teilnahme_int": participation,  # NEU: Als Zahl gespeichert für die Neu-Prüfung
+            "teilnahme_int": participation,  
             "fame": aktueller_fame, "tier": tier
         })
 
@@ -217,7 +222,8 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     clan_avg = round(sum([p["score"] for p in player_stats]) / len(player_stats), 2) if player_stats else 0
     top_performers = sorted(player_stats, key=lambda x: x["score"], reverse=True)[:3]
     top_aufsteiger = sorted([p for p in player_stats if p["delta"] > 0], key=lambda x: x["delta"], reverse=True)[:3]
-    kritisch = sorted([p for p in player_stats if p["score"] < 50], key=lambda x: x["score"])
+    
+    kritisch = sorted([p for p in player_stats if p["score"] < 50 and p["teilnahme_int"] > 3], key=lambda x: x["score"])
 
     tiers = ["🌟 Elite (95-100%)", "✅ Solides Mittelfeld (80-94%)", "⚠️ Unter Beobachtung (50-79%)", "🚫 Kritisch (< 50%)"]
     
@@ -258,14 +264,18 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .header-date {{ font-weight: 400; font-size: 0.45em; color: #cbd5e1; display: block; margin-top: 10px; }}
 
             .info-box {{
-                background: rgba(56, 189, 248, 0.1);
-                border-left: 4px solid #38bdf8;
-                padding: 15px 20px;
+                background: rgba(30, 41, 59, 0.85);
+                border-left: 5px solid #38bdf8;
+                padding: 20px 25px;
                 border-radius: 8px;
                 margin-bottom: 40px;
-                font-size: 0.95em;
+                font-size: 1em;
                 color: #e2e8f0;
-                line-height: 1.5;
+                line-height: 1.6;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+                border-top: 1px solid rgba(255, 255, 255, 0.05);
+                border-right: 1px solid rgba(255, 255, 255, 0.05);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             }}
 
             .dashboard {{ display: flex; gap: 20px; margin-bottom: 50px; flex-wrap: wrap; }}
@@ -317,7 +327,10 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             </div>
             
             <div class="info-box">
-                <b>💡 Wichtige Info zur Score-Berechnung:</b> Der Score basiert immer auf den individuell gespielten Wochen. Ein Score von 100% bei 1/10 Teilnahme bedeutet, dass das Mitglied in seiner einen Woche fehlerfrei gespielt hat. Spieler mit wenig Historie (≤ 3 Kriege) sind in der Liste zur besseren Erkennung mit 🌱 markiert.
+                <h3 style="margin-top: 0; color: #38bdf8; margin-bottom: 12px; font-size: 1.2em;">💡 Hinweise zur Auswertung</h3>
+                <p style="margin: 0 0 10px 0;"><b>📊 Faire Score-Berechnung:</b> Die Prozentzahl bemisst sich <i>nur</i> an den Wochen, in denen ein Mitglied tatsächlich im Clan war. Ein Score von 100% bei <i>1/10 Teilnahme</i> bedeutet: Der Spieler ist brandneu, hat aber in seiner allerersten Woche fehlerfrei (16/16 Kämpfe) gespielt.</p>
+                <p style="margin: 0 0 10px 0;"><b>🌱 Welpenschutz:</b> Spieler mit einer sehr kurzen Historie (3 oder weniger Kriege) sind mit einem Pflanzen-Symbol markiert. Sie werden automatisch aus der Liste der "Kritischen Fälle" (Kick-Kandidaten) oben im Dashboard gefiltert.</p>
+                <p style="margin: 0;"><b>🖥️ Tipp für die beste Ansicht:</b> Für eine optimale Lesbarkeit empfehlen wir, die an diese E-Mail angehängte HTML-Datei herunterzuladen und direkt in einem Webbrowser (z.B. Chrome oder Safari) zu öffnen.</p>
             </div>
             
             <div class="dashboard">
@@ -351,7 +364,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 delta_s = f"+{p['delta']}" if p['delta']>0 else f"{p['delta']}"
                 color = "#10b981" if p['delta'] > 0 else "#ef4444" if p['delta'] < 0 else "#94a3b8"
                 
-                # NEU: Das Pflänzchen-Symbol für neue Mitglieder
                 neu_badge = " <span title='Neu im Clan / Wenig Kriege' style='opacity:0.8;'>🌱</span>" if p['teilnahme_int'] <= 3 else ""
                 
                 html += f"<tr><td class='name-col'>{p['name']}{neu_badge}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
@@ -385,19 +397,14 @@ def sende_bericht_per_mail(absender: str, empfänger: str, smtp_server: str, por
     msg["From"] = absender
     msg["To"] = empfänger
     
-    # NEU: HTML direkt auslesen
     with html_path.open("r", encoding="utf-8") as f:
         html_content = f.read()
 
-    # Text-Fallback (falls das E-Mail-Programm kein HTML unterstützt)
     text_fallback = f"Hallo Clan-Führung,\ndie Berechnungen für '{CLAN_NAME}' sind abgeschlossen. Bitte aktiviere HTML in deinem E-Mail-Programm, um das Dashboard zu sehen. Du findest es zusätzlich als Datei im Anhang."
     
     msg.set_content(text_fallback)
-    
-    # NEU: HTML direkt in den Body der E-Mail injizieren
     msg.add_alternative(html_content, subtype='html')
 
-    # Die HTML-Datei als Sicherheit (und fürs Archiv) zusätzlich anhängen
     with html_path.open("rb") as f:
         msg.add_attachment(f.read(), maintype="text", subtype="html", filename=html_path.name)
 
@@ -430,7 +437,10 @@ def main():
         print(f"Fehler beim Einlesen der CSV: {e}")
         return
 
-    df_active = df[df.get("player_is_current_member", False) == True].copy()
+    # NEUER STRIKTER FILTER: Interpretiert True auch als Text absolut zuverlässig
+    is_current_mask = df["player_is_current_member"].astype(str).str.strip().str.lower().isin(["true", "1", "yes"])
+    df_active = df[is_current_mask].copy()
+    
     fame_columns = sorted([col for col in df.columns if col.startswith("s_") and col.endswith("_fame")], reverse=True)
     
     if not fame_columns: return
@@ -453,7 +463,7 @@ def main():
     print("Sende E-Mail...")
     sende_bericht_per_mail(
         absender="bassabello@bossmail.de",
-        empfänger="strike2005-2012@yahoo.de", # Empfänger können hier mit Komma getrennt hinzugefügt werden
+        empfänger="strike2005-2012@yahoo.de", 
         smtp_server="mx.freenet.de",
         port=587,
         passwort=os.environ.get("EMAIL_PASS"),
@@ -463,4 +473,4 @@ def main():
     print("\n=== ALLES ERFOLGREICH ABGESCHLOSSEN ===")
 
 if __name__ == "__main__":
-    main() 
+    main()
