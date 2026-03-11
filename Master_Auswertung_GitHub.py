@@ -56,7 +56,6 @@ def fetch_and_build_player_csv() -> bool:
         print(f"Fehler beim Abruf der Mitglieder: {members_resp.status_code}")
         return False
         
-    # NEU: Wir lesen jetzt auch die Spenden (donations) aus
     current_members = {
         m["tag"]: {
             "name": m["name"], 
@@ -105,7 +104,6 @@ def fetch_and_build_player_csv() -> bool:
                     players_data[ptag] = {"name": pname, "is_current": is_curr, "role": role, "donations": donations, "history": {}}
                 players_data[ptag]["history"][race_id] = {"decks": decks, "fame": fame}
 
-    # Spieler hinzufügen oder Spenden updaten
     for tag, data in current_members.items():
         if tag not in players_data:
             players_data[tag] = {"name": data["name"], "is_current": True, "role": data["role"], "donations": data["donations"], "history": {}}
@@ -116,7 +114,6 @@ def fetch_and_build_player_csv() -> bool:
     filename = upload_folder / f"clan_export_{date_str}.csv"
 
     race_ids = sorted(list(set(race_ids)), reverse=True)
-    # NEU: "player_donations" in den CSV-Headern
     headers_csv = [
         "player_tag", "player_name", "player_is_current_member", "player_role", "player_donations",
         "player_contribution_count", "player_participating_count", "player_total_decks_used"
@@ -207,7 +204,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         
         participation = int(row.get("player_contribution_count", 0) or 0)
         decks_total = int(row.get("player_total_decks_used", 0) or 0)
-        donations = int(row.get("player_donations", 0) or 0) # NEU
+        donations = int(row.get("player_donations", 0) or 0)
         score = berechne_score(participation, decks_total)
         
         aktueller_fame = int(row.get(fame_spalte, 0) or 0)
@@ -245,7 +242,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             "name": name, "status": status_html, "score": score, "delta": delta,
             "teilnahme": f"{participation}/{int(row.get('player_participating_count', 0) or 0)}",
             "teilnahme_int": participation,  
-            "fame": aktueller_fame, "donations": donations, "tier": tier, # NEU: donations hinzugefügt
+            "fame": aktueller_fame, "donations": donations, "tier": tier, 
             "is_urlaub": is_urlaub, "trend_str": trend_str, 
             "fame_per_deck": fame_per_deck, "leecher_warnung": leecher_warnung
         })
@@ -259,6 +256,9 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     top_performers = sorted(aktive_spieler, key=lambda x: x["score"], reverse=True)[:3]
     top_aufsteiger = sorted([p for p in aktive_spieler if p["delta"] > 0], key=lambda x: x["delta"], reverse=True)[:3]
     kritisch = sorted([p for p in aktive_spieler if p["score"] < 50 and p["teilnahme_int"] > 3], key=lambda x: x["score"])
+    
+    # NEU: Top 3 Spender berechnen (nur Leute filtern, die > 0 gespendet haben)
+    top_spender = sorted([p for p in aktive_spieler if p["donations"] > 0], key=lambda x: x["donations"], reverse=True)[:3]
 
     # --- IN-GAME CHAT TEXT (Kurz & Kompakt für Clash Royale) ---
     cr_top_names = ", ".join([p['name'] for p in top_performers])
@@ -320,7 +320,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
             .dashboard {{ display: flex; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }}
             .card {{ 
-                flex: 1; min-width: 240px; 
+                flex: 1; min-width: 220px; 
                 background: rgba(30, 41, 59, 0.8); 
                 padding: 20px 25px; 
                 border-radius: 12px; 
@@ -332,6 +332,8 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .card.avg {{ border-top: 4px solid #38bdf8; }}
             .card.top {{ border-top: 4px solid #fbbf24; }}
             .card.aufsteiger {{ border-top: 4px solid #10b981; }}
+            /* NEU: Farbe für die Spender-Karte */
+            .card.spender {{ border-top: 4px solid #a855f7; }} 
             .card.kritisch {{ border-top: 4px solid #ef4444; }}
             .card.messenger {{ border-top: 4px solid #f1c40f; width: 100%; flex: 100%; }}
             
@@ -359,6 +361,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             
             .badge-ja {{ background-color: #10b981; color: #ffffff; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 0.8em; margin-left: 8px; }}
             .name-col {{ font-weight: 800; color: #ffffff; }}
+            
             .trend-cell {{ font-size: 16px !important; white-space: nowrap; line-height: 1; }}
         </style>
     </head>
@@ -372,6 +375,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 <h3 style="margin-top: 0; color: #38bdf8; margin-bottom: 12px; font-size: 1.2em;">💡 Hinweise zur Auswertung</h3>
                 <p style="margin: 0 0 10px 0;"><b>📊 Faire Berechnung & Welpenschutz:</b> Die Prozentzahl bemisst sich nur an den aktiven Wochen im Clan. Spieler mit ≤ 3 Kriegen erhalten das 🌱-Symbol und sind vor Kick-Warnungen geschützt.</p>
                 <p style="margin: 0 0 10px 0;"><b>🔍 Trend & Qualität:</b> Die Spalte "Trend" zeigt die letzten 4 Wochen (🟢🟡🔴). "Ø Punkte" zeigt die Punkte pro Deck – Werte unter 115 (⚠️) deuten auf reine Niederlagen oder Bootsangriffe hin.</p>
+                <p style="margin: 0 0 10px 0;"><b>🃏 Spenden & Leecher:</b> Die Top 3 Kartenspender werden oben geehrt. Wer absolut gar nichts spendet (0 Karten), bekommt in der Tabelle gnadenlos das 🧛-Symbol verpasst.</p>
                 <p style="margin: 0 0 10px 0;"><b>🏖️ Urlaubs-Modus:</b> Spieler in der Datei 'urlaub.txt' werden im Dashboard automatisch pausiert und fließen nicht negativ in die Wertung ein.</p>
                 <p style="margin: 0;"><b>🖥️ Tipp für die beste Ansicht:</b> Lade die HTML-Datei im Anhang herunter und öffne sie im Browser.</p>
             </div>
@@ -384,6 +388,10 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 <div class="card top">
                     <h3>🏆 Top 3 Performer</h3>
                     <ul>{''.join([f"<li><b>{p['name']}</b> ({p['score']}%)</li>" for p in top_performers])}</ul>
+                </div>
+                <div class="card spender">
+                    <h3>🃏 Top 3 Spender</h3>
+                    <ul>{''.join([f"<li><b>{p['name']}</b> ({p['donations']})</li>" for p in top_spender]) if top_spender else "<li>Keine Spenden</li>"}</ul>
                 </div>
                 <div class="card aufsteiger">
                     <h3>🚀 Größte Aufsteiger</h3>
@@ -407,7 +415,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         players_in_tier = sorted([p for p in player_stats if p["tier"] == t], key=lambda x: x["score"], reverse=True)
         if players_in_tier:
             html += f"<div class='tier-title'>{t}</div>"
-            # NEU: Spalte '🃏 Spenden' hinzugefügt
             html += "<table><tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teiln.</th><th>Kriegspunkte</th></tr>"
             for p in players_in_tier:
                 delta_s = f"+{p['delta']}" if p['delta']>0 else f"{p['delta']}"
@@ -415,8 +422,10 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 
                 neu_badge = " <span title='Neu im Clan / Wenig Kriege' style='opacity:0.8;'>🌱</span>" if p['teilnahme_int'] <= 3 and not p['is_urlaub'] else ""
                 
-                # Spalten logisch erweitert
-                html += f"<tr><td class='name-col'>{p['name']}{neu_badge}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{p['donations']}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
+                # NEU: Spenden-Leecher Erkennung (0 Spenden = Vampir Emoji)
+                spenden_warnung = " <span title='Spenden-Leecher (0 Spenden)' style='font-size: 1.1em;'>🧛</span>" if p['donations'] == 0 and not p['is_urlaub'] else ""
+                
+                html += f"<tr><td class='name-col'>{p['name']}{neu_badge}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{p['donations']}{spenden_warnung}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
             html += "</table>"
             
     html += "</div></body></html>"
@@ -512,7 +521,7 @@ def main():
     print("Sende E-Mail...")
     sende_bericht_per_mail(
         absender="bassabello@bossmail.de",
-        empfänger="strike2005-2012@yahoo.de", 
+        empfänger="hemlock22@posteo.de", 
         smtp_server="mx.freenet.de",
         port=587,
         passwort=os.environ.get("EMAIL_PASS"),
@@ -523,4 +532,4 @@ def main():
     print("\n=== ALLES ERFOLGREICH ABGESCHLOSSEN ===")
 
 if __name__ == "__main__":
-    main()
+    main() 
