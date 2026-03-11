@@ -61,7 +61,7 @@ def fetch_and_build_player_csv() -> bool:
             "name": m["name"], 
             "role": m.get("role", "member"),
             "donations": m.get("donations", 0),
-            "donations_received": m.get("donationsReceived", 0) # NEU: Angeorderte Karten abfragen
+            "donations_received": m.get("donationsReceived", 0) 
         } 
         for m in members_resp.json().get("items", [])
     }
@@ -263,10 +263,9 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     kritisch = sorted([p for p in aktive_spieler if p["score"] < 50 and p["teilnahme_int"] > 3], key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]))
     top_spender = sorted([p for p in aktive_spieler if p["donations"] > 0], key=lambda x: x["donations"], reverse=True)[:3]
     
-    # NEU: Spenden-Leecher (0 Spenden, kein Welpenschutz, fordert Karten an)
     top_leecher = sorted([p for p in aktive_spieler if p["teilnahme_int"] > 3 and p["donations"] == 0 and p["donations_received"] > 0], key=lambda x: x["donations_received"], reverse=True)[:3]
 
-    # --- IN-GAME CHAT TEXT (Kompakt und platzeffizient für 255 Zeichen Limit) ---
+    # --- IN-GAME CHAT TEXT ---
     cr_top_names = ", ".join([p['name'] for p in top_performers])
     cr_motiv = "Starke Woche! 💪" if clan_avg >= 80 else "Da geht noch mehr! ⚔️"
         
@@ -276,12 +275,10 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         cr_text += f" | 🃏 Spender: {top_spender[0]['name']}"
         
     if top_leecher:
-        # Maximal 2 Leecher anzeigen, um Platz zu sparen
         cr_leecher_names = ", ".join([p['name'] for p in top_leecher][:2])
         cr_text += f" | 🧛 Leecher: {cr_leecher_names}"
         
     if kritisch:
-        # Maximal 3 kritische Spieler anzeigen + Counter, falls es mehr sind
         krit_names_list = [p['name'] for p in kritisch][:3]
         cr_krit_names = ", ".join(krit_names_list)
         if len(kritisch) > 3:
@@ -355,7 +352,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .card.top {{ border-top: 4px solid #fbbf24; }}
             .card.aufsteiger {{ border-top: 4px solid #10b981; }}
             .card.spender {{ border-top: 4px solid #a855f7; }} 
-            .card.leecher {{ border-top: 4px solid #64748b; }} /* NEU: Farbe für Leecher */
+            .card.leecher {{ border-top: 4px solid #64748b; }} 
             .card.kritisch {{ border-top: 4px solid #ef4444; }}
             .card.messenger {{ border-top: 4px solid #f1c40f; width: 100%; flex: 100%; }}
             
@@ -416,8 +413,12 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                     <ul>{''.join([f"<li><b>{p['name']}</b> ({p['donations']})</li>" for p in top_spender]) if top_spender else "<li>Keine Spenden</li>"}</ul>
                 </div>
                 <div class="card leecher">
-                    <h3>🧛 Spenden-Leecher</h3>
+                    <h3>🧛 Top 3 Leecher</h3>
                     <ul>{''.join([f"<li><b>{p['name']}</b> (Empfangen: {p['donations_received']})</li>" for p in top_leecher]) if top_leecher else "<li>Keine Leecher! 🎉</li>"}</ul>
+                </div>
+                <div class="card aufsteiger">
+                    <h3>🚀 Größte Aufsteiger</h3>
+                    <ul>{''.join([f"<li><b>{p['name']}</b> (+{p['delta']}%)</li>" for p in top_aufsteiger]) if top_aufsteiger else "<li>Keine Verbesserungen</li>"}</ul>
                 </div>
                 <div class="card kritisch">
                     <h3>⚠️ Kritische Fälle</h3>
@@ -445,7 +446,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 
                 neu_badge = " <span title='Neu im Clan / Wenig Kriege' style='opacity:0.8;'>🌱</span>" if p['teilnahme_int'] <= 3 and not p['is_urlaub'] else ""
                 
-                # Angepasster Tooltip für Leecher, der zeigt, wie viel sie stattdessen abgegriffen haben
                 spenden_warnung = f" <span title='Spenden-Leecher (0 Spenden, aber {p['donations_received']} erhalten)' style='font-size: 1.1em;'>🧛</span>" if p['donations'] == 0 and p['donations_received'] > 0 and p['teilnahme_int'] > 3 and not p['is_urlaub'] else ""
                 
                 html += f"<tr><td class='name-col'>{p['name']}{neu_badge}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{p['donations']}{spenden_warnung}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
