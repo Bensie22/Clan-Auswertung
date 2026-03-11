@@ -259,14 +259,26 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     kritisch = sorted([p for p in aktive_spieler if p["score"] < 50 and p["teilnahme_int"] > 3], key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]))
     top_spender = sorted([p for p in aktive_spieler if p["donations"] > 0], key=lambda x: x["donations"], reverse=True)[:3]
 
-    # --- IN-GAME CHAT TEXT (Kurz & Kompakt für Clash Royale) ---
+    # --- IN-GAME CHAT TEXT (Ausführlicher, nutzt das Limit sicher aus) ---
     cr_top_names = ", ".join([p['name'] for p in top_performers])
-    cr_text = f"📊 Auswertung da! Clan-Ø: {clan_avg}%. Top 3: {cr_top_names} 🏆"
     
-    # NEU: Namen der kritischen Spieler direkt mit in den Text einfügen
+    if clan_avg >= 80:
+        cr_motiv = "Starke Woche! 💪"
+    else:
+        cr_motiv = "Da geht noch mehr! ⚔️"
+        
+    cr_text = f"📊 Auswertung da! Clan-Ø: {clan_avg}% - {cr_motiv} Top 3: {cr_top_names} 🏆"
+    
+    if top_spender:
+        cr_text += f" | 🃏 Ehren-Spender: {top_spender[0]['name']}"
+        
     if kritisch:
-        cr_krit_names = ", ".join([p['name'] for p in kritisch])
-        cr_text += f" | ⚠️ Kick-Liste: {cr_krit_names}. Bitte ranhalten!"
+        # Wir begrenzen die Anzeige auf max 4 Namen, damit die 255 Zeichen in Clash Royale nicht überschritten werden.
+        krit_names_list = [p['name'] for p in kritisch][:4]
+        cr_krit_names = ", ".join(krit_names_list)
+        if len(kritisch) > 4:
+            cr_krit_names += f" (+{len(kritisch)-4})"
+        cr_text += f" | ⚠️ Kick-Liste: {cr_krit_names}. Alle Kämpfe machen!"
     # ---------------------------------------------------------------
 
     tiers = ["🌟 Elite (95-100%)", "✅ Solides Mittelfeld (80-94%)", "⚠️ Unter Beobachtung (50-79%)", "🚫 Kritisch (< 50%)", "🏖️ Im Urlaub (Pausiert)"]
@@ -533,4 +545,4 @@ def main():
     print("\n=== ALLES ERFOLGREICH ABGESCHLOSSEN ===")
 
 if __name__ == "__main__":
-    main() 
+    main()
