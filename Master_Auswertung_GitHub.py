@@ -254,7 +254,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     aktive_spieler = [p for p in player_stats if not p["is_urlaub"]]
     clan_avg = round(sum([p["score"] for p in aktive_spieler]) / len(aktive_spieler), 2) if aktive_spieler else 0
     
-    # NEU: Mehrstufige Sortierung (1. Score, 2. Teilnahme/Treue, 3. Fame, 4. Spenden)
     top_performers = sorted(aktive_spieler, key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]), reverse=True)[:3]
     top_aufsteiger = sorted([p for p in aktive_spieler if p["delta"] > 0], key=lambda x: x["delta"], reverse=True)[:3]
     kritisch = sorted([p for p in aktive_spieler if p["score"] < 50 and p["teilnahme_int"] > 3], key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]))
@@ -263,8 +262,11 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     # --- IN-GAME CHAT TEXT (Kurz & Kompakt für Clash Royale) ---
     cr_top_names = ", ".join([p['name'] for p in top_performers])
     cr_text = f"📊 Auswertung da! Clan-Ø: {clan_avg}%. Top 3: {cr_top_names} 🏆"
+    
+    # NEU: Namen der kritischen Spieler direkt mit in den Text einfügen
     if kritisch:
-        cr_text += f" | Achtung: {len(kritisch)} Spieler auf der Kick-Liste. Bitte ranhalten! ⚠️"
+        cr_krit_names = ", ".join([p['name'] for p in kritisch])
+        cr_text += f" | ⚠️ Kick-Liste: {cr_krit_names}. Bitte ranhalten!"
     # ---------------------------------------------------------------
 
     tiers = ["🌟 Elite (95-100%)", "✅ Solides Mittelfeld (80-94%)", "⚠️ Unter Beobachtung (50-79%)", "🚫 Kritisch (< 50%)", "🏖️ Im Urlaub (Pausiert)"]
@@ -371,6 +373,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             
             <div class="info-box">
                 <h3 style="margin-top: 0; color: #38bdf8; margin-bottom: 12px; font-size: 1.2em;">💡 Hinweise zur Auswertung</h3>
+                <p style="margin: 0 0 10px 0;"><b>🏆 Platzierung (Sortierung):</b> Bei Punktegleichstand (z.B. 100%) gewinnt immer die höhere Clan-Treue (Teilnahme). Danach entscheiden die aktuellen Kriegspunkte und zuletzt die Spendenanzahl.</p>
                 <p style="margin: 0 0 10px 0;"><b>📊 Faire Berechnung & Welpenschutz:</b> Die Prozentzahl bemisst sich nur an den aktiven Wochen im Clan. Spieler mit ≤ 3 Kriegen erhalten das 🌱-Symbol und sind vor Kick-Warnungen geschützt.</p>
                 <p style="margin: 0 0 10px 0;"><b>🔍 Trend & Qualität:</b> Die Spalte "Trend" zeigt die letzten 4 Wochen (🟢🟡🔴). "Ø Punkte" zeigt die Punkte pro Deck – Werte unter 115 (⚠️) deuten auf reine Niederlagen oder Bootsangriffe hin.</p>
                 <p style="margin: 0 0 10px 0;"><b>🃏 Spenden & Leecher:</b> Die Top 3 Kartenspender werden oben geehrt. Wer absolut gar nichts spendet (0 Karten), bekommt in der Tabelle gnadenlos das 🧛-Symbol verpasst.</p>
@@ -410,7 +413,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     """
 
     for t in tiers:
-        # NEU: Auch die Tabellen werden jetzt strikt nach Score -> Teilnahme -> Fame -> Spenden sortiert!
         players_in_tier = sorted([p for p in player_stats if p["tier"] == t], key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]), reverse=True)
         
         if players_in_tier:
@@ -531,4 +533,4 @@ def main():
     print("\n=== ALLES ERFOLGREICH ABGESCHLOSSEN ===")
 
 if __name__ == "__main__":
-    main()
+    main() 
