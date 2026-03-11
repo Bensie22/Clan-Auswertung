@@ -253,11 +253,11 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
     aktive_spieler = [p for p in player_stats if not p["is_urlaub"]]
     clan_avg = round(sum([p["score"] for p in aktive_spieler]) / len(aktive_spieler), 2) if aktive_spieler else 0
-    top_performers = sorted(aktive_spieler, key=lambda x: x["score"], reverse=True)[:3]
-    top_aufsteiger = sorted([p for p in aktive_spieler if p["delta"] > 0], key=lambda x: x["delta"], reverse=True)[:3]
-    kritisch = sorted([p for p in aktive_spieler if p["score"] < 50 and p["teilnahme_int"] > 3], key=lambda x: x["score"])
     
-    # NEU: Top 3 Spender berechnen (nur Leute filtern, die > 0 gespendet haben)
+    # NEU: Mehrstufige Sortierung (1. Score, 2. Fame, 3. Spenden)
+    top_performers = sorted(aktive_spieler, key=lambda x: (x["score"], x["fame"], x["donations"]), reverse=True)[:3]
+    top_aufsteiger = sorted([p for p in aktive_spieler if p["delta"] > 0], key=lambda x: x["delta"], reverse=True)[:3]
+    kritisch = sorted([p for p in aktive_spieler if p["score"] < 50 and p["teilnahme_int"] > 3], key=lambda x: (x["score"], x["fame"], x["donations"]))
     top_spender = sorted([p for p in aktive_spieler if p["donations"] > 0], key=lambda x: x["donations"], reverse=True)[:3]
 
     # --- IN-GAME CHAT TEXT (Kurz & Kompakt für Clash Royale) ---
@@ -332,7 +332,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .card.avg {{ border-top: 4px solid #38bdf8; }}
             .card.top {{ border-top: 4px solid #fbbf24; }}
             .card.aufsteiger {{ border-top: 4px solid #10b981; }}
-            /* NEU: Farbe für die Spender-Karte */
             .card.spender {{ border-top: 4px solid #a855f7; }} 
             .card.kritisch {{ border-top: 4px solid #ef4444; }}
             .card.messenger {{ border-top: 4px solid #f1c40f; width: 100%; flex: 100%; }}
@@ -361,7 +360,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             
             .badge-ja {{ background-color: #10b981; color: #ffffff; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 0.8em; margin-left: 8px; }}
             .name-col {{ font-weight: 800; color: #ffffff; }}
-            
             .trend-cell {{ font-size: 16px !important; white-space: nowrap; line-height: 1; }}
         </style>
     </head>
@@ -412,7 +410,9 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     """
 
     for t in tiers:
-        players_in_tier = sorted([p for p in player_stats if p["tier"] == t], key=lambda x: x["score"], reverse=True)
+        # NEU: Auch die Tabellen werden jetzt strikt nach Score -> Fame -> Spenden sortiert!
+        players_in_tier = sorted([p for p in player_stats if p["tier"] == t], key=lambda x: (x["score"], x["fame"], x["donations"]), reverse=True)
+        
         if players_in_tier:
             html += f"<div class='tier-title'>{t}</div>"
             html += "<table><tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teiln.</th><th>Kriegspunkte</th></tr>"
@@ -422,7 +422,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 
                 neu_badge = " <span title='Neu im Clan / Wenig Kriege' style='opacity:0.8;'>🌱</span>" if p['teilnahme_int'] <= 3 and not p['is_urlaub'] else ""
                 
-                # NEU: Spenden-Leecher Erkennung (0 Spenden = Vampir Emoji)
                 spenden_warnung = " <span title='Spenden-Leecher (0 Spenden)' style='font-size: 1.1em;'>🧛</span>" if p['donations'] == 0 and not p['is_urlaub'] else ""
                 
                 html += f"<tr><td class='name-col'>{p['name']}{neu_badge}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{p['donations']}{spenden_warnung}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
