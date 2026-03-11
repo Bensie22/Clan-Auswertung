@@ -254,10 +254,10 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     aktive_spieler = [p for p in player_stats if not p["is_urlaub"]]
     clan_avg = round(sum([p["score"] for p in aktive_spieler]) / len(aktive_spieler), 2) if aktive_spieler else 0
     
-    # NEU: Mehrstufige Sortierung (1. Score, 2. Fame, 3. Spenden)
-    top_performers = sorted(aktive_spieler, key=lambda x: (x["score"], x["fame"], x["donations"]), reverse=True)[:3]
+    # NEU: Mehrstufige Sortierung (1. Score, 2. Teilnahme/Treue, 3. Fame, 4. Spenden)
+    top_performers = sorted(aktive_spieler, key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]), reverse=True)[:3]
     top_aufsteiger = sorted([p for p in aktive_spieler if p["delta"] > 0], key=lambda x: x["delta"], reverse=True)[:3]
-    kritisch = sorted([p for p in aktive_spieler if p["score"] < 50 and p["teilnahme_int"] > 3], key=lambda x: (x["score"], x["fame"], x["donations"]))
+    kritisch = sorted([p for p in aktive_spieler if p["score"] < 50 and p["teilnahme_int"] > 3], key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]))
     top_spender = sorted([p for p in aktive_spieler if p["donations"] > 0], key=lambda x: x["donations"], reverse=True)[:3]
 
     # --- IN-GAME CHAT TEXT (Kurz & Kompakt für Clash Royale) ---
@@ -410,8 +410,8 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     """
 
     for t in tiers:
-        # NEU: Auch die Tabellen werden jetzt strikt nach Score -> Fame -> Spenden sortiert!
-        players_in_tier = sorted([p for p in player_stats if p["tier"] == t], key=lambda x: (x["score"], x["fame"], x["donations"]), reverse=True)
+        # NEU: Auch die Tabellen werden jetzt strikt nach Score -> Teilnahme -> Fame -> Spenden sortiert!
+        players_in_tier = sorted([p for p in player_stats if p["tier"] == t], key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]), reverse=True)
         
         if players_in_tier:
             html += f"<div class='tier-title'>{t}</div>"
@@ -531,4 +531,4 @@ def main():
     print("\n=== ALLES ERFOLGREICH ABGESCHLOSSEN ===")
 
 if __name__ == "__main__":
-    main() 
+    main()
