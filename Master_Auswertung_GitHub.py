@@ -56,8 +56,13 @@ def fetch_and_build_player_csv() -> bool:
         print(f"Fehler beim Abruf der Mitglieder: {members_resp.status_code}")
         return False
         
+    # NEU: Wir lesen jetzt auch die Spenden (donations) aus
     current_members = {
-        m["tag"]: {"name": m["name"], "role": m.get("role", "member")} 
+        m["tag"]: {
+            "name": m["name"], 
+            "role": m.get("role", "member"),
+            "donations": m.get("donations", 0)
+        } 
         for m in members_resp.json().get("items", [])
     }
 
@@ -96,19 +101,24 @@ def fetch_and_build_player_csv() -> bool:
                 if ptag not in players_data:
                     is_curr = ptag in current_members
                     role = current_members[ptag]["role"] if is_curr else "unknown"
-                    players_data[ptag] = {"name": pname, "is_current": is_curr, "role": role, "history": {}}
+                    donations = current_members[ptag]["donations"] if is_curr else 0
+                    players_data[ptag] = {"name": pname, "is_current": is_curr, "role": role, "donations": donations, "history": {}}
                 players_data[ptag]["history"][race_id] = {"decks": decks, "fame": fame}
 
+    # Spieler hinzufügen oder Spenden updaten
     for tag, data in current_members.items():
         if tag not in players_data:
-            players_data[tag] = {"name": data["name"], "is_current": True, "role": data["role"], "history": {}}
+            players_data[tag] = {"name": data["name"], "is_current": True, "role": data["role"], "donations": data["donations"], "history": {}}
+        else:
+            players_data[tag]["donations"] = data["donations"]
         
     date_str = datetime.now().strftime("%Y%m%d_%H%M%S")
     filename = upload_folder / f"clan_export_{date_str}.csv"
 
     race_ids = sorted(list(set(race_ids)), reverse=True)
+    # NEU: "player_donations" in den CSV-Headern
     headers_csv = [
-        "player_tag", "player_name", "player_is_current_member", "player_role",
+        "player_tag", "player_name", "player_is_current_member", "player_role", "player_donations",
         "player_contribution_count", "player_participating_count", "player_total_decks_used"
     ]
     
@@ -135,7 +145,7 @@ def fetch_and_build_player_csv() -> bool:
                 if decks > 0:
                     contribution_count += 1
                     
-            row = [tag, data["name"], data["is_current"], data["role"], contribution_count, total_races, total_decks]
+            row = [tag, data["name"], data["is_current"], data["role"], data.get("donations", 0), contribution_count, total_races, total_decks]
             row.extend(row_history)
             writer.writerow(row)
             
@@ -197,6 +207,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         
         participation = int(row.get("player_contribution_count", 0) or 0)
         decks_total = int(row.get("player_total_decks_used", 0) or 0)
+        donations = int(row.get("player_donations", 0) or 0) # NEU
         score = berechne_score(participation, decks_total)
         
         aktueller_fame = int(row.get(fame_spalte, 0) or 0)
@@ -234,7 +245,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             "name": name, "status": status_html, "score": score, "delta": delta,
             "teilnahme": f"{participation}/{int(row.get('player_participating_count', 0) or 0)}",
             "teilnahme_int": participation,  
-            "fame": aktueller_fame, "tier": tier,
+            "fame": aktueller_fame, "donations": donations, "tier": tier, # NEU: donations hinzugefügt
             "is_urlaub": is_urlaub, "trend_str": trend_str, 
             "fame_per_deck": fame_per_deck, "leecher_warnung": leecher_warnung
         })
@@ -348,7 +359,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             
             .badge-ja {{ background-color: #10b981; color: #ffffff; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 0.8em; margin-left: 8px; }}
             .name-col {{ font-weight: 800; color: #ffffff; }}
-            
             .trend-cell {{ font-size: 16px !important; white-space: nowrap; line-height: 1; }}
         </style>
     </head>
@@ -397,14 +407,16 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         players_in_tier = sorted([p for p in player_stats if p["tier"] == t], key=lambda x: x["score"], reverse=True)
         if players_in_tier:
             html += f"<div class='tier-title'>{t}</div>"
-            html += "<table><tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>Teiln.</th><th>Kriegspunkte</th></tr>"
+            # NEU: Spalte '🃏 Spenden' hinzugefügt
+            html += "<table><tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teiln.</th><th>Kriegspunkte</th></tr>"
             for p in players_in_tier:
                 delta_s = f"+{p['delta']}" if p['delta']>0 else f"{p['delta']}"
                 color = "#10b981" if p['delta'] > 0 else "#ef4444" if p['delta'] < 0 else "#94a3b8"
                 
                 neu_badge = " <span title='Neu im Clan / Wenig Kriege' style='opacity:0.8;'>🌱</span>" if p['teilnahme_int'] <= 3 and not p['is_urlaub'] else ""
                 
-                html += f"<tr><td class='name-col'>{p['name']}{neu_badge}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
+                # Spalten logisch erweitert
+                html += f"<tr><td class='name-col'>{p['name']}{neu_badge}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{p['donations']}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
             html += "</table>"
             
     html += "</div></body></html>"
@@ -512,4 +524,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
