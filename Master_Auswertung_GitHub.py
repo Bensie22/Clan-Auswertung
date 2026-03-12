@@ -626,7 +626,7 @@ def main():
     print("Sende E-Mail...")
     sende_bericht_per_mail(
         absender="bassabello@bossmail.de",
-        empfänger="hemlock22@posteo.de", 
+        empfänger="Questler_M@web.de", 
         smtp_server="mx.freenet.de",
         port=587,
         passwort=os.environ.get("EMAIL_PASS"),
@@ -640,4 +640,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
