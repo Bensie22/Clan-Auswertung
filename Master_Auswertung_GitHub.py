@@ -216,7 +216,9 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         aktueller_decks = int(row.get(aktueller_decks_spalte, 0) or 0)
         
         fame_per_deck = round(aktueller_fame / aktueller_decks) if aktueller_decks > 0 else 0
-        leecher_warnung = " <span title='Verdacht: Zieht nur Punkte ab (verliert absichtlich/greift Boote an)' style='cursor:help;'>⚠️</span>" if (0 < fame_per_deck < 115) else ""
+        
+        # Das neue Tooltip für die Warnung
+        leecher_warnung = " <span class='custom-tooltip'>⚠️<span class='tooltip-text'>Verdacht: Zieht nur Punkte ab (verliert absichtlich/greift Boote an)</span></span>" if (0 < fame_per_deck < 115) else ""
         
         vergangene_scores = df_history[df_history["player_name"] == name].sort_values("date").tail(3)["score"].tolist()
         trend_scores = vergangene_scores + [score]
@@ -391,6 +393,52 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .badge-ja {{ background-color: #10b981; color: #ffffff; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 0.8em; margin-left: 8px; }}
             .name-col {{ font-weight: 800; color: #ffffff; }}
             .trend-cell {{ font-size: 16px !important; white-space: nowrap; line-height: 1; }}
+
+            /* NEU: CSS für maßgeschneiderte Tooltips, die IMMER über dem Text/Symbol stehen */
+            .custom-tooltip {{
+                position: relative;
+                display: inline-block;
+                cursor: help;
+            }}
+            .custom-tooltip.dotted {{
+                border-bottom: 1px dotted rgba(56, 189, 248, 0.5);
+            }}
+            .custom-tooltip .tooltip-text {{
+                visibility: hidden;
+                width: max-content;
+                background-color: rgba(15, 23, 42, 0.98);
+                color: #fff;
+                text-align: center;
+                border-radius: 6px;
+                padding: 6px 12px;
+                position: absolute;
+                z-index: 100;
+                bottom: 140%; /* Legt das Fenster ÜBER das Element */
+                left: 50%;
+                transform: translateX(-50%);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+                opacity: 0;
+                transition: opacity 0.2s ease-in-out;
+                font-size: 0.9em;
+                font-weight: normal;
+                font-family: 'Nunito', sans-serif;
+            }}
+            /* Der kleine Pfeil unten am Tooltip */
+            .custom-tooltip .tooltip-text::after {{
+                content: "";
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                margin-left: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: rgba(255, 255, 255, 0.2) transparent transparent transparent;
+            }}
+            .custom-tooltip:hover .tooltip-text {{
+                visibility: visible;
+                opacity: 1;
+            }}
         </style>
     </head>
     <body>
@@ -463,18 +511,20 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 delta_s = f"+{p['delta']}" if p['delta']>0 else f"{p['delta']}"
                 color = "#10b981" if p['delta'] > 0 else "#ef4444" if p['delta'] < 0 else "#94a3b8"
                 
-                neu_badge = " <span title='Neu im Clan / Wenig Kriege' style='opacity:0.8; cursor:help;'>🌱</span>" if p['teilnahme_int'] <= 3 and not p['is_urlaub'] else ""
+                # Neues Custom-Tooltip für Welpenschutz
+                neu_badge = " <span class='custom-tooltip' style='opacity:0.8;'>🌱<span class='tooltip-text'>Neu im Clan / Wenig Kriege</span></span>" if p['teilnahme_int'] <= 3 and not p['is_urlaub'] else ""
                 
                 spenden_warnung = ""
                 if p['donations'] == 0 and p['teilnahme_int'] > 3 and not p['is_urlaub']:
                     if p['donations_received'] > 0:
-                        # Echt Leecher
-                        spenden_warnung = f" <span title='Spenden-Leecher (0 gespendet, aber {p['donations_received']} erhalten)' style='font-size: 1.1em; cursor:help;'>🧛</span>"
+                        # Neues Custom-Tooltip für echte Leecher
+                        spenden_warnung = f" <span class='custom-tooltip' style='font-size: 1.1em;'>🧛<span class='tooltip-text'>Spenden-Leecher (0 gespendet, aber {p['donations_received']} erhalten)</span></span>"
                     else:
-                        # Nur Inaktiv
-                        spenden_warnung = " <span title='Spenden-Inaktiv (0 gespendet, 0 erhalten)' style='font-size: 1.1em; cursor:help;'>💤</span>"
+                        # Neues Custom-Tooltip für Inaktive
+                        spenden_warnung = " <span class='custom-tooltip' style='font-size: 1.1em;'>💤<span class='tooltip-text'>Spenden-Inaktiv (0 gespendet, 0 erhalten)</span></span>"
                 
-                spenden_zelle = f"<span title='Gespendet: {p['donations']} | Empfangen: {p['donations_received']}' style='cursor: help; border-bottom: 1px dotted rgba(56, 189, 248, 0.5);'>{p['donations']}</span>"
+                # Neues Custom-Tooltip für die Spenden-Zahlen
+                spenden_zelle = f"<span class='custom-tooltip dotted'>{p['donations']}<span class='tooltip-text'>Gespendet: {p['donations']} | Empfangen: {p['donations_received']}</span></span>"
                 
                 html += f"<tr><td class='name-col'>{p['name']}{neu_badge}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
             html += "</table>"
