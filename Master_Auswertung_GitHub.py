@@ -40,7 +40,7 @@ HEADER_IMAGE_PATH = BASE_DIR / "clash_pix.jpg"
 
 def fetch_and_build_player_csv() -> bool:
     if not API_TOKEN or API_TOKEN == "DEIN_TOKEN_HIER":
-        print("Fehler: Bitte trage deinen API_TOKEN im Code oder in der .env Datei ein.")
+        print("❌ Fehler: Bitte trage deinen API_TOKEN im Code oder in der .env Datei ein.")
         return False
 
     headers = {
@@ -53,7 +53,7 @@ def fetch_and_build_player_csv() -> bool:
     members_resp = requests.get(members_url, headers=headers)
     
     if members_resp.status_code != 200:
-        print(f"Fehler beim Abruf der Mitglieder: {members_resp.status_code}")
+        print(f"❌ Fehler beim Abruf der Mitglieder: {members_resp.status_code}")
         return False
         
     current_members = {
@@ -71,11 +71,11 @@ def fetch_and_build_player_csv() -> bool:
     log_resp = requests.get(log_url, headers=headers)
     
     if log_resp.status_code != 200:
-        print(f"Fehler beim Abruf des Warlogs: {log_resp.status_code}")
+        print(f"❌ Fehler beim Abruf des Warlogs: {log_resp.status_code}")
         return False
 
     races = log_resp.json().get("items", [])
-    print(f"{len(races)} Kriege gefunden. Verarbeite Spielerdaten...")
+    print(f"✅ {len(races)} Kriege gefunden. Verarbeite Spielerdaten...")
 
     players_data = {}
     race_ids = []
@@ -458,7 +458,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             <div class="info-box">
                 <h3 style="margin-top: 0; color: #38bdf8; margin-bottom: 12px; font-size: 1.2em;">💡 So liest du diese Auswertung:</h3>
                 <p style="margin: 0 0 10px 0;"><b>🏆 Wer steht oben? (Die Sortierung):</b> Die Liste ist streng nach Leistung sortiert. Wer 100% im Clankrieg holt, steht oben. Bei Punktegleichstand gewinnt derjenige, der schon länger ohne Unterbrechung für den Clan kämpft (Teilnahme-Treue). Danach entscheiden die aktuellen Kriegspunkte und zuletzt die Anzahl der Kartenspenden.</p>
-                <p style="margin: 0 0 10px 0;"><b>📈 Delta (Entwicklung):</b> Zeigt die prozentuale Veränderung des Scores zur letzten Auswertung (Grün = Aufstieg, Rot = Abfall). Bei neuen Spielern (🌱) schlägt das Delta durch die kurze Historie deutlich stärker aus als bei Veteranen.</p>
+                <p style="margin: 0 0 10px 0;"><b>📈 Delta (Entwicklung):</b> Zeigt die prozentuale Veränderung des Scores zur letzten Auswertung an (Grün = Aufstieg, Rot = Abfall). Bei neuen Spielern (🌱) schlägt das Delta durch die kurze Historie deutlich stärker aus als bei Clan-Veteranen.</p>
                 <p style="margin: 0 0 10px 0;"><b>🌱 Welpenschutz (Neu im Clan?):</b> Keine Panik! Wer erst bei 3 oder weniger Kriegen dabei war, bekommt das 🌱-Symbol. Man ist vor Kick-Warnungen geschützt und hat Zeit, sich im Clan zu beweisen.</p>
                 <p style="margin: 0 0 10px 0;"><b>🟢🟡🔴 Trend & Qualität (Die Ampel):</b> Die Spalte "Trend" zeigt die Leistung der letzten 4 Wochen. "Ø Punkte" zeigt an, wie viele Punkte pro Deck geholt wurden. Ein ⚠️ bedeutet, dass der Wert unter 115 liegt (Verdacht auf reine Niederlagen oder dass nur Boote angegriffen wurden).</p>
                 <p style="margin: 0 0 10px 0;"><b>🃏 Geben & Nehmen (Spenden):</b> Ein Clan lebt von der Gemeinschaft! <br><b>🧛 Vampir:</b> Hat 0 Karten gespendet, aber fröhlich Karten von anderen kassiert (Schmarotzer-Alarm!). <br><b>💤 Schlafend:</b> Hat 0 gespendet, aber auch 0 angefordert (Spenden-Inaktiv). <br><i>Tipp: Fahre mit der Maus am PC über die Spenden-Zahlen, um genau zu sehen, wie viel jemand gegeben und bekommen hat!</i></p>
@@ -554,7 +554,10 @@ def archiviere_alte_auswertungen(output_dir: Path, anzahl: int = 2):
         shutil.move(str(file), archiv_output / file.name)
 
 def sende_bericht_per_mail(absender: str, empfänger: str, smtp_server: str, port: int, passwort: str, html_path: Path, cr_text_1: str, cr_text_2: str, cr_text_3: str):
-    if not passwort: return
+    if not passwort:
+        print("\n❌ ABBRUCH: Es wurde kein E-Mail-Passwort (EMAIL_PASS) gefunden!")
+        print("💡 Tipp: Überprüfe die GitHub Secrets. Die Auswertung wurde gespeichert, aber NICHT per E-Mail versendet.\n")
+        return
 
     msg = EmailMessage()
     msg["Subject"] = f"📊 Clan-Auswertung: {CLAN_NAME}"
@@ -573,13 +576,14 @@ def sende_bericht_per_mail(absender: str, empfänger: str, smtp_server: str, por
         msg.add_attachment(f.read(), maintype="text", subtype="html", filename=html_path.name)
 
     try:
+        print(f"Versuche E-Mail über {smtp_server} an {empfänger} zu senden...")
         with smtplib.SMTP(smtp_server, port) as server:
             server.starttls()
             server.login(absender, passwort)
             server.send_message(msg)
         print("✅ E-Mail erfolgreich gesendet.")
     except Exception as e:
-        print(f"❌ Fehler beim Senden der E-Mail: {e}")
+        print(f"❌ FEHLER beim Senden der E-Mail: {e}")
 
 # === 4. Hauptsteuerung ===
 
@@ -598,7 +602,7 @@ def main():
         csv_path = finde_neueste_csv(upload_folder)
         df = pd.read_csv(csv_path)
     except Exception as e:
-        print(f"Fehler beim Einlesen der CSV: {e}")
+        print(f"❌ Fehler beim Einlesen der CSV: {e}")
         return
 
     is_current_mask = df["player_is_current_member"].astype(str).str.strip().str.lower().isin(["true", "1", "yes"])
@@ -606,7 +610,10 @@ def main():
     
     fame_columns = sorted([col for col in df.columns if col.startswith("s_") and col.endswith("_fame")], reverse=True)
     
-    if not fame_columns: return
+    if not fame_columns: 
+        print("❌ Fehler: Keine 'fame_columns' gefunden! Gab es diese Woche keinen Krieg? Abbruch.")
+        return
+        
     fame_spalte = fame_columns[0]
 
     if score_history_path.exists(): df_history = pd.read_csv(score_history_path)
@@ -623,10 +630,10 @@ def main():
 
     archiviere_alte_auswertungen(output_folder)
     
-    print("Sende E-Mail...")
+    print("=== SENDE BERICHT ===")
     sende_bericht_per_mail(
         absender="bassabello@bossmail.de",
-        empfänger="Questler_M@web.de", 
+        empfänger="hemlock22@posteo.de", 
         smtp_server="mx.freenet.de",
         port=587,
         passwort=os.environ.get("EMAIL_PASS"),
@@ -639,6 +646,4 @@ def main():
     print("\n=== ALLES ERFOLGREICH ABGESCHLOSSEN ===")
 
 if __name__ == "__main__":
-    main()
-
-
+    main() 
