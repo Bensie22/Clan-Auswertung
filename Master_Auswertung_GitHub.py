@@ -216,8 +216,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         aktueller_decks = int(row.get(aktueller_decks_spalte, 0) or 0)
         
         fame_per_deck = round(aktueller_fame / aktueller_decks) if aktueller_decks > 0 else 0
-        
-        # Das neue Tooltip für die Warnung
         leecher_warnung = " <span class='custom-tooltip'>⚠️<span class='tooltip-text'>Verdacht: Zieht nur Punkte ab (verliert absichtlich/greift Boote an)</span></span>" if (0 < fame_per_deck < 115) else ""
         
         vergangene_scores = df_history[df_history["player_name"] == name].sort_values("date").tail(3)["score"].tolist()
@@ -271,30 +269,34 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         reverse=True
     )[:3]
 
-    # --- IN-GAME CHAT TEXTE (3-TEILER) ---
+    # --- IN-GAME CHAT TEXTE (3-TEILER) - NEUE VERSION ---
     
+    # Teil 1: Übersicht & Lob
     cr_top_names = ", ".join([p['name'] for p in top_performers])
     cr_motiv = "Starke Woche! 💪" if clan_avg >= 80 else "Da geht noch mehr! ⚔️"
-    cr_text_1 = f"1/3 📊 Clan-Ø: {clan_avg}% - {cr_motiv} Top MVPs: {cr_top_names} 🏆"
+    cr_text_1 = f"1/3 📊 Auswertung ist da! Clan-Ø: {clan_avg}%. {cr_motiv} Danke für 100% Einsatz an unsere MVPs: {cr_top_names}! 🏆 Mega Leistung, weiter so! ⚔️"
     
-    cr_text_2 = "2/3 🃏 Ehren-Spender: "
+    # Teil 2: Spenden & Leecher
     if top_spender:
-        cr_text_2 += top_spender[0]['name']
+        top_spender_names = ", ".join([p['name'] for p in top_spender][:2])
+        cr_text_2 = f"2/3 🃏 Ein fettes Lob an unsere Top-Spender: {top_spender_names}! Danke für euren Support! 🤝"
     else:
-        cr_text_2 += "Niemand"
+        cr_text_2 = "2/3 🃏 Diese Woche gab es leider kaum Spenden. Denkt dran: Ein Clan lebt vom Geben UND Nehmen! 🤝"
         
-    if top_leecher:
-        cr_leecher_names = ", ".join([p['name'] for p in top_leecher][:3])
-        cr_text_2 += f" | 🧛 Spenden-Leecher: {cr_leecher_names}"
+    echte_leecher = [p for p in top_leecher if p["donations"] == 0 and p["donations_received"] > 0]
+    if echte_leecher:
+        cr_leecher_names = ", ".join([p['name'] for p in echte_leecher][:2])
+        cr_text_2 += f" | 🧛 Spenden-Leecher (0 geben, aber kassieren): {cr_leecher_names}."
         
+    # Teil 3: Kritische Fälle
     if kritisch:
         krit_names_list = [p['name'] for p in kritisch]
-        cr_krit_names = ", ".join(krit_names_list[:6])
-        if len(kritisch) > 6:
-            cr_krit_names += f" (+{len(kritisch)-6})"
-        cr_text_3 = f"3/3 ⚠️ Kick-Liste / Warnung: {cr_krit_names}. Bitte ranhalten oder abmelden!"
+        cr_krit_names = ", ".join(krit_names_list[:5])
+        if len(kritisch) > 5:
+            cr_krit_names += f" (+{len(kritisch)-5})"
+        cr_text_3 = f"3/3 ⚠️ Kick-Liste/Warnung: {cr_krit_names}. Leistung reicht aktuell nicht. Bitte ranhalten oder bei Inaktivität abmelden! 🛡️"
     else:
-        cr_text_3 = "3/3 ⚠️ Keine kritischen Fälle diese Woche. Weiter so, Team! 🛡️"
+        cr_text_3 = "3/3 🌟 Starke Woche: Niemand auf der Kick-Liste! Alle haben geliefert oder Urlaub angemeldet. So bauen wir einen starken Clan auf! 🛡️💪"
         
     # ---------------------------------------------------------------
 
@@ -394,7 +396,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .name-col {{ font-weight: 800; color: #ffffff; }}
             .trend-cell {{ font-size: 16px !important; white-space: nowrap; line-height: 1; }}
 
-            /* NEU: CSS für maßgeschneiderte Tooltips, die IMMER über dem Text/Symbol stehen */
             .custom-tooltip {{
                 position: relative;
                 display: inline-block;
@@ -413,7 +414,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 padding: 6px 12px;
                 position: absolute;
                 z-index: 100;
-                bottom: 140%; /* Legt das Fenster ÜBER das Element */
+                bottom: 140%; 
                 left: 50%;
                 transform: translateX(-50%);
                 border: 1px solid rgba(255, 255, 255, 0.2);
@@ -424,7 +425,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 font-weight: normal;
                 font-family: 'Nunito', sans-serif;
             }}
-            /* Der kleine Pfeil unten am Tooltip */
+            
             .custom-tooltip .tooltip-text::after {{
                 content: "";
                 position: absolute;
@@ -435,6 +436,16 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 border-style: solid;
                 border-color: rgba(255, 255, 255, 0.2) transparent transparent transparent;
             }}
+            
+            .custom-tooltip.align-left .tooltip-text {{
+                left: -10px;
+                transform: translateX(0);
+            }}
+            .custom-tooltip.align-left .tooltip-text::after {{
+                left: 15px;
+                margin-left: 0;
+            }}
+
             .custom-tooltip:hover .tooltip-text {{
                 visibility: visible;
                 opacity: 1;
@@ -448,13 +459,12 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             </div>
             
             <div class="info-box">
-                <h3 style="margin-top: 0; color: #38bdf8; margin-bottom: 12px; font-size: 1.2em;">💡 Hinweise zur Auswertung</h3>
-                <p style="margin: 0 0 10px 0;"><b>🏆 Platzierung (Sortierung):</b> Bei Punktegleichstand (z.B. 100%) gewinnt immer die höhere Clan-Treue (Teilnahme). Danach entscheiden die aktuellen Kriegspunkte und zuletzt die Spendenanzahl.</p>
-                <p style="margin: 0 0 10px 0;"><b>📊 Faire Berechnung & Welpenschutz:</b> Die Prozentzahl bemisst sich nur an den aktiven Wochen im Clan. Spieler mit ≤ 3 Kriegen erhalten das 🌱-Symbol und sind vor Kick-Warnungen geschützt.</p>
-                <p style="margin: 0 0 10px 0;"><b>🔍 Trend & Qualität:</b> Die Spalte "Trend" zeigt die letzten 4 Wochen (🟢🟡🔴). "Ø Punkte" zeigt die Punkte pro Deck – Werte unter 115 (⚠️) deuten auf reine Niederlagen oder Bootsangriffe hin.</p>
-                <p style="margin: 0 0 10px 0;"><b>🃏 Spenden & Leecher:</b> Die "Top 3 Leecher" Kachel prangert echte Schmarotzer an. In der Tabelle gilt: <b>🧛 = Spenden-Leecher</b> (0 gespendet, aber kassiert). <b>💤 = Spenden-Inaktiv</b> (0 gespendet, 0 empfangen). <i>Tipp: Fahre mit der Maus über die Spenden-Zahlen, um das genaue Gespendet/Empfangen-Verhältnis zu sehen!</i></p>
-                <p style="margin: 0 0 10px 0;"><b>🏖️ Urlaubs-Modus:</b> Spieler in der Datei 'urlaub.txt' werden im Dashboard automatisch pausiert und fließen nicht negativ in die Wertung ein.</p>
-                <p style="margin: 0;"><b>🖥️ Tipp für die beste Ansicht:</b> Lade die HTML-Datei im Anhang herunter und öffne sie im Browser.</p>
+                <h3 style="margin-top: 0; color: #38bdf8; margin-bottom: 12px; font-size: 1.2em;">💡 So liest du diese Auswertung (Info für neue Mitglieder):</h3>
+                <p style="margin: 0 0 10px 0;"><b>🏆 Wer steht oben? (Die Sortierung):</b> Die Liste ist streng nach Leistung sortiert. Wer 100% im Clankrieg holt, steht oben. Bei Punktegleichstand gewinnt derjenige, der schon länger ohne Unterbrechung für den Clan kämpft (Teilnahme-Treue). Danach entscheiden die aktuellen Kriegspunkte und zuletzt die Anzahl der Kartenspenden.</p>
+                <p style="margin: 0 0 10px 0;"><b>🌱 Welpenschutz (Neu im Clan?):</b> Keine Panik! Wer erst bei 3 oder weniger Kriegen dabei war, bekommt das 🌱-Symbol. Du bist vor Kick-Warnungen geschützt und hast Zeit, dich im Clan zu beweisen.</p>
+                <p style="margin: 0 0 10px 0;"><b>🟢🟡🔴 Trend & Qualität (Die Ampel):</b> Die Spalte "Trend" zeigt deine Leistung der letzten 4 Wochen. "Ø Punkte" zeigt an, wie viele Punkte du pro Deck holst. Ein ⚠️ bedeutet, dass der Wert unter 115 liegt (Verdacht auf reine Niederlagen oder dass nur Boote angegriffen wurden).</p>
+                <p style="margin: 0 0 10px 0;"><b>🃏 Geben & Nehmen (Spenden):</b> Ein Clan lebt von der Gemeinschaft! <br><b>🧛 Vampir:</b> Du hast 0 Karten gespendet, aber fröhlich Karten von anderen kassiert (Schmarotzer-Alarm!). <br><b>💤 Schlafend:</b> Du hast 0 gespendet, aber auch 0 angefordert (Spenden-Inaktiv). <br><i>Tipp: Fahre mit der Maus am PC über die Spenden-Zahlen, um genau zu sehen, wie viel jemand gegeben und bekommen hat!</i></p>
+                <p style="margin: 0;"><b>🏖️ Urlaub:</b> Wer im echten Leben verhindert ist und sich bei der Führung abgemeldet hat, wird pausiert und bekommt keine Minuspunkte.</p>
             </div>
             
             <div class="dashboard">
@@ -511,19 +521,15 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 delta_s = f"+{p['delta']}" if p['delta']>0 else f"{p['delta']}"
                 color = "#10b981" if p['delta'] > 0 else "#ef4444" if p['delta'] < 0 else "#94a3b8"
                 
-                # Neues Custom-Tooltip für Welpenschutz
-                neu_badge = " <span class='custom-tooltip' style='opacity:0.8;'>🌱<span class='tooltip-text'>Neu im Clan / Wenig Kriege</span></span>" if p['teilnahme_int'] <= 3 and not p['is_urlaub'] else ""
+                neu_badge = " <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱<span class='tooltip-text'>Neu im Clan / Wenig Kriege</span></span>" if p['teilnahme_int'] <= 3 and not p['is_urlaub'] else ""
                 
                 spenden_warnung = ""
                 if p['donations'] == 0 and p['teilnahme_int'] > 3 and not p['is_urlaub']:
                     if p['donations_received'] > 0:
-                        # Neues Custom-Tooltip für echte Leecher
                         spenden_warnung = f" <span class='custom-tooltip' style='font-size: 1.1em;'>🧛<span class='tooltip-text'>Spenden-Leecher (0 gespendet, aber {p['donations_received']} erhalten)</span></span>"
                     else:
-                        # Neues Custom-Tooltip für Inaktive
                         spenden_warnung = " <span class='custom-tooltip' style='font-size: 1.1em;'>💤<span class='tooltip-text'>Spenden-Inaktiv (0 gespendet, 0 erhalten)</span></span>"
                 
-                # Neues Custom-Tooltip für die Spenden-Zahlen
                 spenden_zelle = f"<span class='custom-tooltip dotted'>{p['donations']}<span class='tooltip-text'>Gespendet: {p['donations']} | Empfangen: {p['donations_received']}</span></span>"
                 
                 html += f"<tr><td class='name-col'>{p['name']}{neu_badge}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
@@ -635,4 +641,4 @@ def main():
     print("\n=== ALLES ERFOLGREICH ABGESCHLOSSEN ===")
 
 if __name__ == "__main__":
-    main()
+    main() 
