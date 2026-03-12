@@ -269,14 +269,12 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         reverse=True
     )[:3]
 
-    # --- IN-GAME CHAT TEXTE (3-TEILER) - NEUE VERSION ---
+    # --- IN-GAME CHAT TEXTE (3-TEILER) ---
     
-    # Teil 1: Übersicht & Lob
     cr_top_names = ", ".join([p['name'] for p in top_performers])
     cr_motiv = "Starke Woche! 💪" if clan_avg >= 80 else "Da geht noch mehr! ⚔️"
     cr_text_1 = f"1/3 📊 Auswertung ist da! Clan-Ø: {clan_avg}%. {cr_motiv} Danke für 100% Einsatz an unsere MVPs: {cr_top_names}! 🏆 Mega Leistung, weiter so! ⚔️"
     
-    # Teil 2: Spenden & Leecher
     if top_spender:
         top_spender_names = ", ".join([p['name'] for p in top_spender][:2])
         cr_text_2 = f"2/3 🃏 Ein fettes Lob an unsere Top-Spender: {top_spender_names}! Danke für euren Support! 🤝"
@@ -288,7 +286,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         cr_leecher_names = ", ".join([p['name'] for p in echte_leecher][:2])
         cr_text_2 += f" | 🧛 Spenden-Leecher (0 geben, aber kassieren): {cr_leecher_names}."
         
-    # Teil 3: Kritische Fälle
     if kritisch:
         krit_names_list = [p['name'] for p in kritisch]
         cr_krit_names = ", ".join(krit_names_list[:5])
@@ -459,11 +456,12 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             </div>
             
             <div class="info-box">
-                <h3 style="margin-top: 0; color: #38bdf8; margin-bottom: 12px; font-size: 1.2em;">💡 So liest du diese Auswertung (Info für neue Mitglieder):</h3>
+                <h3 style="margin-top: 0; color: #38bdf8; margin-bottom: 12px; font-size: 1.2em;">💡 So liest du diese Auswertung:</h3>
                 <p style="margin: 0 0 10px 0;"><b>🏆 Wer steht oben? (Die Sortierung):</b> Die Liste ist streng nach Leistung sortiert. Wer 100% im Clankrieg holt, steht oben. Bei Punktegleichstand gewinnt derjenige, der schon länger ohne Unterbrechung für den Clan kämpft (Teilnahme-Treue). Danach entscheiden die aktuellen Kriegspunkte und zuletzt die Anzahl der Kartenspenden.</p>
-                <p style="margin: 0 0 10px 0;"><b>🌱 Welpenschutz (Neu im Clan?):</b> Keine Panik! Wer erst bei 3 oder weniger Kriegen dabei war, bekommt das 🌱-Symbol. Du bist vor Kick-Warnungen geschützt und hast Zeit, dich im Clan zu beweisen.</p>
-                <p style="margin: 0 0 10px 0;"><b>🟢🟡🔴 Trend & Qualität (Die Ampel):</b> Die Spalte "Trend" zeigt deine Leistung der letzten 4 Wochen. "Ø Punkte" zeigt an, wie viele Punkte du pro Deck holst. Ein ⚠️ bedeutet, dass der Wert unter 115 liegt (Verdacht auf reine Niederlagen oder dass nur Boote angegriffen wurden).</p>
-                <p style="margin: 0 0 10px 0;"><b>🃏 Geben & Nehmen (Spenden):</b> Ein Clan lebt von der Gemeinschaft! <br><b>🧛 Vampir:</b> Du hast 0 Karten gespendet, aber fröhlich Karten von anderen kassiert (Schmarotzer-Alarm!). <br><b>💤 Schlafend:</b> Du hast 0 gespendet, aber auch 0 angefordert (Spenden-Inaktiv). <br><i>Tipp: Fahre mit der Maus am PC über die Spenden-Zahlen, um genau zu sehen, wie viel jemand gegeben und bekommen hat!</i></p>
+                <p style="margin: 0 0 10px 0;"><b>📈 Delta (Entwicklung):</b> Zeigt die prozentuale Veränderung des Scores zur letzten Auswertung (Grün = Aufstieg, Rot = Abfall). Bei neuen Spielern (🌱) schlägt das Delta durch die kurze Historie deutlich stärker aus als bei Veteranen.</p>
+                <p style="margin: 0 0 10px 0;"><b>🌱 Welpenschutz (Neu im Clan?):</b> Keine Panik! Wer erst bei 3 oder weniger Kriegen dabei war, bekommt das 🌱-Symbol. Man ist vor Kick-Warnungen geschützt und hat Zeit, sich im Clan zu beweisen.</p>
+                <p style="margin: 0 0 10px 0;"><b>🟢🟡🔴 Trend & Qualität (Die Ampel):</b> Die Spalte "Trend" zeigt die Leistung der letzten 4 Wochen. "Ø Punkte" zeigt an, wie viele Punkte pro Deck geholt wurden. Ein ⚠️ bedeutet, dass der Wert unter 115 liegt (Verdacht auf reine Niederlagen oder dass nur Boote angegriffen wurden).</p>
+                <p style="margin: 0 0 10px 0;"><b>🃏 Geben & Nehmen (Spenden):</b> Ein Clan lebt von der Gemeinschaft! <br><b>🧛 Vampir:</b> Hat 0 Karten gespendet, aber fröhlich Karten von anderen kassiert (Schmarotzer-Alarm!). <br><b>💤 Schlafend:</b> Hat 0 gespendet, aber auch 0 angefordert (Spenden-Inaktiv). <br><i>Tipp: Fahre mit der Maus am PC über die Spenden-Zahlen, um genau zu sehen, wie viel jemand gegeben und bekommen hat!</i></p>
                 <p style="margin: 0;"><b>🏖️ Urlaub:</b> Wer im echten Leben verhindert ist und sich bei der Führung abgemeldet hat, wird pausiert und bekommt keine Minuspunkte.</p>
             </div>
             
@@ -628,7 +626,7 @@ def main():
     print("Sende E-Mail...")
     sende_bericht_per_mail(
         absender="bassabello@bossmail.de",
-        empfänger="hemlock22@posteo.de", 
+        empfänger="hemlock22@posteo.de.de", 
         smtp_server="mx.freenet.de",
         port=587,
         passwort=os.environ.get("EMAIL_PASS"),
@@ -641,4 +639,4 @@ def main():
     print("\n=== ALLES ERFOLGREICH ABGESCHLOSSEN ===")
 
 if __name__ == "__main__":
-    main() 
+    main()
