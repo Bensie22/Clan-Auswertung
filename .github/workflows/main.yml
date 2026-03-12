@@ -38,6 +38,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
-          git add index.html score_history.csv uploads/ output/
+          git add .
           git commit -m "📊 Automatische Clan-Auswertung aktualisiert" || echo "Keine Änderungen zum Speichern"
           git push
