@@ -216,7 +216,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         aktueller_decks = int(row.get(aktueller_decks_spalte, 0) or 0)
         
         fame_per_deck = round(aktueller_fame / aktueller_decks) if aktueller_decks > 0 else 0
-        leecher_warnung = " <span title='Verdacht: Zieht nur Punkte ab (verliert absichtlich/greift Boote an)'>⚠️</span>" if (0 < fame_per_deck < 115) else ""
+        leecher_warnung = " <span title='Verdacht: Zieht nur Punkte ab (verliert absichtlich/greift Boote an)' style='cursor:help;'>⚠️</span>" if (0 < fame_per_deck < 115) else ""
         
         vergangene_scores = df_history[df_history["player_name"] == name].sort_values("date").tail(3)["score"].tolist()
         trend_scores = vergangene_scores + [score]
@@ -263,7 +263,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     kritisch = sorted([p for p in aktive_spieler if p["score"] < 50 and p["teilnahme_int"] > 3], key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]))
     top_spender = sorted([p for p in aktive_spieler if p["donations"] > 0], key=lambda x: x["donations"], reverse=True)[:3]
     
-    # KORREKTUR: Filtert jetzt WIRKLICH nur echte Leecher, die 0 spenden ABER Karten fordern (>0)
+    # Nur echte Leecher (0 Spenden, aber Karten empfangen)
     top_leecher = sorted(
         [p for p in aktive_spieler if p["teilnahme_int"] > 3 and p["donations"] == 0 and p["donations_received"] > 0],
         key=lambda x: x["donations_received"], 
@@ -272,12 +272,10 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
     # --- IN-GAME CHAT TEXTE (3-TEILER) ---
     
-    # Teil 1: Ergebnis & Top Performer
     cr_top_names = ", ".join([p['name'] for p in top_performers])
     cr_motiv = "Starke Woche! 💪" if clan_avg >= 80 else "Da geht noch mehr! ⚔️"
     cr_text_1 = f"1/3 📊 Clan-Ø: {clan_avg}% - {cr_motiv} Top MVPs: {cr_top_names} 🏆"
     
-    # Teil 2: Spenden & Leecher
     cr_text_2 = "2/3 🃏 Ehren-Spender: "
     if top_spender:
         cr_text_2 += top_spender[0]['name']
@@ -288,7 +286,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         cr_leecher_names = ", ".join([p['name'] for p in top_leecher][:3])
         cr_text_2 += f" | 🧛 Spenden-Leecher: {cr_leecher_names}"
         
-    # Teil 3: Kritische Fälle
     if kritisch:
         krit_names_list = [p['name'] for p in kritisch]
         cr_krit_names = ", ".join(krit_names_list[:6])
@@ -408,7 +405,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 <p style="margin: 0 0 10px 0;"><b>🏆 Platzierung (Sortierung):</b> Bei Punktegleichstand (z.B. 100%) gewinnt immer die höhere Clan-Treue (Teilnahme). Danach entscheiden die aktuellen Kriegspunkte und zuletzt die Spendenanzahl.</p>
                 <p style="margin: 0 0 10px 0;"><b>📊 Faire Berechnung & Welpenschutz:</b> Die Prozentzahl bemisst sich nur an den aktiven Wochen im Clan. Spieler mit ≤ 3 Kriegen erhalten das 🌱-Symbol und sind vor Kick-Warnungen geschützt.</p>
                 <p style="margin: 0 0 10px 0;"><b>🔍 Trend & Qualität:</b> Die Spalte "Trend" zeigt die letzten 4 Wochen (🟢🟡🔴). "Ø Punkte" zeigt die Punkte pro Deck – Werte unter 115 (⚠️) deuten auf reine Niederlagen oder Bootsangriffe hin.</p>
-                <p style="margin: 0 0 10px 0;"><b>🃏 Spenden & Leecher:</b> Die "Top 3 Leecher" Kachel prangert nur echte Schmarotzer an (0 gespendet, aber Karten kassiert). Das 🧛-Symbol in der Tabelle markiert jedoch JEDEN Stammspieler mit exakt 0 Spenden (um Geiz und Inaktivität zu kennzeichnen).</p>
+                <p style="margin: 0 0 10px 0;"><b>🃏 Spenden & Leecher:</b> Die "Top 3 Leecher" Kachel prangert nur echte Schmarotzer an (0 gespendet, aber Karten kassiert). Das 🧛-Symbol markiert JEDEN Stammspieler mit exakt 0 Spenden. <i>Tipp: Fahre mit der Maus über die Spenden-Zahlen, um das genaue Gespendet/Empfangen-Verhältnis zu sehen!</i></p>
                 <p style="margin: 0 0 10px 0;"><b>🏖️ Urlaubs-Modus:</b> Spieler in der Datei 'urlaub.txt' werden im Dashboard automatisch pausiert und fließen nicht negativ in die Wertung ein.</p>
                 <p style="margin: 0;"><b>🖥️ Tipp für die beste Ansicht:</b> Lade die HTML-Datei im Anhang herunter und öffne sie im Browser.</p>
             </div>
@@ -467,17 +464,19 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 delta_s = f"+{p['delta']}" if p['delta']>0 else f"{p['delta']}"
                 color = "#10b981" if p['delta'] > 0 else "#ef4444" if p['delta'] < 0 else "#94a3b8"
                 
-                neu_badge = " <span title='Neu im Clan / Wenig Kriege' style='opacity:0.8;'>🌱</span>" if p['teilnahme_int'] <= 3 and not p['is_urlaub'] else ""
+                neu_badge = " <span title='Neu im Clan / Wenig Kriege' style='opacity:0.8; cursor:help;'>🌱</span>" if p['teilnahme_int'] <= 3 and not p['is_urlaub'] else ""
                 
-                # KORREKTUR: Alle etablierten Spieler mit 0 Spenden bekommen das Vampir-Symbol zurück
                 spenden_warnung = ""
                 if p['donations'] == 0 and p['teilnahme_int'] > 3 and not p['is_urlaub']:
                     if p['donations_received'] > 0:
-                        spenden_warnung = f" <span title='Spenden-Leecher (0 gespendet, aber {p['donations_received']} erhalten)' style='font-size: 1.1em;'>🧛</span>"
+                        spenden_warnung = f" <span title='Spenden-Leecher (0 gespendet, aber {p['donations_received']} erhalten)' style='font-size: 1.1em; cursor:help;'>🧛</span>"
                     else:
-                        spenden_warnung = " <span title='0 Spenden' style='font-size: 1.1em;'>🧛</span>"
+                        spenden_warnung = " <span title='0 Spenden' style='font-size: 1.1em; cursor:help;'>🧛</span>"
                 
-                html += f"<tr><td class='name-col'>{p['name']}{neu_badge}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{p['donations']}{spenden_warnung}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
+                # NEU: Das Tooltip (Flowover) für die Spenden-Zahl (Verhältnis von Gespendet / Empfangen)
+                spenden_zelle = f"<span title='Gespendet: {p['donations']} | Empfangen: {p['donations_received']}' style='cursor: help; border-bottom: 1px dotted rgba(56, 189, 248, 0.5);'>{p['donations']}</span>"
+                
+                html += f"<tr><td class='name-col'>{p['name']}{neu_badge}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
             html += "</table>"
             
     html += "</div></body></html>"
@@ -586,5 +585,4 @@ def main():
     print("\n=== ALLES ERFOLGREICH ABGESCHLOSSEN ===")
 
 if __name__ == "__main__":
-    main()
-
+    main() 
