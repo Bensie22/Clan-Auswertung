@@ -183,7 +183,7 @@ def berechne_score(participation: int, decks_total: int) -> float:
     if max_mögliche_decks <= 0: return 0.0
     return round((decks_total / max_mögliche_decks) * 100, 2)
 
-def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str) -> Tuple[str, pd.DataFrame, str]:
+def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str) -> Tuple[str, pd.DataFrame, str, str, str]:
     player_stats = []
     
     urlauber_liste = []
@@ -263,30 +263,38 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     kritisch = sorted([p for p in aktive_spieler if p["score"] < 50 and p["teilnahme_int"] > 3], key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]))
     top_spender = sorted([p for p in aktive_spieler if p["donations"] > 0], key=lambda x: x["donations"], reverse=True)[:3]
     
-    # NEU: Das echte Ranking für Top 3 Leecher (Wenigste Spenden, aber meiste empfangen)
-    # So wird die Liste garantiert immer mit den 3 "geizigsten" Spielern der Woche gefüllt!
     top_leecher = sorted([p for p in aktive_spieler if p["teilnahme_int"] > 3], key=lambda x: (x["donations"], -x["donations_received"]))[:3]
 
-    # --- IN-GAME CHAT TEXT ---
+    # --- IN-GAME CHAT TEXTE (3-TEILER) ---
+    
+    # Teil 1: Ergebnis & Top Performer
     cr_top_names = ", ".join([p['name'] for p in top_performers])
     cr_motiv = "Starke Woche! 💪" if clan_avg >= 80 else "Da geht noch mehr! ⚔️"
-        
-    cr_text = f"📊 Clan-Ø: {clan_avg}% - {cr_motiv} Top: {cr_top_names} 🏆"
+    cr_text_1 = f"1/3 📊 Clan-Ø: {clan_avg}% - {cr_motiv} Top MVPs: {cr_top_names} 🏆"
     
+    # Teil 2: Spenden & Leecher
+    cr_text_2 = "2/3 🃏 Ehren-Spender: "
     if top_spender:
-        cr_text += f" | 🃏 Spender: {top_spender[0]['name']}"
+        cr_text_2 += top_spender[0]['name']
+    else:
+        cr_text_2 += "Niemand"
         
-    if top_leecher:
-        # Hier zeigen wir die schlimmsten 2 im Chat an (um das 255 Zeichen-Limit zu schonen)
-        cr_leecher_names = ", ".join([p['name'] for p in top_leecher][:2])
-        cr_text += f" | 🧛 Leecher: {cr_leecher_names}"
+    # Zeige im Chat nur wirkliche Spenden-Leecher (0 Spenden, aber empfangen)
+    echte_leecher = [p for p in top_leecher if p["donations"] == 0 and p["donations_received"] > 0]
+    if echte_leecher:
+        cr_leecher_names = ", ".join([p['name'] for p in echte_leecher][:3])
+        cr_text_2 += f" | 🧛 Spenden-Leecher: {cr_leecher_names}"
         
+    # Teil 3: Kritische Fälle
     if kritisch:
-        krit_names_list = [p['name'] for p in kritisch][:3]
-        cr_krit_names = ", ".join(krit_names_list)
-        if len(kritisch) > 3:
-            cr_krit_names += f" (+{len(kritisch)-3})"
-        cr_text += f" | ⚠️ Kick: {cr_krit_names}"
+        krit_names_list = [p['name'] for p in kritisch]
+        cr_krit_names = ", ".join(krit_names_list[:6])
+        if len(kritisch) > 6:
+            cr_krit_names += f" (+{len(kritisch)-6})"
+        cr_text_3 = f"3/3 ⚠️ Kick-Liste / Warnung: {cr_krit_names}. Bitte ranhalten oder abmelden!"
+    else:
+        cr_text_3 = "3/3 ⚠️ Keine kritischen Fälle diese Woche. Weiter so, Team! 🛡️"
+        
     # ---------------------------------------------------------------
 
     tiers = ["🌟 Elite (95-100%)", "✅ Solides Mittelfeld (80-94%)", "⚠️ Unter Beobachtung (50-79%)", "🚫 Kritisch (< 50%)", "🏖️ Im Urlaub (Pausiert)"]
@@ -429,8 +437,17 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 </div>
                 
                 <div class="card messenger">
-                    <h3 style="color: #f1c40f; margin-bottom: 10px;">🎮 Clash Royale In-Game Chat (Klicken, Kopieren & Einfügen)</h3>
-                    <textarea readonly style="width: 100%; height: 60px; background: rgba(0,0,0,0.3); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 12px; font-family: inherit; font-size: 1em; resize: none;">{cr_text}</textarea>
+                    <h3 style="color: #f1c40f; margin-bottom: 10px;">🎮 Clash Royale In-Game Chat (3-Teiler)</h3>
+                    <p style="font-size: 0.9em; color: #cbd5e1; margin-top: 0; margin-bottom: 15px;">Kopiere diese 3 Texte nacheinander in den Clan-Chat (jeder Text ist garantiert unter 255 Zeichen).</p>
+                    
+                    <label style="color: #38bdf8; font-weight: bold; font-size: 0.9em;">💬 Teil 1/3 (Ergebnis & MVPs):</label>
+                    <textarea readonly style="width: 100%; height: 50px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 8px; font-family: inherit; font-size: 0.95em; resize: none; margin-bottom: 15px;">{cr_text_1}</textarea>
+
+                    <label style="color: #a855f7; font-weight: bold; font-size: 0.9em;">💬 Teil 2/3 (Spenden & Leecher):</label>
+                    <textarea readonly style="width: 100%; height: 50px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 8px; font-family: inherit; font-size: 0.95em; resize: none; margin-bottom: 15px;">{cr_text_2}</textarea>
+
+                    <label style="color: #ef4444; font-weight: bold; font-size: 0.9em;">💬 Teil 3/3 (Warnungen):</label>
+                    <textarea readonly style="width: 100%; height: 50px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 8px; font-family: inherit; font-size: 0.95em; resize: none;">{cr_text_3}</textarea>
                 </div>
             </div>
 
@@ -456,7 +473,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             
     html += "</div></body></html>"
 
-    return html, df_history, cr_text
+    return html, df_history, cr_text_1, cr_text_2, cr_text_3
 
 def speichere_html_bericht(html_content: str, df_history: pd.DataFrame, file_suffix: str) -> Path:
     html_path = output_folder / f"auswertung_{file_suffix}.html"
@@ -474,7 +491,7 @@ def archiviere_alte_auswertungen(output_dir: Path, anzahl: int = 2):
     for file in alte_htmls[:-anzahl]:
         shutil.move(str(file), archiv_output / file.name)
 
-def sende_bericht_per_mail(absender: str, empfänger: str, smtp_server: str, port: int, passwort: str, html_path: Path, cr_text: str):
+def sende_bericht_per_mail(absender: str, empfänger: str, smtp_server: str, port: int, passwort: str, html_path: Path, cr_text_1: str, cr_text_2: str, cr_text_3: str):
     if not passwort: return
 
     msg = EmailMessage()
@@ -485,7 +502,7 @@ def sende_bericht_per_mail(absender: str, empfänger: str, smtp_server: str, por
     with html_path.open("r", encoding="utf-8") as f:
         html_content = f.read()
 
-    text_fallback = f"Hallo Clan-Führung,\ndie Berechnungen für '{CLAN_NAME}' sind abgeschlossen.\n\nHIER IST DEIN IN-GAME CHAT TEXT:\n{cr_text}\n\nBitte aktiviere HTML in deinem E-Mail-Programm, um das volle grafische Dashboard zu sehen. Du findest es zusätzlich als Datei im Anhang."
+    text_fallback = f"Hallo Clan-Führung,\ndie Berechnungen für '{CLAN_NAME}' sind abgeschlossen.\n\nHIER SIND DEINE IN-GAME CHAT TEXTE ZUM KOPIEREN:\n\n{cr_text_1}\n\n{cr_text_2}\n\n{cr_text_3}\n\nBitte aktiviere HTML in deinem E-Mail-Programm, um das volle grafische Dashboard zu sehen. Du findest es zusätzlich als Datei im Anhang."
     
     msg.set_content(text_fallback)
     msg.add_alternative(html_content, subtype='html')
@@ -538,7 +555,7 @@ def main():
     
     encoded_header_img = get_encoded_header_image(HEADER_IMAGE_PATH)
     
-    html_bericht, df_history, cr_text = generate_html_report(df_active, df_history, fame_spalte, heute_datum, encoded_header_img)
+    html_bericht, df_history, cr_text_1, cr_text_2, cr_text_3 = generate_html_report(df_active, df_history, fame_spalte, heute_datum, encoded_header_img)
 
     html_path = speichere_html_bericht(html_bericht, df_history, jetzt_datei)
 
@@ -547,16 +564,17 @@ def main():
     print("Sende E-Mail...")
     sende_bericht_per_mail(
         absender="bassabello@bossmail.de",
-        empfänger="paul.skoda@hempage.de", 
+        empfänger="hemlock22@posteo.de", 
         smtp_server="mx.freenet.de",
         port=587,
         passwort=os.environ.get("EMAIL_PASS"),
         html_path=html_path,
-        cr_text=cr_text 
+        cr_text_1=cr_text_1,
+        cr_text_2=cr_text_2,
+        cr_text_3=cr_text_3
     )
     
     print("\n=== ALLES ERFOLGREICH ABGESCHLOSSEN ===")
 
 if __name__ == "__main__":
-    main()
-
+    main() 
