@@ -33,3 +33,11 @@ jobs:
 
       - name: Auswertung starten
         run: python Master_Auswertung_GitHub.py 
+
+      - name: Commit und Push der neuen Dateien
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Bot"
+          git add index.html score_history.csv uploads/ output/
+          git commit -m "📊 Automatische Clan-Auswertung aktualisiert" || echo "Keine Änderungen zum Speichern"
+          git push
