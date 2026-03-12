@@ -538,8 +538,14 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     return html, df_history, cr_text_1, cr_text_2, cr_text_3
 
 def speichere_html_bericht(html_content: str, df_history: pd.DataFrame, file_suffix: str) -> Path:
+    # 1. Altes System (mit Datum für E-Mails & Archiv)
     html_path = output_folder / f"auswertung_{file_suffix}.html"
     with html_path.open("w", encoding="utf-8") as f:
+        f.write(html_content)
+        
+    # 2. NEU: Statische index.html für die GitHub Pages Webseite!
+    index_path = BASE_DIR / "index.html"
+    with index_path.open("w", encoding="utf-8") as f:
         f.write(html_content)
         
     df_history.to_csv(score_history_path, index=False)
@@ -646,4 +652,4 @@ def main():
     print("\n=== ALLES ERFOLGREICH ABGESCHLOSSEN ===")
 
 if __name__ == "__main__":
-    main() 
+    main()
