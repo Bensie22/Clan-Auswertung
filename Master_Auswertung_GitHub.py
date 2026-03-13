@@ -7,6 +7,8 @@ import requests
 import csv
 import base64
 import json
+import sys
+import traceback
 from datetime import datetime
 from typing import List, Tuple
 from pathlib import Path
@@ -32,10 +34,9 @@ upload_folder = BASE_DIR / "uploads"
 archiv_folder = upload_folder / "archiv"
 output_folder = BASE_DIR / "output"
 score_history_path = BASE_DIR / "score_history.csv"
-records_path = BASE_DIR / "records.json"  # Für die Hall of Fame
+records_path = BASE_DIR / "records.json"  
 urlaub_path = BASE_DIR / "urlaub.txt" 
 
-# Pfad zum Hintergrundbild für den Header-Bereich
 HEADER_IMAGE_PATH = BASE_DIR / "clash_pix.jpg"
 
 # === 2. API Datenabruf ===
@@ -64,7 +65,7 @@ def fetch_and_build_player_csv() -> bool:
             "role": m.get("role", "member"),
             "donations": m.get("donations", 0),
             "donations_received": m.get("donationsReceived", 0),
-            "trophies": m.get("trophies", 0)  # Trophäen für den Pusher
+            "trophies": m.get("trophies", 0)  
         } 
         for m in members_resp.json().get("items", [])
     }
@@ -160,14 +161,12 @@ def fetch_and_build_player_csv() -> bool:
 # === 3. Auswertung & HTML-Design ===
 
 def get_encoded_header_image(path: Path) -> str:
-    if not path.exists():
-        return ""
+    if not path.exists(): return ""
     try:
         with open(path, "rb") as image_file:
             encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
             return f"data:image/jpeg;base64,{encoded_string}"
-    except:
-        return ""
+    except: return ""
 
 def archiviere_alte_dateien(ordner: Path, archiv_ordner: Path, anzahl: int = 2) -> None:
     archiv_ordner.mkdir(exist_ok=True, parents=True)
@@ -177,8 +176,7 @@ def archiviere_alte_dateien(ordner: Path, archiv_ordner: Path, anzahl: int = 2) 
 
 def finde_neueste_csv(ordner: Path) -> Path:
     csvs = list(ordner.glob("*.csv"))
-    if not csvs:
-        raise FileNotFoundError("Keine CSV-Datei im Upload-Ordner gefunden.")
+    if not csvs: raise FileNotFoundError("Keine CSV-Datei im Upload-Ordner gefunden.")
     return max(csvs, key=os.path.getctime)
 
 def berechne_score(participation: int, decks_total: int) -> float:
@@ -188,15 +186,13 @@ def berechne_score(participation: int, decks_total: int) -> float:
 
 def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str, radar_clans: list, records: dict, race_state_de: str) -> Tuple[str, pd.DataFrame, str, str, str, dict]:
     player_stats = []
-    
     urlauber_liste = []
+    
     if urlaub_path.exists():
         with urlaub_path.open("r", encoding="utf-8") as f:
             urlauber_liste = [line.strip() for line in f if line.strip()]
 
-    role_map = {
-        "member": "Mitglied", "elder": "Ältester", "coLeader": "Vize", "leader": "Anführer", "unknown": "Ehemalig"
-    }
+    role_map = {"member": "Mitglied", "elder": "Ältester", "coLeader": "Vize", "leader": "Anführer", "unknown": "Ehemalig"}
 
     for _, row in df_active.iterrows():
         raw_role = row.get("player_role", "unknown")
@@ -219,7 +215,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         fame_per_deck = round(aktueller_fame / aktueller_decks) if aktueller_decks > 0 else 0
         leecher_warnung = " <span class='custom-tooltip'>⚠️<span class='tooltip-text'>Verdacht: Zieht nur Punkte ab (verliert absichtlich/greift Boote an)</span></span>" if (0 < fame_per_deck < 115) else ""
         
-        # Historie für Delta & Trophäen
         historie_spieler = df_history[df_history["player_name"] == name].sort_values("date")
         vergangene_scores = historie_spieler.tail(3)["score"].tolist()
         
@@ -230,7 +225,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         trophy_push = aktueller_trophy - past_trophy
         delta = round(score - vergangene_scores[-1], 2) if vergangene_scores else 0.0
 
-        # Rekorde überschreiben (Hall of Fame)
         if donations > records.setdefault("donations", {"name": "-", "val": 0})["val"]:
             records["donations"] = {"name": name, "val": donations}
         if delta > records.setdefault("delta", {"name": "-", "val": 0})["val"]:
@@ -272,7 +266,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     top_spender = sorted([p for p in aktive_spieler if p["donations"] > 0], key=lambda x: x["donations"], reverse=True)[:3]
     top_leecher = sorted([p for p in aktive_spieler if p["teilnahme_int"] > 3 and p["donations"] == 0 and p["donations_received"] > 0], key=lambda x: x["donations_received"], reverse=True)[:3]
     
-    # Trophäen Pusher ermitteln
     top_pusher = sorted(aktive_spieler, key=lambda x: x["trophy_push"], reverse=True)
     if top_pusher and top_pusher[0]["trophy_push"] > 0:
         pusher_name, pusher_val = top_pusher[0]["name"], top_pusher[0]["trophy_push"]
@@ -282,7 +275,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         pusher_html = "<li>Niemand</li>"
         pusher_chat = ""
 
-    # Kriegs-Radar HTML generieren
     radar_html = ""
     if radar_clans:
         radar_hint = f" <span style='font-size:0.8em; opacity:0.8; font-weight:normal;'>(Status: {race_state_de})</span>"
@@ -293,7 +285,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             radar_html += f"<p style='margin: 0 0 5px 0;'>{idx+1}. {bold_start}{c['name']}{bold_end} - {c['fame']} Punkte</p>"
         radar_html += "</div>"
 
-    # --- IN-GAME CHAT TEXTE (3-TEILER) ---
     cr_top_names = ", ".join([p['name'] for p in top_performers])
     cr_motiv = "Starke Woche! 💪" if clan_avg >= 80 else "Da geht noch mehr! ⚔️"
     cr_text_1 = f"1/3 📊 Clan-Ø: {clan_avg}%. MVPs: {cr_top_names} 🏆 {pusher_chat}"
@@ -551,11 +542,15 @@ def main():
     except Exception as e:
         print(f"Warnung: Radar konnte nicht geladen werden ({e})")
 
+    # JSON SICHER LADEN
+    records = {"donations": {"name": "-", "val": 0}, "delta": {"name": "-", "val": 0}, "trophies": {"name": "-", "val": 0}}
     if records_path.exists():
-        with open(records_path, "r", encoding="utf-8") as f:
-            records = json.load(f)
-    else:
-        records = {"donations": {"name": "-", "val": 0}, "delta": {"name": "-", "val": 0}, "trophies": {"name": "-", "val": 0}}
+        try:
+            with open(records_path, "r", encoding="utf-8") as f:
+                loaded = json.load(f)
+                records.update(loaded)
+        except Exception as e:
+            print(f"⚠️ Warnung: records.json fehlerhaft, fange bei 0 an. ({e})")
 
     print("=== STARTE AUSWERTUNG ===")
     archiviere_alte_dateien(upload_folder, archiv_folder)
@@ -564,6 +559,7 @@ def main():
         csv_path = finde_neueste_csv(upload_folder)
         df = pd.read_csv(csv_path)
     except Exception as e:
+        print(f"❌ Fehler beim CSV lesen: {e}")
         return
 
     is_current_mask = df["player_is_current_member"].astype(str).str.strip().str.lower().isin(["true", "1", "yes"])
@@ -611,5 +607,11 @@ def main():
         
     print("\n=== ALLES ERFOLGREICH ABGESCHLOSSEN ===")
 
+
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as err:
+        print("\n❌ EIN KRITISCHER FEHLER IST AUFGETRETEN:")
+        traceback.print_exc()
+        sys.exit(1) 
