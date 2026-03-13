@@ -583,27 +583,37 @@ def main():
     html_path = speichere_html_bericht(html_bericht, df_history, updated_records, jetzt_datei)
     archiviere_alte_auswertungen(output_folder)
     
-    # NEU: E-Mail Versand mit Secret-Abfrage
+    # === E-MAIL ZEITSTEUERUNG ===
     sender_mail = os.environ.get("EMAIL_SENDER")
     receiver_mail = os.environ.get("EMAIL_RECEIVER")
     email_pass = os.environ.get("EMAIL_PASS")
     
+    # 1. Prüfen, ob manuell gestartet wurde (Der Joker)
+    ist_manueller_start = os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch"
+    
+    # 2. Prüfen, ob es Montag um ca. 11:30 Uhr (MEZ) ist (10:30 UTC)
+    jetzt_utc = datetime.utcnow()
+    ist_montag = jetzt_utc.weekday() == 0
+    ist_mail_zeit = jetzt_utc.hour in [9, 10, 11] # Puffer für Sommer-/Winterzeit und Warteschlangen
+    
     if sender_mail and receiver_mail and email_pass:
-        print("=== SENDE BERICHT ===")
-        sende_bericht_per_mail(
-            absender=sender_mail, 
-            empfänger=receiver_mail, 
-            smtp_server="mx.freenet.de",
-            port=587, 
-            passwort=email_pass, 
-            html_path=html_path,
-            cr_text_1=cr_text_1, 
-            cr_text_2=cr_text_2, 
-            cr_text_3=cr_text_3
-        )
+        if (ist_montag and ist_mail_zeit) or ist_manueller_start:
+            print("=== SENDE BERICHT ===")
+            sende_bericht_per_mail(
+                absender=sender_mail, 
+                empfänger=receiver_mail, 
+                smtp_server="mx.freenet.de",
+                port=587, 
+                passwort=email_pass, 
+                html_path=html_path,
+                cr_text_1=cr_text_1, 
+                cr_text_2=cr_text_2, 
+                cr_text_3=cr_text_3
+            )
+        else:
+            print(f"\n💡 Info: Radar aktualisiert. E-Mail-Versand übersprungen (Passiert nur montags oder bei manuellem Start).")
     else:
-        print("\n⚠️ HINWEIS: E-Mail-Versand übersprungen.")
-        print("💡 Einer oder mehrere dieser GitHub Secrets fehlen: EMAIL_SENDER, EMAIL_RECEIVER, EMAIL_PASS.")
+        print("\n⚠️ HINWEIS: E-Mail-Secrets fehlen, Versand nicht möglich.")
         
     print("\n=== ALLES ERFOLGREICH ABGESCHLOSSEN ===")
 
@@ -614,4 +624,4 @@ if __name__ == "__main__":
     except Exception as err:
         print("\n❌ EIN KRITISCHER FEHLER IST AUFGETRETEN:")
         traceback.print_exc()
-        sys.exit(1) 
+        sys.exit(1)
