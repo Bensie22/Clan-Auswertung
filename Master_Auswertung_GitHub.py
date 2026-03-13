@@ -32,7 +32,7 @@ upload_folder = BASE_DIR / "uploads"
 archiv_folder = upload_folder / "archiv"
 output_folder = BASE_DIR / "output"
 score_history_path = BASE_DIR / "score_history.csv"
-records_path = BASE_DIR / "records.json"  # NEU: Für die Hall of Fame
+records_path = BASE_DIR / "records.json"  # Für die Hall of Fame
 urlaub_path = BASE_DIR / "urlaub.txt" 
 
 # Pfad zum Hintergrundbild für den Header-Bereich
@@ -64,7 +64,7 @@ def fetch_and_build_player_csv() -> bool:
             "role": m.get("role", "member"),
             "donations": m.get("donations", 0),
             "donations_received": m.get("donationsReceived", 0),
-            "trophies": m.get("trophies", 0)  # NEU: Trophäen für den Pusher
+            "trophies": m.get("trophies", 0)  # Trophäen für den Pusher
         } 
         for m in members_resp.json().get("items", [])
     }
@@ -186,7 +186,7 @@ def berechne_score(participation: int, decks_total: int) -> float:
     if max_mögliche_decks <= 0: return 0.0
     return round((decks_total / max_mögliche_decks) * 100, 2)
 
-def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str, radar_clans: list, records: dict) -> Tuple[str, pd.DataFrame, str, str, str, dict]:
+def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str, radar_clans: list, records: dict, race_state_de: str) -> Tuple[str, pd.DataFrame, str, str, str, dict]:
     player_stats = []
     
     urlauber_liste = []
@@ -272,7 +272,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     top_spender = sorted([p for p in aktive_spieler if p["donations"] > 0], key=lambda x: x["donations"], reverse=True)[:3]
     top_leecher = sorted([p for p in aktive_spieler if p["teilnahme_int"] > 3 and p["donations"] == 0 and p["donations_received"] > 0], key=lambda x: x["donations_received"], reverse=True)[:3]
     
-    # NEU: Trophäen Pusher ermitteln
+    # Trophäen Pusher ermitteln
     top_pusher = sorted(aktive_spieler, key=lambda x: x["trophy_push"], reverse=True)
     if top_pusher and top_pusher[0]["trophy_push"] > 0:
         pusher_name, pusher_val = top_pusher[0]["name"], top_pusher[0]["trophy_push"]
@@ -282,10 +282,11 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         pusher_html = "<li>Niemand</li>"
         pusher_chat = ""
 
-    # NEU: Kriegs-Radar HTML generieren
+    # Kriegs-Radar HTML generieren
     radar_html = ""
     if radar_clans:
-        radar_html = "<div class='info-box' style='border-left-color: #f43f5e; background: rgba(159, 18, 57, 0.15);'><h3 style='margin-top: 0; color: #f43f5e; margin-bottom: 12px; font-size: 1.2em;'>📡 Live Kriegs-Radar</h3>"
+        radar_hint = f" <span style='font-size:0.8em; opacity:0.8; font-weight:normal;'>(Status: {race_state_de})</span>"
+        radar_html = f"<div class='info-box' style='border-left-color: #f43f5e; background: rgba(159, 18, 57, 0.15);'><h3 style='margin-top: 0; color: #f43f5e; margin-bottom: 12px; font-size: 1.2em;'>📡 Live Kriegs-Radar{radar_hint}</h3>"
         for idx, c in enumerate(radar_clans):
             bold_start = "<b style='color:#fff;'>" if c["is_us"] else ""
             bold_end = " (WIR)</b>" if c["is_us"] else ""
@@ -357,8 +358,11 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .custom-tooltip.dotted {{ border-bottom: 1px dotted rgba(56, 189, 248, 0.5); }}
             .custom-tooltip .tooltip-text {{ visibility: hidden; width: max-content; background-color: rgba(15, 23, 42, 0.98); color: #fff; text-align: center; border-radius: 6px; padding: 6px 12px; position: absolute; z-index: 100; bottom: 140%; left: 50%; transform: translateX(-50%); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 4px 10px rgba(0,0,0,0.4); opacity: 0; transition: opacity 0.2s ease-in-out; font-size: 0.9em; font-weight: normal; font-family: 'Nunito', sans-serif; }}
             .custom-tooltip .tooltip-text::after {{ content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: rgba(255, 255, 255, 0.2) transparent transparent transparent; }}
-            .custom-tooltip.align-left .tooltip-text {{ left: 0; transform: translateX(-10px); }}
-            .custom-tooltip.align-left .tooltip-text::after {{ left: 15px; margin-left: 0; }}
+            
+            /* KORREKTUR FÜR KURZE NAMEN WIE BOI */
+            .custom-tooltip.align-left .tooltip-text {{ left: 0; transform: none; }}
+            .custom-tooltip.align-left .tooltip-text::after {{ left: 10px; margin-left: 0; }}
+            
             .custom-tooltip:hover .tooltip-text {{ visibility: visible; opacity: 1; }}
         </style>
     </head>
@@ -516,23 +520,46 @@ def main():
     print("=== STARTE CLAN-DATEN ABRUF ===")
     if not fetch_and_build_player_csv(): return
     
-    # NEU: Radar-Daten abrufen
     print("Schritt 3: Rufe Live-Radar (Current River Race) ab...")
     radar_clans = []
+    race_state_de = "Live"
     try:
         headers = {"Authorization": f"Bearer {API_TOKEN}", "Accept": "application/json"}
         race_resp = requests.get(f"{BASE_URL}/clans/{CLAN_TAG}/currentriverrace", headers=headers)
         if race_resp.status_code == 200:
-            clans_in_race = race_resp.json().get("clans", [])
-            clans_in_race.sort(key=lambda x: x.get("fame", 0), reverse=True)
+            data = race_resp.json()
+            
+            # Status übersetzen
+            raw_state = data.get("state", "")
+            if raw_state == "training": race_state_de = "Trainingstage"
+            elif raw_state == "warDay": race_state_de = "Kampftag"
+            
+            clans_in_race = data.get("clans", [])
             for c in clans_in_race:
+                # 1. API Standard-Felder
+                pts = c.get("periodPoints", 0)
+                if pts == 0: pts = c.get("fame", 0)
+                
+                # 2. Deep-Scan: Live-Punkte der Spieler zusammenrechnen (Das ist der Trick für CW2!)
+                if pts == 0 and "participants" in c:
+                    pts = sum(p.get("fame", 0) for p in c.get("participants", []))
+                    
+                # 3. Fallback PeriodLogs
+                if pts == 0 and "periodLogs" in data:
+                    for log in data.get("periodLogs", []):
+                        for item in log.get("items", []):
+                            if item.get("clan", {}).get("tag") == c.get("tag"):
+                                pts += item.get("points", 0)
+                                pts += item.get("fame", 0)
+                
                 radar_clans.append({
-                    "name": c.get("name", ""), "fame": c.get("fame", 0), "is_us": c.get("tag") == CLAN_TAG.replace("%23", "#")
+                    "name": c.get("name", ""), "fame": pts, "is_us": c.get("tag") == CLAN_TAG.replace("%23", "#")
                 })
+            # Nach Punkten absteigend sortieren
+            radar_clans.sort(key=lambda x: x["fame"], reverse=True)
     except Exception as e:
         print(f"Warnung: Radar konnte nicht geladen werden ({e})")
 
-    # NEU: Records / Hall of Fame laden
     if records_path.exists():
         with open(records_path, "r", encoding="utf-8") as f:
             records = json.load(f)
@@ -554,7 +581,6 @@ def main():
     if not fame_columns: return
     fame_spalte = fame_columns[0]
 
-    # NEU: Spalte für Trophäen ergänzen, falls alte Historie
     if score_history_path.exists(): 
         df_history = pd.read_csv(score_history_path)
         if "trophies" not in df_history.columns: df_history["trophies"] = 0
@@ -565,7 +591,7 @@ def main():
     jetzt_datei = datetime.today().strftime("%Y-%m-%d_%H-%M-%S")
     encoded_header_img = get_encoded_header_image(HEADER_IMAGE_PATH)
     
-    html_bericht, df_history, cr_text_1, cr_text_2, cr_text_3, updated_records = generate_html_report(df_active, df_history, fame_spalte, heute_datum, encoded_header_img, radar_clans, records)
+    html_bericht, df_history, cr_text_1, cr_text_2, cr_text_3, updated_records = generate_html_report(df_active, df_history, fame_spalte, heute_datum, encoded_header_img, radar_clans, records, race_state_de)
 
     html_path = speichere_html_bericht(html_bericht, df_history, updated_records, jetzt_datei)
     archiviere_alte_auswertungen(output_folder)
