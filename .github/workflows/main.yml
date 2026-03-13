@@ -2,7 +2,8 @@ name: Clan Auswertung Automatisierung
 
 on:
   schedule:
-    - cron: '30 10 * * 1' 
+    - cron: '0 */4 * * *'    # Radar-Update: Alle 4 Stunden (0, 4, 8, 12, 16, 20 UTC)
+    - cron: '30 10 * * 1'    # E-Mail-Update: Jeden Montag um 10:30 UTC (11:30 Uhr MEZ)
   workflow_dispatch:
 
 # HIER IST DIE KORREKTUR: Global und mit Anführungszeichen
@@ -18,6 +19,7 @@ jobs:
       EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
       EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
       EMAIL_RECEIVER: ${{ secrets.EMAIL_RECEIVER }}
+      GITHUB_EVENT_NAME: ${{ github.event_name }}
 
     steps:
       - name: Repository klonen
