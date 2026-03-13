@@ -20,11 +20,11 @@ from dotenv import load_dotenv
 # === 1. Konfiguration & Pfade ===
 load_dotenv()
 
-# API Settings (Token unbedingt eintragen!)
-API_TOKEN = os.environ.get("SUPERCELL_API_TOKEN", "DEIN_TOKEN_HIER")
-BASE_URL = "https://proxy.royaleapi.dev/v1"
+# API Settings (Token & E-Mails kommen sicher aus den Secrets!)
+API_TOKEN = os.environ.get("SUPERCELL_API_TOKEN")
 CLAN_TAG = "%23Y9YQC8UG"
 CLAN_NAME = "HAMBURG"
+BASE_URL = "https://proxy.royaleapi.dev/v1"
 
 # Cloud-taugliche Pfade (relativ zur Skript-Datei)
 BASE_DIR = Path(__file__).parent.resolve()
@@ -41,8 +41,8 @@ HEADER_IMAGE_PATH = BASE_DIR / "clash_pix.jpg"
 # === 2. API Datenabruf ===
 
 def fetch_and_build_player_csv() -> bool:
-    if not API_TOKEN or API_TOKEN == "DEIN_TOKEN_HIER":
-        print("❌ Fehler: Bitte trage deinen API_TOKEN im Code oder in der .env Datei ein.")
+    if not API_TOKEN:
+        print("❌ Fehler: Bitte trage deinen SUPERCELL_API_TOKEN in die GitHub Secrets ein.")
         return False
 
     headers = {
@@ -358,11 +358,8 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .custom-tooltip.dotted {{ border-bottom: 1px dotted rgba(56, 189, 248, 0.5); }}
             .custom-tooltip .tooltip-text {{ visibility: hidden; width: max-content; background-color: rgba(15, 23, 42, 0.98); color: #fff; text-align: center; border-radius: 6px; padding: 6px 12px; position: absolute; z-index: 100; bottom: 140%; left: 50%; transform: translateX(-50%); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 4px 10px rgba(0,0,0,0.4); opacity: 0; transition: opacity 0.2s ease-in-out; font-size: 0.9em; font-weight: normal; font-family: 'Nunito', sans-serif; }}
             .custom-tooltip .tooltip-text::after {{ content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: rgba(255, 255, 255, 0.2) transparent transparent transparent; }}
-            
-            /* KORREKTUR FÜR KURZE NAMEN WIE BOI */
             .custom-tooltip.align-left .tooltip-text {{ left: 0; transform: none; }}
             .custom-tooltip.align-left .tooltip-text::after {{ left: 10px; margin-left: 0; }}
-            
             .custom-tooltip:hover .tooltip-text {{ visibility: visible; opacity: 1; }}
         </style>
     </head>
@@ -486,8 +483,6 @@ def archiviere_alte_auswertungen(output_dir: Path, anzahl: int = 2):
         shutil.move(str(file), archiv_output / file.name)
 
 def sende_bericht_per_mail(absender: str, empfänger: str, smtp_server: str, port: int, passwort: str, html_path: Path, cr_text_1: str, cr_text_2: str, cr_text_3: str):
-    if not passwort: return
-
     msg = EmailMessage()
     msg["Subject"] = f"📊 Clan-Auswertung: {CLAN_NAME}"
     msg["From"] = absender
@@ -507,6 +502,7 @@ def sende_bericht_per_mail(absender: str, empfänger: str, smtp_server: str, por
             server.starttls()
             server.login(absender, passwort)
             server.send_message(msg)
+            print("✅ E-Mail erfolgreich gesendet.")
     except Exception as e:
         print(f"❌ FEHLER beim Senden der E-Mail: {e}")
 
@@ -529,22 +525,18 @@ def main():
         if race_resp.status_code == 200:
             data = race_resp.json()
             
-            # Status übersetzen
             raw_state = data.get("state", "")
             if raw_state == "training": race_state_de = "Trainingstage"
             elif raw_state == "warDay": race_state_de = "Kampftag"
             
             clans_in_race = data.get("clans", [])
             for c in clans_in_race:
-                # 1. API Standard-Felder
                 pts = c.get("periodPoints", 0)
                 if pts == 0: pts = c.get("fame", 0)
                 
-                # 2. Deep-Scan: Live-Punkte der Spieler zusammenrechnen (Das ist der Trick für CW2!)
                 if pts == 0 and "participants" in c:
                     pts = sum(p.get("fame", 0) for p in c.get("participants", []))
                     
-                # 3. Fallback PeriodLogs
                 if pts == 0 and "periodLogs" in data:
                     for log in data.get("periodLogs", []):
                         for item in log.get("items", []):
@@ -555,7 +547,6 @@ def main():
                 radar_clans.append({
                     "name": c.get("name", ""), "fame": pts, "is_us": c.get("tag") == CLAN_TAG.replace("%23", "#")
                 })
-            # Nach Punkten absteigend sortieren
             radar_clans.sort(key=lambda x: x["fame"], reverse=True)
     except Exception as e:
         print(f"Warnung: Radar konnte nicht geladen werden ({e})")
@@ -596,12 +587,28 @@ def main():
     html_path = speichere_html_bericht(html_bericht, df_history, updated_records, jetzt_datei)
     archiviere_alte_auswertungen(output_folder)
     
-    print("=== SENDE BERICHT ===")
-    sende_bericht_per_mail(
-        absender="bassabello@bossmail.de", empfänger="hemlock22@posteo.de", smtp_server="mx.freenet.de",
-        port=587, passwort=os.environ.get("EMAIL_PASS"), html_path=html_path,
-        cr_text_1=cr_text_1, cr_text_2=cr_text_2, cr_text_3=cr_text_3
-    )
+    # NEU: E-Mail Versand mit Secret-Abfrage
+    sender_mail = os.environ.get("EMAIL_SENDER")
+    receiver_mail = os.environ.get("EMAIL_RECEIVER")
+    email_pass = os.environ.get("EMAIL_PASS")
+    
+    if sender_mail and receiver_mail and email_pass:
+        print("=== SENDE BERICHT ===")
+        sende_bericht_per_mail(
+            absender=sender_mail, 
+            empfänger=receiver_mail, 
+            smtp_server="mx.freenet.de",
+            port=587, 
+            passwort=email_pass, 
+            html_path=html_path,
+            cr_text_1=cr_text_1, 
+            cr_text_2=cr_text_2, 
+            cr_text_3=cr_text_3
+        )
+    else:
+        print("\n⚠️ HINWEIS: E-Mail-Versand übersprungen.")
+        print("💡 Einer oder mehrere dieser GitHub Secrets fehlen: EMAIL_SENDER, EMAIL_RECEIVER, EMAIL_PASS.")
+        
     print("\n=== ALLES ERFOLGREICH ABGESCHLOSSEN ===")
 
 if __name__ == "__main__":
