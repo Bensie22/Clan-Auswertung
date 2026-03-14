@@ -29,7 +29,7 @@ archiv_folder = upload_folder / "archiv"
 output_folder = BASE_DIR / "output"
 score_history_path = BASE_DIR / "score_history.csv"
 records_path = BASE_DIR / "records.json"  
-strikes_path = BASE_DIR / "strikes.json"  # NEU: Die Strike-Akte
+strikes_path = BASE_DIR / "strikes.json"  
 urlaub_path = BASE_DIR / "urlaub.txt" 
 HEADER_IMAGE_PATH = BASE_DIR / "clash_pix.jpg"
 
@@ -242,14 +242,12 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             
         streak_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥{streak_count}<span class='tooltip-text'>{streak_count} Auswertungen in Folge 100% Score!</span></span>" if streak_count >= 3 else ""
 
-        # NEU: Strike-System Logik (Wird montags beim Mail-Versand gespeichert)
         ist_montag = datetime.utcnow().weekday() == 0
         ist_mail_zeit = datetime.utcnow().hour in [9, 10, 11]
         ist_manueller_start = os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch"
         
-        # Wir berechnen Strikes nur, wenn es eine offizielle Endauswertung ist
         if (ist_montag and ist_mail_zeit) or ist_manueller_start:
-            if not is_urlaub and participation > 3: # Kein Urlaub, kein Welpenschutz
+            if not is_urlaub and participation > 3:
                 if score < 50:
                     strikes[name] = strikes.get(name, 0) + 1
                     if strikes[name] > 3: strikes[name] = 3
@@ -320,11 +318,14 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         radar_html += "</div>"
         
     mahnwache_html = ""
-    gefilterte_mahnwache = [f"<b>{m['name']}</b> ({m['offen']} offen)" for m in raw_mahnwache if m['name'] not in urlauber_liste]
-    if gefilterte_mahnwache:
-        mahnwache_html = f"<div class='info-box' style='border-left-color: #ef4444; background: rgba(239, 68, 68, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #ef4444; margin-bottom: 8px;'>⏰ Mahnwache (Noch offene Decks heute):</h4><p style='margin: 0; font-size: 0.95em;'>{', '.join(gefilterte_mahnwache)}</p></div>"
-    else:
-        mahnwache_html = f"<div class='info-box' style='border-left-color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #10b981; margin-bottom: 0;'>✅ Alle aktiven Spieler haben ihre Decks für heute gespielt!</h4></div>"
+    ist_montag = datetime.utcnow().weekday() == 0
+    if not ist_montag and race_state_de == "Kampftag":
+        aktive_namen = df_active["player_name"].tolist()
+        gefilterte_mahnwache = [f"<b>{m['name']}</b> ({m['offen']} offen)" for m in raw_mahnwache if m['name'] not in urlauber_liste and m['name'] in aktive_namen]
+        if gefilterte_mahnwache:
+            mahnwache_html = f"<div class='info-box' style='border-left-color: #ef4444; background: rgba(239, 68, 68, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #ef4444; margin-bottom: 8px;'>⏰ Mahnwache (Noch offene Decks heute):</h4><p style='margin: 0; font-size: 0.95em;'>{', '.join(gefilterte_mahnwache)}</p></div>"
+        else:
+            mahnwache_html = f"<div class='info-box' style='border-left-color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #10b981; margin-bottom: 0;'>✅ Alle aktiven Spieler haben ihre Decks für heute gespielt!</h4></div>"
 
     cr_top_names = ", ".join([p['name'] for p in top_performers])
     cr_motiv = "Starke Woche! 💪" if clan_avg >= 80 else "Da geht noch mehr! ⚔️"
@@ -379,20 +380,21 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .tier-title {{ font-weight: 800; font-size: 1.4em; color: #fbbf24; margin-top: 45px; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; }}
             
             table {{ width: 100%; table-layout: fixed; border-collapse: collapse; background: rgba(15, 23, 42, 0.9); border-radius: 8px; margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.1); }}
-            th:nth-child(1) {{ width: 22%; }}
-            th:nth-child(2) {{ width: 14%; }}
-            th:nth-child(3) {{ width: 8%; }}
-            th:nth-child(4) {{ width: 12%; }}
-            th:nth-child(5) {{ width: 9%; }}
-            th:nth-child(6) {{ width: 10%; }}
-            th:nth-child(7) {{ width: 10%; }}
-            th:nth-child(8) {{ width: 7%; }}
-            th:nth-child(9) {{ width: 8%; }}
+            th:nth-child(1) {{ width: 20%; }} 
+            th:nth-child(2) {{ width: 14%; }} 
+            th:nth-child(3) {{ width: 8%; text-align: center; }}  
+            th:nth-child(4) {{ width: 12%; }} 
+            th:nth-child(5) {{ width: 8%; text-align: center; }}  
+            th:nth-child(6) {{ width: 10%; text-align: center; }} 
+            th:nth-child(7) {{ width: 10%; text-align: center; }} 
+            th:nth-child(8) {{ width: 9%; text-align: center; }}  
+            th:nth-child(9) {{ width: 9%; text-align: center; }}  
             th:first-child {{ border-top-left-radius: 8px; }} th:last-child {{ border-top-right-radius: 8px; }}
             tr:last-child td:first-child {{ border-bottom-left-radius: 8px; }} tr:last-child td:last-child {{ border-bottom-right-radius: 8px; }}
             tr:nth-child(odd) {{ background-color: rgba(0, 0, 0, 0.45); }} tr:nth-child(even) {{ background-color: rgba(255, 255, 255, 0.15); }} tr:hover {{ background-color: rgba(255, 255, 255, 0.3); }}
-            th, td {{ padding: 14px 10px; text-align: left; word-wrap: break-word; overflow-wrap: break-word; }}
-            th {{ background-color: rgba(0, 0, 0, 0.6); font-weight: 600; font-size: 0.9em; color: #94a3b8; border-bottom: 1px solid rgba(255,255,255,0.1); }}
+            th, td {{ padding: 14px 10px; text-align: left; word-wrap: break-word; overflow-wrap: break-word; vertical-align: middle; }}
+            td:nth-child(3), td:nth-child(5), td:nth-child(6), td:nth-child(7), td:nth-child(8), td:nth-child(9) {{ text-align: center; }}
+            th {{ background-color: rgba(0, 0, 0, 0.6); font-weight: 600; font-size: 0.9em; color: #94a3b8; border-bottom: 1px solid rgba(255,255,255,0.1); line-height: 1.4; }}
             td {{ border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-size: 1.05em; }}
             
             .badge-ja {{ background-color: #10b981; color: #ffffff; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 0.8em; margin-left: 8px; }}
@@ -420,7 +422,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             <div class="info-box">
                 <h3 style="margin-top: 0; color: #38bdf8; margin-bottom: 12px; font-size: 1.2em;">💡 So liest du diese Auswertung:</h3>
                 <p style="margin: 0 0 10px 0;"><b>📬 Neu: Auswertung per E-Mail!</b> Willst du diese Auswertung jeden Montag ins Postfach? <a href="#wiki-email" style="color: #38bdf8; text-decoration: underline;">Klicke hier für alle Infos</a>.</p>
-                <p style="margin: 0 0 10px 0;"><b>⏱️ Aktualisierung:</b> Das Live-Radar aktualisiert sich an den Kampftagen (Donnerstag bis Montag) alle 4 Stunden automatisch. Dienstag und Mittwoch ist Ruhetag. Die große Endauswertung findet jeden Montagvormittag statt.</p>
+                <p style="margin: 0 0 10px 0;"><b>⏱️ Aktualisierung:</b> Alle Daten (inkl. Live-Radar) aktualisieren sich an den Kampftagen (Donnerstag bis Montag) alle 4 Stunden automatisch. Dienstag und Mittwoch ist Ruhetag. Die große Endauswertung findet jeden Montagvormittag statt.</p>
                 <p style="margin: 0 0 10px 0;"><b>🏆 Wer steht oben? (Die Sortierung):</b> Die Liste ist streng nach Leistung sortiert. Wer 100% holt, steht oben. Bei Punktegleichstand gewinnt die Teilnahme-Treue, dann Kriegspunkte, zuletzt Spenden.</p>
                 <p style="margin: 0 0 10px 0;"><b>📈 Delta (Entwicklung):</b> Zeigt die prozentuale Veränderung des Scores zur letzten Auswertung an (Grün = Aufstieg, Rot = Abfall).</p>
                 <p style="margin: 0 0 10px 0;"><b>🌱 Welpenschutz (Neu im Clan?):</b> Spieler mit ≤ 3 Kriegen bekommen das 🌱-Symbol und sind vor Kick-Warnungen geschützt.</p>
@@ -493,13 +495,13 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 <tr>
                     <th>Spieler</th>
                     <th>Status</th>
-                    <th><a href='#wiki-score' style='color:#94a3b8; text-decoration:none;'>Score 📖</a></th>
+                    <th>Score<br><a href='#wiki-score' style='color:#94a3b8; text-decoration:none;'>📖</a></th>
                     <th>Trend</th>
-                    <th><a href='#wiki-delta' style='color:#94a3b8; text-decoration:none;'>Delta 📖</a></th>
-                    <th><a href='#wiki-punkte' style='color:#94a3b8; text-decoration:none;'>Ø Punkte 📖</a></th>
-                    <th><a href='#wiki-spenden' style='color:#94a3b8; text-decoration:none;'>🃏 Spenden 📖</a></th>
-                    <th>Teiln.</th>
-                    <th>Kriegspunkte</th>
+                    <th>Delta<br><a href='#wiki-delta' style='color:#94a3b8; text-decoration:none;'>📖</a></th>
+                    <th>Ø Punkte<br><a href='#wiki-punkte' style='color:#94a3b8; text-decoration:none;'>📖</a></th>
+                    <th>🃏 Spenden<br><a href='#wiki-spenden' style='color:#94a3b8; text-decoration:none;'>📖</a></th>
+                    <th>Teilnahmen<br><a href='#wiki-teilnahmen' style='color:#94a3b8; text-decoration:none;'>📖</a></th>
+                    <th>Kriegs-<br>punkte<br><a href='#wiki-kriegspunkte' style='color:#94a3b8; text-decoration:none;'>📖</a></th>
                 </tr>"""
             for p in players_in_tier:
                 delta_s = f"+{p['delta']}" if p['delta']>0 else f"{p['delta']}"
@@ -594,6 +596,20 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                     </ul>
                 </div>
                 
+                <div id="wiki-teilnahmen" style="margin-bottom: 25px; scroll-margin-top: 20px;">
+                    <h4 style="color: #cbd5e1; margin: 0 0 8px 0; font-size: 1.1em;">⚔️ Teilnahmen</h4>
+                    <p style="margin: 0; font-size: 0.95em; color: #94a3b8; line-height: 1.5;">
+                        Gibt an, in wie vielen der letzten Kriege du mindestens ein Deck gespielt hast. Wenn du neu im Clan bist, wächst diese Zahl erst langsam an (Welpenschutz!).
+                    </p>
+                </div>
+                
+                <div id="wiki-kriegspunkte" style="margin-bottom: 25px; scroll-margin-top: 20px;">
+                    <h4 style="color: #cbd5e1; margin: 0 0 8px 0; font-size: 1.1em;">🏅 Kriegspunkte</h4>
+                    <p style="margin: 0; font-size: 0.95em; color: #94a3b8; line-height: 1.5;">
+                        Das sind die harten, absoluten Medaillen, die du im aktuellen Kriegswochenende für unseren Clan ins Ziel gebracht hast. Jeder Sieg bringt hier mehr als eine Niederlage!
+                    </p>
+                </div>
+                
                 <div style="margin-bottom: 15px;">
                     <h4 style="color: #cbd5e1; margin: 0 0 8px 0; font-size: 1.1em;">📊 Der Clan-Durchschnitt (Ganz oben im Dashboard)</h4>
                     <p style="margin: 0; font-size: 0.95em; color: #94a3b8; line-height: 1.5;">
@@ -642,9 +658,14 @@ def sende_bericht_per_mail(absender: str, empfänger: str, smtp_server: str, por
     msg["Subject"] = f"📊 Clan-Auswertung: {CLAN_NAME}"
     msg["From"] = absender
     
-    # NEU: BCC-Datenschutz-Trick
-    msg["To"] = absender # Die sichtbare "An"-Adresse ist deine eigene (Sicherheit)
-    msg["Bcc"] = empfänger # Alle Mitglieder stehen blind in der Kopie (durch Komma getrennt)
+    # NEU: Spam-Filter Überlistung durch saubere "To" und "Bcc" Aufteilung
+    empfaenger_liste = [e.strip() for e in empfänger.split(",") if e.strip()]
+    if empfaenger_liste:
+        msg["To"] = empfaenger_liste[0] # Der erste im Secret steht sichtbar in "An"
+        if len(empfaenger_liste) > 1:
+            msg["Bcc"] = ", ".join(empfaenger_liste[1:]) # Alle weiteren unsichtbar als BCC
+    else:
+        msg["To"] = absender # Fallback, falls das Feld komplett leer ist
     
     with html_path.open("r", encoding="utf-8") as f:
         html_content = f.read()
@@ -660,7 +681,7 @@ def sende_bericht_per_mail(absender: str, empfänger: str, smtp_server: str, por
             server.starttls()
             server.login(absender, passwort)
             server.send_message(msg)
-            print("✅ E-Mail erfolgreich gesendet (an Verteiler per BCC).")
+            print("✅ E-Mail erfolgreich gesendet.")
     except Exception as e:
         print(f"❌ FEHLER beim Senden der E-Mail: {e}")
 
