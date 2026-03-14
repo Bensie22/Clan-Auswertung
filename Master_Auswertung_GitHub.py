@@ -312,7 +312,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .header-container {{ position: relative; background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('{header_img_src}') no-repeat center center; background-size: cover; border-radius: 12px; padding: 40px 20px; margin-top: 20px; margin-bottom: 30px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }}
             .header-title {{ font-weight: 800; color: #ffffff; font-size: 2.2em; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.5); letter-spacing: 1px; }}
             .header-date {{ font-weight: 400; font-size: 0.45em; color: #cbd5e1; display: block; margin-top: 10px; letter-spacing: 0px; }}
-            .info-box {{ background: rgba(30, 41, 59, 0.85); border-left: 5px solid #38bdf8; padding: 20px 25px; border-radius: 8px; margin-bottom: 40px; font-size: 1em; color: #e2e8f0; line-height: 1.6; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.05); }}
+            .info-box {{ background: rgba(30, 41, 59, 0.85); border-left: 5px solid #38bdf8; padding: 20px 25px; border-radius: 8px; margin-bottom: 40px; font-size: 1em; color: #e2e8f0; line-height: 1.6; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.05); scroll-margin-top: 20px; }}
             .dashboard {{ display: flex; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }}
             .card {{ flex: 1; min-width: 220px; background: rgba(30, 41, 59, 0.8); padding: 20px 25px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }}
             .card h3 {{ font-weight: 600; font-size: 1.1em; margin-top: 0; color: #cbd5e1; }}
@@ -345,6 +345,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .custom-tooltip.align-left .tooltip-text {{ left: 0; transform: none; }}
             .custom-tooltip.align-left .tooltip-text::after {{ left: 10px; margin-left: 0; }}
             .custom-tooltip:hover .tooltip-text {{ visibility: visible; opacity: 1; }}
+            a:hover {{ opacity: 0.8; }}
         </style>
     </head>
     <body>
@@ -421,7 +422,18 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         players_in_tier = sorted([p for p in player_stats if p["tier"] == t], key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]), reverse=True)
         if players_in_tier:
             html += f"<div class='tier-title'>{t}</div>"
-            html += "<table><tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teiln.</th><th>Kriegspunkte</th></tr>"
+            html += """<table>
+                <tr>
+                    <th>Spieler</th>
+                    <th>Status</th>
+                    <th><a href='#wiki-score' style='color:#94a3b8; text-decoration:none;'>Score 📖</a></th>
+                    <th>Trend</th>
+                    <th><a href='#wiki-delta' style='color:#94a3b8; text-decoration:none;'>Delta 📖</a></th>
+                    <th><a href='#wiki-punkte' style='color:#94a3b8; text-decoration:none;'>Ø Punkte 📖</a></th>
+                    <th><a href='#wiki-spenden' style='color:#94a3b8; text-decoration:none;'>🃏 Spenden 📖</a></th>
+                    <th>Teiln.</th>
+                    <th>Kriegspunkte</th>
+                </tr>"""
             for p in players_in_tier:
                 delta_s = f"+{p['delta']}" if p['delta']>0 else f"{p['delta']}"
                 color = "#10b981" if p['delta'] > 0 else "#ef4444" if p['delta'] < 0 else "#94a3b8"
@@ -439,7 +451,59 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 html += f"<tr><td class='name-col'>{p['name']}{neu_badge}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
             html += "</table>"
             
-    html += "</div></body></html>"
+    html += """
+            <hr style="border: 0; height: 1px; background: rgba(255,255,255,0.1); margin: 60px 0 40px 0;">
+            <div id="wiki" class="info-box" style="border-left-color: #8b5cf6; background: rgba(30, 41, 59, 0.95); scroll-margin-top: 20px;">
+                <h2 style="margin-top: 0; color: #8b5cf6; margin-bottom: 20px;">📖 Clan-Wiki: Wie wird berechnet?</h2>
+                
+                <div id="wiki-score" style="margin-bottom: 20px; scroll-margin-top: 20px;">
+                    <h4 style="color: #cbd5e1; margin: 0 0 5px 0;">🎯 Der Score (Aktivität)</h4>
+                    <p style="margin: 0; font-size: 0.95em; color: #94a3b8;">
+                        Der Score misst deine <b>Zuverlässigkeit</b>, nicht deine absoluten Punkte. Er berechnet sich aus deinen gespielten Decks im Verhältnis zu deinen Kriegsteilnahmen.<br>
+                        <i>Formel: (Gespielte Decks / (Anzahl Kriegsteilnahmen × 16)) × 100</i><br>
+                        <b>Beispiel:</b> Wenn du bei 2 Kriegen mitgemacht hast, hättest du maximal 32 Decks spielen können (2 Wochen × 4 Tage × 4 Decks). Hast du 24 gespielt, ist dein Score 75%. Wer 0 Kriege spielt, hat 0%.
+                    </p>
+                </div>
+
+                <div id="wiki-delta" style="margin-bottom: 20px; scroll-margin-top: 20px;">
+                    <h4 style="color: #cbd5e1; margin: 0 0 5px 0;">📈 Das Delta (Entwicklung)</h4>
+                    <p style="margin: 0; font-size: 0.95em; color: #94a3b8;">
+                        Zeigt an, ob du dich im Vergleich zur letzten Auswertung verbessert oder verschlechtert hast.<br>
+                        <i>Formel: Aktueller Score - Score der Vorwoche</i><br>
+                        Ein positives Delta (z.B. +12%) bedeutet, du hast diese Woche aktiver gespielt als letzte Woche.
+                    </p>
+                </div>
+
+                <div id="wiki-punkte" style="margin-bottom: 20px; scroll-margin-top: 20px;">
+                    <h4 style="color: #cbd5e1; margin: 0 0 5px 0;">⚔️ Ø Punkte (Punkte pro Deck)</h4>
+                    <p style="margin: 0; font-size: 0.95em; color: #94a3b8;">
+                        Zeigt deine Effektivität in den Kämpfen an.<br>
+                        <i>Formel: Aktuelle Kriegspunkte / Eingesetzte Decks im aktuellen Krieg</i><br>
+                        <b>⚠️ Warnung:</b> Ein regulärer Verlust bringt 115 Punkte. Ein Sieg bringt mehr. Fällt dein Durchschnitt unter 115 Punkte, greift unser System an, dass du Boote angreifst oder absichtlich sofort verlierst (Dropping/Leeching).
+                    </p>
+                </div>
+
+                <div id="wiki-spenden" style="margin-bottom: 20px; scroll-margin-top: 20px;">
+                    <h4 style="color: #cbd5e1; margin: 0 0 5px 0;">🃏 Spenden-Verhalten</h4>
+                    <p style="margin: 0; font-size: 0.95em; color: #94a3b8;">
+                        Unser Clan lebt von Geben und Nehmen. Wir tracken das Verhältnis:<br>
+                        <b>🧛 Vampir:</b> Du hast 0 Karten gespendet, aber fleißig bei anderen angefordert.<br>
+                        <b>💤 Schlafend:</b> Du hast 0 gespendet und 0 angefordert (Inaktivität im Spenden-Tab).
+                    </p>
+                </div>
+                
+                <div style="margin-bottom: 10px;">
+                    <h4 style="color: #cbd5e1; margin: 0 0 5px 0;">📊 Clan-Durchschnitt (Ganz oben)</h4>
+                    <p style="margin: 0; font-size: 0.95em; color: #94a3b8;">
+                        Das ist der Mittelwert aller Scores der <b>aktiven</b> Mitglieder. Wichtig: Spieler, die sich offiziell im Urlaub befinden (🏖️), werden aus dieser Berechnung herausgenommen, damit sie den Clan-Schnitt nicht künstlich nach unten ziehen.
+                    </p>
+                </div>
+
+                <a href="#" style="color: #38bdf8; text-decoration: none; font-weight: bold; font-size: 0.9em;">⬆️ Zurück nach oben</a>
+            </div>
+        </div>
+    </body>
+    </html>"""
 
     return html, df_history, cr_text_1, cr_text_2, cr_text_3, records
 
