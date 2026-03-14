@@ -2,11 +2,12 @@ name: Clan Auswertung Automatisierung
 
 on:
   schedule:
-    - cron: '0 */4 * * *'    # Radar-Update: Alle 4 Stunden (0, 4, 8, 12, 16, 20 UTC)
-    - cron: '30 10 * * 1'    # E-Mail-Update: Jeden Montag um 10:30 UTC (11:30 Uhr MEZ)
+    # Radar-Update: Alle 4 Stunden an Kampftagen (Donnerstag=4, Freitag=5, Samstag=6, Sonntag=0, Montag=1)
+    - cron: '0 */4 * * 0,1,4,5,6'
+    # E-Mail-Update: Jeden Montag um 10:30 UTC (11:30 Uhr MEZ)
+    - cron: '30 10 * * 1'
   workflow_dispatch:
 
-# HIER IST DIE KORREKTUR: Global und mit Anführungszeichen
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
