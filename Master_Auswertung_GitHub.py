@@ -177,7 +177,7 @@ def berechne_score(participation: int, decks_total: int) -> float:
     if max_mögliche_decks <= 0: return 0.0
     return round((decks_total / max_mögliche_decks) * 100, 2)
 
-def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str, radar_clans: list, records: dict, race_state_de: str) -> Tuple[str, pd.DataFrame, str, str, str, dict]:
+def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str, radar_clans: list, records: dict, race_state_de: str, raw_mahnwache: list) -> Tuple[str, pd.DataFrame, str, str, str, dict]:
     player_stats = []
     urlauber_liste = []
     
@@ -227,6 +227,15 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
         trend_scores = vergangene_scores + [score]
         trend_str = "".join(["🟢" if s >= 80 else "🟡" if s >= 50 else "🔴" for s in trend_scores[-4:]])
+        
+        # NEU: Streak-Logik
+        streak_count = 0
+        for s in reversed(trend_scores):
+            if s >= 100.0:
+                streak_count += 1
+            else:
+                break
+        streak_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥{streak_count}<span class='tooltip-text'>{streak_count} Auswertungen in Folge 100% Score!</span></span>" if streak_count >= 3 else ""
 
         if is_urlaub:
             status_html, tier = "🏖️ Urlaub", "🏖️ Im Urlaub (Pausiert)"
@@ -243,7 +252,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             "teilnahme_int": participation, "fame": aktueller_fame, "donations": donations, 
             "donations_received": donations_received, "tier": tier, "is_urlaub": is_urlaub, 
             "trend_str": trend_str, "fame_per_deck": fame_per_deck, "leecher_warnung": leecher_warnung,
-            "trophy_push": trophy_push, "trophies": aktueller_trophy
+            "trophy_push": trophy_push, "trophies": aktueller_trophy, "streak_badge": streak_badge
         })
 
         df_history = pd.concat([
@@ -268,15 +277,28 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         pusher_html = "<li>Niemand</li>"
         pusher_chat = ""
 
+    urlaub_html = "<li>Niemand</li>"
+    if urlauber_liste:
+        urlaub_html = "".join([f"<li>🏖️ <b>{u}</b></li>" for u in urlauber_liste])
+
     radar_html = ""
     if radar_clans:
         radar_hint = f" <span style='font-size:0.8em; opacity:0.8; font-weight:normal;'>(Status: {race_state_de})</span>"
-        radar_html = f"<div class='info-box' style='border-left-color: #f43f5e; background: rgba(159, 18, 57, 0.15);'><h3 style='margin-top: 0; color: #f43f5e; margin-bottom: 12px; font-size: 1.2em;'>📡 Live Kriegs-Radar{radar_hint}</h3>"
+        radar_html = f"<div class='info-box' style='border-left-color: #f43f5e; background: rgba(159, 18, 57, 0.15); margin-bottom: 25px;'><h3 style='margin-top: 0; color: #f43f5e; margin-bottom: 12px; font-size: 1.2em;'>📡 Live Kriegs-Radar{radar_hint}</h3>"
         for idx, c in enumerate(radar_clans):
             bold_start = "<b style='color:#fff;'>" if c["is_us"] else ""
             bold_end = " (WIR)</b>" if c["is_us"] else ""
             radar_html += f"<p style='margin: 0 0 5px 0;'>{idx+1}. {bold_start}{c['name']}{bold_end} - {c['fame']} Punkte</p>"
         radar_html += "</div>"
+        
+    # NEU: Mahnwache HTML erstellen
+    mahnwache_html = ""
+    if race_state_de == "Kampftag":
+        gefilterte_mahnwache = [f"<b>{m['name']}</b> ({m['offen']} offen)" for m in raw_mahnwache if m['name'] not in urlauber_liste]
+        if gefilterte_mahnwache:
+            mahnwache_html = f"<div class='info-box' style='border-left-color: #ef4444; background: rgba(239, 68, 68, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #ef4444; margin-bottom: 8px;'>⏰ Mahnwache (Noch offene Decks heute):</h4><p style='margin: 0; font-size: 0.95em;'>{', '.join(gefilterte_mahnwache)}</p></div>"
+        else:
+            mahnwache_html = f"<div class='info-box' style='border-left-color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #10b981; margin-bottom: 0;'>✅ Alle aktiven Spieler haben ihre Decks für heute gespielt!</h4></div>"
 
     cr_top_names = ", ".join([p['name'] for p in top_performers])
     cr_motiv = "Starke Woche! 💪" if clan_avg >= 80 else "Da geht noch mehr! ⚔️"
@@ -323,18 +345,31 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .card.leecher {{ border-top: 4px solid #64748b; }} 
             .card.pusher {{ border-top: 4px solid #f97316; }}
             .card.hof {{ border-top: 4px solid #8b5cf6; }}
+            .card.urlaub {{ border-top: 4px solid #0ea5e9; }}
             .card.kritisch {{ border-top: 4px solid #ef4444; }}
             .card.messenger {{ border-top: 4px solid #f1c40f; width: 100%; flex: 100%; }}
             .card h1 {{ font-weight: 800; font-size: 2.5em; margin: 10px 0; color: #38bdf8; }}
             .card ul {{ margin: 0; padding-left: 20px; font-size: 1.05em; line-height: 1.6; color: #f1f5f9; }}
             .tier-title {{ font-weight: 800; font-size: 1.4em; color: #fbbf24; margin-top: 45px; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; }}
-            table {{ width: 100%; border-collapse: collapse; background: rgba(15, 23, 42, 0.9); border-radius: 8px; margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.1); }}
+            
+            /* NEU: Feste Tabellenstruktur gegen Versatz */
+            table {{ width: 100%; table-layout: fixed; border-collapse: collapse; background: rgba(15, 23, 42, 0.9); border-radius: 8px; margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.1); }}
+            th:nth-child(1) {{ width: 22%; }} /* Spieler */
+            th:nth-child(2) {{ width: 14%; }} /* Status */
+            th:nth-child(3) {{ width: 8%; }}  /* Score */
+            th:nth-child(4) {{ width: 12%; }} /* Trend */
+            th:nth-child(5) {{ width: 9%; }}  /* Delta */
+            th:nth-child(6) {{ width: 10%; }} /* Ø Punkte */
+            th:nth-child(7) {{ width: 10%; }} /* Spenden */
+            th:nth-child(8) {{ width: 7%; }}  /* Teiln. */
+            th:nth-child(9) {{ width: 8%; }}  /* Kriegspunkte */
             th:first-child {{ border-top-left-radius: 8px; }} th:last-child {{ border-top-right-radius: 8px; }}
             tr:last-child td:first-child {{ border-bottom-left-radius: 8px; }} tr:last-child td:last-child {{ border-bottom-right-radius: 8px; }}
             tr:nth-child(odd) {{ background-color: rgba(0, 0, 0, 0.45); }} tr:nth-child(even) {{ background-color: rgba(255, 255, 255, 0.15); }} tr:hover {{ background-color: rgba(255, 255, 255, 0.3); }}
-            th, td {{ padding: 14px 16px; text-align: left; }}
+            th, td {{ padding: 14px 10px; text-align: left; word-wrap: break-word; overflow-wrap: break-word; }}
             th {{ background-color: rgba(0, 0, 0, 0.6); font-weight: 600; font-size: 0.9em; color: #94a3b8; border-bottom: 1px solid rgba(255,255,255,0.1); }}
             td {{ border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-size: 1.05em; }}
+            
             .badge-ja {{ background-color: #10b981; color: #ffffff; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 0.8em; margin-left: 8px; }}
             .name-col {{ font-weight: 800; color: #ffffff; }}
             .trend-cell {{ font-size: 16px !important; white-space: nowrap; line-height: 1; }}
@@ -355,13 +390,15 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             </div>
             
             {radar_html}
+            {mahnwache_html}
             
             <div class="info-box">
                 <h3 style="margin-top: 0; color: #38bdf8; margin-bottom: 12px; font-size: 1.2em;">💡 So liest du diese Auswertung:</h3>
+                <p style="margin: 0 0 10px 0;"><b>⏱️ Aktualisierung:</b> Das Live-Radar aktualisiert sich an den Kampftagen (Donnerstag bis Montag) alle 4 Stunden automatisch. Dienstag und Mittwoch ist Ruhetag. Die große Endauswertung (mit Vergabe neuer Ränge) findet jeden Montagvormittag statt.</p>
                 <p style="margin: 0 0 10px 0;"><b>🏆 Wer steht oben? (Die Sortierung):</b> Die Liste ist streng nach Leistung sortiert. Wer 100% holt, steht oben. Bei Punktegleichstand gewinnt die Teilnahme-Treue, dann Kriegspunkte, zuletzt Spenden.</p>
                 <p style="margin: 0 0 10px 0;"><b>📈 Delta (Entwicklung):</b> Zeigt die prozentuale Veränderung des Scores zur letzten Auswertung an (Grün = Aufstieg, Rot = Abfall).</p>
                 <p style="margin: 0 0 10px 0;"><b>🌱 Welpenschutz (Neu im Clan?):</b> Spieler mit ≤ 3 Kriegen bekommen das 🌱-Symbol und sind vor Kick-Warnungen geschützt.</p>
-                <p style="margin: 0 0 10px 0;"><b>🟢🟡🔴 Trend & Qualität (Die Ampel):</b> Zeigt die Leistung der letzten 4 Wochen. "Ø Punkte" zeigt die Punkte pro Deck. Ein ⚠️ bedeutet: Verdacht auf Bootsangriffe/Dropping (< 115 Pkt).</p>
+                <p style="margin: 0 0 10px 0;"><b>🟢🟡🔴 Trend & Qualität (Die Ampel):</b> Zeigt die Leistung der letzten 4 Wochen. "Ø Punkte" zeigt die Punkte pro Deck. Ein ⚠️ bedeutet: Verdacht auf Bootsangriffe/Dropping (< 115 Pkt). Ein 🔥 bedeutet einen 100%-Lauf über mehrere Wochen!</p>
                 <p style="margin: 0 0 10px 0;"><b>🃏 Geben & Nehmen (Spenden):</b> Ein Clan lebt von der Gemeinschaft! <br><b>🧛 Vampir:</b> 0 gespendet, aber abkassiert. <br><b>💤 Schlafend:</b> 0 gespendet, 0 angefordert. <br><i>Tipp: Fahre mit der Maus am PC über die Spenden-Zahlen für Details!</i></p>
             </div>
             
@@ -389,6 +426,10 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                         <li><b>Max Trophäen:</b> {records['trophies']['name']} ({records['trophies']['val']} 🏆)</li>
                         <li><b>Mega-Comeback:</b> {records['delta']['name']} (+{records['delta']['val']}%)</li>
                     </ul>
+                </div>
+                <div class="card urlaub">
+                    <h3>🏖️ Aktuell im Urlaub</h3>
+                    <ul style="font-size: 0.95em;">{urlaub_html}</ul>
                 </div>
                 <div class="card aufsteiger">
                     <h3>🚀 Größte Aufsteiger</h3>
@@ -448,7 +489,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 
                 spenden_zelle = f"<span class='custom-tooltip dotted'>{p['donations']}<span class='tooltip-text'>Gespendet: {p['donations']} | Empfangen: {p['donations_received']}</span></span>"
                 
-                html += f"<tr><td class='name-col'>{p['name']}{neu_badge}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
+                html += f"<tr><td class='name-col'>{p['name']}{neu_badge}{p['streak_badge']}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
             html += "</table>"
             
     html += """
@@ -579,6 +620,8 @@ def main():
     print("Schritt 3: Rufe Live-Radar (Current River Race) ab...")
     radar_clans = []
     race_state_de = "Live"
+    raw_mahnwache = []
+    
     try:
         headers = {"Authorization": f"Bearer {API_TOKEN}", "Accept": "application/json"}
         race_resp = requests.get(f"{BASE_URL}/clans/{CLAN_TAG}/currentriverrace", headers=headers)
@@ -604,9 +647,18 @@ def main():
                                 pts += item.get("points", 0)
                                 pts += item.get("fame", 0)
                 
+                is_us = c.get("tag") == CLAN_TAG.replace("%23", "#")
                 radar_clans.append({
-                    "name": c.get("name", ""), "fame": pts, "is_us": c.get("tag") == CLAN_TAG.replace("%23", "#")
+                    "name": c.get("name", ""), "fame": pts, "is_us": is_us
                 })
+                
+                # NEU: Mahnwache-Daten sammeln (Nur an Kampftagen für unseren Clan)
+                if is_us and raw_state == "warDay":
+                    for p in c.get("participants", []):
+                        decks_today = p.get("decksUsedToday", 0)
+                        if decks_today < 4:
+                            raw_mahnwache.append({"name": p.get("name"), "offen": 4 - decks_today})
+                            
             radar_clans.sort(key=lambda x: x["fame"], reverse=True)
     except Exception as e:
         print(f"Warnung: Radar konnte nicht geladen werden ({e})")
@@ -647,7 +699,7 @@ def main():
     jetzt_datei = datetime.today().strftime("%Y-%m-%d_%H-%M-%S")
     encoded_header_img = get_encoded_header_image(HEADER_IMAGE_PATH)
     
-    html_bericht, df_history, cr_text_1, cr_text_2, cr_text_3, updated_records = generate_html_report(df_active, df_history, fame_spalte, heute_datum, encoded_header_img, radar_clans, records, race_state_de)
+    html_bericht, df_history, cr_text_1, cr_text_2, cr_text_3, updated_records = generate_html_report(df_active, df_history, fame_spalte, heute_datum, encoded_header_img, radar_clans, records, race_state_de, raw_mahnwache)
 
     html_path = speichere_html_bericht(html_bericht, df_history, updated_records, jetzt_datei)
     archiviere_alte_auswertungen(output_folder)
@@ -690,4 +742,4 @@ if __name__ == "__main__":
     except Exception as err:
         print("\n❌ EIN KRITISCHER FEHLER IST AUFGETRETEN:")
         traceback.print_exc()
-        sys.exit(1) 
+        sys.exit(1)
