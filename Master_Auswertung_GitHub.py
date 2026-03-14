@@ -178,7 +178,10 @@ def berechne_score(participation: int, decks_total: int) -> float:
     if max_mögliche_decks <= 0: return 0.0
     return round((decks_total / max_mögliche_decks) * 100, 2)
 
-def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str, radar_clans: list, records: dict, strikes: dict, race_state_de: str, raw_mahnwache: list) -> Tuple[str, pd.DataFrame, str, str, str, dict, dict]:
+def chunk_list(lst: list, n: int) -> list:
+    return [lst[i:i + n] for i in range(0, len(lst), n)]
+
+def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str, radar_clans: list, records: dict, strikes: dict, race_state_de: str, raw_mahnwache: list) -> Tuple[str, pd.DataFrame, list, dict, dict]:
     player_stats = []
     urlauber_liste = []
     
@@ -229,7 +232,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         trend_scores = vergangene_scores + [score]
         trend_str = "".join(["🟢" if s >= 80 else "🟡" if s >= 50 else "🔴" for s in trend_scores[-4:]])
         
-        # Streak-Logik
         streak_count = 0
         for s in reversed(trend_scores):
             if s >= 100.0:
@@ -257,11 +259,12 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
         strike_val = strikes.get(name, 0)
         strike_badge = ""
+        # Wir behalten die Anzeige der Strikes in der Tabelle aus Gründen der Übersichtlichkeit bei
         if strike_val > 0:
             if strike_val >= 3:
-                strike_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3<span class='tooltip-text'>3 Strikes: Kick empfohlen!</span></span>"
+                strike_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3<span class='tooltip-text'>3 Verwarnungen: Kick oder Degradierung empfohlen!</span></span>"
             else:
-                strike_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ {strike_val}/3<span class='tooltip-text'>Kritische Leistung! Bei 3/3 droht der Kick.</span></span>"
+                strike_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ {strike_val}/3<span class='tooltip-text'>Verwarnung! Bei 3/3 droht Kick/Degradierung.</span></span>"
 
         if is_urlaub:
             status_html, tier = "🏖️ Urlaub", "🏖️ Im Urlaub (Pausiert)"
@@ -278,7 +281,8 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             "teilnahme_int": participation, "fame": aktueller_fame, "donations": donations, 
             "donations_received": donations_received, "tier": tier, "is_urlaub": is_urlaub, 
             "trend_str": trend_str, "fame_per_deck": fame_per_deck, "leecher_warnung": leecher_warnung,
-            "trophy_push": trophy_push, "trophies": aktueller_trophy, "streak_badge": streak_badge, "strike_badge": strike_badge
+            "trophy_push": trophy_push, "trophies": aktueller_trophy, "streak_badge": streak_badge, "strike_badge": strike_badge,
+            "raw_role": raw_role # NEU: Wird für die Degradierungs-Logik benötigt
         })
 
         df_history = pd.concat([
@@ -294,6 +298,16 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     top_spender = sorted([p for p in aktive_spieler if p["donations"] > 0], key=lambda x: x["donations"], reverse=True)[:3]
     top_leecher = sorted([p for p in aktive_spieler if p["teilnahme_int"] > 3 and p["donations"] == 0 and p["donations_received"] > 0], key=lambda x: x["donations_received"], reverse=True)[:3]
     
+    # NEU: Unterscheidung zwischen Kicks und Degradierungen bei 3 Strikes
+    kandidaten_kick = []
+    kandidaten_demote = []
+    for p in aktive_spieler:
+        if strikes.get(p['name'], 0) >= 3:
+            if p['raw_role'] in ['elder', 'coLeader']:
+                kandidaten_demote.append(p['name'])
+            elif p['raw_role'] == 'member':
+                kandidaten_kick.append(p['name'])
+
     top_pusher = sorted(aktive_spieler, key=lambda x: x["trophy_push"], reverse=True)
     if top_pusher and top_pusher[0]["trophy_push"] > 0:
         pusher_name, pusher_val = top_pusher[0]["name"], top_pusher[0]["trophy_push"]
@@ -319,7 +333,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         
     mahnwache_html = ""
     
-    # Absolut sichere Mahnwachen-Logik über den UTC-Wochentag (3=Do, 4=Fr, 5=Sa, 6=So)
     ist_kampftag = datetime.utcnow().weekday() in [3, 4, 5, 6]
     
     if ist_kampftag:
@@ -330,25 +343,48 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         else:
             mahnwache_html = f"<div class='info-box' style='border-left-color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #10b981; margin-bottom: 0;'>✅ Alle aktiven Spieler haben ihre Decks für heute gespielt!</h4></div>"
 
+    # === DYNAMISCHER CHAT-GENERATOR ===
     cr_top_names = ", ".join([p['name'] for p in top_performers])
-    cr_motiv = "Starke Woche! 💪" if clan_avg >= 80 else "Da geht noch mehr! ⚔️"
-    cr_text_1 = f"1/3 📊 Clan-Ø: {clan_avg}%. MVPs: {cr_top_names} 🏆 {pusher_chat}"
     
-    if top_spender:
-        cr_text_2 = f"2/3 🃏 Ein fettes Lob an unsere Top-Spender: {', '.join([p['name'] for p in top_spender][:2])}! 🤝"
-    else:
-        cr_text_2 = "2/3 🃏 Diese Woche gab es leider kaum Spenden. Ein Clan lebt vom Geben UND Nehmen! 🤝"
-        
+    msg_1 = f"📊 Clan-Ø: {clan_avg}%. MVPs: {cr_top_names} 🏆 {pusher_chat}"
+    msg_2 = f"🃏 Ein fettes Lob an unsere Top-Spender: {', '.join([p['name'] for p in top_spender][:2])}! 🤝" if top_spender else "🃏 Diese Woche gab es leider kaum Spenden. Ein Clan lebt vom Geben UND Nehmen! 🤝"
     echte_leecher = [p for p in top_leecher if p["donations"] == 0 and p["donations_received"] > 0]
     if echte_leecher:
-        cr_text_2 += f" | 🧛 Spenden-Leecher (0 geben, aber kassieren): {', '.join([p['name'] for p in echte_leecher][:2])}."
+        msg_2 += f" | 🧛 Spenden-Leecher (0 geben, aber kassieren): {', '.join([p['name'] for p in echte_leecher][:2])}."
         
     if kritisch:
         krit_names_list = [p['name'] for p in kritisch]
         cr_krit_names = ", ".join(krit_names_list[:5]) + (f" (+{len(kritisch)-5})" if len(kritisch) > 5 else "")
-        cr_text_3 = f"3/3 ⚠️ Kick-Liste/Warnung: {cr_krit_names}. Leistung reicht aktuell nicht. Bitte ranhalten oder abmelden! 🛡️"
+        msg_3 = f"⚠️ Kick-Warnung: {cr_krit_names}. Leistung reicht aktuell nicht. Bitte ranhalten oder abmelden! 🛡️"
     else:
-        cr_text_3 = "3/3 🌟 Starke Woche: Niemand auf der Kick-Liste! Alle haben geliefert oder Urlaub angemeldet. 🛡️💪"
+        msg_3 = "🌟 Starke Woche: Niemand auf der Warn-Liste! Alle haben geliefert oder Urlaub angemeldet. 🛡️💪"
+
+    raw_messenger_bodies = [msg_1, msg_2, msg_3]
+
+    # Degradierungs-Boxen bauen (max 4 Namen pro Box wegen Limit)
+    for chunk in chunk_list(kandidaten_demote, 4):
+        raw_messenger_bodies.append(f"👇 Degradierung: {', '.join(chunk)}. Grund: Dauerhaft zu wenig Kriegskämpfe. Ihr erhaltet als Mitglied eine letzte Bewährungschance! ⚔️")
+        
+    # Kick-Boxen bauen (max 4 Namen pro Box)
+    for chunk in chunk_list(kandidaten_kick, 4):
+        raw_messenger_bodies.append(f"👋 Verabschiedung: {', '.join(chunk)}. Grund: Wiederholte Inaktivität im Clankrieg. Wir machen Platz. Alles Gute! ✌️")
+
+    # Wenn es keine Kicks/Degradierungen gab
+    if not kandidaten_demote and not kandidaten_kick:
+        raw_messenger_bodies.append("🛡️ Info: Keine Kicks oder Degradierungen! Alle haben zuverlässig gekämpft oder sich fair abgemeldet. Richtig starkes Team! 💪")
+
+    total_msgs = len(raw_messenger_bodies)
+    final_chat_msgs = [f"{i+1}/{total_msgs} {text}" for i, text in enumerate(raw_messenger_bodies)]
+    
+    # HTML für die Chat-Boxen aufbauen
+    colors = ["#38bdf8", "#a855f7", "#ef4444", "#f97316", "#10b981", "#fbbf24"]
+    chat_boxes_html = ""
+    for i, msg in enumerate(final_chat_msgs):
+        color = colors[i % len(colors)]
+        chat_boxes_html += f"""
+        <label style="color: {color}; font-weight: bold; font-size: 0.9em;">💬 Teil {i+1}/{total_msgs}:</label>
+        <textarea readonly style="width: 100%; height: 50px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 8px; font-family: inherit; font-size: 0.95em; resize: none; margin-bottom: 15px;">{msg}</textarea>
+        """
 
     tiers = ["🌟 Elite (95-100%)", "✅ Solides Mittelfeld (80-94%)", "⚠️ Unter Beobachtung (50-79%)", "🚫 Kritisch (< 50%)", "🏖️ Im Urlaub (Pausiert)"]
     
@@ -476,14 +512,9 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 </div>
                 
                 <div class="card messenger">
-                    <h3 style="color: #f1c40f; margin-bottom: 10px;">🎮 Clash Royale In-Game Chat (3-Teiler)</h3>
-                    <p style="font-size: 0.9em; color: #cbd5e1; margin-top: 0; margin-bottom: 15px;">Kopiere diese 3 Texte nacheinander in den Clan-Chat (jeder Text ist garantiert unter 255 Zeichen).</p>
-                    <label style="color: #38bdf8; font-weight: bold; font-size: 0.9em;">💬 Teil 1/3 (Ergebnis & MVPs):</label>
-                    <textarea readonly style="width: 100%; height: 50px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 8px; font-family: inherit; font-size: 0.95em; resize: none; margin-bottom: 15px;">{cr_text_1}</textarea>
-                    <label style="color: #a855f7; font-weight: bold; font-size: 0.9em;">💬 Teil 2/3 (Spenden & Leecher):</label>
-                    <textarea readonly style="width: 100%; height: 50px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 8px; font-family: inherit; font-size: 0.95em; resize: none; margin-bottom: 15px;">{cr_text_2}</textarea>
-                    <label style="color: #ef4444; font-weight: bold; font-size: 0.9em;">💬 Teil 3/3 (Warnungen):</label>
-                    <textarea readonly style="width: 100%; height: 50px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 8px; font-family: inherit; font-size: 0.95em; resize: none;">{cr_text_3}</textarea>
+                    <h3 style="color: #f1c40f; margin-bottom: 10px;">🎮 Clash Royale In-Game Chat ({total_msgs}-Teiler)</h3>
+                    <p style="font-size: 0.9em; color: #cbd5e1; margin-top: 0; margin-bottom: 15px;">Kopiere diese {total_msgs} Texte nacheinander in den Clan-Chat (jeder Text ist garantiert unter 255 Zeichen).</p>
+                    {chat_boxes_html}
                 </div>
             </div>
 
@@ -541,14 +572,14 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 </div>
                 
                 <div id="wiki-strikes" style="margin-bottom: 25px; scroll-margin-top: 20px;">
-                    <h4 style="color: #cbd5e1; margin: 0 0 8px 0; font-size: 1.1em;">❌ Das Strike-System (Verwarnungen)</h4>
+                    <h4 style="color: #cbd5e1; margin: 0 0 8px 0; font-size: 1.1em;">⚖️ Verwarnungen, Degradierung & Kicks (Das faire System)</h4>
                     <p style="margin: 0 0 8px 0; font-size: 0.95em; color: #94a3b8; line-height: 1.5;">
-                        Damit nicht immer nur die aktuelle Woche zählt, haben wir ein faires Langzeit-Gedächtnis eingebaut:
+                        Damit nicht eine einzige schlechte Woche sofort zum Rauswurf führt, hat unsere Auswertung ein faires Langzeit-Gedächtnis. Wer sich nicht abmeldet und im Clankrieg dauerhaft zu wenig liefert (Score unter 50%), sammelt im Hintergrund unsichtbare Verwarnungen.
                     </p>
                     <ul style="margin: 0; padding-left: 20px; font-size: 0.9em; color: #94a3b8; line-height: 1.5;">
-                        <li><b>Strikes kassieren:</b> Wer auf der Kick-Liste landet (Score unter 50% und kein Welpenschutz), bekommt einen Strike (❌ 1/3).</li>
-                        <li><b>Strikes abbauen:</b> Das System verzeiht Ausrutscher! Wer sich anstrengt und in der nächsten Woche wieder eine solide Leistung zeigt (Score über 50%), baut seine Strafe wieder ab (Eine gute Woche = Ein Strike weniger).</li>
-                        <li><b>Die Konsequenz:</b> Wer 3 Strikes ansammelt (❌ 3/3), dem wird der automatische Kick empfohlen.</li>
+                        <li><b>Die zweite Chance (Degradierung):</b> Wenn ein <i>Ältester</i> oder <i>Vize</i> wiederholt durch Inaktivität auffällt, wird er nicht sofort gekickt. Er wird zur Strafe zum <b>Mitglied degradiert</b> und erhält so eine letzte Bewährungschance, um sich wieder hochzuarbeiten.</li>
+                        <li><b>Der Rauswurf (Kick):</b> Wenn ein normales <i>Mitglied</i> über mehrere Wochen hinweg die Mindestteilnahme im Krieg verweigert, trennen wir uns. Ein Clan lebt vom Teamplay, und so machen wir Platz für neue, aktive Spieler.</li>
+                        <li><b>Das Konto ausgleichen:</b> Das System verzeiht Ausrutscher! Wer nach einer Verwarnung wieder anzieht und in der Folgewoche eine solide Leistung zeigt (Score über 50%), baut seine negativen Einträge automatisch wieder ab.</li>
                     </ul>
                 </div>
 
@@ -627,7 +658,9 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     </body>
     </html>"""
 
-    return html, df_history, cr_text_1, cr_text_2, cr_text_3, records, strikes
+    # final_chat_msgs für den Mail-Versand vorbereiten (alles aneinandergehängt)
+    mail_chat_text = "\n\n".join(final_chat_msgs)
+    return html, df_history, mail_chat_text, records, strikes
 
 def speichere_html_bericht(html_content: str, df_history: pd.DataFrame, records: dict, strikes: dict, file_suffix: str) -> Path:
     html_path = output_folder / f"auswertung_{file_suffix}.html"
@@ -643,7 +676,7 @@ def speichere_html_bericht(html_content: str, df_history: pd.DataFrame, records:
     with open(records_path, "w", encoding="utf-8") as f:
         json.dump(records, f, ensure_ascii=False, indent=4)
         
-    # NEU: Strike-Akte speichern
+    # Strike-Akte speichern
     with open(strikes_path, "w", encoding="utf-8") as f:
         json.dump(strikes, f, ensure_ascii=False, indent=4)
         
@@ -657,7 +690,7 @@ def archiviere_alte_auswertungen(output_dir: Path, anzahl: int = 2):
         shutil.move(str(file), archiv_output / file.name)
 
 # === E-MAIL FUNKTION (VORERST STUMMGESCHALTET FÜR TESTS) ===
-def sende_bericht_per_mail(absender: str, empfänger: str, smtp_server: str, port: int, passwort: str, html_path: Path, cr_text_1: str, cr_text_2: str, cr_text_3: str):
+def sende_bericht_per_mail(absender: str, empfänger: str, smtp_server: str, port: int, passwort: str, html_path: Path, all_chat_texts: str):
     pass # Überspringt die Funktion im Testmodus
 
 # === 4. Hauptsteuerung ===
@@ -705,7 +738,7 @@ def main():
                     "name": c.get("name", ""), "fame": pts, "is_us": is_us
                 })
                 
-                # NEU: Immer auslesen, gefiltert wird später sicher in der Report-Funktion
+                # Immer auslesen, gefiltert wird später sicher in der Report-Funktion
                 if is_us:
                     for p in c.get("participants", []):
                         decks_today = p.get("decksUsedToday", 0)
@@ -760,7 +793,7 @@ def main():
     jetzt_datei = datetime.today().strftime("%Y-%m-%d_%H-%M-%S")
     encoded_header_img = get_encoded_header_image(HEADER_IMAGE_PATH)
     
-    html_bericht, df_history, cr_text_1, cr_text_2, cr_text_3, updated_records, updated_strikes = generate_html_report(df_active, df_history, fame_spalte, heute_datum, encoded_header_img, radar_clans, records, strikes, race_state_de, raw_mahnwache)
+    html_bericht, df_history, mail_chat_text, updated_records, updated_strikes = generate_html_report(df_active, df_history, fame_spalte, heute_datum, encoded_header_img, radar_clans, records, strikes, race_state_de, raw_mahnwache)
 
     html_path = speichere_html_bericht(html_bericht, df_history, updated_records, updated_strikes, jetzt_datei)
     archiviere_alte_auswertungen(output_folder)
@@ -793,4 +826,4 @@ if __name__ == "__main__":
     except Exception as err:
         print("\n❌ EIN KRITISCHER FEHLER IST AUFGETRETEN:")
         traceback.print_exc()
-        sys.exit(1) 
+        sys.exit(1)
