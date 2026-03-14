@@ -649,41 +649,16 @@ def speichere_html_bericht(html_content: str, df_history: pd.DataFrame, records:
         
     return html_path
 
+def archiviere_alte_auswertungen(output_dir: Path, anzahl: int = 2):
+    archiv_output = output_dir / "archiv"
+    archiv_output.mkdir(exist_ok=True, parents=True)
+    alte_htmls = sorted(output_dir.glob("auswertung_*.html"), key=os.path.getctime)
+    for file in alte_htmls[:-anzahl]:
+        shutil.move(str(file), archiv_output / file.name)
+
 # === E-MAIL FUNKTION (VORERST STUMMGESCHALTET FÜR TESTS) ===
 def sende_bericht_per_mail(absender: str, empfänger: str, smtp_server: str, port: int, passwort: str, html_path: Path, cr_text_1: str, cr_text_2: str, cr_text_3: str):
-    # Der Yahoo-Fix und Spam-Schutz sind hier für die Zukunft schon programmiert!
-    # empfaenger_liste = [e.strip() for e in empfänger.split(",") if e.strip()]
-    # if not empfaenger_liste:
-    #     empfaenger_liste = [absender]
-    #     
-    # with html_path.open("r", encoding="utf-8") as f:
-    #     html_content = f.read()
-    # 
-    # with html_path.open("rb") as f:
-    #     attachment_data = f.read()
-    # 
-    # text_fallback = f"Hallo Clan-Führung,\nHIER SIND DEINE IN-GAME CHAT TEXTE ZUM KOPIEREN:\n\n{cr_text_1}\n\n{cr_text_2}\n\n{cr_text_3}"
-    # 
-    # try:
-    #     with smtplib.SMTP(smtp_server, port) as server:
-    #         server.starttls()
-    #         server.login(absender, passwort)
-    #         
-    #         for empf in empfaenger_liste:
-    #             msg = EmailMessage()
-    #             msg["Subject"] = f"📊 Clan-Auswertung: {CLAN_NAME}"
-    #             msg["From"] = absender
-    #             msg["To"] = empf
-    #             msg.set_content(text_fallback)
-    #             msg.add_alternative(html_content, subtype='html')
-    #             msg.add_attachment(attachment_data, maintype="text", subtype="html", filename=html_path.name)
-    #             
-    #             server.send_message(msg)
-    #             
-    #     print(f"✅ E-Mail erfolgreich an {len(empfaenger_liste)} Empfänger gesendet.")
-    # except Exception as e:
-    #     print(f"❌ FEHLER beim Senden der E-Mail: {e}")
-    pass # Überspringt die Funktion aktuell
+    pass # Überspringt die Funktion im Testmodus
 
 # === 4. Hauptsteuerung ===
 
@@ -802,13 +777,8 @@ def main():
     
     if sender_mail and receiver_mail and email_pass:
         if (ist_montag and ist_mail_zeit) or ist_manueller_start:
-            # === NEU: TESTMODUS AUSGABE ===
             print("=== BERICHT WURDE GENERIERT ===")
-            print("💡 Testmodus aktiv: HTML und Layout wurden erfolgreich erstellt, aber der E-Mail-Versand ist vorerst deaktiviert, um Spam zu vermeiden.")
-            
-            # Wenn du die Mails wieder einschalten willst, entfernst du einfach das '#' vor der nächsten Zeile:
-            # sende_bericht_per_mail(absender=sender_mail, empfänger=receiver_mail, smtp_server="smtp.mail.yahoo.com", port=587, passwort=email_pass, html_path=html_path, cr_text_1=cr_text_1, cr_text_2=cr_text_2, cr_text_3=cr_text_3)
-            
+            print("💡 Testmodus aktiv: HTML und Layout wurden erfolgreich erstellt, E-Mail-Versand ist vorerst deaktiviert.")
         else:
             print(f"\n💡 Info: Radar aktualisiert. E-Mail-Versand übersprungen (Passiert nur montags oder bei manuellem Start).")
     else:
