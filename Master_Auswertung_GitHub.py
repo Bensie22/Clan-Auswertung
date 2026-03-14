@@ -454,52 +454,64 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     html += """
             <hr style="border: 0; height: 1px; background: rgba(255,255,255,0.1); margin: 60px 0 40px 0;">
             <div id="wiki" class="info-box" style="border-left-color: #8b5cf6; background: rgba(30, 41, 59, 0.95); scroll-margin-top: 20px;">
-                <h2 style="margin-top: 0; color: #8b5cf6; margin-bottom: 20px;">📖 Clan-Wiki: Wie wird berechnet?</h2>
+                <h2 style="margin-top: 0; color: #8b5cf6; margin-bottom: 20px;">📖 Clan-Wiki: Wie lesen sich diese Zahlen? (Einfach erklärt)</h2>
                 
-                <div id="wiki-score" style="margin-bottom: 20px; scroll-margin-top: 20px;">
-                    <h4 style="color: #cbd5e1; margin: 0 0 5px 0;">🎯 Der Score (Aktivität)</h4>
-                    <p style="margin: 0; font-size: 0.95em; color: #94a3b8;">
-                        Der Score misst deine <b>Zuverlässigkeit</b>, nicht deine absoluten Punkte. Er berechnet sich aus deinen gespielten Decks im Verhältnis zu deinen Kriegsteilnahmen.<br>
-                        <i>Formel: (Gespielte Decks / (Anzahl Kriegsteilnahmen × 16)) × 100</i><br>
-                        <b>Beispiel:</b> Wenn du bei 2 Kriegen mitgemacht hast, hättest du maximal 32 Decks spielen können (2 Wochen × 4 Tage × 4 Decks). Hast du 24 gespielt, ist dein Score 75%. Wer 0 Kriege spielt, hat 0%.
+                <div id="wiki-score" style="margin-bottom: 25px; scroll-margin-top: 20px;">
+                    <h4 style="color: #cbd5e1; margin: 0 0 8px 0; font-size: 1.1em;">🎯 Der Score (Deine Zuverlässigkeit)</h4>
+                    <p style="margin: 0 0 8px 0; font-size: 0.95em; color: #94a3b8; line-height: 1.5;">
+                        Der Score ist die wichtigste Zahl im Dashboard. Er misst nicht, wie stark du bist oder wie viel du gewinnst, sondern <b>wie verlässlich du bist</b>.<br>
+                        Stell dir vor, du hast für jedes Kriegswochenende 16 "Tickets" (4 Tage × 4 Decks). Der Score zeigt einfach, wie viele deiner verfügbaren Tickets du auch wirklich genutzt hast.
                     </p>
+                    <ul style="margin: 0; padding-left: 20px; font-size: 0.9em; color: #94a3b8; line-height: 1.5;">
+                        <li><b>100%:</b> Perfekt! Du hast keinen einzigen Angriff verpasst.</li>
+                        <li><b>50%:</b> Du hast nur die Hälfte deiner möglichen Angriffe gemacht.</li>
+                        <li><b>Welpenschutz:</b> Wenn du neu im Clan bist und erst an wenigen Kriegen teilgenommen hast, fangen wir fair an. Du wirst nur an den Kriegen gemessen, bei denen du auch wirklich schon im Clan warst.</li>
+                    </ul>
                 </div>
 
-                <div id="wiki-delta" style="margin-bottom: 20px; scroll-margin-top: 20px;">
-                    <h4 style="color: #cbd5e1; margin: 0 0 5px 0;">📈 Das Delta (Entwicklung)</h4>
-                    <p style="margin: 0; font-size: 0.95em; color: #94a3b8;">
-                        Zeigt an, ob du dich im Vergleich zur letzten Auswertung verbessert oder verschlechtert hast.<br>
-                        <i>Formel: Aktueller Score - Score der Vorwoche</i><br>
-                        Ein positives Delta (z.B. +12%) bedeutet, du hast diese Woche aktiver gespielt als letzte Woche.
+                <div id="wiki-delta" style="margin-bottom: 25px; scroll-margin-top: 20px;">
+                    <h4 style="color: #cbd5e1; margin: 0 0 8px 0; font-size: 1.1em;">📈 Das Delta (Deine Formkurve)</h4>
+                    <p style="margin: 0; font-size: 0.95em; color: #94a3b8; line-height: 1.5;">
+                        Das Delta ist wie beim Sport deine aktuelle Formkurve. Es vergleicht deine Leistung von heute mit deiner Leistung aus der letzten Auswertung.
                     </p>
+                    <ul style="margin: 8px 0 0 0; padding-left: 20px; font-size: 0.9em; color: #94a3b8; line-height: 1.5;">
+                        <li><b>Grüne Zahl (z.B. +12%):</b> Super! Du hast dich im Vergleich zur letzten Woche gesteigert und warst aktiver.</li>
+                        <li><b>Rote Zahl (z.B. -5%):</b> Du hast diese Woche etwas nachgelassen und weniger Angriffe gemacht als zuletzt.</li>
+                        <li><b>Graue Null (0%):</b> Deine Leistung ist exakt konstant geblieben.</li>
+                    </ul>
                 </div>
 
-                <div id="wiki-punkte" style="margin-bottom: 20px; scroll-margin-top: 20px;">
-                    <h4 style="color: #cbd5e1; margin: 0 0 5px 0;">⚔️ Ø Punkte (Punkte pro Deck)</h4>
-                    <p style="margin: 0; font-size: 0.95em; color: #94a3b8;">
-                        Zeigt deine Effektivität in den Kämpfen an.<br>
-                        <i>Formel: Aktuelle Kriegspunkte / Eingesetzte Decks im aktuellen Krieg</i><br>
-                        <b>⚠️ Warnung:</b> Ein regulärer Verlust bringt 115 Punkte. Ein Sieg bringt mehr. Fällt dein Durchschnitt unter 115 Punkte, greift unser System an, dass du Boote angreifst oder absichtlich sofort verlierst (Dropping/Leeching).
+                <div id="wiki-punkte" style="margin-bottom: 25px; scroll-margin-top: 20px;">
+                    <h4 style="color: #cbd5e1; margin: 0 0 8px 0; font-size: 1.1em;">⚔️ Ø Punkte (Der Qualitäts-Check)</h4>
+                    <p style="margin: 0 0 8px 0; font-size: 0.95em; color: #94a3b8; line-height: 1.5;">
+                        Hier schauen wir, wie effektiv du deine Decks einsetzt. Das System teilt einfach deine gesammelten Kriegspunkte durch die Anzahl deiner gespielten Decks. 
                     </p>
+                    <ul style="margin: 0; padding-left: 20px; font-size: 0.9em; color: #94a3b8; line-height: 1.5;">
+                        <li><b>Normalwert:</b> Selbst wenn du verlierst, bekommst du in normalen Kämpfen mindestens 115 Punkte. Ein Sieg bringt deutlich mehr.</li>
+                        <li><b>⚠️ Die Warnung (< 115 Punkte):</b> Wenn dein Durchschnitt unter 115 fällt, schlägt das System Alarm. Das passiert nur, wenn jemand oft feindliche Boote angreift (bringt sehr wenig Punkte für den Clan) oder absichtlich Kämpfe sofort aufgibt, um schnell fertig zu werden.</li>
+                    </ul>
                 </div>
 
-                <div id="wiki-spenden" style="margin-bottom: 20px; scroll-margin-top: 20px;">
-                    <h4 style="color: #cbd5e1; margin: 0 0 5px 0;">🃏 Spenden-Verhalten</h4>
-                    <p style="margin: 0; font-size: 0.95em; color: #94a3b8;">
-                        Unser Clan lebt von Geben und Nehmen. Wir tracken das Verhältnis:<br>
-                        <b>🧛 Vampir:</b> Du hast 0 Karten gespendet, aber fleißig bei anderen angefordert.<br>
-                        <b>💤 Schlafend:</b> Du hast 0 gespendet und 0 angefordert (Inaktivität im Spenden-Tab).
+                <div id="wiki-spenden" style="margin-bottom: 25px; scroll-margin-top: 20px;">
+                    <h4 style="color: #cbd5e1; margin: 0 0 8px 0; font-size: 1.1em;">🃏 Spenden-Verhalten (Das Teamplay)</h4>
+                    <p style="margin: 0; font-size: 0.95em; color: #94a3b8; line-height: 1.5;">
+                        Ein starker Clan hilft sich gegenseitig beim Leveln der Karten. Wir haben das Auge auf zwei Problemfälle:
                     </p>
+                    <ul style="margin: 8px 0 0 0; padding-left: 20px; font-size: 0.9em; color: #94a3b8; line-height: 1.5;">
+                        <li><b>🧛 Der Vampir-Leecher:</b> Jemand, der im Chat ständig Karten anfordert (und auch kriegt), aber selbst absolut <b>0</b> Karten an andere spendet. Das ist unfair dem Team gegenüber.</li>
+                        <li><b>💤 Der Schläfer:</b> Jemand, der weder spendet noch etwas anfordert. Hier geht dem Clan zwar nichts verloren, aber die Person beteiligt sich gar nicht am Clan-Leben.</li>
+                    </ul>
                 </div>
                 
-                <div style="margin-bottom: 10px;">
-                    <h4 style="color: #cbd5e1; margin: 0 0 5px 0;">📊 Clan-Durchschnitt (Ganz oben)</h4>
-                    <p style="margin: 0; font-size: 0.95em; color: #94a3b8;">
-                        Das ist der Mittelwert aller Scores der <b>aktiven</b> Mitglieder. Wichtig: Spieler, die sich offiziell im Urlaub befinden (🏖️), werden aus dieser Berechnung herausgenommen, damit sie den Clan-Schnitt nicht künstlich nach unten ziehen.
+                <div style="margin-bottom: 15px;">
+                    <h4 style="color: #cbd5e1; margin: 0 0 8px 0; font-size: 1.1em;">📊 Der Clan-Durchschnitt (Ganz oben im Dashboard)</h4>
+                    <p style="margin: 0; font-size: 0.95em; color: #94a3b8; line-height: 1.5;">
+                        Das ist quasi der "Notendurchschnitt" unserer Klasse. Wir addieren alle Scores und teilen sie durch die Anzahl der Mitglieder.<br>
+                        <b>Die Urlaubs-Regel:</b> Wenn jemand offiziell im Urlaub (🏖️) ist und pausiert, wird er aus dieser Rechnung komplett herausgenommen. So zieht jemand, der am Strand liegt, unseren Clan-Durchschnitt nicht ungerechtfertigt nach unten!
                     </p>
                 </div>
 
-                <a href="#" style="color: #38bdf8; text-decoration: none; font-weight: bold; font-size: 0.9em;">⬆️ Zurück nach oben</a>
+                <a href="#" style="color: #38bdf8; text-decoration: none; font-weight: bold; font-size: 0.9em;">⬆️ Zurück nach oben zur Tabelle</a>
             </div>
         </div>
     </body>
