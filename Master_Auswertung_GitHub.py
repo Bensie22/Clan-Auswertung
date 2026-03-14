@@ -318,8 +318,11 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         radar_html += "</div>"
         
     mahnwache_html = ""
-    ist_montag = datetime.utcnow().weekday() == 0
-    if not ist_montag and race_state_de == "Kampftag":
+    
+    # NEU: Absolut sichere Mahnwachen-Logik über den UTC-Wochentag (3=Do, 4=Fr, 5=Sa, 6=So)
+    ist_kampftag = datetime.utcnow().weekday() in [3, 4, 5, 6]
+    
+    if ist_kampftag:
         aktive_namen = df_active["player_name"].tolist()
         gefilterte_mahnwache = [f"<b>{m['name']}</b> ({m['offen']} offen)" for m in raw_mahnwache if m['name'] not in urlauber_liste and m['name'] in aktive_namen]
         if gefilterte_mahnwache:
@@ -654,34 +657,36 @@ def archiviere_alte_auswertungen(output_dir: Path, anzahl: int = 2):
         shutil.move(str(file), archiv_output / file.name)
 
 def sende_bericht_per_mail(absender: str, empfänger: str, smtp_server: str, port: int, passwort: str, html_path: Path, cr_text_1: str, cr_text_2: str, cr_text_3: str):
-    msg = EmailMessage()
-    msg["Subject"] = f"📊 Clan-Auswertung: {CLAN_NAME}"
-    msg["From"] = absender
-    
-    # NEU: Spam-Filter Überlistung durch saubere "To" und "Bcc" Aufteilung
+    # NEU: Wir schreiben echte, individuelle E-Mails an jeden Empfänger, um den Spam-Filter zu besiegen
     empfaenger_liste = [e.strip() for e in empfänger.split(",") if e.strip()]
-    if empfaenger_liste:
-        msg["To"] = empfaenger_liste[0] # Der erste im Secret steht sichtbar in "An"
-        if len(empfaenger_liste) > 1:
-            msg["Bcc"] = ", ".join(empfaenger_liste[1:]) # Alle weiteren unsichtbar als BCC
-    else:
-        msg["To"] = absender # Fallback, falls das Feld komplett leer ist
-    
+    if not empfaenger_liste:
+        empfaenger_liste = [absender]
+        
     with html_path.open("r", encoding="utf-8") as f:
         html_content = f.read()
 
-    text_fallback = f"Hallo Clan-Führung,\nHIER SIND DEINE IN-GAME CHAT TEXTE ZUM KOPIEREN:\n\n{cr_text_1}\n\n{cr_text_2}\n\n{cr_text_3}"
-    msg.set_content(text_fallback)
-    msg.add_alternative(html_content, subtype='html')
     with html_path.open("rb") as f:
-        msg.add_attachment(f.read(), maintype="text", subtype="html", filename=html_path.name)
+        attachment_data = f.read()
+
+    text_fallback = f"Hallo Clan-Führung,\nHIER SIND DEINE IN-GAME CHAT TEXTE ZUM KOPIEREN:\n\n{cr_text_1}\n\n{cr_text_2}\n\n{cr_text_3}"
 
     try:
         with smtplib.SMTP(smtp_server, port) as server:
             server.starttls()
             server.login(absender, passwort)
-            server.send_message(msg)
-            print("✅ E-Mail erfolgreich gesendet.")
+            
+            for empf in empfaenger_liste:
+                msg = EmailMessage()
+                msg["Subject"] = f"📊 Clan-Auswertung: {CLAN_NAME}"
+                msg["From"] = absender
+                msg["To"] = empf
+                msg.set_content(text_fallback)
+                msg.add_alternative(html_content, subtype='html')
+                msg.add_attachment(attachment_data, maintype="text", subtype="html", filename=html_path.name)
+                
+                server.send_message(msg)
+                
+        print(f"✅ E-Mail erfolgreich an {len(empfaenger_liste)} Empfänger gesendet.")
     except Exception as e:
         print(f"❌ FEHLER beim Senden der E-Mail: {e}")
 
@@ -730,7 +735,7 @@ def main():
                     "name": c.get("name", ""), "fame": pts, "is_us": is_us
                 })
                 
-                # NEU: Mahnwache-Fix (Einfach immer prüfen, ob offene Decks bei HAMBURG)
+                # NEU: Immer auslesen, gefiltert wird später sicher in der Report-Funktion
                 if is_us:
                     for p in c.get("participants", []):
                         decks_today = p.get("decksUsedToday", 0)
