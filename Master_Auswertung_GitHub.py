@@ -282,7 +282,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             "donations_received": donations_received, "tier": tier, "is_urlaub": is_urlaub, 
             "trend_str": trend_str, "fame_per_deck": fame_per_deck, "leecher_warnung": leecher_warnung,
             "trophy_push": trophy_push, "trophies": aktueller_trophy, "streak_badge": streak_badge, "strike_badge": strike_badge,
-            "raw_role": raw_role # NEU: Wird für die Degradierungs-Logik benötigt
+            "raw_role": raw_role # Wird für die Degradierungs-Logik benötigt
         })
 
         df_history = pd.concat([
@@ -298,7 +298,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     top_spender = sorted([p for p in aktive_spieler if p["donations"] > 0], key=lambda x: x["donations"], reverse=True)[:3]
     top_leecher = sorted([p for p in aktive_spieler if p["teilnahme_int"] > 3 and p["donations"] == 0 and p["donations_received"] > 0], key=lambda x: x["donations_received"], reverse=True)[:3]
     
-    # NEU: Unterscheidung zwischen Kicks und Degradierungen bei 3 Strikes
+    # Unterscheidung zwischen Kicks und Degradierungen bei 3 Strikes
     kandidaten_kick = []
     kandidaten_demote = []
     for p in aktive_spieler:
@@ -352,14 +352,8 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     if echte_leecher:
         msg_2 += f" | 🧛 Spenden-Leecher (0 geben, aber kassieren): {', '.join([p['name'] for p in echte_leecher][:2])}."
         
-    if kritisch:
-        krit_names_list = [p['name'] for p in kritisch]
-        cr_krit_names = ", ".join(krit_names_list[:5]) + (f" (+{len(kritisch)-5})" if len(kritisch) > 5 else "")
-        msg_3 = f"⚠️ Kick-Warnung: {cr_krit_names}. Leistung reicht aktuell nicht. Bitte ranhalten oder abmelden! 🛡️"
-    else:
-        msg_3 = "🌟 Starke Woche: Niemand auf der Warn-Liste! Alle haben geliefert oder Urlaub angemeldet. 🛡️💪"
-
-    raw_messenger_bodies = [msg_1, msg_2, msg_3]
+    # Die Kick-Warnung (ehemals msg_3) wurde entfernt, um den Chat aufgeräumter zu gestalten.
+    raw_messenger_bodies = [msg_1, msg_2]
 
     # Degradierungs-Boxen bauen (max 4 Namen pro Box wegen Limit)
     for chunk in chunk_list(kandidaten_demote, 4):
@@ -658,7 +652,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     </body>
     </html>"""
 
-    # final_chat_msgs für den Mail-Versand vorbereiten (alles aneinandergehängt)
     mail_chat_text = "\n\n".join(final_chat_msgs)
     return html, df_history, mail_chat_text, records, strikes
 
@@ -676,7 +669,6 @@ def speichere_html_bericht(html_content: str, df_history: pd.DataFrame, records:
     with open(records_path, "w", encoding="utf-8") as f:
         json.dump(records, f, ensure_ascii=False, indent=4)
         
-    # Strike-Akte speichern
     with open(strikes_path, "w", encoding="utf-8") as f:
         json.dump(strikes, f, ensure_ascii=False, indent=4)
         
@@ -738,7 +730,6 @@ def main():
                     "name": c.get("name", ""), "fame": pts, "is_us": is_us
                 })
                 
-                # Immer auslesen, gefiltert wird später sicher in der Report-Funktion
                 if is_us:
                     for p in c.get("participants", []):
                         decks_today = p.get("decksUsedToday", 0)
@@ -749,7 +740,6 @@ def main():
     except Exception as e:
         print(f"Warnung: Radar konnte nicht geladen werden ({e})")
 
-    # JSON SICHER LADEN (Rekorde & Strikes)
     records = {"donations": {"name": "-", "val": 0}, "delta": {"name": "-", "val": 0}, "trophies": {"name": "-", "val": 0}}
     if records_path.exists():
         try:
