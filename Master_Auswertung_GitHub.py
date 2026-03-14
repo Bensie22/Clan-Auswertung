@@ -29,6 +29,7 @@ archiv_folder = upload_folder / "archiv"
 output_folder = BASE_DIR / "output"
 score_history_path = BASE_DIR / "score_history.csv"
 records_path = BASE_DIR / "records.json"  
+strikes_path = BASE_DIR / "strikes.json"  # NEU: Die Strike-Akte
 urlaub_path = BASE_DIR / "urlaub.txt" 
 HEADER_IMAGE_PATH = BASE_DIR / "clash_pix.jpg"
 
@@ -177,7 +178,7 @@ def berechne_score(participation: int, decks_total: int) -> float:
     if max_mögliche_decks <= 0: return 0.0
     return round((decks_total / max_mögliche_decks) * 100, 2)
 
-def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str, radar_clans: list, records: dict, race_state_de: str, raw_mahnwache: list) -> Tuple[str, pd.DataFrame, str, str, str, dict]:
+def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str, radar_clans: list, records: dict, strikes: dict, race_state_de: str, raw_mahnwache: list) -> Tuple[str, pd.DataFrame, str, str, str, dict, dict]:
     player_stats = []
     urlauber_liste = []
     
@@ -228,7 +229,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         trend_scores = vergangene_scores + [score]
         trend_str = "".join(["🟢" if s >= 80 else "🟡" if s >= 50 else "🔴" for s in trend_scores[-4:]])
         
-        # KORRIGIERTE Streak-Logik
+        # Streak-Logik
         streak_count = 0
         for s in reversed(trend_scores):
             if s >= 100.0:
@@ -240,6 +241,29 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             streak_count = participation
             
         streak_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥{streak_count}<span class='tooltip-text'>{streak_count} Auswertungen in Folge 100% Score!</span></span>" if streak_count >= 3 else ""
+
+        # NEU: Strike-System Logik (Wird montags beim Mail-Versand gespeichert)
+        ist_montag = datetime.utcnow().weekday() == 0
+        ist_mail_zeit = datetime.utcnow().hour in [9, 10, 11]
+        ist_manueller_start = os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch"
+        
+        # Wir berechnen Strikes nur, wenn es eine offizielle Endauswertung ist
+        if (ist_montag and ist_mail_zeit) or ist_manueller_start:
+            if not is_urlaub and participation > 3: # Kein Urlaub, kein Welpenschutz
+                if score < 50:
+                    strikes[name] = strikes.get(name, 0) + 1
+                    if strikes[name] > 3: strikes[name] = 3
+                elif score >= 50:
+                    if strikes.get(name, 0) > 0:
+                        strikes[name] -= 1
+
+        strike_val = strikes.get(name, 0)
+        strike_badge = ""
+        if strike_val > 0:
+            if strike_val >= 3:
+                strike_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3<span class='tooltip-text'>3 Strikes: Kick empfohlen!</span></span>"
+            else:
+                strike_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ {strike_val}/3<span class='tooltip-text'>Kritische Leistung! Bei 3/3 droht der Kick.</span></span>"
 
         if is_urlaub:
             status_html, tier = "🏖️ Urlaub", "🏖️ Im Urlaub (Pausiert)"
@@ -256,7 +280,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             "teilnahme_int": participation, "fame": aktueller_fame, "donations": donations, 
             "donations_received": donations_received, "tier": tier, "is_urlaub": is_urlaub, 
             "trend_str": trend_str, "fame_per_deck": fame_per_deck, "leecher_warnung": leecher_warnung,
-            "trophy_push": trophy_push, "trophies": aktueller_trophy, "streak_badge": streak_badge
+            "trophy_push": trophy_push, "trophies": aktueller_trophy, "streak_badge": streak_badge, "strike_badge": strike_badge
         })
 
         df_history = pd.concat([
@@ -296,12 +320,11 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         radar_html += "</div>"
         
     mahnwache_html = ""
-    if race_state_de == "Kampftag":
-        gefilterte_mahnwache = [f"<b>{m['name']}</b> ({m['offen']} offen)" for m in raw_mahnwache if m['name'] not in urlauber_liste]
-        if gefilterte_mahnwache:
-            mahnwache_html = f"<div class='info-box' style='border-left-color: #ef4444; background: rgba(239, 68, 68, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #ef4444; margin-bottom: 8px;'>⏰ Mahnwache (Noch offene Decks heute):</h4><p style='margin: 0; font-size: 0.95em;'>{', '.join(gefilterte_mahnwache)}</p></div>"
-        else:
-            mahnwache_html = f"<div class='info-box' style='border-left-color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #10b981; margin-bottom: 0;'>✅ Alle aktiven Spieler haben ihre Decks für heute gespielt!</h4></div>"
+    gefilterte_mahnwache = [f"<b>{m['name']}</b> ({m['offen']} offen)" for m in raw_mahnwache if m['name'] not in urlauber_liste]
+    if gefilterte_mahnwache:
+        mahnwache_html = f"<div class='info-box' style='border-left-color: #ef4444; background: rgba(239, 68, 68, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #ef4444; margin-bottom: 8px;'>⏰ Mahnwache (Noch offene Decks heute):</h4><p style='margin: 0; font-size: 0.95em;'>{', '.join(gefilterte_mahnwache)}</p></div>"
+    else:
+        mahnwache_html = f"<div class='info-box' style='border-left-color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #10b981; margin-bottom: 0;'>✅ Alle aktiven Spieler haben ihre Decks für heute gespielt!</h4></div>"
 
     cr_top_names = ", ".join([p['name'] for p in top_performers])
     cr_motiv = "Starke Woche! 💪" if clan_avg >= 80 else "Da geht noch mehr! ⚔️"
@@ -396,7 +419,8 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             
             <div class="info-box">
                 <h3 style="margin-top: 0; color: #38bdf8; margin-bottom: 12px; font-size: 1.2em;">💡 So liest du diese Auswertung:</h3>
-                <p style="margin: 0 0 10px 0;"><b>⏱️ Aktualisierung:</b> Das Live-Radar aktualisiert sich an den Kampftagen (Donnerstag bis Montag) alle 4 Stunden automatisch. Dienstag und Mittwoch ist Ruhetag. Die große Endauswertung (mit Vergabe neuer Ränge) findet jeden Montagvormittag statt.</p>
+                <p style="margin: 0 0 10px 0;"><b>📬 Neu: Auswertung per E-Mail!</b> Willst du diese Auswertung jeden Montag ins Postfach? <a href="#wiki-email" style="color: #38bdf8; text-decoration: underline;">Klicke hier für alle Infos</a>.</p>
+                <p style="margin: 0 0 10px 0;"><b>⏱️ Aktualisierung:</b> Das Live-Radar aktualisiert sich an den Kampftagen (Donnerstag bis Montag) alle 4 Stunden automatisch. Dienstag und Mittwoch ist Ruhetag. Die große Endauswertung findet jeden Montagvormittag statt.</p>
                 <p style="margin: 0 0 10px 0;"><b>🏆 Wer steht oben? (Die Sortierung):</b> Die Liste ist streng nach Leistung sortiert. Wer 100% holt, steht oben. Bei Punktegleichstand gewinnt die Teilnahme-Treue, dann Kriegspunkte, zuletzt Spenden.</p>
                 <p style="margin: 0 0 10px 0;"><b>📈 Delta (Entwicklung):</b> Zeigt die prozentuale Veränderung des Scores zur letzten Auswertung an (Grün = Aufstieg, Rot = Abfall).</p>
                 <p style="margin: 0 0 10px 0;"><b>🌱 Welpenschutz (Neu im Clan?):</b> Spieler mit ≤ 3 Kriegen bekommen das 🌱-Symbol und sind vor Kick-Warnungen geschützt.</p>
@@ -491,7 +515,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 
                 spenden_zelle = f"<span class='custom-tooltip dotted'>{p['donations']}<span class='tooltip-text'>Gespendet: {p['donations']} | Empfangen: {p['donations_received']}</span></span>"
                 
-                html += f"<tr><td class='name-col'>{p['name']}{neu_badge}{p['streak_badge']}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
+                html += f"<tr><td class='name-col'>{p['name']}{neu_badge}{p['streak_badge']}{p['strike_badge']}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
             html += "</table>"
             
     html += """
@@ -499,6 +523,30 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             <div id="wiki" class="info-box" style="border-left-color: #8b5cf6; background: rgba(30, 41, 59, 0.95); scroll-margin-top: 20px;">
                 <h2 style="margin-top: 0; color: #8b5cf6; margin-bottom: 20px;">📖 Clan-Wiki: Wie lesen sich diese Zahlen? (Einfach erklärt)</h2>
                 
+                <div id="wiki-email" style="margin-bottom: 25px; scroll-margin-top: 20px;">
+                    <h4 style="color: #cbd5e1; margin: 0 0 8px 0; font-size: 1.1em;">📬 Die Montags-Auswertung per E-Mail (Neu!)</h4>
+                    <p style="margin: 0 0 8px 0; font-size: 0.95em; color: #94a3b8; line-height: 1.5;">
+                        Willst du diese Auswertung jeden Montag ganz bequem und automatisch in dein Postfach bekommen? 
+                    </p>
+                    <ul style="margin: 0; padding-left: 20px; font-size: 0.9em; color: #94a3b8; line-height: 1.5;">
+                        <li><b>Anmelden:</b> Schreib einfach eine kurze E-Mail mit deinem In-Game-Namen an: <b>strike2005-Hamburg_Royal@yahoo.com</b>. Die Clan-Führung trägt dich dann in den Verteiler ein.</li>
+                        <li>🔒 <b>100% Datenschutz (BCC-Versand):</b> Keine Sorge um deine private E-Mail-Adresse! Das System verschickt die Auswertung an alle Mitglieder ausschließlich als <b>Blindkopie (BCC)</b>. Das bedeutet: Niemand im Clan kann sehen, wer sonst noch auf der Liste steht. Dein Postfach bleibt absolut anonym.</li>
+                        <li><b>Abmelden:</b> Eine kurze Nachricht reicht, und du fliegst sofort wieder aus dem Verteiler.</li>
+                    </ul>
+                </div>
+                
+                <div id="wiki-strikes" style="margin-bottom: 25px; scroll-margin-top: 20px;">
+                    <h4 style="color: #cbd5e1; margin: 0 0 8px 0; font-size: 1.1em;">❌ Das Strike-System (Verwarnungen)</h4>
+                    <p style="margin: 0 0 8px 0; font-size: 0.95em; color: #94a3b8; line-height: 1.5;">
+                        Damit nicht immer nur die aktuelle Woche zählt, haben wir ein faires Langzeit-Gedächtnis eingebaut:
+                    </p>
+                    <ul style="margin: 0; padding-left: 20px; font-size: 0.9em; color: #94a3b8; line-height: 1.5;">
+                        <li><b>Strikes kassieren:</b> Wer auf der Kick-Liste landet (Score unter 50% und kein Welpenschutz), bekommt einen Strike (❌ 1/3).</li>
+                        <li><b>Strikes abbauen:</b> Das System verzeiht Ausrutscher! Wer sich anstrengt und in der nächsten Woche wieder eine solide Leistung zeigt (Score über 50%), baut seine Strafe wieder ab (Eine gute Woche = Ein Strike weniger).</li>
+                        <li><b>Die Konsequenz:</b> Wer 3 Strikes ansammelt (❌ 3/3), dem wird der automatische Kick empfohlen.</li>
+                    </ul>
+                </div>
+
                 <div id="wiki-score" style="margin-bottom: 25px; scroll-margin-top: 20px;">
                     <h4 style="color: #cbd5e1; margin: 0 0 8px 0; font-size: 1.1em;">🎯 Der Score (Deine Zuverlässigkeit)</h4>
                     <p style="margin: 0 0 8px 0; font-size: 0.95em; color: #94a3b8; line-height: 1.5;">
@@ -560,9 +608,9 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     </body>
     </html>"""
 
-    return html, df_history, cr_text_1, cr_text_2, cr_text_3, records
+    return html, df_history, cr_text_1, cr_text_2, cr_text_3, records, strikes
 
-def speichere_html_bericht(html_content: str, df_history: pd.DataFrame, records: dict, file_suffix: str) -> Path:
+def speichere_html_bericht(html_content: str, df_history: pd.DataFrame, records: dict, strikes: dict, file_suffix: str) -> Path:
     html_path = output_folder / f"auswertung_{file_suffix}.html"
     with html_path.open("w", encoding="utf-8") as f:
         f.write(html_content)
@@ -575,6 +623,10 @@ def speichere_html_bericht(html_content: str, df_history: pd.DataFrame, records:
     
     with open(records_path, "w", encoding="utf-8") as f:
         json.dump(records, f, ensure_ascii=False, indent=4)
+        
+    # NEU: Strike-Akte speichern
+    with open(strikes_path, "w", encoding="utf-8") as f:
+        json.dump(strikes, f, ensure_ascii=False, indent=4)
         
     return html_path
 
@@ -589,7 +641,10 @@ def sende_bericht_per_mail(absender: str, empfänger: str, smtp_server: str, por
     msg = EmailMessage()
     msg["Subject"] = f"📊 Clan-Auswertung: {CLAN_NAME}"
     msg["From"] = absender
-    msg["To"] = empfänger
+    
+    # NEU: BCC-Datenschutz-Trick
+    msg["To"] = absender # Die sichtbare "An"-Adresse ist deine eigene (Sicherheit)
+    msg["Bcc"] = empfänger # Alle Mitglieder stehen blind in der Kopie (durch Komma getrennt)
     
     with html_path.open("r", encoding="utf-8") as f:
         html_content = f.read()
@@ -605,7 +660,7 @@ def sende_bericht_per_mail(absender: str, empfänger: str, smtp_server: str, por
             server.starttls()
             server.login(absender, passwort)
             server.send_message(msg)
-            print("✅ E-Mail erfolgreich gesendet.")
+            print("✅ E-Mail erfolgreich gesendet (an Verteiler per BCC).")
     except Exception as e:
         print(f"❌ FEHLER beim Senden der E-Mail: {e}")
 
@@ -654,7 +709,8 @@ def main():
                     "name": c.get("name", ""), "fame": pts, "is_us": is_us
                 })
                 
-                if is_us and raw_state == "warDay":
+                # NEU: Mahnwache-Fix (Einfach immer prüfen, ob offene Decks bei HAMBURG)
+                if is_us:
                     for p in c.get("participants", []):
                         decks_today = p.get("decksUsedToday", 0)
                         if decks_today < 4:
@@ -664,7 +720,7 @@ def main():
     except Exception as e:
         print(f"Warnung: Radar konnte nicht geladen werden ({e})")
 
-    # JSON SICHER LADEN
+    # JSON SICHER LADEN (Rekorde & Strikes)
     records = {"donations": {"name": "-", "val": 0}, "delta": {"name": "-", "val": 0}, "trophies": {"name": "-", "val": 0}}
     if records_path.exists():
         try:
@@ -673,6 +729,14 @@ def main():
                 records.update(loaded)
         except Exception as e:
             print(f"⚠️ Warnung: records.json fehlerhaft, fange bei 0 an. ({e})")
+
+    strikes = {}
+    if strikes_path.exists():
+        try:
+            with open(strikes_path, "r", encoding="utf-8") as f:
+                strikes = json.load(f)
+        except Exception as e:
+            print(f"⚠️ Warnung: strikes.json fehlerhaft, fange bei 0 an. ({e})")
 
     print("=== STARTE AUSWERTUNG ===")
     archiviere_alte_dateien(upload_folder, archiv_folder)
@@ -700,9 +764,9 @@ def main():
     jetzt_datei = datetime.today().strftime("%Y-%m-%d_%H-%M-%S")
     encoded_header_img = get_encoded_header_image(HEADER_IMAGE_PATH)
     
-    html_bericht, df_history, cr_text_1, cr_text_2, cr_text_3, updated_records = generate_html_report(df_active, df_history, fame_spalte, heute_datum, encoded_header_img, radar_clans, records, race_state_de, raw_mahnwache)
+    html_bericht, df_history, cr_text_1, cr_text_2, cr_text_3, updated_records, updated_strikes = generate_html_report(df_active, df_history, fame_spalte, heute_datum, encoded_header_img, radar_clans, records, strikes, race_state_de, raw_mahnwache)
 
-    html_path = speichere_html_bericht(html_bericht, df_history, updated_records, jetzt_datei)
+    html_path = speichere_html_bericht(html_bericht, df_history, updated_records, updated_strikes, jetzt_datei)
     archiviere_alte_auswertungen(output_folder)
     
     # === E-MAIL ZEITSTEUERUNG ===
