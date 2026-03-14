@@ -228,13 +228,17 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         trend_scores = vergangene_scores + [score]
         trend_str = "".join(["🟢" if s >= 80 else "🟡" if s >= 50 else "🔴" for s in trend_scores[-4:]])
         
-        # NEU: Streak-Logik
+        # KORRIGIERTE Streak-Logik
         streak_count = 0
         for s in reversed(trend_scores):
             if s >= 100.0:
                 streak_count += 1
             else:
                 break
+                
+        if streak_count > participation:
+            streak_count = participation
+            
         streak_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥{streak_count}<span class='tooltip-text'>{streak_count} Auswertungen in Folge 100% Score!</span></span>" if streak_count >= 3 else ""
 
         if is_urlaub:
@@ -291,7 +295,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             radar_html += f"<p style='margin: 0 0 5px 0;'>{idx+1}. {bold_start}{c['name']}{bold_end} - {c['fame']} Punkte</p>"
         radar_html += "</div>"
         
-    # NEU: Mahnwache HTML erstellen
     mahnwache_html = ""
     if race_state_de == "Kampftag":
         gefilterte_mahnwache = [f"<b>{m['name']}</b> ({m['offen']} offen)" for m in raw_mahnwache if m['name'] not in urlauber_liste]
@@ -352,17 +355,16 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .card ul {{ margin: 0; padding-left: 20px; font-size: 1.05em; line-height: 1.6; color: #f1f5f9; }}
             .tier-title {{ font-weight: 800; font-size: 1.4em; color: #fbbf24; margin-top: 45px; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; }}
             
-            /* NEU: Feste Tabellenstruktur gegen Versatz */
             table {{ width: 100%; table-layout: fixed; border-collapse: collapse; background: rgba(15, 23, 42, 0.9); border-radius: 8px; margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.1); }}
-            th:nth-child(1) {{ width: 22%; }} /* Spieler */
-            th:nth-child(2) {{ width: 14%; }} /* Status */
-            th:nth-child(3) {{ width: 8%; }}  /* Score */
-            th:nth-child(4) {{ width: 12%; }} /* Trend */
-            th:nth-child(5) {{ width: 9%; }}  /* Delta */
-            th:nth-child(6) {{ width: 10%; }} /* Ø Punkte */
-            th:nth-child(7) {{ width: 10%; }} /* Spenden */
-            th:nth-child(8) {{ width: 7%; }}  /* Teiln. */
-            th:nth-child(9) {{ width: 8%; }}  /* Kriegspunkte */
+            th:nth-child(1) {{ width: 22%; }}
+            th:nth-child(2) {{ width: 14%; }}
+            th:nth-child(3) {{ width: 8%; }}
+            th:nth-child(4) {{ width: 12%; }}
+            th:nth-child(5) {{ width: 9%; }}
+            th:nth-child(6) {{ width: 10%; }}
+            th:nth-child(7) {{ width: 10%; }}
+            th:nth-child(8) {{ width: 7%; }}
+            th:nth-child(9) {{ width: 8%; }}
             th:first-child {{ border-top-left-radius: 8px; }} th:last-child {{ border-top-right-radius: 8px; }}
             tr:last-child td:first-child {{ border-bottom-left-radius: 8px; }} tr:last-child td:last-child {{ border-bottom-right-radius: 8px; }}
             tr:nth-child(odd) {{ background-color: rgba(0, 0, 0, 0.45); }} tr:nth-child(even) {{ background-color: rgba(255, 255, 255, 0.15); }} tr:hover {{ background-color: rgba(255, 255, 255, 0.3); }}
@@ -652,7 +654,6 @@ def main():
                     "name": c.get("name", ""), "fame": pts, "is_us": is_us
                 })
                 
-                # NEU: Mahnwache-Daten sammeln (Nur an Kampftagen für unseren Clan)
                 if is_us and raw_state == "warDay":
                     for p in c.get("participants", []):
                         decks_today = p.get("decksUsedToday", 0)
@@ -742,4 +743,4 @@ if __name__ == "__main__":
     except Exception as err:
         print("\n❌ EIN KRITISCHER FEHLER IST AUFGETRETEN:")
         traceback.print_exc()
-        sys.exit(1)
+        sys.exit(1) 
