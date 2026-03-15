@@ -435,7 +435,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     for t in tiers:
         players_in_tier = sorted([p for p in player_stats if p["tier"] == t], key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]), reverse=True)
         if players_in_tier:
-            # Jedes Tier wird in eine eigene Section gepackt
             table_html += f"<div class='tier-section'>"
             table_html += f"<div class='tier-title'>{t}</div>"
             table_html += """<table>
@@ -484,6 +483,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .header-container {{ position: relative; background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('{header_img_src}') no-repeat center center; background-size: cover; border-radius: 12px; padding: 40px 20px; margin-top: 20px; margin-bottom: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }}
             .header-title {{ font-weight: 800; color: #ffffff; font-size: 2.2em; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.5); letter-spacing: 1px; }}
             .header-date {{ font-weight: 400; font-size: 0.45em; color: #cbd5e1; display: block; margin-top: 10px; letter-spacing: 0px; }}
+            .header-mobile-tip {{ display: block; font-size: 0.35em; color: #94a3b8; margin-top: 15px; font-weight: normal; }}
             
             /* App-ähnliche Navigation (Tabs) */
             .tab-container {{ display: flex; gap: 10px; margin-bottom: 30px; border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 15px; position: sticky; top: -1px; background: rgba(15, 23, 42, 0.98); z-index: 1000; padding-top: 15px; overflow-x: auto; white-space: nowrap; scrollbar-width: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }}
@@ -564,7 +564,9 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     <body>
         <div class="container">
             <div class="header-container">
-                <h1 class="header-title"><span onclick="unlockChat()" style="cursor: pointer;" title="Nur für die Clan-Führung">📊</span> Clan-Auswertung: {CLAN_NAME} <br><span class="header-date">{heute_datum}</span></h1>
+                <h1 class="header-title"><span onclick="unlockChat()" style="cursor: pointer;" title="Nur für die Clan-Führung">📊</span> Clan-Auswertung: {CLAN_NAME} <br>
+                <span class="header-date">{heute_datum}</span>
+                <span class="header-mobile-tip">📱 Tipp: Für die beste Übersicht am Handy bitte quer halten 🔄</span></h1>
             </div>
             
             <div class="tab-container">
@@ -629,7 +631,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                             {chat_boxes_html}
                         </div>
                     </div>
-                    </div>
+                </div>
             </div>
 
             <div id="Table" class="tab-content">
@@ -697,21 +699,39 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                     </ul>
                 </div>
 
+                <button class="accordion-btn">🟢🟡🔴 Der Trend (Deine Konstanz)</button>
+                <div class="accordion-content">
+                    <p>Die Ampel-Punkte zeigen deine Leistung (deinen Score) der letzten 4 Wochen auf einen Blick. Jeder Punkt steht für eine Woche, wobei der <b>Punkt ganz rechts die aktuellste Auswertung</b> ist.</p>
+                    <div style="overflow-x:auto;">
+                        <table class="wiki-table">
+                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
+                            <tr><td class='name-col'>Spieler E</td><td>Mitglied</td><td><b>45.0%</b></td><td class='trend-cell'>🟢🟢🟡🔴</td><td style='color:#ef4444; font-weight:bold;'>-20.0%</td><td style='color:#cbd5e1;'>180</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>150</span></td><td>8/10</td><td>1400</td></tr>
+                            <tr><td class='name-col'>Spieler F</td><td>Ältester</td><td><b>90.0%</b></td><td class='trend-cell'>🔴🔴🟢🟢</td><td style='color:#10b981; font-weight:bold;'>+15.0%</td><td style='color:#cbd5e1;'>160</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>200</span></td><td>6/10</td><td>900</td></tr>
+                        </table>
+                    </div>
+                    <ul>
+                        <li><b>🟢 Grün (Leistungsträger):</b> Starker Score von 80% bis 100%.</li>
+                        <li><b>🟡 Gelb (Mittelfeld):</b> Akzeptabler Score von 50% bis 79%, aber mit Luft nach oben.</li>
+                        <li><b>🔴 Rot (Kritisch):</b> Score unter 50% (Zu wenig Teilnahme im Flussrennen).</li>
+                        <li><i>Beispiel Spieler E:</i> Hat stark angefangen, aber in den letzten zwei Wochen leider stark nachgelassen (Rechter Punkt ist rot).</li>
+                    </ul>
+                </div>
+
                 <button class="accordion-btn">📈 Das Delta (Deine Formkurve)</button>
                 <div class="accordion-content">
                     <p>Das Delta ist wie beim Sport deine aktuelle Formkurve. Es vergleicht deine Leistung von heute mit deiner Leistung aus der letzten Auswertung.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
-                            <tr><td class='name-col'>Spieler E</td><td>Mitglied</td><td><b>85.0%</b></td><td class='trend-cell'>🟢🟢🟡🔴</td><td style='color:#10b981; font-weight:bold;'>+12.0%</td><td style='color:#cbd5e1;'>180</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>150</span></td><td>8/10</td><td>1400</td></tr>
-                            <tr><td class='name-col'>Spieler F</td><td>Ältester</td><td><b>60.0%</b></td><td class='trend-cell'>🟡🔴🟢🟢</td><td style='color:#ef4444; font-weight:bold;'>-5.0%</td><td style='color:#cbd5e1;'>160</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>200</span></td><td>6/10</td><td>900</td></tr>
-                            <tr><td class='name-col'>Spieler G</td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>205</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>350</span></td><td>10/10</td><td>2050</td></tr>
+                            <tr><td class='name-col'>Spieler G</td><td>Mitglied</td><td><b>85.0%</b></td><td class='trend-cell'>🟢🟢🟡🟢</td><td style='color:#10b981; font-weight:bold;'>+12.0%</td><td style='color:#cbd5e1;'>180</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>150</span></td><td>8/10</td><td>1400</td></tr>
+                            <tr><td class='name-col'>Spieler H</td><td>Ältester</td><td><b>60.0%</b></td><td class='trend-cell'>🟡🔴🟢🟡</td><td style='color:#ef4444; font-weight:bold;'>-5.0%</td><td style='color:#cbd5e1;'>160</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>200</span></td><td>6/10</td><td>900</td></tr>
+                            <tr><td class='name-col'>Spieler I</td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>205</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>350</span></td><td>10/10</td><td>2050</td></tr>
                         </table>
                     </div>
                     <ul>
-                        <li><b style="color: #10b981;">Grüne Zahl (z.B. +12.0%):</b> Super! Du hast dich im Vergleich zur letzten Woche gesteigert und warst aktiver (siehe <b>Spieler E</b>).</li>
-                        <li><b style="color: #ef4444;">Rote Zahl (z.B. -5.0%):</b> Du hast diese Woche etwas nachgelassen und weniger Angriffe gemacht als zuletzt (siehe <b>Spieler F</b>).</li>
-                        <li><b style="color: #94a3b8;">Graue Null (0.0%):</b> Deine Leistung ist exakt konstant geblieben (siehe <b>Spieler G</b>).</li>
+                        <li><b style="color: #10b981;">Grüne Zahl (z.B. +12.0%):</b> Super! Du hast dich im Vergleich zur letzten Woche gesteigert und warst aktiver (siehe <b>Spieler G</b>).</li>
+                        <li><b style="color: #ef4444;">Rote Zahl (z.B. -5.0%):</b> Du hast diese Woche etwas nachgelassen und weniger Angriffe gemacht als zuletzt (siehe <b>Spieler H</b>).</li>
+                        <li><b style="color: #94a3b8;">Graue Null (0.0%):</b> Deine Leistung ist exakt konstant geblieben (siehe <b>Spieler I</b>).</li>
                     </ul>
                 </div>
 
@@ -721,12 +741,12 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
-                            <tr><td class='name-col'>Spieler H <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td>Ältester</td><td><b>27.34%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>100 <span class='custom-tooltip'>⚠️</span></td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>72</span></td><td>8/10</td><td>100</td></tr>
+                            <tr><td class='name-col'>Spieler J <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td>Ältester</td><td><b>27.34%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>100 <span class='custom-tooltip'>⚠️</span></td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>72</span></td><td>8/10</td><td>100</td></tr>
                         </table>
                     </div>
                     <ul>
                         <li><b>Normalwert:</b> Selbst wenn du verlierst, bekommst du in normalen Kämpfen mindestens 115 Punkte. Ein Sieg bringt deutlich mehr.</li>
-                        <li><b>⚠️ Die Warnung (< 115 Punkte):</b> Wenn dein Durchschnitt unter 115 fällt (wie bei <b>Spieler H</b> oben), schlägt das System Alarm. Das passiert nur, wenn jemand oft feindliche Boote angreift (bringt sehr wenig Punkte für den Clan) oder absichtlich Kämpfe sofort aufgibt, um schnell fertig zu werden.</li>
+                        <li><b>⚠️ Die Warnung (< 115 Punkte):</b> Wenn dein Durchschnitt unter 115 fällt (wie bei <b>Spieler J</b> oben), schlägt das System Alarm. Das passiert nur, wenn jemand oft feindliche Boote angreift (bringt sehr wenig Punkte für den Clan) oder absichtlich Kämpfe sofort aufgibt, um schnell fertig zu werden.</li>
                     </ul>
                 </div>
 
@@ -736,19 +756,19 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
-                            <tr><td class='name-col'>Spieler I</td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>200</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>🧛</span></td><td>10/10</td><td>2000</td></tr>
-                            <tr><td class='name-col'>Spieler J</td><td>Mitglied</td><td><b>50.0%</b></td><td class='trend-cell'>🟡🟡🟡🟡</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>150</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>💤</span></td><td>5/10</td><td>1000</td></tr>
+                            <tr><td class='name-col'>Spieler K</td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>200</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>🧛</span></td><td>10/10</td><td>2000</td></tr>
+                            <tr><td class='name-col'>Spieler L</td><td>Mitglied</td><td><b>50.0%</b></td><td class='trend-cell'>🟡🟡🟡🟡</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>150</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>💤</span></td><td>5/10</td><td>1000</td></tr>
                         </table>
                     </div>
                     <ul>
-                        <li><b>🧛 Der Vampir-Leecher:</b> Jemand (wie <b>Spieler I</b>), der ständig Karten anfordert und im Chat abkassiert, aber selbst absolut <b>0</b> Karten an andere spendet. Das ist unfaires Teamplay.</li>
-                        <li><b>💤 Der Schläfer:</b> Jemand (wie <b>Spieler J</b>), der weder spendet noch etwas anfordert. Hier geht dem Clan zwar nichts verloren, aber die Person beteiligt sich gar nicht am Clan-Leben.</li>
+                        <li><b>🧛 Der Vampir-Leecher:</b> Jemand (wie <b>Spieler K</b>), der ständig Karten anfordert und im Chat abkassiert, aber selbst absolut <b>0</b> Karten an andere spendet. Das ist unfaires Teamplay.</li>
+                        <li><b>💤 Der Schläfer:</b> Jemand (wie <b>Spieler L</b>), der weder spendet noch etwas anfordert. Hier geht dem Clan zwar nichts verloren, aber die Person beteiligt sich gar nicht am Clan-Leben.</li>
                     </ul>
                 </div>
                 
                 <button class="accordion-btn">📊 Der Clan-Durchschnitt</button>
                 <div class="accordion-content">
-                    <p>Das ist quasi der "Notendurchschnitt" unserer Klasse. Wir addieren alle Scores und teilen sie durch die Anzahl der Mitglieder.</p>
+                    <p>Das ist quasi der "Notendurchschnitt" unserer Klasse. Wir addieren alle Scores und teilen sie durch die Anzahl der aktiven Mitglieder.</p>
                     <ul>
                         <li><b>Die Urlaubs-Regel:</b> Wenn jemand offiziell im Urlaub (🏖️) ist und pausiert, wird er aus dieser Rechnung komplett herausgenommen. So zieht jemand, der am Strand liegt, unseren Clan-Durchschnitt nicht ungerechtfertigt nach unten!</li>
                     </ul>
@@ -797,7 +817,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                     
                     if (!isActive) {{
                         this.classList.add("active");
-                        // Timeout allows the smooth scroll to happen after expansion
                         setTimeout(() => {{
                             this.scrollIntoView({{behavior: "smooth", block: "start"}});
                         }}, 300);
