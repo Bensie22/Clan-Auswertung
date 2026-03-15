@@ -428,6 +428,9 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         </div>
         """
 
+    # HIER FEHLTE DIE DEKLARATION:
+    tiers = ["🌟 Elite (95-100%)", "✅ Solides Mittelfeld (80-94%)", "⚠️ Unter Beobachtung (50-79%)", "🚫 Kritisch (< 50%)", "🏖️ Im Urlaub (Pausiert)"]
+
     # HTML für die Tabelle generieren
     table_html = ""
     for t in tiers:
@@ -695,7 +698,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                     tablinks[i].classList.remove("active");
                 }}
                 document.getElementById(tabName).style.display = "block";
-                // Kurze Verzögerung für die fadeIn Animation
                 setTimeout(() => document.getElementById(tabName).classList.add("active"), 10);
                 evt.currentTarget.classList.add("active");
                 window.scrollTo({{top: 0, behavior: 'smooth'}});
