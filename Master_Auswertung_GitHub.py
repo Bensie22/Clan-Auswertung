@@ -454,7 +454,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         hype_balken_html = f"""
         <div style='background: rgba(30, 41, 59, 0.8); border-radius: 12px; padding: 20px; margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 15px rgba(0,0,0,0.2);'>
             <div style='display: flex; justify-content: space-between; margin-bottom: 10px; align-items: baseline;'>
-                <h3 style='margin: 0; color: #f8fafc; font-size: 1.1em;'>🎯 Tagesziel: Clan-Aktivität</h3>
+                <h3 style='margin: 0; color: #f8fafc; font-size: 1.1em;'>🎯 Tagesziel: Clan-Kriegs Kämpfe</h3>
                 <span style='font-weight: bold; color: {hype_color}; font-size: 1.1em;'>{played_decks_today} / {total_decks_today} Decks ({hype_percentage}%)</span>
             </div>
             <div style='background: rgba(0,0,0,0.5); border-radius: 8px; height: 14px; width: 100%; overflow: hidden;'>
@@ -558,12 +558,8 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             
             archetype = get_deck_archetype(d["cards"])
             
-            # --- LÖSUNG FÜR DEN DECK-LINK ---
-            # Supercell hat direkte Copy-Links durch Verschlüsselung blockiert.
-            # Die einzige verlässliche Lösung ist der Umweg über RoyaleAPI.
             api_names = [c["name"].lower().replace(".", "").replace(" ", "-") for c in d["cards"]]
             royaleapi_link = f"https://royaleapi.com/decks/stats/{','.join(api_names)}"
-            # --------------------------------
             
             images_html = "".join([f"<img src='{c['icon']}' style='width: 23%; border-radius: 4px; margin: 1%;' title='{c['name']}'>" for c in d["cards"]])
             
@@ -587,7 +583,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     tiers = ["🌟 Elite (95-100%)", "✅ Solides Mittelfeld (80-94%)", "⚠️ Unter Beobachtung (50-79%)", "🚫 Kritisch (< 50%)", "🏖️ Im Urlaub (Pausiert)"]
 
     table_html = ""
-    modals_html = "" 
     
     for t in tiers:
         players_in_tier = sorted([p for p in player_stats if p["tier"] == t], key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]), reverse=True)
@@ -623,31 +618,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 
                 spenden_zelle = f"<span class='custom-tooltip dotted'>{p['donations']}<span class='tooltip-text'>Gespendet: {p['donations']} | Empfangen: {p['donations_received']}</span></span>"
                 
-                safe_id = "".join([c if c.isalnum() else "_" for c in p['name']])
-                
-                table_html += f"<tr><td class='name-col' onclick=\"openModal('modal_{safe_id}')\" title='Klicke für Visitenkarte'>🔍 {p['name']}{neu_badge}{p['streak_badge']}{p['strike_badge']}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
-                
-                modals_html += f"""
-                <div id="modal_{safe_id}" class="modal-overlay" onclick="closeModal('modal_{safe_id}')">
-                    <div class="modal-content" onclick="event.stopPropagation()">
-                        <button class="modal-close" onclick="closeModal('modal_{safe_id}')">✖</button>
-                        <div class="modal-header">
-                            <h2 style="margin:0; color:#38bdf8; font-size: 1.6em;">{p['name']}</h2>
-                            <span style="color:#94a3b8; font-size:1em; font-weight: bold;">{p['status']}</span>
-                        </div>
-                        <div style="display:flex; justify-content:space-between; margin-bottom:20px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:15px; text-align:center;">
-                            <div style="flex:1;"><span style="color:#94a3b8; font-size:0.85em;">Score</span><br><b style="font-size:1.4em; color:#fff;">{p['score']}%</b></div>
-                            <div style="flex:1;"><span style="color:#94a3b8; font-size:0.85em;">Trend</span><br><span style="font-size:1.4em; letter-spacing:2px;">{p['trend_str']}</span></div>
-                            <div style="flex:1;"><span style="color:#94a3b8; font-size:0.85em;">Delta</span><br><b style="font-size:1.4em; color:{color};">{delta_s}%</b></div>
-                        </div>
-                        <div style="margin-bottom:12px; font-size: 1.1em;"><b>⚔️ Teilnahmen:</b> <span style="float:right; color:#e2e8f0;">{p['teilnahme']}</span></div>
-                        <div style="margin-bottom:12px; font-size: 1.1em;"><b>🎖️ Ø Punkte/Deck:</b> <span style="float:right; color:#e2e8f0;">{p['fame_per_deck']} {p['leecher_warnung']}</span></div>
-                        <div style="margin-bottom:12px; font-size: 1.1em;"><b>🃏 Spenden gesendet:</b> <span style="float:right; color:#10b981; font-weight:bold;">{p['donations']}</span></div>
-                        <div style="margin-bottom:12px; font-size: 1.1em;"><b>📭 Spenden erhalten:</b> <span style="float:right; color:#ef4444; font-weight:bold;">{p['donations_received']}</span></div>
-                        <div style="margin-top:20px; text-align:center; font-size: 1.5em;">{p['streak_badge']} {p['strike_badge']}</div>
-                    </div>
-                </div>
-                """
+                table_html += f"<tr><td class='name-col'>{p['name']}{neu_badge}{p['streak_badge']}{p['strike_badge']}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
 
             table_html += "</tbody></table></div>"
 
@@ -721,15 +692,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             td {{ border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-size: 1.05em; }}
             
             .badge-ja {{ background-color: #10b981; color: #ffffff; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 0.8em; margin-left: 8px; }}
-            .name-col {{ font-weight: 800; color: #ffffff; cursor: pointer; transition: color 0.2s; }}
-            .name-col:hover {{ color: #38bdf8; text-decoration: underline; text-decoration-style: dotted; }}
-            
-            .modal-overlay {{ display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(3px); }}
-            .modal-content {{ background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95)); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px; width: 90%; max-width: 350px; padding: 25px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.5); animation: scaleUp 0.3s ease; color: #f8fafc; }}
-            .modal-close {{ position: absolute; top: 15px; right: 15px; background: transparent; border: none; color: #94a3b8; font-size: 1.2em; cursor: pointer; transition: 0.2s; }}
-            .modal-close:hover {{ color: #ef4444; }}
-            .modal-header {{ text-align: center; margin-bottom: 20px; }}
-            @keyframes scaleUp {{ from {{ transform: scale(0.9); opacity: 0; }} to {{ transform: scale(1); opacity: 1; }} }}
+            .name-col {{ font-weight: 800; color: #ffffff; }}
             
             .trend-cell {{ font-size: 16px !important; white-space: nowrap; line-height: 1; }}
             
@@ -847,7 +810,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 </div>
                 
                 <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; margin-bottom: 30px; color: #ffffff;">📋 Detail-Auswertung</h2>
-                <p style="text-align: center; color: #94a3b8; margin-top: -20px; margin-bottom: 25px;">💡 Tippe auf einen <b>Spielernamen</b>, um seine digitale Visitenkarte zu öffnen!</p>
                 {table_html}
             </div>
 
@@ -1001,17 +963,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
         </div>
 
-        {modals_html}
-
         <script>
-            // Visitenkarten öffnen und schließen
-            function openModal(id) {{
-                document.getElementById(id).style.display = 'flex';
-            }}
-            function closeModal(id) {{
-                document.getElementById(id).style.display = 'none';
-            }}
-
             function unlockChat() {{
                 var pin = prompt("Admin-Bereich. Bitte PIN eingeben:");
                 if(pin === "vize") {{
