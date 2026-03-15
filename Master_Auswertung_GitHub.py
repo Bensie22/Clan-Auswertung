@@ -428,7 +428,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         </div>
         """
 
-    # HIER FEHLTE DIE DEKLARATION:
     tiers = ["🌟 Elite (95-100%)", "✅ Solides Mittelfeld (80-94%)", "⚠️ Unter Beobachtung (50-79%)", "🚫 Kritisch (< 50%)", "🏖️ Im Urlaub (Pausiert)"]
 
     # HTML für die Tabelle generieren
@@ -549,13 +548,13 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     <body>
         <div class="container">
             <div class="header-container">
-                <h1 class="header-title">📊 Clan-Auswertung: {CLAN_NAME} <br><span class="header-date">{heute_datum}</span></h1>
+                <h1 class="header-title"><span onclick="unlockChat()" style="cursor: pointer;" title="Nur für die Clan-Führung">📊</span> Clan-Auswertung: {CLAN_NAME} <br><span class="header-date">{heute_datum}</span></h1>
             </div>
             
             <div class="tab-container">
-                <button class="tab-btn active" onclick="openTab(event, 'Overview')">🏠 Übersicht & Chat</button>
-                <button class="tab-btn" onclick="openTab(event, 'Table')">📋 Spielerliste</button>
-                <button class="tab-btn" onclick="openTab(event, 'Wiki')">📖 Clan-Wiki</button>
+                <button class="tab-btn active" onclick="openTab(event, 'Overview')">🏠 Übersicht</button>
+                <button class="tab-btn" onclick="openTab(event, 'Table')">📋 Detail-Auswertung</button>
+                <button class="tab-btn" onclick="openTab(event, 'Wiki')">📖 Regeln & System</button>
             </div>
 
             <div id="Overview" class="tab-content active">
@@ -607,21 +606,35 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                         <ul>{''.join([f"<li><b>{p['name']}</b> ({p['donations']} gesp. / {p['donations_received']} empf.)</li>" for p in top_leecher]) if top_leecher else "<li>Keine Leecher! 🎉</li>"}</ul>
                     </div>
                     
-                    <div class="card messenger">
-                        <h3 style="color: #f1c40f; margin-bottom: 10px;">🎮 Clash Royale In-Game Chat ({total_msgs}-Teiler)</h3>
-                        <p style="font-size: 0.9em; color: #cbd5e1; margin-top: 0; margin-bottom: 15px;">Wähle oben im Menü den passenden Tonfall. Kopiere dann die {total_msgs} Texte nacheinander in den Chat.</p>
-                        {chat_boxes_html}
+                    <div id="admin-chat-container" style="display: none; width: 100%;">
+                        <div class="card messenger">
+                            <h3 style="color: #f1c40f; margin-bottom: 10px;">🎮 Admin-Tool: In-Game Chat ({total_msgs}-Teiler)</h3>
+                            <p style="font-size: 0.9em; color: #cbd5e1; margin-top: 0; margin-bottom: 15px;">Wähle oben im Menü den passenden Tonfall. Kopiere dann die {total_msgs} Texte nacheinander in den Chat.</p>
+                            {chat_boxes_html}
+                        </div>
                     </div>
-                </div>
+                    </div>
             </div>
 
             <div id="Table" class="tab-content">
-                <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; color: #ffffff;">📋 Detaillierte Spielerliste</h2>
+                <div style="background: rgba(30, 41, 59, 0.8); padding: 20px; border-radius: 8px; margin-bottom: 25px; font-size: 0.95em; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                    <h4 style="margin-top: 0; color: #38bdf8; margin-bottom: 15px;">📌 Schnelle Symbol-Legende:</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 15px; color: #cbd5e1;">
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>🌱 Welpenschutz:</b> Neu im Clan (geschützt)</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>❌ 1/3:</b> Verwarnungen (bei 3/3 droht Kick)</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>🧛 Vampir:</b> Nimmt Spenden, gibt aber 0</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>💤 Schläfer:</b> Spendet 0, fordert 0</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>⚠️ Ø Punkte:</b> Verdacht auf Dropping (<115)</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>🔥 Streak:</b> Mehrere Wochen 100% Score</div>
+                    </div>
+                </div>
+                
+                <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; color: #ffffff;">📋 Detail-Auswertung</h2>
                 {table_html}
             </div>
 
             <div id="Wiki" class="tab-content">
-                <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; margin-bottom: 30px; color: #8b5cf6;">📖 Clan-Wiki: Wie lesen sich diese Zahlen?</h2>
+                <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; margin-bottom: 30px; color: #8b5cf6;">📖 Clan-Wiki: Regeln & System</h2>
                 
                 <button class="accordion-btn">📬 Die Montags-Auswertung per E-Mail</button>
                 <div class="accordion-content">
@@ -685,6 +698,17 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         </div>
 
         <script>
+            // Admin Chat Freischaltung
+            function unlockChat() {{
+                var pin = prompt("Admin-Bereich. Bitte PIN eingeben:");
+                if(pin === "vize") {{
+                    document.getElementById("admin-chat-container").style.display = "block";
+                    alert("Chat-Generator erfolgreich freigeschaltet!");
+                }} else if(pin !== null) {{
+                    alert("Falsche PIN. Zugriff verweigert.");
+                }}
+            }}
+
             // Tab Logik
             function openTab(evt, tabName) {{
                 var i, tabcontent, tablinks;
@@ -703,16 +727,22 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 window.scrollTo({{top: 0, behavior: 'smooth'}});
             }}
 
-            // Accordion Logik
+            // Auto-Close Accordion Logik
             var acc = document.getElementsByClassName("accordion-btn");
             for (var i = 0; i < acc.length; i++) {{
                 acc[i].addEventListener("click", function() {{
-                    this.classList.toggle("active");
-                    var panel = this.nextElementSibling;
-                    if (panel.style.maxHeight) {{
-                        panel.style.maxHeight = null;
-                    }} else {{
-                        panel.style.maxHeight = panel.scrollHeight + "px";
+                    var isActive = this.classList.contains("active");
+                    
+                    // Zuerst ALLE anderen schließen
+                    for (var j = 0; j < acc.length; j++) {{
+                        acc[j].classList.remove("active");
+                        acc[j].nextElementSibling.style.maxHeight = null;
+                    }}
+                    
+                    // Dann nur das aktuelle öffnen (wenn es vorher zu war)
+                    if (!isActive) {{
+                        this.classList.add("active");
+                        this.nextElementSibling.style.maxHeight = this.nextElementSibling.scrollHeight + "px";
                     }}
                 }});
             }}
@@ -885,4 +915,4 @@ if __name__ == "__main__":
     except Exception as err:
         print("\n❌ EIN KRITISCHER FEHLER IST AUFGETRETEN:")
         traceback.print_exc()
-        sys.exit(1) 
+        sys.exit(1)
