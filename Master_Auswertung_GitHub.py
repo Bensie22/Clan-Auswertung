@@ -432,7 +432,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     mahnwache_html = ""
     ist_kampftag = datetime.utcnow().weekday() in [3, 4, 5, 6]
     
-    # Hype-Balken Logik (Tagesziel)
     total_active_players = len(aktive_spieler)
     total_decks_today = total_active_players * 4
     total_open_decks = 0
@@ -451,7 +450,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         else:
             mahnwache_html = f"<div class='info-box' style='border-left-color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #10b981; margin-bottom: 0;'>✅ Alle aktiven Spieler haben ihre Decks für heute gespielt!</h4></div>"
 
-        # Hype-Balken rendern
         played_decks_today = total_decks_today - total_open_decks
         hype_percentage = int((played_decks_today / total_decks_today) * 100) if total_decks_today > 0 else 0
         hype_color = "#ef4444" if hype_percentage < 50 else "#fbbf24" if hype_percentage < 90 else "#10b981"
@@ -563,8 +561,17 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             
             archetype = get_deck_archetype(d["cards"])
             
+            # Die magischen 8 Karten-IDs
             deck_ids_str = ";".join([str(c["id"]) for c in d["cards"]])
-            copy_link = f"https://link.clashroyale.com/deck/en?deck={deck_ids_str}"
+            
+            # --- DER LÖSUNGS-CODE FÜR DEN DECK-LINK ---
+            # 1. Nativer Link: Umgeht die Supercell-Website und öffnet direkt die App (Handy)
+            mobile_copy_link = f"clashroyale://copyDeck?deck={deck_ids_str}"
+            
+            # 2. PC-Fallback: Generiert einen sauberen RoyaleAPI-Link 
+            api_names = [c["name"].lower().replace(".", "").replace(" ", "-") for c in d["cards"]]
+            royaleapi_link = f"https://royaleapi.com/decks/stats/{','.join(api_names)}"
+            # -------------------------------------------
             
             images_html = "".join([f"<img src='{c['icon']}' style='width: 23%; border-radius: 4px; margin: 1%;' title='{c['name']}'>" for c in d["cards"]])
             
@@ -579,8 +586,9 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                     {images_html}
                 </div>
                 <p style="font-size: 0.85em; color: #94a3b8; margin: 10px 0;">Oft gewonnen von:<br><span style="color:#e2e8f0; font-weight:bold;">{players_str}</span></p>
-                <div style="margin-top: auto;">
-                    <a href="{copy_link}" class="copy-btn" target="_blank">⚔️ Deck ins Spiel kopieren</a>
+                <div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px;">
+                    <a href="{mobile_copy_link}" class="copy-btn" style="background: #38bdf8; color: #0f172a;">📱 Ins Spiel kopieren</a>
+                    <a href="{royaleapi_link}" class="copy-btn" style="background: #475569; color: #f8fafc;" target="_blank">💻 Auf RoyaleAPI ansehen</a>
                 </div>
             </div>
             """
@@ -588,7 +596,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     tiers = ["🌟 Elite (95-100%)", "✅ Solides Mittelfeld (80-94%)", "⚠️ Unter Beobachtung (50-79%)", "🚫 Kritisch (< 50%)", "🏖️ Im Urlaub (Pausiert)"]
 
     table_html = ""
-    modals_html = "" # NEU: Hier sammeln wir die Visitenkarten!
+    modals_html = "" 
     
     for t in tiers:
         players_in_tier = sorted([p for p in player_stats if p["tier"] == t], key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]), reverse=True)
@@ -626,10 +634,8 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 
                 safe_id = "".join([c if c.isalnum() else "_" for c in p['name']])
                 
-                # Der Name bekommt jetzt den Klick für die Visitenkarte!
                 table_html += f"<tr><td class='name-col' onclick=\"openModal('modal_{safe_id}')\" title='Klicke für Visitenkarte'>🔍 {p['name']}{neu_badge}{p['streak_badge']}{p['strike_badge']}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
                 
-                # HIER WIRD DIE DIGITALE VISITENKARTE GEBAUT
                 modals_html += f"""
                 <div id="modal_{safe_id}" class="modal-overlay" onclick="closeModal('modal_{safe_id}')">
                     <div class="modal-content" onclick="event.stopPropagation()">
@@ -709,8 +715,8 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .deck-header {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }}
             .winrate {{ background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 4px 8px; border-radius: 6px; font-weight: bold; font-size: 0.85em; margin-left: auto; }}
             .deck-images {{ display: flex; flex-wrap: wrap; justify-content: center; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }}
-            .copy-btn {{ display: block; text-align: center; background: #38bdf8; color: #0f172a; text-decoration: none; padding: 10px; border-radius: 8px; font-weight: bold; margin-top: 15px; transition: 0.2s; }}
-            .copy-btn:hover {{ background: #0284c7; color: #fff; }}
+            .copy-btn {{ display: block; text-align: center; text-decoration: none; padding: 10px; border-radius: 8px; font-weight: bold; margin-top: 8px; transition: 0.2s; border: 1px solid rgba(255,255,255,0.1); }}
+            .copy-btn:hover {{ opacity: 0.8; }}
 
             .tier-section {{ position: relative; }}
             .tier-title {{ position: sticky; top: 73px; background: rgba(15, 23, 42, 0.98); z-index: 900; margin: 0; padding: 15px 0 10px 0; font-weight: 800; font-size: 1.4em; color: #fbbf24; border-bottom: 2px solid rgba(255,255,255,0.1); }}
@@ -723,11 +729,10 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             th {{ position: sticky; top: 128px; background-color: #0f172a; color: #94a3b8; z-index: 800; font-weight: 600; font-size: 0.9em; border-bottom: 1px solid rgba(255,255,255,0.1); line-height: 1.4; box-shadow: 0 4px 5px rgba(0,0,0,0.3); }}
             td {{ border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-size: 1.05em; }}
             
-            /* NEU: Visitenkarten-Klick Styling */
+            .badge-ja {{ background-color: #10b981; color: #ffffff; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 0.8em; margin-left: 8px; }}
             .name-col {{ font-weight: 800; color: #ffffff; cursor: pointer; transition: color 0.2s; }}
             .name-col:hover {{ color: #38bdf8; text-decoration: underline; text-decoration-style: dotted; }}
             
-            /* NEU: Visitenkarten Modal Design */
             .modal-overlay {{ display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(3px); }}
             .modal-content {{ background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95)); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px; width: 90%; max-width: 350px; padding: 25px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.5); animation: scaleUp 0.3s ease; color: #f8fafc; }}
             .modal-close {{ position: absolute; top: 15px; right: 15px; background: transparent; border: none; color: #94a3b8; font-size: 1.2em; cursor: pointer; transition: 0.2s; }}
@@ -1241,4 +1246,4 @@ if __name__ == "__main__":
     except Exception as err:
         print("\n❌ EIN KRITISCHER FEHLER IST AUFGETRETEN:")
         traceback.print_exc()
-        sys.exit(1)
+        sys.exit(1) 
