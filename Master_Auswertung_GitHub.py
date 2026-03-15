@@ -430,13 +430,16 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
     tiers = ["🌟 Elite (95-100%)", "✅ Solides Mittelfeld (80-94%)", "⚠️ Unter Beobachtung (50-79%)", "🚫 Kritisch (< 50%)", "🏖️ Im Urlaub (Pausiert)"]
 
-    # HTML für die Haupt-Tabelle generieren
+    # HTML für die Haupt-Tabelle generieren (Mit Sticky Headings)
     table_html = ""
     for t in tiers:
         players_in_tier = sorted([p for p in player_stats if p["tier"] == t], key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]), reverse=True)
         if players_in_tier:
+            # Jedes Tier wird in eine eigene Section gepackt
+            table_html += f"<div class='tier-section'>"
             table_html += f"<div class='tier-title'>{t}</div>"
             table_html += """<table>
+                <thead>
                 <tr>
                     <th>Spieler</th>
                     <th>Status</th>
@@ -447,7 +450,9 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                     <th>🃏 Spenden</th>
                     <th>Teilnahmen</th>
                     <th>Kriegspunkte</th>
-                </tr>"""
+                </tr>
+                </thead>
+                <tbody>"""
             for p in players_in_tier:
                 delta_s = f"+{p['delta']}" if p['delta']>0 else f"{p['delta']}"
                 color = "#10b981" if p['delta'] > 0 else "#ef4444" if p['delta'] < 0 else "#94a3b8"
@@ -463,7 +468,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 spenden_zelle = f"<span class='custom-tooltip dotted'>{p['donations']}<span class='tooltip-text'>Gespendet: {p['donations']} | Empfangen: {p['donations_received']}</span></span>"
                 
                 table_html += f"<tr><td class='name-col'>{p['name']}{neu_badge}{p['streak_badge']}{p['strike_badge']}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
-            table_html += "</table>"
+            table_html += "</tbody></table></div>"
 
     # Neues Master-Layout zusammenbauen
     html = f"""
@@ -481,7 +486,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .header-date {{ font-weight: 400; font-size: 0.45em; color: #cbd5e1; display: block; margin-top: 10px; letter-spacing: 0px; }}
             
             /* App-ähnliche Navigation (Tabs) */
-            .tab-container {{ display: flex; gap: 10px; margin-bottom: 30px; border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 15px; position: sticky; top: 0; background: rgba(15, 23, 42, 0.95); z-index: 1000; padding-top: 15px; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }}
+            .tab-container {{ display: flex; gap: 10px; margin-bottom: 30px; border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 15px; position: sticky; top: -1px; background: rgba(15, 23, 42, 0.98); z-index: 1000; padding-top: 15px; overflow-x: auto; white-space: nowrap; scrollbar-width: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }}
             .tab-container::-webkit-scrollbar {{ display: none; }}
             .tab-btn {{ flex: 1; background: rgba(30, 41, 59, 0.8); color: #94a3b8; border: 1px solid rgba(255,255,255,0.1); padding: 14px 20px; border-radius: 8px; font-weight: 600; font-size: 1.05em; cursor: pointer; transition: all 0.2s ease; font-family: inherit; min-width: max-content; }}
             .tab-btn:hover {{ background: rgba(56, 189, 248, 0.2); color: #fff; }}
@@ -513,22 +518,27 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .card h1 {{ font-weight: 800; font-size: 2.5em; margin: 10px 0; color: #38bdf8; }}
             .card ul {{ margin: 0; padding-left: 20px; font-size: 1.05em; line-height: 1.6; color: #f1f5f9; }}
             
-            /* Tables */
-            .tier-title {{ font-weight: 800; font-size: 1.4em; color: #fbbf24; margin-top: 20px; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; }}
+            /* Sticky Table Setup */
+            .tier-section {{ position: relative; }}
+            .tier-title {{ position: sticky; top: 73px; background: rgba(15, 23, 42, 0.98); z-index: 900; margin: 0; padding: 15px 0 10px 0; font-weight: 800; font-size: 1.4em; color: #fbbf24; border-bottom: 2px solid rgba(255,255,255,0.1); }}
             table {{ width: 100%; table-layout: fixed; border-collapse: collapse; background: rgba(15, 23, 42, 0.9); border-radius: 8px; margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.1); }}
             th:nth-child(1) {{ width: 20%; }} th:nth-child(2) {{ width: 14%; }} th:nth-child(3) {{ width: 8%; text-align: center; }} th:nth-child(4) {{ width: 12%; }} th:nth-child(5) {{ width: 8%; text-align: center; }} th:nth-child(6) {{ width: 10%; text-align: center; }} th:nth-child(7) {{ width: 10%; text-align: center; }} th:nth-child(8) {{ width: 9%; text-align: center; }} th:nth-child(9) {{ width: 9%; text-align: center; }}
             tr:nth-child(odd) {{ background-color: rgba(0, 0, 0, 0.45); }} tr:nth-child(even) {{ background-color: rgba(255, 255, 255, 0.15); }} tr:hover {{ background-color: rgba(255, 255, 255, 0.3); }}
             th, td {{ padding: 14px 10px; text-align: left; word-wrap: break-word; overflow-wrap: break-word; vertical-align: middle; }}
             td:nth-child(3), td:nth-child(5), td:nth-child(6), td:nth-child(7), td:nth-child(8), td:nth-child(9) {{ text-align: center; }}
-            th {{ background-color: rgba(0, 0, 0, 0.6); font-weight: 600; font-size: 0.9em; color: #94a3b8; border-bottom: 1px solid rgba(255,255,255,0.1); line-height: 1.4; }}
+            
+            /* Sticky Header Row */
+            th {{ position: sticky; top: 128px; background-color: #0f172a; color: #94a3b8; z-index: 800; font-weight: 600; font-size: 0.9em; border-bottom: 1px solid rgba(255,255,255,0.1); line-height: 1.4; box-shadow: 0 4px 5px rgba(0,0,0,0.3); }}
             td {{ border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-size: 1.05em; }}
+            
             .badge-ja {{ background-color: #10b981; color: #ffffff; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 0.8em; margin-left: 8px; }}
             .name-col {{ font-weight: 800; color: #ffffff; }}
             .trend-cell {{ font-size: 16px !important; white-space: nowrap; line-height: 1; }}
             
-            /* Mini-Tabellen für das Wiki */
+            /* Mini-Tabellen für das Wiki (Nicht sticky) */
             .wiki-table {{ width: 100%; table-layout: fixed; border-collapse: collapse; background: rgba(0, 0, 0, 0.3); border-radius: 8px; margin: 15px 0; border: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.85em; }}
-            .wiki-table th, .wiki-table td {{ padding: 8px 5px; }}
+            .wiki-table th {{ position: static; box-shadow: none; background-color: rgba(0,0,0,0.6); }}
+            .wiki-table th, .wiki-table td {{ padding: 8px 5px; border-bottom: 1px solid rgba(255,255,255,0.05); }}
             .wiki-table tr:nth-child(odd) {{ background-color: transparent; }}
             .wiki-table tr:nth-child(even) {{ background-color: rgba(255, 255, 255, 0.05); }}
             
@@ -542,7 +552,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .custom-tooltip:hover .tooltip-text {{ visibility: visible; opacity: 1; }}
             
             /* Accordion für das Wiki */
-            .accordion-btn {{ background: rgba(30, 41, 59, 0.9); color: #cbd5e1; cursor: pointer; padding: 18px 25px; width: 100%; border: none; text-align: left; outline: none; font-size: 1.1em; font-weight: 600; border-radius: 8px; margin-bottom: 8px; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.05); font-family: inherit; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }}
+            .accordion-btn {{ background: rgba(30, 41, 59, 0.9); color: #cbd5e1; cursor: pointer; padding: 18px 25px; width: 100%; border: none; text-align: left; outline: none; font-size: 1.1em; font-weight: 600; border-radius: 8px; margin-bottom: 8px; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.05); font-family: inherit; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); scroll-margin-top: 80px; }}
             .accordion-btn.active, .accordion-btn:hover {{ background: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.3); color: #fff; }}
             .accordion-btn::after {{ content: '+'; font-size: 1.5em; color: #38bdf8; font-weight: bold; transition: 0.3s; }}
             .accordion-btn.active::after {{ content: '−'; transform: rotate(180deg); }}
@@ -619,7 +629,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                             {chat_boxes_html}
                         </div>
                     </div>
-                </div>
+                    </div>
             </div>
 
             <div id="Table" class="tab-content">
@@ -635,7 +645,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                     </div>
                 </div>
                 
-                <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; color: #ffffff;">📋 Detail-Auswertung</h2>
+                <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; margin-bottom: 30px; color: #ffffff;">📋 Detail-Auswertung</h2>
                 {table_html}
             </div>
 
@@ -658,13 +668,13 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
-                            <tr><td class='name-col'>bequemo <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td>Ältester</td><td><b>49.38%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>179</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>303</span></td><td>10/10</td><td>1250</td></tr>
-                            <tr><td class='name-col'>Amin <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td>Mitglied</td><td><b>34.38%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>100 ⚠️</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> 💤</td><td>4/10</td><td>800</td></tr>
+                            <tr><td class='name-col'>Spieler A <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td>Ältester</td><td><b>49.38%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>179</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>303</span></td><td>10/10</td><td>1250</td></tr>
+                            <tr><td class='name-col'>Spieler B <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td>Mitglied</td><td><b>34.38%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>100 ⚠️</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> 💤</td><td>4/10</td><td>800</td></tr>
                         </table>
                     </div>
                     <ul>
-                        <li><b>Die zweite Chance (Degradierung):</b> Wenn ein <i>Ältester</i> oder <i>Vize</i> (wie <b>bequemo</b> oben) 3 Verwarnungen ansammelt, wird er nicht sofort gekickt. Er wird zur Strafe zum <b>Mitglied degradiert</b> und erhält so eine letzte Bewährungschance.</li>
-                        <li><b>Der Rauswurf (Kick):</b> Wenn ein normales <i>Mitglied</i> (wie <b>Amin</b> oben) 3 Verwarnungen erreicht, trennen wir uns. So machen wir Platz für neue, aktive Spieler.</li>
+                        <li><b>Die zweite Chance (Degradierung):</b> Wenn ein <i>Ältester</i> oder <i>Vize</i> (wie <b>Spieler A</b> oben) 3 Verwarnungen ansammelt, wird er nicht sofort gekickt. Er wird zur Strafe zum <b>Mitglied degradiert</b> und erhält so eine letzte Bewährungschance.</li>
+                        <li><b>Der Rauswurf (Kick):</b> Wenn ein normales <i>Mitglied</i> (wie <b>Spieler B</b> oben) 3 Verwarnungen erreicht, trennen wir uns. So machen wir Platz für neue, aktive Spieler.</li>
                         <li><b>Das Konto ausgleichen:</b> Wer nach einer Verwarnung wieder anzieht und in der Folgewoche über 50% Score holt, baut seine negativen Einträge automatisch wieder ab!</li>
                     </ul>
                 </div>
@@ -676,23 +686,32 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
-                            <tr><td class='name-col'>Dolphin <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥 4</span></td><td>Vize</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>131</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>146</span></td><td>10/10</td><td>2100</td></tr>
-                            <tr><td class='name-col'>mojede <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td>Mitglied</td><td><b>6.25%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>200</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span></td><td>2/10</td><td>200</td></tr>
+                            <tr><td class='name-col'>Spieler C <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥 4</span></td><td>Vize</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>131</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>146</span></td><td>10/10</td><td>2100</td></tr>
+                            <tr><td class='name-col'>Spieler D <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td>Mitglied</td><td><b>6.25%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>200</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span></td><td>2/10</td><td>200</td></tr>
                         </table>
                     </div>
                     <ul>
-                        <li><b>100% (Der Streak 🔥):</b> Perfekt! Du hast keinen einzigen Angriff verpasst. Schaffst du das über mehrere Wochen in Folge, erhältst du das Flammen-Symbol (wie <b>Dolphin</b> oben mit 4 Wochen am Stück!).</li>
+                        <li><b>100% (Der Streak 🔥):</b> Perfekt! Du hast keinen einzigen Angriff verpasst. Schaffst du das über mehrere Wochen in Folge, erhältst du das Flammen-Symbol (wie <b>Spieler C</b> oben mit 4 Wochen am Stück!).</li>
                         <li><b>50%:</b> Du hast nur die Hälfte deiner möglichen Angriffe gemacht.</li>
-                        <li><b>Welpenschutz (🌱):</b> Wenn du neu im Clan bist (wie <b>mojede</b> oben), fangen wir fair an. Du wirst nur an den Kriegen gemessen, bei denen du auch wirklich schon im Clan warst und bist vorerst vor Strafen geschützt.</li>
+                        <li><b>Welpenschutz (🌱):</b> Wenn du neu im Clan bist (wie <b>Spieler D</b> oben), fangen wir fair an. Du wirst nur an den Kriegen gemessen, bei denen du auch wirklich schon im Clan warst und bist vorerst vor Strafen geschützt.</li>
                     </ul>
                 </div>
 
                 <button class="accordion-btn">📈 Das Delta (Deine Formkurve)</button>
                 <div class="accordion-content">
                     <p>Das Delta ist wie beim Sport deine aktuelle Formkurve. Es vergleicht deine Leistung von heute mit deiner Leistung aus der letzten Auswertung.</p>
+                    <div style="overflow-x:auto;">
+                        <table class="wiki-table">
+                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
+                            <tr><td class='name-col'>Spieler E</td><td>Mitglied</td><td><b>85.0%</b></td><td class='trend-cell'>🟢🟢🟡🔴</td><td style='color:#10b981; font-weight:bold;'>+12.0%</td><td style='color:#cbd5e1;'>180</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>150</span></td><td>8/10</td><td>1400</td></tr>
+                            <tr><td class='name-col'>Spieler F</td><td>Ältester</td><td><b>60.0%</b></td><td class='trend-cell'>🟡🔴🟢🟢</td><td style='color:#ef4444; font-weight:bold;'>-5.0%</td><td style='color:#cbd5e1;'>160</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>200</span></td><td>6/10</td><td>900</td></tr>
+                            <tr><td class='name-col'>Spieler G</td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>205</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>350</span></td><td>10/10</td><td>2050</td></tr>
+                        </table>
+                    </div>
                     <ul>
-                        <li><b style="color: #10b981;">Grüne Zahl (z.B. +12%):</b> Super! Du hast dich im Vergleich zur letzten Woche gesteigert und warst aktiver.</li>
-                        <li><b style="color: #ef4444;">Rote Zahl (z.B. -5%):</b> Du hast diese Woche etwas nachgelassen.</li>
+                        <li><b style="color: #10b981;">Grüne Zahl (z.B. +12.0%):</b> Super! Du hast dich im Vergleich zur letzten Woche gesteigert und warst aktiver (siehe <b>Spieler E</b>).</li>
+                        <li><b style="color: #ef4444;">Rote Zahl (z.B. -5.0%):</b> Du hast diese Woche etwas nachgelassen und weniger Angriffe gemacht als zuletzt (siehe <b>Spieler F</b>).</li>
+                        <li><b style="color: #94a3b8;">Graue Null (0.0%):</b> Deine Leistung ist exakt konstant geblieben (siehe <b>Spieler G</b>).</li>
                     </ul>
                 </div>
 
@@ -702,12 +721,12 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
-                            <tr><td class='name-col'>gang <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td>Ältester</td><td><b>27.34%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>100 <span class='custom-tooltip'>⚠️</span></td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>72</span></td><td>8/10</td><td>100</td></tr>
+                            <tr><td class='name-col'>Spieler H <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td>Ältester</td><td><b>27.34%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>100 <span class='custom-tooltip'>⚠️</span></td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>72</span></td><td>8/10</td><td>100</td></tr>
                         </table>
                     </div>
                     <ul>
                         <li><b>Normalwert:</b> Selbst wenn du verlierst, bekommst du in normalen Kämpfen mindestens 115 Punkte. Ein Sieg bringt deutlich mehr.</li>
-                        <li><b>⚠️ Die Warnung (< 115 Punkte):</b> Wenn dein Durchschnitt unter 115 fällt (wie bei <b>gang</b> oben), schlägt das System Alarm. Das passiert nur, wenn jemand oft feindliche Boote angreift (bringt sehr wenig Punkte für den Clan) oder absichtlich Kämpfe sofort aufgibt, um schnell fertig zu werden.</li>
+                        <li><b>⚠️ Die Warnung (< 115 Punkte):</b> Wenn dein Durchschnitt unter 115 fällt (wie bei <b>Spieler H</b> oben), schlägt das System Alarm. Das passiert nur, wenn jemand oft feindliche Boote angreift (bringt sehr wenig Punkte für den Clan) oder absichtlich Kämpfe sofort aufgibt, um schnell fertig zu werden.</li>
                     </ul>
                 </div>
 
@@ -717,13 +736,21 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
-                            <tr><td class='name-col'>Vampir_Beispiel</td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>200</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>🧛</span></td><td>10/10</td><td>2000</td></tr>
-                            <tr><td class='name-col'>Schläfer_Beispiel</td><td>Mitglied</td><td><b>50.0%</b></td><td class='trend-cell'>🟡🟡🟡🟡</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>150</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>💤</span></td><td>5/10</td><td>1000</td></tr>
+                            <tr><td class='name-col'>Spieler I</td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>200</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>🧛</span></td><td>10/10</td><td>2000</td></tr>
+                            <tr><td class='name-col'>Spieler J</td><td>Mitglied</td><td><b>50.0%</b></td><td class='trend-cell'>🟡🟡🟡🟡</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>150</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>💤</span></td><td>5/10</td><td>1000</td></tr>
                         </table>
                     </div>
                     <ul>
-                        <li><b>🧛 Der Vampir-Leecher:</b> Jemand, der ständig Karten anfordert und im Chat abkassiert, aber selbst absolut <b>0</b> Karten an andere spendet. Das ist unfaires Teamplay.</li>
-                        <li><b>💤 Der Schläfer:</b> Jemand, der weder spendet noch etwas anfordert. Hier geht dem Clan zwar nichts verloren, aber die Person beteiligt sich gar nicht am Clan-Leben.</li>
+                        <li><b>🧛 Der Vampir-Leecher:</b> Jemand (wie <b>Spieler I</b>), der ständig Karten anfordert und im Chat abkassiert, aber selbst absolut <b>0</b> Karten an andere spendet. Das ist unfaires Teamplay.</li>
+                        <li><b>💤 Der Schläfer:</b> Jemand (wie <b>Spieler J</b>), der weder spendet noch etwas anfordert. Hier geht dem Clan zwar nichts verloren, aber die Person beteiligt sich gar nicht am Clan-Leben.</li>
+                    </ul>
+                </div>
+                
+                <button class="accordion-btn">📊 Der Clan-Durchschnitt</button>
+                <div class="accordion-content">
+                    <p>Das ist quasi der "Notendurchschnitt" unserer Klasse. Wir addieren alle Scores und teilen sie durch die Anzahl der Mitglieder.</p>
+                    <ul>
+                        <li><b>Die Urlaubs-Regel:</b> Wenn jemand offiziell im Urlaub (🏖️) ist und pausiert, wird er aus dieser Rechnung komplett herausgenommen. So zieht jemand, der am Strand liegt, unseren Clan-Durchschnitt nicht ungerechtfertigt nach unten!</li>
                     </ul>
                 </div>
             </div>
@@ -770,6 +797,10 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                     
                     if (!isActive) {{
                         this.classList.add("active");
+                        // Timeout allows the smooth scroll to happen after expansion
+                        setTimeout(() => {{
+                            this.scrollIntoView({{behavior: "smooth", block: "start"}});
+                        }}, 300);
                         this.nextElementSibling.style.maxHeight = this.nextElementSibling.scrollHeight + "px";
                     }}
                 }});
