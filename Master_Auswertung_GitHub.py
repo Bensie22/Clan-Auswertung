@@ -523,7 +523,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
     deck_html = ""
     sorted_decks = sorted(top_decks_data.get("decks", {}).values(), key=lambda x: x["wins"], reverse=True)
-    # Erweitere das Limit auf Top 8 Decks für den horizontalen Slider!
     top_x_decks = [d for d in sorted_decks if d["wins"] > 0][:8]
     
     if not top_x_decks:
@@ -534,14 +533,12 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             winrate = int((d["wins"] / total_matches) * 100) if total_matches > 0 else 0
             players_str = ", ".join(d["players"][:3]) + ("..." if len(d["players"])>3 else "")
             
-            # Archetyp-Badge holen
             archetype = get_deck_archetype(d["cards"])
             
-            tag_list = d.get("tags", [])
-            player_tag_for_link = tag_list[0] if tag_list else "00000000"
-            
             deck_ids_str = ";".join([str(c["id"]) for c in d["cards"]])
-            copy_link = f"https://link.clashroyale.com/deck/en?deck={deck_ids_str}&id={player_tag_for_link}"
+            
+            # ABSOLUT SAUBERER LINK OHNE ID (Exakt wie RoyaleAPI ihn baut)
+            copy_link = f"https://link.clashroyale.com/deck/en?deck={deck_ids_str}"
             
             images_html = "".join([f"<img src='{c['icon']}' style='width: 23%; border-radius: 4px; margin: 1%;' title='{c['name']}'>" for c in d["cards"]])
             
@@ -615,11 +612,8 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .header-container {{ position: relative; background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('{header_img_src}') no-repeat center center; background-size: cover; border-radius: 12px; padding: 40px 20px; margin-top: 20px; margin-bottom: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }}
             .header-title {{ font-weight: 800; color: #ffffff; font-size: 2.2em; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.5); letter-spacing: 1px; }}
             .header-date {{ font-weight: 400; font-size: 0.45em; color: #cbd5e1; display: block; margin-top: 10px; letter-spacing: 0px; }}
-            
-            /* NEU: Größerer, dickerer Tipp für das Handy */
             .header-mobile-tip {{ display: block; font-size: 0.55em; color: #f8fafc; margin-top: 15px; font-weight: 800; letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }}
             
-            /* App-ähnliche Navigation (Tabs) */
             .tab-container {{ display: flex; gap: 10px; margin-bottom: 30px; border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 15px; position: sticky; top: -1px; background: rgba(15, 23, 42, 0.98); z-index: 1000; padding-top: 15px; overflow-x: auto; white-space: nowrap; scrollbar-width: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }}
             .tab-container::-webkit-scrollbar {{ display: none; }}
             .tab-btn {{ flex: 1; background: rgba(30, 41, 59, 0.8); color: #94a3b8; border: 1px solid rgba(255,255,255,0.1); padding: 14px 20px; border-radius: 8px; font-weight: 600; font-size: 1.05em; cursor: pointer; transition: all 0.2s ease; font-family: inherit; min-width: max-content; }}
@@ -650,7 +644,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .card h1 {{ font-weight: 800; font-size: 2.5em; margin: 10px 0; color: #38bdf8; }}
             .card ul {{ margin: 0; padding-left: 20px; font-size: 1.05em; line-height: 1.6; color: #f1f5f9; }}
             
-            /* NEU: Deck Slider & Deck Cards CSS */
             .deck-slider {{ display: flex; overflow-x: auto; gap: 20px; padding-bottom: 20px; scroll-snap-type: x mandatory; }}
             .deck-slider::-webkit-scrollbar {{ height: 8px; }}
             .deck-slider::-webkit-scrollbar-track {{ background: rgba(0,0,0,0.2); border-radius: 4px; }}
@@ -664,7 +657,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .copy-btn {{ display: block; text-align: center; background: #38bdf8; color: #0f172a; text-decoration: none; padding: 10px; border-radius: 8px; font-weight: bold; margin-top: 15px; transition: 0.2s; }}
             .copy-btn:hover {{ background: #0284c7; color: #fff; }}
 
-            /* Sticky Table Setup */
             .tier-section {{ position: relative; }}
             .tier-title {{ position: sticky; top: 73px; background: rgba(15, 23, 42, 0.98); z-index: 900; margin: 0; padding: 15px 0 10px 0; font-weight: 800; font-size: 1.4em; color: #fbbf24; border-bottom: 2px solid rgba(255,255,255,0.1); }}
             table {{ width: 100%; table-layout: fixed; border-collapse: collapse; background: rgba(15, 23, 42, 0.9); border-radius: 8px; margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.1); }}
@@ -1171,4 +1163,4 @@ if __name__ == "__main__":
     except Exception as err:
         print("\n❌ EIN KRITISCHER FEHLER IST AUFGETRETEN:")
         traceback.print_exc()
-        sys.exit(1) 
+        sys.exit(1)
