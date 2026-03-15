@@ -432,13 +432,41 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     mahnwache_html = ""
     ist_kampftag = datetime.utcnow().weekday() in [3, 4, 5, 6]
     
+    # Hype-Balken Logik (Tagesziel)
+    total_active_players = len(aktive_spieler)
+    total_decks_today = total_active_players * 4
+    total_open_decks = 0
+    hype_balken_html = ""
+    
     if ist_kampftag:
         aktive_namen = df_active["player_name"].tolist()
-        gefilterte_mahnwache = [f"<b>{m['name']}</b> ({m['offen']} offen)" for m in raw_mahnwache if m['name'] not in urlauber_liste and m['name'] in aktive_namen]
+        gefilterte_mahnwache = []
+        for m in raw_mahnwache:
+            if m['name'] not in urlauber_liste and m['name'] in aktive_namen:
+                gefilterte_mahnwache.append(f"<b>{m['name']}</b> ({m['offen']} offen)")
+                total_open_decks += m['offen']
+                
         if gefilterte_mahnwache:
             mahnwache_html = f"<div class='info-box' style='border-left-color: #ef4444; background: rgba(239, 68, 68, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #ef4444; margin-bottom: 8px;'>⏰ Mahnwache (Noch offene Decks heute):</h4><p style='margin: 0; font-size: 0.95em;'>{', '.join(gefilterte_mahnwache)}</p></div>"
         else:
             mahnwache_html = f"<div class='info-box' style='border-left-color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #10b981; margin-bottom: 0;'>✅ Alle aktiven Spieler haben ihre Decks für heute gespielt!</h4></div>"
+
+        # Hype-Balken rendern
+        played_decks_today = total_decks_today - total_open_decks
+        hype_percentage = int((played_decks_today / total_decks_today) * 100) if total_decks_today > 0 else 0
+        hype_color = "#ef4444" if hype_percentage < 50 else "#fbbf24" if hype_percentage < 90 else "#10b981"
+        
+        hype_balken_html = f"""
+        <div style='background: rgba(30, 41, 59, 0.8); border-radius: 12px; padding: 20px; margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 15px rgba(0,0,0,0.2);'>
+            <div style='display: flex; justify-content: space-between; margin-bottom: 10px; align-items: baseline;'>
+                <h3 style='margin: 0; color: #f8fafc; font-size: 1.1em;'>🎯 Tagesziel: Clan-Aktivität</h3>
+                <span style='font-weight: bold; color: {hype_color}; font-size: 1.1em;'>{played_decks_today} / {total_decks_today} Decks ({hype_percentage}%)</span>
+            </div>
+            <div style='background: rgba(0,0,0,0.5); border-radius: 8px; height: 14px; width: 100%; overflow: hidden;'>
+                <div style='background: {hype_color}; width: {hype_percentage}%; height: 100%; border-radius: 8px; transition: width 1s ease-in-out;'></div>
+            </div>
+        </div>
+        """
 
     cr_top_names = ", ".join([p['name'] for p in top_performers])
     top_spender_names = ", ".join([p['name'] for p in top_spender][:2])
@@ -536,8 +564,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             archetype = get_deck_archetype(d["cards"])
             
             deck_ids_str = ";".join([str(c["id"]) for c in d["cards"]])
-            
-            # ABSOLUT SAUBERER LINK OHNE ID (Exakt wie RoyaleAPI ihn baut)
             copy_link = f"https://link.clashroyale.com/deck/en?deck={deck_ids_str}"
             
             images_html = "".join([f"<img src='{c['icon']}' style='width: 23%; border-radius: 4px; margin: 1%;' title='{c['name']}'>" for c in d["cards"]])
@@ -562,6 +588,8 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     tiers = ["🌟 Elite (95-100%)", "✅ Solides Mittelfeld (80-94%)", "⚠️ Unter Beobachtung (50-79%)", "🚫 Kritisch (< 50%)", "🏖️ Im Urlaub (Pausiert)"]
 
     table_html = ""
+    modals_html = "" # NEU: Hier sammeln wir die Visitenkarten!
+    
     for t in tiers:
         players_in_tier = sorted([p for p in player_stats if p["tier"] == t], key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]), reverse=True)
         if players_in_tier:
@@ -596,7 +624,34 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 
                 spenden_zelle = f"<span class='custom-tooltip dotted'>{p['donations']}<span class='tooltip-text'>Gespendet: {p['donations']} | Empfangen: {p['donations_received']}</span></span>"
                 
-                table_html += f"<tr><td class='name-col'>{p['name']}{neu_badge}{p['streak_badge']}{p['strike_badge']}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
+                safe_id = "".join([c if c.isalnum() else "_" for c in p['name']])
+                
+                # Der Name bekommt jetzt den Klick für die Visitenkarte!
+                table_html += f"<tr><td class='name-col' onclick=\"openModal('modal_{safe_id}')\" title='Klicke für Visitenkarte'>🔍 {p['name']}{neu_badge}{p['streak_badge']}{p['strike_badge']}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
+                
+                # HIER WIRD DIE DIGITALE VISITENKARTE GEBAUT
+                modals_html += f"""
+                <div id="modal_{safe_id}" class="modal-overlay" onclick="closeModal('modal_{safe_id}')">
+                    <div class="modal-content" onclick="event.stopPropagation()">
+                        <button class="modal-close" onclick="closeModal('modal_{safe_id}')">✖</button>
+                        <div class="modal-header">
+                            <h2 style="margin:0; color:#38bdf8; font-size: 1.6em;">{p['name']}</h2>
+                            <span style="color:#94a3b8; font-size:1em; font-weight: bold;">{p['status']}</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; margin-bottom:20px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:15px; text-align:center;">
+                            <div style="flex:1;"><span style="color:#94a3b8; font-size:0.85em;">Score</span><br><b style="font-size:1.4em; color:#fff;">{p['score']}%</b></div>
+                            <div style="flex:1;"><span style="color:#94a3b8; font-size:0.85em;">Trend</span><br><span style="font-size:1.4em; letter-spacing:2px;">{p['trend_str']}</span></div>
+                            <div style="flex:1;"><span style="color:#94a3b8; font-size:0.85em;">Delta</span><br><b style="font-size:1.4em; color:{color};">{delta_s}%</b></div>
+                        </div>
+                        <div style="margin-bottom:12px; font-size: 1.1em;"><b>⚔️ Teilnahmen:</b> <span style="float:right; color:#e2e8f0;">{p['teilnahme']}</span></div>
+                        <div style="margin-bottom:12px; font-size: 1.1em;"><b>🎖️ Ø Punkte/Deck:</b> <span style="float:right; color:#e2e8f0;">{p['fame_per_deck']} {p['leecher_warnung']}</span></div>
+                        <div style="margin-bottom:12px; font-size: 1.1em;"><b>🃏 Spenden gesendet:</b> <span style="float:right; color:#10b981; font-weight:bold;">{p['donations']}</span></div>
+                        <div style="margin-bottom:12px; font-size: 1.1em;"><b>📭 Spenden erhalten:</b> <span style="float:right; color:#ef4444; font-weight:bold;">{p['donations_received']}</span></div>
+                        <div style="margin-top:20px; text-align:center; font-size: 1.5em;">{p['streak_badge']} {p['strike_badge']}</div>
+                    </div>
+                </div>
+                """
+
             table_html += "</tbody></table></div>"
 
     html = f"""
@@ -668,8 +723,18 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             th {{ position: sticky; top: 128px; background-color: #0f172a; color: #94a3b8; z-index: 800; font-weight: 600; font-size: 0.9em; border-bottom: 1px solid rgba(255,255,255,0.1); line-height: 1.4; box-shadow: 0 4px 5px rgba(0,0,0,0.3); }}
             td {{ border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-size: 1.05em; }}
             
-            .badge-ja {{ background-color: #10b981; color: #ffffff; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 0.8em; margin-left: 8px; }}
-            .name-col {{ font-weight: 800; color: #ffffff; }}
+            /* NEU: Visitenkarten-Klick Styling */
+            .name-col {{ font-weight: 800; color: #ffffff; cursor: pointer; transition: color 0.2s; }}
+            .name-col:hover {{ color: #38bdf8; text-decoration: underline; text-decoration-style: dotted; }}
+            
+            /* NEU: Visitenkarten Modal Design */
+            .modal-overlay {{ display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(3px); }}
+            .modal-content {{ background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95)); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px; width: 90%; max-width: 350px; padding: 25px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.5); animation: scaleUp 0.3s ease; color: #f8fafc; }}
+            .modal-close {{ position: absolute; top: 15px; right: 15px; background: transparent; border: none; color: #94a3b8; font-size: 1.2em; cursor: pointer; transition: 0.2s; }}
+            .modal-close:hover {{ color: #ef4444; }}
+            .modal-header {{ text-align: center; margin-bottom: 20px; }}
+            @keyframes scaleUp {{ from {{ transform: scale(0.9); opacity: 0; }} to {{ transform: scale(1); opacity: 1; }} }}
+            
             .trend-cell {{ font-size: 16px !important; white-space: nowrap; line-height: 1; }}
             
             .wiki-table {{ width: 100%; table-layout: fixed; border-collapse: collapse; background: rgba(0, 0, 0, 0.3); border-radius: 8px; margin: 15px 0; border: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.85em; }}
@@ -717,6 +782,8 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                     <p>Ein starker Clan braucht aktive Mitglieder. Auf dieser Seite tracken wir jede Woche transparent unseren Erfolg im Clankrieg und unsere Spendenbereitschaft.</p>
                     <p>Wir sind eine entspannte, aber ehrgeizige Truppe. Bei uns zählt Verlässlichkeit mehr als reine Trophäen. Wenn du einen dauerhaft aktiven Clan suchst und deine 4 Decks verlässlich spielst, bist du bei uns genau <b>richtig</b>! 🛡️</p>
                 </div>
+                
+                {hype_balken_html}
                 
                 {radar_html}
                 {mahnwache_html}
@@ -784,6 +851,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 </div>
                 
                 <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; margin-bottom: 30px; color: #ffffff;">📋 Detail-Auswertung</h2>
+                <p style="text-align: center; color: #94a3b8; margin-top: -20px; margin-bottom: 25px;">💡 Tippe auf einen <b>Spielernamen</b>, um seine digitale Visitenkarte zu öffnen!</p>
                 {table_html}
             </div>
 
@@ -937,7 +1005,17 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
         </div>
 
+        {modals_html}
+
         <script>
+            // Visitenkarten öffnen und schließen
+            function openModal(id) {{
+                document.getElementById(id).style.display = 'flex';
+            }}
+            function closeModal(id) {{
+                document.getElementById(id).style.display = 'none';
+            }}
+
             function unlockChat() {{
                 var pin = prompt("Admin-Bereich. Bitte PIN eingeben:");
                 if(pin === "vize") {{
