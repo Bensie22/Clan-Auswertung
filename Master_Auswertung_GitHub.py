@@ -208,7 +208,8 @@ def update_top_decks(current_members: dict, top_decks_data: dict) -> dict:
                                 "cards": [{"id": c["id"], "name": c["name"], "icon": c.get("iconUrls", {}).get("medium", "")} for c in cards],
                                 "wins": 0,
                                 "losses": 0,
-                                "players": []
+                                "players": [],
+                                "tags": []
                             }
                             
                         if is_win: decks[deck_hash]["wins"] += 1
@@ -216,6 +217,10 @@ def update_top_decks(current_members: dict, top_decks_data: dict) -> dict:
                         
                         if p_name not in decks[deck_hash]["players"]:
                             decks[deck_hash]["players"].append(p_name)
+                            
+                        raw_tag = tag.replace("#", "")
+                        if raw_tag not in decks[deck_hash].setdefault("tags", []):
+                            decks[deck_hash]["tags"].append(raw_tag)
                             
         if latest_time_in_log:
             metadata["last_battles"][tag] = latest_time_in_log
@@ -229,6 +234,21 @@ def update_top_decks(current_members: dict, top_decks_data: dict) -> dict:
     top_decks_data["decks"] = decks
     print("✅ Battlelogs erfolgreich gescannt. Top-Decks aktualisiert.\n")
     return top_decks_data
+
+def get_deck_archetype(cards: list) -> str:
+    """Analysiert die Karten im Deck und bestimmt den Spielstil."""
+    card_names = [c.get("name", "") for c in cards]
+    
+    if any(n in card_names for n in ["Golem", "Lava Hound", "Giant", "Goblin Giant", "Electro Giant", "Elixir Golem"]):
+        return "🛡️ Schwerer Angriff (Beatdown)"
+    if any(n in card_names for n in ["X-Bow", "Mortar"]):
+        return "🏹 Belagerung (Siege)"
+    if any(n in card_names for n in ["Goblin Barrel", "Skeleton Barrel", "Miner", "Graveyard", "Wall Breakers", "Goblin Drill"]):
+        return "🗡️ Nadelstiche (Bait/Control)"
+    if any(n in card_names for n in ["Hog Rider", "Royal Hogs", "Battle Ram", "Ram Rider", "Balloon"]):
+        return "⚡ Schneller Angriff (Rush/Spam)"
+    
+    return "⚔️ Hybrid / Allrounder"
 
 # === 3. Auswertung & HTML-Design ===
 
@@ -503,32 +523,42 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
     deck_html = ""
     sorted_decks = sorted(top_decks_data.get("decks", {}).values(), key=lambda x: x["wins"], reverse=True)
-    top_3_decks = [d for d in sorted_decks if d["wins"] > 0][:3]
+    # Erweitere das Limit auf Top 8 Decks für den horizontalen Slider!
+    top_x_decks = [d for d in sorted_decks if d["wins"] > 0][:8]
     
-    if not top_3_decks:
+    if not top_x_decks:
         deck_html = "<div class='info-box' style='border-left-color: #64748b;'><p style='margin: 0;'><b>Noch nicht genug Daten gesammelt.</b><br>Das System zeichnet ab heute im Hintergrund alle Clankriegs-Siege auf. Schau in ein paar Tagen wieder vorbei, dann siehst du hier die absoluten Meta-Decks unseres Clans!</p></div>"
     else:
-        for idx, d in enumerate(top_3_decks):
+        for idx, d in enumerate(top_x_decks):
             total_matches = d["wins"] + d["losses"]
             winrate = int((d["wins"] / total_matches) * 100) if total_matches > 0 else 0
             players_str = ", ".join(d["players"][:3]) + ("..." if len(d["players"])>3 else "")
             
+            # Archetyp-Badge holen
+            archetype = get_deck_archetype(d["cards"])
+            
+            tag_list = d.get("tags", [])
+            player_tag_for_link = tag_list[0] if tag_list else "00000000"
+            
             deck_ids_str = ";".join([str(c["id"]) for c in d["cards"]])
-            copy_link = f"https://link.clashroyale.com/deck/de?deck={deck_ids_str}"
+            copy_link = f"https://link.clashroyale.com/deck/en?deck={deck_ids_str}&id={player_tag_for_link}"
             
             images_html = "".join([f"<img src='{c['icon']}' style='width: 23%; border-radius: 4px; margin: 1%;' title='{c['name']}'>" for c in d["cards"]])
             
             deck_html += f"""
             <div class="deck-card">
+                <div class="archetype-badge">{archetype}</div>
                 <div class="deck-header">
-                    <h3>🏆 Meta-Deck #{idx+1}</h3>
-                    <span class="winrate">🔥 {winrate}% Win-Rate ({d['wins']} Siege)</span>
+                    <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🏆 Meta-Deck #{idx+1}</h3>
+                    <span class="winrate">🔥 {winrate}% Win</span>
                 </div>
                 <div class="deck-images">
                     {images_html}
                 </div>
-                <p style="font-size: 0.85em; color: #94a3b8; margin: 10px 0;">Erfolgreich gespielt von: <span style="color:#e2e8f0;">{players_str}</span></p>
-                <a href="{copy_link}" class="copy-btn" target="_blank">⚔️ Deck ins Spiel kopieren</a>
+                <p style="font-size: 0.85em; color: #94a3b8; margin: 10px 0;">Oft gewonnen von:<br><span style="color:#e2e8f0; font-weight:bold;">{players_str}</span></p>
+                <div style="margin-top: auto;">
+                    <a href="{copy_link}" class="copy-btn" target="_blank">⚔️ Deck ins Spiel kopieren</a>
+                </div>
             </div>
             """
 
@@ -585,7 +615,9 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .header-container {{ position: relative; background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('{header_img_src}') no-repeat center center; background-size: cover; border-radius: 12px; padding: 40px 20px; margin-top: 20px; margin-bottom: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }}
             .header-title {{ font-weight: 800; color: #ffffff; font-size: 2.2em; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.5); letter-spacing: 1px; }}
             .header-date {{ font-weight: 400; font-size: 0.45em; color: #cbd5e1; display: block; margin-top: 10px; letter-spacing: 0px; }}
-            .header-mobile-tip {{ display: block; font-size: 0.45em; color: #e2e8f0; margin-top: 15px; font-weight: bold; letter-spacing: 0.5px; }}
+            
+            /* NEU: Größerer, dickerer Tipp für das Handy */
+            .header-mobile-tip {{ display: block; font-size: 0.55em; color: #f8fafc; margin-top: 15px; font-weight: 800; letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }}
             
             /* App-ähnliche Navigation (Tabs) */
             .tab-container {{ display: flex; gap: 10px; margin-bottom: 30px; border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 15px; position: sticky; top: -1px; background: rgba(15, 23, 42, 0.98); z-index: 1000; padding-top: 15px; overflow-x: auto; white-space: nowrap; scrollbar-width: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }}
@@ -597,13 +629,11 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .tab-content.active {{ display: block; }}
             @keyframes fadeIn {{ from {{ opacity: 0; transform: translateY(10px); }} to {{ opacity: 1; transform: translateY(0); }} }}
 
-            /* Welcome Box */
             .welcome-box {{ background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95)); border-left: 5px solid #fbbf24; padding: 25px 30px; border-radius: 12px; margin-bottom: 30px; font-size: 1.05em; color: #e2e8f0; line-height: 1.7; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); border: 1px solid rgba(251, 191, 36, 0.2); }}
             .welcome-box p {{ margin: 0 0 12px 0; }}
             .welcome-box p:last-child {{ margin: 0; }}
             .welcome-title {{ font-size: 1.4em; color: #fbbf24; margin-top: 0; margin-bottom: 15px; font-weight: 800; display: flex; align-items: center; gap: 10px; }}
 
-            /* Dashboard Cards */
             .info-box {{ background: rgba(30, 41, 59, 0.85); border-left: 5px solid #38bdf8; padding: 20px 25px; border-radius: 8px; margin-bottom: 40px; font-size: 1em; color: #e2e8f0; line-height: 1.6; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.05); }}
             .dashboard {{ display: flex; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }}
             .card {{ flex: 1; min-width: 220px; background: rgba(30, 41, 59, 0.8); padding: 20px 25px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }}
@@ -620,11 +650,16 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .card h1 {{ font-weight: 800; font-size: 2.5em; margin: 10px 0; color: #38bdf8; }}
             .card ul {{ margin: 0; padding-left: 20px; font-size: 1.05em; line-height: 1.6; color: #f1f5f9; }}
             
-            /* Deck Cards */
-            .deck-card {{ background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; flex: 1; min-width: 280px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border-top: 4px solid #f97316; }}
+            /* NEU: Deck Slider & Deck Cards CSS */
+            .deck-slider {{ display: flex; overflow-x: auto; gap: 20px; padding-bottom: 20px; scroll-snap-type: x mandatory; }}
+            .deck-slider::-webkit-scrollbar {{ height: 8px; }}
+            .deck-slider::-webkit-scrollbar-track {{ background: rgba(0,0,0,0.2); border-radius: 4px; }}
+            .deck-slider::-webkit-scrollbar-thumb {{ background: #38bdf8; border-radius: 4px; }}
+            
+            .deck-card {{ background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; flex: 0 0 300px; scroll-snap-align: start; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border-top: 4px solid #f97316; display: flex; flex-direction: column; }}
+            .archetype-badge {{ display: inline-block; background: rgba(249, 115, 22, 0.15); color: #f97316; padding: 4px 8px; border-radius: 6px; font-size: 0.8em; font-weight: bold; margin-bottom: 15px; border: 1px solid rgba(249, 115, 22, 0.3); text-align: center; }}
             .deck-header {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }}
-            .deck-header h3 {{ margin: 0; color: #f97316; font-size: 1.2em; font-weight: 800; }}
-            .winrate {{ background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 4px 8px; border-radius: 6px; font-weight: bold; font-size: 0.85em; }}
+            .winrate {{ background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 4px 8px; border-radius: 6px; font-weight: bold; font-size: 0.85em; margin-left: auto; }}
             .deck-images {{ display: flex; flex-wrap: wrap; justify-content: center; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }}
             .copy-btn {{ display: block; text-align: center; background: #38bdf8; color: #0f172a; text-decoration: none; padding: 10px; border-radius: 8px; font-weight: bold; margin-top: 15px; transition: 0.2s; }}
             .copy-btn:hover {{ background: #0284c7; color: #fff; }}
@@ -903,7 +938,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             <div id="Decks" class="tab-content">
                 <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; margin-bottom: 10px; color: #ffffff;">🃏 Clan-Meta: Die besten Kriegs-Decks</h2>
                 <p style="text-align: center; color: #94a3b8; margin-bottom: 30px;">Das System analysiert im Hintergrund alle Clankriegs-Kämpfe und zeigt euch hier die Decks, die am häufigsten gewonnen haben.</p>
-                <div style="display:flex; gap:20px; flex-wrap:wrap;">
+                <div class="deck-slider">
                     {deck_html}
                 </div>
             </div>
