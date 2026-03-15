@@ -2,8 +2,8 @@ name: Clan Auswertung Automatisierung
 
 on:
   schedule:
-    # Radar- & Deck-Update: JEDE Stunde an Kampftagen (Donnerstag=4, Freitag=5, Samstag=6, Sonntag=0, Montag=1)
-    - cron: '0 * * * 0,1,4,5,6'
+    # Radar- & Deck-Update: JEDE halbe Stunde an Kampftagen (Donnerstag=4, Freitag=5, Samstag=6, Sonntag=0, Montag=1)
+    - cron: '*/30 * * * 0,1,4,5,6'
     # E-Mail-Update: Jeden Montag um 10:30 UTC (11:30 Uhr MEZ)
     - cron: '30 10 * * 1'
   workflow_dispatch:
