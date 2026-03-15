@@ -181,7 +181,7 @@ def berechne_score(participation: int, decks_total: int) -> float:
 def chunk_list(lst: list, n: int) -> list:
     return [lst[i:i + n] for i in range(0, len(lst), n)]
 
-def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str, radar_clans: list, records: dict, strikes: dict, race_state_de: str, raw_mahnwache: list) -> Tuple[str, pd.DataFrame, list, dict, dict]:
+def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str, radar_clans: list, records: dict, strikes: dict, race_state_de: str, raw_mahnwache: list) -> Tuple[str, pd.DataFrame, str, dict, dict]:
     player_stats = []
     urlauber_liste = []
     
@@ -189,14 +189,16 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         with urlaub_path.open("r", encoding="utf-8") as f:
             urlauber_liste = [line.strip() for line in f if line.strip()]
 
-    role_map = {"member": "Mitglied", "elder": "Ältester", "coLeader": "Vize", "leader": "Anführer", "unknown": "Ehemalig"}
+    # Die Keys in dieser Map sind ab sofort strikt kleingeschrieben für den absolut sicheren Abgleich!
+    role_map = {"member": "Mitglied", "elder": "Ältester", "coleader": "Vize", "leader": "Anführer", "unknown": "Ehemalig"}
 
     for _, row in df_active.iterrows():
-        raw_role = row.get("player_role", "unknown")
+        # Hier ist der Fix: Jegliche Formatierungsfehler und Großbuchstaben werden vorab gekillt.
+        raw_role = str(row.get("player_role", "unknown")).strip().lower()
         if raw_role == "unknown": continue
             
         name = row.get("player_name", "Unbekannt")
-        role_de = role_map.get(raw_role, raw_role)
+        role_de = role_map.get(raw_role, raw_role.capitalize())
         is_urlaub = name in urlauber_liste
         
         participation = int(row.get("player_contribution_count", 0) or 0)
@@ -259,7 +261,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
         strike_val = strikes.get(name, 0)
         strike_badge = ""
-        # Wir behalten die Anzeige der Strikes in der Tabelle aus Gründen der Übersichtlichkeit bei
         if strike_val > 0:
             if strike_val >= 3:
                 strike_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3<span class='tooltip-text'>3 Verwarnungen: Kick oder Degradierung empfohlen!</span></span>"
@@ -282,7 +283,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             "donations_received": donations_received, "tier": tier, "is_urlaub": is_urlaub, 
             "trend_str": trend_str, "fame_per_deck": fame_per_deck, "leecher_warnung": leecher_warnung,
             "trophy_push": trophy_push, "trophies": aktueller_trophy, "streak_badge": streak_badge, "strike_badge": strike_badge,
-            "raw_role": raw_role # Wird für die Degradierungs-Logik benötigt
+            "raw_role": raw_role # Ist jetzt garantiert 100% sauber und lowercase
         })
 
         df_history = pd.concat([
@@ -303,7 +304,8 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     kandidaten_demote = []
     for p in aktive_spieler:
         if strikes.get(p['name'], 0) >= 3:
-            if p['raw_role'] in ['elder', 'coLeader']:
+            # Dank dem Lowercase-Fix wird hier garantiert jeder Vize und Älteste erfasst
+            if p['raw_role'] in ['elder', 'coleader']:
                 kandidaten_demote.append(p['name'])
             elif p['raw_role'] == 'member':
                 kandidaten_kick.append(p['name'])
@@ -352,14 +354,13 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     if echte_leecher:
         msg_2 += f" | 🧛 Spenden-Leecher (0 geben, aber kassieren): {', '.join([p['name'] for p in echte_leecher][:2])}."
         
-    # Die Kick-Warnung (ehemals msg_3) wurde entfernt, um den Chat aufgeräumter zu gestalten.
     raw_messenger_bodies = [msg_1, msg_2]
 
-    # Degradierungs-Boxen bauen (max 4 Namen pro Box wegen Limit)
+    # Degradierungs-Boxen bauen (max 4 Namen pro Box wegen Limit) - Erscheinen NUR, wenn jemand 3 Strikes hat
     for chunk in chunk_list(kandidaten_demote, 4):
         raw_messenger_bodies.append(f"👇 Degradierung: {', '.join(chunk)}. Grund: Dauerhaft zu wenig Kriegskämpfe. Ihr erhaltet als Mitglied eine letzte Bewährungschance! ⚔️")
         
-    # Kick-Boxen bauen (max 4 Namen pro Box)
+    # Kick-Boxen bauen (max 4 Namen pro Box) - Erscheinen NUR, wenn jemand 3 Strikes hat
     for chunk in chunk_list(kandidaten_kick, 4):
         raw_messenger_bodies.append(f"👋 Verabschiedung: {', '.join(chunk)}. Grund: Wiederholte Inaktivität im Clankrieg. Wir machen Platz. Alles Gute! ✌️")
 
@@ -458,7 +459,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 <p style="margin: 0 0 10px 0;"><b>⏱️ Aktualisierung:</b> Alle Daten (inkl. Live-Radar) aktualisieren sich an den Kampftagen (Donnerstag bis Montag) alle 4 Stunden automatisch. Dienstag und Mittwoch ist Ruhetag. Die große Endauswertung findet jeden Montagvormittag statt.</p>
                 <p style="margin: 0 0 10px 0;"><b>🏆 Wer steht oben? (Die Sortierung):</b> Die Liste ist streng nach Leistung sortiert. Wer 100% holt, steht oben. Bei Punktegleichstand gewinnt die Teilnahme-Treue, dann Kriegspunkte, zuletzt Spenden.</p>
                 <p style="margin: 0 0 10px 0;"><b>📈 Delta (Entwicklung):</b> Zeigt die prozentuale Veränderung des Scores zur letzten Auswertung an (Grün = Aufstieg, Rot = Abfall).</p>
-                <p style="margin: 0 0 10px 0;"><b>🌱 Welpenschutz (Neu im Clan?):</b> Spieler mit ≤ 3 Kriegen bekommen das 🌱-Symbol und sind vor Kick-Warnungen geschützt.</p>
+                <p style="margin: 0 0 10px 0;"><b>🌱 Welpenschutz (Neu im Clan?):</b> Spieler mit ≤ 3 Kriegen bekommen das 🌱-Symbol und sind vor Verwarnungen geschützt.</p>
                 <p style="margin: 0 0 10px 0;"><b>🟢🟡🔴 Trend & Qualität (Die Ampel):</b> Zeigt die Leistung der letzten 4 Wochen. "Ø Punkte" zeigt die Punkte pro Deck. Ein ⚠️ bedeutet: Verdacht auf Bootsangriffe/Dropping (< 115 Pkt). Ein 🔥 bedeutet einen 100%-Lauf über mehrere Wochen!</p>
                 <p style="margin: 0 0 10px 0;"><b>🃏 Geben & Nehmen (Spenden):</b> Ein Clan lebt von der Gemeinschaft! <br><b>🧛 Vampir:</b> 0 gespendet, aber abkassiert. <br><b>💤 Schlafend:</b> 0 gespendet, 0 angefordert. <br><i>Tipp: Fahre mit der Maus am PC über die Spenden-Zahlen für Details!</i></p>
             </div>
@@ -499,10 +500,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 <div class="card leecher">
                     <h3>🧛 Top 3 Leecher</h3>
                     <ul>{''.join([f"<li><b>{p['name']}</b> ({p['donations']} gesp. / {p['donations_received']} empf.)</li>" for p in top_leecher]) if top_leecher else "<li>Keine Leecher! 🎉</li>"}</ul>
-                </div>
-                <div class="card kritisch">
-                    <h3>⚠️ Kritische Fälle</h3>
-                    <ul>{''.join([f"<li><b>{p['name']}</b> ({p['score']}%)</li>" for p in kritisch]) if kritisch else "<li>Alles im grünen Bereich!</li>"}</ul>
                 </div>
                 
                 <div class="card messenger">
@@ -816,4 +813,4 @@ if __name__ == "__main__":
     except Exception as err:
         print("\n❌ EIN KRITISCHER FEHLER IST AUFGETRETEN:")
         traceback.print_exc()
-        sys.exit(1)
+        sys.exit(1) 
