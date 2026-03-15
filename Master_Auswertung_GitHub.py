@@ -430,7 +430,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
     tiers = ["🌟 Elite (95-100%)", "✅ Solides Mittelfeld (80-94%)", "⚠️ Unter Beobachtung (50-79%)", "🚫 Kritisch (< 50%)", "🏖️ Im Urlaub (Pausiert)"]
 
-    # HTML für die Tabelle generieren
+    # HTML für die Haupt-Tabelle generieren
     table_html = ""
     for t in tiers:
         players_in_tier = sorted([p for p in player_stats if p["tier"] == t], key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]), reverse=True)
@@ -513,7 +513,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .card h1 {{ font-weight: 800; font-size: 2.5em; margin: 10px 0; color: #38bdf8; }}
             .card ul {{ margin: 0; padding-left: 20px; font-size: 1.05em; line-height: 1.6; color: #f1f5f9; }}
             
-            /* Table */
+            /* Tables */
             .tier-title {{ font-weight: 800; font-size: 1.4em; color: #fbbf24; margin-top: 20px; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; }}
             table {{ width: 100%; table-layout: fixed; border-collapse: collapse; background: rgba(15, 23, 42, 0.9); border-radius: 8px; margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.1); }}
             th:nth-child(1) {{ width: 20%; }} th:nth-child(2) {{ width: 14%; }} th:nth-child(3) {{ width: 8%; text-align: center; }} th:nth-child(4) {{ width: 12%; }} th:nth-child(5) {{ width: 8%; text-align: center; }} th:nth-child(6) {{ width: 10%; text-align: center; }} th:nth-child(7) {{ width: 10%; text-align: center; }} th:nth-child(8) {{ width: 9%; text-align: center; }} th:nth-child(9) {{ width: 9%; text-align: center; }}
@@ -525,6 +525,12 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .badge-ja {{ background-color: #10b981; color: #ffffff; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 0.8em; margin-left: 8px; }}
             .name-col {{ font-weight: 800; color: #ffffff; }}
             .trend-cell {{ font-size: 16px !important; white-space: nowrap; line-height: 1; }}
+            
+            /* Mini-Tabellen für das Wiki */
+            .wiki-table {{ width: 100%; table-layout: fixed; border-collapse: collapse; background: rgba(0, 0, 0, 0.3); border-radius: 8px; margin: 15px 0; border: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.85em; }}
+            .wiki-table th, .wiki-table td {{ padding: 8px 5px; }}
+            .wiki-table tr:nth-child(odd) {{ background-color: transparent; }}
+            .wiki-table tr:nth-child(even) {{ background-color: rgba(255, 255, 255, 0.05); }}
             
             /* Tooltips */
             .custom-tooltip {{ position: relative; display: inline-block; cursor: help; }}
@@ -613,7 +619,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                             {chat_boxes_html}
                         </div>
                     </div>
-                    </div>
+                </div>
             </div>
 
             <div id="Table" class="tab-content">
@@ -646,24 +652,38 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                     </ul>
                 </div>
 
-                <button class="accordion-btn">⚖️ Verwarnungen, Degradierung & Kicks</button>
+                <button class="accordion-btn">⚖️ Verwarnungen, Degradierung & Kicks (❌)</button>
                 <div class="accordion-content">
                     <p>Damit nicht eine einzige schlechte Woche sofort zum Rauswurf führt, hat unsere Auswertung ein faires Langzeit-Gedächtnis. Wer sich nicht abmeldet und im Clankrieg dauerhaft zu wenig liefert (Score unter 50%), sammelt im Hintergrund unsichtbare Verwarnungen (❌).</p>
+                    <div style="overflow-x:auto;">
+                        <table class="wiki-table">
+                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
+                            <tr><td class='name-col'>bequemo <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td>Ältester</td><td><b>49.38%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>179</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>303</span></td><td>10/10</td><td>1250</td></tr>
+                            <tr><td class='name-col'>Amin <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td>Mitglied</td><td><b>34.38%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>100 ⚠️</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> 💤</td><td>4/10</td><td>800</td></tr>
+                        </table>
+                    </div>
                     <ul>
-                        <li><b>Die zweite Chance (Degradierung):</b> Wenn ein <i>Ältester</i> oder <i>Vize</i> 3 Verwarnungen ansammelt, wird er nicht sofort gekickt. Er wird zur Strafe zum <b>Mitglied degradiert</b> und erhält so eine letzte Bewährungschance.</li>
-                        <li><b>Der Rauswurf (Kick):</b> Wenn ein normales <i>Mitglied</i> 3 Verwarnungen erreicht, trennen wir uns. So machen wir Platz für neue, aktive Spieler.</li>
+                        <li><b>Die zweite Chance (Degradierung):</b> Wenn ein <i>Ältester</i> oder <i>Vize</i> (wie <b>bequemo</b> oben) 3 Verwarnungen ansammelt, wird er nicht sofort gekickt. Er wird zur Strafe zum <b>Mitglied degradiert</b> und erhält so eine letzte Bewährungschance.</li>
+                        <li><b>Der Rauswurf (Kick):</b> Wenn ein normales <i>Mitglied</i> (wie <b>Amin</b> oben) 3 Verwarnungen erreicht, trennen wir uns. So machen wir Platz für neue, aktive Spieler.</li>
                         <li><b>Das Konto ausgleichen:</b> Wer nach einer Verwarnung wieder anzieht und in der Folgewoche über 50% Score holt, baut seine negativen Einträge automatisch wieder ab!</li>
                     </ul>
                 </div>
 
-                <button class="accordion-btn">🎯 Der Score (Deine Zuverlässigkeit)</button>
+                <button class="accordion-btn">🎯 Der Score (Zuverlässigkeit & Welpenschutz)</button>
                 <div class="accordion-content">
                     <p>Der Score ist die wichtigste Zahl im Dashboard. Er misst nicht, wie stark du bist oder wie viel du gewinnst, sondern <b>wie verlässlich du bist</b>.<br><br>
                     Stell dir vor, du hast für jedes Kriegswochenende 16 "Tickets" (4 Tage × 4 Decks). Der Score zeigt einfach, wie viele deiner verfügbaren Tickets du auch wirklich genutzt hast.</p>
+                    <div style="overflow-x:auto;">
+                        <table class="wiki-table">
+                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
+                            <tr><td class='name-col'>Dolphin <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥 4</span></td><td>Vize</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>131</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>146</span></td><td>10/10</td><td>2100</td></tr>
+                            <tr><td class='name-col'>mojede <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td>Mitglied</td><td><b>6.25%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>200</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span></td><td>2/10</td><td>200</td></tr>
+                        </table>
+                    </div>
                     <ul>
-                        <li><b>100%:</b> Perfekt! Du hast keinen einzigen Angriff verpasst.</li>
+                        <li><b>100% (Der Streak 🔥):</b> Perfekt! Du hast keinen einzigen Angriff verpasst. Schaffst du das über mehrere Wochen in Folge, erhältst du das Flammen-Symbol (wie <b>Dolphin</b> oben mit 4 Wochen am Stück!).</li>
                         <li><b>50%:</b> Du hast nur die Hälfte deiner möglichen Angriffe gemacht.</li>
-                        <li><b>Welpenschutz (🌱):</b> Wenn du neu im Clan bist, fangen wir fair an. Du wirst nur an den Kriegen gemessen, bei denen du auch wirklich schon im Clan warst.</li>
+                        <li><b>Welpenschutz (🌱):</b> Wenn du neu im Clan bist (wie <b>mojede</b> oben), fangen wir fair an. Du wirst nur an den Kriegen gemessen, bei denen du auch wirklich schon im Clan warst und bist vorerst vor Strafen geschützt.</li>
                     </ul>
                 </div>
 
@@ -679,18 +699,31 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 <button class="accordion-btn">⚔️ Ø Punkte (Der Qualitäts-Check)</button>
                 <div class="accordion-content">
                     <p>Hier schauen wir, wie effektiv du deine Decks einsetzt. Das System teilt deine gesammelten Kriegspunkte durch die Anzahl deiner gespielten Decks.</p>
+                    <div style="overflow-x:auto;">
+                        <table class="wiki-table">
+                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
+                            <tr><td class='name-col'>gang <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td>Ältester</td><td><b>27.34%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>100 <span class='custom-tooltip'>⚠️</span></td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>72</span></td><td>8/10</td><td>100</td></tr>
+                        </table>
+                    </div>
                     <ul>
                         <li><b>Normalwert:</b> Selbst wenn du verlierst, bekommst du in normalen Kämpfen mindestens 115 Punkte. Ein Sieg bringt deutlich mehr.</li>
-                        <li><b>⚠️ Die Warnung (< 115 Punkte):</b> Wenn dein Durchschnitt unter 115 fällt, schlägt das System Alarm. Das passiert nur, wenn jemand oft feindliche Boote angreift (bringt sehr wenig Punkte) oder Kämpfe absichtlich aufgibt.</li>
+                        <li><b>⚠️ Die Warnung (< 115 Punkte):</b> Wenn dein Durchschnitt unter 115 fällt (wie bei <b>gang</b> oben), schlägt das System Alarm. Das passiert nur, wenn jemand oft feindliche Boote angreift (bringt sehr wenig Punkte für den Clan) oder absichtlich Kämpfe sofort aufgibt, um schnell fertig zu werden.</li>
                     </ul>
                 </div>
 
                 <button class="accordion-btn">🃏 Spenden-Verhalten (Das Teamplay)</button>
                 <div class="accordion-content">
                     <p>Ein starker Clan hilft sich gegenseitig beim Leveln der Karten. Wir haben das Auge auf zwei Problemfälle:</p>
+                    <div style="overflow-x:auto;">
+                        <table class="wiki-table">
+                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
+                            <tr><td class='name-col'>Vampir_Beispiel</td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>200</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>🧛</span></td><td>10/10</td><td>2000</td></tr>
+                            <tr><td class='name-col'>Schläfer_Beispiel</td><td>Mitglied</td><td><b>50.0%</b></td><td class='trend-cell'>🟡🟡🟡🟡</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>150</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>💤</span></td><td>5/10</td><td>1000</td></tr>
+                        </table>
+                    </div>
                     <ul>
-                        <li><b>🧛 Der Vampir-Leecher:</b> Jemand, der ständig Karten anfordert, aber selbst absolut <b>0</b> Karten an andere spendet.</li>
-                        <li><b>💤 Der Schläfer:</b> Jemand, der weder spendet noch etwas anfordert.</li>
+                        <li><b>🧛 Der Vampir-Leecher:</b> Jemand, der ständig Karten anfordert und im Chat abkassiert, aber selbst absolut <b>0</b> Karten an andere spendet. Das ist unfaires Teamplay.</li>
+                        <li><b>💤 Der Schläfer:</b> Jemand, der weder spendet noch etwas anfordert. Hier geht dem Clan zwar nichts verloren, aber die Person beteiligt sich gar nicht am Clan-Leben.</li>
                     </ul>
                 </div>
             </div>
@@ -698,7 +731,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         </div>
 
         <script>
-            // Admin Chat Freischaltung
             function unlockChat() {{
                 var pin = prompt("Admin-Bereich. Bitte PIN eingeben:");
                 if(pin === "vize") {{
@@ -709,7 +741,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 }}
             }}
 
-            // Tab Logik
             function openTab(evt, tabName) {{
                 var i, tabcontent, tablinks;
                 tabcontent = document.getElementsByClassName("tab-content");
@@ -727,19 +758,16 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 window.scrollTo({{top: 0, behavior: 'smooth'}});
             }}
 
-            // Auto-Close Accordion Logik
             var acc = document.getElementsByClassName("accordion-btn");
             for (var i = 0; i < acc.length; i++) {{
                 acc[i].addEventListener("click", function() {{
                     var isActive = this.classList.contains("active");
                     
-                    // Zuerst ALLE anderen schließen
                     for (var j = 0; j < acc.length; j++) {{
                         acc[j].classList.remove("active");
                         acc[j].nextElementSibling.style.maxHeight = null;
                     }}
                     
-                    // Dann nur das aktuelle öffnen (wenn es vorher zu war)
                     if (!isActive) {{
                         this.classList.add("active");
                         this.nextElementSibling.style.maxHeight = this.nextElementSibling.scrollHeight + "px";
@@ -780,11 +808,8 @@ def archiviere_alte_auswertungen(output_dir: Path, anzahl: int = 2):
     for file in alte_htmls[:-anzahl]:
         shutil.move(str(file), archiv_output / file.name)
 
-# === E-MAIL FUNKTION (VORERST STUMMGESCHALTET FÜR TESTS) ===
 def sende_bericht_per_mail(absender: str, empfänger: str, smtp_server: str, port: int, passwort: str, html_path: Path, all_chat_texts: str):
-    pass # Überspringt die Funktion im Testmodus
-
-# === 4. Hauptsteuerung ===
+    pass 
 
 def main():
     upload_folder.mkdir(parents=True, exist_ok=True)
@@ -887,7 +912,6 @@ def main():
     html_path = speichere_html_bericht(html_bericht, df_history, updated_records, updated_strikes, jetzt_datei)
     archiviere_alte_auswertungen(output_folder)
     
-    # === E-MAIL ZEITSTEUERUNG ===
     sender_mail = os.environ.get("EMAIL_SENDER")
     receiver_mail = os.environ.get("EMAIL_RECEIVER")
     email_pass = os.environ.get("EMAIL_PASS")
@@ -915,4 +939,4 @@ if __name__ == "__main__":
     except Exception as err:
         print("\n❌ EIN KRITISCHER FEHLER IST AUFGETRETEN:")
         traceback.print_exc()
-        sys.exit(1)
+        sys.exit(1) 
