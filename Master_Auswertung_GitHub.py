@@ -6,6 +6,7 @@ import csv
 import base64
 import json
 import sys
+import time
 import traceback
 from datetime import datetime
 from typing import List, Tuple
@@ -30,15 +31,16 @@ output_folder = BASE_DIR / "output"
 score_history_path = BASE_DIR / "score_history.csv"
 records_path = BASE_DIR / "records.json"  
 strikes_path = BASE_DIR / "strikes.json"  
+top_decks_path = BASE_DIR / "top_decks.json" # NEU: Die Datenbank für die Decks
 urlaub_path = BASE_DIR / "urlaub.txt" 
 HEADER_IMAGE_PATH = BASE_DIR / "clash_pix.jpg"
 
 # === 2. API Datenabruf ===
 
-def fetch_and_build_player_csv() -> bool:
+def fetch_and_build_player_csv() -> Tuple[bool, dict]:
     if not API_TOKEN:
         print("❌ Fehler: Bitte trage deinen SUPERCELL_API_TOKEN in die GitHub Secrets ein.")
-        return False
+        return False, {}
 
     headers = {
         "Authorization": f"Bearer {API_TOKEN}",
@@ -51,7 +53,7 @@ def fetch_and_build_player_csv() -> bool:
     
     if members_resp.status_code != 200:
         print(f"❌ Fehler beim Abruf der Mitglieder: {members_resp.status_code}")
-        return False
+        return False, {}
         
     current_members = {
         m["tag"]: {
@@ -70,7 +72,7 @@ def fetch_and_build_player_csv() -> bool:
     
     if log_resp.status_code != 200:
         print(f"❌ Fehler beim Abruf des Warlogs: {log_resp.status_code}")
-        return False
+        return False, {}
 
     races = log_resp.json().get("items", [])
     print(f"✅ {len(races)} Kriege gefunden. Verarbeite Spielerdaten...")
@@ -150,7 +152,87 @@ def fetch_and_build_player_csv() -> bool:
             writer.writerow(row)
             
     print(f"✅ Spieler-Daten erfolgreich exportiert nach: {filename}\n")
-    return True
+    return True, current_members
+
+# === NEU: 2.5 Battlelogs analysieren (Top Decks) ===
+
+def update_top_decks(current_members: dict, top_decks_data: dict) -> dict:
+    print("Schritt 4: Spioniere Battlelogs für Clan-Meta Decks aus (Bitte warten)...")
+    headers = {"Authorization": f"Bearer {API_TOKEN}", "Accept": "application/json"}
+    
+    metadata = top_decks_data.get("_metadata", {"last_battles": {}})
+    decks = top_decks_data.get("decks", {})
+    
+    count = 0
+    for tag, member_info in current_members.items():
+        p_name = member_info["name"]
+        clean_tag = tag.replace("#", "%23")
+        
+        resp = requests.get(f"{BASE_URL}/players/{clean_tag}/battlelog", headers=headers)
+        if resp.status_code != 200:
+            time.sleep(0.1)
+            continue
+            
+        battles = resp.json()
+        latest_time_in_log = None
+        last_processed_time = metadata["last_battles"].get(tag, "")
+        
+        for battle in battles:
+            b_time = battle.get("battleTime", "")
+            if not latest_time_in_log:
+                latest_time_in_log = b_time 
+                
+            if b_time <= last_processed_time:
+                break 
+                
+            b_type = battle.get("type", "")
+            
+            # Filtere nur Clankriegs-Matches heraus
+            if "riverRace" in b_type and "team" in battle:
+                team = battle["team"][0]
+                opponent = battle["opponent"][0]
+                cards = team.get("cards", [])
+                
+                # Wir brauchen gültige 8-Karten Decks
+                if len(cards) == 8:
+                    crowns_t = team.get("crowns", 0)
+                    crowns_o = opponent.get("crowns", 0)
+                    
+                    is_win = crowns_t > crowns_o
+                    is_loss = crowns_o > crowns_t
+                    
+                    if is_win or is_loss:
+                        # Erstelle eine einzigartige Deck-ID zum Zusammenfassen
+                        deck_ids = sorted([str(c["id"]) for c in cards])
+                        deck_hash = "-".join(deck_ids)
+                        
+                        if deck_hash not in decks:
+                            decks[deck_hash] = {
+                                # Wir speichern die Karten im Originalzustand fürs Rendern
+                                "cards": [{"id": c["id"], "name": c["name"], "icon": c.get("iconUrls", {}).get("medium", "")} for c in cards],
+                                "wins": 0,
+                                "losses": 0,
+                                "players": []
+                            }
+                            
+                        if is_win: decks[deck_hash]["wins"] += 1
+                        if is_loss: decks[deck_hash]["losses"] += 1
+                        
+                        if p_name not in decks[deck_hash]["players"]:
+                            decks[deck_hash]["players"].append(p_name)
+                            
+        if latest_time_in_log:
+            metadata["last_battles"][tag] = latest_time_in_log
+            
+        count += 1
+        if count % 10 == 0:
+            print(f"  ... {count}/50 Spieler gescannt")
+        time.sleep(0.1) # Um die API nicht zu überlasten
+        
+    top_decks_data["_metadata"] = metadata
+    top_decks_data["decks"] = decks
+    print("✅ Battlelogs erfolgreich gescannt. Top-Decks aktualisiert.\n")
+    return top_decks_data
 
 # === 3. Auswertung & HTML-Design ===
 
@@ -184,7 +266,7 @@ def chunk_list(lst: list, n: int) -> list:
 def escape_for_html(text: str) -> str:
     return text.replace('"', '&quot;').replace("'", "&#39;")
 
-def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str, radar_clans: list, records: dict, strikes: dict, race_state_de: str, raw_mahnwache: list) -> Tuple[str, pd.DataFrame, str, dict, dict]:
+def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str, radar_clans: list, records: dict, strikes: dict, race_state_de: str, raw_mahnwache: list, top_decks_data: dict) -> Tuple[str, pd.DataFrame, str, dict, dict]:
     player_stats = []
     urlauber_liste = []
     
@@ -349,7 +431,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
     chat_blocks = []
 
-    # Block 1
     msg_1_vars = {
         "Sachlich": f"📊 Clan-Ø: {clan_avg}%. MVPs: {cr_top_names} 🏆 {pusher_chat}",
         "Motivierend": f"🔥 Super Leistung! Clan-Ø: {clan_avg}%. Ein dickes Danke an unsere MVPs: {cr_top_names}! {pusher_chat}",
@@ -357,7 +438,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     }
     chat_blocks.append(msg_1_vars)
 
-    # Block 2
     msg_2_sachlich = f"🃏 Ein Lob an unsere Top-Spender: {top_spender_names}! 🤝" if top_spender else "🃏 Kaum Spenden diese Woche. Ein Clan lebt vom Geben UND Nehmen! 🤝"
     if echte_leecher: msg_2_sachlich += f" | 🧛 Spenden-Leecher (nur kassiert): {leecher_names}."
     
@@ -373,7 +453,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     }
     chat_blocks.append(msg_2_vars)
 
-    # Block 3+
     for chunk in chunk_list(kandidaten_demote, 4):
         names_str = ", ".join(chunk)
         demote_vars = {
@@ -383,7 +462,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         }
         chat_blocks.append(demote_vars)
 
-    # Block 4+
     for chunk in chunk_list(kandidaten_kick, 4):
         names_str = ", ".join(chunk)
         kick_vars = {
@@ -402,7 +480,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         chat_blocks.append(nokick_vars)
 
     total_msgs = len(chat_blocks)
-    
     colors = ["#38bdf8", "#a855f7", "#ef4444", "#f97316", "#10b981", "#fbbf24"]
     chat_boxes_html = ""
     
@@ -428,9 +505,42 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         </div>
         """
 
+    # === NEU: HTML für Top Decks (Phase 2) ===
+    deck_html = ""
+    sorted_decks = sorted(top_decks_data.get("decks", {}).values(), key=lambda x: x["wins"], reverse=True)
+    # Nur Decks mit mindestens 1 Sieg anzeigen, Top 3 auswählen
+    top_3_decks = [d for d in sorted_decks if d["wins"] > 0][:3]
+    
+    if not top_3_decks:
+        deck_html = "<div class='info-box' style='border-left-color: #64748b;'><p style='margin: 0;'><b>Noch nicht genug Daten gesammelt.</b><br>Das System zeichnet ab heute im Hintergrund alle Clankriegs-Siege auf. Schau in ein paar Tagen wieder vorbei, dann siehst du hier die absoluten Meta-Decks unseres Clans!</p></div>"
+    else:
+        for idx, d in enumerate(top_3_decks):
+            total_matches = d["wins"] + d["losses"]
+            winrate = int((d["wins"] / total_matches) * 100) if total_matches > 0 else 0
+            players_str = ", ".join(d["players"][:3]) + ("..." if len(d["players"])>3 else "")
+            
+            # API IDs ins Spiel-Format umwandeln:
+            deck_ids_str = ";".join([str(c["id"]) for c in d["cards"]])
+            copy_link = f"https://link.clashroyale.com/deck/de?deck={deck_ids_str}"
+            
+            images_html = "".join([f"<img src='{c['icon']}' style='width: 23%; border-radius: 4px; margin: 1%;' title='{c['name']}'>" for c in d["cards"]])
+            
+            deck_html += f"""
+            <div class="deck-card">
+                <div class="deck-header">
+                    <h3>🏆 Meta-Deck #{idx+1}</h3>
+                    <span class="winrate">🔥 {winrate}% Win-Rate ({d['wins']} Siege)</span>
+                </div>
+                <div class="deck-images">
+                    {images_html}
+                </div>
+                <p style="font-size: 0.85em; color: #94a3b8; margin: 10px 0;">Erfolgreich gespielt von: <span style="color:#e2e8f0;">{players_str}</span></p>
+                <a href="{copy_link}" class="copy-btn" target="_blank">⚔️ Deck ins Spiel kopieren</a>
+            </div>
+            """
+
     tiers = ["🌟 Elite (95-100%)", "✅ Solides Mittelfeld (80-94%)", "⚠️ Unter Beobachtung (50-79%)", "🚫 Kritisch (< 50%)", "🏖️ Im Urlaub (Pausiert)"]
 
-    # HTML für die Haupt-Tabelle generieren (Mit Sticky Headings)
     table_html = ""
     for t in tiers:
         players_in_tier = sorted([p for p in player_stats if p["tier"] == t], key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]), reverse=True)
@@ -469,7 +579,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 table_html += f"<tr><td class='name-col'>{p['name']}{neu_badge}{p['streak_badge']}{p['strike_badge']}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
             table_html += "</tbody></table></div>"
 
-    # Neues Master-Layout zusammenbauen
     html = f"""
     <html>
     <head>
@@ -518,6 +627,15 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .card h1 {{ font-weight: 800; font-size: 2.5em; margin: 10px 0; color: #38bdf8; }}
             .card ul {{ margin: 0; padding-left: 20px; font-size: 1.05em; line-height: 1.6; color: #f1f5f9; }}
             
+            /* Deck Cards */
+            .deck-card {{ background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; flex: 1; min-width: 280px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border-top: 4px solid #f97316; }}
+            .deck-header {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }}
+            .deck-header h3 {{ margin: 0; color: #f97316; font-size: 1.2em; font-weight: 800; }}
+            .winrate {{ background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 4px 8px; border-radius: 6px; font-weight: bold; font-size: 0.85em; }}
+            .deck-images {{ display: flex; flex-wrap: wrap; justify-content: center; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }}
+            .copy-btn {{ display: block; text-align: center; background: #38bdf8; color: #0f172a; text-decoration: none; padding: 10px; border-radius: 8px; font-weight: bold; margin-top: 15px; transition: 0.2s; }}
+            .copy-btn:hover {{ background: #0284c7; color: #fff; }}
+
             /* Sticky Table Setup */
             .tier-section {{ position: relative; }}
             .tier-title {{ position: sticky; top: 73px; background: rgba(15, 23, 42, 0.98); z-index: 900; margin: 0; padding: 15px 0 10px 0; font-weight: 800; font-size: 1.4em; color: #fbbf24; border-bottom: 2px solid rgba(255,255,255,0.1); }}
@@ -527,7 +645,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             th, td {{ padding: 14px 10px; text-align: left; word-wrap: break-word; overflow-wrap: break-word; vertical-align: middle; }}
             td:nth-child(3), td:nth-child(5), td:nth-child(6), td:nth-child(7), td:nth-child(8), td:nth-child(9) {{ text-align: center; }}
             
-            /* Sticky Header Row */
             th {{ position: sticky; top: 128px; background-color: #0f172a; color: #94a3b8; z-index: 800; font-weight: 600; font-size: 0.9em; border-bottom: 1px solid rgba(255,255,255,0.1); line-height: 1.4; box-shadow: 0 4px 5px rgba(0,0,0,0.3); }}
             td {{ border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-size: 1.05em; }}
             
@@ -535,14 +652,12 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .name-col {{ font-weight: 800; color: #ffffff; }}
             .trend-cell {{ font-size: 16px !important; white-space: nowrap; line-height: 1; }}
             
-            /* Mini-Tabellen für das Wiki (Nicht sticky) */
             .wiki-table {{ width: 100%; table-layout: fixed; border-collapse: collapse; background: rgba(0, 0, 0, 0.3); border-radius: 8px; margin: 15px 0; border: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.85em; }}
             .wiki-table th {{ position: static; box-shadow: none; background-color: rgba(0,0,0,0.6); }}
             .wiki-table th, .wiki-table td {{ padding: 8px 5px; border-bottom: 1px solid rgba(255,255,255,0.05); }}
             .wiki-table tr:nth-child(odd) {{ background-color: transparent; }}
             .wiki-table tr:nth-child(even) {{ background-color: rgba(255, 255, 255, 0.05); }}
             
-            /* Tooltips */
             .custom-tooltip {{ position: relative; display: inline-block; cursor: help; }}
             .custom-tooltip.dotted {{ border-bottom: 1px dotted rgba(56, 189, 248, 0.5); }}
             .custom-tooltip .tooltip-text {{ visibility: hidden; width: max-content; background-color: rgba(15, 23, 42, 0.98); color: #fff; text-align: center; border-radius: 6px; padding: 6px 12px; position: absolute; z-index: 100; bottom: 140%; left: 50%; transform: translateX(-50%); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 4px 10px rgba(0,0,0,0.4); opacity: 0; transition: opacity 0.2s ease-in-out; font-size: 0.9em; font-weight: normal; font-family: 'Nunito', sans-serif; }}
@@ -551,7 +666,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .custom-tooltip.align-left .tooltip-text::after {{ left: 10px; margin-left: 0; }}
             .custom-tooltip:hover .tooltip-text {{ visibility: visible; opacity: 1; }}
             
-            /* Accordion für das Wiki */
             .accordion-btn {{ background: rgba(30, 41, 59, 0.9); color: #cbd5e1; cursor: pointer; padding: 18px 25px; width: 100%; border: none; text-align: left; outline: none; font-size: 1.1em; font-weight: 600; border-radius: 8px; margin-bottom: 8px; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.05); font-family: inherit; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); scroll-margin-top: 80px; }}
             .accordion-btn.active, .accordion-btn:hover {{ background: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.3); color: #fff; }}
             .accordion-btn::after {{ content: '+'; font-size: 1.5em; color: #38bdf8; font-weight: bold; transition: 0.3s; }}
@@ -571,6 +685,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             
             <div class="tab-container">
                 <button class="tab-btn active" onclick="openTab(event, 'Overview')">🏠 Übersicht</button>
+                <button class="tab-btn" onclick="openTab(event, 'Decks')">🃏 Top-Decks</button>
                 <button class="tab-btn" onclick="openTab(event, 'Table')">📋 Detail-Auswertung</button>
                 <button class="tab-btn" onclick="openTab(event, 'Wiki')">📖 Regeln & System</button>
             </div>
@@ -631,6 +746,14 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                             {chat_boxes_html}
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div id="Decks" class="tab-content">
+                <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; margin-bottom: 10px; color: #ffffff;">🃏 Clan-Meta: Die besten Kriegs-Decks</h2>
+                <p style="text-align: center; color: #94a3b8; margin-bottom: 30px;">Das System analysiert im Hintergrund alle Clankriegs-Kämpfe und zeigt euch hier die Decks, die am häufigsten gewonnen haben.</p>
+                <div style="display:flex; gap:20px; flex-wrap:wrap;">
+                    {deck_html}
                 </div>
             </div>
 
@@ -832,7 +955,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     mail_chat_text = "\n\n".join([f"{i+1}/{total_msgs} {text}" for i, text in enumerate(default_mail_texts)])
     return html, df_history, mail_chat_text, records, strikes
 
-def speichere_html_bericht(html_content: str, df_history: pd.DataFrame, records: dict, strikes: dict, file_suffix: str) -> Path:
+def speichere_html_bericht(html_content: str, df_history: pd.DataFrame, records: dict, strikes: dict, file_suffix: str, top_decks_data: dict) -> Path:
     html_path = output_folder / f"auswertung_{file_suffix}.html"
     with html_path.open("w", encoding="utf-8") as f:
         f.write(html_content)
@@ -848,6 +971,10 @@ def speichere_html_bericht(html_content: str, df_history: pd.DataFrame, records:
         
     with open(strikes_path, "w", encoding="utf-8") as f:
         json.dump(strikes, f, ensure_ascii=False, indent=4)
+        
+    # Neu: Top-Decks Datei abspeichern
+    with open(top_decks_path, "w", encoding="utf-8") as f:
+        json.dump(top_decks_data, f, ensure_ascii=False, indent=4)
         
     return html_path
 
@@ -867,7 +994,8 @@ def main():
     output_folder.mkdir(parents=True, exist_ok=True)
 
     print("=== STARTE CLAN-DATEN ABRUF ===")
-    if not fetch_and_build_player_csv(): return
+    success, current_members = fetch_and_build_player_csv()
+    if not success: return
     
     print("Schritt 3: Rufe Live-Radar (Current River Race) ab...")
     radar_clans = []
@@ -914,6 +1042,18 @@ def main():
     except Exception as e:
         print(f"Warnung: Radar konnte nicht geladen werden ({e})")
 
+    # Neu: Lade Top-Decks Daten (Phase 2)
+    top_decks_data = {}
+    if top_decks_path.exists():
+        try:
+            with open(top_decks_path, "r", encoding="utf-8") as f:
+                top_decks_data = json.load(f)
+        except Exception as e:
+            print(f"⚠️ Warnung: top_decks.json fehlerhaft, fange bei 0 an. ({e})")
+            
+    # Wir aktualisieren die Decks direkt
+    top_decks_data = update_top_decks(current_members, top_decks_data)
+
     records = {"donations": {"name": "-", "val": 0}, "delta": {"name": "-", "val": 0}, "trophies": {"name": "-", "val": 0}}
     if records_path.exists():
         try:
@@ -957,9 +1097,9 @@ def main():
     jetzt_datei = datetime.today().strftime("%Y-%m-%d_%H-%M-%S")
     encoded_header_img = get_encoded_header_image(HEADER_IMAGE_PATH)
     
-    html_bericht, df_history, mail_chat_text, updated_records, updated_strikes = generate_html_report(df_active, df_history, fame_spalte, heute_datum, encoded_header_img, radar_clans, records, strikes, race_state_de, raw_mahnwache)
+    html_bericht, df_history, mail_chat_text, updated_records, updated_strikes = generate_html_report(df_active, df_history, fame_spalte, heute_datum, encoded_header_img, radar_clans, records, strikes, race_state_de, raw_mahnwache, top_decks_data)
 
-    html_path = speichere_html_bericht(html_bericht, df_history, updated_records, updated_strikes, jetzt_datei)
+    html_path = speichere_html_bericht(html_bericht, df_history, updated_records, updated_strikes, jetzt_datei, top_decks_data)
     archiviere_alte_auswertungen(output_folder)
     
     sender_mail = os.environ.get("EMAIL_SENDER")
