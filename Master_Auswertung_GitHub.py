@@ -428,165 +428,23 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         </div>
         """
 
-    tiers = ["🌟 Elite (95-100%)", "✅ Solides Mittelfeld (80-94%)", "⚠️ Unter Beobachtung (50-79%)", "🚫 Kritisch (< 50%)", "🏖️ Im Urlaub (Pausiert)"]
-    
-    html = f"""
-    <html>
-    <head>
-        <meta charset='utf-8'>
-        <title>Auswertung: {CLAN_NAME}</title>
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap');
-            body {{ font-family: 'Nunito', sans-serif; margin: 0; padding: 20px; background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('https://images.hdqwalls.com/download/clash-royale-4k-19-1920x1080.jpg') no-repeat center center fixed; background-size: cover; color: #f8fafc; }}
-            .container {{ max-width: 1200px; margin: auto; }}
-            .header-container {{ position: relative; background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('{header_img_src}') no-repeat center center; background-size: cover; border-radius: 12px; padding: 40px 20px; margin-top: 20px; margin-bottom: 30px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }}
-            .header-title {{ font-weight: 800; color: #ffffff; font-size: 2.2em; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.5); letter-spacing: 1px; }}
-            .header-date {{ font-weight: 400; font-size: 0.45em; color: #cbd5e1; display: block; margin-top: 10px; letter-spacing: 0px; }}
-            
-            /* Neue Welcome Box */
-            .welcome-box {{ background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95)); border-left: 5px solid #fbbf24; padding: 25px 30px; border-radius: 12px; margin-bottom: 30px; font-size: 1.05em; color: #e2e8f0; line-height: 1.7; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); border: 1px solid rgba(251, 191, 36, 0.2); }}
-            .welcome-box p {{ margin: 0 0 12px 0; }}
-            .welcome-box p:last-child {{ margin: 0; }}
-            .welcome-title {{ font-size: 1.4em; color: #fbbf24; margin-top: 0; margin-bottom: 15px; font-weight: 800; display: flex; align-items: center; gap: 10px; }}
-
-            .info-box {{ background: rgba(30, 41, 59, 0.85); border-left: 5px solid #38bdf8; padding: 20px 25px; border-radius: 8px; margin-bottom: 40px; font-size: 1em; color: #e2e8f0; line-height: 1.6; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.05); scroll-margin-top: 20px; }}
-            .dashboard {{ display: flex; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }}
-            .card {{ flex: 1; min-width: 220px; background: rgba(30, 41, 59, 0.8); padding: 20px 25px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }}
-            .card h3 {{ font-weight: 600; font-size: 1.1em; margin-top: 0; color: #cbd5e1; }}
-            .card.avg {{ border-top: 4px solid #38bdf8; }}
-            .card.top {{ border-top: 4px solid #fbbf24; }}
-            .card.aufsteiger {{ border-top: 4px solid #10b981; }}
-            .card.spender {{ border-top: 4px solid #a855f7; }} 
-            .card.leecher {{ border-top: 4px solid #64748b; }} 
-            .card.pusher {{ border-top: 4px solid #f97316; }}
-            .card.hof {{ border-top: 4px solid #8b5cf6; }}
-            .card.urlaub {{ border-top: 4px solid #0ea5e9; }}
-            .card.messenger {{ border-top: 4px solid #f1c40f; width: 100%; flex: 100%; }}
-            .card h1 {{ font-weight: 800; font-size: 2.5em; margin: 10px 0; color: #38bdf8; }}
-            .card ul {{ margin: 0; padding-left: 20px; font-size: 1.05em; line-height: 1.6; color: #f1f5f9; }}
-            .tier-title {{ font-weight: 800; font-size: 1.4em; color: #fbbf24; margin-top: 45px; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; }}
-            
-            table {{ width: 100%; table-layout: fixed; border-collapse: collapse; background: rgba(15, 23, 42, 0.9); border-radius: 8px; margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.1); }}
-            th:nth-child(1) {{ width: 20%; }} 
-            th:nth-child(2) {{ width: 14%; }} 
-            th:nth-child(3) {{ width: 8%; text-align: center; }}  
-            th:nth-child(4) {{ width: 12%; }} 
-            th:nth-child(5) {{ width: 8%; text-align: center; }}  
-            th:nth-child(6) {{ width: 10%; text-align: center; }} 
-            th:nth-child(7) {{ width: 10%; text-align: center; }} 
-            th:nth-child(8) {{ width: 9%; text-align: center; }}  
-            th:nth-child(9) {{ width: 9%; text-align: center; }}  
-            th:first-child {{ border-top-left-radius: 8px; }} th:last-child {{ border-top-right-radius: 8px; }}
-            tr:last-child td:first-child {{ border-bottom-left-radius: 8px; }} tr:last-child td:last-child {{ border-bottom-right-radius: 8px; }}
-            tr:nth-child(odd) {{ background-color: rgba(0, 0, 0, 0.45); }} tr:nth-child(even) {{ background-color: rgba(255, 255, 255, 0.15); }} tr:hover {{ background-color: rgba(255, 255, 255, 0.3); }}
-            th, td {{ padding: 14px 10px; text-align: left; word-wrap: break-word; overflow-wrap: break-word; vertical-align: middle; }}
-            td:nth-child(3), td:nth-child(5), td:nth-child(6), td:nth-child(7), td:nth-child(8), td:nth-child(9) {{ text-align: center; }}
-            th {{ background-color: rgba(0, 0, 0, 0.6); font-weight: 600; font-size: 0.9em; color: #94a3b8; border-bottom: 1px solid rgba(255,255,255,0.1); line-height: 1.4; }}
-            td {{ border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-size: 1.05em; }}
-            
-            .badge-ja {{ background-color: #10b981; color: #ffffff; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 0.8em; margin-left: 8px; }}
-            .name-col {{ font-weight: 800; color: #ffffff; }}
-            .trend-cell {{ font-size: 16px !important; white-space: nowrap; line-height: 1; }}
-            .custom-tooltip {{ position: relative; display: inline-block; cursor: help; }}
-            .custom-tooltip.dotted {{ border-bottom: 1px dotted rgba(56, 189, 248, 0.5); }}
-            .custom-tooltip .tooltip-text {{ visibility: hidden; width: max-content; background-color: rgba(15, 23, 42, 0.98); color: #fff; text-align: center; border-radius: 6px; padding: 6px 12px; position: absolute; z-index: 100; bottom: 140%; left: 50%; transform: translateX(-50%); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 4px 10px rgba(0,0,0,0.4); opacity: 0; transition: opacity 0.2s ease-in-out; font-size: 0.9em; font-weight: normal; font-family: 'Nunito', sans-serif; }}
-            .custom-tooltip .tooltip-text::after {{ content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: rgba(255, 255, 255, 0.2) transparent transparent transparent; }}
-            .custom-tooltip.align-left .tooltip-text {{ left: 0; transform: none; }}
-            .custom-tooltip.align-left .tooltip-text::after {{ left: 10px; margin-left: 0; }}
-            .custom-tooltip:hover .tooltip-text {{ visibility: visible; opacity: 1; }}
-            a:hover {{ opacity: 0.8; }}
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="header-container">
-                <h1 class="header-title">📊 Clan-Auswertung: {CLAN_NAME} <br><span class="header-date">{heute_datum}</span></h1>
-            </div>
-            
-            <div class="welcome-box">
-                <h2 class="welcome-title">Willkommen bei der HAMBURG-Family! 🤝</h2>
-                <p>Schön, dass du über unsere Clan-Info hierher gefunden hast. Egal ob du schon ewig dabei bist oder gerade erst überlegst, uns beizutreten: Schau dich in Ruhe um!</p>
-                <p>Ein starker Clan braucht aktive Mitglieder. Auf dieser Seite tracken wir jede Woche transparent unseren Erfolg im Clankrieg und unsere Spendenbereitschaft.</p>
-                <p>Wir sind eine entspannte, aber ehrgeizige Truppe. Bei uns zählt Verlässlichkeit mehr als reine Trophäen. Wenn du einen dauerhaft aktiven Clan suchst und deine 4 Decks verlässlich spielst, bist du bei uns genau <b>richtig</b>! 🛡️</p>
-            </div>
-            
-            {radar_html}
-            {mahnwache_html}
-            
-            <div class="info-box">
-                <h3 style="margin-top: 0; color: #38bdf8; margin-bottom: 12px; font-size: 1.2em;">💡 So liest du diese Auswertung:</h3>
-                <p style="margin: 0 0 10px 0;"><b>📬 Neu: Auswertung per E-Mail!</b> Willst du diese Auswertung jeden Montag ins Postfach? <a href="#wiki-email" style="color: #38bdf8; text-decoration: underline;">Klicke hier für alle Infos</a>.</p>
-                <p style="margin: 0 0 10px 0;"><b>⏱️ Aktualisierung:</b> Alle Daten (inkl. Live-Radar) aktualisieren sich an den Kampftagen (Donnerstag bis Montag) alle 4 Stunden automatisch. Dienstag und Mittwoch ist Ruhetag. Die große Endauswertung findet jeden Montagvormittag statt.</p>
-                <p style="margin: 0 0 10px 0;"><b>🏆 Wer steht oben? (Die Sortierung):</b> Die Liste ist streng nach Leistung sortiert. Wer 100% holt, steht oben. Bei Punktegleichstand gewinnt die Teilnahme-Treue, dann Kriegspunkte, zuletzt Spenden.</p>
-                <p style="margin: 0 0 10px 0;"><b>📈 Delta (Entwicklung):</b> Zeigt die prozentuale Veränderung des Scores zur letzten Auswertung an (Grün = Aufstieg, Rot = Abfall).</p>
-                <p style="margin: 0 0 10px 0;"><b>🌱 Welpenschutz (Neu im Clan?):</b> Spieler mit ≤ 3 Kriegen bekommen das 🌱-Symbol und sind vor Verwarnungen geschützt.</p>
-                <p style="margin: 0 0 10px 0;"><b>🟢🟡🔴 Trend & Qualität (Die Ampel):</b> Zeigt die Leistung der letzten 4 Wochen. "Ø Punkte" zeigt die Punkte pro Deck. Ein ⚠️ bedeutet: Verdacht auf Bootsangriffe/Dropping (< 115 Pkt). Ein 🔥 bedeutet einen 100%-Lauf über mehrere Wochen!</p>
-                <p style="margin: 0 0 10px 0;"><b>🃏 Geben & Nehmen (Spenden):</b> Ein Clan lebt von der Gemeinschaft! <br><b>🧛 Vampir:</b> 0 gespendet, aber abkassiert. <br><b>💤 Schlafend:</b> 0 gespendet, 0 angefordert. <br><i>Tipp: Fahre mit der Maus am PC über die Spenden-Zahlen für Details!</i></p>
-            </div>
-            
-            <div class="dashboard">
-                <div class="card avg">
-                    <h3>📈 Clan-Durchschnitt</h3>
-                    <h1>{clan_avg}%</h1>
-                </div>
-                <div class="card top">
-                    <h3>🏆 Top 3 Performer</h3>
-                    <ul>{''.join([f"<li><b>{p['name']}</b> ({p['score']}%)</li>" for p in top_performers])}</ul>
-                </div>
-                <div class="card spender">
-                    <h3>🃏 Top 3 Spender</h3>
-                    <ul>{''.join([f"<li><b>{p['name']}</b> ({p['donations']})</li>" for p in top_spender]) if top_spender else "<li>Keine Spenden</li>"}</ul>
-                </div>
-                <div class="card pusher">
-                    <h3>🚀 Trophäen-Pusher</h3>
-                    <ul>{pusher_html}</ul>
-                </div>
-                <div class="card hof">
-                    <h3>📖 Hall of Fame (Ewig)</h3>
-                    <ul style="font-size: 0.95em;">
-                        <li><b>Spenden-Gott:</b> {records['donations']['name']} ({records['donations']['val']})</li>
-                        <li><b>Max Trophäen:</b> {records['trophies']['name']} ({records['trophies']['val']} 🏆)</li>
-                        <li><b>Mega-Comeback:</b> {records['delta']['name']} (+{records['delta']['val']}%)</li>
-                    </ul>
-                </div>
-                <div class="card urlaub">
-                    <h3>🏖️ Aktuell im Urlaub</h3>
-                    <ul style="font-size: 0.95em;">{urlaub_html}</ul>
-                </div>
-                <div class="card aufsteiger">
-                    <h3>🚀 Größte Aufsteiger</h3>
-                    <ul>{''.join([f"<li><b>{p['name']}</b> (+{p['delta']}%)</li>" for p in top_aufsteiger]) if top_aufsteiger else "<li>Keine Verbesserungen</li>"}</ul>
-                </div>
-                <div class="card leecher">
-                    <h3>🧛 Top 3 Leecher</h3>
-                    <ul>{''.join([f"<li><b>{p['name']}</b> ({p['donations']} gesp. / {p['donations_received']} empf.)</li>" for p in top_leecher]) if top_leecher else "<li>Keine Leecher! 🎉</li>"}</ul>
-                </div>
-                
-                <div class="card messenger">
-                    <h3 style="color: #f1c40f; margin-bottom: 10px;">🎮 Clash Royale In-Game Chat ({total_msgs}-Teiler)</h3>
-                    <p style="font-size: 0.9em; color: #cbd5e1; margin-top: 0; margin-bottom: 15px;">Wähle oben im Menü den passenden Tonfall. Kopiere dann die {total_msgs} Texte nacheinander in den Chat.</p>
-                    {chat_boxes_html}
-                </div>
-            </div>
-
-            <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 60px; color: #ffffff;">📋 Detaillierte Spielerliste</h2>
-    """
-
+    # HTML für die Tabelle generieren
+    table_html = ""
     for t in tiers:
         players_in_tier = sorted([p for p in player_stats if p["tier"] == t], key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]), reverse=True)
         if players_in_tier:
-            html += f"<div class='tier-title'>{t}</div>"
-            html += """<table>
+            table_html += f"<div class='tier-title'>{t}</div>"
+            table_html += """<table>
                 <tr>
                     <th>Spieler</th>
                     <th>Status</th>
-                    <th>Score<br><a href='#wiki-score' style='color:#94a3b8; text-decoration:none;'>📖</a></th>
+                    <th>Score</th>
                     <th>Trend</th>
-                    <th>Delta<br><a href='#wiki-delta' style='color:#94a3b8; text-decoration:none;'>📖</a></th>
-                    <th>Ø Punkte<br><a href='#wiki-punkte' style='color:#94a3b8; text-decoration:none;'>📖</a></th>
-                    <th>🃏 Spenden<br><a href='#wiki-spenden' style='color:#94a3b8; text-decoration:none;'>📖</a></th>
-                    <th>Teilnahmen<br><a href='#wiki-teilnahmen' style='color:#94a3b8; text-decoration:none;'>📖</a></th>
-                    <th>Kriegs-<br>punkte<br><a href='#wiki-kriegspunkte' style='color:#94a3b8; text-decoration:none;'>📖</a></th>
+                    <th>Delta</th>
+                    <th>Ø Punkte</th>
+                    <th>🃏 Spenden</th>
+                    <th>Teilnahmen</th>
+                    <th>Kriegspunkte</th>
                 </tr>"""
             for p in players_in_tier:
                 delta_s = f"+{p['delta']}" if p['delta']>0 else f"{p['delta']}"
@@ -602,110 +460,261 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 
                 spenden_zelle = f"<span class='custom-tooltip dotted'>{p['donations']}<span class='tooltip-text'>Gespendet: {p['donations']} | Empfangen: {p['donations_received']}</span></span>"
                 
-                html += f"<tr><td class='name-col'>{p['name']}{neu_badge}{p['streak_badge']}{p['strike_badge']}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
-            html += "</table>"
+                table_html += f"<tr><td class='name-col'>{p['name']}{neu_badge}{p['streak_badge']}{p['strike_badge']}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
+            table_html += "</table>"
+
+    # Neues Master-Layout zusammenbauen
+    html = f"""
+    <html>
+    <head>
+        <meta charset='utf-8'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Auswertung: {CLAN_NAME}</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap');
+            body {{ font-family: 'Nunito', sans-serif; margin: 0; padding: 20px; background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('https://images.hdqwalls.com/download/clash-royale-4k-19-1920x1080.jpg') no-repeat center center fixed; background-size: cover; color: #f8fafc; }}
+            .container {{ max-width: 1200px; margin: auto; }}
+            .header-container {{ position: relative; background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('{header_img_src}') no-repeat center center; background-size: cover; border-radius: 12px; padding: 40px 20px; margin-top: 20px; margin-bottom: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }}
+            .header-title {{ font-weight: 800; color: #ffffff; font-size: 2.2em; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.5); letter-spacing: 1px; }}
+            .header-date {{ font-weight: 400; font-size: 0.45em; color: #cbd5e1; display: block; margin-top: 10px; letter-spacing: 0px; }}
             
-    html += """
-            <hr style="border: 0; height: 1px; background: rgba(255,255,255,0.1); margin: 60px 0 40px 0;">
-            <div id="wiki" class="info-box" style="border-left-color: #8b5cf6; background: rgba(30, 41, 59, 0.95); scroll-margin-top: 20px;">
-                <h2 style="margin-top: 0; color: #8b5cf6; margin-bottom: 20px;">📖 Clan-Wiki: Wie lesen sich diese Zahlen? (Einfach erklärt)</h2>
+            /* App-ähnliche Navigation (Tabs) */
+            .tab-container {{ display: flex; gap: 10px; margin-bottom: 30px; border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 15px; position: sticky; top: 0; background: rgba(15, 23, 42, 0.95); z-index: 1000; padding-top: 15px; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }}
+            .tab-container::-webkit-scrollbar {{ display: none; }}
+            .tab-btn {{ flex: 1; background: rgba(30, 41, 59, 0.8); color: #94a3b8; border: 1px solid rgba(255,255,255,0.1); padding: 14px 20px; border-radius: 8px; font-weight: 600; font-size: 1.05em; cursor: pointer; transition: all 0.2s ease; font-family: inherit; min-width: max-content; }}
+            .tab-btn:hover {{ background: rgba(56, 189, 248, 0.2); color: #fff; }}
+            .tab-btn.active {{ background: #38bdf8; color: #0f172a; border-color: #38bdf8; font-weight: 800; box-shadow: 0 4px 10px rgba(56, 189, 248, 0.3); }}
+            .tab-content {{ display: none; animation: fadeIn 0.4s ease-in-out; }}
+            .tab-content.active {{ display: block; }}
+            @keyframes fadeIn {{ from {{ opacity: 0; transform: translateY(10px); }} to {{ opacity: 1; transform: translateY(0); }} }}
+
+            /* Welcome Box */
+            .welcome-box {{ background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95)); border-left: 5px solid #fbbf24; padding: 25px 30px; border-radius: 12px; margin-bottom: 30px; font-size: 1.05em; color: #e2e8f0; line-height: 1.7; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); border: 1px solid rgba(251, 191, 36, 0.2); }}
+            .welcome-box p {{ margin: 0 0 12px 0; }}
+            .welcome-box p:last-child {{ margin: 0; }}
+            .welcome-title {{ font-size: 1.4em; color: #fbbf24; margin-top: 0; margin-bottom: 15px; font-weight: 800; display: flex; align-items: center; gap: 10px; }}
+
+            /* Dashboard Cards */
+            .info-box {{ background: rgba(30, 41, 59, 0.85); border-left: 5px solid #38bdf8; padding: 20px 25px; border-radius: 8px; margin-bottom: 40px; font-size: 1em; color: #e2e8f0; line-height: 1.6; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.05); }}
+            .dashboard {{ display: flex; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }}
+            .card {{ flex: 1; min-width: 220px; background: rgba(30, 41, 59, 0.8); padding: 20px 25px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }}
+            .card h3 {{ font-weight: 600; font-size: 1.1em; margin-top: 0; color: #cbd5e1; }}
+            .card.avg {{ border-top: 4px solid #38bdf8; }}
+            .card.top {{ border-top: 4px solid #fbbf24; }}
+            .card.aufsteiger {{ border-top: 4px solid #10b981; }}
+            .card.spender {{ border-top: 4px solid #a855f7; }} 
+            .card.leecher {{ border-top: 4px solid #64748b; }} 
+            .card.pusher {{ border-top: 4px solid #f97316; }}
+            .card.hof {{ border-top: 4px solid #8b5cf6; }}
+            .card.urlaub {{ border-top: 4px solid #0ea5e9; }}
+            .card.messenger {{ border-top: 4px solid #f1c40f; width: 100%; flex: 100%; }}
+            .card h1 {{ font-weight: 800; font-size: 2.5em; margin: 10px 0; color: #38bdf8; }}
+            .card ul {{ margin: 0; padding-left: 20px; font-size: 1.05em; line-height: 1.6; color: #f1f5f9; }}
+            
+            /* Table */
+            .tier-title {{ font-weight: 800; font-size: 1.4em; color: #fbbf24; margin-top: 20px; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; }}
+            table {{ width: 100%; table-layout: fixed; border-collapse: collapse; background: rgba(15, 23, 42, 0.9); border-radius: 8px; margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.1); }}
+            th:nth-child(1) {{ width: 20%; }} th:nth-child(2) {{ width: 14%; }} th:nth-child(3) {{ width: 8%; text-align: center; }} th:nth-child(4) {{ width: 12%; }} th:nth-child(5) {{ width: 8%; text-align: center; }} th:nth-child(6) {{ width: 10%; text-align: center; }} th:nth-child(7) {{ width: 10%; text-align: center; }} th:nth-child(8) {{ width: 9%; text-align: center; }} th:nth-child(9) {{ width: 9%; text-align: center; }}
+            tr:nth-child(odd) {{ background-color: rgba(0, 0, 0, 0.45); }} tr:nth-child(even) {{ background-color: rgba(255, 255, 255, 0.15); }} tr:hover {{ background-color: rgba(255, 255, 255, 0.3); }}
+            th, td {{ padding: 14px 10px; text-align: left; word-wrap: break-word; overflow-wrap: break-word; vertical-align: middle; }}
+            td:nth-child(3), td:nth-child(5), td:nth-child(6), td:nth-child(7), td:nth-child(8), td:nth-child(9) {{ text-align: center; }}
+            th {{ background-color: rgba(0, 0, 0, 0.6); font-weight: 600; font-size: 0.9em; color: #94a3b8; border-bottom: 1px solid rgba(255,255,255,0.1); line-height: 1.4; }}
+            td {{ border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-size: 1.05em; }}
+            .badge-ja {{ background-color: #10b981; color: #ffffff; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 0.8em; margin-left: 8px; }}
+            .name-col {{ font-weight: 800; color: #ffffff; }}
+            .trend-cell {{ font-size: 16px !important; white-space: nowrap; line-height: 1; }}
+            
+            /* Tooltips */
+            .custom-tooltip {{ position: relative; display: inline-block; cursor: help; }}
+            .custom-tooltip.dotted {{ border-bottom: 1px dotted rgba(56, 189, 248, 0.5); }}
+            .custom-tooltip .tooltip-text {{ visibility: hidden; width: max-content; background-color: rgba(15, 23, 42, 0.98); color: #fff; text-align: center; border-radius: 6px; padding: 6px 12px; position: absolute; z-index: 100; bottom: 140%; left: 50%; transform: translateX(-50%); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 4px 10px rgba(0,0,0,0.4); opacity: 0; transition: opacity 0.2s ease-in-out; font-size: 0.9em; font-weight: normal; font-family: 'Nunito', sans-serif; }}
+            .custom-tooltip .tooltip-text::after {{ content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: rgba(255, 255, 255, 0.2) transparent transparent transparent; }}
+            .custom-tooltip.align-left .tooltip-text {{ left: 0; transform: none; }}
+            .custom-tooltip.align-left .tooltip-text::after {{ left: 10px; margin-left: 0; }}
+            .custom-tooltip:hover .tooltip-text {{ visibility: visible; opacity: 1; }}
+            
+            /* Accordion für das Wiki */
+            .accordion-btn {{ background: rgba(30, 41, 59, 0.9); color: #cbd5e1; cursor: pointer; padding: 18px 25px; width: 100%; border: none; text-align: left; outline: none; font-size: 1.1em; font-weight: 600; border-radius: 8px; margin-bottom: 8px; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.05); font-family: inherit; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }}
+            .accordion-btn.active, .accordion-btn:hover {{ background: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.3); color: #fff; }}
+            .accordion-btn::after {{ content: '+'; font-size: 1.5em; color: #38bdf8; font-weight: bold; transition: 0.3s; }}
+            .accordion-btn.active::after {{ content: '−'; transform: rotate(180deg); }}
+            .accordion-content {{ padding: 0 25px; background: rgba(15, 23, 42, 0.6); max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; border-radius: 0 0 8px 8px; margin-top: -8px; margin-bottom: 15px; font-size: 1em; line-height: 1.6; color: #94a3b8; border-left: 2px solid #38bdf8; }}
+            .accordion-content p, .accordion-content ul {{ padding: 15px 0; margin: 0; }}
+            .accordion-content li {{ margin-bottom: 8px; }}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header-container">
+                <h1 class="header-title">📊 Clan-Auswertung: {CLAN_NAME} <br><span class="header-date">{heute_datum}</span></h1>
+            </div>
+            
+            <div class="tab-container">
+                <button class="tab-btn active" onclick="openTab(event, 'Overview')">🏠 Übersicht & Chat</button>
+                <button class="tab-btn" onclick="openTab(event, 'Table')">📋 Spielerliste</button>
+                <button class="tab-btn" onclick="openTab(event, 'Wiki')">📖 Clan-Wiki</button>
+            </div>
+
+            <div id="Overview" class="tab-content active">
+                <div class="welcome-box">
+                    <h2 class="welcome-title">Willkommen bei der HAMBURG-Family! 🤝</h2>
+                    <p>Schön, dass du über unsere Clan-Info hierher gefunden hast. Egal ob du schon ewig dabei bist oder gerade erst überlegst, uns beizutreten: Schau dich in Ruhe um!</p>
+                    <p>Ein starker Clan braucht aktive Mitglieder. Auf dieser Seite tracken wir jede Woche transparent unseren Erfolg im Clankrieg und unsere Spendenbereitschaft.</p>
+                    <p>Wir sind eine entspannte, aber ehrgeizige Truppe. Bei uns zählt Verlässlichkeit mehr als reine Trophäen. Wenn du einen dauerhaft aktiven Clan suchst und deine 4 Decks verlässlich spielst, bist du bei uns genau <b>richtig</b>! 🛡️</p>
+                </div>
                 
-                <div id="wiki-email" style="margin-bottom: 25px; scroll-margin-top: 20px;">
-                    <h4 style="color: #cbd5e1; margin: 0 0 8px 0; font-size: 1.1em;">📬 Die Montags-Auswertung per E-Mail (Neu!)</h4>
-                    <p style="margin: 0 0 8px 0; font-size: 0.95em; color: #94a3b8; line-height: 1.5;">
-                        Willst du diese Auswertung jeden Montag ganz bequem und automatisch in dein Postfach bekommen? 
-                    </p>
-                    <ul style="margin: 0; padding-left: 20px; font-size: 0.9em; color: #94a3b8; line-height: 1.5;">
+                {radar_html}
+                {mahnwache_html}
+                
+                <div class="dashboard">
+                    <div class="card avg">
+                        <h3>📈 Clan-Durchschnitt</h3>
+                        <h1>{clan_avg}%</h1>
+                    </div>
+                    <div class="card top">
+                        <h3>🏆 Top 3 Performer</h3>
+                        <ul>{''.join([f"<li><b>{p['name']}</b> ({p['score']}%)</li>" for p in top_performers])}</ul>
+                    </div>
+                    <div class="card spender">
+                        <h3>🃏 Top 3 Spender</h3>
+                        <ul>{''.join([f"<li><b>{p['name']}</b> ({p['donations']})</li>" for p in top_spender]) if top_spender else "<li>Keine Spenden</li>"}</ul>
+                    </div>
+                    <div class="card pusher">
+                        <h3>🚀 Trophäen-Pusher</h3>
+                        <ul>{pusher_html}</ul>
+                    </div>
+                    <div class="card hof">
+                        <h3>📖 Hall of Fame (Ewig)</h3>
+                        <ul style="font-size: 0.95em;">
+                            <li><b>Spenden-Gott:</b> {records['donations']['name']} ({records['donations']['val']})</li>
+                            <li><b>Max Trophäen:</b> {records['trophies']['name']} ({records['trophies']['val']} 🏆)</li>
+                            <li><b>Mega-Comeback:</b> {records['delta']['name']} (+{records['delta']['val']}%)</li>
+                        </ul>
+                    </div>
+                    <div class="card urlaub">
+                        <h3>🏖️ Aktuell im Urlaub</h3>
+                        <ul style="font-size: 0.95em;">{urlaub_html}</ul>
+                    </div>
+                    <div class="card aufsteiger">
+                        <h3>🚀 Größte Aufsteiger</h3>
+                        <ul>{''.join([f"<li><b>{p['name']}</b> (+{p['delta']}%)</li>" for p in top_aufsteiger]) if top_aufsteiger else "<li>Keine Verbesserungen</li>"}</ul>
+                    </div>
+                    <div class="card leecher">
+                        <h3>🧛 Top 3 Leecher</h3>
+                        <ul>{''.join([f"<li><b>{p['name']}</b> ({p['donations']} gesp. / {p['donations_received']} empf.)</li>" for p in top_leecher]) if top_leecher else "<li>Keine Leecher! 🎉</li>"}</ul>
+                    </div>
+                    
+                    <div class="card messenger">
+                        <h3 style="color: #f1c40f; margin-bottom: 10px;">🎮 Clash Royale In-Game Chat ({total_msgs}-Teiler)</h3>
+                        <p style="font-size: 0.9em; color: #cbd5e1; margin-top: 0; margin-bottom: 15px;">Wähle oben im Menü den passenden Tonfall. Kopiere dann die {total_msgs} Texte nacheinander in den Chat.</p>
+                        {chat_boxes_html}
+                    </div>
+                </div>
+            </div>
+
+            <div id="Table" class="tab-content">
+                <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; color: #ffffff;">📋 Detaillierte Spielerliste</h2>
+                {table_html}
+            </div>
+
+            <div id="Wiki" class="tab-content">
+                <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; margin-bottom: 30px; color: #8b5cf6;">📖 Clan-Wiki: Wie lesen sich diese Zahlen?</h2>
+                
+                <button class="accordion-btn">📬 Die Montags-Auswertung per E-Mail</button>
+                <div class="accordion-content">
+                    <p>Willst du diese Auswertung jeden Montag ganz bequem und automatisch in dein Postfach bekommen?</p>
+                    <ul>
                         <li><b>Anmelden:</b> Schreib einfach eine kurze E-Mail mit deinem In-Game-Namen an: <b>strike2005-Hamburg_Royal@yahoo.com</b>. Die Clan-Führung trägt dich dann in den Verteiler ein.</li>
-                        <li>🔒 <b>100% Datenschutz (BCC-Versand):</b> Keine Sorge um deine private E-Mail-Adresse! Das System verschickt die Auswertung an alle Mitglieder ausschließlich als <b>Blindkopie (BCC)</b>. Das bedeutet: Niemand im Clan kann sehen, wer sonst noch auf der Liste steht. Dein Postfach bleibt absolut anonym.</li>
+                        <li>🔒 <b>100% Datenschutz (BCC-Versand):</b> Keine Sorge um deine private E-Mail-Adresse! Das System verschickt die Auswertung an alle Mitglieder ausschließlich als <b>Blindkopie (BCC)</b>. Niemand im Clan kann sehen, wer sonst noch auf der Liste steht.</li>
                         <li><b>Abmelden:</b> Eine kurze Nachricht reicht, und du fliegst sofort wieder aus dem Verteiler.</li>
                     </ul>
                 </div>
-                
-                <div id="wiki-strikes" style="margin-bottom: 25px; scroll-margin-top: 20px;">
-                    <h4 style="color: #cbd5e1; margin: 0 0 8px 0; font-size: 1.1em;">⚖️ Verwarnungen, Degradierung & Kicks (Das faire System)</h4>
-                    <p style="margin: 0 0 8px 0; font-size: 0.95em; color: #94a3b8; line-height: 1.5;">
-                        Damit nicht eine einzige schlechte Woche sofort zum Rauswurf führt, hat unsere Auswertung ein faires Langzeit-Gedächtnis. Wer sich nicht abmeldet und im Clankrieg dauerhaft zu wenig liefert (Score unter 50%), sammelt im Hintergrund unsichtbare Verwarnungen.
-                    </p>
-                    <ul style="margin: 0; padding-left: 20px; font-size: 0.9em; color: #94a3b8; line-height: 1.5;">
-                        <li><b>Die zweite Chance (Degradierung):</b> Wenn ein <i>Ältester</i> oder <i>Vize</i> wiederholt durch Inaktivität auffällt, wird er nicht sofort gekickt. Er wird zur Strafe zum <b>Mitglied degradiert</b> und erhält so eine letzte Bewährungschance, um sich wieder hochzuarbeiten.</li>
-                        <li><b>Der Rauswurf (Kick):</b> Wenn ein normales <i>Mitglied</i> über mehrere Wochen hinweg die Mindestteilnahme im Krieg verweigert, trennen wir uns. Ein Clan lebt vom Teamplay, und so machen wir Platz für neue, aktive Spieler.</li>
-                        <li><b>Das Konto ausgleichen:</b> Das System verzeiht Ausrutscher! Wer nach einer Verwarnung wieder anzieht und in der Folgewoche eine solide Leistung zeigt (Score über 50%), baut seine negativen Einträge automatisch wieder ab.</li>
+
+                <button class="accordion-btn">⚖️ Verwarnungen, Degradierung & Kicks</button>
+                <div class="accordion-content">
+                    <p>Damit nicht eine einzige schlechte Woche sofort zum Rauswurf führt, hat unsere Auswertung ein faires Langzeit-Gedächtnis. Wer sich nicht abmeldet und im Clankrieg dauerhaft zu wenig liefert (Score unter 50%), sammelt im Hintergrund unsichtbare Verwarnungen (❌).</p>
+                    <ul>
+                        <li><b>Die zweite Chance (Degradierung):</b> Wenn ein <i>Ältester</i> oder <i>Vize</i> 3 Verwarnungen ansammelt, wird er nicht sofort gekickt. Er wird zur Strafe zum <b>Mitglied degradiert</b> und erhält so eine letzte Bewährungschance.</li>
+                        <li><b>Der Rauswurf (Kick):</b> Wenn ein normales <i>Mitglied</i> 3 Verwarnungen erreicht, trennen wir uns. So machen wir Platz für neue, aktive Spieler.</li>
+                        <li><b>Das Konto ausgleichen:</b> Wer nach einer Verwarnung wieder anzieht und in der Folgewoche über 50% Score holt, baut seine negativen Einträge automatisch wieder ab!</li>
                     </ul>
                 </div>
 
-                <div id="wiki-score" style="margin-bottom: 25px; scroll-margin-top: 20px;">
-                    <h4 style="color: #cbd5e1; margin: 0 0 8px 0; font-size: 1.1em;">🎯 Der Score (Deine Zuverlässigkeit)</h4>
-                    <p style="margin: 0 0 8px 0; font-size: 0.95em; color: #94a3b8; line-height: 1.5;">
-                        Der Score ist die wichtigste Zahl im Dashboard. Er misst nicht, wie stark du bist oder wie viel du gewinnst, sondern <b>wie verlässlich du bist</b>.<br>
-                        Stell dir vor, du hast für jedes Kriegswochenende 16 "Tickets" (4 Tage × 4 Decks). Der Score zeigt einfach, wie viele deiner verfügbaren Tickets du auch wirklich genutzt hast.
-                    </p>
-                    <ul style="margin: 0; padding-left: 20px; font-size: 0.9em; color: #94a3b8; line-height: 1.5;">
+                <button class="accordion-btn">🎯 Der Score (Deine Zuverlässigkeit)</button>
+                <div class="accordion-content">
+                    <p>Der Score ist die wichtigste Zahl im Dashboard. Er misst nicht, wie stark du bist oder wie viel du gewinnst, sondern <b>wie verlässlich du bist</b>.<br><br>
+                    Stell dir vor, du hast für jedes Kriegswochenende 16 "Tickets" (4 Tage × 4 Decks). Der Score zeigt einfach, wie viele deiner verfügbaren Tickets du auch wirklich genutzt hast.</p>
+                    <ul>
                         <li><b>100%:</b> Perfekt! Du hast keinen einzigen Angriff verpasst.</li>
                         <li><b>50%:</b> Du hast nur die Hälfte deiner möglichen Angriffe gemacht.</li>
-                        <li><b>Welpenschutz:</b> Wenn du neu im Clan bist und erst an wenigen Kriegen teilgenommen hast, fangen wir fair an. Du wirst nur an den Kriegen gemessen, bei denen du auch wirklich schon im Clan warst.</li>
+                        <li><b>Welpenschutz (🌱):</b> Wenn du neu im Clan bist, fangen wir fair an. Du wirst nur an den Kriegen gemessen, bei denen du auch wirklich schon im Clan warst.</li>
                     </ul>
                 </div>
 
-                <div id="wiki-delta" style="margin-bottom: 25px; scroll-margin-top: 20px;">
-                    <h4 style="color: #cbd5e1; margin: 0 0 8px 0; font-size: 1.1em;">📈 Das Delta (Deine Formkurve)</h4>
-                    <p style="margin: 0; font-size: 0.95em; color: #94a3b8; line-height: 1.5;">
-                        Das Delta ist wie beim Sport deine aktuelle Formkurve. Es vergleicht deine Leistung von heute mit deiner Leistung aus der letzten Auswertung.
-                    </p>
-                    <ul style="margin: 8px 0 0 0; padding-left: 20px; font-size: 0.9em; color: #94a3b8; line-height: 1.5;">
-                        <li><b>Grüne Zahl (z.B. +12%):</b> Super! Du hast dich im Vergleich zur letzten Woche gesteigert und warst aktiver.</li>
-                        <li><b>Rote Zahl (z.B. -5%):</b> Du hast diese Woche etwas nachgelassen und weniger Angriffe gemacht als zuletzt.</li>
-                        <li><b>Graue Null (0%):</b> Deine Leistung ist exakt konstant geblieben.</li>
+                <button class="accordion-btn">📈 Das Delta (Deine Formkurve)</button>
+                <div class="accordion-content">
+                    <p>Das Delta ist wie beim Sport deine aktuelle Formkurve. Es vergleicht deine Leistung von heute mit deiner Leistung aus der letzten Auswertung.</p>
+                    <ul>
+                        <li><b style="color: #10b981;">Grüne Zahl (z.B. +12%):</b> Super! Du hast dich im Vergleich zur letzten Woche gesteigert und warst aktiver.</li>
+                        <li><b style="color: #ef4444;">Rote Zahl (z.B. -5%):</b> Du hast diese Woche etwas nachgelassen.</li>
                     </ul>
                 </div>
 
-                <div id="wiki-punkte" style="margin-bottom: 25px; scroll-margin-top: 20px;">
-                    <h4 style="color: #cbd5e1; margin: 0 0 8px 0; font-size: 1.1em;">⚔️ Ø Punkte (Der Qualitäts-Check)</h4>
-                    <p style="margin: 0 0 8px 0; font-size: 0.95em; color: #94a3b8; line-height: 1.5;">
-                        Hier schauen wir, wie effektiv du deine Decks einsetzt. Das System teilt einfach deine gesammelten Kriegspunkte durch die Anzahl deiner gespielten Decks. 
-                    </p>
-                    <ul style="margin: 0; padding-left: 20px; font-size: 0.9em; color: #94a3b8; line-height: 1.5;">
+                <button class="accordion-btn">⚔️ Ø Punkte (Der Qualitäts-Check)</button>
+                <div class="accordion-content">
+                    <p>Hier schauen wir, wie effektiv du deine Decks einsetzt. Das System teilt deine gesammelten Kriegspunkte durch die Anzahl deiner gespielten Decks.</p>
+                    <ul>
                         <li><b>Normalwert:</b> Selbst wenn du verlierst, bekommst du in normalen Kämpfen mindestens 115 Punkte. Ein Sieg bringt deutlich mehr.</li>
-                        <li><b>⚠️ Die Warnung (< 115 Punkte):</b> Wenn dein Durchschnitt unter 115 fällt, schlägt das System Alarm. Das passiert nur, wenn jemand oft feindliche Boote angreift (bringt sehr wenig Punkte für den Clan) oder absichtlich Kämpfe sofort aufgibt, um schnell fertig zu werden.</li>
+                        <li><b>⚠️ Die Warnung (< 115 Punkte):</b> Wenn dein Durchschnitt unter 115 fällt, schlägt das System Alarm. Das passiert nur, wenn jemand oft feindliche Boote angreift (bringt sehr wenig Punkte) oder Kämpfe absichtlich aufgibt.</li>
                     </ul>
                 </div>
 
-                <div id="wiki-spenden" style="margin-bottom: 25px; scroll-margin-top: 20px;">
-                    <h4 style="color: #cbd5e1; margin: 0 0 8px 0; font-size: 1.1em;">🃏 Spenden-Verhalten (Das Teamplay)</h4>
-                    <p style="margin: 0; font-size: 0.95em; color: #94a3b8; line-height: 1.5;">
-                        Ein starker Clan hilft sich gegenseitig beim Leveln der Karten. Wir haben das Auge auf zwei Problemfälle:
-                    </p>
-                    <ul style="margin: 8px 0 0 0; padding-left: 20px; font-size: 0.9em; color: #94a3b8; line-height: 1.5;">
-                        <li><b>🧛 Der Vampir-Leecher:</b> Jemand, der im Chat ständig Karten anfordert (und auch kriegt), aber selbst absolut <b>0</b> Karten an andere spendet. Das ist unfair dem Team gegenüber.</li>
-                        <li><b>💤 Der Schläfer:</b> Jemand, der weder spendet noch etwas anfordert. Hier geht dem Clan zwar nichts verloren, aber die Person beteiligt sich gar nicht am Clan-Leben.</li>
+                <button class="accordion-btn">🃏 Spenden-Verhalten (Das Teamplay)</button>
+                <div class="accordion-content">
+                    <p>Ein starker Clan hilft sich gegenseitig beim Leveln der Karten. Wir haben das Auge auf zwei Problemfälle:</p>
+                    <ul>
+                        <li><b>🧛 Der Vampir-Leecher:</b> Jemand, der ständig Karten anfordert, aber selbst absolut <b>0</b> Karten an andere spendet.</li>
+                        <li><b>💤 Der Schläfer:</b> Jemand, der weder spendet noch etwas anfordert.</li>
                     </ul>
                 </div>
-                
-                <div id="wiki-teilnahmen" style="margin-bottom: 25px; scroll-margin-top: 20px;">
-                    <h4 style="color: #cbd5e1; margin: 0 0 8px 0; font-size: 1.1em;">⚔️ Teilnahmen</h4>
-                    <p style="margin: 0; font-size: 0.95em; color: #94a3b8; line-height: 1.5;">
-                        Gibt an, in wie vielen der letzten Kriege du mindestens ein Deck gespielt hast. Wenn du neu im Clan bist, wächst diese Zahl erst langsam an (Welpenschutz!).
-                    </p>
-                </div>
-                
-                <div id="wiki-kriegspunkte" style="margin-bottom: 25px; scroll-margin-top: 20px;">
-                    <h4 style="color: #cbd5e1; margin: 0 0 8px 0; font-size: 1.1em;">🏅 Kriegspunkte</h4>
-                    <p style="margin: 0; font-size: 0.95em; color: #94a3b8; line-height: 1.5;">
-                        Das sind die harten, absoluten Medaillen, die du im aktuellen Kriegswochenende für unseren Clan ins Ziel gebracht hast. Jeder Sieg bringt hier mehr als eine Niederlage!
-                    </p>
-                </div>
-                
-                <div style="margin-bottom: 15px;">
-                    <h4 style="color: #cbd5e1; margin: 0 0 8px 0; font-size: 1.1em;">📊 Der Clan-Durchschnitt (Ganz oben im Dashboard)</h4>
-                    <p style="margin: 0; font-size: 0.95em; color: #94a3b8; line-height: 1.5;">
-                        Das ist quasi der "Notendurchschnitt" unserer Klasse. Wir addieren alle Scores und teilen sie durch die Anzahl der Mitglieder.<br>
-                        <b>Die Urlaubs-Regel:</b> Wenn jemand offiziell im Urlaub (🏖️) ist und pausiert, wird er aus dieser Rechnung komplett herausgenommen. So zieht jemand, der am Strand liegt, unseren Clan-Durchschnitt nicht ungerechtfertigt nach unten!
-                    </p>
-                </div>
-
-                <a href="#" style="color: #38bdf8; text-decoration: none; font-weight: bold; font-size: 0.9em;">⬆️ Zurück nach oben zur Tabelle</a>
             </div>
+
         </div>
+
+        <script>
+            // Tab Logik
+            function openTab(evt, tabName) {{
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tab-content");
+                for (i = 0; i < tabcontent.length; i++) {{
+                    tabcontent[i].style.display = "none";
+                    tabcontent[i].classList.remove("active");
+                }}
+                tablinks = document.getElementsByClassName("tab-btn");
+                for (i = 0; i < tablinks.length; i++) {{
+                    tablinks[i].classList.remove("active");
+                }}
+                document.getElementById(tabName).style.display = "block";
+                // Kurze Verzögerung für die fadeIn Animation
+                setTimeout(() => document.getElementById(tabName).classList.add("active"), 10);
+                evt.currentTarget.classList.add("active");
+                window.scrollTo({{top: 0, behavior: 'smooth'}});
+            }}
+
+            // Accordion Logik
+            var acc = document.getElementsByClassName("accordion-btn");
+            for (var i = 0; i < acc.length; i++) {{
+                acc[i].addEventListener("click", function() {{
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.maxHeight) {{
+                        panel.style.maxHeight = null;
+                    }} else {{
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                    }}
+                }});
+            }}
+        </script>
     </body>
     </html>"""
 
@@ -874,4 +883,4 @@ if __name__ == "__main__":
     except Exception as err:
         print("\n❌ EIN KRITISCHER FEHLER IST AUFGETRETEN:")
         traceback.print_exc()
-        sys.exit(1)
+        sys.exit(1) 
