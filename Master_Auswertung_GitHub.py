@@ -181,6 +181,10 @@ def berechne_score(participation: int, decks_total: int) -> float:
 def chunk_list(lst: list, n: int) -> list:
     return [lst[i:i + n] for i in range(0, len(lst), n)]
 
+# Hilfsfunktion, um die Texte für das HTML-Attribut sicher zu machen
+def escape_for_html(text: str) -> str:
+    return text.replace('"', '&quot;').replace("'", "&#39;")
+
 def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str, radar_clans: list, records: dict, strikes: dict, race_state_de: str, raw_mahnwache: list) -> Tuple[str, pd.DataFrame, str, dict, dict]:
     player_stats = []
     urlauber_liste = []
@@ -189,11 +193,9 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         with urlaub_path.open("r", encoding="utf-8") as f:
             urlauber_liste = [line.strip() for line in f if line.strip()]
 
-    # Die Keys in dieser Map sind ab sofort strikt kleingeschrieben für den absolut sicheren Abgleich!
     role_map = {"member": "Mitglied", "elder": "Ältester", "coleader": "Vize", "leader": "Anführer", "unknown": "Ehemalig"}
 
     for _, row in df_active.iterrows():
-        # Hier ist der Fix: Jegliche Formatierungsfehler und Großbuchstaben werden vorab gekillt.
         raw_role = str(row.get("player_role", "unknown")).strip().lower()
         if raw_role == "unknown": continue
             
@@ -283,7 +285,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             "donations_received": donations_received, "tier": tier, "is_urlaub": is_urlaub, 
             "trend_str": trend_str, "fame_per_deck": fame_per_deck, "leecher_warnung": leecher_warnung,
             "trophy_push": trophy_push, "trophies": aktueller_trophy, "streak_badge": streak_badge, "strike_badge": strike_badge,
-            "raw_role": raw_role # Ist jetzt garantiert 100% sauber und lowercase
+            "raw_role": raw_role
         })
 
         df_history = pd.concat([
@@ -295,16 +297,13 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     
     top_performers = sorted(aktive_spieler, key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]), reverse=True)[:3]
     top_aufsteiger = sorted([p for p in aktive_spieler if p["delta"] > 0], key=lambda x: x["delta"], reverse=True)[:3]
-    kritisch = sorted([p for p in aktive_spieler if p["score"] < 50 and p["teilnahme_int"] > 3], key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]))
     top_spender = sorted([p for p in aktive_spieler if p["donations"] > 0], key=lambda x: x["donations"], reverse=True)[:3]
     top_leecher = sorted([p for p in aktive_spieler if p["teilnahme_int"] > 3 and p["donations"] == 0 and p["donations_received"] > 0], key=lambda x: x["donations_received"], reverse=True)[:3]
     
-    # Unterscheidung zwischen Kicks und Degradierungen bei 3 Strikes
     kandidaten_kick = []
     kandidaten_demote = []
     for p in aktive_spieler:
         if strikes.get(p['name'], 0) >= 3:
-            # Dank dem Lowercase-Fix wird hier garantiert jeder Vize und Älteste erfasst
             if p['raw_role'] in ['elder', 'coleader']:
                 kandidaten_demote.append(p['name'])
             elif p['raw_role'] == 'member':
@@ -334,7 +333,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         radar_html += "</div>"
         
     mahnwache_html = ""
-    
     ist_kampftag = datetime.utcnow().weekday() in [3, 4, 5, 6]
     
     if ist_kampftag:
@@ -345,40 +343,98 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         else:
             mahnwache_html = f"<div class='info-box' style='border-left-color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #10b981; margin-bottom: 0;'>✅ Alle aktiven Spieler haben ihre Decks für heute gespielt!</h4></div>"
 
-    # === DYNAMISCHER CHAT-GENERATOR ===
+    # === DYNAMISCHER CHAT-GENERATOR MIT VARIANTEN ===
+    
     cr_top_names = ", ".join([p['name'] for p in top_performers])
-    
-    msg_1 = f"📊 Clan-Ø: {clan_avg}%. MVPs: {cr_top_names} 🏆 {pusher_chat}"
-    msg_2 = f"🃏 Ein fettes Lob an unsere Top-Spender: {', '.join([p['name'] for p in top_spender][:2])}! 🤝" if top_spender else "🃏 Diese Woche gab es leider kaum Spenden. Ein Clan lebt vom Geben UND Nehmen! 🤝"
+    top_spender_names = ", ".join([p['name'] for p in top_spender][:2])
     echte_leecher = [p for p in top_leecher if p["donations"] == 0 and p["donations_received"] > 0]
-    if echte_leecher:
-        msg_2 += f" | 🧛 Spenden-Leecher (0 geben, aber kassieren): {', '.join([p['name'] for p in echte_leecher][:2])}."
-        
-    raw_messenger_bodies = [msg_1, msg_2]
+    leecher_names = ", ".join([p['name'] for p in echte_leecher][:2]) if echte_leecher else ""
 
-    # Degradierungs-Boxen bauen (max 4 Namen pro Box wegen Limit) - Erscheinen NUR, wenn jemand 3 Strikes hat
-    for chunk in chunk_list(kandidaten_demote, 4):
-        raw_messenger_bodies.append(f"👇 Degradierung: {', '.join(chunk)}. Grund: Dauerhaft zu wenig Kriegskämpfe. Ihr erhaltet als Mitglied eine letzte Bewährungschance! ⚔️")
-        
-    # Kick-Boxen bauen (max 4 Namen pro Box) - Erscheinen NUR, wenn jemand 3 Strikes hat
-    for chunk in chunk_list(kandidaten_kick, 4):
-        raw_messenger_bodies.append(f"👋 Verabschiedung: {', '.join(chunk)}. Grund: Wiederholte Inaktivität im Clankrieg. Wir machen Platz. Alles Gute! ✌️")
+    # Wir speichern für jedes Chat-Fenster ein Dictionary mit {"Style-Name": "Nachrichten-Text"}
+    chat_blocks = []
 
-    # Wenn es keine Kicks/Degradierungen gab
-    if not kandidaten_demote and not kandidaten_kick:
-        raw_messenger_bodies.append("🛡️ Info: Keine Kicks oder Degradierungen! Alle haben zuverlässig gekämpft oder sich fair abgemeldet. Richtig starkes Team! 💪")
+    # Block 1: Ergebnisse
+    msg_1_vars = {
+        "Sachlich": f"📊 Clan-Ø: {clan_avg}%. MVPs: {cr_top_names} 🏆 {pusher_chat}",
+        "Motivierend": f"🔥 Super Leistung! Clan-Ø: {clan_avg}%. Ein dickes Danke an unsere MVPs: {cr_top_names}! {pusher_chat}",
+        "Kurz & Knackig": f"⚔️ Auswertung da! Schnitt: {clan_avg}%. Top 3: {cr_top_names}. {pusher_chat}"
+    }
+    chat_blocks.append(msg_1_vars)
 
-    total_msgs = len(raw_messenger_bodies)
-    final_chat_msgs = [f"{i+1}/{total_msgs} {text}" for i, text in enumerate(raw_messenger_bodies)]
+    # Block 2: Spenden
+    msg_2_sachlich = f"🃏 Ein Lob an unsere Top-Spender: {top_spender_names}! 🤝" if top_spender else "🃏 Kaum Spenden diese Woche. Ein Clan lebt vom Geben UND Nehmen! 🤝"
+    if echte_leecher: msg_2_sachlich += f" | 🧛 Spenden-Leecher (nur kassiert): {leecher_names}."
     
-    # HTML für die Chat-Boxen aufbauen
+    msg_2_motiv = f"💚 Wahnsinn, was ihr spendet! Top-Supporter: {top_spender_names}. Danke fürs Karten teilen!" if top_spender else "💚 Vergesst das Spenden nicht, Team! Jeder braucht mal Karten."
+    
+    msg_2_streng = f"⚠️ Spenden-Check: Danke an {top_spender_names}." if top_spender else "⚠️ Null Spenden-Moral diese Woche!"
+    if echte_leecher: msg_2_streng += f" Die Leecher-Liste (nehmen ohne geben): {leecher_names}. Das muss besser werden!"
+    
+    msg_2_vars = {
+        "Sachlich": msg_2_sachlich,
+        "Motivierend": msg_2_motiv,
+        "Kurz & Knackig": msg_2_streng
+    }
+    chat_blocks.append(msg_2_vars)
+
+    # Block 3+: Degradierungen
+    for chunk in chunk_list(kandidaten_demote, 4):
+        names_str = ", ".join(chunk)
+        demote_vars = {
+            "Sachlich": f"👇 Degradierung: {names_str}. Grund: Dauerhaft zu wenig Kriegskämpfe. Letzte Bewährungschance als Mitglied! ⚔️",
+            "Motivierend": f"👇 Wir stufen {names_str} wegen Kriegsinaktivität zum Mitglied ab. Kommt stärker zurück, ihr schafft das! ⚔️",
+            "Kurz & Knackig": f"👇 Degradierungen: {names_str} (Dauerhaft inaktiv im Krieg). Letzte Warnung. ⚔️"
+        }
+        chat_blocks.append(demote_vars)
+
+    # Block 4+: Kicks
+    for chunk in chunk_list(kandidaten_kick, 4):
+        names_str = ", ".join(chunk)
+        kick_vars = {
+            "Sachlich": f"👋 Verabschiedung: {names_str}. Grund: Wiederholte Inaktivität im Clankrieg. Wir machen Platz. Alles Gute! ✌️",
+            "Motivierend": f"👋 Wir machen Platz für aktive Kämpfer und verabschieden {names_str} wegen Inaktivität. Danke für die Zeit! ✌️",
+            "Kurz & Knackig": f"👋 Kicks: {names_str}. Grund: Dauerhafte Kriegsinaktivität. ✌️"
+        }
+        chat_blocks.append(kick_vars)
+
+    # Wenn weder Kick noch Degradierung
+    if not kandidaten_demote and not kandidaten_kick:
+        nokick_vars = {
+            "Sachlich": "🛡️ Info: Keine Kicks oder Degradierungen! Alle haben zuverlässig gekämpft oder sich fair abgemeldet. Starkes Team! 💪",
+            "Motivierend": "🌟 Großartig! Niemand auf der Kick-Liste diese Woche. Danke für eure Disziplin und Zuverlässigkeit! 💪",
+            "Kurz & Knackig": "🛡️ Alles sauber: Keine Kicks diese Woche! 💪"
+        }
+        chat_blocks.append(nokick_vars)
+
+    total_msgs = len(chat_blocks)
+    
+    # HTML für die Chat-Boxen (Mit JS-Dropdown) aufbauen
     colors = ["#38bdf8", "#a855f7", "#ef4444", "#f97316", "#10b981", "#fbbf24"]
     chat_boxes_html = ""
-    for i, msg in enumerate(final_chat_msgs):
+    
+    for i, block_vars in enumerate(chat_blocks):
         color = colors[i % len(colors)]
+        
+        # Options für Dropdown generieren (und sicherstellen, dass HTML-Zeichen nicht crashen)
+        options_html = ""
+        for style_name, text_content in block_vars.items():
+            final_text = f"{i+1}/{total_msgs} {text_content}"
+            safe_text = escape_for_html(final_text)
+            options_html += f'<option value="{safe_text}">{style_name}</option>'
+            
+        # Standardtext (Erster Eintrag im Dictionary)
+        default_text = f"{i+1}/{total_msgs} {list(block_vars.values())[0]}"
+        
         chat_boxes_html += f"""
-        <label style="color: {color}; font-weight: bold; font-size: 0.9em;">💬 Teil {i+1}/{total_msgs}:</label>
-        <textarea readonly style="width: 100%; height: 50px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 8px; font-family: inherit; font-size: 0.95em; resize: none; margin-bottom: 15px;">{msg}</textarea>
+        <div style="margin-bottom: 15px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                <label style="color: {color}; font-weight: bold; font-size: 0.9em;">💬 Teil {i+1}/{total_msgs}:</label>
+                <select onchange="document.getElementById('chatbox_{i}').value = this.value" style="background: rgba(30, 41, 59, 0.9); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 2px 6px; font-family: inherit; font-size: 0.85em; cursor: pointer;">
+                    {options_html}
+                </select>
+            </div>
+            <textarea id="chatbox_{i}" readonly style="width: 100%; height: 50px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 8px; font-family: inherit; font-size: 0.95em; resize: none;">{default_text}</textarea>
+        </div>
         """
 
     tiers = ["🌟 Elite (95-100%)", "✅ Solides Mittelfeld (80-94%)", "⚠️ Unter Beobachtung (50-79%)", "🚫 Kritisch (< 50%)", "🏖️ Im Urlaub (Pausiert)"]
@@ -407,7 +463,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .card.pusher {{ border-top: 4px solid #f97316; }}
             .card.hof {{ border-top: 4px solid #8b5cf6; }}
             .card.urlaub {{ border-top: 4px solid #0ea5e9; }}
-            .card.kritisch {{ border-top: 4px solid #ef4444; }}
             .card.messenger {{ border-top: 4px solid #f1c40f; width: 100%; flex: 100%; }}
             .card h1 {{ font-weight: 800; font-size: 2.5em; margin: 10px 0; color: #38bdf8; }}
             .card ul {{ margin: 0; padding-left: 20px; font-size: 1.05em; line-height: 1.6; color: #f1f5f9; }}
@@ -504,7 +559,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 
                 <div class="card messenger">
                     <h3 style="color: #f1c40f; margin-bottom: 10px;">🎮 Clash Royale In-Game Chat ({total_msgs}-Teiler)</h3>
-                    <p style="font-size: 0.9em; color: #cbd5e1; margin-top: 0; margin-bottom: 15px;">Kopiere diese {total_msgs} Texte nacheinander in den Clan-Chat (jeder Text ist garantiert unter 255 Zeichen).</p>
+                    <p style="font-size: 0.9em; color: #cbd5e1; margin-top: 0; margin-bottom: 15px;">Wähle oben im Menü den passenden Tonfall. Kopiere dann die {total_msgs} Texte nacheinander in den Chat.</p>
                     {chat_boxes_html}
                 </div>
             </div>
@@ -649,7 +704,9 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     </body>
     </html>"""
 
-    mail_chat_text = "\n\n".join(final_chat_msgs)
+    # Für die Mail nehmen wir einfach den Standard-Sachlich-Text
+    default_mail_texts = [list(block.values())[0] for block in chat_blocks]
+    mail_chat_text = "\n\n".join([f"{i+1}/{total_msgs} {text}" for i, text in enumerate(default_mail_texts)])
     return html, df_history, mail_chat_text, records, strikes
 
 def speichere_html_bericht(html_content: str, df_history: pd.DataFrame, records: dict, strikes: dict, file_suffix: str) -> Path:
@@ -813,4 +870,4 @@ if __name__ == "__main__":
     except Exception as err:
         print("\n❌ EIN KRITISCHER FEHLER IST AUFGETRETEN:")
         traceback.print_exc()
-        sys.exit(1) 
+        sys.exit(1)
