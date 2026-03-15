@@ -31,7 +31,7 @@ output_folder = BASE_DIR / "output"
 score_history_path = BASE_DIR / "score_history.csv"
 records_path = BASE_DIR / "records.json"  
 strikes_path = BASE_DIR / "strikes.json"  
-top_decks_path = BASE_DIR / "top_decks.json" # NEU: Die Datenbank für die Decks
+top_decks_path = BASE_DIR / "top_decks.json"
 urlaub_path = BASE_DIR / "urlaub.txt" 
 HEADER_IMAGE_PATH = BASE_DIR / "clash_pix.jpg"
 
@@ -154,7 +154,7 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
     print(f"✅ Spieler-Daten erfolgreich exportiert nach: {filename}\n")
     return True, current_members
 
-# === NEU: 2.5 Battlelogs analysieren (Top Decks) ===
+# === 2.5 Battlelogs analysieren (Top Decks) ===
 
 def update_top_decks(current_members: dict, top_decks_data: dict) -> dict:
     print("Schritt 4: Spioniere Battlelogs für Clan-Meta Decks aus (Bitte warten)...")
@@ -187,13 +187,11 @@ def update_top_decks(current_members: dict, top_decks_data: dict) -> dict:
                 
             b_type = battle.get("type", "")
             
-            # Filtere nur Clankriegs-Matches heraus
             if "riverRace" in b_type and "team" in battle:
                 team = battle["team"][0]
                 opponent = battle["opponent"][0]
                 cards = team.get("cards", [])
                 
-                # Wir brauchen gültige 8-Karten Decks
                 if len(cards) == 8:
                     crowns_t = team.get("crowns", 0)
                     crowns_o = opponent.get("crowns", 0)
@@ -202,13 +200,11 @@ def update_top_decks(current_members: dict, top_decks_data: dict) -> dict:
                     is_loss = crowns_o > crowns_t
                     
                     if is_win or is_loss:
-                        # Erstelle eine einzigartige Deck-ID zum Zusammenfassen
                         deck_ids = sorted([str(c["id"]) for c in cards])
                         deck_hash = "-".join(deck_ids)
                         
                         if deck_hash not in decks:
                             decks[deck_hash] = {
-                                # Wir speichern die Karten im Originalzustand fürs Rendern
                                 "cards": [{"id": c["id"], "name": c["name"], "icon": c.get("iconUrls", {}).get("medium", "")} for c in cards],
                                 "wins": 0,
                                 "losses": 0,
@@ -227,7 +223,7 @@ def update_top_decks(current_members: dict, top_decks_data: dict) -> dict:
         count += 1
         if count % 10 == 0:
             print(f"  ... {count}/50 Spieler gescannt")
-        time.sleep(0.1) # Um die API nicht zu überlasten
+        time.sleep(0.1) 
         
     top_decks_data["_metadata"] = metadata
     top_decks_data["decks"] = decks
@@ -505,10 +501,8 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         </div>
         """
 
-    # === NEU: HTML für Top Decks (Phase 2) ===
     deck_html = ""
     sorted_decks = sorted(top_decks_data.get("decks", {}).values(), key=lambda x: x["wins"], reverse=True)
-    # Nur Decks mit mindestens 1 Sieg anzeigen, Top 3 auswählen
     top_3_decks = [d for d in sorted_decks if d["wins"] > 0][:3]
     
     if not top_3_decks:
@@ -519,7 +513,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             winrate = int((d["wins"] / total_matches) * 100) if total_matches > 0 else 0
             players_str = ", ".join(d["players"][:3]) + ("..." if len(d["players"])>3 else "")
             
-            # API IDs ins Spiel-Format umwandeln:
             deck_ids_str = ";".join([str(c["id"]) for c in d["cards"]])
             copy_link = f"https://link.clashroyale.com/deck/de?deck={deck_ids_str}"
             
@@ -592,7 +585,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .header-container {{ position: relative; background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('{header_img_src}') no-repeat center center; background-size: cover; border-radius: 12px; padding: 40px 20px; margin-top: 20px; margin-bottom: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }}
             .header-title {{ font-weight: 800; color: #ffffff; font-size: 2.2em; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.5); letter-spacing: 1px; }}
             .header-date {{ font-weight: 400; font-size: 0.45em; color: #cbd5e1; display: block; margin-top: 10px; letter-spacing: 0px; }}
-            .header-mobile-tip {{ display: block; font-size: 0.35em; color: #94a3b8; margin-top: 15px; font-weight: normal; }}
+            .header-mobile-tip {{ display: block; font-size: 0.45em; color: #e2e8f0; margin-top: 15px; font-weight: bold; letter-spacing: 0.5px; }}
             
             /* App-ähnliche Navigation (Tabs) */
             .tab-container {{ display: flex; gap: 10px; margin-bottom: 30px; border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 15px; position: sticky; top: -1px; background: rgba(15, 23, 42, 0.98); z-index: 1000; padding-top: 15px; overflow-x: auto; white-space: nowrap; scrollbar-width: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }}
@@ -685,9 +678,9 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             
             <div class="tab-container">
                 <button class="tab-btn active" onclick="openTab(event, 'Overview')">🏠 Übersicht</button>
-                <button class="tab-btn" onclick="openTab(event, 'Decks')">🃏 Top-Decks</button>
                 <button class="tab-btn" onclick="openTab(event, 'Table')">📋 Detail-Auswertung</button>
                 <button class="tab-btn" onclick="openTab(event, 'Wiki')">📖 Regeln & System</button>
+                <button class="tab-btn" onclick="openTab(event, 'Decks')">🃏 Top-Decks</button>
             </div>
 
             <div id="Overview" class="tab-content active">
@@ -749,17 +742,10 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 </div>
             </div>
 
-            <div id="Decks" class="tab-content">
-                <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; margin-bottom: 10px; color: #ffffff;">🃏 Clan-Meta: Die besten Kriegs-Decks</h2>
-                <p style="text-align: center; color: #94a3b8; margin-bottom: 30px;">Das System analysiert im Hintergrund alle Clankriegs-Kämpfe und zeigt euch hier die Decks, die am häufigsten gewonnen haben.</p>
-                <div style="display:flex; gap:20px; flex-wrap:wrap;">
-                    {deck_html}
-                </div>
-            </div>
-
             <div id="Table" class="tab-content">
                 <div style="background: rgba(30, 41, 59, 0.8); padding: 20px; border-radius: 8px; margin-bottom: 25px; font-size: 0.95em; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-                    <h4 style="margin-top: 0; color: #38bdf8; margin-bottom: 15px;">📌 Schnelle Symbol-Legende:</h4>
+                    <h4 style="margin-top: 0; color: #38bdf8; margin-bottom: 5px;">📌 Schnelle Symbol-Legende:</h4>
+                    <p style="margin: 0 0 15px 0; font-size: 0.9em; color: #94a3b8; font-style: italic;">Weitere Infos unter <b>📖 Regeln & System</b>.</p>
                     <div style="display: flex; flex-wrap: wrap; gap: 15px; color: #cbd5e1;">
                         <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>🌱 Welpenschutz:</b> Neu im Clan (geschützt)</div>
                         <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>❌ 1/3:</b> Verwarnungen (bei 3/3 droht Kick)</div>
@@ -888,6 +874,22 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                         <li><b>💤 Der Schläfer:</b> Jemand (wie <b>Spieler L</b>), der weder spendet noch etwas anfordert. Hier geht dem Clan zwar nichts verloren, aber die Person beteiligt sich gar nicht am Clan-Leben.</li>
                     </ul>
                 </div>
+
+                <button class="accordion-btn">⚔️ Teilnahmen (Deine Clan-Treue)</button>
+                <div class="accordion-content">
+                    <p>Gibt an, in wie vielen der letzten 10 Clankriege du mindestens ein Deck gespielt hast.</p>
+                    <div style="overflow-x:auto;">
+                        <table class="wiki-table">
+                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
+                            <tr><td class='name-col'>Spieler M</td><td>Vize</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>200</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>100</span></td><td>10/10</td><td>2000</td></tr>
+                            <tr><td class='name-col'>Spieler N <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>200</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>50</span></td><td>2/10</td><td>400</td></tr>
+                        </table>
+                    </div>
+                    <ul>
+                        <li><b>Langzeit-Aktivität:</b> Zeigt, wie treu du dem Clan über die letzten Wochen zur Seite standest. Maximal sind aktuell 10 Teilnahmen sichtbar (wie bei <b>Spieler M</b> mit 10/10).</li>
+                        <li><b>Welpenschutz (🌱):</b> Wenn du neu bei uns bist (wie <b>Spieler N</b> mit 2/10), brauchst du dir keine Sorgen machen. Dein Score wird fair nur anhand der Kriege berechnet, bei denen du schon im Clan warst.</li>
+                    </ul>
+                </div>
                 
                 <button class="accordion-btn">📊 Der Clan-Durchschnitt</button>
                 <div class="accordion-content">
@@ -895,6 +897,14 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                     <ul>
                         <li><b>Die Urlaubs-Regel:</b> Wenn jemand offiziell im Urlaub (🏖️) ist und pausiert, wird er aus dieser Rechnung komplett herausgenommen. So zieht jemand, der am Strand liegt, unseren Clan-Durchschnitt nicht ungerechtfertigt nach unten!</li>
                     </ul>
+                </div>
+            </div>
+
+            <div id="Decks" class="tab-content">
+                <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; margin-bottom: 10px; color: #ffffff;">🃏 Clan-Meta: Die besten Kriegs-Decks</h2>
+                <p style="text-align: center; color: #94a3b8; margin-bottom: 30px;">Das System analysiert im Hintergrund alle Clankriegs-Kämpfe und zeigt euch hier die Decks, die am häufigsten gewonnen haben.</p>
+                <div style="display:flex; gap:20px; flex-wrap:wrap;">
+                    {deck_html}
                 </div>
             </div>
 
@@ -972,7 +982,6 @@ def speichere_html_bericht(html_content: str, df_history: pd.DataFrame, records:
     with open(strikes_path, "w", encoding="utf-8") as f:
         json.dump(strikes, f, ensure_ascii=False, indent=4)
         
-    # Neu: Top-Decks Datei abspeichern
     with open(top_decks_path, "w", encoding="utf-8") as f:
         json.dump(top_decks_data, f, ensure_ascii=False, indent=4)
         
@@ -1042,7 +1051,6 @@ def main():
     except Exception as e:
         print(f"Warnung: Radar konnte nicht geladen werden ({e})")
 
-    # Neu: Lade Top-Decks Daten (Phase 2)
     top_decks_data = {}
     if top_decks_path.exists():
         try:
@@ -1051,7 +1059,6 @@ def main():
         except Exception as e:
             print(f"⚠️ Warnung: top_decks.json fehlerhaft, fange bei 0 an. ({e})")
             
-    # Wir aktualisieren die Decks direkt
     top_decks_data = update_top_decks(current_members, top_decks_data)
 
     records = {"donations": {"name": "-", "val": 0}, "delta": {"name": "-", "val": 0}, "trophies": {"name": "-", "val": 0}}
