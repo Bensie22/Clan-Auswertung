@@ -181,7 +181,6 @@ def berechne_score(participation: int, decks_total: int) -> float:
 def chunk_list(lst: list, n: int) -> list:
     return [lst[i:i + n] for i in range(0, len(lst), n)]
 
-# Hilfsfunktion, um die Texte für das HTML-Attribut sicher zu machen
 def escape_for_html(text: str) -> str:
     return text.replace('"', '&quot;').replace("'", "&#39;")
 
@@ -343,17 +342,14 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         else:
             mahnwache_html = f"<div class='info-box' style='border-left-color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #10b981; margin-bottom: 0;'>✅ Alle aktiven Spieler haben ihre Decks für heute gespielt!</h4></div>"
 
-    # === DYNAMISCHER CHAT-GENERATOR MIT VARIANTEN ===
-    
     cr_top_names = ", ".join([p['name'] for p in top_performers])
     top_spender_names = ", ".join([p['name'] for p in top_spender][:2])
     echte_leecher = [p for p in top_leecher if p["donations"] == 0 and p["donations_received"] > 0]
     leecher_names = ", ".join([p['name'] for p in echte_leecher][:2]) if echte_leecher else ""
 
-    # Wir speichern für jedes Chat-Fenster ein Dictionary mit {"Style-Name": "Nachrichten-Text"}
     chat_blocks = []
 
-    # Block 1: Ergebnisse
+    # Block 1
     msg_1_vars = {
         "Sachlich": f"📊 Clan-Ø: {clan_avg}%. MVPs: {cr_top_names} 🏆 {pusher_chat}",
         "Motivierend": f"🔥 Super Leistung! Clan-Ø: {clan_avg}%. Ein dickes Danke an unsere MVPs: {cr_top_names}! {pusher_chat}",
@@ -361,7 +357,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     }
     chat_blocks.append(msg_1_vars)
 
-    # Block 2: Spenden
+    # Block 2
     msg_2_sachlich = f"🃏 Ein Lob an unsere Top-Spender: {top_spender_names}! 🤝" if top_spender else "🃏 Kaum Spenden diese Woche. Ein Clan lebt vom Geben UND Nehmen! 🤝"
     if echte_leecher: msg_2_sachlich += f" | 🧛 Spenden-Leecher (nur kassiert): {leecher_names}."
     
@@ -377,7 +373,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     }
     chat_blocks.append(msg_2_vars)
 
-    # Block 3+: Degradierungen
+    # Block 3+
     for chunk in chunk_list(kandidaten_demote, 4):
         names_str = ", ".join(chunk)
         demote_vars = {
@@ -387,7 +383,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         }
         chat_blocks.append(demote_vars)
 
-    # Block 4+: Kicks
+    # Block 4+
     for chunk in chunk_list(kandidaten_kick, 4):
         names_str = ", ".join(chunk)
         kick_vars = {
@@ -397,7 +393,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         }
         chat_blocks.append(kick_vars)
 
-    # Wenn weder Kick noch Degradierung
     if not kandidaten_demote and not kandidaten_kick:
         nokick_vars = {
             "Sachlich": "🛡️ Info: Keine Kicks oder Degradierungen! Alle haben zuverlässig gekämpft oder sich fair abgemeldet. Starkes Team! 💪",
@@ -408,21 +403,17 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
     total_msgs = len(chat_blocks)
     
-    # HTML für die Chat-Boxen (Mit JS-Dropdown) aufbauen
     colors = ["#38bdf8", "#a855f7", "#ef4444", "#f97316", "#10b981", "#fbbf24"]
     chat_boxes_html = ""
     
     for i, block_vars in enumerate(chat_blocks):
         color = colors[i % len(colors)]
-        
-        # Options für Dropdown generieren (und sicherstellen, dass HTML-Zeichen nicht crashen)
         options_html = ""
         for style_name, text_content in block_vars.items():
             final_text = f"{i+1}/{total_msgs} {text_content}"
             safe_text = escape_for_html(final_text)
             options_html += f'<option value="{safe_text}">{style_name}</option>'
             
-        # Standardtext (Erster Eintrag im Dictionary)
         default_text = f"{i+1}/{total_msgs} {list(block_vars.values())[0]}"
         
         chat_boxes_html += f"""
@@ -451,6 +442,13 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             .header-container {{ position: relative; background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('{header_img_src}') no-repeat center center; background-size: cover; border-radius: 12px; padding: 40px 20px; margin-top: 20px; margin-bottom: 30px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }}
             .header-title {{ font-weight: 800; color: #ffffff; font-size: 2.2em; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.5); letter-spacing: 1px; }}
             .header-date {{ font-weight: 400; font-size: 0.45em; color: #cbd5e1; display: block; margin-top: 10px; letter-spacing: 0px; }}
+            
+            /* Neue Welcome Box */
+            .welcome-box {{ background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95)); border-left: 5px solid #fbbf24; padding: 25px 30px; border-radius: 12px; margin-bottom: 30px; font-size: 1.05em; color: #e2e8f0; line-height: 1.7; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); border: 1px solid rgba(251, 191, 36, 0.2); }}
+            .welcome-box p {{ margin: 0 0 12px 0; }}
+            .welcome-box p:last-child {{ margin: 0; }}
+            .welcome-title {{ font-size: 1.4em; color: #fbbf24; margin-top: 0; margin-bottom: 15px; font-weight: 800; display: flex; align-items: center; gap: 10px; }}
+
             .info-box {{ background: rgba(30, 41, 59, 0.85); border-left: 5px solid #38bdf8; padding: 20px 25px; border-radius: 8px; margin-bottom: 40px; font-size: 1em; color: #e2e8f0; line-height: 1.6; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.05); scroll-margin-top: 20px; }}
             .dashboard {{ display: flex; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }}
             .card {{ flex: 1; min-width: 220px; background: rgba(30, 41, 59, 0.8); padding: 20px 25px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }}
@@ -503,6 +501,13 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         <div class="container">
             <div class="header-container">
                 <h1 class="header-title">📊 Clan-Auswertung: {CLAN_NAME} <br><span class="header-date">{heute_datum}</span></h1>
+            </div>
+            
+            <div class="welcome-box">
+                <h2 class="welcome-title">Willkommen bei der HAMBURG-Family! 🤝</h2>
+                <p>Schön, dass du über unsere Clan-Info hierher gefunden hast. Egal ob du schon ewig dabei bist oder gerade erst überlegst, uns beizutreten: Schau dich in Ruhe um!</p>
+                <p>Ein starker Clan braucht aktive Mitglieder. Auf dieser Seite tracken wir jede Woche transparent unseren Erfolg im Clankrieg und unsere Spendenbereitschaft.</p>
+                <p>Wir sind eine entspannte, aber ehrgeizige Truppe. Bei uns zählt Verlässlichkeit mehr als reine Trophäen. Wenn du einen dauerhaft aktiven Clan suchst und deine 4 Decks verlässlich spielst, bist du bei uns genau <b>richtig</b>! 🛡️</p>
             </div>
             
             {radar_html}
@@ -704,7 +709,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     </body>
     </html>"""
 
-    # Für die Mail nehmen wir einfach den Standard-Sachlich-Text
     default_mail_texts = [list(block.values())[0] for block in chat_blocks]
     mail_chat_text = "\n\n".join([f"{i+1}/{total_msgs} {text}" for i, text in enumerate(default_mail_texts)])
     return html, df_history, mail_chat_text, records, strikes
