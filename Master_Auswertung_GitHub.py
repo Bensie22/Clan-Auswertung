@@ -236,9 +236,7 @@ def update_top_decks(current_members: dict, top_decks_data: dict) -> dict:
     return top_decks_data
 
 def get_deck_archetype(cards: list) -> str:
-    """Analysiert die Karten im Deck und bestimmt den Spielstil."""
     card_names = [c.get("name", "") for c in cards]
-    
     if any(n in card_names for n in ["Golem", "Lava Hound", "Giant", "Goblin Giant", "Electro Giant", "Elixir Golem"]):
         return "🛡️ Schwerer Angriff (Beatdown)"
     if any(n in card_names for n in ["X-Bow", "Mortar"]):
@@ -247,7 +245,6 @@ def get_deck_archetype(cards: list) -> str:
         return "🗡️ Nadelstiche (Bait/Control)"
     if any(n in card_names for n in ["Hog Rider", "Royal Hogs", "Battle Ram", "Ram Rider", "Balloon"]):
         return "⚡ Schneller Angriff (Rush/Spam)"
-    
     return "⚔️ Hybrid / Allrounder"
 
 # === 3. Auswertung & HTML-Design ===
@@ -561,17 +558,12 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             
             archetype = get_deck_archetype(d["cards"])
             
-            # Die magischen 8 Karten-IDs
-            deck_ids_str = ";".join([str(c["id"]) for c in d["cards"]])
-            
-            # --- DER LÖSUNGS-CODE FÜR DEN DECK-LINK ---
-            # 1. Nativer Link: Umgeht die Supercell-Website und öffnet direkt die App (Handy)
-            mobile_copy_link = f"clashroyale://copyDeck?deck={deck_ids_str}"
-            
-            # 2. PC-Fallback: Generiert einen sauberen RoyaleAPI-Link 
+            # --- LÖSUNG FÜR DEN DECK-LINK ---
+            # Supercell hat direkte Copy-Links durch Verschlüsselung blockiert.
+            # Die einzige verlässliche Lösung ist der Umweg über RoyaleAPI.
             api_names = [c["name"].lower().replace(".", "").replace(" ", "-") for c in d["cards"]]
             royaleapi_link = f"https://royaleapi.com/decks/stats/{','.join(api_names)}"
-            # -------------------------------------------
+            # --------------------------------
             
             images_html = "".join([f"<img src='{c['icon']}' style='width: 23%; border-radius: 4px; margin: 1%;' title='{c['name']}'>" for c in d["cards"]])
             
@@ -587,8 +579,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 </div>
                 <p style="font-size: 0.85em; color: #94a3b8; margin: 10px 0;">Oft gewonnen von:<br><span style="color:#e2e8f0; font-weight:bold;">{players_str}</span></p>
                 <div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px;">
-                    <a href="{mobile_copy_link}" class="copy-btn" style="background: #38bdf8; color: #0f172a;">📱 Ins Spiel kopieren</a>
-                    <a href="{royaleapi_link}" class="copy-btn" style="background: #475569; color: #f8fafc;" target="_blank">💻 Auf RoyaleAPI ansehen</a>
+                    <a href="{royaleapi_link}" class="copy-btn" style="background: #38bdf8; color: #0f172a;" target="_blank">🔗 Auf RoyaleAPI öffnen & kopieren</a>
                 </div>
             </div>
             """
