@@ -32,6 +32,7 @@ score_history_path = BASE_DIR / "score_history.csv"
 records_path = BASE_DIR / "records.json"  
 strikes_path = BASE_DIR / "strikes.json"  
 top_decks_path = BASE_DIR / "top_decks.json"
+donations_memory_path = BASE_DIR / "donations_memory.json" # NEU: Das Spenden-Gedächtnis
 urlaub_path = BASE_DIR / "urlaub.txt" 
 HEADER_IMAGE_PATH = BASE_DIR / "clash_pix.jpg"
 
@@ -55,16 +56,56 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
         print(f"❌ Fehler beim Abruf der Mitglieder: {members_resp.status_code}")
         return False, {}
         
-    current_members = {
-        m["tag"]: {
+    # --- NEU: SPENDEN-GEDÄCHTNIS LOGIK ---
+    memory = {}
+    if donations_memory_path.exists():
+        try:
+            with open(donations_memory_path, "r", encoding="utf-8") as f:
+                memory = json.load(f)
+        except Exception as e:
+            print(f"⚠️ Gedächtnis konnte nicht geladen werden: {e}")
+
+    now = datetime.utcnow()
+    curr_week = now.isocalendar()[1]
+    
+    # Am Dienstag wird das Gedächtnis für die neue Woche gelöscht!
+    if now.weekday() == 1 and memory.get("last_reset_week") != curr_week:
+        print("🧹 Dienstag: Spenden-Gedächtnis wird für die neue Woche zurückgesetzt.")
+        memory = {"last_reset_week": curr_week, "players": {}}
+        
+    players_memory = memory.get("players", {})
+    current_members = {}
+    
+    for m in members_resp.json().get("items", []):
+        tag = m["tag"]
+        api_donations = m.get("donations", 0)
+        api_received = m.get("donationsReceived", 0)
+        
+        mem_data = players_memory.get(tag, {"donations": 0, "received": 0})
+        
+        # Nur überschreiben, wenn der Wert der API HÖHER ist als unser gespeicherter.
+        # (Schützt vor dem automatischen Reset am Montag auf 0)
+        if api_donations > mem_data["donations"]:
+            mem_data["donations"] = api_donations
+        if api_received > mem_data["received"]:
+            mem_data["received"] = api_received
+            
+        players_memory[tag] = mem_data
+        
+        current_members[tag] = {
             "name": m["name"], 
             "role": m.get("role", "member"),
-            "donations": m.get("donations", 0),
-            "donations_received": m.get("donationsReceived", 0),
+            "donations": mem_data["donations"], # Wir nutzen ab jetzt den geretteten Wert!
+            "donations_received": mem_data["received"], # Wir nutzen ab jetzt den geretteten Wert!
             "trophies": m.get("trophies", 0)  
-        } 
-        for m in members_resp.json().get("items", [])
-    }
+        }
+
+    # Gedächtnis speichern
+    memory["players"] = players_memory
+    memory["last_reset_week"] = memory.get("last_reset_week", curr_week)
+    with open(donations_memory_path, "w", encoding="utf-8") as f:
+        json.dump(memory, f, ensure_ascii=False, indent=4)
+    # ------------------------------------
 
     print("Schritt 2: Rufe Warlog (River Races) ab...")
     log_url = f"{BASE_URL}/clans/{CLAN_TAG}/riverracelog"
@@ -618,6 +659,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                 
                 spenden_zelle = f"<span class='custom-tooltip dotted'>{p['donations']}<span class='tooltip-text'>Gespendet: {p['donations']} | Empfangen: {p['donations_received']}</span></span>"
                 
+                # NAME IST WIEDER NORMAL (kein Klick mehr)
                 table_html += f"<tr><td class='name-col'>{p['name']}{neu_badge}{p['streak_badge']}{p['strike_badge']}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
 
             table_html += "</tbody></table></div>"
