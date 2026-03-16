@@ -467,7 +467,9 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         radar_html += "</div>"
         
     mahnwache_html = ""
-    ist_kampftag = datetime.utcnow().weekday() in [3, 4, 5, 6]
+    
+    # HIER IST DIE ÄNDERUNG: Montag (0) wurde hinzugefügt, damit das Endergebnis sichtbar bleibt!
+    ist_kampftag = datetime.utcnow().weekday() in [0, 3, 4, 5, 6] 
     
     total_active_players = len(aktive_spieler)
     total_decks_today = total_active_players * 4
@@ -828,7 +830,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
                     <div id="admin-chat-container" style="display: none; width: 100%;">
                         <div class="card messenger">
                             <h3 style="color: #f1c40f; margin-bottom: 10px;">🎮 Admin-Tool: In-Game Chat ({total_msgs}-Teiler)</h3>
-                            <p style="font-size: 0.9em; color: #cbd5e1; margin-top: 0; margin-bottom: 15px;">Wähle oben im Menü den passenden Tonfall. Kopiere dann die {total_msgs} Texte nacheinander in Chat.</p>
+                            <p style="font-size: 0.9em; color: #cbd5e1; margin-top: 0; margin-bottom: 15px;">Wähle oben im Menü den passenden Tonfall. Kopiere dann die {total_msgs} Texte nacheinander in den Chat.</p>
                             {chat_boxes_html}
                         </div>
                     </div>
