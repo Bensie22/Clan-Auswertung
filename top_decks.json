@@ -20,7 +20,7 @@
             "#Q8L0RJ8Y8": "20260315T181006.000Z",
             "#JRGC9RRQG": "20260315T153137.000Z",
             "#GQVLYJPR9": "20260313T213939.000Z",
-            "#P2GUCG2Y": "20260316T134632.000Z",
+            "#P2GUCG2Y": "20260316T160252.000Z",
             "#QULCQGGG": "20260316T071840.000Z",
             "#2VJR80RL": "20260315T123818.000Z",
             "#2CPRGY8G": "20260316T133309.000Z",
@@ -28,10 +28,10 @@
             "#PYG8RLUJ": "20260316T115205.000Z",
             "#2CJYG9UG": "20260316T011114.000Z",
             "#YQVQYUYRV": "20260315T232015.000Z",
-            "#2V800VCQ0": "20260316T114932.000Z",
+            "#2V800VCQ0": "20260316T150844.000Z",
             "#2PUQYJC02": "20260315T214425.000Z",
             "#2UQUPYQCJ": "20260315T201943.000Z",
-            "#2U09UULRR": "20260316T103437.000Z",
+            "#2U09UULRR": "20260316T152221.000Z",
             "#JUUR8UGL8": "20260316T092545.000Z",
             "#YJ0LUU0JJ": "20260316T132833.000Z",
             "#8QYYL8LCQ": "20260316T024449.000Z",
@@ -45,7 +45,7 @@
             "#29L2P9YJ": "20260314T004839.000Z",
             "#202VP2QL9P": "20260316T135432.000Z",
             "#LVUGLUCP9": "20260315T200848.000Z",
-            "#20QGJVPG8Q": "20260316T144103.000Z",
+            "#20QGJVPG8Q": "20260316T145921.000Z",
             "#UUPCULU9V": "20260315T211429.000Z",
             "#V9GYJQ0J9": "20260315T223638.000Z",
             "#Q2GRGLQR": "20260316T044733.000Z",
@@ -3370,9 +3370,12 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Desteoyer"
+            ],
+            "tags": [
+                "2V800VCQ0"
             ]
         },
         "26000006-26000012-26000022-26000023-26000026-26000037-26000055-28000011": {
@@ -6407,6 +6410,58 @@
             ],
             "tags": [
                 "202VP2QL9P"
+            ]
+        },
+        "26000005-26000016-26000018-26000041-26000058-26000059-28000001-28000014": {
+            "cards": [
+                {
+                    "id": 26000058,
+                    "name": "Wall Breakers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_xPphEfC8eEwFNrfU3cMQG9-f5JaLQ31ARCA7l3XtW4.png"
+                },
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 28000014,
+                    "name": "Earthquake",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/XeQXcrUu59C52DslyZVwCnbi4yamID-WxfVZLShgZmE.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                }
+            ],
+            "wins": 0,
+            "losses": 1,
+            "players": [
+                "Desteoyer"
+            ],
+            "tags": [
+                "2V800VCQ0"
             ]
         }
     }
