@@ -40,6 +40,7 @@ strikes_path = BASE_DIR / "strikes.json"
 top_decks_path = BASE_DIR / "top_decks.json"
 donations_memory_path = BASE_DIR / "donations_memory.json" 
 urlaub_path = BASE_DIR / "urlaub.txt" 
+kicked_players_path = BASE_DIR / "kicked_players.json" # NEU: Das Rauswurf-Gedächtnis
 HEADER_IMAGE_PATH = BASE_DIR / "clash_pix.jpg"
 
 # === 2. API Datenabruf ===
@@ -711,8 +712,7 @@ def render_html_template(clan_name, heute_datum, header_img_src, hype_balken_htm
     </body>
     </html>"""
 
-
-def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str, radar_clans: list, records: dict, strikes: dict, race_state_de: str, raw_mahnwache: list, top_decks_data: dict, neue_mitglieder: list) -> Tuple[str, pd.DataFrame, str, dict, dict]:
+def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str, radar_clans: list, records: dict, strikes: dict, race_state_de: str, raw_mahnwache: list, top_decks_data: dict, echte_neulinge: list, rueckkehrer: list, kicked_players: dict) -> Tuple[str, pd.DataFrame, str, dict, dict, dict]:
     player_stats = []
     urlauber_liste = []
     
@@ -721,6 +721,9 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             urlauber_liste = [line.strip() for line in f if line.strip()]
 
     role_map = {"member": "Mitglied", "elder": "Ältester", "coleader": "Vize", "leader": "Anführer", "unknown": "Ehemalig"}
+
+    kandidaten_kick = []
+    kandidaten_demote = []
 
     for _, row in df_active.iterrows():
         raw_role = str(row.get("player_role", "unknown")).strip().lower()
@@ -792,9 +795,17 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
         strike_val = strikes.get(name, 0)
         strike_badge = ""
+        
         if strike_val > 0:
             if strike_val >= 3:
                 strike_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3<span class='tooltip-text'>3 Verwarnungen: Kick oder Degradierung empfohlen!</span></span>"
+                # NEU: Kick und Degradierungs-Logik hierher gezogen, um direkt ins Archiv zu schreiben
+                if not is_urlaub:
+                    if raw_role in ['elder', 'coleader']:
+                        kandidaten_demote.append(name)
+                    elif raw_role == 'member':
+                        kandidaten_kick.append(name)
+                        kicked_players[name] = heute_datum # In Blacklist eintragen
             else:
                 strike_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ {strike_val}/3<span class='tooltip-text'>Verwarnung! Bei 3/3 droht Kick/Degradierung.</span></span>"
 
@@ -829,21 +840,11 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     top_spender_list = sorted([p for p in aktive_spieler if p["donations"] > 0], key=lambda x: x["donations"], reverse=True)[:3]
     top_leecher_list = sorted([p for p in aktive_spieler if p["teilnahme_int"] > APP_CONFIG["MIN_PARTICIPATION"] and p["donations"] == 0 and p["donations_received"] > 0], key=lambda x: x["donations_received"], reverse=True)[:3]
     
-    # HTML Strings für die Dashboards aufbereiten
     top_performers_html = ''.join([f"<li><b>{p['name']}</b> ({p['score']}%)</li>" for p in top_performers_list])
     top_aufsteiger_html = ''.join([f"<li><b>{p['name']}</b> (+{p['delta']}%)</li>" for p in top_aufsteiger_list]) if top_aufsteiger_list else "<li>Keine Verbesserungen</li>"
     top_spender_html = ''.join([f"<li><b>{p['name']}</b> ({p['donations']})</li>" for p in top_spender_list]) if top_spender_list else "<li>Keine Spenden</li>"
     top_leecher_html = ''.join([f"<li><b>{p['name']}</b> ({p['donations']} gesp. / {p['donations_received']} empf.)</li>" for p in top_leecher_list]) if top_leecher_list else "<li>Keine Leecher! 🎉</li>"
     
-    kandidaten_kick = []
-    kandidaten_demote = []
-    for p in aktive_spieler:
-        if strikes.get(p['name'], 0) >= 3:
-            if p['raw_role'] in ['elder', 'coleader']:
-                kandidaten_demote.append(p['name'])
-            elif p['raw_role'] == 'member':
-                kandidaten_kick.append(p['name'])
-
     top_pusher = sorted(aktive_spieler, key=lambda x: x["trophy_push"], reverse=True)
     if top_pusher and top_pusher[0]["trophy_push"] > 0:
         pusher_name, pusher_val = top_pusher[0]["name"], top_pusher[0]["trophy_push"]
@@ -921,14 +922,24 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
     chat_blocks = []
 
-    if neue_mitglieder:
-        names_str = ", ".join(neue_mitglieder)
+    # NEU: Unterscheidung zwischen echten Neulingen und Rückkehrern (gekickten Spielern)
+    if echte_neulinge:
+        names_str = ", ".join(echte_neulinge)
         welcome_vars = {
             "Sachlich": f"👋 Willkommen {names_str}. Viel Spaß und Erfolg bei und mit uns. Alles Wichtige steht in der Info.",
             "Motivierend": f"🎉 Herzlich willkommen in der HAMBURG-Family, {names_str}! Viel Spaß und Erfolg bei und mit uns. Alles Wichtige steht in der Info.",
             "Kurz & Knackig": f"👋 Moin {names_str}! Willkommen im Clan. Viel Spaß und Erfolg bei und mit uns. Alles Wichtige steht in der Info."
         }
         chat_blocks.append(welcome_vars)
+        
+    if rueckkehrer:
+        names_str = ", ".join(rueckkehrer)
+        rueckkehrer_vars = {
+            "Sachlich": f"⚠️ Info an die Vizes: {names_str} ist wieder beigetreten. Dieser Spieler wurde in der Vergangenheit wegen Inaktivität im Clankrieg gekickt.",
+            "Motivierend": f"👀 {names_str} ist zurück! Wurde früher wegen Kriegsinaktivität entfernt. Lasst uns schauen, ob es dieses Mal klappt. Bitte im Auge behalten!",
+            "Kurz & Knackig": f"🚨 Achtung: Rückkehrer {names_str} erkannt. (Ehemaliger Kick wegen Inaktivität)."
+        }
+        chat_blocks.append(rueckkehrer_vars)
 
     msg_1_vars = {
         "Sachlich": f"📊 Clan-Ø: {clan_avg}%. MVPs: {cr_top_names} 🏆 {pusher_chat}",
@@ -1114,9 +1125,11 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
     default_mail_texts = [list(block.values())[0] for block in chat_blocks]
     mail_chat_text = "\n\n".join([f"{i+1}/{total_msgs} {text}" for i, text in enumerate(default_mail_texts)])
-    return html, df_history, mail_chat_text, records, strikes
+    
+    # NEU: Das aktualisierte Rauswurf-Gedächtnis zurückgeben
+    return html, df_history, mail_chat_text, records, strikes, kicked_players
 
-def speichere_html_bericht(html_content: str, df_history: pd.DataFrame, records: dict, strikes: dict, file_suffix: str, top_decks_data: dict) -> Path:
+def speichere_html_bericht(html_content: str, df_history: pd.DataFrame, records: dict, strikes: dict, file_suffix: str, top_decks_data: dict, kicked_players: dict) -> Path:
     html_path = output_folder / f"auswertung_{file_suffix}.html"
     with html_path.open("w", encoding="utf-8") as f:
         f.write(html_content)
@@ -1135,6 +1148,10 @@ def speichere_html_bericht(html_content: str, df_history: pd.DataFrame, records:
         
     with open(top_decks_path, "w", encoding="utf-8") as f:
         json.dump(top_decks_data, f, ensure_ascii=False, indent=4)
+        
+    # NEU: Die Blacklist speichern
+    with open(kicked_players_path, "w", encoding="utf-8") as f:
+        json.dump(kicked_players, f, ensure_ascii=False, indent=4)
         
     return html_path
 
@@ -1157,6 +1174,15 @@ def main():
     success, current_members = fetch_and_build_player_csv()
     if not success: return
     
+    # NEU: Das Rauswurf-Gedächtnis laden
+    kicked_players = {}
+    if kicked_players_path.exists():
+        try:
+            with open(kicked_players_path, "r", encoding="utf-8") as f:
+                kicked_players = json.load(f)
+        except Exception as e:
+            print(f"⚠️ Warnung: kicked_players.json fehlerhaft ({e})")
+            
     alte_mitglieder = set()
     csvs_alle = sorted(upload_folder.glob("*.csv"), key=os.path.getctime)
     if len(csvs_alle) >= 2:
@@ -1167,7 +1193,16 @@ def main():
             print(f"Konnte alte Mitglieder nicht laden: {e}")
 
     aktuelle_namen = [data["name"] for tag, data in current_members.items()]
-    neue_mitglieder = [name for name in aktuelle_namen if name not in alte_mitglieder] if alte_mitglieder else []
+    neue_mitglieder_raw = [name for name in aktuelle_namen if name not in alte_mitglieder] if alte_mitglieder else []
+    
+    # NEU: Trennung zwischen echten Neulingen und Rückkehrern
+    echte_neulinge = []
+    rueckkehrer = []
+    for n in neue_mitglieder_raw:
+        if n in kicked_players:
+            rueckkehrer.append(n)
+        else:
+            echte_neulinge.append(n)
     
     print("Schritt 3: Rufe Live-Radar (Current River Race) ab...")
     radar_clans = []
@@ -1273,9 +1308,9 @@ def main():
     jetzt_datei = datetime.today().strftime("%Y-%m-%d_%H-%M-%S")
     encoded_header_img = get_encoded_header_image(HEADER_IMAGE_PATH)
     
-    html_bericht, df_history, mail_chat_text, updated_records, updated_strikes = generate_html_report(df_active, df_history, fame_spalte, heute_datum, encoded_header_img, radar_clans, records, strikes, race_state_de, raw_mahnwache, top_decks_data, neue_mitglieder)
+    html_bericht, df_history, mail_chat_text, updated_records, updated_strikes, updated_kicked = generate_html_report(df_active, df_history, fame_spalte, heute_datum, encoded_header_img, radar_clans, records, strikes, race_state_de, raw_mahnwache, top_decks_data, echte_neulinge, rueckkehrer, kicked_players)
 
-    html_path = speichere_html_bericht(html_bericht, df_history, updated_records, updated_strikes, jetzt_datei, top_decks_data)
+    html_path = speichere_html_bericht(html_bericht, df_history, updated_records, updated_strikes, jetzt_datei, top_decks_data, updated_kicked)
     archiviere_alte_auswertungen(output_folder)
     
     sender_mail = os.environ.get("EMAIL_SENDER")
@@ -1304,4 +1339,4 @@ if __name__ == "__main__":
     except Exception as err:
         print("\n❌ EIN KRITISCHER FEHLER IST AUFGETRETEN:")
         traceback.print_exc()
-        sys.exit(1)
+        sys.exit(1) 
