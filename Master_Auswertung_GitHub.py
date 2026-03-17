@@ -17,6 +17,12 @@ import smtplib
 
 # === 1. Konfiguration & Pfade ===
 
+APP_CONFIG = {
+    "STRIKE_THRESHOLD": 50,      # Score in %: Unter diesem Wert gibt es eine Verwarnung
+    "DROPPER_THRESHOLD": 115,    # Ø Punkte pro Deck: Unter diesem Wert Warnung wg. Bootsangriff/Aufgabe
+    "MIN_PARTICIPATION": 3       # Welpenschutz: Erst ab mehr als 3 Teilnahmen greifen die Strafen
+}
+
 # API Settings (Token & E-Mails kommen sicher aus den Secrets!)
 API_TOKEN = os.environ.get("SUPERCELL_API_TOKEN")
 CLAN_TAG = "%23Y9YQC8UG"
@@ -68,7 +74,6 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
     now = datetime.utcnow()
     curr_week = now.isocalendar()[1]
     
-    # Am Donnerstag (Start der neuen Kriegs-Woche) wird der Speicher geleert!
     if now.weekday() == 3 and memory.get("last_reset_week") != curr_week:
         print("🧹 Donnerstag: Spenden-Gedächtnis wird für den neuen Krieg zurückgesetzt.")
         memory = {"last_reset_week": curr_week, "players": {}}
@@ -83,7 +88,6 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
         
         mem_data = players_memory.get(tag, {"donations": 0, "received": 0})
         
-        # Nur überschreiben, wenn der Wert der API HÖHER ist als unser gespeicherter.
         if api_donations > mem_data["donations"]:
             mem_data["donations"] = api_donations
         if api_received > mem_data["received"]:
@@ -94,17 +98,15 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
         current_members[tag] = {
             "name": m["name"], 
             "role": m.get("role", "member"),
-            "donations": mem_data["donations"], # Wir nutzen ab jetzt den geretteten Wert!
-            "donations_received": mem_data["received"], # Wir nutzen ab jetzt den geretteten Wert!
+            "donations": mem_data["donations"], 
+            "donations_received": mem_data["received"], 
             "trophies": m.get("trophies", 0)  
         }
 
-    # Gedächtnis speichern
     memory["players"] = players_memory
     memory["last_reset_week"] = memory.get("last_reset_week", curr_week)
     with open(donations_memory_path, "w", encoding="utf-8") as f:
         json.dump(memory, f, ensure_ascii=False, indent=4)
-    # ------------------------------------
 
     print("Schritt 2: Rufe Warlog (River Races) ab...")
     log_url = f"{BASE_URL}/clans/{CLAN_TAG}/riverracelog"
@@ -287,418 +289,15 @@ def get_deck_archetype(cards: list) -> str:
         return "⚡ Schneller Angriff (Rush/Spam)"
     return "⚔️ Hybrid / Allrounder"
 
-# === 3. Auswertung & HTML-Design ===
+# === 3. HTML Templates (Refactoring ausgelagert) ===
 
-def get_encoded_header_image(path: Path) -> str:
-    if not path.exists(): return ""
-    try:
-        with open(path, "rb") as image_file:
-            encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
-            return f"data:image/jpeg;base64,{encoded_string}"
-    except: return ""
-
-def archiviere_alte_dateien(ordner: Path, archiv_ordner: Path, anzahl: int = 2) -> None:
-    archiv_ordner.mkdir(exist_ok=True, parents=True)
-    dateien = sorted(ordner.glob("*.csv"), key=os.path.getctime)
-    for datei in dateien[:-anzahl]:
-        shutil.move(str(datei), archiv_ordner / datei.name)
-
-def finde_neueste_csv(ordner: Path) -> Path:
-    csvs = list(ordner.glob("*.csv"))
-    if not csvs: raise FileNotFoundError("Keine CSV-Datei im Upload-Ordner gefunden.")
-    return max(csvs, key=os.path.getctime)
-
-def berechne_score(participation: int, decks_total: int) -> float:
-    max_mögliche_decks = participation * 16
-    if max_mögliche_decks <= 0: return 0.0
-    return round((decks_total / max_mögliche_decks) * 100, 2)
-
-def chunk_list(lst: list, n: int) -> list:
-    return [lst[i:i + n] for i in range(0, len(lst), n)]
-
-def escape_for_html(text: str) -> str:
-    return text.replace('"', '&quot;').replace("'", "&#39;")
-
-def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str, radar_clans: list, records: dict, strikes: dict, race_state_de: str, raw_mahnwache: list, top_decks_data: dict, neue_mitglieder: list) -> Tuple[str, pd.DataFrame, str, dict, dict]:
-    player_stats = []
-    urlauber_liste = []
-    
-    if urlaub_path.exists():
-        with urlaub_path.open("r", encoding="utf-8") as f:
-            urlauber_liste = [line.strip() for line in f if line.strip()]
-
-    role_map = {"member": "Mitglied", "elder": "Ältester", "coleader": "Vize", "leader": "Anführer", "unknown": "Ehemalig"}
-
-    for _, row in df_active.iterrows():
-        raw_role = str(row.get("player_role", "unknown")).strip().lower()
-        if raw_role == "unknown": continue
-            
-        name = row.get("player_name", "Unbekannt")
-        role_de = role_map.get(raw_role, raw_role.capitalize())
-        is_urlaub = name in urlauber_liste
-        
-        participation = int(row.get("player_contribution_count", 0) or 0)
-        decks_total = int(row.get("player_total_decks_used", 0) or 0)
-        donations = int(row.get("player_donations", 0) or 0)
-        donations_received = int(row.get("player_donations_received", 0) or 0)
-        aktueller_trophy = int(row.get("player_trophies", 0) or 0)
-        score = berechne_score(participation, decks_total)
-        
-        aktueller_fame = int(row.get(fame_spalte, 0) or 0)
-        aktueller_decks_spalte = fame_spalte.replace("_fame", "_decks_used")
-        aktueller_decks = int(row.get(aktueller_decks_spalte, 0) or 0)
-        fame_per_deck = round(aktueller_fame / aktueller_decks) if aktueller_decks > 0 else 0
-        leecher_warnung = " <span class='custom-tooltip'>⚠️<span class='tooltip-text'>Verdacht: Zieht nur Punkte ab (verliert absichtlich/greift Boote an)</span></span>" if (0 < fame_per_deck < 115) else ""
-        
-        historie_spieler = df_history[df_history["player_name"] == name].sort_values("date")
-        vergangene_scores = historie_spieler.tail(3)["score"].tolist()
-        
-        past_trophy = aktueller_trophy
-        if not historie_spieler.empty and "trophies" in historie_spieler.columns:
-            past_trophy = int(historie_spieler.tail(1)["trophies"].values[0])
-            
-        trophy_push = aktueller_trophy - past_trophy
-        delta = round(score - vergangene_scores[-1], 2) if vergangene_scores else 0.0
-
-        if donations > records.setdefault("donations", {"name": "-", "val": 0})["val"]:
-            records["donations"] = {"name": name, "val": donations}
-        if delta > records.setdefault("delta", {"name": "-", "val": 0})["val"]:
-            records["delta"] = {"name": name, "val": delta}
-        if aktueller_trophy > records.setdefault("trophies", {"name": "-", "val": 0})["val"]:
-            records["trophies"] = {"name": name, "val": aktueller_trophy}
-
-        trend_scores = vergangene_scores + [score]
-        trend_str = "".join(["🟢" if s >= 80 else "🟡" if s >= 50 else "🔴" for s in trend_scores[-4:]])
-        
-        streak_count = 0
-        for s in reversed(trend_scores):
-            if s >= 100.0:
-                streak_count += 1
-            else:
-                break
-                
-        if streak_count > participation:
-            streak_count = participation
-            
-        streak_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥{streak_count}<span class='tooltip-text'>{streak_count} Auswertungen in Folge 100% Score!</span></span>" if streak_count >= 3 else ""
-
-        ist_montag = datetime.utcnow().weekday() == 0
-        ist_mail_zeit = datetime.utcnow().hour in [9, 10, 11]
-        ist_manueller_start = os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch"
-        
-        if (ist_montag and ist_mail_zeit) or ist_manueller_start:
-            if not is_urlaub and participation > 3:
-                if score < 50:
-                    strikes[name] = strikes.get(name, 0) + 1
-                    if strikes[name] > 3: strikes[name] = 3
-                elif score >= 50:
-                    if strikes.get(name, 0) > 0:
-                        strikes[name] -= 1
-
-        strike_val = strikes.get(name, 0)
-        strike_badge = ""
-        if strike_val > 0:
-            if strike_val >= 3:
-                strike_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3<span class='tooltip-text'>3 Verwarnungen: Kick oder Degradierung empfohlen!</span></span>"
-            else:
-                strike_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ {strike_val}/3<span class='tooltip-text'>Verwarnung! Bei 3/3 droht Kick/Degradierung.</span></span>"
-
-        if is_urlaub:
-            status_html, tier = "🏖️ Urlaub", "🏖️ Im Urlaub (Pausiert)"
-        else:
-            status_html = f"{role_de} <span class='badge-ja'>➔ BEFÖRDERN</span>" if raw_role == "member" and aktueller_fame >= 2800 else role_de
-            if score >= 95: tier = "🌟 Elite (95-100%)"
-            elif score >= 80: tier = "✅ Solides Mittelfeld (80-94%)"
-            elif score >= 50: tier = "⚠️ Unter Beobachtung (50-79%)"
-            else: tier = "🚫 Kritisch (< 50%)"
-
-        player_stats.append({
-            "name": name, "status": status_html, "score": score, "delta": delta,
-            "teilnahme": f"{participation}/{int(row.get('player_participating_count', 0) or 0)}",
-            "teilnahme_int": participation, "fame": aktueller_fame, "donations": donations, 
-            "donations_received": donations_received, "tier": tier, "is_urlaub": is_urlaub, 
-            "trend_str": trend_str, "fame_per_deck": fame_per_deck, "leecher_warnung": leecher_warnung,
-            "trophy_push": trophy_push, "trophies": aktueller_trophy, "streak_badge": streak_badge, "strike_badge": strike_badge,
-            "raw_role": raw_role
-        })
-
-        df_history = pd.concat([
-            df_history, pd.DataFrame([{"player_name": name, "score": score, "date": heute_datum, "trophies": aktueller_trophy}])
-        ], ignore_index=True)
-
-    aktive_spieler = [p for p in player_stats if not p["is_urlaub"]]
-    clan_avg = round(sum([p["score"] for p in aktive_spieler]) / len(aktive_spieler), 2) if aktive_spieler else 0
-    
-    top_performers = sorted(aktive_spieler, key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]), reverse=True)[:3]
-    top_aufsteiger = sorted([p for p in aktive_spieler if p["delta"] > 0], key=lambda x: x["delta"], reverse=True)[:3]
-    top_spender = sorted([p for p in aktive_spieler if p["donations"] > 0], key=lambda x: x["donations"], reverse=True)[:3]
-    top_leecher = sorted([p for p in aktive_spieler if p["teilnahme_int"] > 3 and p["donations"] == 0 and p["donations_received"] > 0], key=lambda x: x["donations_received"], reverse=True)[:3]
-    
-    kandidaten_kick = []
-    kandidaten_demote = []
-    for p in aktive_spieler:
-        if strikes.get(p['name'], 0) >= 3:
-            if p['raw_role'] in ['elder', 'coleader']:
-                kandidaten_demote.append(p['name'])
-            elif p['raw_role'] == 'member':
-                kandidaten_kick.append(p['name'])
-
-    top_pusher = sorted(aktive_spieler, key=lambda x: x["trophy_push"], reverse=True)
-    if top_pusher and top_pusher[0]["trophy_push"] > 0:
-        pusher_name, pusher_val = top_pusher[0]["name"], top_pusher[0]["trophy_push"]
-        pusher_html = f"<li><b>{pusher_name}</b> (+{pusher_val} 🏆)</li>"
-        pusher_chat = f"🚀 Top-Pusher: {pusher_name} (+{pusher_val}🏆)"
-    else:
-        pusher_html = "<li>Niemand</li>"
-        pusher_chat = ""
-
-    urlaub_html = "<li>Niemand</li>"
-    if urlauber_liste:
-        urlaub_html = "".join([f"<li>🏖️ <b>{u}</b></li>" for u in urlauber_liste])
-
-    radar_html = ""
-    if radar_clans:
-        radar_hint = f" <span style='font-size:0.8em; opacity:0.8; font-weight:normal;'>(Status: {race_state_de})</span>"
-        radar_html = f"<div class='info-box' style='border-left-color: #f43f5e; background: rgba(159, 18, 57, 0.15); margin-bottom: 25px;'><h3 style='margin-top: 0; color: #f43f5e; margin-bottom: 12px; font-size: 1.2em;'>📡 Live Kriegs-Radar{radar_hint}</h3>"
-        radar_html += "<div style='overflow-x: auto;'><table style='width: 100%; border-collapse: collapse; font-size: 0.95em;'>"
-        radar_html += "<tr style='border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; text-align: left;'><th style='padding-bottom: 8px;'>Clan</th><th style='padding-bottom: 8px; text-align: center;'>⛵ Boot</th><th style='padding-bottom: 8px; text-align: center;'>🥇 Medaille</th><th style='padding-bottom: 8px; text-align: center;'>🏆 Trophäe</th></tr>"
-        
-        for idx, c in enumerate(radar_clans):
-            bold_name = f"<b style='color:#fff;'>{c['name']} (WIR)</b>" if c["is_us"] else c['name']
-            bg_color = "rgba(255,255,255,0.05)" if idx % 2 == 0 else "transparent"
-            radar_html += f"<tr style='background: {bg_color}; border-bottom: 1px solid rgba(255,255,255,0.02);'>"
-            radar_html += f"<td style='padding: 10px 5px;'>{bold_name}<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 {c['decks_used']} / 200 Decks</span></td>"
-            radar_html += f"<td style='text-align: center; font-weight: bold; color: #f8fafc;'>{c['fame']}</td>"
-            radar_html += f"<td style='text-align: center; font-weight: bold; color: #fbbf24;'>{c['medals']}</td>"
-            radar_html += f"<td style='text-align: center; font-weight: bold; color: #c084fc;'>{c['trophies']}</td>"
-            radar_html += "</tr>"
-        radar_html += "</table></div></div>"
-        
-    mahnwache_html = ""
-    ist_kampftag = datetime.utcnow().weekday() in [0, 3, 4, 5, 6] 
-    
-    total_active_players = len(aktive_spieler)
-    total_decks_today = total_active_players * 4
-    total_open_decks = 0
-    hype_balken_html = ""
-    
-    if ist_kampftag:
-        aktive_namen = df_active["player_name"].tolist()
-        gefilterte_mahnwache = []
-        for m in raw_mahnwache:
-            if m['name'] not in urlauber_liste and m['name'] in aktive_namen:
-                gefilterte_mahnwache.append(f"<b>{m['name']}</b> ({m['offen']} offen)")
-                total_open_decks += m['offen']
-                
-        if gefilterte_mahnwache:
-            mahnwache_html = f"<div class='info-box' style='border-left-color: #ef4444; background: rgba(239, 68, 68, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #ef4444; margin-bottom: 8px;'>⏰ Mahnwache (Noch offene Decks heute):</h4><p style='margin: 0; font-size: 0.95em;'>{', '.join(gefilterte_mahnwache)}</p></div>"
-        else:
-            mahnwache_html = f"<div class='info-box' style='border-left-color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #10b981; margin-bottom: 0;'>✅ Alle aktiven Spieler haben ihre Decks für heute gespielt!</h4></div>"
-
-        played_decks_today = total_decks_today - total_open_decks
-        hype_percentage = int((played_decks_today / total_decks_today) * 100) if total_decks_today > 0 else 0
-        hype_color = "#ef4444" if hype_percentage < 50 else "#fbbf24" if hype_percentage < 90 else "#10b981"
-        
-        tagesziel_titel = "🎯 Tagesziel: Trainings-Kämpfe" if "Training" in race_state_de else "🎯 Tagesziel: Clan-Kriegs Kämpfe"
-        
-        hype_balken_html = f"""
-        <div style='background: rgba(30, 41, 59, 0.8); border-radius: 12px; padding: 20px; margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 15px rgba(0,0,0,0.2);'>
-            <div style='display: flex; justify-content: space-between; margin-bottom: 10px; align-items: baseline;'>
-                <h3 style='margin: 0; color: #f8fafc; font-size: 1.1em;'>{tagesziel_titel}</h3>
-                <span style='font-weight: bold; color: {hype_color}; font-size: 1.1em;'>{played_decks_today} / {total_decks_today} Decks ({hype_percentage}%)</span>
-            </div>
-            <div style='background: rgba(0,0,0,0.5); border-radius: 8px; height: 14px; width: 100%; overflow: hidden;'>
-                <div style='background: {hype_color}; width: {hype_percentage}%; height: 100%; border-radius: 8px; transition: width 1s ease-in-out;'></div>
-            </div>
-        </div>
-        """
-
-    cr_top_names = ", ".join([p['name'] for p in top_performers])
-    top_spender_names = ", ".join([p['name'] for p in top_spender][:2])
-    echte_leecher = [p for p in top_leecher if p["donations"] == 0 and p["donations_received"] > 0]
-    leecher_names = ", ".join([p['name'] for p in echte_leecher][:2]) if echte_leecher else ""
-
-    chat_blocks = []
-
-    # Chat: Willkommen neue Mitglieder
-    if neue_mitglieder:
-        names_str = ", ".join(neue_mitglieder)
-        welcome_vars = {
-            "Sachlich": f"👋 Willkommen {names_str}. Viel Spaß und Erfolg bei und mit uns. Alles Wichtige steht in der Info.",
-            "Motivierend": f"🎉 Herzlich willkommen in der HAMBURG-Family, {names_str}! Viel Spaß und Erfolg bei und mit uns. Alles Wichtige steht in der Info.",
-            "Kurz & Knackig": f"👋 Moin {names_str}! Willkommen im Clan. Viel Spaß und Erfolg bei und mit uns. Alles Wichtige steht in der Info."
-        }
-        chat_blocks.append(welcome_vars)
-
-    msg_1_vars = {
-        "Sachlich": f"📊 Clan-Ø: {clan_avg}%. MVPs: {cr_top_names} 🏆 {pusher_chat}",
-        "Motivierend": f"🔥 Super Leistung! Clan-Ø: {clan_avg}%. Ein dickes Danke an unsere MVPs: {cr_top_names}! {pusher_chat}",
-        "Kurz & Knackig": f"⚔️ Auswertung da! Schnitt: {clan_avg}%. Top 3: {cr_top_names}. {pusher_chat}"
-    }
-    chat_blocks.append(msg_1_vars)
-
-    msg_2_sachlich = f"🃏 Ein Lob an unsere Top-Spender: {top_spender_names}! 🤝" if top_spender else "🃏 Kaum Spenden diese Woche. Ein Clan lebt vom Geben UND Nehmen! 🤝"
-    if echte_leecher: msg_2_sachlich += f" | 🧛 Spenden-Leecher (nur kassiert): {leecher_names}."
-    
-    msg_2_motiv = f"💚 Wahnsinn, was ihr spendet! Top-Supporter: {top_spender_names}. Danke fürs Karten teilen!" if top_spender else "💚 Vergesst das Spenden nicht, Team! Jeder braucht mal Karten."
-    
-    msg_2_streng = f"⚠️ Spenden-Check: Danke an {top_spender_names}." if top_spender else "⚠️ Null Spenden-Moral diese Woche!"
-    if echte_leecher: msg_2_streng += f" Die Leecher-Liste (nehmen ohne geben): {leecher_names}. Das muss besser werden!"
-    
-    msg_2_vars = {
-        "Sachlich": msg_2_sachlich,
-        "Motivierend": msg_2_motiv,
-        "Kurz & Knackig": msg_2_streng
-    }
-    chat_blocks.append(msg_2_vars)
-
-    # Chat: Dropper Warnung (Punkte < 115)
-    dropper_names = [p['name'] for p in aktive_spieler if 0 < p['fame_per_deck'] < 115 and not p['is_urlaub']]
-    if dropper_names:
-        names_str = ", ".join(dropper_names)
-        dropper_vars = {
-            "Sachlich": f"⚠️ Hinweis an {names_str}: Euer Punkteschnitt pro Deck ist auffällig niedrig (<115). Bitte greift keine feindlichen Boote an und gebt Kämpfe nicht absichtlich auf. Der Clan braucht jeden Punkt in echten Duellen! ⚔️",
-            "Motivierend": f"💡 Kleiner Tipp an {names_str}: Normale Kämpfe oder Duelle bringen dem Clan viel mehr Punkte als Bootsangriffe! Spielt eure Decks am besten in den normalen Modi aus, auch wenn ihr mal verliert. Ihr schafft das! 💪",
-            "Kurz & Knackig": f"⚠️ Bootsangriffe / Kampf-Aufgabe entdeckt bei: {names_str}. Bitte ab sofort normale Kämpfe machen, das bringt deutlich mehr Punkte für den Clan!"
-        }
-        chat_blocks.append(dropper_vars)
-
-    for chunk in chunk_list(kandidaten_demote, 4):
-        names_str = ", ".join(chunk)
-        demote_vars = {
-            "Sachlich": f"👇 Degradierung: {names_str}. Grund: Dauerhaft zu wenig Kriegskämpfe. Letzte Bewährungschance als Mitglied! ⚔️",
-            "Motivierend": f"👇 Wir stufen {names_str} wegen Kriegsinaktivität zum Mitglied ab. Kommt stärker zurück, ihr schafft das! ⚔️",
-            "Kurz & Knackig": f"👇 Degradierungen: {names_str} (Dauerhaft inaktiv im Krieg). Letzte Warnung. ⚔️"
-        }
-        chat_blocks.append(demote_vars)
-
-    for chunk in chunk_list(kandidaten_kick, 4):
-        names_str = ", ".join(chunk)
-        kick_vars = {
-            "Sachlich": f"👋 Verabschiedung: {names_str}. Grund: Wiederholte Inaktivität im Clankrieg. Wir machen Platz. Alles Gute! ✌️",
-            "Motivierend": f"👋 Wir machen Platz für aktive Kämpfer und verabschieden {names_str} wegen Inaktivität. Danke für die Zeit! ✌️",
-            "Kurz & Knackig": f"👋 Kicks: {names_str}. Grund: Dauerhafte Kriegsinaktivität. ✌️"
-        }
-        chat_blocks.append(kick_vars)
-
-    if not kandidaten_demote and not kandidaten_kick:
-        nokick_vars = {
-            "Sachlich": "🛡️ Info: Keine Kicks oder Degradierungen! Alle haben zuverlässig gekämpft oder sich fair abgemeldet. Starkes Team! 💪",
-            "Motivierend": "🌟 Großartig! Niemand auf der Kick-Liste diese Woche. Danke für eure Disziplin und Zuverlässigkeit! 💪",
-            "Kurz & Knackig": "🛡️ Alles sauber: Keine Kicks diese Woche! 💪"
-        }
-        chat_blocks.append(nokick_vars)
-
-    total_msgs = len(chat_blocks)
-    colors = ["#38bdf8", "#a855f7", "#ef4444", "#f97316", "#10b981", "#fbbf24", "#6366f1", "#ec4899"]
-    chat_boxes_html = ""
-    
-    for i, block_vars in enumerate(chat_blocks):
-        color = colors[i % len(colors)]
-        options_html = ""
-        for style_name, text_content in block_vars.items():
-            final_text = f"{i+1}/{total_msgs} {text_content}"
-            safe_text = escape_for_html(final_text)
-            options_html += f'<option value="{safe_text}">{style_name}</option>'
-            
-        default_text = f"{i+1}/{total_msgs} {list(block_vars.values())[0]}"
-        
-        chat_boxes_html += f"""
-        <div style="margin-bottom: 15px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                <label style="color: {color}; font-weight: bold; font-size: 0.9em;">💬 Teil {i+1}/{total_msgs}:</label>
-                <select onchange="document.getElementById('chatbox_{i}').value = this.value" style="background: rgba(30, 41, 59, 0.9); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 2px 6px; font-family: inherit; font-size: 0.85em; cursor: pointer;">
-                    {options_html}
-                </select>
-            </div>
-            <textarea id="chatbox_{i}" readonly style="width: 100%; height: 50px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 8px; font-family: inherit; font-size: 0.95em; resize: none;">{default_text}</textarea>
-        </div>
-        """
-
-    deck_html = ""
-    sorted_decks = sorted(top_decks_data.get("decks", {}).values(), key=lambda x: x["wins"], reverse=True)
-    top_x_decks = [d for d in sorted_decks if d["wins"] > 0][:8]
-    
-    if not top_x_decks:
-        deck_html = "<div class='info-box' style='border-left-color: #64748b;'><p style='margin: 0;'><b>Noch nicht genug Daten gesammelt.</b><br>Das System zeichnet ab heute im Hintergrund alle Clankriegs-Siege auf. Schau in ein paar Tagen wieder vorbei, dann siehst du hier die absoluten Meta-Decks unseres Clans!</p></div>"
-    else:
-        for idx, d in enumerate(top_x_decks):
-            total_matches = d["wins"] + d["losses"]
-            winrate = int((d["wins"] / total_matches) * 100) if total_matches > 0 else 0
-            players_str = ", ".join(d["players"][:3]) + ("..." if len(d["players"])>3 else "")
-            
-            archetype = get_deck_archetype(d["cards"])
-            
-            api_names = [c["name"].lower().replace(".", "").replace(" ", "-") for c in d["cards"]]
-            royaleapi_link = f"https://royaleapi.com/decks/stats/{','.join(api_names)}"
-            
-            images_html = "".join([f"<img src='{c['icon']}' style='width: 23%; border-radius: 4px; margin: 1%;' title='{c['name']}'>" for c in d["cards"]])
-            
-            deck_html += f"""
-            <div class="deck-card">
-                <div class="archetype-badge">{archetype}</div>
-                <div class="deck-header">
-                    <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🏆 Meta-Deck #{idx+1}</h3>
-                    <span class="winrate">🔥 {winrate}% Win</span>
-                </div>
-                <div class="deck-images">
-                    {images_html}
-                </div>
-                <p style="font-size: 0.85em; color: #94a3b8; margin: 10px 0;">Oft gewonnen von:<br><span style="color:#e2e8f0; font-weight:bold;">{players_str}</span></p>
-                <div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px;">
-                    <a href="{royaleapi_link}" class="copy-btn" style="background: #38bdf8; color: #0f172a;" target="_blank">🔗 Auf RoyaleAPI öffnen & kopieren</a>
-                </div>
-            </div>
-            """
-
-    tiers = ["🌟 Elite (95-100%)", "✅ Solides Mittelfeld (80-94%)", "⚠️ Unter Beobachtung (50-79%)", "🚫 Kritisch (< 50%)", "🏖️ Im Urlaub (Pausiert)"]
-
-    table_html = ""
-    
-    for t in tiers:
-        players_in_tier = sorted([p for p in player_stats if p["tier"] == t], key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]), reverse=True)
-        if players_in_tier:
-            table_html += f"<div class='tier-section'>"
-            table_html += f"<div class='tier-title'>{t}</div>"
-            table_html += """<table>
-                <thead>
-                <tr>
-                    <th>Spieler</th>
-                    <th>Status</th>
-                    <th>Score</th>
-                    <th>Trend</th>
-                    <th>Delta</th>
-                    <th>Ø Punkte</th>
-                    <th>🃏 Spenden</th>
-                    <th>Teilnahmen</th>
-                    <th>Kriegspunkte</th>
-                </tr>
-                </thead>
-                <tbody>"""
-            for p in players_in_tier:
-                delta_s = f"+{p['delta']}" if p['delta']>0 else f"{p['delta']}"
-                color = "#10b981" if p['delta'] > 0 else "#ef4444" if p['delta'] < 0 else "#94a3b8"
-                neu_badge = " <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱<span class='tooltip-text'>Neu im Clan / Wenig Kriege</span></span>" if p['teilnahme_int'] <= 3 and not p['is_urlaub'] else ""
-                
-                spenden_warnung = ""
-                if p['donations'] == 0 and p['teilnahme_int'] > 3 and not p['is_urlaub']:
-                    if p['donations_received'] > 0:
-                        spenden_warnung = f" <span class='custom-tooltip' style='font-size: 1.1em;'>🧛<span class='tooltip-text'>Spenden-Leecher (0 gespendet, aber {p['donations_received']} erhalten)</span></span>"
-                    else:
-                        spenden_warnung = " <span class='custom-tooltip' style='font-size: 1.1em;'>💤<span class='tooltip-text'>Spenden-Inaktiv (0 gespendet, 0 erhalten)</span></span>"
-                
-                spenden_zelle = f"<span class='custom-tooltip dotted'>{p['donations']}<span class='tooltip-text'>Gespendet: {p['donations']} | Empfangen: {p['donations_received']}</span></span>"
-                
-                table_html += f"<tr><td class='name-col'>{p['name']}{neu_badge}{p['streak_badge']}{p['strike_badge']}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
-
-            table_html += "</tbody></table></div>"
-
-    html = f"""
+def render_html_template(clan_name, heute_datum, header_img_src, hype_balken_html, radar_html, mahnwache_html, clan_avg, top_performers, top_spender, pusher_html, pusher_chat, records, urlaub_html, top_aufsteiger, top_leecher, total_msgs, chat_boxes_html, table_html, deck_html):
+    return f"""
     <html>
     <head>
         <meta charset='utf-8'>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Auswertung: {CLAN_NAME}</title>
+        <title>Auswertung: {clan_name}</title>
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap');
             body {{ font-family: 'Nunito', sans-serif; margin: 0; padding: 20px; background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('https://images.hdqwalls.com/download/clash-royale-4k-19-1920x1080.jpg') no-repeat center center fixed; background-size: cover; color: #f8fafc; }}
@@ -793,7 +392,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     <body>
         <div class="container">
             <div class="header-container">
-                <h1 class="header-title"><span onclick="unlockChat()" style="cursor: pointer;" title="Nur für die Clan-Führung">📊</span> Clan-Auswertung: {CLAN_NAME} <br>
+                <h1 class="header-title"><span onclick="unlockChat()" style="cursor: pointer;" title="Nur für die Clan-Führung">📊</span> Clan-Auswertung: {clan_name} <br>
                 <span class="header-date">{heute_datum}</span>
                 <span class="header-mobile-tip">📱 Tipp: Für die beste Übersicht am Handy bitte quer halten 🔄</span></h1>
             </div>
@@ -1085,6 +684,410 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     </body>
     </html>"""
 
+def chunk_list(lst: list, n: int) -> list:
+    return [lst[i:i + n] for i in range(0, len(lst), n)]
+
+def escape_for_html(text: str) -> str:
+    return text.replace('"', '&quot;').replace("'", "&#39;")
+
+def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str, radar_clans: list, records: dict, strikes: dict, race_state_de: str, raw_mahnwache: list, top_decks_data: dict, neue_mitglieder: list) -> Tuple[str, pd.DataFrame, str, dict, dict]:
+    player_stats = []
+    urlauber_liste = []
+    
+    if urlaub_path.exists():
+        with urlaub_path.open("r", encoding="utf-8") as f:
+            urlauber_liste = [line.strip() for line in f if line.strip()]
+
+    role_map = {"member": "Mitglied", "elder": "Ältester", "coleader": "Vize", "leader": "Anführer", "unknown": "Ehemalig"}
+
+    for _, row in df_active.iterrows():
+        raw_role = str(row.get("player_role", "unknown")).strip().lower()
+        if raw_role == "unknown": continue
+            
+        name = row.get("player_name", "Unbekannt")
+        role_de = role_map.get(raw_role, raw_role.capitalize())
+        is_urlaub = name in urlauber_liste
+        
+        participation = int(row.get("player_contribution_count", 0) or 0)
+        decks_total = int(row.get("player_total_decks_used", 0) or 0)
+        donations = int(row.get("player_donations", 0) or 0)
+        donations_received = int(row.get("player_donations_received", 0) or 0)
+        aktueller_trophy = int(row.get("player_trophies", 0) or 0)
+        
+        # Berechnung über APP_CONFIG ausgelagert
+        max_mögliche_decks = participation * 16
+        score = round((decks_total / max_mögliche_decks) * 100, 2) if max_mögliche_decks > 0 else 0.0
+        
+        aktueller_fame = int(row.get(fame_spalte, 0) or 0)
+        aktueller_decks_spalte = fame_spalte.replace("_fame", "_decks_used")
+        aktueller_decks = int(row.get(aktueller_decks_spalte, 0) or 0)
+        fame_per_deck = round(aktueller_fame / aktueller_decks) if aktueller_decks > 0 else 0
+        leecher_warnung = " <span class='custom-tooltip'>⚠️<span class='tooltip-text'>Verdacht: Zieht nur Punkte ab (verliert absichtlich/greift Boote an)</span></span>" if (0 < fame_per_deck < APP_CONFIG["DROPPER_THRESHOLD"]) else ""
+        
+        historie_spieler = df_history[df_history["player_name"] == name].sort_values("date")
+        vergangene_scores = historie_spieler.tail(3)["score"].tolist()
+        
+        past_trophy = aktueller_trophy
+        if not historie_spieler.empty and "trophies" in historie_spieler.columns:
+            past_trophy = int(historie_spieler.tail(1)["trophies"].values[0])
+            
+        trophy_push = aktueller_trophy - past_trophy
+        delta = round(score - vergangene_scores[-1], 2) if vergangene_scores else 0.0
+
+        if donations > records.setdefault("donations", {"name": "-", "val": 0})["val"]:
+            records["donations"] = {"name": name, "val": donations}
+        if delta > records.setdefault("delta", {"name": "-", "val": 0})["val"]:
+            records["delta"] = {"name": name, "val": delta}
+        if aktueller_trophy > records.setdefault("trophies", {"name": "-", "val": 0})["val"]:
+            records["trophies"] = {"name": name, "val": aktueller_trophy}
+
+        trend_scores = vergangene_scores + [score]
+        trend_str = "".join(["🟢" if s >= 80 else "🟡" if s >= APP_CONFIG["STRIKE_THRESHOLD"] else "🔴" for s in trend_scores[-4:]])
+        
+        streak_count = 0
+        for s in reversed(trend_scores):
+            if s >= 100.0:
+                streak_count += 1
+            else:
+                break
+                
+        if streak_count > participation:
+            streak_count = participation
+            
+        streak_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥{streak_count}<span class='tooltip-text'>{streak_count} Auswertungen in Folge 100% Score!</span></span>" if streak_count >= 3 else ""
+
+        ist_montag = datetime.utcnow().weekday() == 0
+        ist_mail_zeit = datetime.utcnow().hour in [9, 10, 11]
+        ist_manueller_start = os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch"
+        
+        if (ist_montag and ist_mail_zeit) or ist_manueller_start:
+            if not is_urlaub and participation > APP_CONFIG["MIN_PARTICIPATION"]:
+                if score < APP_CONFIG["STRIKE_THRESHOLD"]:
+                    strikes[name] = strikes.get(name, 0) + 1
+                    if strikes[name] > 3: strikes[name] = 3
+                elif score >= APP_CONFIG["STRIKE_THRESHOLD"]:
+                    if strikes.get(name, 0) > 0:
+                        strikes[name] -= 1
+
+        strike_val = strikes.get(name, 0)
+        strike_badge = ""
+        if strike_val > 0:
+            if strike_val >= 3:
+                strike_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3<span class='tooltip-text'>3 Verwarnungen: Kick oder Degradierung empfohlen!</span></span>"
+            else:
+                strike_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ {strike_val}/3<span class='tooltip-text'>Verwarnung! Bei 3/3 droht Kick/Degradierung.</span></span>"
+
+        if is_urlaub:
+            status_html, tier = "🏖️ Urlaub", "🏖️ Im Urlaub (Pausiert)"
+        else:
+            status_html = f"{role_de} <span class='badge-ja'>➔ BEFÖRDERN</span>" if raw_role == "member" and aktueller_fame >= 2800 else role_de
+            if score >= 95: tier = "🌟 Elite (95-100%)"
+            elif score >= 80: tier = "✅ Solides Mittelfeld (80-94%)"
+            elif score >= APP_CONFIG["STRIKE_THRESHOLD"]: tier = f"⚠️ Unter Beobachtung ({APP_CONFIG['STRIKE_THRESHOLD']}-79%)"
+            else: tier = f"🚫 Kritisch (< {APP_CONFIG['STRIKE_THRESHOLD']}%)"
+
+        player_stats.append({
+            "name": name, "status": status_html, "score": score, "delta": delta,
+            "teilnahme": f"{participation}/{int(row.get('player_participating_count', 0) or 0)}",
+            "teilnahme_int": participation, "fame": aktueller_fame, "donations": donations, 
+            "donations_received": donations_received, "tier": tier, "is_urlaub": is_urlaub, 
+            "trend_str": trend_str, "fame_per_deck": fame_per_deck, "leecher_warnung": leecher_warnung,
+            "trophy_push": trophy_push, "trophies": aktueller_trophy, "streak_badge": streak_badge, "strike_badge": strike_badge,
+            "raw_role": raw_role
+        })
+
+        df_history = pd.concat([
+            df_history, pd.DataFrame([{"player_name": name, "score": score, "date": heute_datum, "trophies": aktueller_trophy}])
+        ], ignore_index=True)
+
+    aktive_spieler = [p for p in player_stats if not p["is_urlaub"]]
+    clan_avg = round(sum([p["score"] for p in aktive_spieler]) / len(aktive_spieler), 2) if aktive_spieler else 0
+    
+    top_performers = sorted(aktive_spieler, key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]), reverse=True)[:3]
+    top_aufsteiger = sorted([p for p in aktive_spieler if p["delta"] > 0], key=lambda x: x["delta"], reverse=True)[:3]
+    top_spender = sorted([p for p in aktive_spieler if p["donations"] > 0], key=lambda x: x["donations"], reverse=True)[:3]
+    top_leecher = sorted([p for p in aktive_spieler if p["teilnahme_int"] > APP_CONFIG["MIN_PARTICIPATION"] and p["donations"] == 0 and p["donations_received"] > 0], key=lambda x: x["donations_received"], reverse=True)[:3]
+    
+    kandidaten_kick = []
+    kandidaten_demote = []
+    for p in aktive_spieler:
+        if strikes.get(p['name'], 0) >= 3:
+            if p['raw_role'] in ['elder', 'coleader']:
+                kandidaten_demote.append(p['name'])
+            elif p['raw_role'] == 'member':
+                kandidaten_kick.append(p['name'])
+
+    top_pusher = sorted(aktive_spieler, key=lambda x: x["trophy_push"], reverse=True)
+    if top_pusher and top_pusher[0]["trophy_push"] > 0:
+        pusher_name, pusher_val = top_pusher[0]["name"], top_pusher[0]["trophy_push"]
+        pusher_html = f"<li><b>{pusher_name}</b> (+{pusher_val} 🏆)</li>"
+        pusher_chat = f"🚀 Top-Pusher: {pusher_name} (+{pusher_val}🏆)"
+    else:
+        pusher_html = "<li>Niemand</li>"
+        pusher_chat = ""
+
+    urlaub_html = "<li>Niemand</li>"
+    if urlauber_liste:
+        urlaub_html = "".join([f"<li>🏖️ <b>{u}</b></li>" for u in urlauber_liste])
+
+    radar_html = ""
+    if radar_clans:
+        radar_hint = f" <span style='font-size:0.8em; opacity:0.8; font-weight:normal;'>(Status: {race_state_de})</span>"
+        radar_html = f"<div class='info-box' style='border-left-color: #f43f5e; background: rgba(159, 18, 57, 0.15); margin-bottom: 25px;'><h3 style='margin-top: 0; color: #f43f5e; margin-bottom: 12px; font-size: 1.2em;'>📡 Live Kriegs-Radar{radar_hint}</h3>"
+        radar_html += "<div style='overflow-x: auto;'><table style='width: 100%; border-collapse: collapse; font-size: 0.95em;'>"
+        
+        # FIX: position: static hinzugefügt, damit die Zeile nicht über andere springt
+        radar_html += "<tr style='border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; text-align: left;'><th style='padding-bottom: 8px; position: static; background: transparent; box-shadow: none;'>Clan</th><th style='padding-bottom: 8px; text-align: center; position: static; background: transparent; box-shadow: none;'>⛵ Boot</th><th style='padding-bottom: 8px; text-align: center; position: static; background: transparent; box-shadow: none;'>🥇 Medaille</th><th style='padding-bottom: 8px; text-align: center; position: static; background: transparent; box-shadow: none;'>🏆 Trophäe</th></tr>"
+        
+        for idx, c in enumerate(radar_clans):
+            bold_name = f"<b style='color:#fff;'>{c['name']} (WIR)</b>" if c["is_us"] else c['name']
+            bg_color = "rgba(255,255,255,0.05)" if idx % 2 == 0 else "transparent"
+            radar_html += f"<tr style='background: {bg_color}; border-bottom: 1px solid rgba(255,255,255,0.02);'>"
+            radar_html += f"<td style='padding: 10px 5px;'>{bold_name}<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 {c['decks_used']} / 200 Decks</span></td>"
+            radar_html += f"<td style='text-align: center; font-weight: bold; color: #f8fafc;'>{c['fame']}</td>"
+            radar_html += f"<td style='text-align: center; font-weight: bold; color: #fbbf24;'>{c['medals']}</td>"
+            radar_html += f"<td style='text-align: center; font-weight: bold; color: #c084fc;'>{c['trophies']}</td>"
+            radar_html += "</tr>"
+        radar_html += "</table></div></div>"
+        
+    mahnwache_html = ""
+    ist_kampftag = datetime.utcnow().weekday() in [0, 3, 4, 5, 6] 
+    
+    total_active_players = len(aktive_spieler)
+    total_decks_today = total_active_players * 4
+    total_open_decks = 0
+    hype_balken_html = ""
+    
+    if ist_kampftag:
+        aktive_namen = df_active["player_name"].tolist()
+        gefilterte_mahnwache = []
+        for m in raw_mahnwache:
+            if m['name'] not in urlauber_liste and m['name'] in aktive_namen:
+                gefilterte_mahnwache.append(f"<b>{m['name']}</b> ({m['offen']} offen)")
+                total_open_decks += m['offen']
+                
+        if gefilterte_mahnwache:
+            mahnwache_html = f"<div class='info-box' style='border-left-color: #ef4444; background: rgba(239, 68, 68, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #ef4444; margin-bottom: 8px;'>⏰ Mahnwache (Noch offene Decks heute):</h4><p style='margin: 0; font-size: 0.95em;'>{', '.join(gefilterte_mahnwache)}</p></div>"
+        else:
+            mahnwache_html = f"<div class='info-box' style='border-left-color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #10b981; margin-bottom: 0;'>✅ Alle aktiven Spieler haben ihre Decks für heute gespielt!</h4></div>"
+
+        played_decks_today = total_decks_today - total_open_decks
+        hype_percentage = int((played_decks_today / total_decks_today) * 100) if total_decks_today > 0 else 0
+        hype_color = "#ef4444" if hype_percentage < 50 else "#fbbf24" if hype_percentage < 90 else "#10b981"
+        
+        tagesziel_titel = "🎯 Tagesziel: Trainings-Kämpfe" if "Training" in race_state_de else "🎯 Tagesziel: Clan-Kriegs Kämpfe"
+        
+        hype_balken_html = f"""
+        <div style='background: rgba(30, 41, 59, 0.8); border-radius: 12px; padding: 20px; margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 15px rgba(0,0,0,0.2);'>
+            <div style='display: flex; justify-content: space-between; margin-bottom: 10px; align-items: baseline;'>
+                <h3 style='margin: 0; color: #f8fafc; font-size: 1.1em;'>{tagesziel_titel}</h3>
+                <span style='font-weight: bold; color: {hype_color}; font-size: 1.1em;'>{played_decks_today} / {total_decks_today} Decks ({hype_percentage}%)</span>
+            </div>
+            <div style='background: rgba(0,0,0,0.5); border-radius: 8px; height: 14px; width: 100%; overflow: hidden;'>
+                <div style='background: {hype_color}; width: {hype_percentage}%; height: 100%; border-radius: 8px; transition: width 1s ease-in-out;'></div>
+            </div>
+        </div>
+        """
+
+    cr_top_names = ", ".join([p['name'] for p in top_performers])
+    top_spender_names = ", ".join([p['name'] for p in top_spender][:2])
+    echte_leecher = [p for p in top_leecher if p["donations"] == 0 and p["donations_received"] > 0]
+    leecher_names = ", ".join([p['name'] for p in echte_leecher][:2]) if echte_leecher else ""
+
+    chat_blocks = []
+
+    if neue_mitglieder:
+        names_str = ", ".join(neue_mitglieder)
+        welcome_vars = {
+            "Sachlich": f"👋 Willkommen {names_str}. Viel Spaß und Erfolg bei und mit uns. Alles Wichtige steht in der Info.",
+            "Motivierend": f"🎉 Herzlich willkommen in der HAMBURG-Family, {names_str}! Viel Spaß und Erfolg bei und mit uns. Alles Wichtige steht in der Info.",
+            "Kurz & Knackig": f"👋 Moin {names_str}! Willkommen im Clan. Viel Spaß und Erfolg bei und mit uns. Alles Wichtige steht in der Info."
+        }
+        chat_blocks.append(welcome_vars)
+
+    msg_1_vars = {
+        "Sachlich": f"📊 Clan-Ø: {clan_avg}%. MVPs: {cr_top_names} 🏆 {pusher_chat}",
+        "Motivierend": f"🔥 Super Leistung! Clan-Ø: {clan_avg}%. Ein dickes Danke an unsere MVPs: {cr_top_names}! {pusher_chat}",
+        "Kurz & Knackig": f"⚔️ Auswertung da! Schnitt: {clan_avg}%. Top 3: {cr_top_names}. {pusher_chat}"
+    }
+    chat_blocks.append(msg_1_vars)
+
+    msg_2_sachlich = f"🃏 Ein Lob an unsere Top-Spender: {top_spender_names}! 🤝" if top_spender else "🃏 Kaum Spenden diese Woche. Ein Clan lebt vom Geben UND Nehmen! 🤝"
+    if echte_leecher: msg_2_sachlich += f" | 🧛 Spenden-Leecher (nur kassiert): {leecher_names}."
+    msg_2_motiv = f"💚 Wahnsinn, was ihr spendet! Top-Supporter: {top_spender_names}. Danke fürs Karten teilen!" if top_spender else "💚 Vergesst das Spenden nicht, Team! Jeder braucht mal Karten."
+    msg_2_streng = f"⚠️ Spenden-Check: Danke an {top_spender_names}." if top_spender else "⚠️ Null Spenden-Moral diese Woche!"
+    if echte_leecher: msg_2_streng += f" Die Leecher-Liste (nehmen ohne geben): {leecher_names}. Das muss besser werden!"
+    
+    msg_2_vars = {"Sachlich": msg_2_sachlich, "Motivierend": msg_2_motiv, "Kurz & Knackig": msg_2_streng}
+    chat_blocks.append(msg_2_vars)
+
+    dropper_names = [p['name'] for p in aktive_spieler if 0 < p['fame_per_deck'] < APP_CONFIG["DROPPER_THRESHOLD"] and not p['is_urlaub']]
+    if dropper_names:
+        names_str = ", ".join(dropper_names)
+        dropper_vars = {
+            "Sachlich": f"⚠️ Hinweis an {names_str}: Euer Punkteschnitt pro Deck ist auffällig niedrig (<{APP_CONFIG['DROPPER_THRESHOLD']}). Bitte greift keine feindlichen Boote an und gebt Kämpfe nicht absichtlich auf. Der Clan braucht jeden Punkt in echten Duellen! ⚔️",
+            "Motivierend": f"💡 Kleiner Tipp an {names_str}: Normale Kämpfe oder Duelle bringen dem Clan viel mehr Punkte als Bootsangriffe! Spielt eure Decks am besten in den normalen Modi aus, auch wenn ihr mal verliert. Ihr schafft das! 💪",
+            "Kurz & Knackig": f"⚠️ Bootsangriffe / Kampf-Aufgabe entdeckt bei: {names_str}. Bitte ab sofort normale Kämpfe machen, das bringt deutlich mehr Punkte für den Clan!"
+        }
+        chat_blocks.append(dropper_vars)
+
+    for chunk in chunk_list(kandidaten_demote, 4):
+        names_str = ", ".join(chunk)
+        demote_vars = {
+            "Sachlich": f"👇 Degradierung: {names_str}. Grund: Dauerhaft zu wenig Kriegskämpfe. Letzte Bewährungschance als Mitglied! ⚔️",
+            "Motivierend": f"👇 Wir stufen {names_str} wegen Kriegsinaktivität zum Mitglied ab. Kommt stärker zurück, ihr schafft das! ⚔️",
+            "Kurz & Knackig": f"👇 Degradierungen: {names_str} (Dauerhaft inaktiv im Krieg). Letzte Warnung. ⚔️"
+        }
+        chat_blocks.append(demote_vars)
+
+    for chunk in chunk_list(kandidaten_kick, 4):
+        names_str = ", ".join(chunk)
+        kick_vars = {
+            "Sachlich": f"👋 Verabschiedung: {names_str}. Grund: Wiederholte Inaktivität im Clankrieg. Wir machen Platz. Alles Gute! ✌️",
+            "Motivierend": f"👋 Wir machen Platz für aktive Kämpfer und verabschieden {names_str} wegen Inaktivität. Danke für die Zeit! ✌️",
+            "Kurz & Knackig": f"👋 Kicks: {names_str}. Grund: Dauerhafte Kriegsinaktivität. ✌️"
+        }
+        chat_blocks.append(kick_vars)
+
+    if not kandidaten_demote and not kandidaten_kick:
+        nokick_vars = {
+            "Sachlich": "🛡️ Info: Keine Kicks oder Degradierungen! Alle haben zuverlässig gekämpft oder sich fair abgemeldet. Starkes Team! 💪",
+            "Motivierend": "🌟 Großartig! Niemand auf der Kick-Liste diese Woche. Danke für eure Disziplin und Zuverlässigkeit! 💪",
+            "Kurz & Knackig": "🛡️ Alles sauber: Keine Kicks diese Woche! 💪"
+        }
+        chat_blocks.append(nokick_vars)
+
+    total_msgs = len(chat_blocks)
+    colors = ["#38bdf8", "#a855f7", "#ef4444", "#f97316", "#10b981", "#fbbf24", "#6366f1", "#ec4899"]
+    chat_boxes_html = ""
+    
+    for i, block_vars in enumerate(chat_blocks):
+        color = colors[i % len(colors)]
+        options_html = ""
+        for style_name, text_content in block_vars.items():
+            final_text = f"{i+1}/{total_msgs} {text_content}"
+            safe_text = escape_for_html(final_text)
+            options_html += f'<option value="{safe_text}">{style_name}</option>'
+            
+        default_text = f"{i+1}/{total_msgs} {list(block_vars.values())[0]}"
+        
+        chat_boxes_html += f"""
+        <div style="margin-bottom: 15px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                <label style="color: {color}; font-weight: bold; font-size: 0.9em;">💬 Teil {i+1}/{total_msgs}:</label>
+                <select onchange="document.getElementById('chatbox_{i}').value = this.value" style="background: rgba(30, 41, 59, 0.9); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 2px 6px; font-family: inherit; font-size: 0.85em; cursor: pointer;">
+                    {options_html}
+                </select>
+            </div>
+            <textarea id="chatbox_{i}" readonly style="width: 100%; height: 50px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 8px; font-family: inherit; font-size: 0.95em; resize: none;">{default_text}</textarea>
+        </div>
+        """
+
+    deck_html = ""
+    sorted_decks = sorted(top_decks_data.get("decks", {}).values(), key=lambda x: x["wins"], reverse=True)
+    top_x_decks = [d for d in sorted_decks if d["wins"] > 0][:8]
+    
+    if not top_x_decks:
+        deck_html = "<div class='info-box' style='border-left-color: #64748b;'><p style='margin: 0;'><b>Noch nicht genug Daten gesammelt.</b><br>Das System zeichnet ab heute im Hintergrund alle Clankriegs-Siege auf. Schau in ein paar Tagen wieder vorbei, dann siehst du hier die absoluten Meta-Decks unseres Clans!</p></div>"
+    else:
+        for idx, d in enumerate(top_x_decks):
+            total_matches = d["wins"] + d["losses"]
+            winrate = int((d["wins"] / total_matches) * 100) if total_matches > 0 else 0
+            players_str = ", ".join(d["players"][:3]) + ("..." if len(d["players"])>3 else "")
+            
+            archetype = get_deck_archetype(d["cards"])
+            api_names = [c["name"].lower().replace(".", "").replace(" ", "-") for c in d["cards"]]
+            royaleapi_link = f"https://royaleapi.com/decks/stats/{','.join(api_names)}"
+            
+            images_html = "".join([f"<img src='{c['icon']}' style='width: 23%; border-radius: 4px; margin: 1%;' title='{c['name']}'>" for c in d["cards"]])
+            
+            deck_html += f"""
+            <div class="deck-card">
+                <div class="archetype-badge">{archetype}</div>
+                <div class="deck-header">
+                    <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🏆 Meta-Deck #{idx+1}</h3>
+                    <span class="winrate">🔥 {winrate}% Win</span>
+                </div>
+                <div class="deck-images">
+                    {images_html}
+                </div>
+                <p style="font-size: 0.85em; color: #94a3b8; margin: 10px 0;">Oft gewonnen von:<br><span style="color:#e2e8f0; font-weight:bold;">{players_str}</span></p>
+                <div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px;">
+                    <a href="{royaleapi_link}" class="copy-btn" style="background: #38bdf8; color: #0f172a;" target="_blank">🔗 Auf RoyaleAPI öffnen & kopieren</a>
+                </div>
+            </div>
+            """
+
+    tiers = [
+        "🌟 Elite (95-100%)", 
+        "✅ Solides Mittelfeld (80-94%)", 
+        f"⚠️ Unter Beobachtung ({APP_CONFIG['STRIKE_THRESHOLD']}-79%)", 
+        f"🚫 Kritisch (< {APP_CONFIG['STRIKE_THRESHOLD']}%)", 
+        "🏖️ Im Urlaub (Pausiert)"
+    ]
+
+    table_html = ""
+    for t in tiers:
+        players_in_tier = sorted([p for p in player_stats if p["tier"] == t], key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]), reverse=True)
+        if players_in_tier:
+            table_html += f"<div class='tier-section'>"
+            table_html += f"<div class='tier-title'>{t}</div>"
+            table_html += """<table>
+                <thead>
+                <tr>
+                    <th>Spieler</th>
+                    <th>Status</th>
+                    <th>Score</th>
+                    <th>Trend</th>
+                    <th>Delta</th>
+                    <th>Ø Punkte</th>
+                    <th>🃏 Spenden</th>
+                    <th>Teilnahmen</th>
+                    <th>Kriegspunkte</th>
+                </tr>
+                </thead>
+                <tbody>"""
+            for p in players_in_tier:
+                delta_s = f"+{p['delta']}" if p['delta']>0 else f"{p['delta']}"
+                color = "#10b981" if p['delta'] > 0 else "#ef4444" if p['delta'] < 0 else "#94a3b8"
+                neu_badge = " <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱<span class='tooltip-text'>Neu im Clan / Wenig Kriege</span></span>" if p['teilnahme_int'] <= APP_CONFIG["MIN_PARTICIPATION"] and not p['is_urlaub'] else ""
+                
+                spenden_warnung = ""
+                if p['donations'] == 0 and p['teilnahme_int'] > APP_CONFIG["MIN_PARTICIPATION"] and not p['is_urlaub']:
+                    if p['donations_received'] > 0:
+                        spenden_warnung = f" <span class='custom-tooltip' style='font-size: 1.1em;'>🧛<span class='tooltip-text'>Spenden-Leecher (0 gespendet, aber {p['donations_received']} erhalten)</span></span>"
+                    else:
+                        spenden_warnung = " <span class='custom-tooltip' style='font-size: 1.1em;'>💤<span class='tooltip-text'>Spenden-Inaktiv (0 gespendet, 0 erhalten)</span></span>"
+                
+                spenden_zelle = f"<span class='custom-tooltip dotted'>{p['donations']}<span class='tooltip-text'>Gespendet: {p['donations']} | Empfangen: {p['donations_received']}</span></span>"
+                
+                table_html += f"<tr><td class='name-col'>{p['name']}{neu_badge}{p['streak_badge']}{p['strike_badge']}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
+
+            table_html += "</tbody></table></div>"
+
+    # HIER WIRD DIE AUSGELAGERTE TEMPLATE-FUNKTION AUFGERUFEN!
+    html = render_html_template(
+        clan_name=CLAN_NAME,
+        heute_datum=heute_datum,
+        header_img_src=header_img_src,
+        hype_balken_html=hype_balken_html,
+        radar_html=radar_html,
+        mahnwache_html=mahnwache_html,
+        clan_avg=clan_avg,
+        top_performers=top_performers,
+        top_spender=top_spender,
+        pusher_html=pusher_html,
+        pusher_chat=pusher_chat,
+        records=records,
+        urlaub_html=urlaub_html,
+        top_aufsteiger=top_aufsteiger,
+        top_leecher=top_leecher,
+        total_msgs=total_msgs,
+        chat_boxes_html=chat_boxes_html,
+        table_html=table_html,
+        deck_html=deck_html
+    )
+
     default_mail_texts = [list(block.values())[0] for block in chat_blocks]
     mail_chat_text = "\n\n".join([f"{i+1}/{total_msgs} {text}" for i, text in enumerate(default_mail_texts)])
     return html, df_history, mail_chat_text, records, strikes
@@ -1130,7 +1133,6 @@ def main():
     success, current_members = fetch_and_build_player_csv()
     if not success: return
     
-    # NEU: Alte CSV laden, um neue Mitglieder zu finden
     alte_mitglieder = set()
     csvs_alle = sorted(upload_folder.glob("*.csv"), key=os.path.getctime)
     if len(csvs_alle) >= 2:
@@ -1156,7 +1158,7 @@ def main():
             
             raw_state = data.get("state", "")
             if raw_state == "training": race_state_de = "Trainingstage"
-            elif raw_state == "warDay": race_state_de = "Kampftag"
+            elif raw_state == "warDay": race_state_de = "Clankrieg"
             
             clans_in_race = data.get("clans", [])
             for c in clans_in_race:
@@ -1175,7 +1177,6 @@ def main():
                 
                 is_us = c.get("tag") == CLAN_TAG.replace("%23", "#")
                 
-                # NEU: Mehr Live-Daten für das RoyaleAPI-Layout
                 trophies = c.get("clanScore", 0)
                 medals = c.get("periodPoints", 0)
                 decks_used = sum(p.get("decksUsedToday", 0) for p in c.get("participants", []))
@@ -1272,7 +1273,6 @@ def main():
         print("\n⚠️ HINWEIS: E-Mail-Secrets fehlen, Versand nicht möglich.")
         
     print("\n=== ALLES ERFOLGREICH ABGESCHLOSSEN ===")
-
 
 if __name__ == "__main__":
     try:
