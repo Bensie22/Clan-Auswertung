@@ -319,7 +319,7 @@ def chunk_list(lst: list, n: int) -> list:
 def escape_for_html(text: str) -> str:
     return text.replace('"', '&quot;').replace("'", "&#39;")
 
-def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str, radar_clans: list, records: dict, strikes: dict, race_state_de: str, raw_mahnwache: list, top_decks_data: dict) -> Tuple[str, pd.DataFrame, str, dict, dict]:
+def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str, radar_clans: list, records: dict, strikes: dict, race_state_de: str, raw_mahnwache: list, top_decks_data: dict, neue_mitglieder: list) -> Tuple[str, pd.DataFrame, str, dict, dict]:
     player_stats = []
     urlauber_liste = []
     
@@ -460,15 +460,21 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     if radar_clans:
         radar_hint = f" <span style='font-size:0.8em; opacity:0.8; font-weight:normal;'>(Status: {race_state_de})</span>"
         radar_html = f"<div class='info-box' style='border-left-color: #f43f5e; background: rgba(159, 18, 57, 0.15); margin-bottom: 25px;'><h3 style='margin-top: 0; color: #f43f5e; margin-bottom: 12px; font-size: 1.2em;'>📡 Live Kriegs-Radar{radar_hint}</h3>"
+        radar_html += "<div style='overflow-x: auto;'><table style='width: 100%; border-collapse: collapse; font-size: 0.95em;'>"
+        radar_html += "<tr style='border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; text-align: left;'><th style='padding-bottom: 8px;'>Clan</th><th style='padding-bottom: 8px; text-align: center;'>⛵ Boot</th><th style='padding-bottom: 8px; text-align: center;'>🥇 Medaille</th><th style='padding-bottom: 8px; text-align: center;'>🏆 Trophäe</th></tr>"
+        
         for idx, c in enumerate(radar_clans):
-            bold_start = "<b style='color:#fff;'>" if c["is_us"] else ""
-            bold_end = " (WIR)</b>" if c["is_us"] else ""
-            radar_html += f"<p style='margin: 0 0 5px 0;'>{idx+1}. {bold_start}{c['name']}{bold_end} - {c['fame']} Punkte</p>"
-        radar_html += "</div>"
+            bold_name = f"<b style='color:#fff;'>{c['name']} (WIR)</b>" if c["is_us"] else c['name']
+            bg_color = "rgba(255,255,255,0.05)" if idx % 2 == 0 else "transparent"
+            radar_html += f"<tr style='background: {bg_color}; border-bottom: 1px solid rgba(255,255,255,0.02);'>"
+            radar_html += f"<td style='padding: 10px 5px;'>{bold_name}<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 {c['decks_used']} / 200 Decks</span></td>"
+            radar_html += f"<td style='text-align: center; font-weight: bold; color: #f8fafc;'>{c['fame']}</td>"
+            radar_html += f"<td style='text-align: center; font-weight: bold; color: #fbbf24;'>{c['medals']}</td>"
+            radar_html += f"<td style='text-align: center; font-weight: bold; color: #c084fc;'>{c['trophies']}</td>"
+            radar_html += "</tr>"
+        radar_html += "</table></div></div>"
         
     mahnwache_html = ""
-    
-    # HIER IST DIE ÄNDERUNG: Montag (0) wurde hinzugefügt, damit das Endergebnis sichtbar bleibt!
     ist_kampftag = datetime.utcnow().weekday() in [0, 3, 4, 5, 6] 
     
     total_active_players = len(aktive_spieler)
@@ -493,10 +499,12 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         hype_percentage = int((played_decks_today / total_decks_today) * 100) if total_decks_today > 0 else 0
         hype_color = "#ef4444" if hype_percentage < 50 else "#fbbf24" if hype_percentage < 90 else "#10b981"
         
+        tagesziel_titel = "🎯 Tagesziel: Trainings-Kämpfe" if "Training" in race_state_de else "🎯 Tagesziel: Clan-Kriegs Kämpfe"
+        
         hype_balken_html = f"""
         <div style='background: rgba(30, 41, 59, 0.8); border-radius: 12px; padding: 20px; margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 15px rgba(0,0,0,0.2);'>
             <div style='display: flex; justify-content: space-between; margin-bottom: 10px; align-items: baseline;'>
-                <h3 style='margin: 0; color: #f8fafc; font-size: 1.1em;'>🎯 Tagesziel: Clan-Kriegs Kämpfe</h3>
+                <h3 style='margin: 0; color: #f8fafc; font-size: 1.1em;'>{tagesziel_titel}</h3>
                 <span style='font-weight: bold; color: {hype_color}; font-size: 1.1em;'>{played_decks_today} / {total_decks_today} Decks ({hype_percentage}%)</span>
             </div>
             <div style='background: rgba(0,0,0,0.5); border-radius: 8px; height: 14px; width: 100%; overflow: hidden;'>
@@ -511,6 +519,16 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     leecher_names = ", ".join([p['name'] for p in echte_leecher][:2]) if echte_leecher else ""
 
     chat_blocks = []
+
+    # Chat: Willkommen neue Mitglieder
+    if neue_mitglieder:
+        names_str = ", ".join(neue_mitglieder)
+        welcome_vars = {
+            "Sachlich": f"👋 Willkommen {names_str}. Viel Spaß und Erfolg bei und mit uns. Alles Wichtige steht in der Info.",
+            "Motivierend": f"🎉 Herzlich willkommen in der HAMBURG-Family, {names_str}! Viel Spaß und Erfolg bei und mit uns. Alles Wichtige steht in der Info.",
+            "Kurz & Knackig": f"👋 Moin {names_str}! Willkommen im Clan. Viel Spaß und Erfolg bei und mit uns. Alles Wichtige steht in der Info."
+        }
+        chat_blocks.append(welcome_vars)
 
     msg_1_vars = {
         "Sachlich": f"📊 Clan-Ø: {clan_avg}%. MVPs: {cr_top_names} 🏆 {pusher_chat}",
@@ -533,6 +551,17 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         "Kurz & Knackig": msg_2_streng
     }
     chat_blocks.append(msg_2_vars)
+
+    # Chat: Dropper Warnung (Punkte < 115)
+    dropper_names = [p['name'] for p in aktive_spieler if 0 < p['fame_per_deck'] < 115 and not p['is_urlaub']]
+    if dropper_names:
+        names_str = ", ".join(dropper_names)
+        dropper_vars = {
+            "Sachlich": f"⚠️ Hinweis an {names_str}: Euer Punkteschnitt pro Deck ist auffällig niedrig (<115). Bitte greift keine feindlichen Boote an und gebt Kämpfe nicht absichtlich auf. Der Clan braucht jeden Punkt in echten Duellen! ⚔️",
+            "Motivierend": f"💡 Kleiner Tipp an {names_str}: Normale Kämpfe oder Duelle bringen dem Clan viel mehr Punkte als Bootsangriffe! Spielt eure Decks am besten in den normalen Modi aus, auch wenn ihr mal verliert. Ihr schafft das! 💪",
+            "Kurz & Knackig": f"⚠️ Bootsangriffe / Kampf-Aufgabe entdeckt bei: {names_str}. Bitte ab sofort normale Kämpfe machen, das bringt deutlich mehr Punkte für den Clan!"
+        }
+        chat_blocks.append(dropper_vars)
 
     for chunk in chunk_list(kandidaten_demote, 4):
         names_str = ", ".join(chunk)
@@ -561,7 +590,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         chat_blocks.append(nokick_vars)
 
     total_msgs = len(chat_blocks)
-    colors = ["#38bdf8", "#a855f7", "#ef4444", "#f97316", "#10b981", "#fbbf24"]
+    colors = ["#38bdf8", "#a855f7", "#ef4444", "#f97316", "#10b981", "#fbbf24", "#6366f1", "#ec4899"]
     chat_boxes_html = ""
     
     for i, block_vars in enumerate(chat_blocks):
@@ -746,7 +775,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             
             .custom-tooltip {{ position: relative; display: inline-block; cursor: help; }}
             .custom-tooltip.dotted {{ border-bottom: 1px dotted rgba(56, 189, 248, 0.5); }}
-            .custom-tooltip .tooltip-text {{ visibility: hidden; width: max-content; background-color: rgba(15, 23, 42, 0.98); color: #fff; text-align: center; border-radius: 6px; padding: 6px 12px; position: absolute; z-index: 100; bottom: 140%; left: 50%; transform: translateX(-50%); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 4px 10px rgba(0,0,0,0.4); opacity: 0; transition: opacity 0.2s ease-in-out; font-size: 0.9em; font-weight: normal; font-family: 'Nunito', sans-serif; }}
+            .custom-tooltip .tooltip-text {{ visibility: hidden; width: max-content; background-color: rgba(15, 23, 42, 0.98); color: #fff; text-align: center; border-radius: 6px; padding: 6px 12px; position: absolute; z-index: 9999; bottom: 140%; left: 50%; transform: translateX(-50%); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 4px 10px rgba(0,0,0,0.4); opacity: 0; transition: opacity 0.2s ease-in-out; font-size: 0.9em; font-weight: normal; font-family: 'Nunito', sans-serif; }}
             .custom-tooltip .tooltip-text::after {{ content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: rgba(255, 255, 255, 0.2) transparent transparent transparent; }}
             .custom-tooltip.align-left .tooltip-text {{ left: 0; transform: none; }}
             .custom-tooltip.align-left .tooltip-text::after {{ left: 10px; margin-left: 0; }}
@@ -1101,6 +1130,19 @@ def main():
     success, current_members = fetch_and_build_player_csv()
     if not success: return
     
+    # NEU: Alte CSV laden, um neue Mitglieder zu finden
+    alte_mitglieder = set()
+    csvs_alle = sorted(upload_folder.glob("*.csv"), key=os.path.getctime)
+    if len(csvs_alle) >= 2:
+        try:
+            df_alt = pd.read_csv(csvs_alle[-2])
+            alte_mitglieder = set(df_alt[df_alt["player_is_current_member"].astype(str).str.lower().isin(["true", "1", "yes"])]["player_name"].dropna().tolist())
+        except Exception as e:
+            print(f"Konnte alte Mitglieder nicht laden: {e}")
+
+    aktuelle_namen = [data["name"] for tag, data in current_members.items()]
+    neue_mitglieder = [name for name in aktuelle_namen if name not in alte_mitglieder] if alte_mitglieder else []
+    
     print("Schritt 3: Rufe Live-Radar (Current River Race) ab...")
     radar_clans = []
     race_state_de = "Live"
@@ -1132,8 +1174,15 @@ def main():
                                 pts += item.get("fame", 0)
                 
                 is_us = c.get("tag") == CLAN_TAG.replace("%23", "#")
+                
+                # NEU: Mehr Live-Daten für das RoyaleAPI-Layout
+                trophies = c.get("clanScore", 0)
+                medals = c.get("periodPoints", 0)
+                decks_used = sum(p.get("decksUsedToday", 0) for p in c.get("participants", []))
+                
                 radar_clans.append({
-                    "name": c.get("name", ""), "fame": pts, "is_us": is_us
+                    "name": c.get("name", ""), "fame": pts, "is_us": is_us,
+                    "trophies": trophies, "medals": medals, "decks_used": decks_used
                 })
                 
                 if is_us:
@@ -1199,7 +1248,7 @@ def main():
     jetzt_datei = datetime.today().strftime("%Y-%m-%d_%H-%M-%S")
     encoded_header_img = get_encoded_header_image(HEADER_IMAGE_PATH)
     
-    html_bericht, df_history, mail_chat_text, updated_records, updated_strikes = generate_html_report(df_active, df_history, fame_spalte, heute_datum, encoded_header_img, radar_clans, records, strikes, race_state_de, raw_mahnwache, top_decks_data)
+    html_bericht, df_history, mail_chat_text, updated_records, updated_strikes = generate_html_report(df_active, df_history, fame_spalte, heute_datum, encoded_header_img, radar_clans, records, strikes, race_state_de, raw_mahnwache, top_decks_data, neue_mitglieder)
 
     html_path = speichere_html_bericht(html_bericht, df_history, updated_records, updated_strikes, jetzt_datei, top_decks_data)
     archiviere_alte_auswertungen(output_folder)
