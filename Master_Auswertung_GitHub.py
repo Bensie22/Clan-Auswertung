@@ -289,7 +289,34 @@ def get_deck_archetype(cards: list) -> str:
         return "⚡ Schneller Angriff (Rush/Spam)"
     return "⚔️ Hybrid / Allrounder"
 
-# === 3. HTML Templates (Refactoring ausgelagert) ===
+# === 3. Dateiverwaltung & Helfer ===
+
+def get_encoded_header_image(path: Path) -> str:
+    if not path.exists(): return ""
+    try:
+        with open(path, "rb") as image_file:
+            encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
+            return f"data:image/jpeg;base64,{encoded_string}"
+    except: return ""
+
+def archiviere_alte_dateien(ordner: Path, archiv_ordner: Path, anzahl: int = 2) -> None:
+    archiv_ordner.mkdir(exist_ok=True, parents=True)
+    dateien = sorted(ordner.glob("*.csv"), key=os.path.getctime)
+    for datei in dateien[:-anzahl]:
+        shutil.move(str(datei), archiv_ordner / datei.name)
+
+def finde_neueste_csv(ordner: Path) -> Path:
+    csvs = list(ordner.glob("*.csv"))
+    if not csvs: raise FileNotFoundError("Keine CSV-Datei im Upload-Ordner gefunden.")
+    return max(csvs, key=os.path.getctime)
+
+def chunk_list(lst: list, n: int) -> list:
+    return [lst[i:i + n] for i in range(0, len(lst), n)]
+
+def escape_for_html(text: str) -> str:
+    return text.replace('"', '&quot;').replace("'", "&#39;")
+
+# === 4. HTML Templates (Refactoring ausgelagert) ===
 
 def render_html_template(clan_name, heute_datum, header_img_src, hype_balken_html, radar_html, mahnwache_html, clan_avg, top_performers, top_spender, pusher_html, pusher_chat, records, urlaub_html, top_aufsteiger, top_leecher, total_msgs, chat_boxes_html, table_html, deck_html):
     return f"""
@@ -424,11 +451,11 @@ def render_html_template(clan_name, heute_datum, header_img_src, hype_balken_htm
                     </div>
                     <div class="card top">
                         <h3>🏆 Top 3 Performer</h3>
-                        <ul>{''.join([f"<li><b>{p['name']}</b> ({p['score']}%)</li>" for p in top_performers])}</ul>
+                        <ul>{top_performers}</ul>
                     </div>
                     <div class="card spender">
                         <h3>🃏 Top 3 Spender</h3>
-                        <ul>{''.join([f"<li><b>{p['name']}</b> ({p['donations']})</li>" for p in top_spender]) if top_spender else "<li>Keine Spenden</li>"}</ul>
+                        <ul>{top_spender}</ul>
                     </div>
                     <div class="card pusher">
                         <h3>🚀 Trophäen-Pusher</h3>
@@ -448,11 +475,11 @@ def render_html_template(clan_name, heute_datum, header_img_src, hype_balken_htm
                     </div>
                     <div class="card aufsteiger">
                         <h3>🚀 Größte Aufsteiger</h3>
-                        <ul>{''.join([f"<li><b>{p['name']}</b> (+{p['delta']}%)</li>" for p in top_aufsteiger]) if top_aufsteiger else "<li>Keine Verbesserungen</li>"}</ul>
+                        <ul>{top_aufsteiger}</ul>
                     </div>
                     <div class="card leecher">
                         <h3>🧛 Top 3 Leecher</h3>
-                        <ul>{''.join([f"<li><b>{p['name']}</b> ({p['donations']} gesp. / {p['donations_received']} empf.)</li>" for p in top_leecher]) if top_leecher else "<li>Keine Leecher! 🎉</li>"}</ul>
+                        <ul>{top_leecher}</ul>
                     </div>
                     
                     <div id="admin-chat-container" style="display: none; width: 100%;">
@@ -684,11 +711,6 @@ def render_html_template(clan_name, heute_datum, header_img_src, hype_balken_htm
     </body>
     </html>"""
 
-def chunk_list(lst: list, n: int) -> list:
-    return [lst[i:i + n] for i in range(0, len(lst), n)]
-
-def escape_for_html(text: str) -> str:
-    return text.replace('"', '&quot;').replace("'", "&#39;")
 
 def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str, radar_clans: list, records: dict, strikes: dict, race_state_de: str, raw_mahnwache: list, top_decks_data: dict, neue_mitglieder: list) -> Tuple[str, pd.DataFrame, str, dict, dict]:
     player_stats = []
@@ -714,7 +736,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         donations_received = int(row.get("player_donations_received", 0) or 0)
         aktueller_trophy = int(row.get("player_trophies", 0) or 0)
         
-        # Berechnung über APP_CONFIG ausgelagert
         max_mögliche_decks = participation * 16
         score = round((decks_total / max_mögliche_decks) * 100, 2) if max_mögliche_decks > 0 else 0.0
         
@@ -803,10 +824,16 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     aktive_spieler = [p for p in player_stats if not p["is_urlaub"]]
     clan_avg = round(sum([p["score"] for p in aktive_spieler]) / len(aktive_spieler), 2) if aktive_spieler else 0
     
-    top_performers = sorted(aktive_spieler, key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]), reverse=True)[:3]
-    top_aufsteiger = sorted([p for p in aktive_spieler if p["delta"] > 0], key=lambda x: x["delta"], reverse=True)[:3]
-    top_spender = sorted([p for p in aktive_spieler if p["donations"] > 0], key=lambda x: x["donations"], reverse=True)[:3]
-    top_leecher = sorted([p for p in aktive_spieler if p["teilnahme_int"] > APP_CONFIG["MIN_PARTICIPATION"] and p["donations"] == 0 and p["donations_received"] > 0], key=lambda x: x["donations_received"], reverse=True)[:3]
+    top_performers_list = sorted(aktive_spieler, key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]), reverse=True)[:3]
+    top_aufsteiger_list = sorted([p for p in aktive_spieler if p["delta"] > 0], key=lambda x: x["delta"], reverse=True)[:3]
+    top_spender_list = sorted([p for p in aktive_spieler if p["donations"] > 0], key=lambda x: x["donations"], reverse=True)[:3]
+    top_leecher_list = sorted([p for p in aktive_spieler if p["teilnahme_int"] > APP_CONFIG["MIN_PARTICIPATION"] and p["donations"] == 0 and p["donations_received"] > 0], key=lambda x: x["donations_received"], reverse=True)[:3]
+    
+    # HTML Strings für die Dashboards aufbereiten
+    top_performers_html = ''.join([f"<li><b>{p['name']}</b> ({p['score']}%)</li>" for p in top_performers_list])
+    top_aufsteiger_html = ''.join([f"<li><b>{p['name']}</b> (+{p['delta']}%)</li>" for p in top_aufsteiger_list]) if top_aufsteiger_list else "<li>Keine Verbesserungen</li>"
+    top_spender_html = ''.join([f"<li><b>{p['name']}</b> ({p['donations']})</li>" for p in top_spender_list]) if top_spender_list else "<li>Keine Spenden</li>"
+    top_leecher_html = ''.join([f"<li><b>{p['name']}</b> ({p['donations']} gesp. / {p['donations_received']} empf.)</li>" for p in top_leecher_list]) if top_leecher_list else "<li>Keine Leecher! 🎉</li>"
     
     kandidaten_kick = []
     kandidaten_demote = []
@@ -835,8 +862,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         radar_hint = f" <span style='font-size:0.8em; opacity:0.8; font-weight:normal;'>(Status: {race_state_de})</span>"
         radar_html = f"<div class='info-box' style='border-left-color: #f43f5e; background: rgba(159, 18, 57, 0.15); margin-bottom: 25px;'><h3 style='margin-top: 0; color: #f43f5e; margin-bottom: 12px; font-size: 1.2em;'>📡 Live Kriegs-Radar{radar_hint}</h3>"
         radar_html += "<div style='overflow-x: auto;'><table style='width: 100%; border-collapse: collapse; font-size: 0.95em;'>"
-        
-        # FIX: position: static hinzugefügt, damit die Zeile nicht über andere springt
         radar_html += "<tr style='border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; text-align: left;'><th style='padding-bottom: 8px; position: static; background: transparent; box-shadow: none;'>Clan</th><th style='padding-bottom: 8px; text-align: center; position: static; background: transparent; box-shadow: none;'>⛵ Boot</th><th style='padding-bottom: 8px; text-align: center; position: static; background: transparent; box-shadow: none;'>🥇 Medaille</th><th style='padding-bottom: 8px; text-align: center; position: static; background: transparent; box-shadow: none;'>🏆 Trophäe</th></tr>"
         
         for idx, c in enumerate(radar_clans):
@@ -889,9 +914,9 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         </div>
         """
 
-    cr_top_names = ", ".join([p['name'] for p in top_performers])
-    top_spender_names = ", ".join([p['name'] for p in top_spender][:2])
-    echte_leecher = [p for p in top_leecher if p["donations"] == 0 and p["donations_received"] > 0]
+    cr_top_names = ", ".join([p['name'] for p in top_performers_list])
+    top_spender_names = ", ".join([p['name'] for p in top_spender_list][:2])
+    echte_leecher = [p for p in top_leecher_list if p["donations"] == 0 and p["donations_received"] > 0]
     leecher_names = ", ".join([p['name'] for p in echte_leecher][:2]) if echte_leecher else ""
 
     chat_blocks = []
@@ -912,10 +937,10 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     }
     chat_blocks.append(msg_1_vars)
 
-    msg_2_sachlich = f"🃏 Ein Lob an unsere Top-Spender: {top_spender_names}! 🤝" if top_spender else "🃏 Kaum Spenden diese Woche. Ein Clan lebt vom Geben UND Nehmen! 🤝"
+    msg_2_sachlich = f"🃏 Ein Lob an unsere Top-Spender: {top_spender_names}! 🤝" if top_spender_list else "🃏 Kaum Spenden diese Woche. Ein Clan lebt vom Geben UND Nehmen! 🤝"
     if echte_leecher: msg_2_sachlich += f" | 🧛 Spenden-Leecher (nur kassiert): {leecher_names}."
-    msg_2_motiv = f"💚 Wahnsinn, was ihr spendet! Top-Supporter: {top_spender_names}. Danke fürs Karten teilen!" if top_spender else "💚 Vergesst das Spenden nicht, Team! Jeder braucht mal Karten."
-    msg_2_streng = f"⚠️ Spenden-Check: Danke an {top_spender_names}." if top_spender else "⚠️ Null Spenden-Moral diese Woche!"
+    msg_2_motiv = f"💚 Wahnsinn, was ihr spendet! Top-Supporter: {top_spender_names}. Danke fürs Karten teilen!" if top_spender_list else "💚 Vergesst das Spenden nicht, Team! Jeder braucht mal Karten."
+    msg_2_streng = f"⚠️ Spenden-Check: Danke an {top_spender_names}." if top_spender_list else "⚠️ Null Spenden-Moral diese Woche!"
     if echte_leecher: msg_2_streng += f" Die Leecher-Liste (nehmen ohne geben): {leecher_names}. Das muss besser werden!"
     
     msg_2_vars = {"Sachlich": msg_2_sachlich, "Motivierend": msg_2_motiv, "Kurz & Knackig": msg_2_streng}
@@ -1065,7 +1090,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
             table_html += "</tbody></table></div>"
 
-    # HIER WIRD DIE AUSGELAGERTE TEMPLATE-FUNKTION AUFGERUFEN!
     html = render_html_template(
         clan_name=CLAN_NAME,
         heute_datum=heute_datum,
@@ -1074,14 +1098,14 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         radar_html=radar_html,
         mahnwache_html=mahnwache_html,
         clan_avg=clan_avg,
-        top_performers=top_performers,
-        top_spender=top_spender,
+        top_performers=top_performers_html,
+        top_spender=top_spender_html,
         pusher_html=pusher_html,
         pusher_chat=pusher_chat,
         records=records,
         urlaub_html=urlaub_html,
-        top_aufsteiger=top_aufsteiger,
-        top_leecher=top_leecher,
+        top_aufsteiger=top_aufsteiger_html,
+        top_leecher=top_leecher_html,
         total_msgs=total_msgs,
         chat_boxes_html=chat_boxes_html,
         table_html=table_html,
@@ -1280,4 +1304,4 @@ if __name__ == "__main__":
     except Exception as err:
         print("\n❌ EIN KRITISCHER FEHLER IST AUFGETRETEN:")
         traceback.print_exc()
-        sys.exit(1) 
+        sys.exit(1)
