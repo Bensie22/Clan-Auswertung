@@ -40,7 +40,7 @@ strikes_path = BASE_DIR / "strikes.json"
 top_decks_path = BASE_DIR / "top_decks.json"
 donations_memory_path = BASE_DIR / "donations_memory.json" 
 urlaub_path = BASE_DIR / "urlaub.txt" 
-kicked_players_path = BASE_DIR / "kicked_players.json" # NEU: Das Rauswurf-Gedächtnis
+kicked_players_path = BASE_DIR / "kicked_players.json"
 HEADER_IMAGE_PATH = BASE_DIR / "clash_pix.jpg"
 
 # === 2. API Datenabruf ===
@@ -712,7 +712,7 @@ def render_html_template(clan_name, heute_datum, header_img_src, hype_balken_htm
     </body>
     </html>"""
 
-def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str, radar_clans: list, records: dict, strikes: dict, race_state_de: str, raw_mahnwache: list, top_decks_data: dict, echte_neulinge: list, rueckkehrer: list, kicked_players: dict) -> Tuple[str, pd.DataFrame, str, dict, dict, dict]:
+def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str, radar_clans: list, records: dict, strikes_data: dict, race_state_de: str, raw_mahnwache: list, top_decks_data: dict, echte_neulinge: list, rueckkehrer: list, kicked_players: dict) -> Tuple[str, pd.DataFrame, str, dict, dict, dict]:
     player_stats = []
     urlauber_liste = []
     
@@ -722,8 +722,22 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
     role_map = {"member": "Mitglied", "elder": "Ältester", "coleader": "Vize", "leader": "Anführer", "unknown": "Ehemalig"}
 
-    kandidaten_kick = []
-    kandidaten_demote = []
+    strikes = strikes_data.get("players", {})
+    last_strike_week = strikes_data.get("last_strike_week", 0)
+    
+    curr_week = datetime.utcnow().isocalendar()[1]
+    ist_montag = datetime.utcnow().weekday() == 0
+    ist_mail_zeit = datetime.utcnow().hour in [9, 10, 11]
+    ist_manueller_start = os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch"
+
+    # DOPPEL-BESTRAFUNGSSCHUTZ: Prüfen, ob wir diese Woche schon Strafen verteilt haben
+    apply_strikes_now = False
+    if (ist_montag and ist_mail_zeit) or ist_manueller_start:
+        if last_strike_week != curr_week:
+            apply_strikes_now = True
+            strikes_data["last_strike_week"] = curr_week
+            strikes_data["demoted_this_week"] = []
+            strikes_data["kicked_this_week"] = []
 
     for _, row in df_active.iterrows():
         raw_role = str(row.get("player_role", "unknown")).strip().lower()
@@ -780,34 +794,35 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             
         streak_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥{streak_count}<span class='tooltip-text'>{streak_count} Auswertungen in Folge 100% Score!</span></span>" if streak_count >= 3 else ""
 
-        ist_montag = datetime.utcnow().weekday() == 0
-        ist_mail_zeit = datetime.utcnow().hour in [9, 10, 11]
-        ist_manueller_start = os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch"
-        
-        if (ist_montag and ist_mail_zeit) or ist_manueller_start:
+        # STRIKES VERTEILEN (Nur wenn apply_strikes_now True ist)
+        if apply_strikes_now:
             if not is_urlaub and participation > APP_CONFIG["MIN_PARTICIPATION"]:
                 if score < APP_CONFIG["STRIKE_THRESHOLD"]:
                     strikes[name] = strikes.get(name, 0) + 1
-                    if strikes[name] > 3: strikes[name] = 3
                 elif score >= APP_CONFIG["STRIKE_THRESHOLD"]:
                     if strikes.get(name, 0) > 0:
                         strikes[name] -= 1
 
         strike_val = strikes.get(name, 0)
-        strike_badge = ""
         
-        if strike_val > 0:
-            if strike_val >= 3:
-                strike_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3<span class='tooltip-text'>3 Verwarnungen: Kick oder Degradierung empfohlen!</span></span>"
-                # NEU: Kick und Degradierungs-Logik hierher gezogen, um direkt ins Archiv zu schreiben
-                if not is_urlaub:
-                    if raw_role in ['elder', 'coleader']:
-                        kandidaten_demote.append(name)
-                    elif raw_role == 'member':
-                        kandidaten_kick.append(name)
-                        kicked_players[name] = heute_datum # In Blacklist eintragen
-            else:
-                strike_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ {strike_val}/3<span class='tooltip-text'>Verwarnung! Bei 3/3 droht Kick/Degradierung.</span></span>"
+        # LOGIK FÜR DEGRADIERUNG UND KICK
+        if apply_strikes_now and strike_val >= 3:
+            if not is_urlaub:
+                if raw_role in ['elder', 'coleader']:
+                    strikes_data.setdefault("demoted_this_week", []).append(name)
+                    strikes[name] = 2 # AUTO-BEWÄHRUNG: Fällt sofort auf 2 zurück!
+                elif raw_role == 'member':
+                    strikes_data.setdefault("kicked_this_week", []).append(name)
+                    kicked_players[name] = heute_datum
+                    strikes[name] = 3
+
+        strike_badge = ""
+        if name in strikes_data.get("demoted_this_week", []):
+            strike_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3<span class='tooltip-text'>Wurde degradiert! Bewährungschance aktiv.</span></span>"
+        elif name in strikes_data.get("kicked_this_week", []):
+            strike_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3<span class='tooltip-text'>3 Verwarnungen: Verabschiedung!</span></span>"
+        elif strike_val > 0:
+            strike_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ {strike_val}/3<span class='tooltip-text'>Verwarnung! Bei 3/3 droht Kick/Degradierung.</span></span>"
 
         if is_urlaub:
             status_html, tier = "🏖️ Urlaub", "🏖️ Im Urlaub (Pausiert)"
@@ -845,6 +860,10 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     top_spender_html = ''.join([f"<li><b>{p['name']}</b> ({p['donations']})</li>" for p in top_spender_list]) if top_spender_list else "<li>Keine Spenden</li>"
     top_leecher_html = ''.join([f"<li><b>{p['name']}</b> ({p['donations']} gesp. / {p['donations_received']} empf.)</li>" for p in top_leecher_list]) if top_leecher_list else "<li>Keine Leecher! 🎉</li>"
     
+    # Listen für den Chat aus dem Gedächtnis aufbauen, damit sie die ganze Woche bleiben
+    kandidaten_demote = strikes_data.get("demoted_this_week", [])
+    kandidaten_kick = strikes_data.get("kicked_this_week", [])
+
     top_pusher = sorted(aktive_spieler, key=lambda x: x["trophy_push"], reverse=True)
     if top_pusher and top_pusher[0]["trophy_push"] > 0:
         pusher_name, pusher_val = top_pusher[0]["name"], top_pusher[0]["trophy_push"]
@@ -863,7 +882,9 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         radar_hint = f" <span style='font-size:0.8em; opacity:0.8; font-weight:normal;'>(Status: {race_state_de})</span>"
         radar_html = f"<div class='info-box' style='border-left-color: #f43f5e; background: rgba(159, 18, 57, 0.15); margin-bottom: 25px;'><h3 style='margin-top: 0; color: #f43f5e; margin-bottom: 12px; font-size: 1.2em;'>📡 Live Kriegs-Radar{radar_hint}</h3>"
         radar_html += "<div style='overflow-x: auto;'><table style='width: 100%; border-collapse: collapse; font-size: 0.95em;'>"
-        radar_html += "<tr style='border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; text-align: left;'><th style='padding-bottom: 8px; position: static; background: transparent; box-shadow: none;'>Clan</th><th style='padding-bottom: 8px; text-align: center; position: static; background: transparent; box-shadow: none;'>⛵ Boot</th><th style='padding-bottom: 8px; text-align: center; position: static; background: transparent; box-shadow: none;'>🥇 Medaille</th><th style='padding-bottom: 8px; text-align: center; position: static; background: transparent; box-shadow: none;'>🏆 Trophäe</th></tr>"
+        
+        # Zurück auf das Original-Layout ohne die Position-Static-Regel, da es ja optisch passte!
+        radar_html += "<tr style='border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; text-align: left;'><th style='padding-bottom: 8px; text-align: left;'>Clan</th><th style='padding-bottom: 8px; text-align: center;'>⛵ Boot</th><th style='padding-bottom: 8px; text-align: center;'>🥇 Medaille</th><th style='padding-bottom: 8px; text-align: center;'>🏆 Trophäe</th></tr>"
         
         for idx, c in enumerate(radar_clans):
             bold_name = f"<b style='color:#fff;'>{c['name']} (WIR)</b>" if c["is_us"] else c['name']
@@ -885,10 +906,10 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     hype_balken_html = ""
     
     if ist_kampftag:
-        aktive_namen = df_active["player_name"].tolist()
+        aktive_namen_list = df_active["player_name"].tolist()
         gefilterte_mahnwache = []
         for m in raw_mahnwache:
-            if m['name'] not in urlauber_liste and m['name'] in aktive_namen:
+            if m['name'] not in urlauber_liste and m['name'] in aktive_namen_list:
                 gefilterte_mahnwache.append(f"<b>{m['name']}</b> ({m['offen']} offen)")
                 total_open_decks += m['offen']
                 
@@ -922,7 +943,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
     chat_blocks = []
 
-    # NEU: Unterscheidung zwischen echten Neulingen und Rückkehrern (gekickten Spielern)
     if echte_neulinge:
         names_str = ", ".join(echte_neulinge)
         welcome_vars = {
@@ -1101,6 +1121,15 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
             table_html += "</tbody></table></div>"
 
+    # DIE PUTZFRAU (Cleanup): Alte Spieler aus der Strikes-Liste löschen
+    aktive_namen_set = set(df_active["player_name"].tolist())
+    keys_to_delete = []
+    for s_name in strikes.keys():
+        if s_name not in aktive_namen_set:
+            keys_to_delete.append(s_name)
+    for k in keys_to_delete:
+        del strikes[k]
+
     html = render_html_template(
         clan_name=CLAN_NAME,
         heute_datum=heute_datum,
@@ -1126,10 +1155,10 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     default_mail_texts = [list(block.values())[0] for block in chat_blocks]
     mail_chat_text = "\n\n".join([f"{i+1}/{total_msgs} {text}" for i, text in enumerate(default_mail_texts)])
     
-    # NEU: Das aktualisierte Rauswurf-Gedächtnis zurückgeben
-    return html, df_history, mail_chat_text, records, strikes, kicked_players
+    strikes_data["players"] = strikes
+    return html, df_history, mail_chat_text, records, strikes_data, kicked_players
 
-def speichere_html_bericht(html_content: str, df_history: pd.DataFrame, records: dict, strikes: dict, file_suffix: str, top_decks_data: dict, kicked_players: dict) -> Path:
+def speichere_html_bericht(html_content: str, df_history: pd.DataFrame, records: dict, strikes_data: dict, file_suffix: str, top_decks_data: dict, kicked_players: dict) -> Path:
     html_path = output_folder / f"auswertung_{file_suffix}.html"
     with html_path.open("w", encoding="utf-8") as f:
         f.write(html_content)
@@ -1144,12 +1173,11 @@ def speichere_html_bericht(html_content: str, df_history: pd.DataFrame, records:
         json.dump(records, f, ensure_ascii=False, indent=4)
         
     with open(strikes_path, "w", encoding="utf-8") as f:
-        json.dump(strikes, f, ensure_ascii=False, indent=4)
+        json.dump(strikes_data, f, ensure_ascii=False, indent=4)
         
     with open(top_decks_path, "w", encoding="utf-8") as f:
         json.dump(top_decks_data, f, ensure_ascii=False, indent=4)
         
-    # NEU: Die Blacklist speichern
     with open(kicked_players_path, "w", encoding="utf-8") as f:
         json.dump(kicked_players, f, ensure_ascii=False, indent=4)
         
@@ -1174,7 +1202,6 @@ def main():
     success, current_members = fetch_and_build_player_csv()
     if not success: return
     
-    # NEU: Das Rauswurf-Gedächtnis laden
     kicked_players = {}
     if kicked_players_path.exists():
         try:
@@ -1195,7 +1222,6 @@ def main():
     aktuelle_namen = [data["name"] for tag, data in current_members.items()]
     neue_mitglieder_raw = [name for name in aktuelle_namen if name not in alte_mitglieder] if alte_mitglieder else []
     
-    # NEU: Trennung zwischen echten Neulingen und Rückkehrern
     echte_neulinge = []
     rueckkehrer = []
     for n in neue_mitglieder_raw:
@@ -1215,9 +1241,12 @@ def main():
         if race_resp.status_code == 200:
             data = race_resp.json()
             
-            raw_state = data.get("state", "")
+            # API STATUS FIX: Robusteres Auslesen des River Race Status
+            raw_state = data.get("state", "Unbekannt")
             if raw_state == "training": race_state_de = "Trainingstage"
             elif raw_state == "warDay": race_state_de = "Clankrieg"
+            elif raw_state == "full": race_state_de = "Beendet (Full)"
+            else: race_state_de = raw_state.capitalize()
             
             clans_in_race = data.get("clans", [])
             for c in clans_in_race:
@@ -1274,11 +1303,22 @@ def main():
         except Exception as e:
             print(f"⚠️ Warnung: records.json fehlerhaft, fange bei 0 an. ({e})")
 
-    strikes = {}
+    # STRIKE-SYSTEM 2.0 LADEN
+    strikes_data = {
+        "last_strike_week": 0,
+        "players": {},
+        "demoted_this_week": [],
+        "kicked_this_week": []
+    }
     if strikes_path.exists():
         try:
             with open(strikes_path, "r", encoding="utf-8") as f:
-                strikes = json.load(f)
+                loaded_strikes = json.load(f)
+                # Rückwärtskompatibilität: Falls es noch die alte Datei (ohne Wochen-Merkmal) ist
+                if "players" in loaded_strikes:
+                    strikes_data.update(loaded_strikes)
+                else:
+                    strikes_data["players"] = loaded_strikes
         except Exception as e:
             print(f"⚠️ Warnung: strikes.json fehlerhaft, fange bei 0 an. ({e})")
 
@@ -1308,9 +1348,9 @@ def main():
     jetzt_datei = datetime.today().strftime("%Y-%m-%d_%H-%M-%S")
     encoded_header_img = get_encoded_header_image(HEADER_IMAGE_PATH)
     
-    html_bericht, df_history, mail_chat_text, updated_records, updated_strikes, updated_kicked = generate_html_report(df_active, df_history, fame_spalte, heute_datum, encoded_header_img, radar_clans, records, strikes, race_state_de, raw_mahnwache, top_decks_data, echte_neulinge, rueckkehrer, kicked_players)
+    html_bericht, df_history, mail_chat_text, updated_records, updated_strikes_data, updated_kicked = generate_html_report(df_active, df_history, fame_spalte, heute_datum, encoded_header_img, radar_clans, records, strikes_data, race_state_de, raw_mahnwache, top_decks_data, echte_neulinge, rueckkehrer, kicked_players)
 
-    html_path = speichere_html_bericht(html_bericht, df_history, updated_records, updated_strikes, jetzt_datei, top_decks_data, updated_kicked)
+    html_path = speichere_html_bericht(html_bericht, df_history, updated_records, updated_strikes_data, jetzt_datei, top_decks_data, updated_kicked)
     archiviere_alte_auswertungen(output_folder)
     
     sender_mail = os.environ.get("EMAIL_SENDER")
