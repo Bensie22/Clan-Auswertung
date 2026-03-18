@@ -730,7 +730,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     ist_mail_zeit = datetime.utcnow().hour in [9, 10, 11]
     ist_manueller_start = os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch"
 
-    # DOPPEL-BESTRAFUNGSSCHUTZ: Prüfen, ob wir diese Woche schon Strafen verteilt haben
     apply_strikes_now = False
     if (ist_montag and ist_mail_zeit) or ist_manueller_start:
         if last_strike_week != curr_week:
@@ -794,7 +793,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             
         streak_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥{streak_count}<span class='tooltip-text'>{streak_count} Auswertungen in Folge 100% Score!</span></span>" if streak_count >= 3 else ""
 
-        # STRIKES VERTEILEN (Nur wenn apply_strikes_now True ist)
         if apply_strikes_now:
             if not is_urlaub and participation > APP_CONFIG["MIN_PARTICIPATION"]:
                 if score < APP_CONFIG["STRIKE_THRESHOLD"]:
@@ -805,12 +803,11 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
         strike_val = strikes.get(name, 0)
         
-        # LOGIK FÜR DEGRADIERUNG UND KICK
         if apply_strikes_now and strike_val >= 3:
             if not is_urlaub:
                 if raw_role in ['elder', 'coleader']:
                     strikes_data.setdefault("demoted_this_week", []).append(name)
-                    strikes[name] = 2 # AUTO-BEWÄHRUNG: Fällt sofort auf 2 zurück!
+                    strikes[name] = 2 
                 elif raw_role == 'member':
                     strikes_data.setdefault("kicked_this_week", []).append(name)
                     kicked_players[name] = heute_datum
@@ -860,7 +857,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     top_spender_html = ''.join([f"<li><b>{p['name']}</b> ({p['donations']})</li>" for p in top_spender_list]) if top_spender_list else "<li>Keine Spenden</li>"
     top_leecher_html = ''.join([f"<li><b>{p['name']}</b> ({p['donations']} gesp. / {p['donations_received']} empf.)</li>" for p in top_leecher_list]) if top_leecher_list else "<li>Keine Leecher! 🎉</li>"
     
-    # Listen für den Chat aus dem Gedächtnis aufbauen, damit sie die ganze Woche bleiben
     kandidaten_demote = strikes_data.get("demoted_this_week", [])
     kandidaten_kick = strikes_data.get("kicked_this_week", [])
 
@@ -883,8 +879,8 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         radar_html = f"<div class='info-box' style='border-left-color: #f43f5e; background: rgba(159, 18, 57, 0.15); margin-bottom: 25px;'><h3 style='margin-top: 0; color: #f43f5e; margin-bottom: 12px; font-size: 1.2em;'>📡 Live Kriegs-Radar{radar_hint}</h3>"
         radar_html += "<div style='overflow-x: auto;'><table style='width: 100%; border-collapse: collapse; font-size: 0.95em;'>"
         
-        # Zurück auf das Original-Layout ohne die Position-Static-Regel, da es ja optisch passte!
-        radar_html += "<tr style='border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; text-align: left;'><th style='padding-bottom: 8px; text-align: left;'>Clan</th><th style='padding-bottom: 8px; text-align: center;'>⛵ Boot</th><th style='padding-bottom: 8px; text-align: center;'>🥇 Medaille</th><th style='padding-bottom: 8px; text-align: center;'>🏆 Trophäe</th></tr>"
+        # FIX: Austausch von <th> zu <td> mit inline font-weight, um die globale CSS-Kleberegel zu umgehen!
+        radar_html += "<tr style='border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; font-weight: bold; text-align: left;'><td style='padding-bottom: 8px; border: none; text-align: left;'>Clan</td><td style='padding-bottom: 8px; border: none; text-align: center;'>⛵ Boot</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🥇 Medaille</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🏆 Trophäe</td></tr>"
         
         for idx, c in enumerate(radar_clans):
             bold_name = f"<b style='color:#fff;'>{c['name']} (WIR)</b>" if c["is_us"] else c['name']
@@ -1121,7 +1117,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
             table_html += "</tbody></table></div>"
 
-    # DIE PUTZFRAU (Cleanup): Alte Spieler aus der Strikes-Liste löschen
     aktive_namen_set = set(df_active["player_name"].tolist())
     keys_to_delete = []
     for s_name in strikes.keys():
@@ -1241,7 +1236,6 @@ def main():
         if race_resp.status_code == 200:
             data = race_resp.json()
             
-            # API STATUS FIX: Robusteres Auslesen des River Race Status
             raw_state = data.get("state", "Unbekannt")
             if raw_state == "training": race_state_de = "Trainingstage"
             elif raw_state == "warDay": race_state_de = "Clankrieg"
@@ -1303,7 +1297,6 @@ def main():
         except Exception as e:
             print(f"⚠️ Warnung: records.json fehlerhaft, fange bei 0 an. ({e})")
 
-    # STRIKE-SYSTEM 2.0 LADEN
     strikes_data = {
         "last_strike_week": 0,
         "players": {},
@@ -1314,7 +1307,6 @@ def main():
         try:
             with open(strikes_path, "r", encoding="utf-8") as f:
                 loaded_strikes = json.load(f)
-                # Rückwärtskompatibilität: Falls es noch die alte Datei (ohne Wochen-Merkmal) ist
                 if "players" in loaded_strikes:
                     strikes_data.update(loaded_strikes)
                 else:
