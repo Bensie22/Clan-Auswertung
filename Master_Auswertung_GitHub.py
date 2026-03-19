@@ -273,6 +273,12 @@ def update_top_decks(current_members: dict, top_decks_data: dict) -> dict:
             print(f"  ... {count}/50 Spieler gescannt")
         time.sleep(0.1) 
         
+    # --- DECK CLEANUP (Max 100 Decks behalten, um JSON klein zu halten) ---
+    if len(decks) > 100:
+        sorted_keys = sorted(decks.keys(), key=lambda k: (decks[k]["wins"], decks[k]["wins"] + decks[k]["losses"]), reverse=True)
+        for k in sorted_keys[100:]:
+            del decks[k]
+            
     top_decks_data["_metadata"] = metadata
     top_decks_data["decks"] = decks
     print("✅ Battlelogs erfolgreich gescannt. Top-Decks aktualisiert.\n")
@@ -300,11 +306,18 @@ def get_encoded_header_image(path: Path) -> str:
             return f"data:image/jpeg;base64,{encoded_string}"
     except: return ""
 
-def archiviere_alte_dateien(ordner: Path, archiv_ordner: Path, anzahl: int = 2) -> None:
+def archiviere_alte_dateien(ordner: Path, archiv_ordner: Path, anzahl: int = 2, max_archiv: int = 10) -> None:
     archiv_ordner.mkdir(exist_ok=True, parents=True)
     dateien = sorted(ordner.glob("*.csv"), key=os.path.getctime)
     for datei in dateien[:-anzahl]:
         shutil.move(str(datei), archiv_ordner / datei.name)
+        
+    # --- ARCHIV CLEANUP (Physisch löschen) ---
+    archiv_dateien = sorted(archiv_ordner.glob("*.csv"), key=os.path.getctime)
+    for datei in archiv_dateien[:-max_archiv]:
+        try:
+            datei.unlink()
+        except: pass
 
 def finde_neueste_csv(ordner: Path) -> Path:
     csvs = list(ordner.glob("*.csv"))
@@ -317,7 +330,7 @@ def chunk_list(lst: list, n: int) -> list:
 def escape_for_html(text: str) -> str:
     return text.replace('"', '&quot;').replace("'", "&#39;")
 
-# === 4. HTML Templates (Refactoring ausgelagert) ===
+# === 4. HTML Templates ===
 
 def render_html_template(clan_name, heute_datum, header_img_src, hype_balken_html, radar_html, mahnwache_html, clan_avg, top_performers, top_spender, pusher_html, pusher_chat, records, urlaub_html, top_aufsteiger, top_leecher, total_msgs, chat_boxes_html, table_html, deck_html):
     return f"""
@@ -847,6 +860,11 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     aktive_spieler = [p for p in player_stats if not p["is_urlaub"]]
     clan_avg = round(sum([p["score"] for p in aktive_spieler]) / len(aktive_spieler), 2) if aktive_spieler else 0
     
+    # --- HISTORIE CLEANUP (Nur aktive behalten & max. die letzten 6 Wochen) ---
+    aktive_namen_set = set(df_active["player_name"].tolist())
+    df_history = df_history[df_history["player_name"].isin(aktive_namen_set)]
+    df_history = df_history.groupby("player_name").tail(6).reset_index(drop=True)
+    
     top_performers_list = sorted(aktive_spieler, key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]), reverse=True)[:3]
     top_aufsteiger_list = sorted([p for p in aktive_spieler if p["delta"] > 0], key=lambda x: x["delta"], reverse=True)[:3]
     top_spender_list = sorted([p for p in aktive_spieler if p["donations"] > 0], key=lambda x: x["donations"], reverse=True)[:3]
@@ -879,8 +897,8 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         radar_html = f"<div class='info-box' style='border-left-color: #f43f5e; background: rgba(159, 18, 57, 0.15); margin-bottom: 25px;'><h3 style='margin-top: 0; color: #f43f5e; margin-bottom: 12px; font-size: 1.2em;'>📡 Live Kriegs-Radar{radar_hint}</h3>"
         radar_html += "<div style='overflow-x: auto;'><table style='width: 100%; border-collapse: collapse; font-size: 0.95em;'>"
         
-        # FIX: Austausch von <th> zu <td> mit inline font-weight, um die globale CSS-Kleberegel zu umgehen!
-        radar_html += "<tr style='border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; font-weight: bold; text-align: left;'><td style='padding-bottom: 8px; border: none; text-align: left;'>Clan</td><td style='padding-bottom: 8px; border: none; text-align: center;'>⛵ Boot</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🥇 Medaille</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🏆 Trophäe</td></tr>"
+        # RADAR-FIX: Vollständiger Verzicht auf <th>. Stattdessen <td> mit Inline-CSS, um Sticky-Bug zu verhindern!
+        radar_html += "<tr style='border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; font-weight: 600; text-align: left;'><td style='padding-bottom: 8px; border: none; text-align: left;'>Clan</td><td style='padding-bottom: 8px; border: none; text-align: center;'>⛵ Boot</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🥇 Medaille</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🏆 Trophäe</td></tr>"
         
         for idx, c in enumerate(radar_clans):
             bold_name = f"<b style='color:#fff;'>{c['name']} (WIR)</b>" if c["is_us"] else c['name']
@@ -1117,7 +1135,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
             table_html += "</tbody></table></div>"
 
-    aktive_namen_set = set(df_active["player_name"].tolist())
     keys_to_delete = []
     for s_name in strikes.keys():
         if s_name not in aktive_namen_set:
@@ -1178,12 +1195,19 @@ def speichere_html_bericht(html_content: str, df_history: pd.DataFrame, records:
         
     return html_path
 
-def archiviere_alte_auswertungen(output_dir: Path, anzahl: int = 2):
+def archiviere_alte_auswertungen(output_dir: Path, anzahl: int = 2, max_archiv: int = 10):
     archiv_output = output_dir / "archiv"
     archiv_output.mkdir(exist_ok=True, parents=True)
     alte_htmls = sorted(output_dir.glob("auswertung_*.html"), key=os.path.getctime)
     for file in alte_htmls[:-anzahl]:
         shutil.move(str(file), archiv_output / file.name)
+        
+    # --- ARCHIV CLEANUP (Physisch löschen) ---
+    archiv_dateien = sorted(archiv_output.glob("auswertung_*.html"), key=os.path.getctime)
+    for datei in archiv_dateien[:-max_archiv]:
+        try:
+            datei.unlink()
+        except: pass
 
 def sende_bericht_per_mail(absender: str, empfänger: str, smtp_server: str, port: int, passwort: str, html_path: Path, all_chat_texts: str):
     pass 
