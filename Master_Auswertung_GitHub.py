@@ -20,7 +20,7 @@ import smtplib
 APP_CONFIG = {
     "STRIKE_THRESHOLD": 50,      # Score in %: Unter diesem Wert gibt es eine Verwarnung
     "DROPPER_THRESHOLD": 115,    # Ø Punkte pro Deck: Unter diesem Wert Warnung wg. Bootsangriff/Aufgabe
-    "MIN_PARTICIPATION": 3       # Welpenschutz: Erst bis inkl. 3 relevante Kriege greifen keine Strafen
+    "MIN_PARTICIPATION": 3       # Welpenschutz: Erst ab mehr als 3 relevanten Kriegen greifen die Strafen
 }
 
 # API Settings (Token & E-Mails kommen sicher aus den Secrets!)
@@ -156,7 +156,6 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
                         "trophies": trophies,
                         "history": {}
                     }
-
                 players_data[ptag]["history"][race_id] = {"decks": decks, "fame": fame}
 
     for tag, data in current_members.items():
@@ -180,9 +179,16 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
 
     race_ids = sorted(list(set(race_ids)), reverse=True)
     headers_csv = [
-        "player_tag", "player_name", "player_is_current_member", "player_role",
-        "player_donations", "player_donations_received", "player_trophies",
-        "player_contribution_count", "player_participating_count", "player_total_decks_used"
+        "player_tag",
+        "player_name",
+        "player_is_current_member",
+        "player_role",
+        "player_donations",
+        "player_donations_received",
+        "player_trophies",
+        "player_contribution_count",
+        "player_participating_count",
+        "player_total_decks_used"
     ]
 
     for rid in race_ids:
@@ -367,7 +373,67 @@ def chunk_list(lst: list, n: int) -> list:
     return [lst[i:i + n] for i in range(0, len(lst), n)]
 
 def escape_for_html(text: str) -> str:
-    return text.replace('"', '&quot;').replace("'", "&#39;")
+    return text.replace('"', "&quot;").replace("'", "&#39;")
+
+def get_all_race_ids_from_row(row: pd.Series) -> List[str]:
+    race_ids = []
+    for col in row.index:
+        if col.startswith("s_") and col.endswith("_decks_used"):
+            race_id = col[2:-11]
+            race_ids.append(race_id)
+    return sorted(set(race_ids))
+
+def calculate_relevant_war_stats(row: pd.Series) -> dict:
+    """
+    Berechnet die relevanten Kriege eines Spielers so, dass die Logik besser
+    zu den beschriebenen Regeln passt:
+
+    - Es werden alle Kriege ab der ersten sichtbaren Aktivität des Spielers gezählt.
+    - Kriege mit 0 Decks NACH der ersten sichtbaren Aktivität zählen negativ mit.
+    - Falls im sichtbaren Datensatz gar keine Aktivität erkennbar ist, wird der Spieler
+      defensiv wie ein Neuling behandelt (relevante Kriege = 1), damit niemand
+      ungerecht bestraft wird, wenn der Join-Zeitpunkt nicht bekannt ist.
+    """
+    race_ids = get_all_race_ids_from_row(row)
+    if not race_ids:
+        return {
+            "relevante_kriege": 1,
+            "aktive_kriege": 0,
+            "decks_relevant": 0,
+            "sichtbare_kriege": 0
+        }
+
+    chronologisch = []
+    for rid in race_ids:
+        fame = int(row.get(f"s_{rid}_fame", 0) or 0)
+        decks = int(row.get(f"s_{rid}_decks_used", 0) or 0)
+        chronologisch.append({"rid": rid, "fame": fame, "decks": decks})
+
+    first_active_idx = None
+    for idx, entry in enumerate(chronologisch):
+        if entry["decks"] > 0 or entry["fame"] > 0:
+            first_active_idx = idx
+            break
+
+    if first_active_idx is None:
+        return {
+            "relevante_kriege": 1,
+            "aktive_kriege": 0,
+            "decks_relevant": 0,
+            "sichtbare_kriege": len(chronologisch)
+        }
+
+    relevantes_fenster = chronologisch[first_active_idx:]
+    relevante_kriege = len(relevantes_fenster)
+    aktive_kriege = sum(1 for e in relevantes_fenster if e["decks"] > 0)
+    decks_relevant = sum(e["decks"] for e in relevantes_fenster)
+
+    return {
+        "relevante_kriege": relevante_kriege,
+        "aktive_kriege": aktive_kriege,
+        "decks_relevant": decks_relevant,
+        "sichtbare_kriege": len(chronologisch)
+    }
 
 # === 4. HTML Templates ===
 
@@ -554,7 +620,7 @@ def render_html_template(clan_name, heute_datum, header_img_src, hype_balken_htm
                         <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>❌ 1/3:</b> Verwarnungen (bei 3/3 droht Kick)</div>
                         <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>🧛 Vampir:</b> Nimmt Spenden, gibt aber 0</div>
                         <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>💤 Schläfer:</b> Spendet 0, fordert 0</div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>⚠️ Ø Punkte:</b> Verdacht auf Dropping (&lt;115)</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>⚠️ Ø Punkte:</b> Verdacht auf Dropping (<115)</div>
                         <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>🔥 Streak:</b> Mehrere Wochen 100% Score</div>
                     </div>
                 </div>
@@ -658,7 +724,7 @@ def render_html_template(clan_name, heute_datum, header_img_src, hype_balken_htm
                     </div>
                     <ul>
                         <li><b>Normalwert:</b> Selbst wenn du verlierst, bekommst du in normalen Kämpfen mindestens 115 Punkte. Ein Sieg bringt deutlich mehr.</li>
-                        <li><b>⚠️ Die Warnung (&lt; 115 Punkte):</b> Wenn dein Durchschnitt unter 115 fällt (wie bei <b>Spieler J</b> oben), schlägt das System Alarm. Das passiert nur, wenn jemand oft feindliche Boote angreift (bringt sehr wenig Punkte für den Clan) oder absichtlich Kämpfe sofort aufgibt, um schnell fertig zu werden.</li>
+                        <li><b>⚠️ Die Warnung (< 115 Punkte):</b> Wenn dein Durchschnitt unter 115 fällt (wie bei <b>Spieler J</b> oben), schlägt das System Alarm. Das passiert nur, wenn jemand oft feindliche Boote angreift (bringt sehr wenig Punkte für den Clan) oder absichtlich Kämpfe sofort aufgibt, um schnell fertig zu werden.</li>
                     </ul>
                 </div>
 
@@ -820,28 +886,26 @@ def generate_html_report(
         role_de = role_map.get(raw_role, raw_role.capitalize())
         is_urlaub = name in urlauber_liste
 
-        contribution_count = int(row.get("player_contribution_count", 0) or 0)
-        participating_count = int(row.get("player_participating_count", 0) or 0)
-        decks_total = int(row.get("player_total_decks_used", 0) or 0)
+        sichtbare_teilnahmen = int(row.get("player_contribution_count", 0) or 0)
+        sichtbare_kriege = int(row.get("player_participating_count", 0) or 0)
         donations = int(row.get("player_donations", 0) or 0)
         donations_received = int(row.get("player_donations_received", 0) or 0)
         aktueller_trophy = int(row.get("player_trophies", 0) or 0)
 
-        # WICHTIGE KORREKTUR:
-        # Score basiert auf allen relevanten Kriegen im Datensatz
-        # (= participating_count), nicht nur auf Kriegen mit mindestens 1 gespieltem Deck.
-        max_moegliche_decks = participating_count * 16
-        score = round((decks_total / max_moegliche_decks) * 100, 2) if max_moegliche_decks > 0 else 0.0
+        # --- KORRIGIERTE SCORE-/WELPENSCHUTZ-LOGIK ---
+        war_stats = calculate_relevant_war_stats(row)
+        relevante_kriege = war_stats["relevante_kriege"]
+        aktive_kriege_relevant = war_stats["aktive_kriege"]
+        decks_relevant = war_stats["decks_relevant"]
+
+        max_mögliche_decks = relevante_kriege * 16
+        score = round((decks_relevant / max_mögliche_decks) * 100, 2) if max_mögliche_decks > 0 else 0.0
 
         aktueller_fame = int(row.get(fame_spalte, 0) or 0)
         aktueller_decks_spalte = fame_spalte.replace("_fame", "_decks_used")
         aktueller_decks = int(row.get(aktueller_decks_spalte, 0) or 0)
         fame_per_deck = round(aktueller_fame / aktueller_decks) if aktueller_decks > 0 else 0
-        leecher_warnung = (
-            " <span class='custom-tooltip'>⚠️<span class='tooltip-text'>Verdacht: Zieht nur Punkte ab (verliert absichtlich/greift Boote an)</span></span>"
-            if (0 < fame_per_deck < APP_CONFIG["DROPPER_THRESHOLD"])
-            else ""
-        )
+        leecher_warnung = " <span class='custom-tooltip'>⚠️<span class='tooltip-text'>Verdacht: Zieht nur Punkte ab (verliert absichtlich/greift Boote an)</span></span>" if (0 < fame_per_deck < APP_CONFIG["DROPPER_THRESHOLD"]) else ""
 
         historie_spieler = df_history[df_history["player_name"] == name].sort_values("date")
         vergangene_scores = historie_spieler.tail(3)["score"].tolist()
@@ -861,9 +925,7 @@ def generate_html_report(
             records["trophies"] = {"name": name, "val": aktueller_trophy}
 
         trend_scores = vergangene_scores + [score]
-        trend_str = "".join(
-            ["🟢" if s >= 80 else "🟡" if s >= APP_CONFIG["STRIKE_THRESHOLD"] else "🔴" for s in trend_scores[-4:]]
-        )
+        trend_str = "".join(["🟢" if s >= 80 else "🟡" if s >= APP_CONFIG["STRIKE_THRESHOLD"] else "🔴" for s in trend_scores[-4:]])
 
         streak_count = 0
         for s in reversed(trend_scores):
@@ -872,20 +934,15 @@ def generate_html_report(
             else:
                 break
 
-        # Streak darf nicht größer sein als die Zahl tatsächlich gespielter/ausgewerteter Wochen
-        if streak_count > participating_count:
-            streak_count = participating_count
+        if streak_count > aktive_kriege_relevant:
+            streak_count = aktive_kriege_relevant
 
-        streak_badge = (
-            f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥{streak_count}<span class='tooltip-text'>{streak_count} Auswertungen in Folge 100% Score!</span></span>"
-            if streak_count >= 3
-            else ""
-        )
+        streak_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥{streak_count}<span class='tooltip-text'>{streak_count} Auswertungen in Folge 100% Score!</span></span>" if streak_count >= 3 else ""
 
-        # Strike-Logik:
-        # Nur wenn Spieler NICHT im Urlaub ist und Welpenschutz vorbei ist
+        is_welpenschutz = relevante_kriege <= APP_CONFIG["MIN_PARTICIPATION"]
+
         if apply_strikes_now:
-            if not is_urlaub and participating_count > APP_CONFIG["MIN_PARTICIPATION"]:
+            if not is_urlaub and not is_welpenschutz:
                 if score < APP_CONFIG["STRIKE_THRESHOLD"]:
                     strikes[name] = strikes.get(name, 0) + 1
                 else:
@@ -930,9 +987,10 @@ def generate_html_report(
             "status": status_html,
             "score": score,
             "delta": delta,
-            "teilnahme": f"{contribution_count}/{participating_count}",
-            "teilnahme_int": contribution_count,
-            "relevante_kriege": participating_count,
+            "teilnahme": f"{sichtbare_teilnahmen}/{sichtbare_kriege}",
+            "teilnahme_int": sichtbare_teilnahmen,
+            "relevante_kriege": relevante_kriege,
+            "aktive_kriege_relevant": aktive_kriege_relevant,
             "fame": aktueller_fame,
             "donations": donations,
             "donations_received": donations_received,
@@ -945,21 +1003,19 @@ def generate_html_report(
             "trophies": aktueller_trophy,
             "streak_badge": streak_badge,
             "strike_badge": strike_badge,
-            "raw_role": raw_role
+            "raw_role": raw_role,
+            "is_welpenschutz": is_welpenschutz
         })
 
-        df_history = pd.concat(
-            [
-                df_history,
-                pd.DataFrame([{
-                    "player_name": name,
-                    "score": score,
-                    "date": heute_datum,
-                    "trophies": aktueller_trophy
-                }])
-            ],
-            ignore_index=True
-        )
+        df_history = pd.concat([
+            df_history,
+            pd.DataFrame([{
+                "player_name": name,
+                "score": score,
+                "date": heute_datum,
+                "trophies": aktueller_trophy
+            }])
+        ], ignore_index=True)
 
     aktive_spieler = [p for p in player_stats if not p["is_urlaub"]]
     clan_avg = round(sum([p["score"] for p in aktive_spieler]) / len(aktive_spieler), 2) if aktive_spieler else 0
@@ -985,12 +1041,7 @@ def generate_html_report(
         reverse=True
     )[:3]
     top_leecher_list = sorted(
-        [
-            p for p in aktive_spieler
-            if p["relevante_kriege"] > APP_CONFIG["MIN_PARTICIPATION"]
-            and p["donations"] == 0
-            and p["donations_received"] > 0
-        ],
+        [p for p in aktive_spieler if p["relevante_kriege"] > APP_CONFIG["MIN_PARTICIPATION"] and p["donations"] == 0 and p["donations_received"] > 0],
         key=lambda x: x["donations_received"],
         reverse=True
     )[:3]
@@ -1021,10 +1072,11 @@ def generate_html_report(
         radar_hint = f" <span style='font-size:0.8em; opacity:0.8; font-weight:normal;'>(Status: {race_state_de})</span>"
         radar_html = f"<div class='info-box' style='border-left-color: #f43f5e; background: rgba(159, 18, 57, 0.15); margin-bottom: 25px;'><h3 style='margin-top: 0; color: #f43f5e; margin-bottom: 12px; font-size: 1.2em;'>📡 Live Kriegs-Radar{radar_hint}</h3>"
         radar_html += "<div style='overflow-x: auto;'><table style='width: 100%; border-collapse: collapse; font-size: 0.95em;'>"
+
         radar_html += "<tr style='border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; font-weight: 600; text-align: left;'><td style='padding-bottom: 8px; border: none; text-align: left;'>Clan</td><td style='padding-bottom: 8px; border: none; text-align: center;'>⛵ Boot</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🥇 Medaille</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🏆 Trophäe</td></tr>"
 
         for idx, c in enumerate(radar_clans):
-            bold_name = f"<b style='color:#fff;'>{c['name']} (WIR)</b>" if c["is_us"] else c['name']
+            bold_name = f"<b style='color:#fff;'>{c['name']} (WIR)</b>" if c["is_us"] else c["name"]
             bg_color = "rgba(255,255,255,0.05)" if idx % 2 == 0 else "transparent"
             radar_html += f"<tr style='background: {bg_color}; border-bottom: 1px solid rgba(255,255,255,0.02);'>"
             radar_html += f"<td style='padding: 10px 5px;'>{bold_name}<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 {c['decks_used']} / 200 Decks</span></td>"
@@ -1249,11 +1301,7 @@ def generate_html_report(
             for p in players_in_tier:
                 delta_s = f"+{p['delta']}" if p["delta"] > 0 else f"{p['delta']}"
                 color = "#10b981" if p["delta"] > 0 else "#ef4444" if p["delta"] < 0 else "#94a3b8"
-                neu_badge = (
-                    " <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱<span class='tooltip-text'>Neu im Clan / Wenig relevante Kriege / Welpenschutz aktiv</span></span>"
-                    if p["relevante_kriege"] <= APP_CONFIG["MIN_PARTICIPATION"] and not p["is_urlaub"]
-                    else ""
-                )
+                neu_badge = " <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱<span class='tooltip-text'>Neu im Clan / Wenige relevante Kriege</span></span>" if p["is_welpenschutz"] and not p["is_urlaub"] else ""
 
                 spenden_warnung = ""
                 if p["donations"] == 0 and p["relevante_kriege"] > APP_CONFIG["MIN_PARTICIPATION"] and not p["is_urlaub"]:
@@ -1381,9 +1429,7 @@ def main():
     if len(csvs_alle) >= 2:
         try:
             df_alt = pd.read_csv(csvs_alle[-2])
-            alte_mitglieder = set(
-                df_alt[df_alt["player_is_current_member"].astype(str).str.lower().isin(["true", "1", "yes"])]["player_name"].dropna().tolist()
-            )
+            alte_mitglieder = set(df_alt[df_alt["player_is_current_member"].astype(str).str.lower().isin(["true", "1", "yes"])]["player_name"].dropna().tolist())
         except Exception as e:
             print(f"Konnte alte Mitglieder nicht laden: {e}")
 
@@ -1525,30 +1571,30 @@ def main():
     encoded_header_img = get_encoded_header_image(HEADER_IMAGE_PATH)
 
     html_bericht, df_history, mail_chat_text, updated_records, updated_strikes_data, updated_kicked = generate_html_report(
-        df_active=df_active,
-        df_history=df_history,
-        fame_spalte=fame_spalte,
-        heute_datum=heute_datum,
-        header_img_src=encoded_header_img,
-        radar_clans=radar_clans,
-        records=records,
-        strikes_data=strikes_data,
-        race_state_de=race_state_de,
-        raw_mahnwache=raw_mahnwache,
-        top_decks_data=top_decks_data,
-        echte_neulinge=echte_neulinge,
-        rueckkehrer=rueckkehrer,
-        kicked_players=kicked_players
+        df_active,
+        df_history,
+        fame_spalte,
+        heute_datum,
+        encoded_header_img,
+        radar_clans,
+        records,
+        strikes_data,
+        race_state_de,
+        raw_mahnwache,
+        top_decks_data,
+        echte_neulinge,
+        rueckkehrer,
+        kicked_players
     )
 
     html_path = speichere_html_bericht(
-        html_content=html_bericht,
-        df_history=df_history,
-        records=updated_records,
-        strikes_data=updated_strikes_data,
-        file_suffix=jetzt_datei,
-        top_decks_data=top_decks_data,
-        kicked_players=updated_kicked
+        html_bericht,
+        df_history,
+        updated_records,
+        updated_strikes_data,
+        jetzt_datei,
+        top_decks_data,
+        updated_kicked
     )
     archiviere_alte_auswertungen(output_folder)
 
@@ -1575,7 +1621,7 @@ def main():
 if __name__ == "__main__":
     try:
         main()
-    except Exception as err:
+    except Exception:
         print("\n❌ EIN KRITISCHER FEHLER IST AUFGETRETEN:")
         traceback.print_exc()
-        sys.exit(1)
+        sys.exit(1) 
