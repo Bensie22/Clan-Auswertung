@@ -1,34 +1,35 @@
 import os
+import glob
+import shutil
+import requests
 import csv
+import base64
 import json
 import sys
 import time
-import shutil
 import traceback
-import base64
 from datetime import datetime
+from typing import List, Tuple
 from pathlib import Path
-from typing import List, Tuple, Dict, Any
-
-import requests
 import pandas as pd
 from email.message import EmailMessage
 import smtplib
 
-
 # === 1. Konfiguration & Pfade ===
 
 APP_CONFIG = {
-    "STRIKE_THRESHOLD": 50,
-    "DROPPER_THRESHOLD": 115,
-    "MIN_PARTICIPATION": 3
+    "STRIKE_THRESHOLD": 50,      # Score in %: Unter diesem Wert gibt es eine Verwarnung
+    "DROPPER_THRESHOLD": 115,    # Ø Punkte pro Deck: Unter diesem Wert Warnung wg. Bootsangriff/Aufgabe
+    "MIN_PARTICIPATION": 3       # Welpenschutz: Erst bis inkl. 3 relevante Kriege greifen keine Strafen
 }
 
+# API Settings (Token & E-Mails kommen sicher aus den Secrets!)
 API_TOKEN = os.environ.get("SUPERCELL_API_TOKEN")
 CLAN_TAG = "%23Y9YQC8UG"
 CLAN_NAME = "HAMBURG"
 BASE_URL = "https://proxy.royaleapi.dev/v1"
 
+# Cloud-taugliche Pfade (relativ zur Skript-Datei)
 BASE_DIR = Path(__file__).parent.resolve()
 upload_folder = BASE_DIR / "uploads"
 archiv_folder = upload_folder / "archiv"
@@ -41,318 +42,6 @@ donations_memory_path = BASE_DIR / "donations_memory.json"
 urlaub_path = BASE_DIR / "urlaub.txt"
 kicked_players_path = BASE_DIR / "kicked_players.json"
 HEADER_IMAGE_PATH = BASE_DIR / "clash_pix.jpg"
-
-
-# === 1.1 Robuste Hilfsfunktionen ===
-
-def safe_int(value: Any, default: int = 0) -> int:
-    try:
-        if value is None or value == "":
-            return default
-        return int(float(value))
-    except (ValueError, TypeError):
-        return default
-
-
-def safe_float(value: Any, default: float = 0.0) -> float:
-    try:
-        if value is None or value == "":
-            return default
-        return float(value)
-    except (ValueError, TypeError):
-        return default
-
-
-def normalize_player_name(name: Any) -> str:
-    if name is None:
-        return ""
-    return str(name).strip()
-
-
-def normalize_date_str(date_str: Any) -> str:
-    if date_str is None:
-        return ""
-    value = str(date_str).strip()
-    if not value:
-        return ""
-    try:
-        return datetime.strptime(value[:10], "%Y-%m-%d").strftime("%Y-%m-%d")
-    except ValueError:
-        return value[:10]
-
-
-def load_json_file(path: Path, default: Any) -> Any:
-    if not path.exists():
-        return default
-    try:
-        with path.open("r", encoding="utf-8") as f:
-            return json.load(f)
-    except Exception:
-        return default
-
-
-def save_json_file(path: Path, data: Any) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=4)
-
-
-def load_strike_data() -> Dict[str, Any]:
-    """
-    Lädt robust strike.json oder strikes.json.
-    Falls beides fehlt, wird eine Standardstruktur zurückgegeben.
-    """
-    primary = BASE_DIR / "strike.json"
-    secondary = BASE_DIR / "strikes.json"
-
-    default_data = {
-        "last_strike_week": 0,
-        "players": {},
-        "demoted_this_week": [],
-        "kicked_this_week": []
-    }
-
-    if primary.exists():
-        data = load_json_file(primary, default_data)
-        if isinstance(data, dict):
-            return {
-                "last_strike_week": safe_int(data.get("last_strike_week", 0)),
-                "players": data.get("players", {}) if isinstance(data.get("players", {}), dict) else {},
-                "demoted_this_week": data.get("demoted_this_week", []) if isinstance(data.get("demoted_this_week", []), list) else [],
-                "kicked_this_week": data.get("kicked_this_week", []) if isinstance(data.get("kicked_this_week", []), list) else []
-            }
-
-    if secondary.exists():
-        data = load_json_file(secondary, default_data)
-        if isinstance(data, dict):
-            if "players" in data:
-                return {
-                    "last_strike_week": safe_int(data.get("last_strike_week", 0)),
-                    "players": data.get("players", {}) if isinstance(data.get("players", {}), dict) else {},
-                    "demoted_this_week": data.get("demoted_this_week", []) if isinstance(data.get("demoted_this_week", []), list) else [],
-                    "kicked_this_week": data.get("kicked_this_week", []) if isinstance(data.get("kicked_this_week", []), list) else []
-                }
-            return {
-                "last_strike_week": 0,
-                "players": data if isinstance(data, dict) else {},
-                "demoted_this_week": [],
-                "kicked_this_week": []
-            }
-
-    return default_data
-
-
-def save_strike_data(data: Dict[str, Any]) -> None:
-    save_json_file(strikes_path, data)
-
-
-def load_top_decks_data() -> Dict[str, Any]:
-    default_data = {
-        "_metadata": {
-            "last_battles": {}
-        },
-        "decks": {}
-    }
-
-    data = load_json_file(top_decks_path, default_data)
-    if not isinstance(data, dict):
-        data = default_data
-
-    if "_metadata" not in data or not isinstance(data["_metadata"], dict):
-        data["_metadata"] = {"last_battles": {}}
-
-    if "last_battles" not in data["_metadata"] or not isinstance(data["_metadata"]["last_battles"], dict):
-        data["_metadata"]["last_battles"] = {}
-
-    if "decks" not in data or not isinstance(data["decks"], dict):
-        data["decks"] = {}
-
-    cleaned_decks = {}
-    for deck_hash, deck in data["decks"].items():
-        if not isinstance(deck, dict):
-            continue
-
-        cards = deck.get("cards", [])
-        wins = safe_int(deck.get("wins", 0))
-        losses = safe_int(deck.get("losses", 0))
-        players = deck.get("players", [])
-        tags = deck.get("tags", [])
-
-        if not isinstance(cards, list):
-            cards = []
-        if not isinstance(players, list):
-            players = []
-        if not isinstance(tags, list):
-            tags = []
-
-        cleaned_cards = []
-        for c in cards:
-            if isinstance(c, dict):
-                cleaned_cards.append({
-                    "id": safe_int(c.get("id", 0)),
-                    "name": str(c.get("name", "")),
-                    "icon": str(c.get("icon", c.get("iconUrls", {}).get("medium", "")))
-                })
-
-        cleaned_decks[deck_hash] = {
-            "cards": cleaned_cards,
-            "wins": wins,
-            "losses": losses,
-            "players": [str(p) for p in players],
-            "tags": [str(t) for t in tags]
-        }
-
-    data["decks"] = cleaned_decks
-    return data
-
-
-def load_kicked_players() -> Dict[str, Any]:
-    data = load_json_file(kicked_players_path, {})
-    return data if isinstance(data, dict) else {}
-
-
-def save_kicked_players(data: Dict[str, Any]) -> None:
-    save_json_file(kicked_players_path, data)
-
-
-def load_records() -> Dict[str, Dict[str, Any]]:
-    default_records = {
-        "donations": {"name": "-", "val": 0},
-        "delta": {"name": "-", "val": 0},
-        "trophies": {"name": "-", "val": 0}
-    }
-
-    loaded = load_json_file(records_path, default_records)
-    if not isinstance(loaded, dict):
-        return default_records
-
-    for key in ["donations", "delta", "trophies"]:
-        if key not in loaded or not isinstance(loaded[key], dict):
-            loaded[key] = default_records[key]
-        loaded[key].setdefault("name", "-")
-        loaded[key].setdefault("val", 0)
-
-    return loaded
-
-
-def save_records(data: Dict[str, Dict[str, Any]]) -> None:
-    save_json_file(records_path, data)
-
-
-def load_score_history() -> pd.DataFrame:
-    """
-    Lädt score_history.csv robust und dedupliziert pro Spieler + Datum.
-    Es bleibt immer nur der letzte Tagesstand erhalten.
-    """
-    if not score_history_path.exists():
-        return pd.DataFrame(columns=["player_name", "score", "date", "trophies"])
-
-    try:
-        df = pd.read_csv(score_history_path)
-    except Exception:
-        return pd.DataFrame(columns=["player_name", "score", "date", "trophies"])
-
-    for col in ["player_name", "score", "date", "trophies"]:
-        if col not in df.columns:
-            if col == "score":
-                df[col] = 0.0
-            elif col == "trophies":
-                df[col] = 0
-            else:
-                df[col] = ""
-
-    df["player_name"] = df["player_name"].astype(str).map(normalize_player_name)
-    df["date"] = df["date"].astype(str).map(normalize_date_str)
-    df["score"] = pd.to_numeric(df["score"], errors="coerce").fillna(0.0)
-    df["trophies"] = pd.to_numeric(df["trophies"], errors="coerce").fillna(0).astype(int)
-
-    df = df[df["player_name"] != ""].copy()
-    df = df[df["date"] != ""].copy()
-
-    # Wichtig: Reihenfolge behalten, damit keep="last" wirklich den letzten Tagesstand nimmt
-    df = df.reset_index(drop=False).rename(columns={"index": "_row_order"})
-    df = df.sort_values(["player_name", "date", "_row_order"])
-    df = df.drop_duplicates(subset=["player_name", "date"], keep="last")
-    df = df.sort_values(["player_name", "date"]).drop(columns=["_row_order"]).reset_index(drop=True)
-
-    return df[["player_name", "score", "date", "trophies"]]
-
-
-def save_score_history(df_history: pd.DataFrame) -> None:
-    df = df_history.copy()
-
-    for col in ["player_name", "score", "date", "trophies"]:
-        if col not in df.columns:
-            if col == "score":
-                df[col] = 0.0
-            elif col == "trophies":
-                df[col] = 0
-            else:
-                df[col] = ""
-
-    df["player_name"] = df["player_name"].astype(str).map(normalize_player_name)
-    df["date"] = df["date"].astype(str).map(normalize_date_str)
-    df["score"] = pd.to_numeric(df["score"], errors="coerce").fillna(0.0)
-    df["trophies"] = pd.to_numeric(df["trophies"], errors="coerce").fillna(0).astype(int)
-
-    df = df[df["player_name"] != ""].copy()
-    df = df[df["date"] != ""].copy()
-
-    df = df.reset_index(drop=False).rename(columns={"index": "_row_order"})
-    df = df.sort_values(["player_name", "date", "_row_order"])
-    df = df.drop_duplicates(subset=["player_name", "date"], keep="last")
-    df = df.sort_values(["player_name", "date"]).drop(columns=["_row_order"]).reset_index(drop=True)
-
-    score_history_path.parent.mkdir(parents=True, exist_ok=True)
-    df.to_csv(score_history_path, index=False)
-
-
-def upsert_today_history_row(df_history: pd.DataFrame, player_name: str, score: float, date_str: str, trophies: int) -> pd.DataFrame:
-    """
-    Aktualisiert den Tagesstand eines Spielers.
-    Existiert der Spieler am selben Datum schon, wird der Eintrag ersetzt.
-    """
-    player_name = normalize_player_name(player_name)
-    date_str = normalize_date_str(date_str)
-
-    if df_history.empty:
-        return pd.DataFrame([{
-            "player_name": player_name,
-            "score": round(score, 2),
-            "date": date_str,
-            "trophies": safe_int(trophies)
-        }])
-
-    df = df_history.copy()
-    mask = (df["player_name"] == player_name) & (df["date"] == date_str)
-    df = df.loc[~mask].copy()
-
-    new_row = pd.DataFrame([{
-        "player_name": player_name,
-        "score": round(score, 2),
-        "date": date_str,
-        "trophies": safe_int(trophies)
-    }])
-
-    df = pd.concat([df, new_row], ignore_index=True)
-    return df
-
-
-def get_previous_history_rows(df_history: pd.DataFrame, player_name: str, current_date: str) -> pd.DataFrame:
-    """
-    Liefert nur frühere eindeutige Tagesstände zurück, NICHT den aktuellen Tag.
-    Genau das ist wichtig für Delta und Trophäen-Pusher.
-    """
-    if df_history.empty:
-        return pd.DataFrame(columns=["player_name", "score", "date", "trophies"])
-
-    current_date = normalize_date_str(current_date)
-    df = df_history.copy()
-    df = df[df["player_name"] == player_name].copy()
-    df = df[df["date"] < current_date].copy()
-    df = df.sort_values("date")
-    return df
-
 
 # === 2. API Datenabruf ===
 
@@ -374,6 +63,7 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
         print(f"❌ Fehler beim Abruf der Mitglieder: {members_resp.status_code}")
         return False, {}
 
+    # --- SPENDEN-GEDÄCHTNIS LOGIK ---
     memory = {}
     if donations_memory_path.exists():
         try:
@@ -466,6 +156,7 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
                         "trophies": trophies,
                         "history": {}
                     }
+
                 players_data[ptag]["history"][race_id] = {"decks": decks, "fame": fame}
 
     for tag, data in current_members.items():
@@ -497,7 +188,7 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
     for rid in race_ids:
         headers_csv.extend([f"s_{rid}_fame", f"s_{rid}_decks_used"])
 
-    with open(filename, mode="w", newline="", encoding="utf-8") as file:
+    with open(filename, mode='w', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
         writer.writerow(headers_csv)
         total_races = len(race_ids)
@@ -518,9 +209,16 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
                     contribution_count += 1
 
             row = [
-                tag, data["name"], data["is_current"], data["role"],
-                data.get("donations", 0), data.get("donations_received", 0),
-                data.get("trophies", 0), contribution_count, total_races, total_decks
+                tag,
+                data["name"],
+                data["is_current"],
+                data["role"],
+                data.get("donations", 0),
+                data.get("donations_received", 0),
+                data.get("trophies", 0),
+                contribution_count,
+                total_races,
+                total_decks
             ]
             row.extend(row_history)
             writer.writerow(row)
@@ -528,25 +226,14 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
     print(f"✅ Spieler-Daten erfolgreich exportiert nach: {filename}\n")
     return True, current_members
 
-
 # === 2.5 Battlelogs analysieren (Top Decks) ===
 
 def update_top_decks(current_members: dict, top_decks_data: dict) -> dict:
     print("Schritt 4: Spioniere Battlelogs für Clan-Meta Decks aus (Bitte warten)...")
     headers = {"Authorization": f"Bearer {API_TOKEN}", "Accept": "application/json"}
 
-    metadata = top_decks_data.get("_metadata", {})
-    if not isinstance(metadata, dict):
-        metadata = {}
-
-    last_battles = metadata.get("last_battles", {})
-    if not isinstance(last_battles, dict):
-        last_battles = {}
-    metadata["last_battles"] = last_battles
-
+    metadata = top_decks_data.get("_metadata", {"last_battles": {}})
     decks = top_decks_data.get("decks", {})
-    if not isinstance(decks, dict):
-        decks = {}
 
     count = 0
     for tag, member_info in current_members.items():
@@ -560,7 +247,7 @@ def update_top_decks(current_members: dict, top_decks_data: dict) -> dict:
 
         battles = resp.json()
         latest_time_in_log = None
-        last_processed_time = last_battles.get(tag, "")
+        last_processed_time = metadata["last_battles"].get(tag, "")
 
         for battle in battles:
             b_time = battle.get("battleTime", "")
@@ -572,71 +259,56 @@ def update_top_decks(current_members: dict, top_decks_data: dict) -> dict:
 
             b_type = battle.get("type", "")
 
-            if "riverRace" in b_type and "team" in battle and battle.get("team") and battle.get("opponent"):
+            if "riverRace" in b_type and "team" in battle:
                 team = battle["team"][0]
                 opponent = battle["opponent"][0]
                 cards = team.get("cards", [])
 
                 if len(cards) == 8:
-                    crowns_t = safe_int(team.get("crowns", 0))
-                    crowns_o = safe_int(opponent.get("crowns", 0))
+                    crowns_t = team.get("crowns", 0)
+                    crowns_o = opponent.get("crowns", 0)
 
                     is_win = crowns_t > crowns_o
                     is_loss = crowns_o > crowns_t
 
                     if is_win or is_loss:
-                        deck_ids = sorted([str(c.get("id", "")) for c in cards if c.get("id") is not None])
+                        deck_ids = sorted([str(c["id"]) for c in cards])
                         deck_hash = "-".join(deck_ids)
 
-                        if deck_hash not in decks or not isinstance(decks[deck_hash], dict):
+                        if deck_hash not in decks:
                             decks[deck_hash] = {
-                                "cards": [
-                                    {
-                                        "id": safe_int(c.get("id", 0)),
-                                        "name": c.get("name", ""),
-                                        "icon": c.get("iconUrls", {}).get("medium", "")
-                                    }
-                                    for c in cards
-                                ],
+                                "cards": [{"id": c["id"], "name": c["name"], "icon": c.get("iconUrls", {}).get("medium", "")} for c in cards],
                                 "wins": 0,
                                 "losses": 0,
                                 "players": [],
                                 "tags": []
                             }
 
-                        decks[deck_hash].setdefault("cards", [])
-                        decks[deck_hash].setdefault("wins", 0)
-                        decks[deck_hash].setdefault("losses", 0)
-                        decks[deck_hash].setdefault("players", [])
-                        decks[deck_hash].setdefault("tags", [])
-
                         if is_win:
-                            decks[deck_hash]["wins"] = safe_int(decks[deck_hash]["wins"]) + 1
+                            decks[deck_hash]["wins"] += 1
                         if is_loss:
-                            decks[deck_hash]["losses"] = safe_int(decks[deck_hash]["losses"]) + 1
+                            decks[deck_hash]["losses"] += 1
 
                         if p_name not in decks[deck_hash]["players"]:
                             decks[deck_hash]["players"].append(p_name)
 
                         raw_tag = tag.replace("#", "")
-                        if raw_tag not in decks[deck_hash]["tags"]:
+                        if raw_tag not in decks[deck_hash].setdefault("tags", []):
                             decks[deck_hash]["tags"].append(raw_tag)
 
         if latest_time_in_log:
-            last_battles[tag] = latest_time_in_log
+            metadata["last_battles"][tag] = latest_time_in_log
 
         count += 1
         if count % 10 == 0:
             print(f"  ... {count}/50 Spieler gescannt")
         time.sleep(0.1)
 
+    # --- DECK CLEANUP (Max 100 Decks behalten, um JSON klein zu halten) ---
     if len(decks) > 100:
         sorted_keys = sorted(
             decks.keys(),
-            key=lambda k: (
-                safe_int(decks[k].get("wins", 0)),
-                safe_int(decks[k].get("wins", 0)) + safe_int(decks[k].get("losses", 0))
-            ),
+            key=lambda k: (decks[k]["wins"], decks[k]["wins"] + decks[k]["losses"]),
             reverse=True
         )
         for k in sorted_keys[100:]:
@@ -646,7 +318,6 @@ def update_top_decks(current_members: dict, top_decks_data: dict) -> dict:
     top_decks_data["decks"] = decks
     print("✅ Battlelogs erfolgreich gescannt. Top-Decks aktualisiert.\n")
     return top_decks_data
-
 
 def get_deck_archetype(cards: list) -> str:
     card_names = [c.get("name", "") for c in cards]
@@ -660,7 +331,6 @@ def get_deck_archetype(cards: list) -> str:
         return "⚡ Schneller Angriff (Rush/Spam)"
     return "⚔️ Hybrid / Allrounder"
 
-
 # === 3. Dateiverwaltung & Helfer ===
 
 def get_encoded_header_image(path: Path) -> str:
@@ -673,13 +343,13 @@ def get_encoded_header_image(path: Path) -> str:
     except Exception:
         return ""
 
-
 def archiviere_alte_dateien(ordner: Path, archiv_ordner: Path, anzahl: int = 2, max_archiv: int = 10) -> None:
     archiv_ordner.mkdir(exist_ok=True, parents=True)
     dateien = sorted(ordner.glob("*.csv"), key=os.path.getctime)
     for datei in dateien[:-anzahl]:
         shutil.move(str(datei), archiv_ordner / datei.name)
 
+    # --- ARCHIV CLEANUP (Physisch löschen) ---
     archiv_dateien = sorted(archiv_ordner.glob("*.csv"), key=os.path.getctime)
     for datei in archiv_dateien[:-max_archiv]:
         try:
@@ -687,21 +357,17 @@ def archiviere_alte_dateien(ordner: Path, archiv_ordner: Path, anzahl: int = 2, 
         except Exception:
             pass
 
-
 def finde_neueste_csv(ordner: Path) -> Path:
     csvs = list(ordner.glob("*.csv"))
     if not csvs:
         raise FileNotFoundError("Keine CSV-Datei im Upload-Ordner gefunden.")
     return max(csvs, key=os.path.getctime)
 
-
 def chunk_list(lst: list, n: int) -> list:
     return [lst[i:i + n] for i in range(0, len(lst), n)]
 
-
 def escape_for_html(text: str) -> str:
-    return str(text).replace('"', "&quot;").replace("'", "&#39;")
-
+    return text.replace('"', '&quot;').replace("'", "&#39;")
 
 # === 4. HTML Templates ===
 
@@ -827,6 +493,7 @@ def render_html_template(clan_name, heute_datum, header_img_src, hype_balken_htm
                 </div>
 
                 {hype_balken_html}
+
                 {radar_html}
                 {mahnwache_html}
 
@@ -1097,8 +764,22 @@ def render_html_template(clan_name, heute_datum, header_img_src, hype_balken_htm
     </body>
     </html>"""
 
-
-def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame_spalte: str, heute_datum: str, header_img_src: str, radar_clans: list, records: dict, strikes_data: dict, race_state_de: str, raw_mahnwache: list, top_decks_data: dict, echte_neulinge: list, rueckkehrer: list, kicked_players: dict) -> Tuple[str, pd.DataFrame, str, dict, dict, dict]:
+def generate_html_report(
+    df_active: pd.DataFrame,
+    df_history: pd.DataFrame,
+    fame_spalte: str,
+    heute_datum: str,
+    header_img_src: str,
+    radar_clans: list,
+    records: dict,
+    strikes_data: dict,
+    race_state_de: str,
+    raw_mahnwache: list,
+    top_decks_data: dict,
+    echte_neulinge: list,
+    rueckkehrer: list,
+    kicked_players: dict
+) -> Tuple[str, pd.DataFrame, str, dict, dict, dict]:
     player_stats = []
     urlauber_liste = []
 
@@ -1106,10 +787,16 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         with urlaub_path.open("r", encoding="utf-8") as f:
             urlauber_liste = [line.strip() for line in f if line.strip()]
 
-    role_map = {"member": "Mitglied", "elder": "Ältester", "coleader": "Vize", "leader": "Anführer", "unknown": "Ehemalig"}
+    role_map = {
+        "member": "Mitglied",
+        "elder": "Ältester",
+        "coleader": "Vize",
+        "leader": "Anführer",
+        "unknown": "Ehemalig"
+    }
 
     strikes = strikes_data.get("players", {})
-    last_strike_week = safe_int(strikes_data.get("last_strike_week", 0))
+    last_strike_week = strikes_data.get("last_strike_week", 0)
 
     curr_week = datetime.utcnow().isocalendar()[1]
     ist_montag = datetime.utcnow().weekday() == 0
@@ -1133,33 +820,35 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         role_de = role_map.get(raw_role, raw_role.capitalize())
         is_urlaub = name in urlauber_liste
 
-        participation = safe_int(row.get("player_contribution_count", 0))
-        decks_total = safe_int(row.get("player_total_decks_used", 0))
-        donations = safe_int(row.get("player_donations", 0))
-        donations_received = safe_int(row.get("player_donations_received", 0))
-        aktueller_trophy = safe_int(row.get("player_trophies", 0))
+        contribution_count = int(row.get("player_contribution_count", 0) or 0)
+        participating_count = int(row.get("player_participating_count", 0) or 0)
+        decks_total = int(row.get("player_total_decks_used", 0) or 0)
+        donations = int(row.get("player_donations", 0) or 0)
+        donations_received = int(row.get("player_donations_received", 0) or 0)
+        aktueller_trophy = int(row.get("player_trophies", 0) or 0)
 
-        max_mögliche_decks = participation * 16
-        score = round((decks_total / max_mögliche_decks) * 100, 2) if max_mögliche_decks > 0 else 0.0
+        # WICHTIGE KORREKTUR:
+        # Score basiert auf allen relevanten Kriegen im Datensatz
+        # (= participating_count), nicht nur auf Kriegen mit mindestens 1 gespieltem Deck.
+        max_moegliche_decks = participating_count * 16
+        score = round((decks_total / max_moegliche_decks) * 100, 2) if max_moegliche_decks > 0 else 0.0
 
-        aktueller_fame = safe_int(row.get(fame_spalte, 0))
+        aktueller_fame = int(row.get(fame_spalte, 0) or 0)
         aktueller_decks_spalte = fame_spalte.replace("_fame", "_decks_used")
-        aktueller_decks = safe_int(row.get(aktueller_decks_spalte, 0))
+        aktueller_decks = int(row.get(aktueller_decks_spalte, 0) or 0)
         fame_per_deck = round(aktueller_fame / aktueller_decks) if aktueller_decks > 0 else 0
+        leecher_warnung = (
+            " <span class='custom-tooltip'>⚠️<span class='tooltip-text'>Verdacht: Zieht nur Punkte ab (verliert absichtlich/greift Boote an)</span></span>"
+            if (0 < fame_per_deck < APP_CONFIG["DROPPER_THRESHOLD"])
+            else ""
+        )
 
-        leecher_warnung = ""
-        if 0 < fame_per_deck < APP_CONFIG["DROPPER_THRESHOLD"]:
-            leecher_warnung = " <span class='custom-tooltip'>⚠️<span class='tooltip-text'>Verdacht: Zieht nur Punkte ab (verliert absichtlich/greift Boote an)</span></span>"
+        historie_spieler = df_history[df_history["player_name"] == name].sort_values("date")
+        vergangene_scores = historie_spieler.tail(3)["score"].tolist()
 
-        # Nur frühere Tage betrachten, NICHT den aktuellen Tag
-        historie_spieler = get_previous_history_rows(df_history, name, heute_datum)
-        vergangene_scores = historie_spieler["score"].tolist()
-        vergangene_scores = vergangene_scores[-3:]
-
+        past_trophy = aktueller_trophy
         if not historie_spieler.empty and "trophies" in historie_spieler.columns:
-            past_trophy = safe_int(historie_spieler.iloc[-1]["trophies"])
-        else:
-            past_trophy = aktueller_trophy
+            past_trophy = int(historie_spieler.tail(1)["trophies"].values[0])
 
         trophy_push = aktueller_trophy - past_trophy
         delta = round(score - vergangene_scores[-1], 2) if vergangene_scores else 0.0
@@ -1172,7 +861,9 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             records["trophies"] = {"name": name, "val": aktueller_trophy}
 
         trend_scores = vergangene_scores + [score]
-        trend_str = "".join(["🟢" if s >= 80 else "🟡" if s >= APP_CONFIG["STRIKE_THRESHOLD"] else "🔴" for s in trend_scores[-4:]])
+        trend_str = "".join(
+            ["🟢" if s >= 80 else "🟡" if s >= APP_CONFIG["STRIKE_THRESHOLD"] else "🔴" for s in trend_scores[-4:]]
+        )
 
         streak_count = 0
         for s in reversed(trend_scores):
@@ -1181,20 +872,27 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             else:
                 break
 
-        if streak_count > participation:
-            streak_count = participation
+        # Streak darf nicht größer sein als die Zahl tatsächlich gespielter/ausgewerteter Wochen
+        if streak_count > participating_count:
+            streak_count = participating_count
 
-        streak_badge = f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥{streak_count}<span class='tooltip-text'>{streak_count} Auswertungen in Folge 100% Score!</span></span>" if streak_count >= 3 else ""
+        streak_badge = (
+            f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥{streak_count}<span class='tooltip-text'>{streak_count} Auswertungen in Folge 100% Score!</span></span>"
+            if streak_count >= 3
+            else ""
+        )
 
+        # Strike-Logik:
+        # Nur wenn Spieler NICHT im Urlaub ist und Welpenschutz vorbei ist
         if apply_strikes_now:
-            if not is_urlaub and participation > APP_CONFIG["MIN_PARTICIPATION"]:
+            if not is_urlaub and participating_count > APP_CONFIG["MIN_PARTICIPATION"]:
                 if score < APP_CONFIG["STRIKE_THRESHOLD"]:
-                    strikes[name] = safe_int(strikes.get(name, 0)) + 1
+                    strikes[name] = strikes.get(name, 0) + 1
                 else:
-                    if safe_int(strikes.get(name, 0)) > 0:
-                        strikes[name] = safe_int(strikes.get(name, 0)) - 1
+                    if strikes.get(name, 0) > 0:
+                        strikes[name] -= 1
 
-        strike_val = safe_int(strikes.get(name, 0))
+        strike_val = strikes.get(name, 0)
 
         if apply_strikes_now and strike_val >= 3:
             if not is_urlaub:
@@ -1232,8 +930,9 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             "status": status_html,
             "score": score,
             "delta": delta,
-            "teilnahme": f"{participation}/{safe_int(row.get('player_participating_count', 0))}",
-            "teilnahme_int": participation,
+            "teilnahme": f"{contribution_count}/{participating_count}",
+            "teilnahme_int": contribution_count,
+            "relevante_kriege": participating_count,
             "fame": aktueller_fame,
             "donations": donations,
             "donations_received": donations_received,
@@ -1249,45 +948,57 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             "raw_role": raw_role
         })
 
-        # Tagesstand sauber ersetzen statt blind anhängen
-        df_history = upsert_today_history_row(
-            df_history=df_history,
-            player_name=name,
-            score=score,
-            date_str=heute_datum,
-            trophies=aktueller_trophy
+        df_history = pd.concat(
+            [
+                df_history,
+                pd.DataFrame([{
+                    "player_name": name,
+                    "score": score,
+                    "date": heute_datum,
+                    "trophies": aktueller_trophy
+                }])
+            ],
+            ignore_index=True
         )
 
     aktive_spieler = [p for p in player_stats if not p["is_urlaub"]]
     clan_avg = round(sum([p["score"] for p in aktive_spieler]) / len(aktive_spieler), 2) if aktive_spieler else 0
 
+    # --- HISTORIE CLEANUP (Nur aktive behalten & max. die letzten 6 Wochen) ---
     aktive_namen_set = set(df_active["player_name"].tolist())
-    df_history = df_history[df_history["player_name"].isin(aktive_namen_set)].copy()
+    df_history = df_history[df_history["player_name"].isin(aktive_namen_set)]
+    df_history = df_history.groupby("player_name").tail(6).reset_index(drop=True)
 
-    # Wichtig: erst deduplizieren, dann auf die letzten 6 EINDEUTIGEN Tagesstände pro Spieler begrenzen
-    df_history = save_and_reload_history_temp(df_history)
-
-    df_history = (
-        df_history
-        .sort_values(["player_name", "date"])
-        .groupby("player_name", group_keys=False)
-        .tail(6)
-        .reset_index(drop=True)
-    )
-
-    top_performers_list = sorted(aktive_spieler, key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]), reverse=True)[:3]
-    top_aufsteiger_list = sorted([p for p in aktive_spieler if p["delta"] > 0], key=lambda x: x["delta"], reverse=True)[:3]
-    top_spender_list = sorted([p for p in aktive_spieler if p["donations"] > 0], key=lambda x: x["donations"], reverse=True)[:3]
+    top_performers_list = sorted(
+        aktive_spieler,
+        key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]),
+        reverse=True
+    )[:3]
+    top_aufsteiger_list = sorted(
+        [p for p in aktive_spieler if p["delta"] > 0],
+        key=lambda x: x["delta"],
+        reverse=True
+    )[:3]
+    top_spender_list = sorted(
+        [p for p in aktive_spieler if p["donations"] > 0],
+        key=lambda x: x["donations"],
+        reverse=True
+    )[:3]
     top_leecher_list = sorted(
-        [p for p in aktive_spieler if p["teilnahme_int"] > APP_CONFIG["MIN_PARTICIPATION"] and p["donations"] == 0 and p["donations_received"] > 0],
+        [
+            p for p in aktive_spieler
+            if p["relevante_kriege"] > APP_CONFIG["MIN_PARTICIPATION"]
+            and p["donations"] == 0
+            and p["donations_received"] > 0
+        ],
         key=lambda x: x["donations_received"],
         reverse=True
     )[:3]
 
-    top_performers_html = "".join([f"<li><b>{p['name']}</b> ({p['score']}%)</li>" for p in top_performers_list]) if top_performers_list else "<li>Keine Daten</li>"
-    top_aufsteiger_html = "".join([f"<li><b>{p['name']}</b> (+{p['delta']}%)</li>" for p in top_aufsteiger_list]) if top_aufsteiger_list else "<li>Keine Verbesserungen</li>"
-    top_spender_html = "".join([f"<li><b>{p['name']}</b> ({p['donations']})</li>" for p in top_spender_list]) if top_spender_list else "<li>Keine Spenden</li>"
-    top_leecher_html = "".join([f"<li><b>{p['name']}</b> ({p['donations']} gesp. / {p['donations_received']} empf.)</li>" for p in top_leecher_list]) if top_leecher_list else "<li>Keine Leecher! 🎉</li>"
+    top_performers_html = ''.join([f"<li><b>{p['name']}</b> ({p['score']}%)</li>" for p in top_performers_list])
+    top_aufsteiger_html = ''.join([f"<li><b>{p['name']}</b> (+{p['delta']}%)</li>" for p in top_aufsteiger_list]) if top_aufsteiger_list else "<li>Keine Verbesserungen</li>"
+    top_spender_html = ''.join([f"<li><b>{p['name']}</b> ({p['donations']})</li>" for p in top_spender_list]) if top_spender_list else "<li>Keine Spenden</li>"
+    top_leecher_html = ''.join([f"<li><b>{p['name']}</b> ({p['donations']} gesp. / {p['donations_received']} empf.)</li>" for p in top_leecher_list]) if top_leecher_list else "<li>Keine Leecher! 🎉</li>"
 
     kandidaten_demote = strikes_data.get("demoted_this_week", [])
     kandidaten_kick = strikes_data.get("kicked_this_week", [])
@@ -1313,7 +1024,7 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         radar_html += "<tr style='border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; font-weight: 600; text-align: left;'><td style='padding-bottom: 8px; border: none; text-align: left;'>Clan</td><td style='padding-bottom: 8px; border: none; text-align: center;'>⛵ Boot</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🥇 Medaille</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🏆 Trophäe</td></tr>"
 
         for idx, c in enumerate(radar_clans):
-            bold_name = f"<b style='color:#fff;'>{c['name']} (WIR)</b>" if c["is_us"] else c["name"]
+            bold_name = f"<b style='color:#fff;'>{c['name']} (WIR)</b>" if c["is_us"] else c['name']
             bg_color = "rgba(255,255,255,0.05)" if idx % 2 == 0 else "transparent"
             radar_html += f"<tr style='background: {bg_color}; border-bottom: 1px solid rgba(255,255,255,0.02);'>"
             radar_html += f"<td style='padding: 10px 5px;'>{bold_name}<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 {c['decks_used']} / 200 Decks</span></td>"
@@ -1468,22 +1179,22 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
         """
 
     deck_html = ""
-    sorted_decks = sorted(top_decks_data.get("decks", {}).values(), key=lambda x: safe_int(x.get("wins", 0)), reverse=True)
-    top_x_decks = [d for d in sorted_decks if safe_int(d.get("wins", 0)) > 0][:8]
+    sorted_decks = sorted(top_decks_data.get("decks", {}).values(), key=lambda x: x["wins"], reverse=True)
+    top_x_decks = [d for d in sorted_decks if d["wins"] > 0][:8]
 
     if not top_x_decks:
         deck_html = "<div class='info-box' style='border-left-color: #64748b;'><p style='margin: 0;'><b>Noch nicht genug Daten gesammelt.</b><br>Das System zeichnet ab heute im Hintergrund alle Clankriegs-Siege auf. Schau in ein paar Tagen wieder vorbei, dann siehst du hier die absoluten Meta-Decks unseres Clans!</p></div>"
     else:
         for idx, d in enumerate(top_x_decks):
-            total_matches = safe_int(d.get("wins", 0)) + safe_int(d.get("losses", 0))
-            winrate = int((safe_int(d.get("wins", 0)) / total_matches) * 100) if total_matches > 0 else 0
-            players_str = ", ".join(d.get("players", [])[:3]) + ("..." if len(d.get("players", [])) > 3 else "")
+            total_matches = d["wins"] + d["losses"]
+            winrate = int((d["wins"] / total_matches) * 100) if total_matches > 0 else 0
+            players_str = ", ".join(d["players"][:3]) + ("..." if len(d["players"]) > 3 else "")
 
-            archetype = get_deck_archetype(d.get("cards", []))
-            api_names = [str(c.get("name", "")).lower().replace(".", "").replace(" ", "-") for c in d.get("cards", [])]
+            archetype = get_deck_archetype(d["cards"])
+            api_names = [c["name"].lower().replace(".", "").replace(" ", "-") for c in d["cards"]]
             royaleapi_link = f"https://royaleapi.com/decks/stats/{','.join(api_names)}"
 
-            images_html = "".join([f"<img src='{c.get('icon', '')}' style='width: 23%; border-radius: 4px; margin: 1%;' title='{c.get('name', '')}'>" for c in d.get("cards", [])])
+            images_html = "".join([f"<img src='{c['icon']}' style='width: 23%; border-radius: 4px; margin: 1%;' title='{c['name']}'>" for c in d["cards"]])
 
             deck_html += f"""
             <div class="deck-card">
@@ -1538,10 +1249,14 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
             for p in players_in_tier:
                 delta_s = f"+{p['delta']}" if p["delta"] > 0 else f"{p['delta']}"
                 color = "#10b981" if p["delta"] > 0 else "#ef4444" if p["delta"] < 0 else "#94a3b8"
-                neu_badge = " <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱<span class='tooltip-text'>Neu im Clan / Wenig Kriege</span></span>" if p["teilnahme_int"] <= APP_CONFIG["MIN_PARTICIPATION"] and not p["is_urlaub"] else ""
+                neu_badge = (
+                    " <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱<span class='tooltip-text'>Neu im Clan / Wenig relevante Kriege / Welpenschutz aktiv</span></span>"
+                    if p["relevante_kriege"] <= APP_CONFIG["MIN_PARTICIPATION"] and not p["is_urlaub"]
+                    else ""
+                )
 
                 spenden_warnung = ""
-                if p["donations"] == 0 and p["teilnahme_int"] > APP_CONFIG["MIN_PARTICIPATION"] and not p["is_urlaub"]:
+                if p["donations"] == 0 and p["relevante_kriege"] > APP_CONFIG["MIN_PARTICIPATION"] and not p["is_urlaub"]:
                     if p["donations_received"] > 0:
                         spenden_warnung = f" <span class='custom-tooltip' style='font-size: 1.1em;'>🧛<span class='tooltip-text'>Spenden-Leecher (0 gespendet, aber {p['donations_received']} erhalten)</span></span>"
                     else:
@@ -1549,7 +1264,19 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
 
                 spenden_zelle = f"<span class='custom-tooltip dotted'>{p['donations']}<span class='tooltip-text'>Gespendet: {p['donations']} | Empfangen: {p['donations_received']}</span></span>"
 
-                table_html += f"<tr><td class='name-col'>{p['name']}{neu_badge}{p['streak_badge']}{p['strike_badge']}</td><td>{p['status']}</td><td><b>{p['score']}%</b></td><td class='trend-cell'>{p['trend_str']}</td><td style='color:{color}; font-weight:bold;'>{delta_s}%</td><td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td><td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td><td>{p['teilnahme']}</td><td>{p['fame']}</td></tr>"
+                table_html += (
+                    f"<tr>"
+                    f"<td class='name-col'>{p['name']}{neu_badge}{p['streak_badge']}{p['strike_badge']}</td>"
+                    f"<td>{p['status']}</td>"
+                    f"<td><b>{p['score']}%</b></td>"
+                    f"<td class='trend-cell'>{p['trend_str']}</td>"
+                    f"<td style='color:{color}; font-weight:bold;'>{delta_s}%</td>"
+                    f"<td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td>"
+                    f"<td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td>"
+                    f"<td>{p['teilnahme']}</td>"
+                    f"<td>{p['fame']}</td>"
+                    f"</tr>"
+                )
 
             table_html += "</tbody></table></div>"
 
@@ -1588,39 +1315,6 @@ def generate_html_report(df_active: pd.DataFrame, df_history: pd.DataFrame, fame
     strikes_data["players"] = strikes
     return html, df_history, mail_chat_text, records, strikes_data, kicked_players
 
-
-def save_and_reload_history_temp(df_history: pd.DataFrame) -> pd.DataFrame:
-    """
-    Interne Hilfsfunktion:
-    dedupliziert genau so, wie später gespeichert wird.
-    """
-    temp = df_history.copy()
-
-    for col in ["player_name", "score", "date", "trophies"]:
-        if col not in temp.columns:
-            if col == "score":
-                temp[col] = 0.0
-            elif col == "trophies":
-                temp[col] = 0
-            else:
-                temp[col] = ""
-
-    temp["player_name"] = temp["player_name"].astype(str).map(normalize_player_name)
-    temp["date"] = temp["date"].astype(str).map(normalize_date_str)
-    temp["score"] = pd.to_numeric(temp["score"], errors="coerce").fillna(0.0)
-    temp["trophies"] = pd.to_numeric(temp["trophies"], errors="coerce").fillna(0).astype(int)
-
-    temp = temp[temp["player_name"] != ""].copy()
-    temp = temp[temp["date"] != ""].copy()
-
-    temp = temp.reset_index(drop=False).rename(columns={"index": "_row_order"})
-    temp = temp.sort_values(["player_name", "date", "_row_order"])
-    temp = temp.drop_duplicates(subset=["player_name", "date"], keep="last")
-    temp = temp.sort_values(["player_name", "date"]).drop(columns=["_row_order"]).reset_index(drop=True)
-
-    return temp[["player_name", "score", "date", "trophies"]]
-
-
 def speichere_html_bericht(html_content: str, df_history: pd.DataFrame, records: dict, strikes_data: dict, file_suffix: str, top_decks_data: dict, kicked_players: dict) -> Path:
     html_path = output_folder / f"auswertung_{file_suffix}.html"
     with html_path.open("w", encoding="utf-8") as f:
@@ -1630,14 +1324,21 @@ def speichere_html_bericht(html_content: str, df_history: pd.DataFrame, records:
     with index_path.open("w", encoding="utf-8") as f:
         f.write(html_content)
 
-    save_score_history(df_history)
-    save_records(records)
-    save_strike_data(strikes_data)
-    save_json_file(top_decks_path, top_decks_data)
-    save_kicked_players(kicked_players)
+    df_history.to_csv(score_history_path, index=False)
+
+    with open(records_path, "w", encoding="utf-8") as f:
+        json.dump(records, f, ensure_ascii=False, indent=4)
+
+    with open(strikes_path, "w", encoding="utf-8") as f:
+        json.dump(strikes_data, f, ensure_ascii=False, indent=4)
+
+    with open(top_decks_path, "w", encoding="utf-8") as f:
+        json.dump(top_decks_data, f, ensure_ascii=False, indent=4)
+
+    with open(kicked_players_path, "w", encoding="utf-8") as f:
+        json.dump(kicked_players, f, ensure_ascii=False, indent=4)
 
     return html_path
-
 
 def archiviere_alte_auswertungen(output_dir: Path, anzahl: int = 2, max_archiv: int = 10):
     archiv_output = output_dir / "archiv"
@@ -1646,6 +1347,7 @@ def archiviere_alte_auswertungen(output_dir: Path, anzahl: int = 2, max_archiv: 
     for file in alte_htmls[:-anzahl]:
         shutil.move(str(file), archiv_output / file.name)
 
+    # --- ARCHIV CLEANUP (Physisch löschen) ---
     archiv_dateien = sorted(archiv_output.glob("auswertung_*.html"), key=os.path.getctime)
     for datei in archiv_dateien[:-max_archiv]:
         try:
@@ -1653,10 +1355,8 @@ def archiviere_alte_auswertungen(output_dir: Path, anzahl: int = 2, max_archiv: 
         except Exception:
             pass
 
-
 def sende_bericht_per_mail(absender: str, empfänger: str, smtp_server: str, port: int, passwort: str, html_path: Path, all_chat_texts: str):
     pass
-
 
 def main():
     upload_folder.mkdir(parents=True, exist_ok=True)
@@ -1668,7 +1368,13 @@ def main():
     if not success:
         return
 
-    kicked_players = load_kicked_players()
+    kicked_players = {}
+    if kicked_players_path.exists():
+        try:
+            with open(kicked_players_path, "r", encoding="utf-8") as f:
+                kicked_players = json.load(f)
+        except Exception as e:
+            print(f"⚠️ Warnung: kicked_players.json fehlerhaft ({e})")
 
     alte_mitglieder = set()
     csvs_alle = sorted(upload_folder.glob("*.csv"), key=os.path.getctime)
@@ -1754,11 +1460,41 @@ def main():
     except Exception as e:
         print(f"Warnung: Radar konnte nicht geladen werden ({e})")
 
-    top_decks_data = load_top_decks_data()
+    top_decks_data = {}
+    if top_decks_path.exists():
+        try:
+            with open(top_decks_path, "r", encoding="utf-8") as f:
+                top_decks_data = json.load(f)
+        except Exception as e:
+            print(f"⚠️ Warnung: top_decks.json fehlerhaft, fange bei 0 an. ({e})")
+
     top_decks_data = update_top_decks(current_members, top_decks_data)
 
-    records = load_records()
-    strikes_data = load_strike_data()
+    records = {"donations": {"name": "-", "val": 0}, "delta": {"name": "-", "val": 0}, "trophies": {"name": "-", "val": 0}}
+    if records_path.exists():
+        try:
+            with open(records_path, "r", encoding="utf-8") as f:
+                loaded = json.load(f)
+                records.update(loaded)
+        except Exception as e:
+            print(f"⚠️ Warnung: records.json fehlerhaft, fange bei 0 an. ({e})")
+
+    strikes_data = {
+        "last_strike_week": 0,
+        "players": {},
+        "demoted_this_week": [],
+        "kicked_this_week": []
+    }
+    if strikes_path.exists():
+        try:
+            with open(strikes_path, "r", encoding="utf-8") as f:
+                loaded_strikes = json.load(f)
+                if "players" in loaded_strikes:
+                    strikes_data.update(loaded_strikes)
+                else:
+                    strikes_data["players"] = loaded_strikes
+        except Exception as e:
+            print(f"⚠️ Warnung: strikes.json fehlerhaft, fange bei 0 an. ({e})")
 
     print("=== STARTE AUSWERTUNG ===")
     archiviere_alte_dateien(upload_folder, archiv_folder)
@@ -1772,46 +1508,48 @@ def main():
 
     is_current_mask = df["player_is_current_member"].astype(str).str.strip().str.lower().isin(["true", "1", "yes"])
     df_active = df[is_current_mask].copy()
-
     fame_columns = sorted([col for col in df.columns if col.startswith("s_") and col.endswith("_fame")], reverse=True)
     if not fame_columns:
-        print("❌ Keine Fame-Spalten gefunden.")
         return
-
     fame_spalte = fame_columns[0]
-    df_history = load_score_history()
+
+    if score_history_path.exists():
+        df_history = pd.read_csv(score_history_path)
+        if "trophies" not in df_history.columns:
+            df_history["trophies"] = 0
+    else:
+        df_history = pd.DataFrame(columns=["player_name", "score", "date", "trophies"])
 
     heute_datum = datetime.today().strftime("%Y-%m-%d")
     jetzt_datei = datetime.today().strftime("%Y-%m-%d_%H-%M-%S")
     encoded_header_img = get_encoded_header_image(HEADER_IMAGE_PATH)
 
     html_bericht, df_history, mail_chat_text, updated_records, updated_strikes_data, updated_kicked = generate_html_report(
-        df_active,
-        df_history,
-        fame_spalte,
-        heute_datum,
-        encoded_header_img,
-        radar_clans,
-        records,
-        strikes_data,
-        race_state_de,
-        raw_mahnwache,
-        top_decks_data,
-        echte_neulinge,
-        rueckkehrer,
-        kicked_players
+        df_active=df_active,
+        df_history=df_history,
+        fame_spalte=fame_spalte,
+        heute_datum=heute_datum,
+        header_img_src=encoded_header_img,
+        radar_clans=radar_clans,
+        records=records,
+        strikes_data=strikes_data,
+        race_state_de=race_state_de,
+        raw_mahnwache=raw_mahnwache,
+        top_decks_data=top_decks_data,
+        echte_neulinge=echte_neulinge,
+        rueckkehrer=rueckkehrer,
+        kicked_players=kicked_players
     )
 
     html_path = speichere_html_bericht(
-        html_bericht,
-        df_history,
-        updated_records,
-        updated_strikes_data,
-        jetzt_datei,
-        top_decks_data,
-        updated_kicked
+        html_content=html_bericht,
+        df_history=df_history,
+        records=updated_records,
+        strikes_data=updated_strikes_data,
+        file_suffix=jetzt_datei,
+        top_decks_data=top_decks_data,
+        kicked_players=updated_kicked
     )
-
     archiviere_alte_auswertungen(output_folder)
 
     sender_mail = os.environ.get("EMAIL_SENDER")
@@ -1833,14 +1571,11 @@ def main():
         print("\n⚠️ HINWEIS: E-Mail-Secrets fehlen, Versand nicht möglich.")
 
     print("\n=== ALLES ERFOLGREICH ABGESCHLOSSEN ===")
-    print(f"HTML-Bericht: {html_path}")
-    print(f"Score-History: {score_history_path}")
-
 
 if __name__ == "__main__":
     try:
         main()
-    except Exception:
+    except Exception as err:
         print("\n❌ EIN KRITISCHER FEHLER IST AUFGETRETEN:")
         traceback.print_exc()
-        sys.exit(1) 
+        sys.exit(1)
