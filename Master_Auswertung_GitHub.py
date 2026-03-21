@@ -901,7 +901,7 @@ def render_html_template(
                         </table>
                     </div>
                     <ul>
-                        <li><b>Die zweite Chance (Degradierung):</b> Wer als <i>Anführer</i>, <i>Vize</i> oder <i>Ältester</i> 3 interne Hinweise ansammelt, wird nicht sofort entfernt, sondern genau <b>eine Rang-Stufe tiefer</b> gesetzt und bekommt so eine letzte Bewährungschance.</li>
+                        <li><b>Die zweite Chance (Degradierung):</b> Wer als <i>Anführer</i>, <i>Vize</i> oder <i>Ältester</i> 3 interne Hinweise ansammelt, wird nicht sofort entfernt, sondern genau <b>eine Rang-Stufe tiefer</b> gesetzt und bekommt so eine Bewährungschance.</li>
                         <li><b>Die letzte Stufe:</b> Wenn ein normales <i>Mitglied</i> (wie <b>Spieler B</b> oben) 3 interne Hinweise erreicht, trennen wir uns. So bleibt Platz für verlässliche, aktive Spieler.</li>
                         <li><b>Wieder ins Gleichgewicht kommen:</b> Wer nach einem internen Hinweis wieder anzieht und in der Folgewoche über 50% Score holt, baut diese Einträge automatisch wieder ab.</li>
                     </ul>
@@ -910,7 +910,7 @@ def render_html_template(
                 <button class="accordion-btn">🎯 Der Score (Zuverlässigkeit & Welpenschutz)</button>
                 <div class="accordion-content">
                     <p>Der Score ist die wichtigste Zahl im Dashboard. Er misst nicht, wie stark du bist oder wie viel du gewinnst, sondern <b>wie verlässlich du bist</b>.<br><br>
-                    Stell dir vor, du hast für jedes Kriegswochenende 16 "Tickets" (4 Tage × 4 Decks). Der Score zeigt einfach, wie viele deiner verfügbaren Tickets du auch wirklich genutzt hast.</p>
+                    Stell dir vor, du hast für jede Kriegswochen 16 "Decks" (4 Tage × 4 Decks). Der Score zeigt einfach, wie viele deiner verfügbaren Decks du auch wirklich genutzt hast.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
@@ -988,7 +988,7 @@ def render_html_template(
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler K</td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'>⭐ stark</span></td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>200</td><td>10/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>🧛</span></td></tr>
+                            <tr><td class='name-col'>Spieler K</td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'>⭐ stark</span></td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>200</td><td>10/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>📦</span></td></tr>
                             <tr><td class='name-col'>Spieler L</td><td><span class='focus-pill' style='background:#94a3b822; color:#94a3b8; border:1px solid #94a3b855;'>🙂 solide</span></td><td>Mitglied</td><td><b>50.0%</b></td><td class='trend-cell'>🟡🟡🟡🟡</td><td style='color:#cbd5e1;'>150</td><td>5/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>💤</span></td></tr>
                         </table>
                     </div>
@@ -1016,7 +1016,7 @@ def render_html_template(
 
                 <button class="accordion-btn">?? Kriegspunkte (Deine Gesamtleistung)</button>
                 <div class="accordion-content">
-                    <p>Die Kriegspunkte sind dein <b>Gesamtkonto</b> aus den geladenen Kriegen. W?hrend <b>Aktive Kriege</b> nur zeigt, <b>wie oft</b> du in den letzten 10 Kriegen mitgemacht hast (zum Beispiel <b>6/10</b>), zeigen die <b>Kriegspunkte</b>, <b>wie viele Punkte du dabei insgesamt gesammelt</b> hast.</p>
+                    <p>Die Kriegspunkte sind dein <b>Gesamtkonto</b> aus den geladenen Kriegen. Während <b>Aktive Kriege</b> nur zeigt, <b>wie oft</b> du in den letzten 10 Kriegen mitgemacht hast (zum Beispiel <b>6/10</b>), zeigen die <b>Kriegspunkte</b>, <b>wie viele Punkte du dabei insgesamt gesammelt</b> hast.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th>Spieler</th><th>Check</th><th>Aktive Kriege</th><th>Kriegspunkte</th></tr>
