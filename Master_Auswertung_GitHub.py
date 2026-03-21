@@ -884,9 +884,9 @@ def render_html_template(
                     </ul>
                 </div>
 
-                <button class="accordion-btn">⚖️ Verwarnungen, Degradierung & Kicks (❌)</button>
+                <button class="accordion-btn">⚖️ Regeln bei längerer Inaktivität (❌)</button>
                 <div class="accordion-content">
-                    <p>Damit nicht eine einzige schlechte Woche sofort zum Rauswurf führt, hat unsere Auswertung ein faires Langzeit-Gedächtnis. Wer sich nicht abmeldet und im Clankrieg dauerhaft zu wenig liefert (Score unter 50%), sammelt im Hintergrund unsichtbare Verwarnungen (❌).</p>
+                    <p>Damit nicht eine einzelne schwache Woche sofort Folgen hat, arbeitet unsere Auswertung mit einem fairen Langzeit-Gedächtnis. Wer sich nicht abmeldet und im Clankrieg dauerhaft zu wenig beiträgt (Score unter 50%), sammelt im Hintergrund Verwarnungen (❌).</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
@@ -895,9 +895,9 @@ def render_html_template(
                         </table>
                     </div>
                     <ul>
-                        <li><b>Die zweite Chance (Degradierung):</b> Wer als <i>Anführer</i>, <i>Vize</i> oder <i>Ältester</i> 3 Verwarnungen ansammelt, wird nicht sofort gekickt, sondern genau <b>eine Rang-Stufe tiefer</b> gesetzt und bekommt so eine letzte Bewährungschance.</li>
-                        <li><b>Der Rauswurf (Kick):</b> Wenn ein normales <i>Mitglied</i> (wie <b>Spieler B</b> oben) 3 Verwarnungen erreicht, trennen wir uns. So machen wir Platz für neue, aktive Spieler.</li>
-                        <li><b>Das Konto ausgleichen:</b> Wer nach einer Verwarnung wieder anzieht und in der Folgewoche über 50% Score holt, baut seine negativen Einträge automatisch wieder ab.</li>
+                        <li><b>Die zweite Chance (Degradierung):</b> Wer als <i>Anführer</i>, <i>Vize</i> oder <i>Ältester</i> 3 Verwarnungen ansammelt, wird nicht sofort entfernt, sondern genau <b>eine Rang-Stufe tiefer</b> gesetzt und bekommt so eine letzte Bewährungschance.</li>
+                        <li><b>Die letzte Stufe:</b> Wenn ein normales <i>Mitglied</i> (wie <b>Spieler B</b> oben) 3 Verwarnungen erreicht, trennen wir uns. So bleibt Platz für verlässliche, aktive Spieler.</li>
+                        <li><b>Wieder ins Gleichgewicht kommen:</b> Wer nach einer Verwarnung wieder anzieht und in der Folgewoche über 50% Score holt, baut seine negativen Einträge automatisch wieder ab.</li>
                     </ul>
                 </div>
 
@@ -937,9 +937,9 @@ def render_html_template(
                     </ul>
                 </div>
 
-                <button class="accordion-btn">🏷️ Check-Spalte (Schnelle Einschätzung)</button>
+                <button class="accordion-btn">🏷️ Check-Spalte (Orientierung)</button>
                 <div class="accordion-content">
-                    <p>Die <b>Check</b>-Spalte ist eine kurze, leicht lesbare Einschätzung auf einen Blick. Sie ersetzt keine Zahlen, sondern hilft dir nur dabei, Spieler schneller einzuordnen.</p>
+                    <p>Die <b>Check</b>-Spalte ist eine kurze, leicht lesbare Orientierung auf einen Blick. Sie ersetzt keine Zahlen, sondern hilft nur dabei, Spieler schneller einzuordnen.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
@@ -955,7 +955,7 @@ def render_html_template(
                         <li><b>⭐ stark:</b> Sehr verlässlich und gleichzeitig stark bei den Punkten pro Deck.</li>
                         <li><b>🛡️ stabil:</b> Gute, solide Leistung ohne große Schwächen. Genau solche Spieler tragen einen Clan langfristig.</li>
                         <li><b>🙂 solide:</b> Nicht auffällig schlecht, aber auch noch nicht ganz oben. Hier ist noch Luft nach oben.</li>
-                        <li><b>👀 auffällig:</b> Die Teilnahme kann okay sein, aber die Punkte pro Deck sind auffällig schwach. Hier lohnt ein genauerer Blick.</li>
+                        <li><b>👀 auffällig:</b> Die Teilnahme kann okay sein, aber die Punkte pro Deck fallen gerade eher schwach aus. Hier lohnt ein genauerer Blick.</li>
                         <li><b>⚠️ ausbaufähig:</b> Die Teilnahme ist im Moment klar verbesserungswürdig. Diese Spieler liegen beim Score schon im unteren Bereich.</li>
                         <li><b>neu dabei:</b> Spieler ist noch im Welpenschutz. Deshalb wird hier noch keine harte Leistungsbewertung angesetzt.</li>
                     </ul>
@@ -976,9 +976,9 @@ def render_html_template(
                     </ul>
                 </div>
 
-                <button class="accordion-btn">🃏 Spenden-Verhalten (Das Teamplay)</button>
+                <button class="accordion-btn">🃏 Spenden-Verhalten (Teamplay)</button>
                 <div class="accordion-content">
-                    <p>Ein starker Clan hilft sich gegenseitig beim Leveln der Karten. Wir haben das Auge auf zwei Problemfälle:</p>
+                    <p>Ein starker Clan hilft sich gegenseitig beim Leveln der Karten. Deshalb schauen wir auch auf das Spendenverhalten im Clan.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
@@ -989,6 +989,7 @@ def render_html_template(
                     <ul>
                         <li><b>📦 Spenden auffällig:</b> Jemand fordert regelmäßig Karten an, spendet aber selbst nichts zurück.</li>
                         <li><b>💤 Spenden inaktiv:</b> Jemand spendet nicht und fordert auch nichts an.</li>
+                        <li><b>Wichtig:</b> Diese Hinweise sollen nicht bloßstellen, sondern zeigen, wo im Clan noch etwas mehr Mitziehen helfen würde.</li>
                     </ul>
                 </div>
 
