@@ -674,10 +674,10 @@ def render_html_template(
             .tier-section {{ position: relative; }}
             .tier-title {{ position: sticky; top: 73px; background: rgba(15, 23, 42, 0.98); z-index: 900; margin: 0; padding: 15px 0 10px 0; font-weight: 800; font-size: 1.4em; color: #fbbf24; border-bottom: 2px solid rgba(255,255,255,0.1); }}
             table {{ width: 100%; table-layout: fixed; border-collapse: collapse; background: rgba(15, 23, 42, 0.9); border-radius: 8px; margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.1); }}
-            th:nth-child(1) {{ width: 20%; }} th:nth-child(2) {{ width: 14%; }} th:nth-child(3) {{ width: 8%; text-align: center; }} th:nth-child(4) {{ width: 12%; }} th:nth-child(5) {{ width: 8%; text-align: center; }} th:nth-child(6) {{ width: 10%; text-align: center; }} th:nth-child(7) {{ width: 10%; text-align: center; }} th:nth-child(8) {{ width: 9%; text-align: center; }} th:nth-child(9) {{ width: 9%; text-align: center; }}
+            th:nth-child(1) {{ width: 20%; }} th:nth-child(2) {{ width: 14%; }} th:nth-child(3) {{ width: 8%; text-align: center; }} th:nth-child(4) {{ width: 12%; text-align: center; }} th:nth-child(5) {{ width: 10%; text-align: center; }} th:nth-child(6) {{ width: 10%; text-align: center; }} th:nth-child(7) {{ width: 13%; text-align: center; }} th:nth-child(8) {{ width: 13%; text-align: center; }}
             tr:nth-child(odd) {{ background-color: rgba(0, 0, 0, 0.45); }} tr:nth-child(even) {{ background-color: rgba(255, 255, 255, 0.15); }} tr:hover {{ background-color: rgba(255, 255, 255, 0.3); }}
             th, td {{ padding: 14px 10px; text-align: left; word-wrap: break-word; overflow-wrap: break-word; vertical-align: middle; }}
-            td:nth-child(3), td:nth-child(5), td:nth-child(6), td:nth-child(7), td:nth-child(8), td:nth-child(9) {{ text-align: center; }}
+            td:nth-child(3), td:nth-child(4), td:nth-child(5), td:nth-child(6), td:nth-child(7), td:nth-child(8) {{ text-align: center; }}
 
             th {{ position: sticky; top: 128px; background-color: #0f172a; color: #94a3b8; z-index: 800; font-weight: 600; font-size: 0.9em; border-bottom: 1px solid rgba(255,255,255,0.1); line-height: 1.4; box-shadow: 0 4px 5px rgba(0,0,0,0.3); }}
             td {{ border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-size: 1.05em; }}
@@ -793,7 +793,7 @@ def render_html_template(
                     <p style="margin: 0 0 15px 0; font-size: 0.9em; color: #94a3b8; font-style: italic;">Weitere Infos unter <b>📖 Regeln & System</b>.</p>
                     <div style="display: flex; flex-wrap: wrap; gap: 15px; color: #cbd5e1;">
                         <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>🌱 Welpenschutz:</b> Neu im Clan (geschützt)</div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>❌ 1/3:</b> Verwarnungen (bei 3/3 droht Kick)</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>❌ 1/3:</b> Verwarnungen (bei 3/3 droht Kick oder Degradierung)</div>
                         <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>🧛 Vampir:</b> Nimmt Spenden, gibt aber 0</div>
                         <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>💤 Schläfer:</b> Spendet 0, fordert 0</div>
                         <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>⚠️ Ø Punkte:</b> Verdacht auf Dropping (&lt;115)</div>
@@ -823,13 +823,13 @@ def render_html_template(
                     <p>Damit nicht eine einzige schlechte Woche sofort zum Rauswurf führt, hat unsere Auswertung ein faires Langzeit-Gedächtnis. Wer sich nicht abmeldet und im Clankrieg dauerhaft zu wenig liefert (Score unter 50%), sammelt im Hintergrund unsichtbare Verwarnungen (❌).</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
-                            <tr><td class='name-col'>Spieler A <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td>Ältester</td><td><b>49.38%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>179</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>303</span></td><td>10/10</td><td>1250</td></tr>
-                            <tr><td class='name-col'>Spieler B <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td>Mitglied</td><td><b>34.38%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>100 ⚠️</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> 💤</td><td>4/10</td><td>800</td></tr>
+                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
+                            <tr><td class='name-col'>Spieler A <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td>Ältester</td><td><b>49.38%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#cbd5e1;'>179</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>303</span></td><td>10/10</td><td>1250</td></tr>
+                            <tr><td class='name-col'>Spieler B <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td>Mitglied</td><td><b>34.38%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#cbd5e1;'>100 ⚠️</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> 💤</td><td>4/10</td><td>800</td></tr>
                         </table>
                     </div>
                     <ul>
-                        <li><b>Die zweite Chance (Degradierung):</b> Wenn ein <i>Ältester</i> oder <i>Vize</i> (wie <b>Spieler A</b> oben) 3 Verwarnungen ansammelt, wird er nicht sofort gekickt. Er wird zur Strafe zum <b>Mitglied degradiert</b> und erhält so eine letzte Bewährungschance.</li>
+                        <li><b>Die zweite Chance (Degradierung):</b> Wer als <i>Anführer</i>, <i>Vize</i> oder <i>Ältester</i> 3 Verwarnungen ansammelt, wird nicht sofort gekickt, sondern genau <b>eine Rang-Stufe tiefer</b> gesetzt und bekommt so eine letzte Bewährungschance.</li>
                         <li><b>Der Rauswurf (Kick):</b> Wenn ein normales <i>Mitglied</i> (wie <b>Spieler B</b> oben) 3 Verwarnungen erreicht, trennen wir uns. So machen wir Platz für neue, aktive Spieler.</li>
                         <li><b>Das Konto ausgleichen:</b> Wer nach einer Verwarnung wieder anzieht und in der Folgewoche über 50% Score holt, baut seine negativen Einträge automatisch wieder ab.</li>
                     </ul>
@@ -841,9 +841,9 @@ def render_html_template(
                     Stell dir vor, du hast für jedes Kriegswochenende 16 "Tickets" (4 Tage × 4 Decks). Der Score zeigt einfach, wie viele deiner verfügbaren Tickets du auch wirklich genutzt hast.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
-                            <tr><td class='name-col'>Spieler C <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥 4</span></td><td>Vize</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>131</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>146</span></td><td>10/10</td><td>2100</td></tr>
-                            <tr><td class='name-col'>Spieler D <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td>Mitglied</td><td><b>6.25%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>200</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span></td><td>2/10</td><td>200</td></tr>
+                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
+                            <tr><td class='name-col'>Spieler C <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥 4</span></td><td>Vize</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>131</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>146</span></td><td>10/10</td><td>2100</td></tr>
+                            <tr><td class='name-col'>Spieler D <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td>Mitglied</td><td><b>6.25%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#cbd5e1;'>200</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span></td><td>2/10</td><td>200</td></tr>
                         </table>
                     </div>
                     <ul>
@@ -858,9 +858,9 @@ def render_html_template(
                     <p>Die Ampel-Punkte zeigen deine Leistung (deinen Score) der letzten 4 Wochen auf einen Blick. Jeder Punkt steht für eine Woche, wobei der <b>Punkt ganz rechts die aktuellste Auswertung</b> ist.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
-                            <tr><td class='name-col'>Spieler E</td><td>Mitglied</td><td><b>45.0%</b></td><td class='trend-cell'>🟢🟢🟡🔴</td><td style='color:#ef4444; font-weight:bold;'>-20.0%</td><td style='color:#cbd5e1;'>180</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>150</span></td><td>8/10</td><td>1400</td></tr>
-                            <tr><td class='name-col'>Spieler F</td><td>Ältester</td><td><b>90.0%</b></td><td class='trend-cell'>🔴🔴🟢🟢</td><td style='color:#10b981; font-weight:bold;'>+15.0%</td><td style='color:#cbd5e1;'>160</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>200</span></td><td>6/10</td><td>900</td></tr>
+                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
+                            <tr><td class='name-col'>Spieler E</td><td>Mitglied</td><td><b>45.0%</b></td><td class='trend-cell'>🟢🟢🟡🔴</td><td style='color:#cbd5e1;'>180</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>150</span></td><td>8/10</td><td>1400</td></tr>
+                            <tr><td class='name-col'>Spieler F</td><td>Ältester</td><td><b>90.0%</b></td><td class='trend-cell'>🔴🔴🟢🟢</td><td style='color:#cbd5e1;'>160</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>200</span></td><td>6/10</td><td>900</td></tr>
                         </table>
                     </div>
                     <ul>
@@ -871,31 +871,13 @@ def render_html_template(
                     </ul>
                 </div>
 
-                <button class="accordion-btn">📈 Das Delta (Deine Formkurve)</button>
-                <div class="accordion-content">
-                    <p>Das Delta ist wie beim Sport deine aktuelle Formkurve. Es vergleicht deine Leistung von heute mit deiner Leistung aus der letzten Auswertung.</p>
-                    <div style="overflow-x:auto;">
-                        <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
-                            <tr><td class='name-col'>Spieler G</td><td>Mitglied</td><td><b>85.0%</b></td><td class='trend-cell'>🟢🟢🟡🟢</td><td style='color:#10b981; font-weight:bold;'>+12.0%</td><td style='color:#cbd5e1;'>180</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>150</span></td><td>8/10</td><td>1400</td></tr>
-                            <tr><td class='name-col'>Spieler H</td><td>Ältester</td><td><b>60.0%</b></td><td class='trend-cell'>🟡🔴🟢🟡</td><td style='color:#ef4444; font-weight:bold;'>-5.0%</td><td style='color:#cbd5e1;'>160</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>200</span></td><td>6/10</td><td>900</td></tr>
-                            <tr><td class='name-col'>Spieler I</td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>205</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>350</span></td><td>10/10</td><td>2050</td></tr>
-                        </table>
-                    </div>
-                    <ul>
-                        <li><b style="color: #10b981;">Grüne Zahl (z.B. +12.0%):</b> Super! Du hast dich im Vergleich zur letzten Woche gesteigert und warst aktiver.</li>
-                        <li><b style="color: #ef4444;">Rote Zahl (z.B. -5.0%):</b> Du hast diese Woche etwas nachgelassen und weniger Angriffe gemacht als zuletzt.</li>
-                        <li><b style="color: #94a3b8;">Graue Null (0.0%):</b> Deine Leistung ist exakt konstant geblieben.</li>
-                    </ul>
-                </div>
-
                 <button class="accordion-btn">⚔️ Ø Punkte (Der Qualitäts-Check)</button>
                 <div class="accordion-content">
                     <p>Hier schauen wir, wie effektiv du deine Decks einsetzt. Das System teilt deine gesammelten Kriegspunkte durch die Anzahl deiner gespielten Decks.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
-                            <tr><td class='name-col'>Spieler J <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td>Ältester</td><td><b>27.34%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>100 <span class='custom-tooltip'>⚠️</span></td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>72</span></td><td>8/10</td><td>100</td></tr>
+                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
+                            <tr><td class='name-col'>Spieler J <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td>Ältester</td><td><b>27.34%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#cbd5e1;'>100 <span class='custom-tooltip'>⚠️</span></td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>72</span></td><td>8/10</td><td>100</td></tr>
                         </table>
                     </div>
                     <ul>
@@ -909,9 +891,9 @@ def render_html_template(
                     <p>Ein starker Clan hilft sich gegenseitig beim Leveln der Karten. Wir haben das Auge auf zwei Problemfälle:</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
-                            <tr><td class='name-col'>Spieler K</td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>200</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>🧛</span></td><td>10/10</td><td>2000</td></tr>
-                            <tr><td class='name-col'>Spieler L</td><td>Mitglied</td><td><b>50.0%</b></td><td class='trend-cell'>🟡🟡🟡🟡</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>150</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>💤</span></td><td>5/10</td><td>1000</td></tr>
+                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
+                            <tr><td class='name-col'>Spieler K</td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>200</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>🧛</span></td><td>10/10</td><td>2000</td></tr>
+                            <tr><td class='name-col'>Spieler L</td><td>Mitglied</td><td><b>50.0%</b></td><td class='trend-cell'>🟡🟡🟡🟡</td><td style='color:#cbd5e1;'>150</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>💤</span></td><td>5/10</td><td>1000</td></tr>
                         </table>
                     </div>
                     <ul>
@@ -925,14 +907,29 @@ def render_html_template(
                     <p>Gibt an, in wie vielen der letzten 10 Clankriege du mindestens ein Deck gespielt hast.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Delta</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
-                            <tr><td class='name-col'>Spieler M</td><td>Vize</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>200</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>100</span></td><td>10/10</td><td>2000</td></tr>
-                            <tr><td class='name-col'>Spieler N <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#94a3b8; font-weight:bold;'>0.0%</td><td style='color:#cbd5e1;'>200</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>50</span></td><td>2/10</td><td>400</td></tr>
+                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
+                            <tr><td class='name-col'>Spieler M</td><td>Vize</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>200</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>100</span></td><td>10/10</td><td>2000</td></tr>
+                            <tr><td class='name-col'>Spieler N <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>200</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>50</span></td><td>2/10</td><td>400</td></tr>
                         </table>
                     </div>
                     <ul>
                         <li><b>Langzeit-Aktivität:</b> Zeigt, wie treu du dem Clan über die letzten Wochen zur Seite standest.</li>
                         <li><b>Welpenschutz (🌱):</b> Wenn du neu bei uns bist, brauchst du dir keine Sorgen machen. Dein Score wird fair nur anhand der Kriege berechnet, bei denen du schon im Clan warst, und bis einschließlich 3 Teilnahmen greifen keine Strafen.</li>
+                    </ul>
+                </div>
+
+                <button class="accordion-btn">🏅 Kriegspunkte (Deine Gesamtleistung)</button>
+                <div class="accordion-content">
+                    <p>Die Kriegspunkte zeigen nicht nur einen einzelnen Kampftag, sondern die <b>aufsummierten Kriegspunkte aus den geladenen Kriegen</b>. So sieht man auf einen Blick, wie viel du über die letzten Auswertungen insgesamt beigetragen hast.</p>
+                    <div style="overflow-x:auto;">
+                        <table class="wiki-table">
+                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>🃏 Spenden</th><th>Teilnahmen</th><th>Kriegspunkte</th></tr>
+                            <tr><td class='name-col'>Spieler O</td><td>Mitglied</td><td><b>75.0%</b></td><td class='trend-cell'>🟡🟢🟡🟢</td><td style='color:#cbd5e1;'>160</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>120</span></td><td>6/10</td><td>1850</td></tr>
+                        </table>
+                    </div>
+                    <ul>
+                        <li><b>Hoher Wert:</b> Du hast über mehrere Kriege hinweg viele Punkte für den Clan geholt.</li>
+                        <li><b>Wichtig:</b> Kriegspunkte sind eine Mengen-Anzeige. Für die Qualität pro Deck ist weiter der Wert <b>Ø Punkte</b> zuständig.</li>
                     </ul>
                 </div>
 
@@ -947,8 +944,8 @@ def render_html_template(
 
             <div id="Decks" class="tab-content">
                 <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; margin-bottom: 10px; color: #ffffff;">🃏 Clan-Meta: Die besten Kriegs-Decks</h2>
-                <p style="text-align: center; color: #94a3b8; margin-bottom: 30px;">Das System analysiert im Hintergrund alle Clankriegs-Kämpfe und zeigt euch hier die Decks, die am häufigsten gewonnen haben.</p>
-                <div class="deck-slider">
+                <p style="text-align: center; color: #94a3b8; margin-bottom: 30px;">Das System analysiert die Clankriegs-Kämpfe der letzten 30 Tage und sortiert sie für euch in starke Meta-Decks, solide Allrounder und einsteigerfreundliche Optionen.</p>
+                <div>
                     {deck_html}
                 </div>
             </div>
@@ -1547,19 +1544,15 @@ def generate_html_report(
                     <th>Status</th>
                     <th>Score</th>
                     <th>Trend</th>
-                    <th>Delta</th>
                     <th>Ø Punkte</th>
-                    <th>🃏 Spenden</th>
                     <th>Teilnahmen</th>
                     <th>Kriegspunkte</th>
+                    <th>🃏 Spenden</th>
                 </tr>
                 </thead>
                 <tbody>"""
 
             for p in players_in_tier:
-                delta_s = f"+{p['delta']}" if p["delta"] > 0 else f"{p['delta']}"
-                color = "#10b981" if p["delta"] > 0 else "#ef4444" if p["delta"] < 0 else "#94a3b8"
-
                 spenden_warnung = ""
                 if p["donations"] == 0 and p["teilnahme_int"] > APP_CONFIG["MIN_PARTICIPATION"] and not p["is_urlaub"]:
                     if p["donations_received"] > 0:
@@ -1575,11 +1568,10 @@ def generate_html_report(
                     f"<td>{p['status']}</td>"
                     f"<td><b>{p['score']}%</b></td>"
                     f"<td class='trend-cell'>{p['trend_str']}</td>"
-                    f"<td style='color:{color}; font-weight:bold;'>{delta_s}%</td>"
                     f"<td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td>"
-                    f"<td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td>"
                     f"<td>{p['teilnahme']}</td>"
                     f"<td>{p['war_points_total']}</td>"
+                    f"<td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td>"
                     f"</tr>"
                 )
 
