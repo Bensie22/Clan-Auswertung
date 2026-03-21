@@ -937,6 +937,30 @@ def render_html_template(
                     </ul>
                 </div>
 
+                <button class="accordion-btn">🏷️ Check-Spalte (Schnelle Einschätzung)</button>
+                <div class="accordion-content">
+                    <p>Die <b>Check</b>-Spalte ist eine kurze, leicht lesbare Einschätzung auf einen Blick. Sie ersetzt keine Zahlen, sondern hilft dir nur dabei, Spieler schneller einzuordnen.</p>
+                    <div style="overflow-x:auto;">
+                        <table class="wiki-table">
+                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
+                            <tr><td class='name-col'>Spieler P</td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'>⭐ stark</span></td><td>Ältester</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>182</td><td>10/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>220</span></td></tr>
+                            <tr><td class='name-col'>Spieler Q</td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>🛡️ stabil</span></td><td>Mitglied</td><td><b>86.25%</b></td><td class='trend-cell'>🟢🟢🟡🟢</td><td style='color:#cbd5e1;'>142</td><td>9/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>95</span></td></tr>
+                            <tr><td class='name-col'>Spieler R</td><td><span class='focus-pill' style='background:#94a3b822; color:#94a3b8; border:1px solid #94a3b855;'>🙂 solide</span></td><td>Mitglied</td><td><b>73.75%</b></td><td class='trend-cell'>🟡🟡🟡🟢</td><td style='color:#cbd5e1;'>150</td><td>7/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>70</span></td></tr>
+                            <tr><td class='name-col'>Spieler S</td><td><span class='focus-pill' style='background:#ef444422; color:#ef4444; border:1px solid #ef444455;'>👀 beobachten</span></td><td>Mitglied</td><td><b>81.25%</b></td><td class='trend-cell'>🟢🟡🟡🟢</td><td style='color:#cbd5e1;'>102 ⚠️</td><td>9/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>40</span></td></tr>
+                            <tr><td class='name-col'>Spieler T</td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ wacklig</span></td><td>Mitglied</td><td><b>43.75%</b></td><td class='trend-cell'>🔴🔴🟡🔴</td><td style='color:#cbd5e1;'>140</td><td>4/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>30</span></td></tr>
+                            <tr><td class='name-col'>Spieler U <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>neu dabei</span></td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>170</td><td>2/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>35</span></td></tr>
+                        </table>
+                    </div>
+                    <ul>
+                        <li><b>⭐ stark:</b> Sehr verlässlich und gleichzeitig stark bei den Punkten pro Deck.</li>
+                        <li><b>🛡️ stabil:</b> Gute, solide Leistung ohne große Schwächen. Genau solche Spieler tragen einen Clan langfristig.</li>
+                        <li><b>🙂 solide:</b> Nicht auffällig schlecht, aber auch noch nicht ganz oben. Hier ist noch Luft nach oben.</li>
+                        <li><b>👀 beobachten:</b> Die Teilnahme kann okay sein, aber die Punkte pro Deck sind auffällig schwach. Hier lohnt ein genauerer Blick.</li>
+                        <li><b>⚠️ wacklig:</b> Kritische Teilnahme. Diese Spieler liegen beim Score schon im Problem-Bereich.</li>
+                        <li><b>neu dabei:</b> Spieler ist noch im Welpenschutz. Deshalb wird hier noch keine harte Leistungsbewertung angesetzt.</li>
+                    </ul>
+                </div>
+
                 <button class="accordion-btn">⚔️ Ø Punkte (Der Qualitäts-Check)</button>
                 <div class="accordion-content">
                     <p>Hier schauen wir, wie effektiv du deine Decks einsetzt. Das System teilt deine gesammelten Kriegspunkte durch die Anzahl deiner gespielten Decks.</p>
@@ -1492,10 +1516,9 @@ def generate_html_report(
         for m in raw_mahnwache:
             if m["name"] not in urlauber_liste and m["name"] in aktive_namen_list:
                 name_color = mahnwache_colors[mahnwache_idx % len(mahnwache_colors)]
-                offen_color = "#fca5a5" if m["offen"] >= 3 else "#fde68a" if m["offen"] == 2 else "#86efac"
                 gefilterte_mahnwache.append(
                     f"<span style='color:{name_color}; font-weight:800;'>{m['name']}</span> "
-                    f"<span style='color:{offen_color};'>({m['offen']} offen)</span>"
+                    f"<span style='color:#ffffff;'>({m['offen']} offen)</span>"
                 )
                 mahnwache_idx += 1
                 total_open_decks += m["offen"]
