@@ -23,6 +23,8 @@ APP_CONFIG = {
     "MIN_PARTICIPATION": 3       # Welpenschutz: Bis einschließlich 3 Teilnahmen keine Strafen
 }
 
+JOIN_EVENT_TTL_HOURS = 24
+
 DECK_LOOKBACK_DAYS = 30
 DECK_META_MIN_MATCHES = 5
 DECK_SOLID_MIN_MATCHES = 4
@@ -607,7 +609,7 @@ def get_river_race_status_de(now_utc: datetime | None = None) -> str:
 
 
 def load_member_memory() -> dict:
-    default_memory = {"current_players": {}, "ever_seen_players": {}}
+    default_memory = {"current_players": {}, "ever_seen_players": {}, "pending_events": []}
     if not member_memory_path.exists():
         return default_memory
 
@@ -619,13 +621,17 @@ def load_member_memory() -> dict:
                     "current_players" in loaded and isinstance(loaded["current_players"], dict)
                     and "ever_seen_players" in loaded and isinstance(loaded["ever_seen_players"], dict)
                 ):
+                    loaded.setdefault("pending_events", [])
+                    if not isinstance(loaded["pending_events"], list):
+                        loaded["pending_events"] = []
                     return loaded
 
                 # Migration alter Struktur
                 if "players" in loaded and isinstance(loaded["players"], dict):
                     return {
                         "current_players": loaded["players"],
-                        "ever_seen_players": loaded["players"].copy()
+                        "ever_seen_players": loaded["players"].copy(),
+                        "pending_events": []
                     }
     except Exception as e:
         print(f"⚠️ Warnung: member_memory.json fehlerhaft, fange bei 0 an. ({e})")
@@ -1905,19 +1911,78 @@ def main():
     member_memory = load_member_memory()
     current_known_players = member_memory.get("current_players", {})
     ever_seen_players = member_memory.get("ever_seen_players", {})
+    pending_events = member_memory.get("pending_events", [])
+    now_utc = datetime.utcnow()
+    pending_cutoff = now_utc - timedelta(hours=JOIN_EVENT_TTL_HOURS)
 
     neue_tags = [tag for tag in current_members.keys() if tag not in current_known_players]
+    pending_event_keys = {
+        (event.get("tag"), event.get("type"))
+        for event in pending_events
+        if isinstance(event, dict)
+    }
+
+    fresh_pending_events = []
+    for event in pending_events:
+        if not isinstance(event, dict):
+            continue
+        event_tag = event.get("tag")
+        event_type = event.get("type")
+        detected_at = event.get("detected_at")
+        if event_tag not in current_members or event_type not in {"new", "returning", "warn_returning"}:
+            continue
+        try:
+            detected_dt = datetime.strptime(detected_at, "%Y-%m-%dT%H:%M:%SZ")
+        except Exception:
+            continue
+        if detected_dt >= pending_cutoff:
+            fresh_pending_events.append({
+                "tag": event_tag,
+                "name": current_members[event_tag]["name"],
+                "type": event_type,
+                "detected_at": detected_at
+            })
 
     echte_neulinge = []
     rueckkehrer = []
     warn_rueckkehrer = []
+    for event in fresh_pending_events:
+        player_name = event["name"]
+        if event["type"] == "warn_returning":
+            warn_rueckkehrer.append(player_name)
+        elif event["type"] == "returning":
+            rueckkehrer.append(player_name)
+        elif event["type"] == "new":
+            echte_neulinge.append(player_name)
+
     for tag in neue_tags:
         player_name = current_members[tag]["name"]
         if player_name in kicked_players:
+            if (tag, "warn_returning") not in pending_event_keys:
+                fresh_pending_events.append({
+                    "tag": tag,
+                    "name": player_name,
+                    "type": "warn_returning",
+                    "detected_at": now_utc.strftime("%Y-%m-%dT%H:%M:%SZ")
+                })
             warn_rueckkehrer.append(player_name)
         elif tag in ever_seen_players:
+            if (tag, "returning") not in pending_event_keys:
+                fresh_pending_events.append({
+                    "tag": tag,
+                    "name": player_name,
+                    "type": "returning",
+                    "detected_at": now_utc.strftime("%Y-%m-%dT%H:%M:%SZ")
+                })
             rueckkehrer.append(player_name)
         else:
+            if (tag, "new") not in pending_event_keys:
+                fresh_pending_events.append({
+                    "tag": tag,
+                    "name": player_name,
+                    "type": "new",
+                    "detected_at": now_utc.strftime("%Y-%m-%dT%H:%M:%SZ")
+                })
             echte_neulinge.append(player_name)
 
     updated_current_players = {}
@@ -1934,7 +1999,8 @@ def main():
 
     save_member_memory({
         "current_players": updated_current_players,
-        "ever_seen_players": updated_ever_seen_players
+        "ever_seen_players": updated_ever_seen_players,
+        "pending_events": fresh_pending_events
     })
 
     print("Schritt 3: Rufe Live-Radar (Current River Race) ab...")
