@@ -39,6 +39,7 @@ records_path = BASE_DIR / "records.json"
 strikes_path = BASE_DIR / "strikes.json"
 top_decks_path = BASE_DIR / "top_decks.json"
 donations_memory_path = BASE_DIR / "donations_memory.json"
+member_memory_path = BASE_DIR / "member_memory.json"
 urlaub_path = BASE_DIR / "urlaub.txt"
 kicked_players_path = BASE_DIR / "kicked_players.json"
 HEADER_IMAGE_PATH = BASE_DIR / "clash_pix.jpg"
@@ -415,6 +416,38 @@ def is_clan_war_period(now_utc: datetime | None = None) -> bool:
 
 def get_river_race_status_de(now_utc: datetime | None = None) -> str:
     return "Clankrieg" if is_clan_war_period(now_utc) else "Trainingstag"
+
+
+def load_member_memory() -> dict:
+    default_memory = {"current_players": {}, "ever_seen_players": {}}
+    if not member_memory_path.exists():
+        return default_memory
+
+    try:
+        with open(member_memory_path, "r", encoding="utf-8") as f:
+            loaded = json.load(f)
+            if isinstance(loaded, dict):
+                if (
+                    "current_players" in loaded and isinstance(loaded["current_players"], dict)
+                    and "ever_seen_players" in loaded and isinstance(loaded["ever_seen_players"], dict)
+                ):
+                    return loaded
+
+                # Migration alter Struktur
+                if "players" in loaded and isinstance(loaded["players"], dict):
+                    return {
+                        "current_players": loaded["players"],
+                        "ever_seen_players": loaded["players"].copy()
+                    }
+    except Exception as e:
+        print(f"⚠️ Warnung: member_memory.json fehlerhaft, fange bei 0 an. ({e})")
+
+    return default_memory
+
+
+def save_member_memory(member_memory: dict) -> None:
+    with open(member_memory_path, "w", encoding="utf-8") as f:
+        json.dump(member_memory, f, ensure_ascii=False, indent=4)
 
 
 # === 4. HTML Templates ===
@@ -849,6 +882,7 @@ def generate_html_report(
     top_decks_data: dict,
     echte_neulinge: list,
     rueckkehrer: list,
+    warn_rueckkehrer: list,
     kicked_players: dict,
     is_weekly_run: bool
 ) -> Tuple[str, pd.DataFrame, str, dict, dict, dict]:
@@ -1196,6 +1230,15 @@ def generate_html_report(
     if rueckkehrer:
         names_str = ", ".join(rueckkehrer)
         rueckkehrer_vars = {
+            "Sachlich": f"👋 Willkommen zurück {names_str}. Schön, dass ihr wieder bei uns seid. Alles Wichtige steht in der Info.",
+            "Motivierend": f"🎉 Willkommen zurück in der HAMBURG-Family, {names_str}! Schön, dass ihr wieder da seid.",
+            "Kurz & Knackig": f"👋 Willkommen zurück {names_str}! Schön, euch wieder im Clan zu haben."
+        }
+        chat_blocks.append(rueckkehrer_vars)
+
+    if warn_rueckkehrer:
+        names_str = ", ".join(warn_rueckkehrer)
+        rueckkehrer_vars = {
             "Sachlich": f"⚠️ Info an die Vizes: {names_str} ist wieder beigetreten. Dieser Spieler wurde in der Vergangenheit wegen Inaktivität im Clankrieg gekickt.",
             "Motivierend": f"👀 {names_str} ist zurück! Wurde früher wegen Kriegsinaktivität entfernt. Lasst uns schauen, ob es dieses Mal klappt. Bitte im Auge behalten!",
             "Kurz & Knackig": f"🚨 Achtung: Rückkehrer {names_str} erkannt. (Ehemaliger Kick wegen Inaktivität)."
@@ -1508,27 +1551,40 @@ def main():
         except Exception as e:
             print(f"⚠️ Warnung: kicked_players.json fehlerhaft ({e})")
 
-    alte_mitglieder = set()
-    csvs_alle = sorted(upload_folder.glob("*.csv"), key=os.path.getctime)
-    if len(csvs_alle) >= 2:
-        try:
-            df_alt = pd.read_csv(csvs_alle[-2])
-            alte_mitglieder = set(
-                df_alt[df_alt["player_is_current_member"].astype(str).str.lower().isin(["true", "1", "yes"])]["player_name"].dropna().tolist()
-            )
-        except Exception as e:
-            print(f"Konnte alte Mitglieder nicht laden: {e}")
+    member_memory = load_member_memory()
+    current_known_players = member_memory.get("current_players", {})
+    ever_seen_players = member_memory.get("ever_seen_players", {})
 
-    aktuelle_namen = [data["name"] for tag, data in current_members.items()]
-    neue_mitglieder_raw = [name for name in aktuelle_namen if name not in alte_mitglieder] if alte_mitglieder else []
+    neue_tags = [tag for tag in current_members.keys() if tag not in current_known_players]
 
     echte_neulinge = []
     rueckkehrer = []
-    for n in neue_mitglieder_raw:
-        if n in kicked_players:
-            rueckkehrer.append(n)
+    warn_rueckkehrer = []
+    for tag in neue_tags:
+        player_name = current_members[tag]["name"]
+        if player_name in kicked_players:
+            warn_rueckkehrer.append(player_name)
+        elif tag in ever_seen_players:
+            rueckkehrer.append(player_name)
         else:
-            echte_neulinge.append(n)
+            echte_neulinge.append(player_name)
+
+    updated_current_players = {}
+    updated_ever_seen_players = dict(ever_seen_players)
+    for tag, data in current_members.items():
+        previous_entry = current_known_players.get(tag, ever_seen_players.get(tag, {}))
+        player_entry = {
+            "name": data["name"],
+            "last_seen": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "first_seen": previous_entry.get("first_seen", datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"))
+        }
+        updated_current_players[tag] = player_entry
+        updated_ever_seen_players[tag] = player_entry
+
+    save_member_memory({
+        "current_players": updated_current_players,
+        "ever_seen_players": updated_ever_seen_players
+    })
 
     print("Schritt 3: Rufe Live-Radar (Current River Race) ab...")
     radar_clans = []
@@ -1649,6 +1705,7 @@ def main():
         top_decks_data=top_decks_data,
         echte_neulinge=echte_neulinge,
         rueckkehrer=rueckkehrer,
+        warn_rueckkehrer=warn_rueckkehrer,
         kicked_players=kicked_players,
         is_weekly_run=is_weekly_run
     )
