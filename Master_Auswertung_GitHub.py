@@ -540,7 +540,7 @@ def render_html_template(
     <body>
         <div class="container">
             <div class="header-container">
-                <h1 class="header-title"><span onclick="unlockChat()" style="cursor: pointer;" title="Nur für die Clan-Führung">📊</span> Clan-Auswertung: {clan_name} <br>
+                <h1 class="header-title"><span onclick="toggleChat()" style="cursor: pointer;" title="Chat-Hilfe ein-/ausblenden">📊</span> Clan-Auswertung: {clan_name} <br>
                 <span class="header-date">{heute_datum}</span>
                 <span class="header-mobile-tip">📱 Tipp: Für die beste Übersicht am Handy bitte quer halten 🔄</span></h1>
             </div>
@@ -605,11 +605,12 @@ def render_html_template(
 
                     <div id="admin-chat-container" style="display: none; width: 100%;">
                         <div class="card messenger">
-                            <h3 style="color: #f1c40f; margin-bottom: 10px;">🎮 Admin-Tool: In-Game Chat ({total_msgs}-Teiler)</h3>
-                            <p style="font-size: 0.9em; color: #cbd5e1; margin-top: 0; margin-bottom: 15px;">Wähle oben im Menü den passenden Tonfall. Kopiere dann die {total_msgs} Texte nacheinander in den Chat.</p>
+                            <h3 style="color: #f1c40f; margin-bottom: 10px;">🎮 Chat-Hilfe ({total_msgs}-Teiler)</h3>
+                            <p style="font-size: 0.9em; color: #cbd5e1; margin-top: 0; margin-bottom: 15px;">Klicke oben auf das 📊-Symbol, um diese Hilfe ein- oder auszublenden. Wähle den passenden Tonfall und kopiere dann die {total_msgs} Texte nacheinander in den Chat.</p>
                             {chat_boxes_html}
                         </div>
                     </div>
+
                 </div>
             </div>
 
@@ -782,13 +783,13 @@ def render_html_template(
         </div>
 
         <script>
-            function unlockChat() {{
-                var pin = prompt("Admin-Bereich. Bitte PIN eingeben:");
-                if(pin === "vize") {{
-                    document.getElementById("admin-chat-container").style.display = "block";
-                    alert("Chat-Generator erfolgreich freigeschaltet!");
-                }} else if(pin !== null) {{
-                    alert("Falsche PIN. Zugriff verweigert.");
+            function toggleChat() {{
+                var el = document.getElementById("admin-chat-container");
+                if (!el) return;
+                if (el.style.display === "none" || el.style.display === "") {{
+                    el.style.display = "block";
+                }} else {{
+                    el.style.display = "none";
                 }}
             }}
 
@@ -848,7 +849,8 @@ def generate_html_report(
     top_decks_data: dict,
     echte_neulinge: list,
     rueckkehrer: list,
-    kicked_players: dict
+    kicked_players: dict,
+    is_weekly_run: bool
 ) -> Tuple[str, pd.DataFrame, str, dict, dict, dict]:
     player_stats = []
     urlauber_liste = []
@@ -869,12 +871,9 @@ def generate_html_report(
     last_strike_week = strikes_data.get("last_strike_week", 0)
 
     curr_week = datetime.utcnow().isocalendar()[1]
-    ist_montag = datetime.utcnow().weekday() == 0
-    ist_mail_zeit = datetime.utcnow().hour in [9, 10, 11]
-    ist_manueller_start = os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch"
 
     apply_strikes_now = False
-    if (ist_montag and ist_mail_zeit) or ist_manueller_start:
+    if is_weekly_run:
         if last_strike_week != curr_week:
             apply_strikes_now = True
             strikes_data["last_strike_week"] = curr_week
@@ -906,6 +905,9 @@ def generate_html_report(
         # Nur Kriege zählen, in denen tatsächlich gespielt wurde.
         max_moegliche_decks = wars_with_participation * 16
         score = round((decks_total / max_moegliche_decks) * 100, 2) if max_moegliche_decks > 0 else 0.0
+
+        fame_columns_all = [col for col in row.index if str(col).startswith("s_") and str(col).endswith("_fame")]
+        total_war_points = sum(int(row.get(col, 0) or 0) for col in fame_columns_all)
 
         aktueller_fame = int(row.get(fame_spalte, 0) or 0)
         aktueller_decks_spalte = fame_spalte.replace("_fame", "_decks_used")
@@ -977,7 +979,7 @@ def generate_html_report(
 
         if apply_strikes_now and strike_val >= 3:
             if not is_urlaub:
-                if raw_role in ["elder", "coleader"]:
+                if raw_role in ["leader", "coleader", "elder"]:
                     strikes_data.setdefault("demoted_this_week", []).append(name)
                     strikes[name] = 2
                 elif raw_role == "member":
@@ -1038,6 +1040,7 @@ def generate_html_report(
             "teilnahme": f"{wars_with_participation}/{wars_in_history_window}",
             "teilnahme_int": wars_with_participation,
             "fame": aktueller_fame,
+            "war_points_total": total_war_points,
             "donations": donations,
             "donations_received": donations_received,
             "tier": tier,
@@ -1053,15 +1056,16 @@ def generate_html_report(
             "raw_role": raw_role
         })
 
-        df_history = pd.concat([
-            df_history,
-            pd.DataFrame([{
-                "player_name": name,
-                "score": score,
-                "date": heute_datum,
-                "trophies": aktueller_trophy
-            }])
-        ], ignore_index=True)
+        if is_weekly_run:
+            df_history = pd.concat([
+                df_history,
+                pd.DataFrame([{
+                    "player_name": name,
+                    "score": score,
+                    "date": heute_datum,
+                    "trophies": aktueller_trophy
+                }])
+            ], ignore_index=True)
 
     aktive_spieler = [p for p in player_stats if not p["is_urlaub"]]
     clan_avg = round(sum([p["score"] for p in aktive_spieler]) / len(aktive_spieler), 2) if aktive_spieler else 0
@@ -1380,7 +1384,7 @@ def generate_html_report(
                     f"<td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td>"
                     f"<td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td>"
                     f"<td>{p['teilnahme']}</td>"
-                    f"<td>{p['fame']}</td>"
+                    f"<td>{p['war_points_total']}</td>"
                     f"</tr>"
                 )
 
@@ -1488,6 +1492,8 @@ def main():
     upload_folder.mkdir(parents=True, exist_ok=True)
     archiv_folder.mkdir(parents=True, exist_ok=True)
     output_folder.mkdir(parents=True, exist_ok=True)
+    run_mode = os.environ.get("RUN_MODE", "radar").strip().lower()
+    is_weekly_run = run_mode == "weekly"
 
     print("=== STARTE CLAN-DATEN ABRUF ===")
     success, current_members = fetch_and_build_player_csv()
@@ -1643,7 +1649,8 @@ def main():
         top_decks_data=top_decks_data,
         echte_neulinge=echte_neulinge,
         rueckkehrer=rueckkehrer,
-        kicked_players=kicked_players
+        kicked_players=kicked_players,
+        is_weekly_run=is_weekly_run
     )
 
     html_path = speichere_html_bericht(
@@ -1661,19 +1668,14 @@ def main():
     receiver_mail = os.environ.get("EMAIL_RECEIVER")
     email_pass = os.environ.get("EMAIL_PASS")
 
-    ist_manueller_start = os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch"
-    jetzt_utc = datetime.utcnow()
-    ist_montag = jetzt_utc.weekday() == 0
-    ist_mail_zeit = jetzt_utc.hour in [9, 10, 11]
-
     if sender_mail and receiver_mail and email_pass:
-        if (ist_montag and ist_mail_zeit) or ist_manueller_start:
+        if is_weekly_run:
             print("=== BERICHT WURDE GENERIERT ===")
             print("💡 Testmodus aktiv: HTML und Layout wurden erfolgreich erstellt, E-Mail-Versand ist vorerst deaktiviert.")
             print(f"HTML-Bericht gespeichert unter: {html_path}")
             print(f"Chat-Text vorbereitet:\n{mail_chat_text}")
         else:
-            print("\n💡 Info: Radar aktualisiert. E-Mail-Versand übersprungen (Passiert nur montags oder bei manuellem Start).")
+            print("\n💡 Info: Radar aktualisiert. Wochenhistorie und E-Mail-Versand wurden im Radar-Modus übersprungen.")
     else:
         print("\n⚠️ HINWEIS: E-Mail-Secrets fehlen, Versand nicht möglich.")
 
