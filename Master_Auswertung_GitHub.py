@@ -471,6 +471,30 @@ def build_deck_sections(top_decks_data: dict) -> list:
     ]
 
 
+def get_signal_state(value: float, green_min: float, yellow_min: float) -> tuple[str, str]:
+    if value >= green_min:
+        return "stark", "#10b981"
+    if value >= yellow_min:
+        return "okay", "#fbbf24"
+    return "kritisch", "#ef4444"
+
+
+def get_player_focus(score: float, fame_per_deck: int, donations: int, is_welpenschutz: bool, current_decks: int) -> tuple[str, str]:
+    if is_welpenschutz:
+        return "🌱 neu dabei", "#38bdf8"
+    if score >= 95 and fame_per_deck >= 160:
+        return "🔥 stark", "#10b981"
+    if score >= 80 and fame_per_deck >= 130:
+        return "🛡️ stabil", "#38bdf8"
+    if current_decks > 0 and fame_per_deck < APP_CONFIG["DROPPER_THRESHOLD"]:
+        return "👀 beobachten", "#ef4444"
+    if score < APP_CONFIG["STRIKE_THRESHOLD"]:
+        return "⚠️ wacklig", "#f97316"
+    if donations > 0:
+        return "🤝 Teamplayer", "#a855f7"
+    return "🙂 solide", "#94a3b8"
+
+
 def get_deck_archetype(cards: list) -> str:
     card_names = [c.get("name", "") for c in cards]
     if any(n in card_names for n in ["Golem", "Lava Hound", "Giant", "Goblin Giant", "Electro Giant", "Elixir Golem"]):
@@ -599,6 +623,9 @@ def render_html_template(
     hype_balken_html,
     radar_html,
     mahnwache_html,
+    clan_ampel_html,
+    weekly_summary_html,
+    coach_html,
     clan_avg,
     clan_avg_points_per_deck,
     top_performers,
@@ -644,6 +671,12 @@ def render_html_template(
             .welcome-title {{ font-size: 1.4em; color: #fbbf24; margin-top: 0; margin-bottom: 15px; font-weight: 800; display: flex; align-items: center; gap: 10px; }}
 
             .info-box {{ background: rgba(30, 41, 59, 0.85); border-left: 5px solid #38bdf8; padding: 20px 25px; border-radius: 8px; margin-bottom: 40px; font-size: 1em; color: #e2e8f0; line-height: 1.6; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.05); }}
+            .signal-board {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 25px; }}
+            .signal-card {{ background: rgba(30, 41, 59, 0.8); border-radius: 12px; padding: 18px 20px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.18); }}
+            .signal-card h4 {{ margin: 0 0 8px 0; color: #cbd5e1; font-size: 0.95em; font-weight: 700; }}
+            .signal-value {{ font-size: 1.8em; font-weight: 800; margin-bottom: 6px; }}
+            .signal-state {{ font-size: 0.9em; font-weight: 700; }}
+            .focus-badge {{ display: inline-block; margin-left: 8px; padding: 3px 8px; border-radius: 999px; font-size: 0.72em; font-weight: 800; vertical-align: middle; }}
             .dashboard {{ display: flex; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }}
             .card {{ flex: 1; min-width: 220px; background: rgba(30, 41, 59, 0.8); padding: 20px 25px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }}
             .card h3 {{ font-weight: 600; font-size: 1.1em; margin-top: 0; color: #cbd5e1; }}
@@ -738,6 +771,9 @@ def render_html_template(
 
                 {radar_html}
                 {mahnwache_html}
+                {clan_ampel_html}
+                {weekly_summary_html}
+                {coach_html}
 
                 <div class="dashboard">
                     <div class="card avg">
@@ -1194,6 +1230,15 @@ def generate_html_report(
                 "<span class='tooltip-text'>Neu im Clan / Wenig Kriege / Welpenschutz aktiv</span></span>"
             )
 
+        focus_label, focus_color = get_player_focus(
+            score=score,
+            fame_per_deck=fame_per_deck,
+            donations=donations,
+            is_welpenschutz=is_welpenschutz,
+            current_decks=aktueller_decks
+        )
+        focus_badge = f" <span class='focus-badge' style='background:{focus_color}22; color:{focus_color}; border:1px solid {focus_color}55;'>{focus_label}</span>"
+
         if is_urlaub:
             status_html = "🏖️ Urlaub"
             tier = "🏖️ Im Urlaub (Pausiert)"
@@ -1235,6 +1280,7 @@ def generate_html_report(
             "streak_badge": streak_badge,
             "strike_badge": strike_badge,
             "welpenschutz_badge": welpenschutz_badge,
+            "focus_badge": focus_badge,
             "raw_role": raw_role
         })
 
@@ -1254,6 +1300,7 @@ def generate_html_report(
     clan_total_fame = sum(p["fame"] for p in aktive_spieler if p["current_decks"] > 0)
     clan_total_decks = sum(p["current_decks"] for p in aktive_spieler if p["current_decks"] > 0)
     clan_avg_points_per_deck = round(clan_total_fame / clan_total_decks) if clan_total_decks > 0 else 0
+    clan_teamplay = round((sum(1 for p in aktive_spieler if p["donations"] > 0) / len(aktive_spieler)) * 100) if aktive_spieler else 0
 
     # --- HISTORIE CLEANUP (Nur aktive behalten & max. die letzten 6 Wochen) ---
     aktive_namen_set = set(df_active["player_name"].tolist())
@@ -1288,6 +1335,76 @@ def generate_html_report(
     top_aufsteiger_html = "".join([f"<li><b>{p['name']}</b> (+{p['delta']}%)</li>" for p in top_aufsteiger_list]) if top_aufsteiger_list else "<li>Keine Verbesserungen</li>"
     top_spender_html = "".join([f"<li><b>{p['name']}</b> ({p['donations']})</li>" for p in top_spender_list]) if top_spender_list else "<li>Keine Spenden</li>"
     top_leecher_html = "".join([f"<li><b>{p['name']}</b> ({p['donations']} gesp. / {p['donations_received']} empf.)</li>" for p in top_leecher_list]) if top_leecher_list else "<li>Keine Leecher! 🎉</li>"
+
+    reliability_state, reliability_color = get_signal_state(clan_avg, 85, 70)
+    quality_state, quality_color = get_signal_state(clan_avg_points_per_deck, 160, 130)
+    teamplay_state, teamplay_color = get_signal_state(clan_teamplay, 65, 40)
+
+    clan_ampel_html = f"""
+    <div class='signal-board'>
+        <div class='signal-card'>
+            <h4>📈 Zuverlässigkeit</h4>
+            <div class='signal-value' style='color:{reliability_color};'>{clan_avg}%</div>
+            <div class='signal-state' style='color:{reliability_color};'>{reliability_state.upper()}</div>
+        </div>
+        <div class='signal-card'>
+            <h4>⚔️ Kampfqualität</h4>
+            <div class='signal-value' style='color:{quality_color};'>{clan_avg_points_per_deck}</div>
+            <div class='signal-state' style='color:{quality_color};'>{quality_state.upper()}</div>
+        </div>
+        <div class='signal-card'>
+            <h4>🤝 Teamplay</h4>
+            <div class='signal-value' style='color:{teamplay_color};'>{clan_teamplay}%</div>
+            <div class='signal-state' style='color:{teamplay_color};'>{teamplay_state.upper()}</div>
+        </div>
+    </div>
+    """
+
+    summary_lines = []
+    if clan_avg >= 85:
+        summary_lines.append("Der Clan spielt seine Decks sehr zuverlässig aus.")
+    elif clan_avg >= 70:
+        summary_lines.append("Die Zuverlässigkeit ist okay, aber es bleiben noch zu viele Decks liegen.")
+    else:
+        summary_lines.append("Beim Ausspielen der Decks verlieren wir aktuell zu viel Boden.")
+
+    if clan_avg_points_per_deck >= 160:
+        summary_lines.append("Die Kampfqualität ist stark und bringt pro Deck ordentlich Punkte.")
+    elif clan_avg_points_per_deck >= 130:
+        summary_lines.append("Die Kampfqualität ist solide, hat aber noch Luft nach oben.")
+    else:
+        summary_lines.append("Die Kämpfe bringen aktuell zu wenig Ertrag pro Deck.")
+
+    if teamplay_state == "kritisch":
+        summary_lines.append("Beim Spenden und Unterstützen im Clan ist gerade noch Luft nach oben.")
+    elif teamplay_state == "okay":
+        summary_lines.append("Beim Teamplay ist schon was da, aber noch nicht jeder zieht mit.")
+    else:
+        summary_lines.append("Auch beim Teamplay wirkt der Clan im Moment sehr geschlossen.")
+
+    weekly_summary_html = "<div class='info-box' style='border-left-color: #fbbf24;'><h3 style='margin-top:0; color:#fbbf24;'>🧭 Wochenfazit</h3><ul style='margin:0;'>" + "".join([f"<li>{line}</li>" for line in summary_lines]) + "</ul></div>"
+
+    coach_candidates = [
+        p for p in aktive_spieler
+        if (p["teilnahme_int"] <= APP_CONFIG["MIN_PARTICIPATION"] and p["score"] < 100)
+        or (p["current_decks"] > 0 and p["fame_per_deck"] < APP_CONFIG["DROPPER_THRESHOLD"])
+        or (p["score"] < 80 and not p["is_urlaub"])
+    ]
+    coach_candidates = sorted(coach_candidates, key=lambda p: (p["score"], p["fame_per_deck"]))[:4]
+
+    coach_items = []
+    for p in coach_candidates:
+        if p["current_decks"] > 0 and p["fame_per_deck"] < APP_CONFIG["DROPPER_THRESHOLD"]:
+            hint = "Bitte normale Kämpfe statt Bootsangriffe spielen und Decks sauber ausnutzen."
+        elif p["teilnahme_int"] <= APP_CONFIG["MIN_PARTICIPATION"]:
+            hint = "Noch in der Kennenlernphase. Ein einfaches Deck aus der Einsteiger-Sektion könnte gut passen."
+        else:
+            hint = "Mehr Konstanz im Krieg würde dich schnell nach vorne bringen."
+        coach_items.append(f"<li><b>{p['name']}</b>: {hint}</li>")
+
+    coach_html = ""
+    if coach_items:
+        coach_html = "<div class='info-box' style='border-left-color: #10b981;'><h3 style='margin-top:0; color:#10b981;'>🧠 Coach-Ecke</h3><p style='margin-top:0;'>Ein paar schnelle Hinweise für Leute, die mit einem kleinen Push direkt mehr rausholen könnten:</p><ul style='margin-bottom:0;'>" + "".join(coach_items) + "</ul></div>"
 
     kandidaten_demote = strikes_data.get("demoted_this_week", [])
     kandidaten_kick = strikes_data.get("kicked_this_week", [])
@@ -1578,7 +1695,7 @@ def generate_html_report(
 
                 table_html += (
                     f"<tr>"
-                    f"<td class='name-col'>{p['name']}{p['welpenschutz_badge']}{p['streak_badge']}{p['strike_badge']}</td>"
+                    f"<td class='name-col'>{p['name']}{p['welpenschutz_badge']}{p['streak_badge']}{p['strike_badge']}{p['focus_badge']}</td>"
                     f"<td>{p['status']}</td>"
                     f"<td><b>{p['score']}%</b></td>"
                     f"<td class='trend-cell'>{p['trend_str']}</td>"
@@ -1605,6 +1722,9 @@ def generate_html_report(
         hype_balken_html=hype_balken_html,
         radar_html=radar_html,
         mahnwache_html=mahnwache_html,
+        clan_ampel_html=clan_ampel_html,
+        weekly_summary_html=weekly_summary_html,
+        coach_html=coach_html,
         clan_avg=clan_avg,
         clan_avg_points_per_deck=clan_avg_points_per_deck,
         top_performers=top_performers_html,
