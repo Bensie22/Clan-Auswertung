@@ -1298,6 +1298,7 @@ def generate_html_report(
             "donations_received": donations_received,
             "tier": tier,
             "is_urlaub": is_urlaub,
+            "is_welpenschutz": is_welpenschutz,
             "trend_str": trend_str,
             "fame_per_deck": fame_per_deck,
             "leecher_warnung": leecher_warnung,
