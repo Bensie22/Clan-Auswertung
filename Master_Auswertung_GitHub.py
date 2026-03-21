@@ -479,6 +479,32 @@ def get_signal_state(value: float, green_min: float, yellow_min: float) -> tuple
     return "kritisch", "#ef4444"
 
 
+def calculate_teamplay_score(active_players: list[dict]) -> tuple[int, dict]:
+    total_players = len(active_players)
+    if total_players == 0:
+        return 0, {"donors": 0, "leecher": 0, "sleeper": 0, "donor_share": 0}
+
+    donors = sum(1 for p in active_players if p["donations"] > 0)
+    leecher = sum(
+        1
+        for p in active_players
+        if p["donations"] == 0 and p["donations_received"] > 0 and p["teilnahme_int"] > APP_CONFIG["MIN_PARTICIPATION"]
+    )
+    sleeper = sum(1 for p in active_players if p["donations"] == 0 and p["donations_received"] == 0)
+
+    donor_share = (donors / total_players) * 100
+    leecher_share = (leecher / total_players) * 100
+    sleeper_share = (sleeper / total_players) * 100
+
+    score = round(max(0, min(100, donor_share - (leecher_share * 0.7) - (sleeper_share * 0.3))))
+    return score, {
+        "donors": donors,
+        "leecher": leecher,
+        "sleeper": sleeper,
+        "donor_share": round(donor_share)
+    }
+
+
 def get_player_focus(score: float, fame_per_deck: int, donations: int, is_welpenschutz: bool, current_decks: int) -> tuple[str, str]:
     if is_welpenschutz:
         return "🌱 neu dabei", "#38bdf8"
@@ -708,10 +734,10 @@ def render_html_template(
             .tier-section {{ position: relative; }}
             .tier-title {{ position: sticky; top: 73px; background: rgba(15, 23, 42, 0.98); z-index: 900; margin: 0; padding: 15px 0 10px 0; font-weight: 800; font-size: 1.4em; color: #fbbf24; border-bottom: 2px solid rgba(255,255,255,0.1); }}
             table {{ width: 100%; table-layout: fixed; border-collapse: collapse; background: rgba(15, 23, 42, 0.9); border-radius: 8px; margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.1); }}
-            th:nth-child(1) {{ width: 20%; }} th:nth-child(2) {{ width: 14%; }} th:nth-child(3) {{ width: 8%; text-align: center; }} th:nth-child(4) {{ width: 12%; text-align: center; }} th:nth-child(5) {{ width: 10%; text-align: center; }} th:nth-child(6) {{ width: 10%; text-align: center; }} th:nth-child(7) {{ width: 13%; text-align: center; }} th:nth-child(8) {{ width: 13%; text-align: center; }}
+            th:nth-child(1) {{ width: 22%; }} th:nth-child(2) {{ width: 14%; }} th:nth-child(3) {{ width: 9%; text-align: center; }} th:nth-child(4) {{ width: 13%; text-align: center; }} th:nth-child(5) {{ width: 12%; text-align: center; }} th:nth-child(6) {{ width: 14%; text-align: center; }} th:nth-child(7) {{ width: 16%; text-align: center; }}
             tr:nth-child(odd) {{ background-color: rgba(0, 0, 0, 0.45); }} tr:nth-child(even) {{ background-color: rgba(255, 255, 255, 0.15); }} tr:hover {{ background-color: rgba(255, 255, 255, 0.3); }}
             th, td {{ padding: 14px 10px; text-align: left; word-wrap: break-word; overflow-wrap: break-word; vertical-align: middle; }}
-            td:nth-child(3), td:nth-child(4), td:nth-child(5), td:nth-child(6), td:nth-child(7), td:nth-child(8) {{ text-align: center; }}
+            td:nth-child(3), td:nth-child(4), td:nth-child(5), td:nth-child(6), td:nth-child(7) {{ text-align: center; }}
 
             th {{ position: sticky; top: 128px; background-color: #0f172a; color: #94a3b8; z-index: 800; font-weight: 600; font-size: 0.9em; border-bottom: 1px solid rgba(255,255,255,0.1); line-height: 1.4; box-shadow: 0 4px 5px rgba(0,0,0,0.3); }}
             td {{ border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-size: 1.05em; }}
@@ -864,9 +890,9 @@ def render_html_template(
                     <p>Damit nicht eine einzige schlechte Woche sofort zum Rauswurf führt, hat unsere Auswertung ein faires Langzeit-Gedächtnis. Wer sich nicht abmeldet und im Clankrieg dauerhaft zu wenig liefert (Score unter 50%), sammelt im Hintergrund unsichtbare Verwarnungen (❌).</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Teilnahmen</th><th>Kriegspunkte</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler A <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td>Ältester</td><td><b>49.38%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#cbd5e1;'>179</td><td>10/10</td><td>1250</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>303</span></td></tr>
-                            <tr><td class='name-col'>Spieler B <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td>Mitglied</td><td><b>34.38%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#cbd5e1;'>100 ⚠️</td><td>4/10</td><td>800</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> 💤</td></tr>
+                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
+                            <tr><td class='name-col'>Spieler A <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td>Ältester</td><td><b>49.38%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#cbd5e1;'>179</td><td>10/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>303</span></td></tr>
+                            <tr><td class='name-col'>Spieler B <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td>Mitglied</td><td><b>34.38%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#cbd5e1;'>100 ⚠️</td><td>4/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> 💤</td></tr>
                         </table>
                     </div>
                     <ul>
@@ -882,9 +908,9 @@ def render_html_template(
                     Stell dir vor, du hast für jedes Kriegswochenende 16 "Tickets" (4 Tage × 4 Decks). Der Score zeigt einfach, wie viele deiner verfügbaren Tickets du auch wirklich genutzt hast.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Teilnahmen</th><th>Kriegspunkte</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler C <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥 4</span></td><td>Vize</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>131</td><td>10/10</td><td>2100</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>146</span></td></tr>
-                            <tr><td class='name-col'>Spieler D <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td>Mitglied</td><td><b>6.25%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#cbd5e1;'>200</td><td>2/10</td><td>200</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span></td></tr>
+                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
+                            <tr><td class='name-col'>Spieler C <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥 4</span></td><td>Vize</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>131</td><td>10/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>146</span></td></tr>
+                            <tr><td class='name-col'>Spieler D <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td>Mitglied</td><td><b>6.25%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#cbd5e1;'>200</td><td>2/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span></td></tr>
                         </table>
                     </div>
                     <ul>
@@ -899,9 +925,9 @@ def render_html_template(
                     <p>Die Ampel-Punkte zeigen deine Leistung (deinen Score) der letzten 4 Wochen auf einen Blick. Jeder Punkt steht für eine Woche, wobei der <b>Punkt ganz rechts die aktuellste Auswertung</b> ist.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Teilnahmen</th><th>Kriegspunkte</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler E</td><td>Mitglied</td><td><b>45.0%</b></td><td class='trend-cell'>🟢🟢🟡🔴</td><td style='color:#cbd5e1;'>180</td><td>8/10</td><td>1400</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>150</span></td></tr>
-                            <tr><td class='name-col'>Spieler F</td><td>Ältester</td><td><b>90.0%</b></td><td class='trend-cell'>🔴🔴🟢🟢</td><td style='color:#cbd5e1;'>160</td><td>6/10</td><td>900</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>200</span></td></tr>
+                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
+                            <tr><td class='name-col'>Spieler E</td><td>Mitglied</td><td><b>45.0%</b></td><td class='trend-cell'>🟢🟢🟡🔴</td><td style='color:#cbd5e1;'>180</td><td>8/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>150</span></td></tr>
+                            <tr><td class='name-col'>Spieler F</td><td>Ältester</td><td><b>90.0%</b></td><td class='trend-cell'>🔴🔴🟢🟢</td><td style='color:#cbd5e1;'>160</td><td>6/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>200</span></td></tr>
                         </table>
                     </div>
                     <ul>
@@ -917,8 +943,8 @@ def render_html_template(
                     <p>Hier schauen wir, wie effektiv du deine Decks einsetzt. Das System teilt deine gesammelten Kriegspunkte durch die Anzahl deiner gespielten Decks.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Teilnahmen</th><th>Kriegspunkte</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler J <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td>Ältester</td><td><b>27.34%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#cbd5e1;'>100 <span class='custom-tooltip'>⚠️</span></td><td>8/10</td><td>100</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>72</span></td></tr>
+                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
+                            <tr><td class='name-col'>Spieler J <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td>Ältester</td><td><b>27.34%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#cbd5e1;'>100 <span class='custom-tooltip'>⚠️</span></td><td>8/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>72</span></td></tr>
                         </table>
                     </div>
                     <ul>
@@ -932,9 +958,9 @@ def render_html_template(
                     <p>Ein starker Clan hilft sich gegenseitig beim Leveln der Karten. Wir haben das Auge auf zwei Problemfälle:</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Teilnahmen</th><th>Kriegspunkte</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler K</td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>200</td><td>10/10</td><td>2000</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>🧛</span></td></tr>
-                            <tr><td class='name-col'>Spieler L</td><td>Mitglied</td><td><b>50.0%</b></td><td class='trend-cell'>🟡🟡🟡🟡</td><td style='color:#cbd5e1;'>150</td><td>5/10</td><td>1000</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>💤</span></td></tr>
+                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
+                            <tr><td class='name-col'>Spieler K</td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>200</td><td>10/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>🧛</span></td></tr>
+                            <tr><td class='name-col'>Spieler L</td><td>Mitglied</td><td><b>50.0%</b></td><td class='trend-cell'>🟡🟡🟡🟡</td><td style='color:#cbd5e1;'>150</td><td>5/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>💤</span></td></tr>
                         </table>
                     </div>
                     <ul>
@@ -943,14 +969,14 @@ def render_html_template(
                     </ul>
                 </div>
 
-                <button class="accordion-btn">⚔️ Teilnahmen (Deine Clan-Treue)</button>
+                <button class="accordion-btn">⚔️ Aktive Kriege (Deine Clan-Treue)</button>
                 <div class="accordion-content">
-                    <p>Gibt an, in wie vielen der letzten 10 Clankriege du mindestens ein Deck gespielt hast.</p>
+                    <p>Zeigt, in wie vielen der letzten 10 Clankriege du wirklich aktiv warst, also mindestens ein Deck gespielt hast.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Teilnahmen</th><th>Kriegspunkte</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler M</td><td>Vize</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>200</td><td>10/10</td><td>2000</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>100</span></td></tr>
-                            <tr><td class='name-col'>Spieler N <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>200</td><td>2/10</td><td>400</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>50</span></td></tr>
+                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
+                            <tr><td class='name-col'>Spieler M</td><td>Vize</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>200</td><td>10/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>100</span></td></tr>
+                            <tr><td class='name-col'>Spieler N <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>200</td><td>2/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>50</span></td></tr>
                         </table>
                     </div>
                     <ul>
@@ -961,15 +987,15 @@ def render_html_template(
 
                 <button class="accordion-btn">🏅 Kriegspunkte (Deine Gesamtleistung)</button>
                 <div class="accordion-content">
-                    <p>Die Kriegspunkte sind dein <b>Gesamtkonto</b> aus den geladenen Kriegen. Während <b>Teilnahmen</b> nur zeigt, <b>wie oft</b> du in den letzten 10 Kriegen mitgemacht hast (zum Beispiel <b>6/10</b>), zeigen die <b>Kriegspunkte</b>, <b>wie viele Punkte du dabei insgesamt gesammelt</b> hast.</p>
+                    <p>Die Kriegspunkte sind dein <b>Gesamtkonto</b> aus den geladenen Kriegen. Während <b>Aktive Kriege</b> nur zeigt, <b>wie oft</b> du in den letzten 10 Kriegen mitgemacht hast (zum Beispiel <b>6/10</b>), zeigen die <b>Kriegspunkte</b>, <b>wie viele Punkte du dabei insgesamt gesammelt</b> hast.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Teilnahmen</th><th>Kriegspunkte</th><th>🃏 Spenden</th></tr>
+                            <tr><th>Spieler</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>Kriegspunkte</th><th>🃏 Spenden</th></tr>
                             <tr><td class='name-col'>Spieler O</td><td>Mitglied</td><td><b>75.0%</b></td><td class='trend-cell'>🟡🟢🟡🟢</td><td style='color:#cbd5e1;'>160</td><td>6/10</td><td>1850</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>120</span></td></tr>
                         </table>
                     </div>
                     <ul>
-                        <li><b>Beispiel:</b> Zwei Spieler können beide bei <b>6/10 Teilnahmen</b> stehen. Wer dort <b>1850 Kriegspunkte</b> hat, hat dem Clan insgesamt deutlich mehr gebracht als jemand mit nur <b>900</b>.</li>
+                        <li><b>Beispiel:</b> Zwei Spieler können beide bei <b>6/10 aktiven Kriegen</b> stehen. Wer dort <b>1850 Kriegspunkte</b> hat, hat dem Clan insgesamt deutlich mehr gebracht als jemand mit nur <b>900</b>.</li>
                         <li><b>Wichtig:</b> Kriegspunkte sind eine <b>Mengen-Anzeige</b>. Für die Qualität pro gespieltem Deck ist weiter der Wert <b>Ø Punkte</b> zuständig.</li>
                     </ul>
                 </div>
@@ -1300,7 +1326,7 @@ def generate_html_report(
     clan_total_fame = sum(p["fame"] for p in aktive_spieler if p["current_decks"] > 0)
     clan_total_decks = sum(p["current_decks"] for p in aktive_spieler if p["current_decks"] > 0)
     clan_avg_points_per_deck = round(clan_total_fame / clan_total_decks) if clan_total_decks > 0 else 0
-    clan_teamplay = round((sum(1 for p in aktive_spieler if p["donations"] > 0) / len(aktive_spieler)) * 100) if aktive_spieler else 0
+    clan_teamplay, teamplay_details = calculate_teamplay_score(aktive_spieler)
 
     # --- HISTORIE CLEANUP (Nur aktive behalten & max. die letzten 6 Wochen) ---
     aktive_namen_set = set(df_active["player_name"].tolist())
@@ -1338,23 +1364,26 @@ def generate_html_report(
 
     reliability_state, reliability_color = get_signal_state(clan_avg, 85, 70)
     quality_state, quality_color = get_signal_state(clan_avg_points_per_deck, 160, 130)
-    teamplay_state, teamplay_color = get_signal_state(clan_teamplay, 65, 40)
+    teamplay_state, teamplay_color = get_signal_state(clan_teamplay, 60, 35)
 
     clan_ampel_html = f"""
     <div class='signal-board'>
         <div class='signal-card'>
             <h4>📈 Zuverlässigkeit</h4>
-            <div class='signal-value' style='color:{reliability_color};'>{clan_avg}%</div>
+            <div class='signal-value' style='color:{reliability_color};'>{reliability_state.upper()}</div>
+            <div style='color:#94a3b8; font-size:0.92em;'>Bewertung des Clan-Durchschnitts</div>
             <div class='signal-state' style='color:{reliability_color};'>{reliability_state.upper()}</div>
         </div>
         <div class='signal-card'>
             <h4>⚔️ Kampfqualität</h4>
-            <div class='signal-value' style='color:{quality_color};'>{clan_avg_points_per_deck}</div>
+            <div class='signal-value' style='color:{quality_color};'>{quality_state.upper()}</div>
+            <div style='color:#94a3b8; font-size:0.92em;'>Bewertung der Punkte pro Deck</div>
             <div class='signal-state' style='color:{quality_color};'>{quality_state.upper()}</div>
         </div>
         <div class='signal-card'>
             <h4>🤝 Teamplay</h4>
-            <div class='signal-value' style='color:{teamplay_color};'>{clan_teamplay}%</div>
+            <div class='signal-value' style='color:{teamplay_color};'>{teamplay_state.upper()}</div>
+            <div style='color:#94a3b8; font-size:0.92em;'>{teamplay_details['donors']} von {len(aktive_spieler)} Aktiven spenden mit</div>
             <div class='signal-state' style='color:{teamplay_color};'>{teamplay_state.upper()}</div>
         </div>
     </div>
@@ -1384,27 +1413,30 @@ def generate_html_report(
 
     weekly_summary_html = "<div class='info-box' style='border-left-color: #fbbf24;'><h3 style='margin-top:0; color:#fbbf24;'>🧭 Wochenfazit</h3><ul style='margin:0;'>" + "".join([f"<li>{line}</li>" for line in summary_lines]) + "</ul></div>"
 
-    coach_candidates = [
-        p for p in aktive_spieler
-        if (p["teilnahme_int"] <= APP_CONFIG["MIN_PARTICIPATION"] and p["score"] < 100)
-        or (p["current_decks"] > 0 and p["fame_per_deck"] < APP_CONFIG["DROPPER_THRESHOLD"])
-        or (p["score"] < 80 and not p["is_urlaub"])
-    ]
-    coach_candidates = sorted(coach_candidates, key=lambda p: (p["score"], p["fame_per_deck"]))[:4]
+    aktive_namen_set = set(df_active["player_name"].tolist())
+    preliminary_open_decks = sum(
+        m["offen"]
+        for m in raw_mahnwache
+        if m["name"] not in urlauber_liste and m["name"] in aktive_namen_set
+    )
 
     coach_items = []
-    for p in coach_candidates:
-        if p["current_decks"] > 0 and p["fame_per_deck"] < APP_CONFIG["DROPPER_THRESHOLD"]:
-            hint = "Bitte normale Kämpfe statt Bootsangriffe spielen und Decks sauber ausnutzen."
-        elif p["teilnahme_int"] <= APP_CONFIG["MIN_PARTICIPATION"]:
-            hint = "Noch in der Kennenlernphase. Ein einfaches Deck aus der Einsteiger-Sektion könnte gut passen."
-        else:
-            hint = "Mehr Konstanz im Krieg würde dich schnell nach vorne bringen."
-        coach_items.append(f"<li><b>{p['name']}</b>: {hint}</li>")
+    low_quality_count = sum(1 for p in aktive_spieler if p["current_decks"] > 0 and p["fame_per_deck"] < APP_CONFIG["DROPPER_THRESHOLD"])
+    low_score_count = sum(1 for p in aktive_spieler if p["score"] < 80)
+    newbie_count = sum(1 for p in aktive_spieler if p["is_welpenschutz"])
+
+    if preliminary_open_decks > 0:
+        coach_items.append(f"<li><b>Offene Decks zuerst dicht machen:</b> Heute sind noch <b>{preliminary_open_decks}</b> Decks offen. Konstanz bringt uns im Moment am schnellsten nach vorne.</li>")
+    if low_quality_count > 0:
+        coach_items.append(f"<li><b>Kämpfe sauber ausspielen:</b> Bei <b>{low_quality_count}</b> Spielern liegt der Ø-Wert unter {APP_CONFIG['DROPPER_THRESHOLD']}. Lieber normale Kämpfe als Bootsangriffe verschwenden.</li>")
+    if teamplay_details["leecher"] > 0 or teamplay_details["sleeper"] > 0:
+        coach_items.append(f"<li><b>Mehr Teamplay hilft sofort:</b> Aktuell haben wir <b>{teamplay_details['leecher']}</b> Leecher und <b>{teamplay_details['sleeper']}</b> Schläfer. Ein paar Spenden mehr machen den Clan direkt runder.</li>")
+    if newbie_count > 0 or low_score_count > 0:
+        coach_items.append("<li><b>Einfach statt fancy:</b> Für unsichere Spieler bringen die Einsteiger-Decks oft mehr als komplizierte Spezialdecks. Erst sicher spielen, dann experimentieren.</li>")
 
     coach_html = ""
     if coach_items:
-        coach_html = "<div class='info-box' style='border-left-color: #10b981;'><h3 style='margin-top:0; color:#10b981;'>🧠 Coach-Ecke</h3><p style='margin-top:0;'>Ein paar schnelle Hinweise für Leute, die mit einem kleinen Push direkt mehr rausholen könnten:</p><ul style='margin-bottom:0;'>" + "".join(coach_items) + "</ul></div>"
+        coach_html = "<div class='info-box' style='border-left-color: #10b981;'><h3 style='margin-top:0; color:#10b981;'>🧠 Coach-Ecke</h3><p style='margin-top:0;'>Ein paar einfache Wochen-Hinweise, mit denen wir als Clan direkt mehr rausholen können:</p><ul style='margin-bottom:0;'>" + "".join(coach_items[:4]) + "</ul></div>"
 
     kandidaten_demote = strikes_data.get("demoted_this_week", [])
     kandidaten_kick = strikes_data.get("kicked_this_week", [])
@@ -1451,9 +1483,17 @@ def generate_html_report(
     if ist_kampftag:
         aktive_namen_list = df_active["player_name"].tolist()
         gefilterte_mahnwache = []
+        mahnwache_colors = ["#7dd3fc", "#fdba74"]
+        mahnwache_idx = 0
         for m in raw_mahnwache:
             if m["name"] not in urlauber_liste and m["name"] in aktive_namen_list:
-                gefilterte_mahnwache.append(f"<b>{m['name']}</b> ({m['offen']} offen)")
+                name_color = mahnwache_colors[mahnwache_idx % len(mahnwache_colors)]
+                offen_color = "#fca5a5" if m["offen"] >= 3 else "#fde68a" if m["offen"] == 2 else "#86efac"
+                gefilterte_mahnwache.append(
+                    f"<span style='color:{name_color}; font-weight:800;'>{m['name']}</span> "
+                    f"<span style='color:{offen_color};'>({m['offen']} offen)</span>"
+                )
+                mahnwache_idx += 1
                 total_open_decks += m["offen"]
 
         if gefilterte_mahnwache:
@@ -1676,8 +1716,7 @@ def generate_html_report(
                     <th>Score</th>
                     <th>Trend</th>
                     <th>Ø Punkte</th>
-                    <th>Teilnahmen</th>
-                    <th>Kriegspunkte</th>
+                    <th>Aktive Kriege</th>
                     <th>🃏 Spenden</th>
                 </tr>
                 </thead>
@@ -1701,7 +1740,6 @@ def generate_html_report(
                     f"<td class='trend-cell'>{p['trend_str']}</td>"
                     f"<td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td>"
                     f"<td>{p['teilnahme']}</td>"
-                    f"<td>{p['war_points_total']}</td>"
                     f"<td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td>"
                     f"</tr>"
                 )
