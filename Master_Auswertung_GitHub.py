@@ -895,9 +895,9 @@ def render_html_template(
                         </table>
                     </div>
                     <ul>
-                        <li><b>Die zweite Chance (Degradierung):</b> Wer als <i>Anführer</i>, <i>Vize</i> oder <i>Ältester</i> 3 Verwarnungen ansammelt, wird nicht sofort entfernt, sondern genau <b>eine Rang-Stufe tiefer</b> gesetzt und bekommt so eine letzte Bewährungschance.</li>
-                        <li><b>Die letzte Stufe:</b> Wenn ein normales <i>Mitglied</i> (wie <b>Spieler B</b> oben) 3 Verwarnungen erreicht, trennen wir uns. So bleibt Platz für verlässliche, aktive Spieler.</li>
-                        <li><b>Wieder ins Gleichgewicht kommen:</b> Wer nach einer Verwarnung wieder anzieht und in der Folgewoche über 50% Score holt, baut seine negativen Einträge automatisch wieder ab.</li>
+                        <li><b>Die zweite Chance (Degradierung):</b> Wer als <i>Anführer</i>, <i>Vize</i> oder <i>Ältester</i> 3 interne Hinweise ansammelt, wird nicht sofort entfernt, sondern genau <b>eine Rang-Stufe tiefer</b> gesetzt und bekommt so eine letzte Bewährungschance.</li>
+                        <li><b>Die letzte Stufe:</b> Wenn ein normales <i>Mitglied</i> (wie <b>Spieler B</b> oben) 3 interne Hinweise erreicht, trennen wir uns. So bleibt Platz für verlässliche, aktive Spieler.</li>
+                        <li><b>Wieder ins Gleichgewicht kommen:</b> Wer nach einem internen Hinweis wieder anzieht und in der Folgewoche über 50% Score holt, baut diese Einträge automatisch wieder ab.</li>
                     </ul>
                 </div>
 
