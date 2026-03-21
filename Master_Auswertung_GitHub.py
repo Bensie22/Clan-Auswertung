@@ -600,6 +600,7 @@ def render_html_template(
     radar_html,
     mahnwache_html,
     clan_avg,
+    clan_avg_points_per_deck,
     top_performers,
     top_spender,
     pusher_html,
@@ -742,6 +743,10 @@ def render_html_template(
                     <div class="card avg">
                         <h3>📈 Clan-Durchschnitt</h3>
                         <h1>{clan_avg}%</h1>
+                    </div>
+                    <div class="card avg">
+                        <h3>⚔️ Clan-Ø Punkte</h3>
+                        <h1>{clan_avg_points_per_deck}</h1>
                     </div>
                     <div class="card top">
                         <h3>🏆 Top 3 Performer</h3>
@@ -933,11 +938,14 @@ def render_html_template(
                     </ul>
                 </div>
 
-                <button class="accordion-btn">📊 Der Clan-Durchschnitt</button>
+                <button class="accordion-btn">📊 Clan-Durchschnitt & ⚔️ Clan-Ø Punkte</button>
                 <div class="accordion-content">
-                    <p>Das ist quasi der "Notendurchschnitt" unserer Klasse. Wir addieren alle Scores und teilen sie durch die Anzahl der aktiven Mitglieder.</p>
+                    <p>In der Übersicht seht ihr zwei Clan-Werte, die bewusst unterschiedliche Dinge messen:</p>
                     <ul>
-                        <li><b>Die Urlaubs-Regel:</b> Wenn jemand offiziell im Urlaub (🏖️) ist und pausiert, wird er aus dieser Rechnung komplett herausgenommen.</li>
+                        <li><b>📈 Clan-Durchschnitt:</b> Das ist der Durchschnitt aller <b>Score</b>-Werte der aktiven Mitglieder. Er zeigt also, wie zuverlässig der Clan seine verfügbaren Kriegs-Decks insgesamt nutzt.</li>
+                        <li><b>⚔️ Clan-Ø Punkte:</b> Dieser Wert teilt die <b>gesamten aktuellen Kriegspunkte</b> des Clans durch die <b>gesamt gespielten Decks</b> der aktiven Mitglieder. Er zeigt also, wie stark der Clan pro eingesetztem Deck kämpft.</li>
+                        <li><b>Unterschied:</b> Ein hoher Clan-Durchschnitt heißt, dass viele Leute ihre Decks spielen. Ein hoher Clan-Ø Punkte heißt, dass diese Decks auch qualitativ gute Punkte holen. Beides zusammen ist ideal.</li>
+                        <li><b>Die Urlaubs-Regel:</b> Wenn jemand offiziell im Urlaub (🏖️) ist und pausiert, wird er aus beiden Clan-Werten komplett herausgenommen.</li>
                     </ul>
                 </div>
             </div>
@@ -1211,6 +1219,7 @@ def generate_html_report(
             "teilnahme": f"{wars_with_participation}/{wars_in_history_window}",
             "teilnahme_int": wars_with_participation,
             "fame": aktueller_fame,
+            "current_decks": aktueller_decks,
             "war_points_total": total_war_points,
             "donations": donations,
             "donations_received": donations_received,
@@ -1240,6 +1249,9 @@ def generate_html_report(
 
     aktive_spieler = [p for p in player_stats if not p["is_urlaub"]]
     clan_avg = round(sum([p["score"] for p in aktive_spieler]) / len(aktive_spieler), 2) if aktive_spieler else 0
+    clan_total_fame = sum(p["fame"] for p in aktive_spieler if p["current_decks"] > 0)
+    clan_total_decks = sum(p["current_decks"] for p in aktive_spieler if p["current_decks"] > 0)
+    clan_avg_points_per_deck = round(clan_total_fame / clan_total_decks) if clan_total_decks > 0 else 0
 
     # --- HISTORIE CLEANUP (Nur aktive behalten & max. die letzten 6 Wochen) ---
     aktive_namen_set = set(df_active["player_name"].tolist())
@@ -1592,6 +1604,7 @@ def generate_html_report(
         radar_html=radar_html,
         mahnwache_html=mahnwache_html,
         clan_avg=clan_avg,
+        clan_avg_points_per_deck=clan_avg_points_per_deck,
         top_performers=top_performers_html,
         top_spender=top_spender_html,
         pusher_html=pusher_html,
