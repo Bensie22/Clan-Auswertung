@@ -738,17 +738,25 @@ def render_html_template(
             .tier-section {{ position: relative; }}
             .tier-title {{ position: sticky; top: 73px; background: rgba(15, 23, 42, 0.98); z-index: 900; margin: 0; padding: 15px 0 10px 0; font-weight: 800; font-size: 1.4em; color: #fbbf24; border-bottom: 2px solid rgba(255,255,255,0.1); }}
             table {{ width: 100%; table-layout: fixed; border-collapse: collapse; background: rgba(15, 23, 42, 0.9); border-radius: 8px; margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.1); }}
-            th:nth-child(1) {{ width: 21%; }} th:nth-child(2) {{ width: 12%; text-align: center; }} th:nth-child(3) {{ width: 13%; }} th:nth-child(4) {{ width: 9%; text-align: center; }} th:nth-child(5) {{ width: 13%; text-align: center; }} th:nth-child(6) {{ width: 11%; text-align: center; }} th:nth-child(7) {{ width: 11%; text-align: center; }} th:nth-child(8) {{ width: 10%; text-align: center; }}
+            th:nth-child(1) {{ width: 20%; }}
+            th:nth-child(2) {{ width: 16%; text-align: center; }}
+            th:nth-child(3) {{ width: 14%; }}
+            th:nth-child(4) {{ width: 8%; text-align: center; }}
+            th:nth-child(5) {{ width: 11%; text-align: center; }}
+            th:nth-child(6) {{ width: 10%; text-align: center; }}
+            th:nth-child(7) {{ width: 11%; text-align: center; }}
+            th:nth-child(8) {{ width: 10%; text-align: center; }}
             tr:nth-child(odd) {{ background-color: rgba(0, 0, 0, 0.45); }} tr:nth-child(even) {{ background-color: rgba(255, 255, 255, 0.15); }} tr:hover {{ background-color: rgba(255, 255, 255, 0.3); }}
             th, td {{ padding: 14px 10px; text-align: left; word-wrap: break-word; overflow-wrap: break-word; vertical-align: middle; }}
             td:nth-child(2), td:nth-child(4), td:nth-child(5), td:nth-child(6), td:nth-child(7), td:nth-child(8) {{ text-align: center; }}
+            th:nth-child(3), td:nth-child(3) {{ white-space: nowrap; }}
 
             th {{ position: sticky; top: 128px; background-color: #0f172a; color: #94a3b8; z-index: 800; font-weight: 600; font-size: 0.9em; border-bottom: 1px solid rgba(255,255,255,0.1); line-height: 1.4; box-shadow: 0 4px 5px rgba(0,0,0,0.3); }}
             td {{ border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-size: 1.05em; }}
 
             .badge-ja {{ background-color: #10b981; color: #ffffff; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 0.8em; margin-left: 8px; }}
             .name-col {{ font-weight: 800; color: #ffffff; }}
-            .focus-pill {{ display: inline-flex; align-items: center; justify-content: center; min-width: 110px; padding: 5px 10px; border-radius: 999px; font-size: 0.8em; font-weight: 800; }}
+            .focus-pill {{ display: inline-flex; align-items: center; justify-content: center; min-width: 104px; padding: 5px 10px; border-radius: 999px; font-size: 0.8em; font-weight: 800; white-space: nowrap; }}
 
             .trend-cell {{ font-size: 16px !important; white-space: nowrap; line-height: 1; }}
 
