@@ -513,9 +513,9 @@ def get_player_focus(score: float, fame_per_deck: int, donations: int, is_welpen
     if score >= 80 and fame_per_deck >= 130:
         return "🛡️ stabil", "#38bdf8"
     if score < APP_CONFIG["STRIKE_THRESHOLD"]:
-        return "⚠️ wacklig", "#f97316"
+        return "⚠️ ausbaufähig", "#f97316"
     if current_decks > 0 and fame_per_deck < APP_CONFIG["DROPPER_THRESHOLD"]:
-        return "👀 beobachten", "#ef4444"
+        return "👀 auffällig", "#ef4444"
     return "🙂 solide", "#94a3b8"
 
 
@@ -838,7 +838,7 @@ def render_html_template(
                         <ul>{top_aufsteiger}</ul>
                     </div>
                     <div class="card leecher">
-                        <h3>🧛 Top 3 Leecher</h3>
+                        <h3>📦 Spenden auffällig</h3>
                         <ul>{top_leecher}</ul>
                     </div>
 
@@ -860,8 +860,8 @@ def render_html_template(
                     <div style="display: flex; flex-wrap: wrap; gap: 15px; color: #cbd5e1;">
                         <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>🌱 Welpenschutz:</b> Neu im Clan (geschützt)</div>
                         <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>❌ 1/3:</b> Verwarnungen (bei 3/3 droht Kick oder Degradierung)</div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>🧛 Vampir:</b> Nimmt Spenden, gibt aber 0</div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>💤 Schläfer:</b> Spendet 0, fordert 0</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>📦 Spenden auffällig:</b> Fordert, spendet aber 0</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>💤 Spenden inaktiv:</b> Spendet 0, fordert 0</div>
                         <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>⚠️ Ø Punkte:</b> Verdacht auf Dropping (&lt;115)</div>
                         <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>🔥 Streak:</b> Mehrere Wochen 100% Score</div>
                     </div>
@@ -890,8 +890,8 @@ def render_html_template(
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler A <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ wacklig</span></td><td>Ältester</td><td><b>49.38%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#cbd5e1;'>179</td><td>10/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>303</span></td></tr>
-                            <tr><td class='name-col'>Spieler B <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ wacklig</span></td><td>Mitglied</td><td><b>34.38%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#cbd5e1;'>100 ⚠️</td><td>4/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> 💤</td></tr>
+                            <tr><td class='name-col'>Spieler A <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Ältester</td><td><b>49.38%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#cbd5e1;'>179</td><td>10/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>303</span></td></tr>
+                            <tr><td class='name-col'>Spieler B <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Mitglied</td><td><b>34.38%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#cbd5e1;'>100 ⚠️</td><td>4/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> 💤</td></tr>
                         </table>
                     </div>
                     <ul>
@@ -925,7 +925,7 @@ def render_html_template(
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler E</td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ wacklig</span></td><td>Mitglied</td><td><b>45.0%</b></td><td class='trend-cell'>🟢🟢🟡🔴</td><td style='color:#cbd5e1;'>180</td><td>8/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>150</span></td></tr>
+                            <tr><td class='name-col'>Spieler E</td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Mitglied</td><td><b>45.0%</b></td><td class='trend-cell'>🟢🟢🟡🔴</td><td style='color:#cbd5e1;'>180</td><td>8/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>150</span></td></tr>
                             <tr><td class='name-col'>Spieler F</td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>🛡️ stabil</span></td><td>Ältester</td><td><b>90.0%</b></td><td class='trend-cell'>🔴🔴🟢🟢</td><td style='color:#cbd5e1;'>160</td><td>6/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>200</span></td></tr>
                         </table>
                     </div>
@@ -946,8 +946,8 @@ def render_html_template(
                             <tr><td class='name-col'>Spieler P</td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'>⭐ stark</span></td><td>Ältester</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>182</td><td>10/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>220</span></td></tr>
                             <tr><td class='name-col'>Spieler Q</td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>🛡️ stabil</span></td><td>Mitglied</td><td><b>86.25%</b></td><td class='trend-cell'>🟢🟢🟡🟢</td><td style='color:#cbd5e1;'>142</td><td>9/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>95</span></td></tr>
                             <tr><td class='name-col'>Spieler R</td><td><span class='focus-pill' style='background:#94a3b822; color:#94a3b8; border:1px solid #94a3b855;'>🙂 solide</span></td><td>Mitglied</td><td><b>73.75%</b></td><td class='trend-cell'>🟡🟡🟡🟢</td><td style='color:#cbd5e1;'>150</td><td>7/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>70</span></td></tr>
-                            <tr><td class='name-col'>Spieler S</td><td><span class='focus-pill' style='background:#ef444422; color:#ef4444; border:1px solid #ef444455;'>👀 beobachten</span></td><td>Mitglied</td><td><b>81.25%</b></td><td class='trend-cell'>🟢🟡🟡🟢</td><td style='color:#cbd5e1;'>102 ⚠️</td><td>9/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>40</span></td></tr>
-                            <tr><td class='name-col'>Spieler T</td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ wacklig</span></td><td>Mitglied</td><td><b>43.75%</b></td><td class='trend-cell'>🔴🔴🟡🔴</td><td style='color:#cbd5e1;'>140</td><td>4/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>30</span></td></tr>
+                            <tr><td class='name-col'>Spieler S</td><td><span class='focus-pill' style='background:#ef444422; color:#ef4444; border:1px solid #ef444455;'>👀 auffällig</span></td><td>Mitglied</td><td><b>81.25%</b></td><td class='trend-cell'>🟢🟡🟡🟢</td><td style='color:#cbd5e1;'>102 ⚠️</td><td>9/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>40</span></td></tr>
+                            <tr><td class='name-col'>Spieler T</td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Mitglied</td><td><b>43.75%</b></td><td class='trend-cell'>🔴🔴🟡🔴</td><td style='color:#cbd5e1;'>140</td><td>4/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>30</span></td></tr>
                             <tr><td class='name-col'>Spieler U <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>neu dabei</span></td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>170</td><td>2/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>35</span></td></tr>
                         </table>
                     </div>
@@ -955,8 +955,8 @@ def render_html_template(
                         <li><b>⭐ stark:</b> Sehr verlässlich und gleichzeitig stark bei den Punkten pro Deck.</li>
                         <li><b>🛡️ stabil:</b> Gute, solide Leistung ohne große Schwächen. Genau solche Spieler tragen einen Clan langfristig.</li>
                         <li><b>🙂 solide:</b> Nicht auffällig schlecht, aber auch noch nicht ganz oben. Hier ist noch Luft nach oben.</li>
-                        <li><b>👀 beobachten:</b> Die Teilnahme kann okay sein, aber die Punkte pro Deck sind auffällig schwach. Hier lohnt ein genauerer Blick.</li>
-                        <li><b>⚠️ wacklig:</b> Kritische Teilnahme. Diese Spieler liegen beim Score schon im Problem-Bereich.</li>
+                        <li><b>👀 auffällig:</b> Die Teilnahme kann okay sein, aber die Punkte pro Deck sind auffällig schwach. Hier lohnt ein genauerer Blick.</li>
+                        <li><b>⚠️ ausbaufähig:</b> Die Teilnahme ist im Moment klar verbesserungswürdig. Diese Spieler liegen beim Score schon im unteren Bereich.</li>
                         <li><b>neu dabei:</b> Spieler ist noch im Welpenschutz. Deshalb wird hier noch keine harte Leistungsbewertung angesetzt.</li>
                     </ul>
                 </div>
@@ -967,7 +967,7 @@ def render_html_template(
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler J <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ wacklig</span></td><td>Ältester</td><td><b>27.34%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#cbd5e1;'>100 <span class='custom-tooltip'>⚠️</span></td><td>8/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>72</span></td></tr>
+                            <tr><td class='name-col'>Spieler J <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Ältester</td><td><b>27.34%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#cbd5e1;'>100 <span class='custom-tooltip'>⚠️</span></td><td>8/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>72</span></td></tr>
                         </table>
                     </div>
                     <ul>
@@ -987,8 +987,8 @@ def render_html_template(
                         </table>
                     </div>
                     <ul>
-                        <li><b>🧛 Der Vampir-Leecher:</b> Jemand, der ständig Karten anfordert, aber selbst 0 Karten spendet.</li>
-                        <li><b>💤 Der Schläfer:</b> Jemand, der weder spendet noch etwas anfordert.</li>
+                        <li><b>📦 Spenden auffällig:</b> Jemand fordert regelmäßig Karten an, spendet aber selbst nichts zurück.</li>
+                        <li><b>💤 Spenden inaktiv:</b> Jemand spendet nicht und fordert auch nichts an.</li>
                     </ul>
                 </div>
 
@@ -1388,7 +1388,7 @@ def generate_html_report(
     top_performers_html = "".join([f"<li><b>{p['name']}</b> ({p['score']}%)</li>" for p in top_performers_list])
     top_aufsteiger_html = "".join([f"<li><b>{p['name']}</b> (+{p['delta']}%)</li>" for p in top_aufsteiger_list]) if top_aufsteiger_list else "<li>Keine Verbesserungen</li>"
     top_spender_html = "".join([f"<li><b>{p['name']}</b> ({p['donations']})</li>" for p in top_spender_list]) if top_spender_list else "<li>Keine Spenden</li>"
-    top_leecher_html = "".join([f"<li><b>{p['name']}</b> ({p['donations']} gesp. / {p['donations_received']} empf.)</li>" for p in top_leecher_list]) if top_leecher_list else "<li>Keine Leecher! 🎉</li>"
+    top_leecher_html = "".join([f"<li><b>{p['name']}</b> ({p['donations']} gesp. / {p['donations_received']} empf.)</li>" for p in top_leecher_list]) if top_leecher_list else "<li>Keine Auffälligkeiten 🎉</li>"
 
     reliability_state, reliability_color = get_signal_state(clan_avg, 85, 70)
     quality_state, quality_color = get_signal_state(clan_avg_points_per_deck, 160, 130)
@@ -1458,7 +1458,7 @@ def generate_html_report(
     if low_quality_count > 0:
         coach_items.append(f"<li><b>Kämpfe sauber ausspielen:</b> Bei <b>{low_quality_count}</b> Spielern liegt der Ø-Wert unter {APP_CONFIG['DROPPER_THRESHOLD']}. Lieber normale Kämpfe als Bootsangriffe verschwenden.</li>")
     if teamplay_details["leecher"] > 0 or teamplay_details["sleeper"] > 0:
-        coach_items.append(f"<li><b>Mehr Teamplay hilft sofort:</b> Aktuell haben wir <b>{teamplay_details['leecher']}</b> Leecher und <b>{teamplay_details['sleeper']}</b> Schläfer. Ein paar Spenden mehr machen den Clan direkt runder.</li>")
+        coach_items.append(f"<li><b>Mehr Teamplay hilft sofort:</b> Aktuell haben wir <b>{teamplay_details['leecher']}</b> Spieler mit auffälligem Spendenverhalten und <b>{teamplay_details['sleeper']}</b> spendeninaktive Spieler. Ein paar Spenden mehr machen den Clan direkt runder.</li>")
     if newbie_count > 0 or low_score_count > 0:
         coach_items.append("<li><b>Einfach statt fancy:</b> Für unsichere Spieler bringen die Einsteiger-Decks oft mehr als komplizierte Spezialdecks. Erst sicher spielen, dann experimentieren.</li>")
 
@@ -1589,11 +1589,11 @@ def generate_html_report(
 
     msg_2_sachlich = f"🃏 Ein Lob an unsere Top-Spender: {top_spender_names}! 🤝" if top_spender_list else "🃏 Kaum Spenden diese Woche. Ein Clan lebt vom Geben UND Nehmen! 🤝"
     if echte_leecher:
-        msg_2_sachlich += f" | 🧛 Spenden-Leecher (nur kassiert): {leecher_names}."
+        msg_2_sachlich += f" | 📦 Spenden auffällig: {leecher_names}."
     msg_2_motiv = f"💚 Wahnsinn, was ihr spendet! Top-Supporter: {top_spender_names}. Danke fürs Karten teilen!" if top_spender_list else "💚 Vergesst das Spenden nicht, Team! Jeder braucht mal Karten."
     msg_2_streng = f"⚠️ Spenden-Check: Danke an {top_spender_names}." if top_spender_list else "⚠️ Null Spenden-Moral diese Woche!"
     if echte_leecher:
-        msg_2_streng += f" Die Leecher-Liste (nehmen ohne geben): {leecher_names}. Das muss besser werden!"
+        msg_2_streng += f" Spenden auffällig: {leecher_names}. Das muss besser werden!"
 
     msg_2_vars = {
         "Sachlich": msg_2_sachlich,
@@ -1754,9 +1754,9 @@ def generate_html_report(
                 spenden_warnung = ""
                 if p["donations"] == 0 and p["teilnahme_int"] > APP_CONFIG["MIN_PARTICIPATION"] and not p["is_urlaub"]:
                     if p["donations_received"] > 0:
-                        spenden_warnung = f" <span class='custom-tooltip' style='font-size: 1.1em;'>🧛<span class='tooltip-text'>Spenden-Leecher (0 gespendet, aber {p['donations_received']} erhalten)</span></span>"
+                        spenden_warnung = f" <span class='custom-tooltip' style='font-size: 1.1em;'>📦<span class='tooltip-text'>Spenden auffällig (0 gespendet, aber {p['donations_received']} erhalten)</span></span>"
                     else:
-                        spenden_warnung = " <span class='custom-tooltip' style='font-size: 1.1em;'>💤<span class='tooltip-text'>Spenden-Inaktiv (0 gespendet, 0 erhalten)</span></span>"
+                        spenden_warnung = " <span class='custom-tooltip' style='font-size: 1.1em;'>💤<span class='tooltip-text'>Spenden inaktiv (0 gespendet, 0 erhalten)</span></span>"
 
                 spenden_zelle = f"<span class='custom-tooltip dotted'>{p['donations']}<span class='tooltip-text'>Gespendet: {p['donations']} | Empfangen: {p['donations_received']}</span></span>"
 
