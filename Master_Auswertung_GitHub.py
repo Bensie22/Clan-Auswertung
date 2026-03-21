@@ -19,8 +19,8 @@ import smtplib
 
 APP_CONFIG = {
     "STRIKE_THRESHOLD": 50,      # Score in %: Unter diesem Wert gibt es eine Verwarnung
-    "DROPPER_THRESHOLD": 115,    # Ø Punkte pro Deck: Unter diesem Wert Warnung wg. Bootsangriff/Aufgabe
-    "MIN_PARTICIPATION": 3       # Welpenschutz: Bis einschließlich 3 Teilnahmen keine Strafen
+    "DROPPER_THRESHOLD": 115,    # Ã˜ Punkte pro Deck: Unter diesem Wert Warnung wg. Bootsangriff/Aufgabe
+    "MIN_PARTICIPATION": 3       # Welpenschutz: Bis einschlieÃŸlich 3 Teilnahmen keine Strafen
 }
 
 DECK_LOOKBACK_DAYS = 30
@@ -54,7 +54,7 @@ HEADER_IMAGE_PATH = BASE_DIR / "clash_pix.jpg"
 
 def fetch_and_build_player_csv() -> Tuple[bool, dict]:
     if not API_TOKEN:
-        print("❌ Fehler: Bitte trage deinen SUPERCELL_API_TOKEN in die GitHub Secrets ein.")
+        print("âŒ Fehler: Bitte trage deinen SUPERCELL_API_TOKEN in die GitHub Secrets ein.")
         return False, {}
 
     headers = {
@@ -67,23 +67,23 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
     members_resp = requests.get(members_url, headers=headers, timeout=30)
 
     if members_resp.status_code != 200:
-        print(f"❌ Fehler beim Abruf der Mitglieder: {members_resp.status_code}")
+        print(f"âŒ Fehler beim Abruf der Mitglieder: {members_resp.status_code}")
         return False, {}
 
-    # --- SPENDEN-GEDÄCHTNIS LOGIK ---
+    # --- SPENDEN-GEDÃ„CHTNIS LOGIK ---
     memory = {}
     if donations_memory_path.exists():
         try:
             with open(donations_memory_path, "r", encoding="utf-8") as f:
                 memory = json.load(f)
         except Exception as e:
-            print(f"⚠️ Gedächtnis konnte nicht geladen werden: {e}")
+            print(f"âš ï¸ GedÃ¤chtnis konnte nicht geladen werden: {e}")
 
     now = datetime.utcnow()
     curr_week = now.isocalendar()[1]
 
     if now.weekday() == 3 and memory.get("last_reset_week") != curr_week:
-        print("🧹 Donnerstag: Spenden-Gedächtnis wird für den neuen Krieg zurückgesetzt.")
+        print("ðŸ§¹ Donnerstag: Spenden-GedÃ¤chtnis wird fÃ¼r den neuen Krieg zurÃ¼ckgesetzt.")
         memory = {"last_reset_week": curr_week, "players": {}}
 
     players_memory = memory.get("players", {})
@@ -121,11 +121,11 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
     log_resp = requests.get(log_url, headers=headers, timeout=30)
 
     if log_resp.status_code != 200:
-        print(f"❌ Fehler beim Abruf des Warlogs: {log_resp.status_code}")
+        print(f"âŒ Fehler beim Abruf des Warlogs: {log_resp.status_code}")
         return False, {}
 
     races = log_resp.json().get("items", [])
-    print(f"✅ {len(races)} Kriege gefunden. Verarbeite Spielerdaten...")
+    print(f"âœ… {len(races)} Kriege gefunden. Verarbeite Spielerdaten...")
 
     players_data = {}
     race_ids = []
@@ -237,14 +237,14 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
             row.extend(row_history)
             writer.writerow(row)
 
-    print(f"✅ Spieler-Daten erfolgreich exportiert nach: {filename}\n")
+    print(f"âœ… Spieler-Daten erfolgreich exportiert nach: {filename}\n")
     return True, current_members
 
 
 # === 2.5 Battlelogs analysieren (Top Decks) ===
 
 def update_top_decks(current_members: dict, top_decks_data: dict) -> dict:
-    print("Schritt 4: Spioniere Battlelogs für Clan-Meta Decks aus (Bitte warten)...")
+    print("Schritt 4: Spioniere Battlelogs fÃ¼r Clan-Meta Decks aus (Bitte warten)...")
     headers = {"Authorization": f"Bearer {API_TOKEN}", "Accept": "application/json"}
 
     metadata = top_decks_data.get("_metadata", {"last_battles": {}})
@@ -377,7 +377,7 @@ def update_top_decks(current_members: dict, top_decks_data: dict) -> dict:
 
     top_decks_data["_metadata"] = metadata
     top_decks_data["decks"] = decks
-    print("✅ Battlelogs erfolgreich gescannt. Top-Decks aktualisiert.\n")
+    print("âœ… Battlelogs erfolgreich gescannt. Top-Decks aktualisiert.\n")
     return top_decks_data
 
 
@@ -410,7 +410,7 @@ def is_beginner_friendly_deck(cards: list) -> bool:
         return False
 
     archetype = get_deck_archetype(cards)
-    return archetype in {"🛡️ Schwerer Angriff (Beatdown)", "⚡ Schneller Angriff (Rush/Spam)", "⚔️ Hybrid / Allrounder"}
+    return archetype in {"ðŸ›¡ï¸ Schwerer Angriff (Beatdown)", "âš¡ Schneller Angriff (Rush/Spam)", "âš”ï¸ Hybrid / Allrounder"}
 
 
 def build_deck_sections(top_decks_data: dict) -> list:
@@ -454,18 +454,18 @@ def build_deck_sections(top_decks_data: dict) -> list:
 
     return [
         {
-            "title": "🏆 Meta-Decks",
-            "description": f"Die stärksten und belastbarsten Kriegs-Decks aus den letzten {DECK_LOOKBACK_DAYS} Tagen.",
+            "title": "ðŸ† Meta-Decks",
+            "description": f"Die stÃ¤rksten und belastbarsten Kriegs-Decks aus den letzten {DECK_LOOKBACK_DAYS} Tagen.",
             "decks": meta_decks
         },
         {
-            "title": "🛡️ Solide Decks",
-            "description": f"Verlässliche Decks mit ordentlicher Quote und genug Spielen aus den letzten {DECK_LOOKBACK_DAYS} Tagen.",
+            "title": "ðŸ›¡ï¸ Solide Decks",
+            "description": f"VerlÃ¤ssliche Decks mit ordentlicher Quote und genug Spielen aus den letzten {DECK_LOOKBACK_DAYS} Tagen.",
             "decks": solid_decks
         },
         {
-            "title": "🎯 Einsteigerfreundlich",
-            "description": f"Einfachere Decks für Leute, die ein klares und stabiles Kriegs-Deck suchen.",
+            "title": "ðŸŽ¯ Einsteigerfreundlich",
+            "description": f"Einfachere Decks fÃ¼r Leute, die ein klares und stabiles Kriegs-Deck suchen.",
             "decks": beginner_decks
         }
     ]
@@ -509,27 +509,27 @@ def get_player_focus(score: float, fame_per_deck: int, donations: int, is_welpen
     if is_welpenschutz:
         return "neu dabei", "#38bdf8"
     if score >= 95 and fame_per_deck >= 160:
-        return "⭐ stark", "#10b981"
+        return "â­ stark", "#10b981"
     if score >= 80 and fame_per_deck >= 130:
-        return "🛡️ stabil", "#38bdf8"
+        return "ðŸ›¡ï¸ stabil", "#38bdf8"
     if score < APP_CONFIG["STRIKE_THRESHOLD"]:
-        return "⚠️ ausbaufähig", "#f97316"
+        return "âš ï¸ ausbaufÃ¤hig", "#f97316"
     if current_decks > 0 and fame_per_deck < APP_CONFIG["DROPPER_THRESHOLD"]:
-        return "👀 auffällig", "#ef4444"
-    return "🙂 solide", "#94a3b8"
+        return "ðŸ‘€ auffÃ¤llig", "#ef4444"
+    return "ðŸ™‚ solide", "#94a3b8"
 
 
 def get_deck_archetype(cards: list) -> str:
     card_names = [c.get("name", "") for c in cards]
     if any(n in card_names for n in ["Golem", "Lava Hound", "Giant", "Goblin Giant", "Electro Giant", "Elixir Golem"]):
-        return "🛡️ Schwerer Angriff (Beatdown)"
+        return "ðŸ›¡ï¸ Schwerer Angriff (Beatdown)"
     if any(n in card_names for n in ["X-Bow", "Mortar"]):
-        return "🏹 Belagerung (Siege)"
+        return "ðŸ¹ Belagerung (Siege)"
     if any(n in card_names for n in ["Goblin Barrel", "Skeleton Barrel", "Miner", "Graveyard", "Wall Breakers", "Goblin Drill"]):
-        return "🗡️ Nadelstiche (Bait/Control)"
+        return "ðŸ—¡ï¸ Nadelstiche (Bait/Control)"
     if any(n in card_names for n in ["Hog Rider", "Royal Hogs", "Battle Ram", "Ram Rider", "Balloon"]):
-        return "⚡ Schneller Angriff (Rush/Spam)"
-    return "⚔️ Hybrid / Allrounder"
+        return "âš¡ Schneller Angriff (Rush/Spam)"
+    return "âš”ï¸ Hybrid / Allrounder"
 
 
 # === 3. Dateiverwaltung & Helfer ===
@@ -551,7 +551,7 @@ def archiviere_alte_dateien(ordner: Path, archiv_ordner: Path, anzahl: int = 2, 
     for datei in dateien[:-anzahl]:
         shutil.move(str(datei), archiv_ordner / datei.name)
 
-    # --- ARCHIV CLEANUP (Physisch löschen) ---
+    # --- ARCHIV CLEANUP (Physisch lÃ¶schen) ---
     archiv_dateien = sorted(archiv_ordner.glob("*.csv"), key=os.path.getctime)
     for datei in archiv_dateien[:-max_archiv]:
         try:
@@ -628,7 +628,7 @@ def load_member_memory() -> dict:
                         "ever_seen_players": loaded["players"].copy()
                     }
     except Exception as e:
-        print(f"⚠️ Warnung: member_memory.json fehlerhaft, fange bei 0 an. ({e})")
+        print(f"âš ï¸ Warnung: member_memory.json fehlerhaft, fange bei 0 an. ({e})")
 
     return default_memory
 
@@ -763,7 +763,7 @@ def render_html_template(
             .accordion-btn {{ background: rgba(30, 41, 59, 0.9); color: #cbd5e1; cursor: pointer; padding: 18px 25px; width: 100%; border: none; text-align: left; outline: none; font-size: 1.1em; font-weight: 600; border-radius: 8px; margin-bottom: 8px; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.05); font-family: inherit; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); scroll-margin-top: 80px; }}
             .accordion-btn.active, .accordion-btn:hover {{ background: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.3); color: #fff; }}
             .accordion-btn::after {{ content: '+'; font-size: 1.5em; color: #38bdf8; font-weight: bold; transition: 0.3s; }}
-            .accordion-btn.active::after {{ content: '−'; transform: rotate(180deg); }}
+            .accordion-btn.active::after {{ content: 'âˆ’'; transform: rotate(180deg); }}
             .accordion-content {{ padding: 0 25px; background: rgba(15, 23, 42, 0.6); max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; border-radius: 0 0 8px 8px; margin-top: -8px; margin-bottom: 15px; font-size: 1em; line-height: 1.6; color: #94a3b8; border-left: 2px solid #38bdf8; }}
             .accordion-content p, .accordion-content ul {{ padding: 15px 0; margin: 0; }}
             .accordion-content li {{ margin-bottom: 8px; }}
@@ -772,24 +772,24 @@ def render_html_template(
     <body>
         <div class="container">
             <div class="header-container">
-                <h1 class="header-title"><span onclick="toggleChat()" style="cursor: pointer;" title="Chat-Hilfe ein-/ausblenden">📊</span> Clan-Auswertung: {clan_name} <br>
+                <h1 class="header-title"><span onclick="toggleChat()" style="cursor: pointer;" title="Chat-Hilfe ein-/ausblenden">ðŸ“Š</span> Clan-Auswertung: {clan_name} <br>
                 <span class="header-date">{heute_datum}</span>
-                <span class="header-mobile-tip">📱 Tipp: Für die beste Übersicht am Handy bitte quer halten 🔄</span></h1>
+                <span class="header-mobile-tip">ðŸ“± Tipp: FÃ¼r die beste Ãœbersicht am Handy bitte quer halten ðŸ”„</span></h1>
             </div>
 
             <div class="tab-container">
-                <button class="tab-btn active" onclick="openTab(event, 'Overview')">🏠 Übersicht</button>
-                <button class="tab-btn" onclick="openTab(event, 'Table')">📋 Detail-Auswertung</button>
-                <button class="tab-btn" onclick="openTab(event, 'Wiki')">📖 Regeln & System</button>
-                <button class="tab-btn" onclick="openTab(event, 'Decks')">🃏 Top-Decks</button>
+                <button class="tab-btn active" onclick="openTab(event, 'Overview')">ðŸ  Ãœbersicht</button>
+                <button class="tab-btn" onclick="openTab(event, 'Table')">ðŸ“‹ Detail-Auswertung</button>
+                <button class="tab-btn" onclick="openTab(event, 'Wiki')">ðŸ“– Regeln & System</button>
+                <button class="tab-btn" onclick="openTab(event, 'Decks')">ðŸƒ Top-Decks</button>
             </div>
 
             <div id="Overview" class="tab-content active">
                 <div class="welcome-box">
-                    <h2 class="welcome-title">Willkommen bei der HAMBURG-Family! 🤝</h2>
-                    <p>Schön, dass du über unsere Clan-Info hierher gefunden hast. Egal ob du schon ewig dabei bist oder gerade erst überlegst, uns beizutreten: Schau dich in Ruhe um!</p>
+                    <h2 class="welcome-title">Willkommen bei der HAMBURG-Family! ðŸ¤</h2>
+                    <p>SchÃ¶n, dass du Ã¼ber unsere Clan-Info hierher gefunden hast. Egal ob du schon ewig dabei bist oder gerade erst Ã¼berlegst, uns beizutreten: Schau dich in Ruhe um!</p>
                     <p>Ein starker Clan braucht aktive Mitglieder. Auf dieser Seite tracken wir jede Woche transparent unseren Erfolg im Clankrieg und unsere Spendenbereitschaft.</p>
-                    <p>Wir sind eine entspannte, aber ehrgeizige Truppe. Bei uns zählt Verlässlichkeit mehr als reine Trophäen. Wenn du einen dauerhaft aktiven Clan suchst und deine 4 Decks verlässlich spielst, bist du bei uns genau <b>richtig</b>! 🛡️</p>
+                    <p>Wir sind eine entspannte, aber ehrgeizige Truppe. Bei uns zÃ¤hlt VerlÃ¤sslichkeit mehr als reine TrophÃ¤en. Wenn du einen dauerhaft aktiven Clan suchst und deine 4 Decks verlÃ¤sslich spielst, bist du bei uns genau <b>richtig</b>! ðŸ›¡ï¸</p>
                 </div>
 
                 {hype_balken_html}
@@ -802,50 +802,50 @@ def render_html_template(
 
                 <div class="dashboard">
                     <div class="card avg">
-                        <h3>📈 Clan-Durchschnitt</h3>
+                        <h3>ðŸ“ˆ Clan-Durchschnitt</h3>
                         <h1>{clan_avg}%</h1>
                     </div>
                     <div class="card avg">
-                        <h3>⚔️ Clan-Ø Punkte</h3>
+                        <h3>âš”ï¸ Clan-Ã˜ Punkte</h3>
                         <h1>{clan_avg_points_per_deck}</h1>
                     </div>
                     <div class="card top">
-                        <h3>🏆 Top 3 Performer</h3>
+                        <h3>ðŸ† Top 3 Performer</h3>
                         <ul>{top_performers}</ul>
                     </div>
                     <div class="card spender">
-                        <h3>🃏 Top 3 Spender</h3>
+                        <h3>ðŸƒ Top 3 Spender</h3>
                         <ul>{top_spender}</ul>
                     </div>
                     <div class="card pusher">
-                        <h3>🚀 Trophäen-Pusher</h3>
+                        <h3>ðŸš€ TrophÃ¤en-Pusher</h3>
                         <ul>{pusher_html}</ul>
                     </div>
                     <div class="card hof">
-                        <h3>📖 Hall of Fame (Ewig)</h3>
+                        <h3>ðŸ“– Hall of Fame (Ewig)</h3>
                         <ul style="font-size: 0.95em;">
                             <li><b>Spenden-Gott:</b> {records['donations']['name']} ({records['donations']['val']})</li>
-                            <li><b>Max Trophäen:</b> {records['trophies']['name']} ({records['trophies']['val']} 🏆)</li>
+                            <li><b>Max TrophÃ¤en:</b> {records['trophies']['name']} ({records['trophies']['val']} ðŸ†)</li>
                             <li><b>Mega-Comeback:</b> {records['delta']['name']} (+{records['delta']['val']}%)</li>
                         </ul>
                     </div>
                     <div class="card urlaub">
-                        <h3>🏖️ Aktuell im Urlaub</h3>
+                        <h3>ðŸ–ï¸ Aktuell im Urlaub</h3>
                         <ul style="font-size: 0.95em;">{urlaub_html}</ul>
                     </div>
                     <div class="card aufsteiger">
-                        <h3>🚀 Größte Aufsteiger</h3>
+                        <h3>ðŸš€ GrÃ¶ÃŸte Aufsteiger</h3>
                         <ul>{top_aufsteiger}</ul>
                     </div>
                     <div class="card leecher">
-                        <h3>📦 Spenden auffällig</h3>
+                        <h3>ðŸ“¦ Spenden auffÃ¤llig</h3>
                         <ul>{top_leecher}</ul>
                     </div>
 
                     <div id="admin-chat-container" style="display: none; width: 100%;">
                         <div class="card messenger">
-                            <h3 style="color: #f1c40f; margin-bottom: 10px;">🎮 Chat-Hilfe ({total_msgs}-Teiler)</h3>
-                            <p style="font-size: 0.9em; color: #cbd5e1; margin-top: 0; margin-bottom: 15px;">Klicke oben auf das 📊-Symbol, um diese Hilfe ein- oder auszublenden. Wähle den passenden Tonfall und kopiere dann die {total_msgs} Texte nacheinander in den Chat.</p>
+                            <h3 style="color: #f1c40f; margin-bottom: 10px;">ðŸŽ® Chat-Hilfe ({total_msgs}-Teiler)</h3>
+                            <p style="font-size: 0.9em; color: #cbd5e1; margin-top: 0; margin-bottom: 15px;">Klicke oben auf das ðŸ“Š-Symbol, um diese Hilfe ein- oder auszublenden. WÃ¤hle den passenden Tonfall und kopiere dann die {total_msgs} Texte nacheinander in den Chat.</p>
                             {chat_boxes_html}
                         </div>
                     </div>
@@ -855,192 +855,193 @@ def render_html_template(
 
             <div id="Table" class="tab-content">
                 <div style="background: rgba(30, 41, 59, 0.8); padding: 20px; border-radius: 8px; margin-bottom: 25px; font-size: 0.95em; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-                    <h4 style="margin-top: 0; color: #38bdf8; margin-bottom: 5px;">📌 Schnelle Symbol-Legende:</h4>
-                    <p style="margin: 0 0 15px 0; font-size: 0.9em; color: #94a3b8; font-style: italic;">Weitere Infos unter <b>📖 Regeln & System</b>.</p>
+                    <h4 style="margin-top: 0; color: #38bdf8; margin-bottom: 5px;">ðŸ“Œ Schnelle Symbol-Legende:</h4>
+                    <p style="margin: 0 0 15px 0; font-size: 0.9em; color: #94a3b8; font-style: italic;">Weitere Infos unter <b>ðŸ“– Regeln & System</b>.</p>
                     <div style="display: flex; flex-wrap: wrap; gap: 15px; color: #cbd5e1;">
-                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>🌱 Welpenschutz:</b> Neu im Clan (geschützt)</div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>❌ 1/3:</b> Interner Hinweis bei längerer Inaktivität</div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>📦 Spenden auffällig:</b> Fordert, spendet aber 0</div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>💤 Spenden inaktiv:</b> Spendet 0, fordert 0</div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>⚠️ Ø Punkte:</b> Auffällig niedriger Punkteschnitt pro Deck (&lt;115)</div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>🔥 Streak:</b> Mehrere Wochen 100% Score</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>ðŸŒ± Welpenschutz:</b> Neu im Clan (geschÃ¼tzt)</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>âŒ 1/3:</b> Interner Hinweis bei lÃ¤ngerer InaktivitÃ¤t</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>ðŸ“¦ Spenden auffÃ¤llig:</b> Fordert, spendet aber 0</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>ðŸ’¤ Spenden inaktiv:</b> Spendet 0, fordert 0</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>âš ï¸ Ã˜ Punkte:</b> AuffÃ¤llig niedriger Punkteschnitt pro Deck (&lt;115)</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>ðŸ”¥ Streak:</b> Mehrere Wochen 100% Score</div>
                     </div>
                 </div>
 
-                <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; margin-bottom: 30px; color: #ffffff;">📋 Detail-Auswertung</h2>
+                <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; margin-bottom: 30px; color: #ffffff;">ðŸ“‹ Detail-Auswertung</h2>
                 {table_html}
             </div>
 
             <div id="Wiki" class="tab-content">
-                <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; margin-bottom: 30px; color: #8b5cf6;">📖 Clan-Wiki: Regeln & System</h2>
+                <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; margin-bottom: 30px; color: #8b5cf6;">ðŸ“– Clan-Wiki: Regeln & System</h2>
 
-                <button class="accordion-btn">📬 Die Montags-Auswertung per E-Mail</button>
+                <button class="accordion-btn">ðŸ“¬ Die Montags-Auswertung per E-Mail</button>
                 <div class="accordion-content">
                     <p>Willst du diese Auswertung jeden Montag ganz bequem und automatisch in dein Postfach bekommen?</p>
                     <ul>
-                        <li><b>Anmelden:</b> Schreib einfach eine kurze E-Mail mit deinem In-Game-Namen an: <b>strike2005-Hamburg_Royal@yahoo.com</b>. Die Clan-Führung trägt dich dann in den Verteiler ein.</li>
-                        <li>🔒 <b>100% Datenschutz (BCC-Versand):</b> Keine Sorge um deine private E-Mail-Adresse! Das System verschickt die Auswertung an alle Mitglieder ausschließlich als <b>Blindkopie (BCC)</b>. Niemand im Clan kann sehen, wer sonst noch auf der Liste steht.</li>
+                        <li><b>Anmelden:</b> Schreib einfach eine kurze E-Mail mit deinem In-Game-Namen an: <b>strike2005-Hamburg_Royal@yahoo.com</b>. Die Clan-FÃ¼hrung trÃ¤gt dich dann in den Verteiler ein.</li>
+                        <li>ðŸ”’ <b>100% Datenschutz (BCC-Versand):</b> Keine Sorge um deine private E-Mail-Adresse! Das System verschickt die Auswertung an alle Mitglieder ausschlieÃŸlich als <b>Blindkopie (BCC)</b>. Niemand im Clan kann sehen, wer sonst noch auf der Liste steht.</li>
                         <li><b>Abmelden:</b> Eine kurze Nachricht reicht, und du fliegst sofort wieder aus dem Verteiler.</li>
                     </ul>
                 </div>
 
-                <button class="accordion-btn">⚖️ Regeln bei längerer Inaktivität (❌)</button>
+                <button class="accordion-btn">âš–ï¸ Regeln bei lÃ¤ngerer InaktivitÃ¤t (âŒ)</button>
                 <div class="accordion-content">
-                    <p>Damit nicht eine einzelne schwache Woche sofort Folgen hat, arbeitet unsere Auswertung mit einem fairen Langzeit-Gedächtnis. Wer sich nicht abmeldet und im Clankrieg dauerhaft zu wenig beiträgt (Score unter 50%), sammelt im Hintergrund interne Hinweise (❌).</p>
+                    <p>Damit nicht eine einzelne schwache Woche sofort Folgen hat, arbeitet unsere Auswertung mit einem fairen Langzeit-GedÃ¤chtnis. Wer sich nicht abmeldet und im Clankrieg dauerhaft zu wenig beitrÃ¤gt (Score unter 50%), sammelt im Hintergrund interne Hinweise (âŒ).</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler A <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Ältester</td><td><b>49.38%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#cbd5e1;'>179</td><td>10/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>303</span></td></tr>
-                            <tr><td class='name-col'>Spieler B <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Mitglied</td><td><b>34.38%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#cbd5e1;'>100 ⚠️</td><td>4/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> 💤</td></tr>
+                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ã˜ Punkte</th><th>Aktive Kriege</th><th>ðŸƒ Spenden</th></tr>
+                            <tr><td class='name-col'>Spieler A <span class='custom-tooltip align-left' style='font-size: 0.9em;'>âŒ 3/3</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>âš ï¸ ausbaufÃ¤hig</span></td><td>Ã„ltester</td><td><b>49.38%</b></td><td class='trend-cell'>ðŸ”´ðŸ”´ðŸ”´ðŸ”´</td><td style='color:#cbd5e1;'>179</td><td>10/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>303</span></td></tr>
+                            <tr><td class='name-col'>Spieler B <span class='custom-tooltip align-left' style='font-size: 0.9em;'>âŒ 3/3</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>âš ï¸ ausbaufÃ¤hig</span></td><td>Mitglied</td><td><b>34.38%</b></td><td class='trend-cell'>ðŸ”´ðŸ”´ðŸ”´ðŸ”´</td><td style='color:#cbd5e1;'>100 âš ï¸</td><td>4/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> ðŸ’¤</td></tr>
                         </table>
                     </div>
                     <ul>
-                        <li><b>Die zweite Chance (Degradierung):</b> Wer als <i>Anführer</i>, <i>Vize</i> oder <i>Ältester</i> 3 interne Hinweise ansammelt, wird nicht sofort entfernt, sondern genau <b>eine Rang-Stufe tiefer</b> gesetzt und bekommt so eine letzte Bewährungschance.</li>
-                        <li><b>Die letzte Stufe:</b> Wenn ein normales <i>Mitglied</i> (wie <b>Spieler B</b> oben) 3 interne Hinweise erreicht, trennen wir uns. So bleibt Platz für verlässliche, aktive Spieler.</li>
-                        <li><b>Wieder ins Gleichgewicht kommen:</b> Wer nach einem internen Hinweis wieder anzieht und in der Folgewoche über 50% Score holt, baut diese Einträge automatisch wieder ab.</li>
+                        <li><b>Die zweite Chance (Degradierung):</b> Wer als <i>AnfÃ¼hrer</i>, <i>Vize</i> oder <i>Ã„ltester</i> 3 interne Hinweise ansammelt, wird nicht sofort entfernt, sondern genau <b>eine Rang-Stufe tiefer</b> gesetzt und bekommt so eine letzte BewÃ¤hrungschance.</li>
+                        <li><b>Die letzte Stufe:</b> Wenn ein normales <i>Mitglied</i> (wie <b>Spieler B</b> oben) 3 interne Hinweise erreicht, trennen wir uns. So bleibt Platz fÃ¼r verlÃ¤ssliche, aktive Spieler.</li>
+                        <li><b>Wieder ins Gleichgewicht kommen:</b> Wer nach einem internen Hinweis wieder anzieht und in der Folgewoche Ã¼ber 50% Score holt, baut diese EintrÃ¤ge automatisch wieder ab.</li>
                     </ul>
                 </div>
 
-                <button class="accordion-btn">🎯 Der Score (Zuverlässigkeit & Welpenschutz)</button>
+                <button class="accordion-btn">ðŸŽ¯ Der Score (ZuverlÃ¤ssigkeit & Welpenschutz)</button>
                 <div class="accordion-content">
-                    <p>Der Score ist die wichtigste Zahl im Dashboard. Er misst nicht, wie stark du bist oder wie viel du gewinnst, sondern <b>wie verlässlich du bist</b>.<br><br>
-                    Stell dir vor, du hast für jedes Kriegswochenende 16 "Tickets" (4 Tage × 4 Decks). Der Score zeigt einfach, wie viele deiner verfügbaren Tickets du auch wirklich genutzt hast.</p>
+                    <p>Der Score ist die wichtigste Zahl im Dashboard. Er misst nicht, wie stark du bist oder wie viel du gewinnst, sondern <b>wie verlÃ¤sslich du bist</b>.<br><br>
+                    Stell dir vor, du hast fÃ¼r jedes Kriegswochenende 16 "Tickets" (4 Tage Ã— 4 Decks). Der Score zeigt einfach, wie viele deiner verfÃ¼gbaren Tickets du auch wirklich genutzt hast.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler C <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥 4</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>🛡️ stabil</span></td><td>Vize</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>131</td><td>10/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>146</span></td></tr>
-                            <tr><td class='name-col'>Spieler D <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>neu dabei</span></td><td>Mitglied</td><td><b>6.25%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#cbd5e1;'>200</td><td>2/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span></td></tr>
+                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ã˜ Punkte</th><th>Aktive Kriege</th><th>ðŸƒ Spenden</th></tr>
+                            <tr><td class='name-col'>Spieler C <span class='custom-tooltip align-left' style='font-size: 0.9em;'>ðŸ”¥ 4</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>ðŸ›¡ï¸ stabil</span></td><td>Vize</td><td><b>100.0%</b></td><td class='trend-cell'>ðŸŸ¢ðŸŸ¢ðŸŸ¢ðŸŸ¢</td><td style='color:#cbd5e1;'>131</td><td>10/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>146</span></td></tr>
+                            <tr><td class='name-col'>Spieler D <span class='custom-tooltip align-left' style='opacity:0.8;'>ðŸŒ±</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>neu dabei</span></td><td>Mitglied</td><td><b>6.25%</b></td><td class='trend-cell'>ðŸ”´ðŸ”´ðŸ”´ðŸ”´</td><td style='color:#cbd5e1;'>200</td><td>2/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span></td></tr>
                         </table>
                     </div>
                     <ul>
-                        <li><b>100% (Der Streak 🔥):</b> Perfekt! Du hast keinen einzigen Angriff verpasst. Schaffst du das über mehrere Wochen in Folge, erhältst du das Flammen-Symbol (wie <b>Spieler C</b> oben mit 4 Wochen am Stück!).</li>
-                        <li><b>50%:</b> Du hast nur die Hälfte deiner möglichen Angriffe gemacht.</li>
-                        <li><b>Welpenschutz (🌱):</b> Wenn du neu im Clan bist (wie <b>Spieler D</b> oben), fangen wir fair an. Du wirst nur an den Kriegen gemessen, bei denen du auch wirklich schon im Clan warst und bist vorerst vor Strafen geschützt.</li>
+                        <li><b>100% (Der Streak ðŸ”¥):</b> Perfekt! Du hast keinen einzigen Angriff verpasst. Schaffst du das Ã¼ber mehrere Wochen in Folge, erhÃ¤ltst du das Flammen-Symbol (wie <b>Spieler C</b> oben mit 4 Wochen am StÃ¼ck!).</li>
+                        <li><b>50%:</b> Du hast nur die HÃ¤lfte deiner mÃ¶glichen Angriffe gemacht.</li>
+                        <li><b>Welpenschutz (ðŸŒ±):</b> Wenn du neu im Clan bist (wie <b>Spieler D</b> oben), fangen wir fair an. Du wirst nur an den Kriegen gemessen, bei denen du auch wirklich schon im Clan warst und bist vorerst vor Strafen geschÃ¼tzt.</li>
                     </ul>
                 </div>
 
-                <button class="accordion-btn">🟢🟡🔴 Der Trend (Deine Konstanz)</button>
+                <button class="accordion-btn">ðŸŸ¢ðŸŸ¡ðŸ”´ Der Trend (Deine Konstanz)</button>
                 <div class="accordion-content">
-                    <p>Die Ampel-Punkte zeigen deine Leistung (deinen Score) der letzten 4 Wochen auf einen Blick. Jeder Punkt steht für eine Woche, wobei der <b>Punkt ganz rechts die aktuellste Auswertung</b> ist.</p>
+                    <p>Die Ampel-Punkte zeigen deine Leistung (deinen Score) der letzten 4 Wochen auf einen Blick. Jeder Punkt steht fÃ¼r eine Woche, wobei der <b>Punkt ganz rechts die aktuellste Auswertung</b> ist.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler E</td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Mitglied</td><td><b>45.0%</b></td><td class='trend-cell'>🟢🟢🟡🔴</td><td style='color:#cbd5e1;'>180</td><td>8/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>150</span></td></tr>
-                            <tr><td class='name-col'>Spieler F</td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>🛡️ stabil</span></td><td>Ältester</td><td><b>90.0%</b></td><td class='trend-cell'>🔴🔴🟢🟢</td><td style='color:#cbd5e1;'>160</td><td>6/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>200</span></td></tr>
+                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ã˜ Punkte</th><th>Aktive Kriege</th><th>ðŸƒ Spenden</th></tr>
+                            <tr><td class='name-col'>Spieler E</td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>âš ï¸ ausbaufÃ¤hig</span></td><td>Mitglied</td><td><b>45.0%</b></td><td class='trend-cell'>ðŸŸ¢ðŸŸ¢ðŸŸ¡ðŸ”´</td><td style='color:#cbd5e1;'>180</td><td>8/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>150</span></td></tr>
+                            <tr><td class='name-col'>Spieler F</td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>ðŸ›¡ï¸ stabil</span></td><td>Ã„ltester</td><td><b>90.0%</b></td><td class='trend-cell'>ðŸ”´ðŸ”´ðŸŸ¢ðŸŸ¢</td><td style='color:#cbd5e1;'>160</td><td>6/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>200</span></td></tr>
                         </table>
                     </div>
                     <ul>
-                        <li><b>🟢 Grün (Leistungsträger):</b> Starker Score von 80% bis 100%.</li>
-                        <li><b>🟡 Gelb (Mittelfeld):</b> Akzeptabler Score von 50% bis 79%, aber mit Luft nach oben.</li>
-                        <li><b>🔴 Rot (Kritisch):</b> Score unter 50% (Zu wenig Teilnahme im Flussrennen).</li>
+                        <li><b>ðŸŸ¢ GrÃ¼n (LeistungstrÃ¤ger):</b> Starker Score von 80% bis 100%.</li>
+                        <li><b>ðŸŸ¡ Gelb (Mittelfeld):</b> Akzeptabler Score von 50% bis 79%, aber mit Luft nach oben.</li>
+                        <li><b>ðŸ”´ Rot (Kritisch):</b> Score unter 50% (Zu wenig Teilnahme im Flussrennen).</li>
                         <li><i>Beispiel Spieler E:</i> Hat stark angefangen, aber in der letzten Woche leider stark nachgelassen (rechter Punkt ist rot).</li>
                     </ul>
                 </div>
 
-                <button class="accordion-btn">🏷️ Check-Spalte (Orientierung)</button>
+                <button class="accordion-btn">ðŸ·ï¸ Check-Spalte (Orientierung)</button>
                 <div class="accordion-content">
                     <p>Die <b>Check</b>-Spalte ist eine kurze, leicht lesbare Orientierung auf einen Blick. Sie ersetzt keine Zahlen, sondern hilft nur dabei, Spieler schneller einzuordnen.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler P</td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'>⭐ stark</span></td><td>Ältester</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>182</td><td>10/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>220</span></td></tr>
-                            <tr><td class='name-col'>Spieler Q</td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>🛡️ stabil</span></td><td>Mitglied</td><td><b>86.25%</b></td><td class='trend-cell'>🟢🟢🟡🟢</td><td style='color:#cbd5e1;'>142</td><td>9/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>95</span></td></tr>
-                            <tr><td class='name-col'>Spieler R</td><td><span class='focus-pill' style='background:#94a3b822; color:#94a3b8; border:1px solid #94a3b855;'>🙂 solide</span></td><td>Mitglied</td><td><b>73.75%</b></td><td class='trend-cell'>🟡🟡🟡🟢</td><td style='color:#cbd5e1;'>150</td><td>7/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>70</span></td></tr>
-                            <tr><td class='name-col'>Spieler S</td><td><span class='focus-pill' style='background:#ef444422; color:#ef4444; border:1px solid #ef444455;'>👀 auffällig</span></td><td>Mitglied</td><td><b>81.25%</b></td><td class='trend-cell'>🟢🟡🟡🟢</td><td style='color:#cbd5e1;'>102 ⚠️</td><td>9/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>40</span></td></tr>
-                            <tr><td class='name-col'>Spieler T</td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Mitglied</td><td><b>43.75%</b></td><td class='trend-cell'>🔴🔴🟡🔴</td><td style='color:#cbd5e1;'>140</td><td>4/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>30</span></td></tr>
-                            <tr><td class='name-col'>Spieler U <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>neu dabei</span></td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>170</td><td>2/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>35</span></td></tr>
+                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ã˜ Punkte</th><th>Aktive Kriege</th><th>ðŸƒ Spenden</th></tr>
+                            <tr><td class='name-col'>Spieler P</td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'>â­ stark</span></td><td>Ã„ltester</td><td><b>100.0%</b></td><td class='trend-cell'>ðŸŸ¢ðŸŸ¢ðŸŸ¢ðŸŸ¢</td><td style='color:#cbd5e1;'>182</td><td>10/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>220</span></td></tr>
+                            <tr><td class='name-col'>Spieler Q</td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>ðŸ›¡ï¸ stabil</span></td><td>Mitglied</td><td><b>86.25%</b></td><td class='trend-cell'>ðŸŸ¢ðŸŸ¢ðŸŸ¡ðŸŸ¢</td><td style='color:#cbd5e1;'>142</td><td>9/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>95</span></td></tr>
+                            <tr><td class='name-col'>Spieler R</td><td><span class='focus-pill' style='background:#94a3b822; color:#94a3b8; border:1px solid #94a3b855;'>ðŸ™‚ solide</span></td><td>Mitglied</td><td><b>73.75%</b></td><td class='trend-cell'>ðŸŸ¡ðŸŸ¡ðŸŸ¡ðŸŸ¢</td><td style='color:#cbd5e1;'>150</td><td>7/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>70</span></td></tr>
+                            <tr><td class='name-col'>Spieler S</td><td><span class='focus-pill' style='background:#ef444422; color:#ef4444; border:1px solid #ef444455;'>ðŸ‘€ auffÃ¤llig</span></td><td>Mitglied</td><td><b>81.25%</b></td><td class='trend-cell'>ðŸŸ¢ðŸŸ¡ðŸŸ¡ðŸŸ¢</td><td style='color:#cbd5e1;'>102 âš ï¸</td><td>9/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>40</span></td></tr>
+                            <tr><td class='name-col'>Spieler T</td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>âš ï¸ ausbaufÃ¤hig</span></td><td>Mitglied</td><td><b>43.75%</b></td><td class='trend-cell'>ðŸ”´ðŸ”´ðŸŸ¡ðŸ”´</td><td style='color:#cbd5e1;'>140</td><td>4/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>30</span></td></tr>
+                            <tr><td class='name-col'>Spieler U <span class='custom-tooltip align-left' style='opacity:0.8;'>ðŸŒ±</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>neu dabei</span></td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>ðŸŸ¢ðŸŸ¢ðŸŸ¢ðŸŸ¢</td><td style='color:#cbd5e1;'>170</td><td>2/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>35</span></td></tr>
                         </table>
                     </div>
                     <ul>
-                        <li><b>⭐ stark:</b> Sehr verlässlich und gleichzeitig stark bei den Punkten pro Deck.</li>
-                        <li><b>🛡️ stabil:</b> Gute, solide Leistung ohne große Schwächen. Genau solche Spieler tragen einen Clan langfristig.</li>
-                        <li><b>🙂 solide:</b> Nicht auffällig schlecht, aber auch noch nicht ganz oben. Hier ist noch Luft nach oben.</li>
-                        <li><b>👀 auffällig:</b> Die Teilnahme kann okay sein, aber die Punkte pro Deck fallen gerade eher schwach aus. Hier lohnt ein genauerer Blick.</li>
-                        <li><b>⚠️ ausbaufähig:</b> Die Teilnahme ist im Moment klar verbesserungswürdig. Diese Spieler liegen beim Score schon im unteren Bereich.</li>
+                        <li><b>â­ stark:</b> Sehr verlÃ¤sslich und gleichzeitig stark bei den Punkten pro Deck.</li>
+                        <li><b>ðŸ›¡ï¸ stabil:</b> Gute, solide Leistung ohne groÃŸe SchwÃ¤chen. Genau solche Spieler tragen einen Clan langfristig.</li>
+                        <li><b>ðŸ™‚ solide:</b> Nicht auffÃ¤llig schlecht, aber auch noch nicht ganz oben. Hier ist noch Luft nach oben.</li>
+                        <li><b>ðŸ‘€ auffÃ¤llig:</b> Die Teilnahme kann okay sein, aber die Punkte pro Deck fallen gerade eher schwach aus. Hier lohnt ein genauerer Blick.</li>
+                        <li><b>âš ï¸ ausbaufÃ¤hig:</b> Die Teilnahme ist im Moment klar verbesserungswÃ¼rdig. Diese Spieler liegen beim Score schon im unteren Bereich.</li>
                         <li><b>neu dabei:</b> Spieler ist noch im Welpenschutz. Deshalb wird hier noch keine harte Leistungsbewertung angesetzt.</li>
                     </ul>
                 </div>
 
-                <button class="accordion-btn">⚔️ Ø Punkte (Der Qualitäts-Check)</button>
+                <button class="accordion-btn">âš”ï¸ Ã˜ Punkte (Der QualitÃ¤ts-Check)</button>
                 <div class="accordion-content">
                     <p>Hier schauen wir, wie effektiv du deine Decks einsetzt. Das System teilt deine gesammelten Kriegspunkte durch die Anzahl deiner gespielten Decks.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler J <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Ältester</td><td><b>27.34%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#cbd5e1;'>100 <span class='custom-tooltip'>⚠️</span></td><td>8/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>72</span></td></tr>
+                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ã˜ Punkte</th><th>Aktive Kriege</th><th>ðŸƒ Spenden</th></tr>
+                            <tr><td class='name-col'>Spieler J <span class='custom-tooltip align-left' style='font-size: 0.9em;'>âŒ 3/3</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>âš ï¸ ausbaufÃ¤hig</span></td><td>Ã„ltester</td><td><b>27.34%</b></td><td class='trend-cell'>ðŸ”´ðŸ”´ðŸ”´ðŸ”´</td><td style='color:#cbd5e1;'>100 <span class='custom-tooltip'>âš ï¸</span></td><td>8/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>72</span></td></tr>
                         </table>
                     </div>
                     <ul>
-                        <li><b>Normalwert:</b> Selbst wenn du verlierst, bekommst du in normalen Kämpfen mindestens 115 Punkte. Ein Sieg bringt deutlich mehr.</li>
-                        <li><b>⚠️ Auffälliger Bereich (&lt; 115 Punkte):</b> Wenn dein Durchschnitt unter 115 fällt, ist das ein klarer Hinweis auf zu wenig Ertrag pro Deck. Häufig steckt dahinter, dass Decks nicht in normalen Kämpfen ausgespielt werden.</li>
+                        <li><b>Normalwert:</b> Selbst wenn du verlierst, bekommst du in normalen KÃ¤mpfen mindestens 115 Punkte. Ein Sieg bringt deutlich mehr.</li>
+                        <li><b>âš ï¸ AuffÃ¤lliger Bereich (&lt; 115 Punkte):</b> Wenn dein Durchschnitt unter 115 fÃ¤llt, ist das ein klarer Hinweis auf zu wenig Ertrag pro Deck. HÃ¤ufig steckt dahinter, dass Decks nicht in normalen KÃ¤mpfen ausgespielt werden.</li>
                     </ul>
                 </div>
 
-                <button class="accordion-btn">🃏 Spenden-Verhalten (Teamplay)</button>
+                <button class="accordion-btn">ðŸƒ Spenden-Verhalten (Teamplay)</button>
                 <div class="accordion-content">
                     <p>Ein starker Clan hilft sich gegenseitig beim Leveln der Karten. Deshalb schauen wir auch auf das Spendenverhalten im Clan.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler K</td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'>⭐ stark</span></td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>200</td><td>10/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>🧛</span></td></tr>
-                            <tr><td class='name-col'>Spieler L</td><td><span class='focus-pill' style='background:#94a3b822; color:#94a3b8; border:1px solid #94a3b855;'>🙂 solide</span></td><td>Mitglied</td><td><b>50.0%</b></td><td class='trend-cell'>🟡🟡🟡🟡</td><td style='color:#cbd5e1;'>150</td><td>5/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>💤</span></td></tr>
+                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ã˜ Punkte</th><th>Aktive Kriege</th><th>ðŸƒ Spenden</th></tr>
+                            <tr><td class='name-col'>Spieler K</td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'>â­ stark</span></td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>ðŸŸ¢ðŸŸ¢ðŸŸ¢ðŸŸ¢</td><td style='color:#cbd5e1;'>200</td><td>10/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>ðŸ§›</span></td></tr>
+                            <tr><td class='name-col'>Spieler L</td><td><span class='focus-pill' style='background:#94a3b822; color:#94a3b8; border:1px solid #94a3b855;'>ðŸ™‚ solide</span></td><td>Mitglied</td><td><b>50.0%</b></td><td class='trend-cell'>ðŸŸ¡ðŸŸ¡ðŸŸ¡ðŸŸ¡</td><td style='color:#cbd5e1;'>150</td><td>5/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>ðŸ’¤</span></td></tr>
                         </table>
                     </div>
                     <ul>
-                        <li><b>📦 Spenden auffällig:</b> Jemand fordert regelmäßig Karten an, spendet aber selbst nichts zurück.</li>
-                        <li><b>💤 Spenden inaktiv:</b> Jemand spendet nicht und fordert auch nichts an.</li>
-                        <li><b>Wichtig:</b> Diese Hinweise sollen nicht bloßstellen, sondern zeigen, wo im Clan noch etwas mehr Mitziehen helfen würde.</li>
+                        <li><b>ðŸ“¦ Spenden auffÃ¤llig:</b> Jemand fordert regelmÃ¤ÃŸig Karten an, spendet aber selbst nichts zurÃ¼ck.</li>
+                        <li><b>ðŸ’¤ Spenden inaktiv:</b> Jemand spendet nicht und fordert auch nichts an.</li>
+                        <li><b>Wichtig:</b> Diese Hinweise sollen nicht bloÃŸstellen, sondern zeigen, wo im Clan noch etwas mehr Mitziehen helfen wÃ¼rde.</li>
                     </ul>
                 </div>
 
-                <button class="accordion-btn">⚔️ Aktive Kriege (Deine Clan-Treue)</button>
+                <button class="accordion-btn">âš”ï¸ Aktive Kriege (Deine Clan-Treue)</button>
                 <div class="accordion-content">
                     <p>Zeigt, in wie vielen der letzten 10 Clankriege du wirklich aktiv warst, also mindestens ein Deck gespielt hast.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler M</td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'>⭐ stark</span></td><td>Vize</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>200</td><td>10/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>100</span></td></tr>
-                            <tr><td class='name-col'>Spieler N <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>neu dabei</span></td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>200</td><td>2/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>50</span></td></tr>
+                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ã˜ Punkte</th><th>Aktive Kriege</th><th>ðŸƒ Spenden</th></tr>
+                            <tr><td class='name-col'>Spieler M</td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'>â­ stark</span></td><td>Vize</td><td><b>100.0%</b></td><td class='trend-cell'>ðŸŸ¢ðŸŸ¢ðŸŸ¢ðŸŸ¢</td><td style='color:#cbd5e1;'>200</td><td>10/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>100</span></td></tr>
+                            <tr><td class='name-col'>Spieler N <span class='custom-tooltip align-left' style='opacity:0.8;'>ðŸŒ±</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>neu dabei</span></td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>ðŸŸ¢ðŸŸ¢ðŸŸ¢ðŸŸ¢</td><td style='color:#cbd5e1;'>200</td><td>2/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>50</span></td></tr>
                         </table>
                     </div>
                     <ul>
-                        <li><b>Langzeit-Aktivität:</b> Zeigt, wie treu du dem Clan über die letzten Wochen zur Seite standest.</li>
-                        <li><b>Welpenschutz (🌱):</b> Wenn du neu bei uns bist, brauchst du dir keine Sorgen machen. Dein Score wird fair nur anhand der Kriege berechnet, bei denen du schon im Clan warst, und bis einschließlich 3 Teilnahmen greifen keine Strafen.</li>
+                        <li><b>Langzeit-AktivitÃ¤t:</b> Zeigt, wie treu du dem Clan Ã¼ber die letzten Wochen zur Seite standest.</li>
                     </ul>
                 </div>
 
-                <button class="accordion-btn">🏅 Kriegspunkte (Deine Gesamtleistung)</button>
+                <button class="accordion-btn">ðŸ… Kriegspunkte (Deine Gesamtleistung)</button>
                 <div class="accordion-content">
-                    <p>Die Kriegspunkte sind dein <b>Gesamtkonto</b> aus den geladenen Kriegen. Während <b>Aktive Kriege</b> nur zeigt, <b>wie oft</b> du in den letzten 10 Kriegen mitgemacht hast (zum Beispiel <b>6/10</b>), zeigen die <b>Kriegspunkte</b>, <b>wie viele Punkte du dabei insgesamt gesammelt</b> hast.</p>
+                    <p>Die Kriegspunkte sind dein <b>Gesamtkonto</b> aus den geladenen Kriegen. WÃ¤hrend <b>Aktive Kriege</b> nur zeigt, <b>wie oft</b> du in den letzten 10 Kriegen mitgemacht hast (zum Beispiel <b>6/10</b>), zeigen die <b>Kriegspunkte</b>, <b>wie viele Punkte du dabei insgesamt gesammelt</b> hast.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>Kriegspunkte</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler O</td><td><span class='focus-pill' style='background:#94a3b822; color:#94a3b8; border:1px solid #94a3b855;'>🙂 solide</span></td><td>Mitglied</td><td><b>75.0%</b></td><td class='trend-cell'>🟡🟢🟡🟢</td><td style='color:#cbd5e1;'>160</td><td>6/10</td><td>1850</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>120</span></td></tr>
+                        <table class="wiki-table">
+                            <tr><th>Spieler</th><th>Check</th><th>Aktive Kriege</th><th>Kriegspunkte</th></tr>
+                            <tr><td class='name-col'>Spieler O</td><td><span class='focus-pill' style='background:#94a3b822; color:#94a3b8; border:1px solid #94a3b855;'>solide</span></td><td>6/10</td><td>1850</td></tr>
+                            <tr><td class='name-col'>Spieler P</td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>ausbaufaehig</span></td><td>6/10</td><td>900</td></tr>
                         </table>
                     </div>
                     <ul>
-                        <li><b>Beispiel:</b> Zwei Spieler können beide bei <b>6/10 aktiven Kriegen</b> stehen. Wer dort <b>1850 Kriegspunkte</b> hat, hat dem Clan insgesamt deutlich mehr gebracht als jemand mit nur <b>900</b>.</li>
-                        <li><b>Wichtig:</b> Kriegspunkte sind eine <b>Mengen-Anzeige</b>. Für die Qualität pro gespieltem Deck ist weiter der Wert <b>Ø Punkte</b> zuständig.</li>
+                        <li><b>Beispiel:</b> Zwei Spieler koennen beide bei <b>6/10 aktiven Kriegen</b> stehen. Wer dort <b>1850 Kriegspunkte</b> hat, hat dem Clan insgesamt deutlich mehr gebracht als jemand mit nur <b>900</b>.</li>
+                        <li><b>So liest du den Wert:</b> <b>Aktive Kriege</b> zeigt, wie oft jemand dabei war. <b>Kriegspunkte</b> zeigen, was ueber diese Einsaetze insgesamt zusammenkam.</li>
+                        <li><b>Wichtig:</b> Kriegspunkte sind eine <b>Mengen-Anzeige</b>. Fuer die Qualitaet pro gespieltem Deck ist weiter der Wert <b>Punkte pro Deck</b> zustaendig.</li>
                     </ul>
-                </div>
 
-                <button class="accordion-btn">📊 Clan-Durchschnitt & ⚔️ Clan-Ø Punkte</button>
+                <button class="accordion-btn">ðŸ“Š Clan-Durchschnitt & âš”ï¸ Clan-Ã˜ Punkte</button>
                 <div class="accordion-content">
-                    <p>In der Übersicht seht ihr zwei Clan-Werte, die absichtlich zwei verschiedene Fragen beantworten: <b>Wie zuverlässig spielen wir unsere Decks aus?</b> und <b>wie stark kämpfen wir pro Deck?</b></p>
+                    <p>In der Ãœbersicht seht ihr zwei Clan-Werte, die absichtlich zwei verschiedene Fragen beantworten: <b>Wie zuverlÃ¤ssig spielen wir unsere Decks aus?</b> und <b>wie stark kÃ¤mpfen wir pro Deck?</b></p>
                     <ul>
-                        <li><b>📈 Clan-Durchschnitt:</b> Das ist der Durchschnitt aller <b>Score</b>-Werte der aktiven Mitglieder. Er zeigt also, wie zuverlässig der Clan seine verfügbaren Kriegs-Decks insgesamt nutzt.
+                        <li><b>ðŸ“ˆ Clan-Durchschnitt:</b> Das ist der Durchschnitt aller <b>Score</b>-Werte der aktiven Mitglieder. Er zeigt also, wie zuverlÃ¤ssig der Clan seine verfÃ¼gbaren Kriegs-Decks insgesamt nutzt.
                         Beispiel: <b>90%+</b> ist stark, weil fast alle ihre Decks sauber spielen. Ein Wert um <b>60%</b> oder darunter zeigt, dass dem Clan viele Decks fehlen.</li>
-                        <li><b>⚔️ Clan-Ø Punkte:</b> Dieser Wert teilt die <b>gesamten aktuellen Kriegspunkte</b> des Clans durch die <b>gesamt gespielten Decks</b> der aktiven Mitglieder. Er zeigt also, wie stark der Clan pro eingesetztem Deck kämpft.
+                        <li><b>âš”ï¸ Clan-Ã˜ Punkte:</b> Dieser Wert teilt die <b>gesamten aktuellen Kriegspunkte</b> des Clans durch die <b>gesamt gespielten Decks</b> der aktiven Mitglieder. Er zeigt also, wie stark der Clan pro eingesetztem Deck kÃ¤mpft.
                         Beispiel: Ein Wert von <b>160 bis 200</b> ist ordentlich bis stark. Werte nah an <b>115</b> sind eher schwach, weil dann viele Decks kaum Ertrag bringen.</li>
-                        <li><b>Unterschied:</b> Ein hoher Clan-Durchschnitt heißt, dass viele Leute ihre Decks spielen. Ein hoher Clan-Ø Punkte heißt, dass diese Decks auch qualitativ gute Punkte holen. Beides zusammen ist ideal.</li>
-                        <li><b>Die Urlaubs-Regel:</b> Wenn jemand offiziell im Urlaub (🏖️) ist und pausiert, wird er aus beiden Clan-Werten komplett herausgenommen.</li>
+                        <li><b>Unterschied:</b> Ein hoher Clan-Durchschnitt heiÃŸt, dass viele Leute ihre Decks spielen. Ein hoher Clan-Ã˜ Punkte heiÃŸt, dass diese Decks auch qualitativ gute Punkte holen. Beides zusammen ist ideal.</li>
+                        <li><b>Die Urlaubs-Regel:</b> Wenn jemand offiziell im Urlaub (ðŸ–ï¸) ist und pausiert, wird er aus beiden Clan-Werten komplett herausgenommen.</li>
                     </ul>
                 </div>
             </div>
 
             <div id="Decks" class="tab-content">
-                <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; margin-bottom: 10px; color: #ffffff;">🃏 Clan-Meta: Die besten Kriegs-Decks</h2>
-                <p style="text-align: center; color: #94a3b8; margin-bottom: 30px;">Das System analysiert die Clankriegs-Kämpfe der letzten 30 Tage und sortiert sie für euch in starke Meta-Decks, solide Allrounder und einsteigerfreundliche Optionen.</p>
+                <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; margin-bottom: 10px; color: #ffffff;">ðŸƒ Clan-Meta: Die besten Kriegs-Decks</h2>
+                <p style="text-align: center; color: #94a3b8; margin-bottom: 30px;">Das System analysiert die Clankriegs-KÃ¤mpfe der letzten 30 Tage und sortiert sie fÃ¼r euch in starke Meta-Decks, solide Allrounder und einsteigerfreundliche Optionen.</p>
                 <div>
                     {deck_html}
                 </div>
@@ -1128,9 +1129,9 @@ def generate_html_report(
 
     role_map = {
         "member": "Mitglied",
-        "elder": "Ältester",
+        "elder": "Ã„ltester",
         "coleader": "Vize",
-        "leader": "Anführer",
+        "leader": "AnfÃ¼hrer",
         "unknown": "Ehemalig"
     }
 
@@ -1169,7 +1170,7 @@ def generate_html_report(
         aktueller_trophy = int(row.get("player_trophies", 0) or 0)
 
         # Wiki-konforme Score-Logik:
-        # Nur Kriege zählen, in denen tatsächlich gespielt wurde.
+        # Nur Kriege zÃ¤hlen, in denen tatsÃ¤chlich gespielt wurde.
         max_moegliche_decks = wars_with_participation * 16
         score = round((decks_total / max_moegliche_decks) * 100, 2) if max_moegliche_decks > 0 else 0.0
 
@@ -1184,9 +1185,9 @@ def generate_html_report(
         leecher_warnung = ""
         if 0 < fame_per_deck < APP_CONFIG["DROPPER_THRESHOLD"]:
             leecher_warnung = (
-                " <span class='custom-tooltip'>⚠️"
-                "<span class='tooltip-text'>Auffällig niedriger Ertrag pro Deck "
-                "(bitte Spielweise prüfen)</span></span>"
+                " <span class='custom-tooltip'>âš ï¸"
+                "<span class='tooltip-text'>AuffÃ¤llig niedriger Ertrag pro Deck "
+                "(bitte Spielweise prÃ¼fen)</span></span>"
             )
 
         historie_spieler = df_history[df_history["player_name"] == name].copy()
@@ -1212,7 +1213,7 @@ def generate_html_report(
 
         trend_scores = vergangene_scores + [score]
         trend_str = "".join(
-            ["🟢" if s >= 80 else "🟡" if s >= APP_CONFIG["STRIKE_THRESHOLD"] else "🔴" for s in trend_scores[-4:]]
+            ["ðŸŸ¢" if s >= 80 else "ðŸŸ¡" if s >= APP_CONFIG["STRIKE_THRESHOLD"] else "ðŸ”´" for s in trend_scores[-4:]]
         )
 
         # Streak-Logik
@@ -1229,7 +1230,7 @@ def generate_html_report(
         streak_badge = ""
         if streak_count >= 3:
             streak_badge = (
-                f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥 {streak_count}"
+                f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>ðŸ”¥ {streak_count}"
                 f"<span class='tooltip-text'>{streak_count} Auswertungen in Folge 100% Score!</span></span>"
             )
 
@@ -1257,18 +1258,18 @@ def generate_html_report(
         strike_badge = ""
         if name in strikes_data.get("demoted_this_week", []):
             strike_badge = (
-                " <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3"
-                "<span class='tooltip-text'>Wurde degradiert! Bewährungschance aktiv.</span></span>"
+                " <span class='custom-tooltip align-left' style='font-size: 0.9em;'>âŒ 3/3"
+                "<span class='tooltip-text'>Wurde degradiert! BewÃ¤hrungschance aktiv.</span></span>"
             )
         elif name in strikes_data.get("kicked_this_week", []):
             strike_badge = (
-                " <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3"
-                "<span class='tooltip-text'>3 interne Hinweise: interne Maßnahme erfolgt.</span></span>"
+                " <span class='custom-tooltip align-left' style='font-size: 0.9em;'>âŒ 3/3"
+                "<span class='tooltip-text'>3 interne Hinweise: interne MaÃŸnahme erfolgt.</span></span>"
             )
         elif strike_val > 0:
             strike_badge = (
-                f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ {strike_val}/3"
-                "<span class='tooltip-text'>Interner Hinweis. Bei 3/3 folgen interne Maßnahmen.</span></span>"
+                f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>âŒ {strike_val}/3"
+                "<span class='tooltip-text'>Interner Hinweis. Bei 3/3 folgen interne MaÃŸnahmen.</span></span>"
             )
 
         # Welpenschutz-Logik
@@ -1276,7 +1277,7 @@ def generate_html_report(
         welpenschutz_badge = ""
         if is_welpenschutz:
             welpenschutz_badge = (
-                " <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱"
+                " <span class='custom-tooltip align-left' style='opacity:0.8;'>ðŸŒ±"
                 "<span class='tooltip-text'>Neu im Clan / Wenig Kriege / Welpenschutz aktiv</span></span>"
             )
 
@@ -1294,23 +1295,23 @@ def generate_html_report(
         )
 
         if is_urlaub:
-            status_html = "🏖️ Urlaub"
-            tier = "🏖️ Im Urlaub (Pausiert)"
+            status_html = "ðŸ–ï¸ Urlaub"
+            tier = "ðŸ–ï¸ Im Urlaub (Pausiert)"
         else:
             status_html = (
-                f"{role_de} <span class='badge-ja'>➔ BEFÖRDERN</span>"
+                f"{role_de} <span class='badge-ja'>âž” BEFÃ–RDERN</span>"
                 if raw_role == "member" and aktueller_fame >= 2800
                 else role_de
             )
 
             if score >= 95:
-                tier = "🌟 Elite (95-100%)"
+                tier = "Sehr stark (95-100%)"
             elif score >= 80:
-                tier = "✅ Solides Mittelfeld (80-94%)"
+                tier = "Solide Basis (80-94%)"
             elif score >= APP_CONFIG["STRIKE_THRESHOLD"]:
-                tier = f"⚠️ Unter Beobachtung ({APP_CONFIG['STRIKE_THRESHOLD']}-79%)"
+                tier = f"Mehr drin ({APP_CONFIG['STRIKE_THRESHOLD']}-79%)"
             else:
-                tier = f"🚫 Kritisch (< {APP_CONFIG['STRIKE_THRESHOLD']}%)"
+                tier = f"Deutlich ausbaufaehig (< {APP_CONFIG['STRIKE_THRESHOLD']}%)"
 
         player_stats.append({
             "name": name,
@@ -1389,7 +1390,7 @@ def generate_html_report(
     top_performers_html = "".join([f"<li><b>{p['name']}</b> ({p['score']}%)</li>" for p in top_performers_list])
     top_aufsteiger_html = "".join([f"<li><b>{p['name']}</b> (+{p['delta']}%)</li>" for p in top_aufsteiger_list]) if top_aufsteiger_list else "<li>Keine Verbesserungen</li>"
     top_spender_html = "".join([f"<li><b>{p['name']}</b> ({p['donations']})</li>" for p in top_spender_list]) if top_spender_list else "<li>Keine Spenden</li>"
-    top_leecher_html = "".join([f"<li><b>{p['name']}</b> ({p['donations']} gesp. / {p['donations_received']} empf.)</li>" for p in top_leecher_list]) if top_leecher_list else "<li>Keine Auffälligkeiten 🎉</li>"
+    top_leecher_html = "".join([f"<li><b>{p['name']}</b> ({p['donations']} gesp. / {p['donations_received']} empf.)</li>" for p in top_leecher_list]) if top_leecher_list else "<li>Keine AuffÃ¤lligkeiten ðŸŽ‰</li>"
 
     reliability_state, reliability_color = get_signal_state(clan_avg, 85, 70)
     quality_state, quality_color = get_signal_state(clan_avg_points_per_deck, 160, 130)
@@ -1398,19 +1399,19 @@ def generate_html_report(
     clan_ampel_html = f"""
     <div class='signal-board'>
         <div class='signal-card'>
-            <h4>📈 Zuverlässigkeit</h4>
+            <h4>ðŸ“ˆ ZuverlÃ¤ssigkeit</h4>
             <div class='signal-value' style='color:{reliability_color};'>{reliability_state.upper()}</div>
             <div style='color:#94a3b8; font-size:0.92em;'>Bewertung des Clan-Durchschnitts</div>
             <div class='signal-state' style='color:{reliability_color};'>{reliability_state.upper()}</div>
         </div>
         <div class='signal-card'>
-            <h4>⚔️ Kampfqualität</h4>
+            <h4>âš”ï¸ KampfqualitÃ¤t</h4>
             <div class='signal-value' style='color:{quality_color};'>{quality_state.upper()}</div>
             <div style='color:#94a3b8; font-size:0.92em;'>Bewertung der Punkte pro Deck</div>
             <div class='signal-state' style='color:{quality_color};'>{quality_state.upper()}</div>
         </div>
         <div class='signal-card'>
-            <h4>🤝 Teamplay</h4>
+            <h4>ðŸ¤ Teamplay</h4>
             <div class='signal-value' style='color:{teamplay_color};'>{teamplay_state.upper()}</div>
             <div style='color:#94a3b8; font-size:0.92em;'>{teamplay_details['donors']} von {len(aktive_spieler)} Aktiven spenden mit</div>
             <div class='signal-state' style='color:{teamplay_color};'>{teamplay_state.upper()}</div>
@@ -1420,27 +1421,27 @@ def generate_html_report(
 
     summary_lines = []
     if clan_avg >= 85:
-        summary_lines.append("Der Clan spielt seine Decks sehr zuverlässig aus.")
+        summary_lines.append("Der Clan spielt seine Decks sehr zuverlÃ¤ssig aus.")
     elif clan_avg >= 70:
-        summary_lines.append("Die Zuverlässigkeit ist okay, aber es bleiben noch zu viele Decks liegen.")
+        summary_lines.append("Die ZuverlÃ¤ssigkeit ist okay, aber es bleiben noch zu viele Decks liegen.")
     else:
         summary_lines.append("Beim Ausspielen der Decks verlieren wir aktuell zu viel Boden.")
 
     if clan_avg_points_per_deck >= 160:
-        summary_lines.append("Die Kampfqualität ist stark und bringt pro Deck ordentlich Punkte.")
+        summary_lines.append("Die KampfqualitÃ¤t ist stark und bringt pro Deck ordentlich Punkte.")
     elif clan_avg_points_per_deck >= 130:
-        summary_lines.append("Die Kampfqualität ist solide, hat aber noch Luft nach oben.")
+        summary_lines.append("Die KampfqualitÃ¤t ist solide, hat aber noch Luft nach oben.")
     else:
-        summary_lines.append("Die Kämpfe bringen aktuell zu wenig Ertrag pro Deck.")
+        summary_lines.append("Die KÃ¤mpfe bringen aktuell zu wenig Ertrag pro Deck.")
 
     if teamplay_state == "kritisch":
-        summary_lines.append("Beim Spenden und Unterstützen im Clan ist gerade noch Luft nach oben.")
+        summary_lines.append("Beim Spenden und UnterstÃ¼tzen im Clan ist gerade noch Luft nach oben.")
     elif teamplay_state == "okay":
         summary_lines.append("Beim Teamplay ist schon was da, aber noch nicht jeder zieht mit.")
     else:
         summary_lines.append("Auch beim Teamplay wirkt der Clan im Moment sehr geschlossen.")
 
-    weekly_summary_html = "<div class='info-box' style='border-left-color: #fbbf24;'><h3 style='margin-top:0; color:#fbbf24;'>🧭 Wochenfazit</h3><ul style='margin:0;'>" + "".join([f"<li>{line}</li>" for line in summary_lines]) + "</ul></div>"
+    weekly_summary_html = "<div class='info-box' style='border-left-color: #fbbf24;'><h3 style='margin-top:0; color:#fbbf24;'>ðŸ§­ Wochenfazit</h3><ul style='margin:0;'>" + "".join([f"<li>{line}</li>" for line in summary_lines]) + "</ul></div>"
 
     aktive_namen_set = set(df_active["player_name"].tolist())
     preliminary_open_decks = sum(
@@ -1457,15 +1458,15 @@ def generate_html_report(
     if preliminary_open_decks > 0:
         coach_items.append(f"<li><b>Offene Decks zuerst dicht machen:</b> Heute sind noch <b>{preliminary_open_decks}</b> Decks offen. Konstanz bringt uns im Moment am schnellsten nach vorne.</li>")
     if low_quality_count > 0:
-        coach_items.append(f"<li><b>Kämpfe sauber ausspielen:</b> Bei <b>{low_quality_count}</b> Spielern liegt der Ø-Wert unter {APP_CONFIG['DROPPER_THRESHOLD']}. Lieber normale Kämpfe als Bootsangriffe verschwenden.</li>")
+        coach_items.append(f"<li><b>KÃ¤mpfe sauber ausspielen:</b> Bei <b>{low_quality_count}</b> Spielern liegt der Ã˜-Wert unter {APP_CONFIG['DROPPER_THRESHOLD']}. Lieber normale KÃ¤mpfe als Bootsangriffe verschwenden.</li>")
     if teamplay_details["leecher"] > 0 or teamplay_details["sleeper"] > 0:
-        coach_items.append(f"<li><b>Mehr Teamplay hilft sofort:</b> Aktuell haben wir <b>{teamplay_details['leecher']}</b> Spieler mit auffälligem Spendenverhalten und <b>{teamplay_details['sleeper']}</b> spendeninaktive Spieler. Ein paar Spenden mehr machen den Clan direkt runder.</li>")
+        coach_items.append(f"<li><b>Mehr Teamplay hilft sofort:</b> Aktuell haben wir <b>{teamplay_details['leecher']}</b> Spieler mit auffÃ¤lligem Spendenverhalten und <b>{teamplay_details['sleeper']}</b> spendeninaktive Spieler. Ein paar Spenden mehr machen den Clan direkt runder.</li>")
     if newbie_count > 0 or low_score_count > 0:
-        coach_items.append("<li><b>Einfach statt fancy:</b> Für unsichere Spieler bringen die Einsteiger-Decks oft mehr als komplizierte Spezialdecks. Erst sicher spielen, dann experimentieren.</li>")
+        coach_items.append("<li><b>Sauber statt kompliziert:</b> Auch mit Erfahrung bringen im Krieg oft klar aufgebaute, verlaesslich spielbare Decks mehr Konstanz als sehr spezielle Listen. Erst sauber ausspielen, dann experimentieren.</li>")
 
     coach_html = ""
     if coach_items:
-        coach_html = "<div class='info-box' style='border-left-color: #10b981;'><h3 style='margin-top:0; color:#10b981;'>🧠 Coach-Ecke</h3><p style='margin-top:0;'>Ein paar einfache Wochen-Hinweise, mit denen wir als Clan direkt mehr rausholen können:</p><ul style='margin-bottom:0;'>" + "".join(coach_items[:4]) + "</ul></div>"
+        coach_html = "<div class='info-box' style='border-left-color: #10b981;'><h3 style='margin-top:0; color:#10b981;'>ðŸ§  Coach-Ecke</h3><p style='margin-top:0;'>Ein paar einfache Wochen-Hinweise, mit denen wir als Clan direkt mehr rausholen kÃ¶nnen:</p><ul style='margin-bottom:0;'>" + "".join(coach_items[:4]) + "</ul></div>"
 
     kandidaten_demote = strikes_data.get("demoted_this_week", [])
     kandidaten_kick = strikes_data.get("kicked_this_week", [])
@@ -1473,28 +1474,28 @@ def generate_html_report(
     top_pusher = sorted(aktive_spieler, key=lambda x: x["trophy_push"], reverse=True)
     if top_pusher and top_pusher[0]["trophy_push"] > 0:
         pusher_name, pusher_val = top_pusher[0]["name"], top_pusher[0]["trophy_push"]
-        pusher_html = f"<li><b>{pusher_name}</b> (+{pusher_val} 🏆)</li>"
-        pusher_chat = f"🚀 Top-Pusher: {pusher_name} (+{pusher_val}🏆)"
+        pusher_html = f"<li><b>{pusher_name}</b> (+{pusher_val} ðŸ†)</li>"
+        pusher_chat = f"ðŸš€ Top-Pusher: {pusher_name} (+{pusher_val}ðŸ†)"
     else:
         pusher_html = "<li>Niemand</li>"
         pusher_chat = ""
 
     urlaub_html = "<li>Niemand</li>"
     if urlauber_liste:
-        urlaub_html = "".join([f"<li>🏖️ <b>{u}</b></li>" for u in urlauber_liste])
+        urlaub_html = "".join([f"<li>ðŸ–ï¸ <b>{u}</b></li>" for u in urlauber_liste])
 
     radar_html = ""
     if radar_clans:
         radar_hint = f" <span style='font-size:0.8em; opacity:0.8; font-weight:normal;'>(Status: {race_state_de})</span>"
-        radar_html = f"<div class='info-box' style='border-left-color: #f43f5e; background: rgba(159, 18, 57, 0.15); margin-bottom: 25px;'><h3 style='margin-top: 0; color: #f43f5e; margin-bottom: 12px; font-size: 1.2em;'>📡 Live Kriegs-Radar{radar_hint}</h3>"
+        radar_html = f"<div class='info-box' style='border-left-color: #f43f5e; background: rgba(159, 18, 57, 0.15); margin-bottom: 25px;'><h3 style='margin-top: 0; color: #f43f5e; margin-bottom: 12px; font-size: 1.2em;'>ðŸ“¡ Live Kriegs-Radar{radar_hint}</h3>"
         radar_html += "<div style='overflow-x: auto;'><table style='width: 100%; border-collapse: collapse; font-size: 0.95em;'>"
-        radar_html += "<tr style='border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; font-weight: 600; text-align: left;'><td style='padding-bottom: 8px; border: none; text-align: left;'>Clan</td><td style='padding-bottom: 8px; border: none; text-align: center;'>⛵ Boot</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🥇 Medaille</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🏆 Trophäe</td></tr>"
+        radar_html += "<tr style='border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; font-weight: 600; text-align: left;'><td style='padding-bottom: 8px; border: none; text-align: left;'>Clan</td><td style='padding-bottom: 8px; border: none; text-align: center;'>â›µ Boot</td><td style='padding-bottom: 8px; border: none; text-align: center;'>ðŸ¥‡ Medaille</td><td style='padding-bottom: 8px; border: none; text-align: center;'>ðŸ† TrophÃ¤e</td></tr>"
 
         for idx, c in enumerate(radar_clans):
             bold_name = f"<b style='color:#fff;'>{c['name']} (WIR)</b>" if c["is_us"] else c["name"]
             bg_color = "rgba(255,255,255,0.05)" if idx % 2 == 0 else "transparent"
             radar_html += f"<tr style='background: {bg_color}; border-bottom: 1px solid rgba(255,255,255,0.02);'>"
-            radar_html += f"<td style='padding: 10px 5px;'>{bold_name}<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 {c['decks_used']} / 200 Decks</span></td>"
+            radar_html += f"<td style='padding: 10px 5px;'>{bold_name}<br><span style='font-size: 0.8em; color: #cbd5e1;'>ðŸƒ {c['decks_used']} / 200 Decks</span></td>"
             radar_html += f"<td style='text-align: center; font-weight: bold; color: #f8fafc;'>{c['boat_attacks']}</td>"
             radar_html += f"<td style='text-align: center; font-weight: bold; color: #fbbf24;'>{c['medals']}</td>"
             radar_html += f"<td style='text-align: center; font-weight: bold; color: #c084fc;'>{c['trophies']}</td>"
@@ -1525,15 +1526,15 @@ def generate_html_report(
                 total_open_decks += m["offen"]
 
         if gefilterte_mahnwache:
-            mahnwache_html = f"<div class='info-box' style='border-left-color: #ef4444; background: rgba(239, 68, 68, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #ef4444; margin-bottom: 8px;'>⏰ Mahnwache (Noch offene Decks heute):</h4><p style='margin: 0; font-size: 0.95em;'>{', '.join(gefilterte_mahnwache)}</p></div>"
+            mahnwache_html = f"<div class='info-box' style='border-left-color: #ef4444; background: rgba(239, 68, 68, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #ef4444; margin-bottom: 8px;'>â° Mahnwache (Noch offene Decks heute):</h4><p style='margin: 0; font-size: 0.95em;'>{', '.join(gefilterte_mahnwache)}</p></div>"
         else:
-            mahnwache_html = "<div class='info-box' style='border-left-color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #10b981; margin-bottom: 0;'>✅ Alle aktiven Spieler haben ihre Decks für heute gespielt!</h4></div>"
+            mahnwache_html = "<div class='info-box' style='border-left-color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #10b981; margin-bottom: 0;'>âœ… Alle aktiven Spieler haben ihre Decks fÃ¼r heute gespielt!</h4></div>"
 
         played_decks_today = total_decks_today - total_open_decks
         hype_percentage = int((played_decks_today / total_decks_today) * 100) if total_decks_today > 0 else 0
         hype_color = "#ef4444" if hype_percentage < 50 else "#fbbf24" if hype_percentage < 90 else "#10b981"
 
-        tagesziel_titel = "🎯 Tagesziel: Trainings-Kämpfe" if "Training" in race_state_de else "🎯 Tagesziel: Clan-Kriegs Kämpfe"
+        tagesziel_titel = "ðŸŽ¯ Tagesziel: Trainings-KÃ¤mpfe" if "Training" in race_state_de else "ðŸŽ¯ Tagesziel: Clan-Kriegs KÃ¤mpfe"
 
         hype_balken_html = f"""
         <div style='background: rgba(30, 41, 59, 0.8); border-radius: 12px; padding: 20px; margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 15px rgba(0,0,0,0.2);'>
@@ -1557,44 +1558,44 @@ def generate_html_report(
     for chunk in chunk_list(echte_neulinge, 3):
         names_str = ", ".join(chunk)
         welcome_vars = {
-            "Sachlich": f"👋 Moin {names_str}, willkommen bei uns im Clan. Alles Wichtige findet ihr unter clan-hamburg.de",
-            "Motivierend": f"🎉 Moin {names_str}, herzlich willkommen in der HAMBURG-Family! Alles Wichtige findet ihr unter clan-hamburg.de",
-            "Kurz & Knackig": f"👋 Moin {names_str}, willkommen im Clan! Alles Wichtige: clan-hamburg.de"
+            "Sachlich": f"ðŸ‘‹ Moin {names_str}, willkommen bei uns im Clan. Alles Wichtige findet ihr unter clan-hamburg.de",
+            "Motivierend": f"ðŸŽ‰ Moin {names_str}, herzlich willkommen in der HAMBURG-Family! Alles Wichtige findet ihr unter clan-hamburg.de",
+            "Kurz & Knackig": f"ðŸ‘‹ Moin {names_str}, willkommen im Clan! Alles Wichtige: clan-hamburg.de"
         }
         chat_blocks.append(welcome_vars)
 
     for chunk in chunk_list(rueckkehrer, 3):
         names_str = ", ".join(chunk)
         rueckkehrer_vars = {
-            "Sachlich": f"👋 Moin {names_str}, willkommen zurück. Schön, dass ihr wieder da seid.",
-            "Motivierend": f"🎉 Moin {names_str}, nice dass ihr wieder am Start seid! Willkommen zurück in der HAMBURG-Family.",
-            "Kurz & Knackig": f"👋 Willkommen zurück {names_str}! Schön, euch wieder im Clan zu haben."
+            "Sachlich": f"ðŸ‘‹ Moin {names_str}, willkommen zurÃ¼ck. SchÃ¶n, dass ihr wieder da seid.",
+            "Motivierend": f"ðŸŽ‰ Moin {names_str}, nice dass ihr wieder am Start seid! Willkommen zurÃ¼ck in der HAMBURG-Family.",
+            "Kurz & Knackig": f"ðŸ‘‹ Willkommen zurÃ¼ck {names_str}! SchÃ¶n, euch wieder im Clan zu haben."
         }
         chat_blocks.append(rueckkehrer_vars)
 
     for chunk in chunk_list(warn_rueckkehrer, 3):
         names_str = ", ".join(chunk)
         rueckkehrer_vars = {
-            "Sachlich": f"⚠️ Info an die Vizes: {names_str} ist wieder da. Wurde früher wegen Kriegsinaktivität gekickt. Bitte im Blick behalten.",
-            "Motivierend": f"👀 {names_str} ist wieder am Start. Früher wegen Kriegsinaktivität raus, also schauen wir mal, wie es diesmal läuft.",
-            "Kurz & Knackig": f"🚨 Achtung: {names_str} ist wieder da. Bitte Kriegsaktivität im Auge behalten."
+            "Sachlich": f"âš ï¸ Info an die Vizes: {names_str} ist wieder da. Wurde frÃ¼her wegen KriegsinaktivitÃ¤t gekickt. Bitte im Blick behalten.",
+            "Motivierend": f"ðŸ‘€ {names_str} ist wieder am Start. FrÃ¼her wegen KriegsinaktivitÃ¤t raus, also schauen wir mal, wie es diesmal lÃ¤uft.",
+            "Kurz & Knackig": f"ðŸš¨ Achtung: {names_str} ist wieder da. Bitte KriegsaktivitÃ¤t im Auge behalten."
         }
         chat_blocks.append(rueckkehrer_vars)
 
     msg_1_vars = {
-        "Sachlich": f"📊 Clan-Ø: {clan_avg}%. MVPs: {cr_top_names} 🏆 {pusher_chat}",
-        "Motivierend": f"🔥 Super Leistung! Clan-Ø: {clan_avg}%. Ein dickes Danke an unsere MVPs: {cr_top_names}! {pusher_chat}",
-        "Kurz & Knackig": f"⚔️ Auswertung da! Schnitt: {clan_avg}%. Top 3: {cr_top_names}. {pusher_chat}"
+        "Sachlich": f"ðŸ“Š Clan-Ã˜: {clan_avg}%. MVPs: {cr_top_names} ðŸ† {pusher_chat}",
+        "Motivierend": f"ðŸ”¥ Super Leistung! Clan-Ã˜: {clan_avg}%. Ein dickes Danke an unsere MVPs: {cr_top_names}! {pusher_chat}",
+        "Kurz & Knackig": f"âš”ï¸ Auswertung da! Schnitt: {clan_avg}%. Top 3: {cr_top_names}. {pusher_chat}"
     }
     chat_blocks.append(msg_1_vars)
 
-    msg_2_sachlich = f"🃏 Ein Lob an unsere Top-Spender: {top_spender_names}! 🤝" if top_spender_list else "🃏 Kaum Spenden diese Woche. Ein Clan lebt vom Geben UND Nehmen! 🤝"
+    msg_2_sachlich = f"ðŸƒ Ein Lob an unsere Top-Spender: {top_spender_names}! ðŸ¤" if top_spender_list else "ðŸƒ Kaum Spenden diese Woche. Ein Clan lebt vom Geben UND Nehmen! ðŸ¤"
     if echte_leecher:
-        msg_2_sachlich += f" | 📦 Spenden auffällig: {leecher_names}."
-    msg_2_motiv = f"💚 Wahnsinn, was ihr spendet! Top-Supporter: {top_spender_names}. Danke fürs Karten teilen!" if top_spender_list else "💚 Vergesst das Spenden nicht, Team! Jeder braucht mal Karten."
-    msg_2_streng = f"⚠️ Spenden-Check: Danke an {top_spender_names}." if top_spender_list else "⚠️ Null Spenden-Moral diese Woche!"
+        msg_2_sachlich += f" | ðŸ“¦ Spenden auffÃ¤llig: {leecher_names}."
+    msg_2_motiv = f"ðŸ’š Wahnsinn, was ihr spendet! Top-Supporter: {top_spender_names}. Danke fÃ¼rs Karten teilen!" if top_spender_list else "ðŸ’š Vergesst das Spenden nicht, Team! Jeder braucht mal Karten."
+    msg_2_streng = f"âš ï¸ Spenden-Check: Danke an {top_spender_names}." if top_spender_list else "âš ï¸ Null Spenden-Moral diese Woche!"
     if echte_leecher:
-        msg_2_streng += f" Spenden auffällig: {leecher_names}. Das muss besser werden!"
+        msg_2_streng += f" Spenden auffÃ¤llig: {leecher_names}. Das muss besser werden!"
 
     msg_2_vars = {
         "Sachlich": msg_2_sachlich,
@@ -1610,35 +1611,35 @@ def generate_html_report(
     if dropper_names:
         names_str = ", ".join(dropper_names)
         dropper_vars = {
-            "Sachlich": f"⚠️ Hinweis an {names_str}: Euer Punkteschnitt pro Deck ist auffällig niedrig (<{APP_CONFIG['DROPPER_THRESHOLD']}). Bitte greift keine feindlichen Boote an und gebt Kämpfe nicht absichtlich auf. Der Clan braucht jeden Punkt in echten Duellen! ⚔️",
-            "Motivierend": f"💡 Kleiner Tipp an {names_str}: Normale Kämpfe oder Duelle bringen dem Clan viel mehr Punkte als Bootsangriffe! Spielt eure Decks am besten in den normalen Modi aus, auch wenn ihr mal verliert. Ihr schafft das! 💪",
-            "Kurz & Knackig": f"⚠️ Bootsangriffe / Kampf-Aufgabe entdeckt bei: {names_str}. Bitte ab sofort normale Kämpfe machen, das bringt deutlich mehr Punkte für den Clan!"
+            "Sachlich": f"âš ï¸ Hinweis an {names_str}: Euer Punkteschnitt pro Deck ist auffÃ¤llig niedrig (<{APP_CONFIG['DROPPER_THRESHOLD']}). Bitte greift keine feindlichen Boote an und gebt KÃ¤mpfe nicht absichtlich auf. Der Clan braucht jeden Punkt in echten Duellen! âš”ï¸",
+            "Motivierend": f"ðŸ’¡ Kleiner Tipp an {names_str}: Normale KÃ¤mpfe oder Duelle bringen dem Clan viel mehr Punkte als Bootsangriffe! Spielt eure Decks am besten in den normalen Modi aus, auch wenn ihr mal verliert. Ihr schafft das! ðŸ’ª",
+            "Kurz & Knackig": f"âš ï¸ Bootsangriffe / Kampf-Aufgabe entdeckt bei: {names_str}. Bitte ab sofort normale KÃ¤mpfe machen, das bringt deutlich mehr Punkte fÃ¼r den Clan!"
         }
         chat_blocks.append(dropper_vars)
 
     for chunk in chunk_list(kandidaten_demote, 4):
         names_str = ", ".join(chunk)
         demote_vars = {
-            "Sachlich": f"👇 Degradierung: {names_str}. Grund: Dauerhaft zu wenig Kriegskämpfe. Letzte Bewährungschance als Mitglied! ⚔️",
-            "Motivierend": f"👇 Wir stufen {names_str} wegen Kriegsinaktivität zum Mitglied ab. Kommt stärker zurück, ihr schafft das! ⚔️",
-            "Kurz & Knackig": f"👇 Degradierungen: {names_str} (Dauerhaft inaktiv im Krieg). Letzte Warnung. ⚔️"
+            "Sachlich": f"ðŸ‘‡ Degradierung: {names_str}. Grund: Dauerhaft zu wenig KriegskÃ¤mpfe. Letzte BewÃ¤hrungschance als Mitglied! âš”ï¸",
+            "Motivierend": f"ðŸ‘‡ Wir stufen {names_str} wegen KriegsinaktivitÃ¤t zum Mitglied ab. Kommt stÃ¤rker zurÃ¼ck, ihr schafft das! âš”ï¸",
+            "Kurz & Knackig": f"ðŸ‘‡ Degradierungen: {names_str} (Dauerhaft inaktiv im Krieg). Letzte Warnung. âš”ï¸"
         }
         chat_blocks.append(demote_vars)
 
     for chunk in chunk_list(kandidaten_kick, 4):
         names_str = ", ".join(chunk)
         kick_vars = {
-            "Sachlich": f"👋 Verabschiedung: {names_str}. Grund: Wiederholte Inaktivität im Clankrieg. Wir machen Platz. Alles Gute! ✌️",
-            "Motivierend": f"👋 Wir machen Platz für aktive Kämpfer und verabschieden {names_str} wegen Inaktivität. Danke für die Zeit! ✌️",
-            "Kurz & Knackig": f"👋 Kicks: {names_str}. Grund: Dauerhafte Kriegsinaktivität. ✌️"
+            "Sachlich": f"ðŸ‘‹ Verabschiedung: {names_str}. Grund: Wiederholte InaktivitÃ¤t im Clankrieg. Wir machen Platz. Alles Gute! âœŒï¸",
+            "Motivierend": f"ðŸ‘‹ Wir machen Platz fÃ¼r aktive KÃ¤mpfer und verabschieden {names_str} wegen InaktivitÃ¤t. Danke fÃ¼r die Zeit! âœŒï¸",
+            "Kurz & Knackig": f"ðŸ‘‹ Kicks: {names_str}. Grund: Dauerhafte KriegsinaktivitÃ¤t. âœŒï¸"
         }
         chat_blocks.append(kick_vars)
 
     if not kandidaten_demote and not kandidaten_kick:
         nokick_vars = {
-            "Sachlich": "🛡️ Info: Keine Kicks oder Degradierungen! Alle haben zuverlässig gekämpft oder sich fair abgemeldet. Starkes Team! 💪",
-            "Motivierend": "🌟 Großartig! Niemand auf der Kick-Liste diese Woche. Danke für eure Disziplin und Zuverlässigkeit! 💪",
-            "Kurz & Knackig": "🛡️ Alles sauber: Keine Kicks diese Woche! 💪"
+            "Sachlich": "ðŸ›¡ï¸ Info: Keine Kicks oder Degradierungen! Alle haben zuverlÃ¤ssig gekÃ¤mpft oder sich fair abgemeldet. Starkes Team! ðŸ’ª",
+            "Motivierend": "ðŸŒŸ GroÃŸartig! Niemand auf der Kick-Liste diese Woche. Danke fÃ¼r eure Disziplin und ZuverlÃ¤ssigkeit! ðŸ’ª",
+            "Kurz & Knackig": "ðŸ›¡ï¸ Alles sauber: Keine Kicks diese Woche! ðŸ’ª"
         }
         chat_blocks.append(nokick_vars)
 
@@ -1660,7 +1661,7 @@ def generate_html_report(
         chat_boxes_html += f"""
         <div style="margin-bottom: 15px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                <label style="color: {color}; font-weight: bold; font-size: 0.9em;">💬 Teil {i+1}/{total_msgs}:</label>
+                <label style="color: {color}; font-weight: bold; font-size: 0.9em;">ðŸ’¬ Teil {i+1}/{total_msgs}:</label>
                 <select onchange="document.getElementById('chatbox_{i}').value = this.value" style="background: rgba(30, 41, 59, 0.9); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 2px 6px; font-family: inherit; font-size: 0.85em; cursor: pointer;">
                     {options_html}
                 </select>
@@ -1674,7 +1675,7 @@ def generate_html_report(
     has_any_decks = any(section["decks"] for section in deck_sections)
 
     if not has_any_decks:
-        deck_html = f"<div class='info-box' style='border-left-color: #64748b;'><p style='margin: 0;'><b>Noch nicht genug Daten gesammelt.</b><br>Das System wertet Kriegs-Decks aus den letzten {DECK_LOOKBACK_DAYS} Tagen aus. Schau in ein paar Tagen wieder vorbei, dann füllen sich hier Meta-, solide und einsteigerfreundliche Decks.</p></div>"
+        deck_html = f"<div class='info-box' style='border-left-color: #64748b;'><p style='margin: 0;'><b>Noch nicht genug Daten gesammelt.</b><br>Das System wertet Kriegs-Decks aus den letzten {DECK_LOOKBACK_DAYS} Tagen aus. Schau in ein paar Tagen wieder vorbei, dann fÃ¼llen sich hier Meta-, solide und einsteigerfreundliche Decks.</p></div>"
     else:
         for section in deck_sections:
             if not section["decks"]:
@@ -1696,14 +1697,14 @@ def generate_html_report(
                     <div class="archetype-badge">{d['archetype']}</div>
                     <div class="deck-header">
                         <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">{section['title']} #{idx}</h3>
-                        <span class="winrate">🔥 {d['winrate']}% Win</span>
+                        <span class="winrate">ðŸ”¥ {d['winrate']}% Win</span>
                     </div>
                     <div class="deck-images">
                         {images_html}
                     </div>
                     <p style="font-size: 0.85em; color: #94a3b8; margin: 10px 0;">{d['wins']} Siege / {d['losses']} Niederlagen in {d['total_matches']} Spielen<br><span style="color:#e2e8f0; font-weight:bold;">Oft gewonnen von: {players_str}</span></p>
                     <div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px;">
-                        <a href="{royaleapi_link}" class="copy-btn" style="background: #38bdf8; color: #0f172a;" target="_blank">🔗 Auf RoyaleAPI öffnen & kopieren</a>
+                        <a href="{royaleapi_link}" class="copy-btn" style="background: #38bdf8; color: #0f172a;" target="_blank">ðŸ”— Auf RoyaleAPI Ã¶ffnen & kopieren</a>
                     </div>
                 </div>
                 """
@@ -1719,11 +1720,11 @@ def generate_html_report(
             """
 
     tiers = [
-        "🌟 Elite (95-100%)",
-        "✅ Solides Mittelfeld (80-94%)",
-        f"⚠️ Unter Beobachtung ({APP_CONFIG['STRIKE_THRESHOLD']}-79%)",
-        f"🚫 Kritisch (< {APP_CONFIG['STRIKE_THRESHOLD']}%)",
-        "🏖️ Im Urlaub (Pausiert)"
+        "Sehr stark (95-100%)",
+        "Solide Basis (80-94%)",
+        f"Mehr drin ({APP_CONFIG['STRIKE_THRESHOLD']}-79%)",
+        f"Deutlich ausbaufaehig (< {APP_CONFIG['STRIKE_THRESHOLD']}%)",
+        "ðŸ–ï¸ Im Urlaub (Pausiert)"
     ]
 
     table_html = ""
@@ -1744,9 +1745,9 @@ def generate_html_report(
                     <th>Status</th>
                     <th>Score</th>
                     <th>Trend</th>
-                    <th>Ø Punkte</th>
+                    <th>Ã˜ Punkte</th>
                     <th>Aktive Kriege</th>
-                    <th>🃏 Spenden</th>
+                    <th>ðŸƒ Spenden</th>
                 </tr>
                 </thead>
                 <tbody>"""
@@ -1755,9 +1756,9 @@ def generate_html_report(
                 spenden_warnung = ""
                 if p["donations"] == 0 and p["teilnahme_int"] > APP_CONFIG["MIN_PARTICIPATION"] and not p["is_urlaub"]:
                     if p["donations_received"] > 0:
-                        spenden_warnung = f" <span class='custom-tooltip' style='font-size: 1.1em;'>📦<span class='tooltip-text'>Spenden auffällig (0 gespendet, aber {p['donations_received']} erhalten)</span></span>"
+                        spenden_warnung = f" <span class='custom-tooltip' style='font-size: 1.1em;'>ðŸ“¦<span class='tooltip-text'>Spenden auffÃ¤llig (0 gespendet, aber {p['donations_received']} erhalten)</span></span>"
                     else:
-                        spenden_warnung = " <span class='custom-tooltip' style='font-size: 1.1em;'>💤<span class='tooltip-text'>Spenden inaktiv (0 gespendet, 0 erhalten)</span></span>"
+                        spenden_warnung = " <span class='custom-tooltip' style='font-size: 1.1em;'>ðŸ’¤<span class='tooltip-text'>Spenden inaktiv (0 gespendet, 0 erhalten)</span></span>"
 
                 spenden_zelle = f"<span class='custom-tooltip dotted'>{p['donations']}<span class='tooltip-text'>Gespendet: {p['donations']} | Empfangen: {p['donations_received']}</span></span>"
 
@@ -1860,7 +1861,7 @@ def archiviere_alte_auswertungen(output_dir: Path, anzahl: int = 2, max_archiv: 
     for file in alte_htmls[:-anzahl]:
         shutil.move(str(file), archiv_output / file.name)
 
-    # --- ARCHIV CLEANUP (Physisch löschen) ---
+    # --- ARCHIV CLEANUP (Physisch lÃ¶schen) ---
     archiv_dateien = sorted(archiv_output.glob("auswertung_*.html"), key=os.path.getctime)
     for datei in archiv_dateien[:-max_archiv]:
         try:
@@ -1899,7 +1900,7 @@ def main():
             with open(kicked_players_path, "r", encoding="utf-8") as f:
                 kicked_players = json.load(f)
         except Exception as e:
-            print(f"⚠️ Warnung: kicked_players.json fehlerhaft ({e})")
+            print(f"âš ï¸ Warnung: kicked_players.json fehlerhaft ({e})")
 
     member_memory = load_member_memory()
     current_known_players = member_memory.get("current_players", {})
@@ -1981,7 +1982,7 @@ def main():
             with open(top_decks_path, "r", encoding="utf-8") as f:
                 top_decks_data = json.load(f)
         except Exception as e:
-            print(f"⚠️ Warnung: top_decks.json fehlerhaft, fange bei 0 an. ({e})")
+            print(f"âš ï¸ Warnung: top_decks.json fehlerhaft, fange bei 0 an. ({e})")
 
     top_decks_data = update_top_decks(current_members, top_decks_data)
 
@@ -1992,7 +1993,7 @@ def main():
                 loaded = json.load(f)
                 records.update(loaded)
         except Exception as e:
-            print(f"⚠️ Warnung: records.json fehlerhaft, fange bei 0 an. ({e})")
+            print(f"âš ï¸ Warnung: records.json fehlerhaft, fange bei 0 an. ({e})")
 
     strikes_data = {
         "last_strike_week": 0,
@@ -2009,7 +2010,7 @@ def main():
                 else:
                     strikes_data["players"] = loaded_strikes
         except Exception as e:
-            print(f"⚠️ Warnung: strikes.json fehlerhaft, fange bei 0 an. ({e})")
+            print(f"âš ï¸ Warnung: strikes.json fehlerhaft, fange bei 0 an. ({e})")
 
     print("=== STARTE AUSWERTUNG ===")
     archiviere_alte_dateien(upload_folder, archiv_folder)
@@ -2018,7 +2019,7 @@ def main():
         csv_path = finde_neueste_csv(upload_folder)
         df = pd.read_csv(csv_path)
     except Exception as e:
-        print(f"❌ Fehler beim CSV lesen: {e}")
+        print(f"âŒ Fehler beim CSV lesen: {e}")
         return
 
     is_current_mask = df["player_is_current_member"].astype(str).str.strip().str.lower().isin(["true", "1", "yes"])
@@ -2026,7 +2027,7 @@ def main():
 
     fame_columns = sorted([col for col in df.columns if col.startswith("s_") and col.endswith("_fame")], reverse=True)
     if not fame_columns:
-        print("❌ Keine Fame-Spalten gefunden.")
+        print("âŒ Keine Fame-Spalten gefunden.")
         return
     fame_spalte = fame_columns[0]
 
@@ -2078,13 +2079,13 @@ def main():
     if sender_mail and receiver_mail and email_pass:
         if is_weekly_run:
             print("=== BERICHT WURDE GENERIERT ===")
-            print("💡 Testmodus aktiv: HTML und Layout wurden erfolgreich erstellt, E-Mail-Versand ist vorerst deaktiviert.")
+            print("ðŸ’¡ Testmodus aktiv: HTML und Layout wurden erfolgreich erstellt, E-Mail-Versand ist vorerst deaktiviert.")
             print(f"HTML-Bericht gespeichert unter: {html_path}")
             print(f"Chat-Text vorbereitet:\n{mail_chat_text}")
         else:
-            print("\n💡 Info: Radar aktualisiert. Wochenhistorie und E-Mail-Versand wurden im Radar-Modus übersprungen.")
+            print("\nðŸ’¡ Info: Radar aktualisiert. Wochenhistorie und E-Mail-Versand wurden im Radar-Modus Ã¼bersprungen.")
     else:
-        print("\n⚠️ HINWEIS: E-Mail-Secrets fehlen, Versand nicht möglich.")
+        print("\nâš ï¸ HINWEIS: E-Mail-Secrets fehlen, Versand nicht mÃ¶glich.")
 
     print("\n=== ALLES ERFOLGREICH ABGESCHLOSSEN ===")
 
@@ -2093,6 +2094,7 @@ if __name__ == "__main__":
     try:
         main()
     except Exception:
-        print("\n❌ EIN KRITISCHER FEHLER IST AUFGETRETEN:")
+        print("\nâŒ EIN KRITISCHER FEHLER IST AUFGETRETEN:")
         traceback.print_exc()
         sys.exit(1) 
+
