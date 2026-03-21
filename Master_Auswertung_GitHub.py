@@ -859,10 +859,10 @@ def render_html_template(
                     <p style="margin: 0 0 15px 0; font-size: 0.9em; color: #94a3b8; font-style: italic;">Weitere Infos unter <b>📖 Regeln & System</b>.</p>
                     <div style="display: flex; flex-wrap: wrap; gap: 15px; color: #cbd5e1;">
                         <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>🌱 Welpenschutz:</b> Neu im Clan (geschützt)</div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>❌ 1/3:</b> Verwarnungen (bei 3/3 droht Kick oder Degradierung)</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>❌ 1/3:</b> Interner Hinweis bei längerer Inaktivität</div>
                         <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>📦 Spenden auffällig:</b> Fordert, spendet aber 0</div>
                         <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>💤 Spenden inaktiv:</b> Spendet 0, fordert 0</div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>⚠️ Ø Punkte:</b> Verdacht auf Dropping (&lt;115)</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>⚠️ Ø Punkte:</b> Auffällig niedriger Punkteschnitt pro Deck (&lt;115)</div>
                         <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>🔥 Streak:</b> Mehrere Wochen 100% Score</div>
                     </div>
                 </div>
@@ -886,7 +886,7 @@ def render_html_template(
 
                 <button class="accordion-btn">⚖️ Regeln bei längerer Inaktivität (❌)</button>
                 <div class="accordion-content">
-                    <p>Damit nicht eine einzelne schwache Woche sofort Folgen hat, arbeitet unsere Auswertung mit einem fairen Langzeit-Gedächtnis. Wer sich nicht abmeldet und im Clankrieg dauerhaft zu wenig beiträgt (Score unter 50%), sammelt im Hintergrund Verwarnungen (❌).</p>
+                    <p>Damit nicht eine einzelne schwache Woche sofort Folgen hat, arbeitet unsere Auswertung mit einem fairen Langzeit-Gedächtnis. Wer sich nicht abmeldet und im Clankrieg dauerhaft zu wenig beiträgt (Score unter 50%), sammelt im Hintergrund interne Hinweise (❌).</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
@@ -972,7 +972,7 @@ def render_html_template(
                     </div>
                     <ul>
                         <li><b>Normalwert:</b> Selbst wenn du verlierst, bekommst du in normalen Kämpfen mindestens 115 Punkte. Ein Sieg bringt deutlich mehr.</li>
-                        <li><b>⚠️ Die Warnung (&lt; 115 Punkte):</b> Wenn dein Durchschnitt unter 115 fällt, schlägt das System Alarm. Das passiert nur, wenn jemand oft feindliche Boote angreift oder absichtlich Kämpfe sofort aufgibt.</li>
+                        <li><b>⚠️ Auffälliger Bereich (&lt; 115 Punkte):</b> Wenn dein Durchschnitt unter 115 fällt, ist das ein klarer Hinweis auf zu wenig Ertrag pro Deck. Häufig steckt dahinter, dass Decks nicht in normalen Kämpfen ausgespielt werden.</li>
                     </ul>
                 </div>
 
@@ -1185,8 +1185,8 @@ def generate_html_report(
         if 0 < fame_per_deck < APP_CONFIG["DROPPER_THRESHOLD"]:
             leecher_warnung = (
                 " <span class='custom-tooltip'>⚠️"
-                "<span class='tooltip-text'>Verdacht: Zieht nur Punkte ab "
-                "(verliert absichtlich/greift Boote an)</span></span>"
+                "<span class='tooltip-text'>Auffällig niedriger Ertrag pro Deck "
+                "(bitte Spielweise prüfen)</span></span>"
             )
 
         historie_spieler = df_history[df_history["player_name"] == name].copy()
@@ -1263,12 +1263,12 @@ def generate_html_report(
         elif name in strikes_data.get("kicked_this_week", []):
             strike_badge = (
                 " <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3"
-                "<span class='tooltip-text'>3 Verwarnungen: Verabschiedung!</span></span>"
+                "<span class='tooltip-text'>3 interne Hinweise: interne Maßnahme erfolgt.</span></span>"
             )
         elif strike_val > 0:
             strike_badge = (
                 f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ {strike_val}/3"
-                "<span class='tooltip-text'>Verwarnung! Bei 3/3 droht Kick/Degradierung.</span></span>"
+                "<span class='tooltip-text'>Interner Hinweis. Bei 3/3 folgen interne Maßnahmen.</span></span>"
             )
 
         # Welpenschutz-Logik
