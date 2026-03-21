@@ -396,6 +396,27 @@ def escape_for_html(text: str) -> str:
     return text.replace('"', "&quot;").replace("'", "&#39;")
 
 
+def is_clan_war_period(now_utc: datetime | None = None) -> bool:
+    if now_utc is None:
+        now_utc = datetime.utcnow()
+
+    weekday = now_utc.weekday()
+    current_minutes = now_utc.hour * 60 + now_utc.minute
+    war_boundary_minutes = 10 * 60
+
+    if weekday == 3:
+        return current_minutes >= war_boundary_minutes
+    if weekday in [4, 5, 6]:
+        return True
+    if weekday == 0:
+        return current_minutes < war_boundary_minutes
+    return False
+
+
+def get_river_race_status_de(now_utc: datetime | None = None) -> str:
+    return "Clankrieg" if is_clan_war_period(now_utc) else "Trainingstag"
+
+
 # === 4. HTML Templates ===
 
 def render_html_template(
@@ -874,8 +895,8 @@ def generate_html_report(
         role_de = role_map.get(raw_role, raw_role.capitalize())
         is_urlaub = name in urlauber_liste
 
-        participation = int(row.get("player_contribution_count", 0) or 0)
-        total_races_seen = int(row.get("player_participating_count", 0) or 0)
+        wars_with_participation = int(row.get("player_contribution_count", 0) or 0)
+        wars_in_history_window = int(row.get("player_participating_count", 0) or 0)
         decks_total = int(row.get("player_total_decks_used", 0) or 0)
         donations = int(row.get("player_donations", 0) or 0)
         donations_received = int(row.get("player_donations_received", 0) or 0)
@@ -883,7 +904,7 @@ def generate_html_report(
 
         # Wiki-konforme Score-Logik:
         # Nur Kriege zählen, in denen tatsächlich gespielt wurde.
-        max_moegliche_decks = participation * 16
+        max_moegliche_decks = wars_with_participation * 16
         score = round((decks_total / max_moegliche_decks) * 100, 2) if max_moegliche_decks > 0 else 0.0
 
         aktueller_fame = int(row.get(fame_spalte, 0) or 0)
@@ -933,8 +954,8 @@ def generate_html_report(
             else:
                 break
 
-        if streak_count > participation:
-            streak_count = participation
+        if streak_count > wars_with_participation:
+            streak_count = wars_with_participation
 
         streak_badge = ""
         if streak_count >= 3:
@@ -945,7 +966,7 @@ def generate_html_report(
 
         # Verwarnungen nur bei mehr als MIN_PARTICIPATION und nicht im Urlaub
         if apply_strikes_now:
-            if not is_urlaub and participation > APP_CONFIG["MIN_PARTICIPATION"]:
+            if not is_urlaub and wars_with_participation > APP_CONFIG["MIN_PARTICIPATION"]:
                 if score < APP_CONFIG["STRIKE_THRESHOLD"]:
                     strikes[name] = strikes.get(name, 0) + 1
                 else:
@@ -982,7 +1003,7 @@ def generate_html_report(
             )
 
         # Welpenschutz-Logik
-        is_welpenschutz = participation <= APP_CONFIG["MIN_PARTICIPATION"] and not is_urlaub
+        is_welpenschutz = wars_with_participation <= APP_CONFIG["MIN_PARTICIPATION"] and not is_urlaub
         welpenschutz_badge = ""
         if is_welpenschutz:
             welpenschutz_badge = (
@@ -1014,8 +1035,8 @@ def generate_html_report(
             "status": status_html,
             "score": score,
             "delta": delta,
-            "teilnahme": f"{participation}/{total_races_seen}",
-            "teilnahme_int": participation,
+            "teilnahme": f"{wars_with_participation}/{wars_in_history_window}",
+            "teilnahme_int": wars_with_participation,
             "fame": aktueller_fame,
             "donations": donations,
             "donations_received": donations_received,
@@ -1107,14 +1128,14 @@ def generate_html_report(
             bg_color = "rgba(255,255,255,0.05)" if idx % 2 == 0 else "transparent"
             radar_html += f"<tr style='background: {bg_color}; border-bottom: 1px solid rgba(255,255,255,0.02);'>"
             radar_html += f"<td style='padding: 10px 5px;'>{bold_name}<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 {c['decks_used']} / 200 Decks</span></td>"
-            radar_html += f"<td style='text-align: center; font-weight: bold; color: #f8fafc;'>{c['fame']}</td>"
+            radar_html += f"<td style='text-align: center; font-weight: bold; color: #f8fafc;'>{c['boat_attacks']}</td>"
             radar_html += f"<td style='text-align: center; font-weight: bold; color: #fbbf24;'>{c['medals']}</td>"
             radar_html += f"<td style='text-align: center; font-weight: bold; color: #c084fc;'>{c['trophies']}</td>"
             radar_html += "</tr>"
         radar_html += "</table></div></div>"
 
     mahnwache_html = ""
-    ist_kampftag = datetime.utcnow().weekday() in [0, 3, 4, 5, 6]
+    ist_kampftag = is_clan_war_period()
 
     total_active_players = len(aktive_spieler)
     total_decks_today = total_active_players * 4
@@ -1505,7 +1526,7 @@ def main():
 
     print("Schritt 3: Rufe Live-Radar (Current River Race) ab...")
     radar_clans = []
-    race_state_de = "Live"
+    race_state_de = get_river_race_status_de()
     raw_mahnwache = []
 
     try:
@@ -1514,44 +1535,21 @@ def main():
         if race_resp.status_code == 200:
             data = race_resp.json()
 
-            raw_state = data.get("state", "Unbekannt")
-            if raw_state == "training":
-                race_state_de = "Trainingstage"
-            elif raw_state == "warDay":
-                race_state_de = "Clankrieg"
-            elif raw_state == "full":
-                race_state_de = "Beendet (Full)"
-            else:
-                race_state_de = raw_state.capitalize()
-
             clans_in_race = data.get("clans", [])
             for c in clans_in_race:
-                pts = c.get("periodPoints", 0)
-                if pts == 0:
-                    pts = c.get("fame", 0)
-
-                if pts == 0 and "participants" in c:
-                    pts = sum(p.get("fame", 0) for p in c.get("participants", []))
-
-                if pts == 0 and "periodLogs" in data:
-                    for log in data.get("periodLogs", []):
-                        for item in log.get("items", []):
-                            if item.get("clan", {}).get("tag") == c.get("tag"):
-                                pts += item.get("points", 0)
-                                pts += item.get("fame", 0)
-
                 is_us = c.get("tag") == CLAN_TAG.replace("%23", "#")
 
                 trophies = c.get("clanScore", 0)
                 medals = c.get("periodPoints", 0)
+                boat_attacks = sum(p.get("boatAttacks", 0) for p in c.get("participants", []))
                 decks_used = sum(p.get("decksUsedToday", 0) for p in c.get("participants", []))
 
                 radar_clans.append({
                     "name": c.get("name", ""),
-                    "fame": pts,
                     "is_us": is_us,
                     "trophies": trophies,
                     "medals": medals,
+                    "boat_attacks": boat_attacks,
                     "decks_used": decks_used
                 })
 
@@ -1561,7 +1559,7 @@ def main():
                         if decks_today < 4:
                             raw_mahnwache.append({"name": p.get("name"), "offen": 4 - decks_today})
 
-            radar_clans.sort(key=lambda x: x["fame"], reverse=True)
+            radar_clans.sort(key=lambda x: (x["medals"], x["boat_attacks"], x["trophies"]), reverse=True)
     except Exception as e:
         print(f"Warnung: Radar konnte nicht geladen werden ({e})")
 
