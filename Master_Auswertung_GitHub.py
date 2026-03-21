@@ -1014,23 +1014,6 @@ def render_html_template(
                     </ul>
                 </div>
 
-                <button class="accordion-btn">?? Kriegspunkte (Deine Gesamtleistung)</button>
-                <div class="accordion-content">
-                    <p>Die Kriegspunkte sind dein <b>Gesamtkonto</b> aus den geladenen Kriegen. Während <b>Aktive Kriege</b> nur zeigt, <b>wie oft</b> du in den letzten 10 Kriegen mitgemacht hast (zum Beispiel <b>6/10</b>), zeigen die <b>Kriegspunkte</b>, <b>wie viele Punkte du dabei insgesamt gesammelt</b> hast.</p>
-                    <div style="overflow-x:auto;">
-                        <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Check</th><th>Aktive Kriege</th><th>Kriegspunkte</th></tr>
-                            <tr><td class='name-col'>Spieler O</td><td><span class='focus-pill' style='background:#94a3b822; color:#94a3b8; border:1px solid #94a3b855;'>solide</span></td><td>6/10</td><td>1850</td></tr>
-                            <tr><td class='name-col'>Spieler P</td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>ausbaufaehig</span></td><td>6/10</td><td>900</td></tr>
-                        </table>
-                    </div>
-                    <ul>
-                        <li><b>Beispiel:</b> Zwei Spieler koennen beide bei <b>6/10 aktiven Kriegen</b> stehen. Wer dort <b>1850 Kriegspunkte</b> hat, hat dem Clan insgesamt deutlich mehr gebracht als jemand mit nur <b>900</b>.</li>
-                        <li><b>So liest du den Wert:</b> <b>Aktive Kriege</b> zeigt, wie oft jemand dabei war. <b>Kriegspunkte</b> zeigen, was ueber diese Einsaetze insgesamt zusammenkam.</li>
-                        <li><b>Wichtig:</b> Kriegspunkte sind eine <b>Mengen-Anzeige</b>. Fuer die Qualitaet pro gespieltem Deck ist weiter der Wert <b>Punkte pro Deck</b> zustaendig.</li>
-                    </ul>
-                </div>
-
                 <button class="accordion-btn">📊 Clan-Durchschnitt & ⚔️ Clan-Ø Punkte</button>
                 <div class="accordion-content">
                     <p>In der Übersicht seht ihr zwei Clan-Werte, die absichtlich zwei verschiedene Fragen beantworten: <b>Wie zuverlässig spielen wir unsere Decks aus?</b> und <b>wie stark kämpfen wir pro Deck?</b></p>
