@@ -393,6 +393,16 @@ def chunk_list(lst: list, n: int) -> list:
     return [lst[i:i + n] for i in range(0, len(lst), n)]
 
 
+def enforce_chat_limit(message: str, prefix: str = "", limit: int = 255) -> str:
+    full_message = f"{prefix}{message}"
+    if len(full_message) <= limit:
+        return full_message
+
+    allowed_message_len = max(0, limit - len(prefix) - 3)
+    trimmed_message = message[:allowed_message_len].rstrip(" ,.;:!-")
+    return f"{prefix}{trimmed_message}..."
+
+
 def escape_for_html(text: str) -> str:
     return text.replace('"', "&quot;").replace("'", "&#39;")
 
@@ -1218,30 +1228,30 @@ def generate_html_report(
 
     chat_blocks = []
 
-    if echte_neulinge:
-        names_str = ", ".join(echte_neulinge)
+    for chunk in chunk_list(echte_neulinge, 3):
+        names_str = ", ".join(chunk)
         welcome_vars = {
-            "Sachlich": f"👋 Willkommen {names_str}. Viel Spaß und Erfolg bei und mit uns. Alles Wichtige steht in der Info.",
-            "Motivierend": f"🎉 Herzlich willkommen in der HAMBURG-Family, {names_str}! Viel Spaß und Erfolg bei und mit uns. Alles Wichtige steht in der Info.",
-            "Kurz & Knackig": f"👋 Moin {names_str}! Willkommen im Clan. Viel Spaß und Erfolg bei und mit uns. Alles Wichtige steht in der Info."
+            "Sachlich": f"👋 Moin {names_str}, willkommen bei uns im Clan. Alles Wichtige findet ihr unter clan-hamburg.de",
+            "Motivierend": f"🎉 Moin {names_str}, herzlich willkommen in der HAMBURG-Family! Alles Wichtige findet ihr unter clan-hamburg.de",
+            "Kurz & Knackig": f"👋 Moin {names_str}, willkommen im Clan! Alles Wichtige: clan-hamburg.de"
         }
         chat_blocks.append(welcome_vars)
 
-    if rueckkehrer:
-        names_str = ", ".join(rueckkehrer)
+    for chunk in chunk_list(rueckkehrer, 3):
+        names_str = ", ".join(chunk)
         rueckkehrer_vars = {
-            "Sachlich": f"👋 Willkommen zurück {names_str}. Schön, dass ihr wieder bei uns seid. Alles Wichtige steht in der Info.",
-            "Motivierend": f"🎉 Willkommen zurück in der HAMBURG-Family, {names_str}! Schön, dass ihr wieder da seid.",
+            "Sachlich": f"👋 Moin {names_str}, willkommen zurück. Schön, dass ihr wieder da seid.",
+            "Motivierend": f"🎉 Moin {names_str}, nice dass ihr wieder am Start seid! Willkommen zurück in der HAMBURG-Family.",
             "Kurz & Knackig": f"👋 Willkommen zurück {names_str}! Schön, euch wieder im Clan zu haben."
         }
         chat_blocks.append(rueckkehrer_vars)
 
-    if warn_rueckkehrer:
-        names_str = ", ".join(warn_rueckkehrer)
+    for chunk in chunk_list(warn_rueckkehrer, 3):
+        names_str = ", ".join(chunk)
         rueckkehrer_vars = {
-            "Sachlich": f"⚠️ Info an die Vizes: {names_str} ist wieder beigetreten. Dieser Spieler wurde in der Vergangenheit wegen Inaktivität im Clankrieg gekickt.",
-            "Motivierend": f"👀 {names_str} ist zurück! Wurde früher wegen Kriegsinaktivität entfernt. Lasst uns schauen, ob es dieses Mal klappt. Bitte im Auge behalten!",
-            "Kurz & Knackig": f"🚨 Achtung: Rückkehrer {names_str} erkannt. (Ehemaliger Kick wegen Inaktivität)."
+            "Sachlich": f"⚠️ Info an die Vizes: {names_str} ist wieder da. Wurde früher wegen Kriegsinaktivität gekickt. Bitte im Blick behalten.",
+            "Motivierend": f"👀 {names_str} ist wieder am Start. Früher wegen Kriegsinaktivität raus, also schauen wir mal, wie es diesmal läuft.",
+            "Kurz & Knackig": f"🚨 Achtung: {names_str} ist wieder da. Bitte Kriegsaktivität im Auge behalten."
         }
         chat_blocks.append(rueckkehrer_vars)
 
@@ -1313,12 +1323,13 @@ def generate_html_report(
     for i, block_vars in enumerate(chat_blocks):
         color = colors[i % len(colors)]
         options_html = ""
+        prefix = f"{i + 1}/{total_msgs} "
         for style_name, text_content in block_vars.items():
-            final_text = f"{i + 1}/{total_msgs} {text_content}"
+            final_text = enforce_chat_limit(text_content, prefix=prefix)
             safe_text = escape_for_html(final_text)
             options_html += f'<option value="{safe_text}">{style_name}</option>'
 
-        default_text = f"{i + 1}/{total_msgs} {list(block_vars.values())[0]}"
+        default_text = enforce_chat_limit(list(block_vars.values())[0], prefix=prefix)
 
         chat_boxes_html += f"""
         <div style="margin-bottom: 15px;">
@@ -1463,7 +1474,10 @@ def generate_html_report(
     )
 
     default_mail_texts = [list(block.values())[0] for block in chat_blocks]
-    mail_chat_text = "\n\n".join([f"{i + 1}/{total_msgs} {text}" for i, text in enumerate(default_mail_texts)])
+    mail_chat_text = "\n\n".join([
+        enforce_chat_limit(text, prefix=f"{i + 1}/{total_msgs} ")
+        for i, text in enumerate(default_mail_texts)
+    ])
 
     strikes_data["players"] = strikes
     return html, df_history, mail_chat_text, records, strikes_data, kicked_players
