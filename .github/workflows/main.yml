@@ -2,9 +2,7 @@ name: Clan Auswertung Automatisierung
 
 on:
   schedule:
-    # Radar- & Deck-Update: JEDE halbe Stunde an Kampftagen (Donnerstag=4, Freitag=5, Samstag=6, Sonntag=0, Montag=1)
     - cron: '*/30 * * * 0,1,4,5,6'
-    # E-Mail-Update: Jeden Montag um 10:30 UTC (11:30 Uhr MEZ)
     - cron: '30 10 * * 1'
   workflow_dispatch:
 
@@ -14,13 +12,13 @@ env:
 jobs:
   run-auswertung:
     runs-on: ubuntu-latest
-    
+
     env:
       SUPERCELL_API_TOKEN: ${{ secrets.SUPERCELL_API_TOKEN }}
       EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
       EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
       EMAIL_RECEIVER: ${{ secrets.EMAIL_RECEIVER }}
-      GITHUB_EVENT_NAME: ${{ github.event_name }}
+      RUN_MODE: ${{ github.event_name == 'workflow_dispatch' && 'weekly' || github.event.schedule == '30 10 * * 1' && 'weekly' || 'radar' }}
 
     steps:
       - name: Repository klonen
@@ -37,7 +35,7 @@ jobs:
           pip install requests pandas python-dotenv
 
       - name: Auswertung starten
-        run: python Master_Auswertung_GitHub.py 
+        run: python Master_Auswertung_GitHub.py
 
       - name: Commit und Push der neuen Dateien
         run: |
@@ -45,4 +43,4 @@ jobs:
           git config --local user.name "GitHub Action Bot"
           git add .
           git commit -m "📊 Automatische Clan-Auswertung aktualisiert" || echo "Keine Änderungen zum Speichern"
-          git push 
+          git push
