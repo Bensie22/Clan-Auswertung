@@ -1582,9 +1582,9 @@ def generate_html_report(
     for chunk in chunk_list(warn_rueckkehrer, 3):
         names_str = ", ".join(chunk)
         rueckkehrer_vars = {
-            "Sachlich": f"⚠️ Info an die Vizes: {names_str} ist wieder da. Wurde früher wegen Kriegsinaktivität gekickt. Bitte im Blick behalten.",
-            "Motivierend": f"👀 {names_str} ist wieder am Start. Früher wegen Kriegsinaktivität raus, also schauen wir mal, wie es diesmal läuft.",
-            "Kurz & Knackig": f"🚨 Achtung: {names_str} ist wieder da. Bitte Kriegsaktivität im Auge behalten."
+            "Sachlich": f"⚠️ Info an die Vizes: {names_str} ist wieder da. Bitte die Aktivität in den nächsten Wochen etwas im Blick behalten.",
+            "Motivierend": f"👀 {names_str} ist wieder am Start. Geben wir der Sache eine faire neue Chance und schauen auf die Aktivität.",
+            "Kurz & Knackig": f"⚠️ Hinweis: {names_str} ist wieder da. Aktivität bitte im Auge behalten."
         }
         chat_blocks.append(rueckkehrer_vars)
 
@@ -1601,7 +1601,7 @@ def generate_html_report(
     msg_2_motiv = f"💚 Wahnsinn, was ihr spendet! Top-Supporter: {top_spender_names}. Danke fürs Karten teilen!" if top_spender_list else "💚 Vergesst das Spenden nicht, Team! Jeder braucht mal Karten."
     msg_2_streng = f"⚠️ Spenden-Check: Danke an {top_spender_names}." if top_spender_list else "⚠️ Null Spenden-Moral diese Woche!"
     if echte_leecher:
-        msg_2_streng += f" Spenden auffällig: {leecher_names}. Das muss besser werden!"
+        msg_2_streng += f" Spenden auffällig: {leecher_names}. Bitte wieder etwas mehr mitgeben."
 
     msg_2_vars = {
         "Sachlich": msg_2_sachlich,
@@ -1617,27 +1617,27 @@ def generate_html_report(
     if dropper_names:
         names_str = ", ".join(dropper_names)
         dropper_vars = {
-            "Sachlich": f"⚠️ Hinweis an {names_str}: Euer Punkteschnitt pro Deck ist auffällig niedrig (<{APP_CONFIG['DROPPER_THRESHOLD']}). Bitte greift keine feindlichen Boote an und gebt Kämpfe nicht absichtlich auf. Der Clan braucht jeden Punkt in echten Duellen! ⚔️",
-            "Motivierend": f"💡 Kleiner Tipp an {names_str}: Normale Kämpfe oder Duelle bringen dem Clan viel mehr Punkte als Bootsangriffe! Spielt eure Decks am besten in den normalen Modi aus, auch wenn ihr mal verliert. Ihr schafft das! 💪",
-            "Kurz & Knackig": f"⚠️ Bootsangriffe / Kampf-Aufgabe entdeckt bei: {names_str}. Bitte ab sofort normale Kämpfe machen, das bringt deutlich mehr Punkte für den Clan!"
+            "Sachlich": f"⚠️ Hinweis an {names_str}: Euer Punkteschnitt pro Deck ist aktuell auffällig niedrig (<{APP_CONFIG['DROPPER_THRESHOLD']}). Bitte setzt eure Decks möglichst in normalen Kämpfen oder Duellen ein. Jeder Punkt hilft dem Clan. ⚔️",
+            "Motivierend": f"💡 Kleiner Tipp an {names_str}: Normale Kämpfe oder Duelle bringen dem Clan meist deutlich mehr als Spezialangriffe. Spielt eure Decks am besten sauber in den Standard-Modi aus. 💪",
+            "Kurz & Knackig": f"⚠️ Hinweis an {names_str}: Bitte Decks möglichst in normalen Kämpfen oder Duellen ausspielen. Das bringt dem Clan meist mehr Punkte."
         }
         chat_blocks.append(dropper_vars)
 
     for chunk in chunk_list(kandidaten_demote, 4):
         names_str = ", ".join(chunk)
         demote_vars = {
-            "Sachlich": f"👇 Degradierung: {names_str}. Grund: Dauerhaft zu wenig Kriegskämpfe. Letzte Bewährungschance als Mitglied! ⚔️",
-            "Motivierend": f"👇 Wir stufen {names_str} wegen Kriegsinaktivität zum Mitglied ab. Kommt stärker zurück, ihr schafft das! ⚔️",
-            "Kurz & Knackig": f"👇 Degradierungen: {names_str} (Dauerhaft inaktiv im Krieg). Letzte Warnung. ⚔️"
+            "Sachlich": f"👇 Interne Maßnahme: {names_str}. Grund: über längere Zeit zu wenig Kriegsaktivität. Jetzt gilt eine neue Bewährungsphase. ⚔️",
+            "Motivierend": f"👇 Bei {names_str} ziehen wir intern eine Stufe nach unten, damit wieder mehr Verlässlichkeit reinkommt. Jetzt zählt die nächste Phase. ⚔️",
+            "Kurz & Knackig": f"👇 Interner Hinweis: {names_str} werden intern eine Stufe tiefer eingeordnet. ⚔️"
         }
         chat_blocks.append(demote_vars)
 
     for chunk in chunk_list(kandidaten_kick, 4):
         names_str = ", ".join(chunk)
         kick_vars = {
-            "Sachlich": f"👋 Verabschiedung: {names_str}. Grund: Wiederholte Inaktivität im Clankrieg. Wir machen Platz. Alles Gute! ✌️",
-            "Motivierend": f"👋 Wir machen Platz für aktive Kämpfer und verabschieden {names_str} wegen Inaktivität. Danke für die Zeit! ✌️",
-            "Kurz & Knackig": f"👋 Kicks: {names_str}. Grund: Dauerhafte Kriegsinaktivität. ✌️"
+            "Sachlich": f"👋 Verabschiedung: {names_str}. Grund: über längere Zeit zu wenig Kriegsaktivität. Wir wünschen euch alles Gute! ✌️",
+            "Motivierend": f"👋 Wir verabschieden {names_str} und wünschen alles Gute. Danke für die gemeinsame Zeit! ✌️",
+            "Kurz & Knackig": f"👋 Verabschiedung: {names_str}. Alles Gute! ✌️"
         }
         chat_blocks.append(kick_vars)
 
