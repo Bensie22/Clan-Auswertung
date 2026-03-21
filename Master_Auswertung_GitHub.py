@@ -8,7 +8,7 @@ import json
 import sys
 import time
 import traceback
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from typing import List, Tuple
 from pathlib import Path
 import pandas as pd
@@ -22,6 +22,11 @@ APP_CONFIG = {
     "DROPPER_THRESHOLD": 115,    # Ø Punkte pro Deck: Unter diesem Wert Warnung wg. Bootsangriff/Aufgabe
     "MIN_PARTICIPATION": 3       # Welpenschutz: Bis einschließlich 3 Teilnahmen keine Strafen
 }
+
+DECK_LOOKBACK_DAYS = 30
+DECK_META_MIN_MATCHES = 5
+DECK_SOLID_MIN_MATCHES = 4
+DECK_BEGINNER_MIN_MATCHES = 3
 
 # API Settings (Token & E-Mails kommen sicher aus den Secrets!)
 API_TOKEN = os.environ.get("SUPERCELL_API_TOKEN")
@@ -244,6 +249,12 @@ def update_top_decks(current_members: dict, top_decks_data: dict) -> dict:
 
     metadata = top_decks_data.get("_metadata", {"last_battles": {}})
     decks = top_decks_data.get("decks", {})
+    cutoff_dt = datetime.now(timezone.utc) - timedelta(days=DECK_LOOKBACK_DAYS)
+
+    for deck_data in decks.values():
+        deck_data.setdefault("recent_matches", [])
+        deck_data.setdefault("players", [])
+        deck_data.setdefault("tags", [])
 
     count = 0
     for tag, member_info in current_members.items():
@@ -289,6 +300,7 @@ def update_top_decks(current_members: dict, top_decks_data: dict) -> dict:
                     if is_win or is_loss:
                         deck_ids = sorted([str(c["id"]) for c in cards])
                         deck_hash = "-".join(deck_ids)
+                        raw_tag = tag.replace("#", "")
 
                         if deck_hash not in decks:
                             decks[deck_hash] = {
@@ -302,20 +314,23 @@ def update_top_decks(current_members: dict, top_decks_data: dict) -> dict:
                                 "wins": 0,
                                 "losses": 0,
                                 "players": [],
-                                "tags": []
+                                "tags": [],
+                                "recent_matches": []
                             }
 
-                        if is_win:
-                            decks[deck_hash]["wins"] += 1
-                        if is_loss:
-                            decks[deck_hash]["losses"] += 1
-
-                        if p_name not in decks[deck_hash]["players"]:
-                            decks[deck_hash]["players"].append(p_name)
-
-                        raw_tag = tag.replace("#", "")
-                        if raw_tag not in decks[deck_hash].setdefault("tags", []):
-                            decks[deck_hash]["tags"].append(raw_tag)
+                        match_result = "win" if is_win else "loss"
+                        existing_matches = decks[deck_hash].setdefault("recent_matches", [])
+                        match_key = f"{b_time}|{raw_tag}|{match_result}"
+                        if not any(
+                            f"{m.get('time', '')}|{m.get('tag', '')}|{m.get('result', '')}" == match_key
+                            for m in existing_matches
+                        ):
+                            existing_matches.append({
+                                "time": b_time,
+                                "result": match_result,
+                                "player": p_name,
+                                "tag": raw_tag
+                            })
 
         if latest_time_in_log:
             metadata["last_battles"][tag] = latest_time_in_log
@@ -325,11 +340,36 @@ def update_top_decks(current_members: dict, top_decks_data: dict) -> dict:
             print(f"  ... {count}/50 Spieler gescannt")
         time.sleep(0.1)
 
+    for deck_hash in list(decks.keys()):
+        deck_data = decks[deck_hash]
+        recent_matches = []
+        for match in deck_data.get("recent_matches", []):
+            match_dt = parse_battle_time(match.get("time", ""))
+            if match_dt and match_dt >= cutoff_dt:
+                recent_matches.append(match)
+
+        recent_matches.sort(key=lambda m: m.get("time", ""), reverse=True)
+        deck_data["recent_matches"] = recent_matches
+        deck_data["wins"] = sum(1 for m in recent_matches if m.get("result") == "win")
+        deck_data["losses"] = sum(1 for m in recent_matches if m.get("result") == "loss")
+
+        players_ordered = list(dict.fromkeys(m.get("player", "") for m in recent_matches if m.get("player")))
+        tags_ordered = list(dict.fromkeys(m.get("tag", "") for m in recent_matches if m.get("tag")))
+        deck_data["players"] = players_ordered
+        deck_data["tags"] = tags_ordered
+
+        if not recent_matches:
+            del decks[deck_hash]
+
     # --- DECK CLEANUP (Max 100 Decks behalten, um JSON klein zu halten) ---
     if len(decks) > 100:
         sorted_keys = sorted(
             decks.keys(),
-            key=lambda k: (decks[k]["wins"], decks[k]["wins"] + decks[k]["losses"]),
+            key=lambda k: (
+                get_deck_winrate(decks[k]),
+                decks[k]["wins"] + decks[k]["losses"],
+                decks[k]["wins"]
+            ),
             reverse=True
         )
         for k in sorted_keys[100:]:
@@ -339,6 +379,96 @@ def update_top_decks(current_members: dict, top_decks_data: dict) -> dict:
     top_decks_data["decks"] = decks
     print("✅ Battlelogs erfolgreich gescannt. Top-Decks aktualisiert.\n")
     return top_decks_data
+
+
+def parse_battle_time(battle_time: str) -> datetime | None:
+    if not battle_time:
+        return None
+
+    for fmt in ("%Y%m%dT%H%M%S.000Z", "%Y%m%dT%H%M%S.%fZ", "%Y%m%dT%H%M%SZ"):
+        try:
+            return datetime.strptime(battle_time, fmt).replace(tzinfo=timezone.utc)
+        except ValueError:
+            continue
+    return None
+
+
+def get_deck_winrate(deck_data: dict) -> float:
+    total_matches = deck_data.get("wins", 0) + deck_data.get("losses", 0)
+    if total_matches <= 0:
+        return 0.0
+    return deck_data.get("wins", 0) / total_matches
+
+
+def is_beginner_friendly_deck(cards: list) -> bool:
+    card_names = {c.get("name", "") for c in cards}
+    tricky_cards = {
+        "X-Bow", "Mortar", "Goblin Barrel", "Skeleton Barrel", "Miner", "Graveyard",
+        "Wall Breakers", "Goblin Drill", "Clone", "Mirror", "Freeze", "Tornado"
+    }
+    if card_names.intersection(tricky_cards):
+        return False
+
+    archetype = get_deck_archetype(cards)
+    return archetype in {"🛡️ Schwerer Angriff (Beatdown)", "⚡ Schneller Angriff (Rush/Spam)", "⚔️ Hybrid / Allrounder"}
+
+
+def build_deck_sections(top_decks_data: dict) -> list:
+    decks = []
+    for deck_data in top_decks_data.get("decks", {}).values():
+        total_matches = deck_data.get("wins", 0) + deck_data.get("losses", 0)
+        if total_matches <= 0:
+            continue
+
+        deck_copy = dict(deck_data)
+        deck_copy["total_matches"] = total_matches
+        deck_copy["winrate"] = int(round(get_deck_winrate(deck_data) * 100))
+        deck_copy["archetype"] = get_deck_archetype(deck_data.get("cards", []))
+        deck_copy["is_beginner_friendly"] = is_beginner_friendly_deck(deck_data.get("cards", []))
+        decks.append(deck_copy)
+
+    meta_decks = sorted(
+        [d for d in decks if d["total_matches"] >= DECK_META_MIN_MATCHES],
+        key=lambda d: (d["winrate"], d["total_matches"], d["wins"]),
+        reverse=True
+    )[:4]
+
+    solid_decks = sorted(
+        [d for d in decks if d["total_matches"] >= DECK_SOLID_MIN_MATCHES and d["winrate"] >= 55],
+        key=lambda d: (d["total_matches"], d["winrate"], d["wins"]),
+        reverse=True
+    )
+    solid_decks = [d for d in solid_decks if d not in meta_decks][:4]
+
+    beginner_decks = sorted(
+        [
+            d for d in decks
+            if d["total_matches"] >= DECK_BEGINNER_MIN_MATCHES
+            and d["winrate"] >= 50
+            and d["is_beginner_friendly"]
+        ],
+        key=lambda d: (d["winrate"], d["total_matches"], d["wins"]),
+        reverse=True
+    )
+    beginner_decks = [d for d in beginner_decks if d not in meta_decks and d not in solid_decks][:4]
+
+    return [
+        {
+            "title": "🏆 Meta-Decks",
+            "description": f"Die stärksten und belastbarsten Kriegs-Decks aus den letzten {DECK_LOOKBACK_DAYS} Tagen.",
+            "decks": meta_decks
+        },
+        {
+            "title": "🛡️ Solide Decks",
+            "description": f"Verlässliche Decks mit ordentlicher Quote und genug Spielen aus den letzten {DECK_LOOKBACK_DAYS} Tagen.",
+            "decks": solid_decks
+        },
+        {
+            "title": "🎯 Einsteigerfreundlich",
+            "description": f"Einfachere Decks für Leute, die ein klares und stabiles Kriegs-Deck suchen.",
+            "decks": beginner_decks
+        }
+    ]
 
 
 def get_deck_archetype(cards: list) -> str:
@@ -1344,39 +1474,50 @@ def generate_html_report(
         """
 
     deck_html = ""
-    sorted_decks = sorted(top_decks_data.get("decks", {}).values(), key=lambda x: x["wins"], reverse=True)
-    top_x_decks = [d for d in sorted_decks if d["wins"] > 0][:8]
+    deck_sections = build_deck_sections(top_decks_data)
+    has_any_decks = any(section["decks"] for section in deck_sections)
 
-    if not top_x_decks:
-        deck_html = "<div class='info-box' style='border-left-color: #64748b;'><p style='margin: 0;'><b>Noch nicht genug Daten gesammelt.</b><br>Das System zeichnet ab heute im Hintergrund alle Clankriegs-Siege auf. Schau in ein paar Tagen wieder vorbei, dann siehst du hier die absoluten Meta-Decks unseres Clans!</p></div>"
+    if not has_any_decks:
+        deck_html = f"<div class='info-box' style='border-left-color: #64748b;'><p style='margin: 0;'><b>Noch nicht genug Daten gesammelt.</b><br>Das System wertet Kriegs-Decks aus den letzten {DECK_LOOKBACK_DAYS} Tagen aus. Schau in ein paar Tagen wieder vorbei, dann füllen sich hier Meta-, solide und einsteigerfreundliche Decks.</p></div>"
     else:
-        for idx, d in enumerate(top_x_decks):
-            total_matches = d["wins"] + d["losses"]
-            winrate = int((d["wins"] / total_matches) * 100) if total_matches > 0 else 0
-            players_str = ", ".join(d["players"][:3]) + ("..." if len(d["players"]) > 3 else "")
+        for section in deck_sections:
+            if not section["decks"]:
+                continue
 
-            archetype = get_deck_archetype(d["cards"])
-            api_names = [c["name"].lower().replace(".", "").replace(" ", "-") for c in d["cards"]]
-            royaleapi_link = f"https://royaleapi.com/decks/stats/{','.join(api_names)}"
+            section_cards_html = ""
+            for idx, d in enumerate(section["decks"], start=1):
+                players_str = ", ".join(d["players"][:3]) + ("..." if len(d["players"]) > 3 else "")
+                api_names = [c["name"].lower().replace(".", "").replace(" ", "-") for c in d["cards"]]
+                royaleapi_link = f"https://royaleapi.com/decks/stats/{','.join(api_names)}"
 
-            images_html = "".join([
-                f"<img src='{c['icon']}' style='width: 23%; border-radius: 4px; margin: 1%;' title='{c['name']}'>"
-                for c in d["cards"]
-            ])
+                images_html = "".join([
+                    f"<img src='{c['icon']}' style='width: 23%; border-radius: 4px; margin: 1%;' title='{c['name']}'>"
+                    for c in d["cards"]
+                ])
+
+                section_cards_html += f"""
+                <div class="deck-card">
+                    <div class="archetype-badge">{d['archetype']}</div>
+                    <div class="deck-header">
+                        <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">{section['title']} #{idx}</h3>
+                        <span class="winrate">🔥 {d['winrate']}% Win</span>
+                    </div>
+                    <div class="deck-images">
+                        {images_html}
+                    </div>
+                    <p style="font-size: 0.85em; color: #94a3b8; margin: 10px 0;">{d['wins']} Siege / {d['losses']} Niederlagen in {d['total_matches']} Spielen<br><span style="color:#e2e8f0; font-weight:bold;">Oft gewonnen von: {players_str}</span></p>
+                    <div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px;">
+                        <a href="{royaleapi_link}" class="copy-btn" style="background: #38bdf8; color: #0f172a;" target="_blank">🔗 Auf RoyaleAPI öffnen & kopieren</a>
+                    </div>
+                </div>
+                """
 
             deck_html += f"""
-            <div class="deck-card">
-                <div class="archetype-badge">{archetype}</div>
-                <div class="deck-header">
-                    <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🏆 Meta-Deck #{idx+1}</h3>
-                    <span class="winrate">🔥 {winrate}% Win</span>
-                </div>
-                <div class="deck-images">
-                    {images_html}
-                </div>
-                <p style="font-size: 0.85em; color: #94a3b8; margin: 10px 0;">Oft gewonnen von:<br><span style="color:#e2e8f0; font-weight:bold;">{players_str}</span></p>
-                <div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px;">
-                    <a href="{royaleapi_link}" class="copy-btn" style="background: #38bdf8; color: #0f172a;" target="_blank">🔗 Auf RoyaleAPI öffnen & kopieren</a>
+            <div style="margin-bottom: 30px;">
+                <h3 style="color: #f8fafc; margin-bottom: 8px; font-size: 1.3em;">{section['title']}</h3>
+                <p style="color: #94a3b8; margin-top: 0; margin-bottom: 18px; font-size: 0.95em;">{section['description']}</p>
+                <div class="deck-slider">
+                    {section_cards_html}
                 </div>
             </div>
             """
