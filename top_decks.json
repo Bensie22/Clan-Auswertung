@@ -1,7 +1,7 @@
 {
     "_metadata": {
         "last_battles": {
-            "#22Q920RLR": "20260322T101446.000Z",
+            "#22Q920RLR": "20260322T104001.000Z",
             "#L8PV090J": "20260322T085322.000Z",
             "#22CQPRR0J": "20260322T011513.000Z",
             "#2QRVR9L8": "20260322T091936.000Z",
@@ -18,7 +18,7 @@
             "#PPR2QQC0U": "20260322T093447.000Z",
             "#QULCQGGG": "20260322T093544.000Z",
             "#JRGC9RRQG": "20260321T222205.000Z",
-            "#QVQGCV8Y9": "20260320T160040.000Z",
+            "#QVQGCV8Y9": "20260322T105301.000Z",
             "#Q8L0RJ8Y8": "20260322T074914.000Z",
             "#P2GUCG2Y": "20260318T135033.000Z",
             "#2CPRGY8G": "20260322T101645.000Z",
@@ -29,13 +29,13 @@
             "#2CJYG9UG": "20260322T001706.000Z",
             "#2PUQYJC02": "20260322T071839.000Z",
             "#YQVQYUYRV": "20260321T204442.000Z",
-            "#2V800VCQ0": "20260321T142625.000Z",
+            "#2V800VCQ0": "20260322T103756.000Z",
             "#2UQUPYQCJ": "20260321T190920.000Z",
             "#JUUR8UGL8": "20260321T193558.000Z",
             "#2U09UULRR": "20260322T072547.000Z",
             "#YJ0LUU0JJ": "20260322T102601.000Z",
             "#8QYYL8LCQ": "20260322T021114.000Z",
-            "#8P0J8P0L": "20260321T100310.000Z",
+            "#8P0J8P0L": "20260322T105240.000Z",
             "#Y882QLJQJ": "20260321T230813.000Z",
             "#CUJ9PJ2UV": "20260321T145309.000Z",
             "#2P0U2RLGY": "20260321T205944.000Z",
@@ -3589,7 +3589,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
                 }
             ],
-            "wins": 2,
+            "wins": 3,
             "losses": 1,
             "players": [
                 "Desteoyer"
@@ -3598,6 +3598,12 @@
                 "2V800VCQ0"
             ],
             "recent_matches": [
+                {
+                    "time": "20260322T102959.000Z",
+                    "result": "win",
+                    "player": "Desteoyer",
+                    "tag": "2V800VCQ0"
+                },
                 {
                     "time": "20260321T112225.000Z",
                     "result": "loss",
@@ -4293,78 +4299,6 @@
                     "result": "win",
                     "player": "RedStyle",
                     "tag": "YJ0LUU0JJ"
-                }
-            ]
-        },
-        "26000011-26000015-26000024-26000041-26000049-26000055-28000000-28000017": {
-            "cards": [
-                {
-                    "id": 26000024,
-                    "name": "Royal Giant",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/mnlRaNtmfpQx2e6mp70sLd0ND-pKPF70Cf87_agEKg4.png"
-                },
-                {
-                    "id": 26000011,
-                    "name": "Valkyrie",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
-                },
-                {
-                    "id": 26000055,
-                    "name": "Mega Knight",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
-                },
-                {
-                    "id": 26000049,
-                    "name": "Bats",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
-                },
-                {
-                    "id": 28000017,
-                    "name": "Giant Snowball",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
-                },
-                {
-                    "id": 28000000,
-                    "name": "Fireball",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
-                },
-                {
-                    "id": 26000015,
-                    "name": "Baby Dragon",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
-                },
-                {
-                    "id": 26000041,
-                    "name": "Goblin Gang",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
-                }
-            ],
-            "wins": 1,
-            "losses": 2,
-            "players": [
-                "OneAndOnly"
-            ],
-            "tags": [
-                "8P0J8P0L"
-            ],
-            "recent_matches": [
-                {
-                    "time": "20260321T095850.000Z",
-                    "result": "loss",
-                    "player": "OneAndOnly",
-                    "tag": "8P0J8P0L"
-                },
-                {
-                    "time": "20260320T115040.000Z",
-                    "result": "win",
-                    "player": "OneAndOnly",
-                    "tag": "8P0J8P0L"
-                },
-                {
-                    "time": "20260319T154835.000Z",
-                    "result": "loss",
-                    "player": "OneAndOnly",
-                    "tag": "8P0J8P0L"
                 }
             ]
         },
@@ -7029,6 +6963,66 @@
                     "result": "win",
                     "player": "Flauschos",
                     "tag": "PPR2QQC0U"
+                }
+            ]
+        },
+        "26000007-26000013-26000015-26000024-26000031-26000040-26000056-27000006": {
+            "cards": [
+                {
+                    "id": 26000024,
+                    "name": "Royal Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mnlRaNtmfpQx2e6mp70sLd0ND-pKPF70Cf87_agEKg4.png"
+                },
+                {
+                    "id": 26000013,
+                    "name": "Bomber",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
+                },
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 26000031,
+                    "name": "Fire Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/16-BqusVvynIgYI8_Jci3LDC-r8AI_xaIYLgXqtlmS8.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                }
+            ],
+            "wins": 1,
+            "losses": 0,
+            "players": [
+                "Rainer"
+            ],
+            "tags": [
+                "QVQGCV8Y9"
+            ],
+            "recent_matches": [
+                {
+                    "time": "20260322T104458.000Z",
+                    "result": "win",
+                    "player": "Rainer",
+                    "tag": "QVQGCV8Y9"
                 }
             ]
         }
