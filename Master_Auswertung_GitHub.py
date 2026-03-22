@@ -781,6 +781,63 @@ def render_html_template(
             .accordion-content {{ padding: 0 25px; background: rgba(15, 23, 42, 0.6); max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; border-radius: 0 0 8px 8px; margin-top: -8px; margin-bottom: 15px; font-size: 1em; line-height: 1.6; color: #94a3b8; border-left: 2px solid #38bdf8; }}
             .accordion-content p, .accordion-content ul {{ padding: 15px 0; margin: 0; }}
             .accordion-content li {{ margin-bottom: 8px; }}
+
+            @media (max-width: 768px) {{
+                body {{ padding: 12px; }}
+                .container {{ max-width: 100%; }}
+                .header-container {{ padding: 28px 16px; }}
+                .header-title {{ font-size: 1.6em; }}
+                .tier-title {{ position: static; font-size: 1.15em; padding: 12px 0 10px 0; }}
+                th {{ display: none; }}
+                table, .wiki-table {{
+                    width: 100%;
+                    table-layout: auto;
+                    border: none;
+                    background: transparent;
+                    margin-bottom: 18px;
+                }}
+                tbody, tr, td {{
+                    display: block;
+                    width: 100%;
+                }}
+                tr {{
+                    background: rgba(15, 23, 42, 0.92) !important;
+                    border: 1px solid rgba(255,255,255,0.08);
+                    border-radius: 14px;
+                    margin-bottom: 14px;
+                    padding: 10px 12px;
+                    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+                }}
+                td {{
+                    border: none;
+                    padding: 8px 0;
+                    display: grid;
+                    grid-template-columns: 110px 1fr;
+                    gap: 12px;
+                    align-items: center;
+                    text-align: left !important;
+                    font-size: 0.98em;
+                }}
+                td::before {{
+                    color: #94a3b8;
+                    font-weight: 700;
+                    font-size: 0.86em;
+                    text-transform: none;
+                }}
+                td:nth-child(1)::before {{ content: "Spieler"; }}
+                td:nth-child(2)::before {{ content: "Check"; }}
+                td:nth-child(3)::before {{ content: "Status"; }}
+                td:nth-child(4)::before {{ content: "Score"; }}
+                td:nth-child(5)::before {{ content: "Trend"; }}
+                td:nth-child(6)::before {{ content: "Ø Punkte"; }}
+                td:nth-child(7)::before {{ content: "Aktive Kriege"; }}
+                td:nth-child(8)::before {{ content: "Spenden"; }}
+                .wiki-table td {{ font-size: 0.92em; }}
+                .name-col {{ font-size: 1.05em; }}
+                .focus-pill {{ min-width: 0; width: fit-content; }}
+                .trend-cell {{ font-size: 18px !important; }}
+                .custom-tooltip .tooltip-text {{ max-width: 220px; width: max-content; white-space: normal; }}
+            }}
         </style>
     </head>
     <body>
