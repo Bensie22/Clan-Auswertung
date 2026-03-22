@@ -782,25 +782,30 @@ def render_html_template(
             .accordion-content p, .accordion-content ul {{ padding: 15px 0; margin: 0; }}
             .accordion-content li {{ margin-bottom: 8px; }}
 
+            .name-inline {{ display: inline-flex; align-items: center; flex-wrap: wrap; gap: 6px; }}
+            .spenden-cell {{ display: inline-flex; flex-direction: column; align-items: flex-start; gap: 4px; }}
+            .spenden-extra {{ line-height: 1; }}
+
             @media (max-width: 768px) {{
                 body {{ padding: 12px; }}
                 .container {{ max-width: 100%; }}
                 .header-container {{ padding: 28px 16px; }}
                 .header-title {{ font-size: 1.6em; }}
                 .tier-title {{ position: static; font-size: 1.15em; padding: 12px 0 10px 0; }}
-                th {{ display: none; }}
-                table, .wiki-table {{
+                table:not(.radar-table), .wiki-table {{
                     width: 100%;
                     table-layout: auto;
                     border: none;
                     background: transparent;
                     margin-bottom: 18px;
                 }}
-                tbody, tr, td {{
+                table:not(.radar-table) th, .wiki-table th {{ display: none; }}
+                table:not(.radar-table) tbody, table:not(.radar-table) tr, table:not(.radar-table) td,
+                .wiki-table tbody, .wiki-table tr, .wiki-table td {{
                     display: block;
                     width: 100%;
                 }}
-                tr {{
+                table:not(.radar-table) tr, .wiki-table tr {{
                     background: rgba(15, 23, 42, 0.92) !important;
                     border: 1px solid rgba(255,255,255,0.08);
                     border-radius: 14px;
@@ -808,7 +813,7 @@ def render_html_template(
                     padding: 10px 12px;
                     box-shadow: 0 4px 14px rgba(0,0,0,0.18);
                 }}
-                td {{
+                table:not(.radar-table) td, .wiki-table td {{
                     border: none;
                     padding: 8px 0;
                     display: grid;
@@ -818,25 +823,32 @@ def render_html_template(
                     text-align: left !important;
                     font-size: 0.98em;
                 }}
-                td::before {{
+                table:not(.radar-table) td::before, .wiki-table td::before {{
                     color: #94a3b8;
                     font-weight: 700;
                     font-size: 0.86em;
                     text-transform: none;
                 }}
-                td:nth-child(1)::before {{ content: "Spieler"; }}
-                td:nth-child(2)::before {{ content: "Check"; }}
-                td:nth-child(3)::before {{ content: "Status"; }}
-                td:nth-child(4)::before {{ content: "Score"; }}
-                td:nth-child(5)::before {{ content: "Trend"; }}
-                td:nth-child(6)::before {{ content: "Ø Punkte"; }}
-                td:nth-child(7)::before {{ content: "Aktive Kriege"; }}
-                td:nth-child(8)::before {{ content: "Spenden"; }}
+                table:not(.radar-table) td:nth-child(1)::before, .wiki-table td:nth-child(1)::before {{ content: "Spieler"; }}
+                table:not(.radar-table) td:nth-child(2)::before, .wiki-table td:nth-child(2)::before {{ content: "Check"; }}
+                table:not(.radar-table) td:nth-child(3)::before, .wiki-table td:nth-child(3)::before {{ content: "Status"; }}
+                table:not(.radar-table) td:nth-child(4)::before, .wiki-table td:nth-child(4)::before {{ content: "Score"; }}
+                table:not(.radar-table) td:nth-child(5)::before, .wiki-table td:nth-child(5)::before {{ content: "Trend"; }}
+                table:not(.radar-table) td:nth-child(6)::before, .wiki-table td:nth-child(6)::before {{ content: "Ø Punkte"; }}
+                table:not(.radar-table) td:nth-child(7)::before, .wiki-table td:nth-child(7)::before {{ content: "Aktive Kriege"; }}
+                table:not(.radar-table) td:nth-child(8)::before, .wiki-table td:nth-child(8)::before {{ content: "Spenden"; }}
                 .wiki-table td {{ font-size: 0.92em; }}
                 .name-col {{ font-size: 1.05em; }}
                 .focus-pill {{ min-width: 0; width: fit-content; }}
                 .trend-cell {{ font-size: 18px !important; }}
                 .custom-tooltip .tooltip-text {{ max-width: 220px; width: max-content; white-space: normal; }}
+                .radar-table {{ width: 100%; table-layout: fixed; font-size: 0.84em !important; }}
+                .radar-table th {{ display: table-cell; position: static; box-shadow: none; font-size: 0.82em; padding: 8px 6px; }}
+                .radar-table tbody {{ display: table-row-group; }}
+                .radar-table tr {{ display: table-row; background: transparent !important; border: none; box-shadow: none; padding: 0; }}
+                .radar-table td {{ display: table-cell; width: auto; padding: 10px 6px; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: center !important; vertical-align: middle; }}
+                .radar-table td:first-child {{ text-align: left !important; }}
+                .radar-table td::before {{ content: none !important; }}
             }}
         </style>
     </head>
@@ -1542,7 +1554,7 @@ def generate_html_report(
     if radar_clans:
         radar_hint = f" <span style='font-size:0.8em; opacity:0.8; font-weight:normal;'>(Status: {race_state_de})</span>"
         radar_html = f"<div class='info-box' style='border-left-color: #f43f5e; background: rgba(159, 18, 57, 0.15); margin-bottom: 25px;'><h3 style='margin-top: 0; color: #f43f5e; margin-bottom: 12px; font-size: 1.2em;'>📡 Live Kriegs-Radar{radar_hint}</h3>"
-        radar_html += "<div style='overflow-x: auto;'><table style='width: 100%; border-collapse: collapse; font-size: 0.95em;'>"
+        radar_html += "<div style='overflow-x: auto;'><table class='radar-table' style='width: 100%; border-collapse: collapse; font-size: 0.95em;'>"
         radar_html += "<tr style='border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; font-weight: 600; text-align: left;'><td style='padding-bottom: 8px; border: none; text-align: left;'>Clan</td><td style='padding-bottom: 8px; border: none; text-align: center;'>⛵ Boot</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🥇 Medaille</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🏆 Trophäe</td></tr>"
 
         for idx, c in enumerate(radar_clans):
@@ -1815,17 +1827,18 @@ def generate_html_report(
                         spenden_warnung = " <span class='custom-tooltip' style='font-size: 1.1em;'>💤<span class='tooltip-text'>Spenden inaktiv (0 gespendet, 0 erhalten)</span></span>"
 
                 spenden_zelle = f"<span class='custom-tooltip dotted'>{p['donations']}<span class='tooltip-text'>Gespendet: {p['donations']} | Empfangen: {p['donations_received']}</span></span>"
+                spenden_block = f"<span class='spenden-cell'><span>{spenden_zelle}</span><span class='spenden-extra'>{spenden_warnung}</span></span>" if spenden_warnung else spenden_zelle
 
                 table_html += (
                     f"<tr>"
-                    f"<td class='name-col'>{p['name']}{p['welpenschutz_badge']}{p['streak_badge']}{p['strike_badge']}</td>"
+                    f"<td class='name-col'><span class='name-inline'>{p['name']}{p['welpenschutz_badge']}{p['streak_badge']}{p['strike_badge']}</span></td>"
                     f"<td>{p['focus_badge']}</td>"
                     f"<td>{p['status']}</td>"
                     f"<td><b>{p['score']}%</b></td>"
                     f"<td class='trend-cell'>{p['trend_str']}</td>"
                     f"<td style='color:#cbd5e1;'>{p['fame_per_deck']}{p['leecher_warnung']}</td>"
                     f"<td>{p['teilnahme']}</td>"
-                    f"<td style='color:#38bdf8; font-weight:bold;'>{spenden_zelle}{spenden_warnung}</td>"
+                    f"<td style='color:#38bdf8; font-weight:bold;'>{spenden_block}</td>"
                     f"</tr>"
                 )
 
