@@ -108,6 +108,63 @@
             .accordion-content { padding: 0 25px; background: rgba(15, 23, 42, 0.6); max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; border-radius: 0 0 8px 8px; margin-top: -8px; margin-bottom: 15px; font-size: 1em; line-height: 1.6; color: #94a3b8; border-left: 2px solid #38bdf8; }
             .accordion-content p, .accordion-content ul { padding: 15px 0; margin: 0; }
             .accordion-content li { margin-bottom: 8px; }
+
+            @media (max-width: 768px) {
+                body { padding: 12px; }
+                .container { max-width: 100%; }
+                .header-container { padding: 28px 16px; }
+                .header-title { font-size: 1.6em; }
+                .tier-title { position: static; font-size: 1.15em; padding: 12px 0 10px 0; }
+                th { display: none; }
+                table, .wiki-table {
+                    width: 100%;
+                    table-layout: auto;
+                    border: none;
+                    background: transparent;
+                    margin-bottom: 18px;
+                }
+                tbody, tr, td {
+                    display: block;
+                    width: 100%;
+                }
+                tr {
+                    background: rgba(15, 23, 42, 0.92) !important;
+                    border: 1px solid rgba(255,255,255,0.08);
+                    border-radius: 14px;
+                    margin-bottom: 14px;
+                    padding: 10px 12px;
+                    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+                }
+                td {
+                    border: none;
+                    padding: 8px 0;
+                    display: grid;
+                    grid-template-columns: 110px 1fr;
+                    gap: 12px;
+                    align-items: center;
+                    text-align: left !important;
+                    font-size: 0.98em;
+                }
+                td::before {
+                    color: #94a3b8;
+                    font-weight: 700;
+                    font-size: 0.86em;
+                    text-transform: none;
+                }
+                td:nth-child(1)::before { content: "Spieler"; }
+                td:nth-child(2)::before { content: "Check"; }
+                td:nth-child(3)::before { content: "Status"; }
+                td:nth-child(4)::before { content: "Score"; }
+                td:nth-child(5)::before { content: "Trend"; }
+                td:nth-child(6)::before { content: "Ø Punkte"; }
+                td:nth-child(7)::before { content: "Aktive Kriege"; }
+                td:nth-child(8)::before { content: "Spenden"; }
+                .wiki-table td { font-size: 0.92em; }
+                .name-col { font-size: 1.05em; }
+                .focus-pill { min-width: 0; width: fit-content; }
+                .trend-cell { font-size: 18px !important; }
+                .custom-tooltip .tooltip-text { max-width: 220px; width: max-content; white-space: normal; }
+            }
         </style>
     </head>
     <body>
@@ -145,7 +202,7 @@
         </div>
         
 
-                <div class='info-box' style='border-left-color: #f43f5e; background: rgba(159, 18, 57, 0.15); margin-bottom: 25px;'><h3 style='margin-top: 0; color: #f43f5e; margin-bottom: 12px; font-size: 1.2em;'>📡 Live Kriegs-Radar <span style='font-size:0.8em; opacity:0.8; font-weight:normal;'>(Status: Clankrieg)</span></h3><div style='overflow-x: auto;'><table style='width: 100%; border-collapse: collapse; font-size: 0.95em;'><tr style='border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; font-weight: 600; text-align: left;'><td style='padding-bottom: 8px; border: none; text-align: left;'>Clan</td><td style='padding-bottom: 8px; border: none; text-align: center;'>⛵ Boot</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🥇 Medaille</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🏆 Trophäe</td></tr><tr style='background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.02);'><td style='padding: 10px 5px;'><b style='color:#fff;'>Hamburg (WIR)</b><br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 88 / 200 Decks</span></td><td style='text-align: center; font-weight: bold; color: #f8fafc;'>9</td><td style='text-align: center; font-weight: bold; color: #fbbf24;'>14475</td><td style='text-align: center; font-weight: bold; color: #c084fc;'>3277</td></tr><tr style='background: transparent; border-bottom: 1px solid rgba(255,255,255,0.02);'><td style='padding: 10px 5px;'>Kings Cup<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 83 / 200 Decks</span></td><td style='text-align: center; font-weight: bold; color: #f8fafc;'>18</td><td style='text-align: center; font-weight: bold; color: #fbbf24;'>12750</td><td style='text-align: center; font-weight: bold; color: #c084fc;'>3245</td></tr><tr style='background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.02);'><td style='padding: 10px 5px;'>BlackPanthers<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 69 / 200 Decks</span></td><td style='text-align: center; font-weight: bold; color: #f8fafc;'>9</td><td style='text-align: center; font-weight: bold; color: #fbbf24;'>11550</td><td style='text-align: center; font-weight: bold; color: #c084fc;'>3240</td></tr><tr style='background: transparent; border-bottom: 1px solid rgba(255,255,255,0.02);'><td style='padding: 10px 5px;'>Axl Revenge<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 12 / 200 Decks</span></td><td style='text-align: center; font-weight: bold; color: #f8fafc;'>12</td><td style='text-align: center; font-weight: bold; color: #fbbf24;'>1500</td><td style='text-align: center; font-weight: bold; color: #c084fc;'>3208</td></tr><tr style='background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.02);'><td style='padding: 10px 5px;'>Österreich<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 68 / 200 Decks</span></td><td style='text-align: center; font-weight: bold; color: #f8fafc;'>21</td><td style='text-align: center; font-weight: bold; color: #fbbf24;'>0</td><td style='text-align: center; font-weight: bold; color: #c084fc;'>3300</td></tr></table></div></div>
+                <div class='info-box' style='border-left-color: #f43f5e; background: rgba(159, 18, 57, 0.15); margin-bottom: 25px;'><h3 style='margin-top: 0; color: #f43f5e; margin-bottom: 12px; font-size: 1.2em;'>📡 Live Kriegs-Radar <span style='font-size:0.8em; opacity:0.8; font-weight:normal;'>(Status: Clankrieg)</span></h3><div style='overflow-x: auto;'><table style='width: 100%; border-collapse: collapse; font-size: 0.95em;'><tr style='border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; font-weight: 600; text-align: left;'><td style='padding-bottom: 8px; border: none; text-align: left;'>Clan</td><td style='padding-bottom: 8px; border: none; text-align: center;'>⛵ Boot</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🥇 Medaille</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🏆 Trophäe</td></tr><tr style='background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.02);'><td style='padding: 10px 5px;'><b style='color:#fff;'>Hamburg (WIR)</b><br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 88 / 200 Decks</span></td><td style='text-align: center; font-weight: bold; color: #f8fafc;'>9</td><td style='text-align: center; font-weight: bold; color: #fbbf24;'>14475</td><td style='text-align: center; font-weight: bold; color: #c084fc;'>3277</td></tr><tr style='background: transparent; border-bottom: 1px solid rgba(255,255,255,0.02);'><td style='padding: 10px 5px;'>Kings Cup<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 84 / 200 Decks</span></td><td style='text-align: center; font-weight: bold; color: #f8fafc;'>18</td><td style='text-align: center; font-weight: bold; color: #fbbf24;'>12850</td><td style='text-align: center; font-weight: bold; color: #c084fc;'>3245</td></tr><tr style='background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.02);'><td style='padding: 10px 5px;'>BlackPanthers<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 71 / 200 Decks</span></td><td style='text-align: center; font-weight: bold; color: #f8fafc;'>9</td><td style='text-align: center; font-weight: bold; color: #fbbf24;'>11850</td><td style='text-align: center; font-weight: bold; color: #c084fc;'>3240</td></tr><tr style='background: transparent; border-bottom: 1px solid rgba(255,255,255,0.02);'><td style='padding: 10px 5px;'>Axl Revenge<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 12 / 200 Decks</span></td><td style='text-align: center; font-weight: bold; color: #f8fafc;'>12</td><td style='text-align: center; font-weight: bold; color: #fbbf24;'>1500</td><td style='text-align: center; font-weight: bold; color: #c084fc;'>3208</td></tr><tr style='background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.02);'><td style='padding: 10px 5px;'>Österreich<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 68 / 200 Decks</span></td><td style='text-align: center; font-weight: bold; color: #f8fafc;'>21</td><td style='text-align: center; font-weight: bold; color: #fbbf24;'>0</td><td style='text-align: center; font-weight: bold; color: #c084fc;'>3300</td></tr></table></div></div>
                 <div class='info-box' style='border-left-color: #ef4444; background: rgba(239, 68, 68, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #ef4444; margin-bottom: 8px;'>⏰ Mahnwache (Noch offene Decks heute):</h4><p style='margin: 0; font-size: 0.95em;'><span style='color:#7dd3fc; font-weight:800;'>mojede</span> <span style='color:#ffffff;'>(4 offen)</span>, <span style='color:#fdba74; font-weight:800;'>king rado</span> <span style='color:#ffffff;'>(4 offen)</span>, <span style='color:#7dd3fc; font-weight:800;'>NL-eSports</span> <span style='color:#ffffff;'>(4 offen)</span>, <span style='color:#fdba74; font-weight:800;'>elazeto</span> <span style='color:#ffffff;'>(4 offen)</span>, <span style='color:#7dd3fc; font-weight:800;'>gang</span> <span style='color:#ffffff;'>(4 offen)</span>, <span style='color:#fdba74; font-weight:800;'>SirHenry87</span> <span style='color:#ffffff;'>(4 offen)</span>, <span style='color:#7dd3fc; font-weight:800;'>Fxry</span> <span style='color:#ffffff;'>(4 offen)</span>, <span style='color:#fdba74; font-weight:800;'>MF Tarje</span> <span style='color:#ffffff;'>(4 offen)</span>, <span style='color:#7dd3fc; font-weight:800;'>Milchreis</span> <span style='color:#ffffff;'>(4 offen)</span>, <span style='color:#fdba74; font-weight:800;'>Ser0</span> <span style='color:#ffffff;'>(4 offen)</span>, <span style='color:#7dd3fc; font-weight:800;'>bes</span> <span style='color:#ffffff;'>(4 offen)</span>, <span style='color:#fdba74; font-weight:800;'>Amp</span> <span style='color:#ffffff;'>(4 offen)</span>, <span style='color:#7dd3fc; font-weight:800;'>Boi</span> <span style='color:#ffffff;'>(3 offen)</span>, <span style='color:#fdba74; font-weight:800;'>Annefred</span> <span style='color:#ffffff;'>(4 offen)</span>, <span style='color:#7dd3fc; font-weight:800;'>Nati</span> <span style='color:#ffffff;'>(3 offen)</span>, <span style='color:#fdba74; font-weight:800;'>Citykingalex</span> <span style='color:#ffffff;'>(1 offen)</span>, <span style='color:#7dd3fc; font-weight:800;'>Bensie</span> <span style='color:#ffffff;'>(4 offen)</span>, <span style='color:#fdba74; font-weight:800;'>eco</span> <span style='color:#ffffff;'>(1 offen)</span>, <span style='color:#7dd3fc; font-weight:800;'>Denis</span> <span style='color:#ffffff;'>(4 offen)</span>, <span style='color:#fdba74; font-weight:800;'>Ian</span> <span style='color:#ffffff;'>(4 offen)</span>, <span style='color:#7dd3fc; font-weight:800;'>Jackhammer</span> <span style='color:#ffffff;'>(4 offen)</span>, <span style='color:#fdba74; font-weight:800;'>Flauschos</span> <span style='color:#ffffff;'>(4 offen)</span>, <span style='color:#7dd3fc; font-weight:800;'>chris</span> <span style='color:#ffffff;'>(4 offen)</span>, <span style='color:#fdba74; font-weight:800;'>Knitte</span> <span style='color:#ffffff;'>(4 offen)</span>, <span style='color:#7dd3fc; font-weight:800;'>Wario</span> <span style='color:#ffffff;'>(4 offen)</span>, <span style='color:#fdba74; font-weight:800;'>bequemo</span> <span style='color:#ffffff;'>(4 offen)</span>, <span style='color:#7dd3fc; font-weight:800;'>_spc07</span> <span style='color:#ffffff;'>(4 offen)</span>, <span style='color:#fdba74; font-weight:800;'>honigmelone</span> <span style='color:#ffffff;'>(4 offen)</span>, <span style='color:#7dd3fc; font-weight:800;'>maghrebi</span> <span style='color:#ffffff;'>(3 offen)</span>, <span style='color:#fdba74; font-weight:800;'>hi2oka</span> <span style='color:#ffffff;'>(4 offen)</span>, <span style='color:#7dd3fc; font-weight:800;'>Erastus</span> <span style='color:#ffffff;'>(1 offen)</span></p></div>
                 
     <div class='signal-board'>
