@@ -2,7 +2,7 @@
     "_metadata": {
         "last_battles": {
             "#22Q920RLR": "20260322T151734.000Z",
-            "#L8PV090J": "20260322T162443.000Z",
+            "#L8PV090J": "20260322T162823.000Z",
             "#22CQPRR0J": "20260322T151909.000Z",
             "#2QRVR9L8": "20260322T091936.000Z",
             "#ULYJ2CQP": "20260322T075433.000Z",
@@ -16,10 +16,10 @@
             "#Y8PVULPU0": "20260321T125006.000Z",
             "#9CG2CRRJG": "20260322T072311.000Z",
             "#PPR2QQC0U": "20260322T125135.000Z",
-            "#QULCQGGG": "20260322T093544.000Z",
+            "#QULCQGGG": "20260322T163213.000Z",
             "#JRGC9RRQG": "20260322T125357.000Z",
             "#QVQGCV8Y9": "20260322T105506.000Z",
-            "#Q8L0RJ8Y8": "20260322T125733.000Z",
+            "#Q8L0RJ8Y8": "20260322T164827.000Z",
             "#P2GUCG2Y": "20260318T135033.000Z",
             "#2CPRGY8G": "20260322T142940.000Z",
             "#LLQQJCLC": "20260321T183033.000Z",
@@ -42,8 +42,8 @@
             "#8P89UPQ0": "20260322T162208.000Z",
             "#RLJPJL8C2": "20260322T150752.000Z",
             "#RG02LG88": "20260320T230910.000Z",
-            "#29L2P9YJ": "20260322T162230.000Z",
-            "#UUPCULU9V": "20260322T083041.000Z",
+            "#29L2P9YJ": "20260322T164053.000Z",
+            "#UUPCULU9V": "20260322T164458.000Z",
             "#202VP2QL9P": "20260322T115358.000Z",
             "#LVUGLUCP9": "20260322T135050.000Z",
             "#20QGJVPG8Q": "20260322T131510.000Z",
@@ -4639,7 +4639,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "OmniOni"
@@ -4648,6 +4648,12 @@
                 "UUPCULU9V"
             ],
             "recent_matches": [
+                {
+                    "time": "20260322T163558.000Z",
+                    "result": "win",
+                    "player": "OmniOni",
+                    "tag": "UUPCULU9V"
+                },
                 {
                     "time": "20260321T120044.000Z",
                     "result": "win",
@@ -4764,96 +4770,6 @@
                 },
                 {
                     "time": "20260306T225537.000Z",
-                    "result": "win",
-                    "player": "Nati",
-                    "tag": "LVUGLUCP9"
-                }
-            ]
-        },
-        "26000025-26000040-26000043-26000047-26000053-26000064-28000000-28000002": {
-            "cards": [
-                {
-                    "id": 26000064,
-                    "name": "Firecracker",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
-                },
-                {
-                    "id": 26000047,
-                    "name": "Royal Recruits",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/jcNyYGUiXXNz3kuz8NBkHNKNREQKraXlb_Ts7rhCIdM.png"
-                },
-                {
-                    "id": 26000025,
-                    "name": "Guards",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/1ArKfLJxYo6_NU_S9cAeIrfbXqWH0oULVJXedxBXQlU.png"
-                },
-                {
-                    "id": 28000002,
-                    "name": "Rage",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
-                },
-                {
-                    "id": 26000053,
-                    "name": "Rascals",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/KV48DfwVHKx9XCjzBdk3daT_Eb52Me4VgjVO7WctRc4.png"
-                },
-                {
-                    "id": 26000043,
-                    "name": "Elite Barbarians",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/C88C5JH_F3lLZj6K-tLcMo5DPjrFmvzIb1R2M6xCfTE.png"
-                },
-                {
-                    "id": 28000000,
-                    "name": "Fireball",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
-                },
-                {
-                    "id": 26000040,
-                    "name": "Dart Goblin",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
-                }
-            ],
-            "wins": 2,
-            "losses": 4,
-            "players": [
-                "Nati"
-            ],
-            "tags": [
-                "LVUGLUCP9"
-            ],
-            "recent_matches": [
-                {
-                    "time": "20260319T214232.000Z",
-                    "result": "loss",
-                    "player": "Nati",
-                    "tag": "LVUGLUCP9"
-                },
-                {
-                    "time": "20260315T200848.000Z",
-                    "result": "loss",
-                    "player": "Nati",
-                    "tag": "LVUGLUCP9"
-                },
-                {
-                    "time": "20260314T223448.000Z",
-                    "result": "loss",
-                    "player": "Nati",
-                    "tag": "LVUGLUCP9"
-                },
-                {
-                    "time": "20260313T211928.000Z",
-                    "result": "win",
-                    "player": "Nati",
-                    "tag": "LVUGLUCP9"
-                },
-                {
-                    "time": "20260311T204425.000Z",
-                    "result": "loss",
-                    "player": "Nati",
-                    "tag": "LVUGLUCP9"
-                },
-                {
-                    "time": "20260307T205750.000Z",
                     "result": "win",
                     "player": "Nati",
                     "tag": "LVUGLUCP9"
@@ -7059,6 +6975,66 @@
                     "result": "win",
                     "player": "RedStyle",
                     "tag": "YJ0LUU0JJ"
+                }
+            ]
+        },
+        "26000005-26000012-26000016-26000019-26000023-26000025-28000011-28000017": {
+            "cards": [
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 28000017,
+                    "name": "Giant Snowball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
+                },
+                {
+                    "id": 26000025,
+                    "name": "Guards",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/1ArKfLJxYo6_NU_S9cAeIrfbXqWH0oULVJXedxBXQlU.png"
+                },
+                {
+                    "id": 26000019,
+                    "name": "Spear Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/FSDFotjaXidI4ku_WFpVCTWS1hKGnFh1sxX0lxM43_E.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000023,
+                    "name": "Ice Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W3dkw0HTw9n1jB-zbknY2w3wHuyuLxSRIAV5fUT1SEY.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                }
+            ],
+            "wins": 1,
+            "losses": 0,
+            "players": [
+                "OmniOni"
+            ],
+            "tags": [
+                "UUPCULU9V"
+            ],
+            "recent_matches": [
+                {
+                    "time": "20260322T164458.000Z",
+                    "result": "win",
+                    "player": "OmniOni",
+                    "tag": "UUPCULU9V"
                 }
             ]
         }
