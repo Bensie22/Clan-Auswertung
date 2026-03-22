@@ -842,6 +842,12 @@ def render_html_template(
                 .focus-pill {{ min-width: 0; width: fit-content; }}
                 .trend-cell {{ font-size: 18px !important; }}
                 .custom-tooltip .tooltip-text {{ max-width: 220px; width: max-content; white-space: normal; }}
+                table:not(.radar-table) td:nth-child(6), .wiki-table td:nth-child(6),
+                table:not(.radar-table) td:nth-child(8), .wiki-table td:nth-child(8) {{ white-space: nowrap; }}
+                table:not(.radar-table) td:nth-child(6) > *, .wiki-table td:nth-child(6) > *,
+                table:not(.radar-table) td:nth-child(8) > *, .wiki-table td:nth-child(8) > * {{ white-space: nowrap; }}
+                table:not(.radar-table) td:nth-child(8) .custom-tooltip.dotted,
+                .wiki-table td:nth-child(8) .custom-tooltip.dotted {{ border-bottom: none !important; }}
                 .spenden-cell .custom-tooltip.dotted {{ border-bottom: none; }}
                 .radar-table {{ width: 100%; table-layout: fixed; font-size: 0.84em !important; }}
                 .radar-table th {{ display: table-cell; position: static; box-shadow: none; font-size: 0.82em; padding: 8px 6px; }}
