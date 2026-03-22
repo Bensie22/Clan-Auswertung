@@ -783,7 +783,7 @@ def render_html_template(
             .accordion-content li {{ margin-bottom: 8px; }}
 
             .name-inline {{ display: inline-flex; align-items: center; flex-wrap: wrap; gap: 6px; }}
-            .spenden-cell {{ display: inline-flex; flex-direction: column; align-items: flex-start; gap: 4px; }}
+            .spenden-cell {{ display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap; }}
             .spenden-extra {{ line-height: 1; }}
 
             @media (max-width: 768px) {{
@@ -842,6 +842,7 @@ def render_html_template(
                 .focus-pill {{ min-width: 0; width: fit-content; }}
                 .trend-cell {{ font-size: 18px !important; }}
                 .custom-tooltip .tooltip-text {{ max-width: 220px; width: max-content; white-space: normal; }}
+                .spenden-cell .custom-tooltip.dotted {{ border-bottom: none; }}
                 .radar-table {{ width: 100%; table-layout: fixed; font-size: 0.84em !important; }}
                 .radar-table th {{ display: table-cell; position: static; box-shadow: none; font-size: 0.82em; padding: 8px 6px; }}
                 .radar-table tbody {{ display: table-row-group; }}
