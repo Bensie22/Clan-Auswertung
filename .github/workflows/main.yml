@@ -1,16 +1,13 @@
-name: Clan Auswertung Automatisierung
+name: Clan Auswertung Preview Handy
 
 on:
-  schedule:
-    - cron: '*/30 * * * 0,1,4,5,6'
-    - cron: '30 10 * * 1'
   workflow_dispatch:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
 jobs:
-  run-auswertung:
+  run-preview-handy:
     runs-on: ubuntu-latest
 
     env:
@@ -18,7 +15,17 @@ jobs:
       EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
       EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
       EMAIL_RECEIVER: ${{ secrets.EMAIL_RECEIVER }}
-      RUN_MODE: ${{ github.event_name == 'workflow_dispatch' && 'weekly' || github.event.schedule == '30 10 * * 1' && 'weekly' || 'radar' }}
+      IMPRESSUM_SITE_NAME: ${{ secrets.IMPRESSUM_SITE_NAME }}
+      IMPRESSUM_OWNER_NAME: ${{ secrets.IMPRESSUM_OWNER_NAME }}
+      IMPRESSUM_STREET: ${{ secrets.IMPRESSUM_STREET }}
+      IMPRESSUM_CITY: ${{ secrets.IMPRESSUM_CITY }}
+      IMPRESSUM_PHONE: ${{ secrets.IMPRESSUM_PHONE }}
+      IMPRESSUM_EMAIL: ${{ secrets.IMPRESSUM_EMAIL }}
+      IMPRESSUM_WEBSITE_URL: ${{ secrets.IMPRESSUM_WEBSITE_URL }}
+      IMPRESSUM_RESPONSIBLE_NAME: ${{ secrets.IMPRESSUM_RESPONSIBLE_NAME }}
+      IMPRESSUM_RESPONSIBLE_STREET: ${{ secrets.IMPRESSUM_RESPONSIBLE_STREET }}
+      IMPRESSUM_RESPONSIBLE_CITY: ${{ secrets.IMPRESSUM_RESPONSIBLE_CITY }}
+      RUN_MODE: weekly
 
     steps:
       - name: Repository klonen
@@ -34,13 +41,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests pandas python-dotenv
 
-      - name: Auswertung starten
-        run: python Master_Auswertung_GitHub.py
+      - name: Preview Handy starten
+        run: python experimental/Master_Auswertung_GitHub_preview_Handy.py
 
-      - name: Commit und Push der neuen Dateien
+      - name: Commit und Push der Preview-Dateien
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
           git add .
-          git commit -m "📊 Automatische Clan-Auswertung aktualisiert" || echo "Keine Änderungen zum Speichern"
+          git commit -m "📱 Handy-Preview aktualisiert" || echo "Keine Änderungen zum Speichern"
           git push
