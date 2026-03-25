@@ -1321,6 +1321,70 @@ def render_html_template(
                 window.scrollTo({{top: 0, behavior: 'smooth'}});
             }}
 
+            (function enableMobileSwipeNavigation() {{
+                var swipeTabs = ["Overview", "Table", "Wiki", "Decks"];
+                var startX = null;
+                var startY = null;
+                var startTarget = null;
+                var minSwipeDistance = 70;
+                var maxVerticalDrift = 50;
+
+                function isMobileWidth() {{
+                    return window.matchMedia("(max-width: 768px)").matches;
+                }}
+
+                function shouldIgnoreSwipe(target) {{
+                    if (!target || !target.closest) return false;
+                    return !!target.closest(".tab-container, .deck-slider, .accordion-btn, .accordion-content, textarea, input, select, a, button, .copy-btn");
+                }}
+
+                function getActiveSwipeTab() {{
+                    for (var i = 0; i < swipeTabs.length; i++) {{
+                        var el = document.getElementById(swipeTabs[i]);
+                        if (el && el.classList.contains("active")) {{
+                            return swipeTabs[i];
+                        }}
+                    }}
+                    return "Overview";
+                }}
+
+                document.addEventListener("touchstart", function(e) {{
+                    if (!isMobileWidth() || !e.touches || e.touches.length !== 1) return;
+                    startTarget = e.target;
+                    if (shouldIgnoreSwipe(startTarget)) {{
+                        startX = null;
+                        startY = null;
+                        return;
+                    }}
+                    startX = e.touches[0].clientX;
+                    startY = e.touches[0].clientY;
+                }}, {{ passive: true }});
+
+                document.addEventListener("touchend", function(e) {{
+                    if (!isMobileWidth() || startX === null || !e.changedTouches || e.changedTouches.length !== 1) return;
+                    var endX = e.changedTouches[0].clientX;
+                    var endY = e.changedTouches[0].clientY;
+                    var deltaX = endX - startX;
+                    var deltaY = endY - startY;
+
+                    startX = null;
+                    startY = null;
+
+                    if (Math.abs(deltaX) < minSwipeDistance || Math.abs(deltaY) > maxVerticalDrift) return;
+                    if (shouldIgnoreSwipe(startTarget)) return;
+
+                    var currentTab = getActiveSwipeTab();
+                    var currentIndex = swipeTabs.indexOf(currentTab);
+                    if (currentIndex === -1) return;
+
+                    if (deltaX < 0 && currentIndex < swipeTabs.length - 1) {{
+                        openTabByName(swipeTabs[currentIndex + 1]);
+                    }} else if (deltaX > 0 && currentIndex > 0) {{
+                        openTabByName(swipeTabs[currentIndex - 1]);
+                    }}
+                }}, {{ passive: true }});
+            }})();
+
             var acc = document.getElementsByClassName("accordion-btn");
             for (var i = 0; i < acc.length; i++) {{
                 acc[i].addEventListener("click", function() {{
