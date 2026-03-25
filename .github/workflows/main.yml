@@ -7,7 +7,7 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
 jobs:
-  run-preview-handy:
+  run-auswertung:
     runs-on: ubuntu-latest
 
     env:
@@ -43,7 +43,7 @@ jobs:
 
       - name: Auswertung starten
         run: python Master_Auswertung_GitHub.py
-      - name: Commit und Push der Preview-Dateien
+      - name: Commit und Push der neuen Dateien
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
