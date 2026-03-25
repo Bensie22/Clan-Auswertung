@@ -1004,8 +1004,6 @@ def render_html_template(
                 <button class="tab-btn" onclick="openTab(event, 'Table')">📋 Detail-Auswertung</button>
                 <button class="tab-btn" onclick="openTab(event, 'Wiki')">📖 Regeln & System</button>
                 <button class="tab-btn" onclick="openTab(event, 'Decks')">🃏 Top-Decks</button>
-                <button class="tab-btn" onclick="openTab(event, 'Impressum')">ℹ️ Impressum</button>
-                <button class="tab-btn" onclick="openTab(event, 'Datenschutz')">🔒 Datenschutz</button>
             </div>
 
             <div id="Overview" class="tab-content active">
@@ -1266,9 +1264,7 @@ def render_html_template(
                 <div class="footer-links">
                     <a class="footer-link" onclick="openTabByName('Impressum')">Impressum</a>
                     <a class="footer-link" onclick="openTabByName('Datenschutz')">Datenschutz</a>
-                    <a class="footer-link" onclick="openTabByName('Wiki')">Regeln &amp; System</a>
                 </div>
-                <div>Impressum und Datenschutzerklärung sind von jeder Ansicht aus mit maximal zwei Klicks erreichbar.</div>
             </footer>
         </div>
 
