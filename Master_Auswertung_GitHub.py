@@ -8,6 +8,7 @@ import json
 import sys
 import time
 import traceback
+import html
 from datetime import datetime, timedelta, timezone
 from typing import List, Tuple
 from pathlib import Path
@@ -50,6 +51,124 @@ member_memory_path = BASE_DIR / "member_memory.json"
 urlaub_path = BASE_DIR / "urlaub.txt"
 kicked_players_path = BASE_DIR / "kicked_players.json"
 HEADER_IMAGE_PATH = BASE_DIR / "clash_pix.jpg"
+
+
+def safe_env(name: str, default: str = "") -> str:
+    return os.environ.get(name, default).strip()
+
+
+def build_legal_pages() -> Tuple[str, str]:
+    site_name = safe_env("IMPRESSUM_SITE_NAME", CLAN_NAME)
+    owner_name = safe_env("IMPRESSUM_OWNER_NAME")
+    street = safe_env("IMPRESSUM_STREET")
+    city = safe_env("IMPRESSUM_CITY")
+    phone = safe_env("IMPRESSUM_PHONE")
+    legal_email = safe_env("IMPRESSUM_EMAIL", safe_env("EMAIL_SENDER"))
+    website_url = safe_env("IMPRESSUM_WEBSITE_URL", "https://www.houseofnames.com/diener/german/p/family-crest-download-heritage-series-300")
+    responsible_name = safe_env("IMPRESSUM_RESPONSIBLE_NAME", owner_name)
+    responsible_street = safe_env("IMPRESSUM_RESPONSIBLE_STREET", street)
+    responsible_city = safe_env("IMPRESSUM_RESPONSIBLE_CITY", city)
+
+    missing_fields = [
+        label for label, value in [
+            ("Name der Website", site_name),
+            ("Hauptverantwortliche Person", owner_name),
+            ("Straße und Hausnummer", street),
+            ("PLZ und Ort", city),
+            ("E-Mail-Adresse", legal_email),
+            ("Verantwortlich nach § 18 Abs. 2 MStV", responsible_name),
+        ] if not value
+    ]
+
+    setup_notice = ""
+    if missing_fields:
+        setup_notice = (
+            "<div class='legal-warning'>"
+            "<b>Hinweis:</b> Das Impressum ist noch nicht vollständig konfiguriert. "
+            "Bitte hinterlege diese Umgebungsvariablen bzw. GitHub-Secrets: "
+            f"{html.escape(', '.join(missing_fields))}."
+            "</div>"
+        )
+
+    phone_html = f"<p><b>Telefon:</b> {html.escape(phone)}</p>" if phone else ""
+    website_html = f"<p><b>Website:</b> <a href='{html.escape(website_url)}' target='_blank' rel='noopener noreferrer'>{html.escape(website_url)}</a></p>" if website_url else ""
+
+    impressum_html = f"""
+        <div class="legal-page">
+            {setup_notice}
+            <h2>Impressum</h2>
+            <p><b>Angaben gemäß § 5 DDG</b></p>
+            <div class="legal-section">
+                <p><b>{html.escape(site_name)}</b></p>
+                <p>{html.escape(owner_name)}</p>
+                <p>{html.escape(street)}</p>
+                <p>{html.escape(city)}</p>
+            </div>
+            <div class="legal-section">
+                <h3>Kontakt</h3>
+                {phone_html}
+                <p><b>E-Mail:</b> <a href='mailto:{html.escape(legal_email)}'>{html.escape(legal_email)}</a></p>
+                {website_html}
+            </div>
+            <div class="legal-section">
+                <h3>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h3>
+                <p>{html.escape(responsible_name)}</p>
+                <p>{html.escape(responsible_street)}</p>
+                <p>{html.escape(responsible_city)}</p>
+            </div>
+            <div class="legal-section">
+                <h3>EU-Streitschlichtung</h3>
+                <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.</p>
+                <p>Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
+            </div>
+            <div class="legal-section">
+                <h3>Verbraucherstreitbeilegung/Universalschlichtungsstelle</h3>
+                <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+            </div>
+        </div>
+    """
+
+    datenschutz_html = f"""
+        <div class="legal-page">
+            <h2>Datenschutzerklärung</h2>
+            <p>Diese Website ist eine statische Informationsseite des Clans <b>{html.escape(site_name)}</b>. Sie dient zur Anzeige von Clan-, Kriegs- und Statistikdaten.</p>
+            <div class="legal-section">
+                <h3>1. Verantwortliche Stelle</h3>
+                <p>{html.escape(owner_name)}</p>
+                <p>{html.escape(street)}</p>
+                <p>{html.escape(city)}</p>
+                <p><b>E-Mail:</b> <a href='mailto:{html.escape(legal_email)}'>{html.escape(legal_email)}</a></p>
+            </div>
+            <div class="legal-section">
+                <h3>2. Welche Daten verarbeitet werden</h3>
+                <p>Auf dieser Website werden vor allem spielbezogene Daten dargestellt, etwa Ingame-Namen, Rollen, Trophäen, Spendenwerte sowie Kriegs- und Aktivitätsstatistiken.</p>
+                <p>Beim Aufruf der Website können technisch notwendige Verbindungsdaten verarbeitet werden, insbesondere IP-Adresse, Datum und Uhrzeit des Zugriffs sowie Browser- und Gerätedaten. Solche Daten fallen typischerweise im Rahmen des Hostings an.</p>
+            </div>
+            <div class="legal-section">
+                <h3>3. Zweck der Verarbeitung</h3>
+                <p>Die Verarbeitung erfolgt, um die Clan-Auswertung bereitzustellen, die Website technisch auszuliefern und den sicheren Betrieb der Seite zu gewährleisten.</p>
+            </div>
+            <div class="legal-section">
+                <h3>4. Hosting</h3>
+                <p>Diese Website wird über GitHub Pages bereitgestellt. Weitere Informationen dazu findest du hier: <a href="https://docs.github.com/de/pages/getting-started-with-github-pages/what-is-github-pages" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.</p>
+                <p>Ergänzend gilt die allgemeine Datenschutzerklärung von GitHub: <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub Datenschutzerklärung</a>.</p>
+            </div>
+            <div class="legal-section">
+                <h3>5. Cookies und Tracking</h3>
+                <p>Diese Website verwendet nach aktuellem Stand keine eigenen Cookies, kein Kontaktformular und kein eigenes Analyse- oder Tracking-Tool.</p>
+            </div>
+            <div class="legal-section">
+                <h3>6. Rechte betroffener Personen</h3>
+                <p>Betroffene Personen haben im Rahmen der gesetzlichen Vorschriften insbesondere ein Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung und Beschwerde bei einer zuständigen Datenschutzaufsichtsbehörde.</p>
+            </div>
+            <div class="legal-section">
+                <h3>7. Kontakt zum Datenschutz</h3>
+                <p>Bei Fragen zum Datenschutz auf dieser Website kannst du dich an <a href='mailto:{html.escape(legal_email)}'>{html.escape(legal_email)}</a> wenden.</p>
+            </div>
+        </div>
+    """
+
+    return impressum_html, datenschutz_html
 
 
 # === 2. API Datenabruf ===
@@ -669,7 +788,9 @@ def render_html_template(
     total_msgs,
     chat_boxes_html,
     table_html,
-    deck_html
+    deck_html,
+    impressum_html,
+    datenschutz_html
 ):
     return f"""
     <html>
@@ -785,6 +906,17 @@ def render_html_template(
             .name-inline {{ display: inline-flex; align-items: center; flex-wrap: wrap; gap: 6px; }}
             .spenden-cell {{ display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap; }}
             .spenden-extra {{ line-height: 1; }}
+            .legal-page {{ background: rgba(15, 23, 42, 0.72); padding: 24px 28px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); line-height: 1.7; color: #e2e8f0; }}
+            .legal-page h2 {{ margin-top: 0; color: #f8fafc; font-size: 1.8em; }}
+            .legal-page h3 {{ color: #38bdf8; margin-bottom: 8px; }}
+            .legal-page a {{ color: #38bdf8; }}
+            .legal-section {{ margin-top: 24px; }}
+            .legal-section p {{ margin: 6px 0; }}
+            .legal-warning {{ background: rgba(251, 191, 36, 0.12); border-left: 4px solid #fbbf24; color: #fde68a; padding: 14px 16px; border-radius: 8px; margin-bottom: 20px; }}
+            .site-footer {{ margin-top: 40px; padding: 20px 0 10px 0; border-top: 1px solid rgba(255,255,255,0.08); text-align: center; color: #94a3b8; }}
+            .footer-links {{ display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin-bottom: 10px; }}
+            .footer-link {{ color: #38bdf8; text-decoration: none; font-weight: 700; cursor: pointer; }}
+            .footer-link:hover {{ color: #7dd3fc; }}
 
             @media (max-width: 768px) {{
                 body {{ padding: 12px; }}
@@ -872,6 +1004,8 @@ def render_html_template(
                 <button class="tab-btn" onclick="openTab(event, 'Table')">📋 Detail-Auswertung</button>
                 <button class="tab-btn" onclick="openTab(event, 'Wiki')">📖 Regeln & System</button>
                 <button class="tab-btn" onclick="openTab(event, 'Decks')">🃏 Top-Decks</button>
+                <button class="tab-btn" onclick="openTab(event, 'Impressum')">ℹ️ Impressum</button>
+                <button class="tab-btn" onclick="openTab(event, 'Datenschutz')">🔒 Datenschutz</button>
             </div>
 
             <div id="Overview" class="tab-content active">
@@ -1120,6 +1254,22 @@ def render_html_template(
                 </div>
             </div>
 
+            <div id="Impressum" class="tab-content">
+                {impressum_html}
+            </div>
+
+            <div id="Datenschutz" class="tab-content">
+                {datenschutz_html}
+            </div>
+
+            <footer class="site-footer">
+                <div class="footer-links">
+                    <a class="footer-link" onclick="openTabByName('Impressum')">Impressum</a>
+                    <a class="footer-link" onclick="openTabByName('Datenschutz')">Datenschutz</a>
+                    <a class="footer-link" onclick="openTabByName('Wiki')">Regeln &amp; System</a>
+                </div>
+                <div>Impressum und Datenschutzerklärung sind von jeder Ansicht aus mit maximal zwei Klicks erreichbar.</div>
+            </footer>
         </div>
 
         <script>
@@ -1147,6 +1297,26 @@ def render_html_template(
                 document.getElementById(tabName).style.display = "block";
                 setTimeout(() => document.getElementById(tabName).classList.add("active"), 10);
                 evt.currentTarget.classList.add("active");
+                window.scrollTo({{top: 0, behavior: 'smooth'}});
+            }}
+
+            function openTabByName(tabName) {{
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tab-content");
+                for (i = 0; i < tabcontent.length; i++) {{
+                    tabcontent[i].style.display = "none";
+                    tabcontent[i].classList.remove("active");
+                }}
+                tablinks = document.getElementsByClassName("tab-btn");
+                for (i = 0; i < tablinks.length; i++) {{
+                    tablinks[i].classList.remove("active");
+                    var onclickAttr = tablinks[i].getAttribute("onclick") || "";
+                    if (onclickAttr.indexOf("'" + tabName + "'") !== -1) {{
+                        tablinks[i].classList.add("active");
+                    }}
+                }}
+                document.getElementById(tabName).style.display = "block";
+                setTimeout(() => document.getElementById(tabName).classList.add("active"), 10);
                 window.scrollTo({{top: 0, behavior: 'smooth'}});
             }}
 
@@ -1858,6 +2028,8 @@ def generate_html_report(
     for k in keys_to_delete:
         del strikes[k]
 
+    impressum_html, datenschutz_html = build_legal_pages()
+
     html = render_html_template(
         clan_name=CLAN_NAME,
         heute_datum=heute_datum,
@@ -1881,7 +2053,9 @@ def generate_html_report(
         total_msgs=total_msgs,
         chat_boxes_html=chat_boxes_html,
         table_html=table_html,
-        deck_html=deck_html
+        deck_html=deck_html,
+        impressum_html=impressum_html,
+        datenschutz_html=datenschutz_html
     )
 
     default_mail_texts = [list(block.values())[0] for block in chat_blocks]
