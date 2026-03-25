@@ -800,8 +800,9 @@ def render_html_template(
         <title>Auswertung: {clan_name}</title>
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap');
-            body {{ font-family: 'Nunito', sans-serif; margin: 0; padding: 20px; background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('https://images.hdqwalls.com/download/clash-royale-4k-19-1920x1080.jpg') no-repeat center center fixed; background-size: cover; color: #f8fafc; }}
-            .container {{ max-width: 1200px; margin: auto; }}
+            html, body {{ width: 100%; max-width: 100%; overflow-x: hidden; }}
+            body {{ font-family: 'Nunito', sans-serif; margin: 0; padding: 0; background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('https://images.hdqwalls.com/download/clash-royale-4k-19-1920x1080.jpg') no-repeat center center fixed; background-size: cover; color: #f8fafc; }}
+            .container {{ max-width: 1200px; margin: auto; padding: 20px; box-sizing: border-box; }}
             .header-container {{ position: relative; background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('{header_img_src}') no-repeat center center; background-size: cover; border-radius: 12px; padding: 40px 20px; margin-top: 20px; margin-bottom: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }}
             .header-title {{ font-weight: 800; color: #ffffff; font-size: 2.2em; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.5); letter-spacing: 1px; }}
             .header-date {{ font-weight: 400; font-size: 0.45em; color: #cbd5e1; display: block; margin-top: 10px; letter-spacing: 0px; }}
@@ -919,8 +920,8 @@ def render_html_template(
             .footer-link:hover {{ color: #7dd3fc; }}
 
             @media (max-width: 768px) {{
-                body {{ padding: 12px; }}
-                .container {{ max-width: 100%; }}
+                body {{ background-attachment: scroll; }}
+                .container {{ max-width: 100%; padding: 12px; }}
                 .header-container {{ padding: 28px 16px; }}
                 .header-title {{ font-size: 1.6em; }}
                 .tier-title {{ position: static; font-size: 1.15em; padding: 12px 0 10px 0; }}
@@ -988,6 +989,10 @@ def render_html_template(
                 .radar-table td {{ display: table-cell; width: auto; padding: 10px 6px; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: center !important; vertical-align: middle; }}
                 .radar-table td:first-child {{ text-align: left !important; }}
                 .radar-table td::before {{ content: none !important; }}
+            }}
+            @media (orientation: landscape) and (max-width: 1024px) {{
+                body {{ background-attachment: scroll; }}
+                .container {{ max-width: 100%; padding: 12px 14px; }}
             }}
         </style>
     </head>
