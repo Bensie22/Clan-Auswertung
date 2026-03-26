@@ -1,6 +1,12 @@
 name: Clan Auswertung Automatisierung
 
 on:
+  schedule:
+    - cron: '*/30 10-23 * * 4'
+    - cron: '*/30 * * * 5,6,0'
+    - cron: '*/30 0-9 * * 1'
+    - cron: '0 10 * * 1'
+    - cron: '30 10 * * 1'
   workflow_dispatch:
 
 env:
@@ -25,7 +31,7 @@ jobs:
       IMPRESSUM_RESPONSIBLE_NAME: ${{ secrets.IMPRESSUM_RESPONSIBLE_NAME }}
       IMPRESSUM_RESPONSIBLE_STREET: ${{ secrets.IMPRESSUM_RESPONSIBLE_STREET }}
       IMPRESSUM_RESPONSIBLE_CITY: ${{ secrets.IMPRESSUM_RESPONSIBLE_CITY }}
-      RUN_MODE: weekly
+      RUN_MODE: ${{ github.event.schedule == '30 10 * * 1' && 'weekly' || 'radar' }}
 
     steps:
       - name: Repository klonen
@@ -43,6 +49,7 @@ jobs:
 
       - name: Auswertung starten
         run: python Master_Auswertung_GitHub.py
+
       - name: Commit und Push der neuen Dateien
         run: |
           git config --local user.email "action@github.com"
