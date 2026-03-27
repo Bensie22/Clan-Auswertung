@@ -9,6 +9,7 @@ import sys
 import time
 import traceback
 import html
+import copy
 from datetime import datetime, timedelta, timezone
 from typing import List, Tuple
 from pathlib import Path
@@ -51,10 +52,96 @@ member_memory_path = BASE_DIR / "member_memory.json"
 urlaub_path = BASE_DIR / "urlaub.txt"
 kicked_players_path = BASE_DIR / "kicked_players.json"
 HEADER_IMAGE_PATH = BASE_DIR / "clash_pix.jpg"
+website_opt_out_path = BASE_DIR / "website_opt_out.json"
 
 
 def safe_env(name: str, default: str = "") -> str:
     return os.environ.get(name, default).strip()
+
+
+def normalize_player_tag(tag: str) -> str:
+    return str(tag or "").strip().upper()
+
+
+def normalize_player_name(name: str) -> str:
+    return str(name or "").strip().casefold()
+
+
+def load_website_opt_outs() -> tuple[dict, set, set]:
+    default_registry = {"players": []}
+    if not website_opt_out_path.exists():
+        return default_registry, set(), set()
+
+    try:
+        with open(website_opt_out_path, "r", encoding="utf-8") as f:
+            registry = json.load(f)
+    except Exception as e:
+        print(f"⚠️ Warnung: website_opt_out.json fehlerhaft, ignoriere Opt-Outs. ({e})")
+        return default_registry, set(), set()
+
+    if not isinstance(registry, dict) or not isinstance(registry.get("players", []), list):
+        return default_registry, set(), set()
+
+    active_tags = set()
+    active_names = set()
+    for entry in registry.get("players", []):
+        if not isinstance(entry, dict):
+            continue
+        if not entry.get("active", True):
+            continue
+        if not entry.get("reviewed", False):
+            continue
+
+        tag = normalize_player_tag(entry.get("tag", ""))
+        name = normalize_player_name(entry.get("name", ""))
+        if tag:
+            active_tags.add(tag)
+        if name:
+            active_names.add(name)
+
+    return registry, active_tags, active_names
+
+
+def is_player_opted_out(tag: str = "", name: str = "", opted_out_tags: set | None = None, opted_out_names: set | None = None) -> bool:
+    opted_out_tags = opted_out_tags or set()
+    opted_out_names = opted_out_names or set()
+    return normalize_player_tag(tag) in opted_out_tags or normalize_player_name(name) in opted_out_names
+
+
+def sanitize_top_decks_for_website(top_decks_data: dict, opted_out_tags: set, opted_out_names: set) -> dict:
+    sanitized = copy.deepcopy(top_decks_data or {})
+    decks = sanitized.get("decks", {})
+
+    for deck_key in list(decks.keys()):
+        deck_data = decks.get(deck_key, {})
+        recent_matches = deck_data.get("recent_matches", [])
+        filtered_matches = [
+            match for match in recent_matches
+            if not is_player_opted_out(match.get("tag", ""), match.get("player", ""), opted_out_tags, opted_out_names)
+        ]
+
+        deck_data["recent_matches"] = filtered_matches
+        deck_data["wins"] = sum(1 for match in filtered_matches if match.get("result") == "win")
+        deck_data["losses"] = sum(1 for match in filtered_matches if match.get("result") == "loss")
+
+        visible_players = []
+        for player_name in deck_data.get("players", []):
+            if not is_player_opted_out(name=player_name, opted_out_tags=opted_out_tags, opted_out_names=opted_out_names):
+                if player_name not in visible_players:
+                    visible_players.append(player_name)
+        deck_data["players"] = visible_players
+
+        visible_tags = []
+        for tag in deck_data.get("tags", []):
+            if not is_player_opted_out(tag=tag, opted_out_tags=opted_out_tags, opted_out_names=opted_out_names):
+                if tag not in visible_tags:
+                    visible_tags.append(tag)
+        deck_data["tags"] = visible_tags
+
+        if deck_data["wins"] + deck_data["losses"] <= 0:
+            del decks[deck_key]
+
+    return sanitized
 
 
 def build_legal_pages() -> Tuple[str, str]:
@@ -2215,6 +2302,8 @@ def main():
     if not success:
         return
 
+    _, opted_out_tags, opted_out_names = load_website_opt_outs()
+
     kicked_players = {}
     if kicked_players_path.exists():
         try:
@@ -2405,12 +2494,34 @@ def main():
 
     is_current_mask = df["player_is_current_member"].astype(str).str.strip().str.lower().isin(["true", "1", "yes"])
     df_active = df[is_current_mask].copy()
+    if not df_active.empty:
+        visible_mask = ~df_active.apply(
+            lambda row: is_player_opted_out(
+                tag=row.get("player_tag", ""),
+                name=row.get("player_name", ""),
+                opted_out_tags=opted_out_tags,
+                opted_out_names=opted_out_names
+            ),
+            axis=1
+        )
+        df_active = df_active[visible_mask].copy()
 
     fame_columns = sorted([col for col in df.columns if col.startswith("s_") and col.endswith("_fame")], reverse=True)
     if not fame_columns:
         print("❌ Keine Fame-Spalten gefunden.")
         return
     fame_spalte = fame_columns[0]
+
+    raw_mahnwache = [
+        item for item in raw_mahnwache
+        if not is_player_opted_out(name=item.get("name", ""), opted_out_tags=opted_out_tags, opted_out_names=opted_out_names)
+    ]
+
+    echte_neulinge = [name for name in echte_neulinge if not is_player_opted_out(name=name, opted_out_tags=opted_out_tags, opted_out_names=opted_out_names)]
+    rueckkehrer = [name for name in rueckkehrer if not is_player_opted_out(name=name, opted_out_tags=opted_out_tags, opted_out_names=opted_out_names)]
+    warn_rueckkehrer = [name for name in warn_rueckkehrer if not is_player_opted_out(name=name, opted_out_tags=opted_out_tags, opted_out_names=opted_out_names)]
+
+    top_decks_data = sanitize_top_decks_for_website(top_decks_data, opted_out_tags, opted_out_names)
 
     if score_history_path.exists():
         df_history = pd.read_csv(score_history_path)
