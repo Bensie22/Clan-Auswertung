@@ -198,6 +198,10 @@ def build_legal_pages() -> Tuple[str, str]:
                 <h3>Hinweis gemäß § 36 VSBG</h3>
                 <p>Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
             </div>
+            <div class="legal-section">
+                <h3>Haftung für Links</h3>
+                <p>Diese Website enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für diese fremden Inhalte übernehmen wir keine Gewähr. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+            </div>
         </div>
     """
 
@@ -242,7 +246,13 @@ def build_legal_pages() -> Tuple[str, str]:
                 <p>Diese Website verwendet keine eigenen Cookies, kein Kontaktformular und keine Analyse- oder Tracking-Tools.</p>
             </div>
             <div class="legal-section">
-                <h3>7. Rechte betroffener Personen</h3>
+                <h3>7. Versand der Clan-Auswertung per E-Mail</h3>
+                <p>Wenn du dich per E-Mail für den Versand der Clan-Auswertung anmeldest, verarbeiten wir deine E-Mail-Adresse sowie ggf. deinen Ingame-Namen ausschließlich zum Zweck des Versands der Auswertung.</p>
+                <p>Die Verarbeitung erfolgt auf Grundlage deiner Einwilligung (Art. 6 Abs. 1 lit. a DSGVO).</p>
+                <p>Die Daten werden ausschließlich für diesen Zweck verwendet und nicht an Dritte weitergegeben. Du kannst deine Einwilligung jederzeit widerrufen, indem du dich vom Verteiler abmeldest.</p>
+            </div>
+            <div class="legal-section">
+                <h3>8. Rechte betroffener Personen</h3>
                 <p>Betroffene Personen haben im Rahmen der gesetzlichen Vorschriften folgende Rechte:</p>
                 <ul>
                     <li>Recht auf Auskunft (Art. 15 DSGVO)</li>
@@ -255,7 +265,7 @@ def build_legal_pages() -> Tuple[str, str]:
                 <p>Spieler haben außerdem die Möglichkeit, der Darstellung ihrer Daten auf dieser Website zu widersprechen. In diesem Fall werden die entsprechenden Daten nach Prüfung entfernt.</p>
             </div>
             <div class="legal-section">
-                <h3>8. Kontakt zum Datenschutz</h3>
+                <h3>9. Kontakt zum Datenschutz</h3>
                 <p>Bei Fragen zum Datenschutz auf dieser Website kannst du dich an die im Impressum angegebene verantwortliche Stelle wenden.</p>
             </div>
         </div>
@@ -1198,9 +1208,9 @@ def render_html_template(
                 <div class="accordion-content">
                     <p>Willst du diese Auswertung jeden Montag ganz bequem und automatisch in dein Postfach bekommen?</p>
                     <ul>
-                        <li><b>Anmelden:</b> Schreib einfach eine kurze E-Mail mit deinem In-Game-Namen an: <b>strike2005-Hamburg_Royal@yahoo.com</b>. Die Clan-Führung trägt dich dann in den Verteiler ein.</li>
-                        <li>🔒 <b>100% Datenschutz (BCC-Versand):</b> Keine Sorge um deine private E-Mail-Adresse! Das System verschickt die Auswertung an alle Mitglieder ausschließlich als <b>Blindkopie (BCC)</b>. Niemand im Clan kann sehen, wer sonst noch auf der Liste steht.</li>
-                        <li><b>Abmelden:</b> Eine kurze Nachricht reicht, und du fliegst sofort wieder aus dem Verteiler.</li>
+                        <li><b>Anmelden:</b> Schreib einfach eine kurze E-Mail mit deinem In-Game-Namen an: <b>strike2005-Hamburg_Royal@yahoo.com</b>. Mit deiner Anmeldung erklärst du dich damit einverstanden, dass wir deine E-Mail-Adresse zum Versand der wöchentlichen Clan-Auswertung speichern und verwenden.</li>
+                        <li>🔒 <b>Datenschutz:</b> Deine E-Mail-Adresse wird ausschließlich für den Versand der Auswertung genutzt und nicht an Dritte weitergegeben. Der Versand erfolgt ausschließlich per <b>Blindkopie (BCC)</b>, sodass keine anderen Empfänger sichtbar sind.</li>
+                        <li><b>Abmelden:</b> Eine kurze Nachricht reicht, und deine E-Mail-Adresse wird aus dem Verteiler entfernt.</li>
                     </ul>
                 </div>
 
