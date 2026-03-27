@@ -62,12 +62,8 @@ def build_legal_pages() -> Tuple[str, str]:
     owner_name = safe_env("IMPRESSUM_OWNER_NAME")
     street = safe_env("IMPRESSUM_STREET")
     city = safe_env("IMPRESSUM_CITY")
-    phone = safe_env("IMPRESSUM_PHONE")
     legal_email = safe_env("IMPRESSUM_EMAIL", safe_env("EMAIL_SENDER"))
-    website_url = safe_env("IMPRESSUM_WEBSITE_URL", "https://www.houseofnames.com/diener/german/p/family-crest-download-heritage-series-300")
     responsible_name = safe_env("IMPRESSUM_RESPONSIBLE_NAME", owner_name)
-    responsible_street = safe_env("IMPRESSUM_RESPONSIBLE_STREET", street)
-    responsible_city = safe_env("IMPRESSUM_RESPONSIBLE_CITY", city)
 
     missing_fields = [
         label for label, value in [
@@ -90,80 +86,90 @@ def build_legal_pages() -> Tuple[str, str]:
             "</div>"
         )
 
-    phone_html = f"<p><b>Telefon:</b> {html.escape(phone)}</p>" if phone else ""
-    website_html = f"<p><b>Website:</b> <a href='{html.escape(website_url)}' target='_blank' rel='noopener noreferrer'>{html.escape(website_url)}</a></p>" if website_url else ""
-
     impressum_html = f"""
         <div class="legal-page">
             {setup_notice}
-            <h2>Impressum</h2>
+            <h2>🧾 Impressum</h2>
             <p><b>Angaben gemäß § 5 DDG</b></p>
             <div class="legal-section">
-                <p><b>{html.escape(site_name)}</b></p>
+                <p><b>Clan Hamburg (nicht eingetragene Gemeinschaft)</b></p>
+                <p><b>Vertreten durch:</b></p>
                 <p>{html.escape(owner_name)}</p>
                 <p>{html.escape(street)}</p>
                 <p>{html.escape(city)}</p>
             </div>
             <div class="legal-section">
                 <h3>Kontakt</h3>
-                {phone_html}
                 <p><b>E-Mail:</b> <a href='mailto:{html.escape(legal_email)}'>{html.escape(legal_email)}</a></p>
-                {website_html}
             </div>
             <div class="legal-section">
                 <h3>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h3>
                 <p>{html.escape(responsible_name)}</p>
-                <p>{html.escape(responsible_street)}</p>
-                <p>{html.escape(responsible_city)}</p>
+                <p>(Anschrift wie oben)</p>
             </div>
             <div class="legal-section">
-                <h3>EU-Streitschlichtung</h3>
-                <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.</p>
-                <p>Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
-            </div>
-            <div class="legal-section">
-                <h3>Verbraucherstreitbeilegung/Universalschlichtungsstelle</h3>
-                <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+                <h3>Hinweis gemäß § 36 VSBG</h3>
+                <p>Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
             </div>
         </div>
     """
 
     datenschutz_html = f"""
         <div class="legal-page">
-            <h2>Datenschutzerklärung</h2>
-            <p>Diese Website ist eine statische Informationsseite des Clans <b>{html.escape(site_name)}</b>. Sie dient zur Anzeige von Clan-, Kriegs- und Statistikdaten.</p>
+            <h2>🧾 Datenschutzerklärung</h2>
             <div class="legal-section">
                 <h3>1. Verantwortliche Stelle</h3>
-                <p>{html.escape(owner_name)}</p>
-                <p>{html.escape(street)}</p>
-                <p>{html.escape(city)}</p>
-                <p><b>E-Mail:</b> <a href='mailto:{html.escape(legal_email)}'>{html.escape(legal_email)}</a></p>
+                <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist im Impressum dieser Website angegeben.</p>
             </div>
             <div class="legal-section">
                 <h3>2. Welche Daten verarbeitet werden</h3>
-                <p>Auf dieser Website werden vor allem spielbezogene Daten dargestellt, etwa Ingame-Namen, Rollen, Trophäen, Spendenwerte sowie Kriegs- und Aktivitätsstatistiken.</p>
-                <p>Beim Aufruf der Website können technisch notwendige Verbindungsdaten verarbeitet werden, insbesondere IP-Adresse, Datum und Uhrzeit des Zugriffs sowie Browser- und Gerätedaten. Solche Daten fallen typischerweise im Rahmen des Hostings an.</p>
+                <p>Auf dieser Website werden spielbezogene Daten dargestellt, insbesondere Ingame-Namen, Rollen, Trophäen, Spendenwerte sowie Kriegs- und Aktivitätsstatistiken.</p>
+                <p>Diese Daten stammen aus öffentlich zugänglichen Schnittstellen (APIs) des Spiels Clash Royale sowie von Drittanbietern (z. B. RoyaleAPI).</p>
+                <p>Die dargestellten Daten beziehen sich ausschließlich auf öffentlich verfügbare Spielinformationen und lassen in der Regel keinen direkten Rückschluss auf reale Personen zu.</p>
+                <p>Beim Aufruf der Website werden zudem technisch notwendige Verbindungsdaten verarbeitet. Dazu gehören insbesondere die IP-Adresse, Datum und Uhrzeit des Zugriffs sowie Informationen zum verwendeten Browser und Endgerät. Diese Daten fallen im Rahmen des Hostings automatisch an.</p>
             </div>
             <div class="legal-section">
                 <h3>3. Zweck der Verarbeitung</h3>
-                <p>Die Verarbeitung erfolgt, um die Clan-Auswertung bereitzustellen, die Website technisch auszuliefern und den sicheren Betrieb der Seite zu gewährleisten.</p>
+                <p>Die Verarbeitung der Daten erfolgt zu folgenden Zwecken:</p>
+                <ul>
+                    <li>Darstellung und Analyse der Clan-, Kriegs- und Aktivitätsdaten</li>
+                    <li>Bereitstellung der Website</li>
+                    <li>Gewährleistung eines sicheren und stabilen Betriebs</li>
+                </ul>
             </div>
             <div class="legal-section">
-                <h3>4. Hosting</h3>
-                <p>Diese Website wird über GitHub Pages bereitgestellt. Weitere Informationen dazu findest du hier: <a href="https://docs.github.com/de/pages/getting-started-with-github-pages/what-is-github-pages" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.</p>
-                <p>Ergänzend gilt die allgemeine Datenschutzerklärung von GitHub: <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub Datenschutzerklärung</a>.</p>
+                <h3>4. Rechtsgrundlage der Verarbeitung</h3>
+                <p>Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).</p>
+                <p>Das berechtigte Interesse liegt in der Bereitstellung von Clan-Statistiken, der Analyse von Spielaktivitäten sowie der Darstellung von Informationen für die Community.</p>
             </div>
             <div class="legal-section">
-                <h3>5. Cookies und Tracking</h3>
-                <p>Diese Website verwendet nach aktuellem Stand keine eigenen Cookies, kein Kontaktformular und kein eigenes Analyse- oder Tracking-Tool.</p>
+                <h3>5. Hosting</h3>
+                <p>Diese Website wird über GitHub Pages bereitgestellt.</p>
+                <p>Dabei werden technisch notwendige Daten (z. B. IP-Adresse) verarbeitet, um die Website auszuliefern.</p>
+                <p>Weitere Informationen findest du unter:<br><a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">https://pages.github.com/</a></p>
+                <p>Es gilt die Datenschutzerklärung von GitHub:<br><a href="https://docs.github.com/de/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">https://docs.github.com/de/site-policy/privacy-policies/github-privacy-statement</a></p>
+                <p>Dabei kann es zu einer Übertragung personenbezogener Daten in Drittländer (z. B. USA) kommen. GitHub verwendet geeignete Garantien gemäß Art. 46 DSGVO.</p>
             </div>
             <div class="legal-section">
-                <h3>6. Rechte betroffener Personen</h3>
-                <p>Betroffene Personen haben im Rahmen der gesetzlichen Vorschriften insbesondere ein Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung und Beschwerde bei einer zuständigen Datenschutzaufsichtsbehörde.</p>
+                <h3>6. Cookies und Tracking</h3>
+                <p>Diese Website verwendet keine eigenen Cookies, kein Kontaktformular und keine Analyse- oder Tracking-Tools.</p>
             </div>
             <div class="legal-section">
-                <h3>7. Kontakt zum Datenschutz</h3>
-                <p>Bei Fragen zum Datenschutz auf dieser Website kannst du dich an <a href='mailto:{html.escape(legal_email)}'>{html.escape(legal_email)}</a> wenden.</p>
+                <h3>7. Rechte betroffener Personen</h3>
+                <p>Betroffene Personen haben im Rahmen der gesetzlichen Vorschriften folgende Rechte:</p>
+                <ul>
+                    <li>Recht auf Auskunft (Art. 15 DSGVO)</li>
+                    <li>Recht auf Berichtigung (Art. 16 DSGVO)</li>
+                    <li>Recht auf Löschung (Art. 17 DSGVO)</li>
+                    <li>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+                    <li>Recht auf Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
+                    <li>Recht auf Beschwerde bei einer Datenschutzaufsichtsbehörde</li>
+                </ul>
+                <p>Spieler haben außerdem die Möglichkeit, der Darstellung ihrer Daten auf dieser Website zu widersprechen. In diesem Fall werden die entsprechenden Daten nach Prüfung entfernt.</p>
+            </div>
+            <div class="legal-section">
+                <h3>8. Kontakt zum Datenschutz</h3>
+                <p>Bei Fragen zum Datenschutz auf dieser Website kannst du dich an die im Impressum angegebene verantwortliche Stelle wenden.</p>
             </div>
         </div>
     """
@@ -2095,9 +2101,11 @@ def generate_html_report(
 
     impressum_html, datenschutz_html = build_legal_pages()
 
+    anzeige_stand = datetime.now().strftime("%d.%m.%Y, %H:%M Uhr")
+
     html = render_html_template(
         clan_name=CLAN_NAME,
-        heute_datum=heute_datum,
+        heute_datum=anzeige_stand,
         header_img_src=header_img_src,
         hype_balken_html=hype_balken_html,
         radar_html=radar_html,
