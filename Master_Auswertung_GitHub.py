@@ -446,6 +446,12 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
                 if decks > 0:
                     contribution_count += 1
 
+            # wars_in_clan: Anzahl Kriege in denen der Spieler laut API teilgenommen hat.
+            # Entspricht der tatsaechlichen Clan-Zugehoerigkeit im Auswertungsfenster.
+            # Nicht total_races (immer 10), weil neue Spieler die frueheren Kriege schlicht
+            # noch nicht kennen konnten.
+            wars_in_clan = len(data["history"])
+
             row = [
                 tag,
                 data["name"],
@@ -455,7 +461,7 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
                 data.get("donations_received", 0),
                 data.get("trophies", 0),
                 contribution_count,
-                total_races,
+                wars_in_clan,
                 total_decks
             ]
             row.extend(row_history)
@@ -1236,11 +1242,11 @@ def render_html_template(
                     <p>Der Score ist die wichtigste Zahl im Dashboard. Er misst nicht, wie stark du bist oder wie viel du gewinnst, sondern <b>wie verlässlich du bist</b> – und zwar in zwei Dimensionen gleichzeitig.</p>
                     <p>Der Score setzt sich aus zwei Faktoren zusammen, die miteinander multipliziert werden:</p>
                     <ul>
-                        <li><b>Anwesenheits-Rate:</b> In wie vielen der letzten Kriege warst du überhaupt dabei? <br><span style="color:#94a3b8; font-size:0.9em;">Beispiel: 8 von 10 Kriegen mitgespielt = 80%</span></li>
+                        <li><b>Anwesenheits-Rate:</b> In wie vielen der Kriege, seit du im Clan bist, warst du aktiv dabei? <br><span style="color:#94a3b8; font-size:0.9em;">Beispiel: Du bist seit 8 Kriegen dabei und hast alle 8 mitgespielt = 100%. Du bist seit 8 Kriegen dabei, hast aber nur 6 mitgespielt = 75%. Die Kriege vor deinem Beitritt zählen nie gegen dich.</span></li>
                         <li><b>Deck-Nutzung:</b> Wenn du dabei warst – wie viele deiner 16 möglichen Decks hast du dann auch wirklich gespielt? <br><span style="color:#94a3b8; font-size:0.9em;">Beispiel: Alle 16 Decks in jedem Krieg gespielt = 100%</span></li>
                     </ul>
                     <p>Der <b>Score</b> ist dann: <code style="background:rgba(0,0,0,0.4); padding:2px 6px; border-radius:4px;">Anwesenheits-Rate × Deck-Nutzung</code></p>
-                    <p style="color:#94a3b8; font-size:0.9em;">Beispiel: 80% Anwesenheit × 100% Deck-Nutzung = <b>80% Score</b>. Wer 2 Kriege komplett fehlt, aber wenn er da ist immer alle Decks spielt, bekommt keinen 100%er – weil die fehlenden Kriege jetzt mitzählen.</p>
+                    <p style="color:#94a3b8; font-size:0.9em;">Beispiel: 75% Anwesenheit × 100% Deck-Nutzung = <b>75% Score</b>. Wer Kriege komplett verpasst obwohl er schon dabei sein könnte, verliert direkt im Score – egal wie gut er kämpft wenn er da ist.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
