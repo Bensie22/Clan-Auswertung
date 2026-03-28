@@ -17,13 +17,13 @@
             "#9CG2CRRJG": "20260328T075103.000Z",
             "#PPR2QQC0U": "20260328T094432.000Z",
             "#QULCQGGG": "20260327T184734.000Z",
-            "#JRGC9RRQG": "20260328T112639.000Z",
+            "#JRGC9RRQG": "20260328T113536.000Z",
             "#QVQGCV8Y9": "20260328T090358.000Z",
             "#Q8L0RJ8Y8": "20260328T075537.000Z",
             "#P2GUCG2Y": "20260327T201655.000Z",
             "#2CPRGY8G": "20260328T100310.000Z",
             "#LLQQJCLC": "20260327T205858.000Z",
-            "#2VJR80RL": "20260327T130554.000Z",
+            "#2VJR80RL": "20260328T114741.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260327T135405.000Z",
             "#2CJYG9UG": "20260327T174607.000Z",
@@ -47,7 +47,7 @@
             "#202VP2QL9P": "20260328T050422.000Z",
             "#LVUGLUCP9": "20260326T195000.000Z",
             "#20QGJVPG8Q": "20260328T012615.000Z",
-            "#V9GYJQ0J9": "20260328T085136.000Z",
+            "#V9GYJQ0J9": "20260328T114514.000Z",
             "#URJ0LUYPV": "20260328T105102.000Z",
             "#Q2GRGLQR": "20260328T082403.000Z",
             "#J9RQPGLVP": "20260328T102243.000Z"
@@ -1256,7 +1256,7 @@
                 }
             ],
             "wins": 4,
-            "losses": 1,
+            "losses": 2,
             "players": [
                 "Denis"
             ],
@@ -1264,6 +1264,12 @@
                 "2VJR80RL"
             ],
             "recent_matches": [
+                {
+                    "time": "20260328T114449.000Z",
+                    "result": "loss",
+                    "player": "Denis",
+                    "tag": "2VJR80RL"
+                },
                 {
                     "time": "20260327T130100.000Z",
                     "result": "win",
@@ -2700,72 +2706,6 @@
                 },
                 {
                     "time": "20260319T192344.000Z",
-                    "result": "win",
-                    "player": "Ser0",
-                    "tag": "RG02LG88"
-                }
-            ]
-        },
-        "26000012-26000018-26000024-26000027-26000034-26000040-26000052-28000001": {
-            "cards": [
-                {
-                    "id": 26000027,
-                    "name": "Dark Prince",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/M7fXlrKXHu2IvpSGpk36kXVstslbR08Bbxcy0jQcln8.png"
-                },
-                {
-                    "id": 26000012,
-                    "name": "Skeleton Army",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
-                },
-                {
-                    "id": 26000034,
-                    "name": "Bowler",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
-                },
-                {
-                    "id": 26000040,
-                    "name": "Dart Goblin",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
-                },
-                {
-                    "id": 26000018,
-                    "name": "Mini P.E.K.K.A",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
-                },
-                {
-                    "id": 28000001,
-                    "name": "Arrows",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
-                },
-                {
-                    "id": 26000024,
-                    "name": "Royal Giant",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/mnlRaNtmfpQx2e6mp70sLd0ND-pKPF70Cf87_agEKg4.png"
-                },
-                {
-                    "id": 26000052,
-                    "name": "Zappies",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/QZfHRpLRmutZbCr5fpLnTpIp89vLI6NrAwzGZ8tHEc4.png"
-                }
-            ],
-            "wins": 1,
-            "losses": 1,
-            "players": [
-                "Ser0"
-            ],
-            "tags": [
-                "RG02LG88"
-            ],
-            "recent_matches": [
-                {
-                    "time": "20260328T103228.000Z",
-                    "result": "loss",
-                    "player": "Ser0",
-                    "tag": "RG02LG88"
-                },
-                {
-                    "time": "20260319T192032.000Z",
                     "result": "win",
                     "player": "Ser0",
                     "tag": "RG02LG88"
@@ -6241,7 +6181,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "Denis"
@@ -6250,6 +6190,12 @@
                 "2VJR80RL"
             ],
             "recent_matches": [
+                {
+                    "time": "20260328T114741.000Z",
+                    "result": "win",
+                    "player": "Denis",
+                    "tag": "2VJR80RL"
+                },
                 {
                     "time": "20260327T130554.000Z",
                     "result": "win",
@@ -6975,6 +6921,66 @@
                     "result": "win",
                     "player": "honigmelone",
                     "tag": "Q2GRGLQR"
+                }
+            ]
+        },
+        "26000015-26000018-26000034-26000059-26000064-27000008-28000013-28000015": {
+            "cards": [
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 27000008,
+                    "name": "X-Bow",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/zVQ9Hme1hlj9Dc6e1ORl9xWwglcSrP7ejow5mAhLUJc.png"
+                },
+                {
+                    "id": 28000013,
+                    "name": "Clone",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mHVCet-1TkwWq-pxVIU2ZWY9_2z7Z7wtP25ArEUsP_g.png"
+                },
+                {
+                    "id": 28000015,
+                    "name": "Barbarian Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Gb0G1yNy0i5cIGUHin8uoFWxqntNtRPhY_jeMXg7HnA.png"
+                }
+            ],
+            "wins": 1,
+            "losses": 0,
+            "players": [
+                "seroo"
+            ],
+            "tags": [
+                "JRGC9RRQG"
+            ],
+            "recent_matches": [
+                {
+                    "time": "20260328T113536.000Z",
+                    "result": "win",
+                    "player": "seroo",
+                    "tag": "JRGC9RRQG"
                 }
             ]
         }
