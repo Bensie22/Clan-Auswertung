@@ -21,8 +21,12 @@ import smtplib
 
 APP_CONFIG = {
     "STRIKE_THRESHOLD": 50,      # Score in %: Unter diesem Wert gibt es eine Verwarnung
-    "DROPPER_THRESHOLD": 115,    # Ø Punkte pro Deck: Unter diesem Wert Warnung wg. Bootsangriff/Aufgabe
-    "MIN_PARTICIPATION": 3       # Welpenschutz: Bis einschließlich 3 Teilnahmen keine Strafen
+    "DROPPER_THRESHOLD": 130,    # Ø Punkte pro Deck: Unter diesem Wert Warnung (Solide=162, Schlecht=112)
+    "MIN_PARTICIPATION": 3,      # Welpenschutz: Bis einschließlich 3 Teilnahmen keine Strafen
+    "BADGE_STARK_SCORE": 90,     # ⭐ stark: Score-Schwelle
+    "BADGE_STARK_FAME": 185,     # ⭐ stark: Ø Punkte-Schwelle (deutlich über Durchschnitt)
+    "BADGE_STABIL_SCORE": 75,    # 🛡️ stabil: Score-Schwelle
+    "BADGE_STABIL_FAME": 145,    # 🛡️ stabil: Ø Punkte-Schwelle (leicht über Durchschnitt)
 }
 
 JOIN_EVENT_TTL_HOURS = 24
@@ -738,9 +742,9 @@ def calculate_teamplay_score(active_players: list[dict]) -> tuple[int, dict]:
 def get_player_focus(score: float, fame_per_deck: int, donations: int, is_welpenschutz: bool, current_decks: int) -> tuple[str, str]:
     if is_welpenschutz:
         return "neu dabei", "#38bdf8"
-    if score >= 95 and fame_per_deck >= 160:
+    if score >= APP_CONFIG["BADGE_STARK_SCORE"] and fame_per_deck >= APP_CONFIG["BADGE_STARK_FAME"]:
         return "⭐ stark", "#10b981"
-    if score >= 80 and fame_per_deck >= 130:
+    if score >= APP_CONFIG["BADGE_STABIL_SCORE"] and fame_per_deck >= APP_CONFIG["BADGE_STABIL_FAME"]:
         return "🛡️ stabil", "#38bdf8"
     if score < APP_CONFIG["STRIKE_THRESHOLD"]:
         return "⚠️ ausbaufähig", "#f97316"
@@ -1317,9 +1321,9 @@ def render_html_template(
                         </table>
                     </div>
                     <ul>
-                        <li><b>Normalwert:</b> Selbst wenn du verlierst, bekommst du in normalen Kämpfen mindestens 115 Punkte. Ein Sieg bringt deutlich mehr.</li>
-                        <li><b>⚠️ Auffälliger Bereich (&lt; 115 Punkte):</b> Wenn dein Schnitt dauerhaft unter 115 fällt, ist das ein klarer Hinweis auf zu wenig Ertrag pro Deck. Häufig steckt dahinter, dass Decks nicht in normalen Kämpfen ausgespielt werden.</li>
-                        <li><b>Ein einzelner schwacher Krieg reicht nicht für eine Warnung:</b> Erst wenn der Schnitt über mehrere Wochen unter 115 bleibt, wird das Symbol angezeigt. Ausreißer nach unten durch Pech beim Matchmaking werden so herausgefiltert.</li>
+                        <li><b>Orientierungswerte:</b> Ein normaler Spieler mit einem Mix aus Siegen und Niederlagen landet bei etwa <b>162 Punkten pro Deck</b>. Wer fast alle Kämpfe gewinnt kommt auf bis zu <b>225</b>. Wer fast alles verliert landet bei etwa <b>112</b>.</li>
+                        <li><b>⚠️ Auffälliger Bereich (&lt; 130 Punkte):</b> Wer dauerhaft unter 130 liegt, kämpft deutlich schlechter als ein normaler Spieler. Häufige Ursachen: Bootsangriffe statt normaler Kämpfe, oder konsequent schlechte Decks. Duelle sind besonders lukrativ – ein 2-0 Duellsieg bringt ~250 Punkte pro Spiel.</li>
+                        <li><b>Ein einzelner schwacher Krieg reicht nicht für eine Warnung:</b> Der Schnitt läuft über die letzten 3–4 Kriege. Ausreißer durch Pech beim Matchmaking werden so herausgefiltert.</li>
                     </ul>
                 </div>
 
@@ -1362,7 +1366,7 @@ def render_html_template(
                         <li><b>📈 Clan-Durchschnitt:</b> Das ist der Durchschnitt aller <b>Score</b>-Werte der aktiven Mitglieder. Er zeigt also, wie zuverlässig der Clan seine verfügbaren Kriegs-Decks insgesamt nutzt.
                         Beispiel: <b>90%+</b> ist stark, weil fast alle ihre Decks sauber spielen. Ein Wert um <b>60%</b> oder darunter zeigt, dass dem Clan viele Decks fehlen.</li>
                         <li><b>⚔️ Clan-Ø Punkte:</b> Dieser Wert teilt die <b>gesamten aktuellen Kriegspunkte</b> des Clans durch die <b>gesamt gespielten Decks</b> der aktiven Mitglieder. Er zeigt also, wie stark der Clan pro eingesetztem Deck kämpft.
-                        Beispiel: Ein Wert von <b>160 bis 200</b> ist ordentlich bis stark. Werte nah an <b>115</b> sind eher schwach, weil dann viele Decks kaum Ertrag bringen.</li>
+                        Beispiel: Ein Wert von <b>185+</b> ist stark (viele Siege). <b>162</b> ist ein solider Durchschnitt. Werte unter <b>130</b> sind auffällig schwach und deuten auf Bootsangriffe oder viele Niederlagen hin.</li>
                         <li><b>Unterschied:</b> Ein hoher Clan-Durchschnitt heißt, dass viele Leute ihre Decks spielen. Ein hoher Clan-Ø Punkte heißt, dass diese Decks auch qualitativ gute Punkte holen. Beides zusammen ist ideal.</li>
                         <li><b>Die Urlaubs-Regel:</b> Wenn jemand offiziell im Urlaub (🏖️) ist und pausiert, wird er aus beiden Clan-Werten komplett herausgenommen.</li>
                     </ul>
@@ -1844,7 +1848,7 @@ def generate_html_report(
     top_leecher_html = "".join([f"<li><b>{p['name']}</b> ({p['donations']} gesp. / {p['donations_received']} empf.)</li>" for p in top_leecher_list]) if top_leecher_list else "<li>Keine Auffälligkeiten 🎉</li>"
 
     reliability_state, reliability_color = get_signal_state(clan_avg, 85, 70)
-    quality_state, quality_color = get_signal_state(clan_avg_points_per_deck, 160, 130)
+    quality_state, quality_color = get_signal_state(clan_avg_points_per_deck, 185, 145)
     teamplay_state, teamplay_color = get_signal_state(clan_teamplay, 60, 35)
 
     clan_ampel_html = f"""
@@ -1878,12 +1882,12 @@ def generate_html_report(
     else:
         summary_lines.append("Beim Ausspielen der Decks verlieren wir aktuell zu viel Boden.")
 
-    if clan_avg_points_per_deck >= 160:
-        summary_lines.append("Die Kampfqualität ist stark und bringt pro Deck ordentlich Punkte.")
-    elif clan_avg_points_per_deck >= 130:
+    if clan_avg_points_per_deck >= 185:
+        summary_lines.append("Die Kampfqualität ist stark – der Clan gewinnt deutlich mehr als er verliert.")
+    elif clan_avg_points_per_deck >= 145:
         summary_lines.append("Die Kampfqualität ist solide, hat aber noch Luft nach oben.")
     else:
-        summary_lines.append("Die Kämpfe bringen aktuell zu wenig Ertrag pro Deck.")
+        summary_lines.append("Die Kämpfe bringen aktuell zu wenig Ertrag pro Deck – mehr normale Kämpfe und Duelle helfen.")
 
     if teamplay_state == "kritisch":
         summary_lines.append("Beim Spenden und Unterstützen im Clan ist gerade noch Luft nach oben.")
