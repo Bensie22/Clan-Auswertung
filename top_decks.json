@@ -11,12 +11,12 @@
             "#R22R8GYG": "20260328T102119.000Z",
             "#YQ82VR9JQ": "20260328T190754.000Z",
             "#G02LC9C8": "20260328T150137.000Z",
-            "#2U8288CVY": "20260327T114521.000Z",
+            "#2U8288CVY": "20260328T195434.000Z",
             "#2L8LLRUYV": "20260326T190004.000Z",
             "#Y8PVULPU0": "20260328T082133.000Z",
             "#9CG2CRRJG": "20260328T075103.000Z",
             "#PPR2QQC0U": "20260328T094432.000Z",
-            "#QULCQGGG": "20260328T184600.000Z",
+            "#QULCQGGG": "20260328T195338.000Z",
             "#JRGC9RRQG": "20260328T142639.000Z",
             "#QVQGCV8Y9": "20260328T152610.000Z",
             "#Q8L0RJ8Y8": "20260328T193255.000Z",
@@ -27,7 +27,7 @@
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260328T193117.000Z",
             "#2CJYG9UG": "20260328T121105.000Z",
-            "#2PUQYJC02": "20260328T183043.000Z",
+            "#2PUQYJC02": "20260328T195346.000Z",
             "#YQVQYUYRV": "20260327T172110.000Z",
             "#2V800VCQ0": "20260328T175935.000Z",
             "#2UQUPYQCJ": "20260328T192740.000Z",
@@ -944,7 +944,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 1,
+            "losses": 2,
             "players": [
                 "Citykingalex"
             ],
@@ -952,6 +952,12 @@
                 "QULCQGGG"
             ],
             "recent_matches": [
+                {
+                    "time": "20260328T194552.000Z",
+                    "result": "loss",
+                    "player": "Citykingalex",
+                    "tag": "QULCQGGG"
+                },
                 {
                     "time": "20260327T111609.000Z",
                     "result": "loss",
@@ -4849,7 +4855,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/QWDdXMKJNpv0go-HYaWQWP6p8uIOHjqn-zX7G0p3DyM.png"
                 }
             ],
-            "wins": 2,
+            "wins": 3,
             "losses": 0,
             "players": [
                 "Wario"
@@ -4858,6 +4864,12 @@
                 "2PUQYJC02"
             ],
             "recent_matches": [
+                {
+                    "time": "20260328T195346.000Z",
+                    "result": "win",
+                    "player": "Wario",
+                    "tag": "2PUQYJC02"
+                },
                 {
                     "time": "20260327T104234.000Z",
                     "result": "win",
@@ -4916,7 +4928,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Wario"
             ],
@@ -4924,6 +4936,12 @@
                 "2PUQYJC02"
             ],
             "recent_matches": [
+                {
+                    "time": "20260328T195033.000Z",
+                    "result": "loss",
+                    "player": "Wario",
+                    "tag": "2PUQYJC02"
+                },
                 {
                     "time": "20260327T103912.000Z",
                     "result": "win",
@@ -5905,7 +5923,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "_spc07"
@@ -5914,6 +5932,12 @@
                 "2U8288CVY"
             ],
             "recent_matches": [
+                {
+                    "time": "20260328T194529.000Z",
+                    "result": "win",
+                    "player": "_spc07",
+                    "tag": "2U8288CVY"
+                },
                 {
                     "time": "20260327T110742.000Z",
                     "result": "win",
@@ -6959,6 +6983,108 @@
                     "tag": "LLQQJCLC"
                 }
             ]
+        }
+    },
+    "_opponent_decks": {
+        "Firecracker": {
+            "seen": 1,
+            "lost_against": 0
+        },
+        "Inferno Dragon": {
+            "seen": 1,
+            "lost_against": 0
+        },
+        "P.E.K.K.A": {
+            "seen": 1,
+            "lost_against": 0
+        },
+        "Goblin Barrel": {
+            "seen": 1,
+            "lost_against": 0
+        },
+        "Electro Wizard": {
+            "seen": 1,
+            "lost_against": 0
+        },
+        "Miner": {
+            "seen": 2,
+            "lost_against": 1
+        },
+        "Dart Goblin": {
+            "seen": 2,
+            "lost_against": 0
+        },
+        "Tombstone": {
+            "seen": 1,
+            "lost_against": 0
+        },
+        "Ram Rider": {
+            "seen": 2,
+            "lost_against": 1
+        },
+        "Wall Breakers": {
+            "seen": 1,
+            "lost_against": 1
+        },
+        "Bats": {
+            "seen": 3,
+            "lost_against": 2
+        },
+        "Battle Ram": {
+            "seen": 2,
+            "lost_against": 2
+        },
+        "Goblin Drill": {
+            "seen": 1,
+            "lost_against": 1
+        },
+        "Earthquake": {
+            "seen": 1,
+            "lost_against": 1
+        },
+        "Suspicious Bush": {
+            "seen": 1,
+            "lost_against": 1
+        },
+        "Royal Giant": {
+            "seen": 1,
+            "lost_against": 0
+        },
+        "Tesla": {
+            "seen": 1,
+            "lost_against": 0
+        },
+        "Executioner": {
+            "seen": 1,
+            "lost_against": 0
+        },
+        "Musketeer": {
+            "seen": 2,
+            "lost_against": 1
+        },
+        "Mega Minion": {
+            "seen": 1,
+            "lost_against": 0
+        },
+        "Wizard": {
+            "seen": 1,
+            "lost_against": 1
+        },
+        "Baby Dragon": {
+            "seen": 1,
+            "lost_against": 1
+        },
+        "Royal Ghost": {
+            "seen": 1,
+            "lost_against": 1
+        },
+        "Hog Rider": {
+            "seen": 1,
+            "lost_against": 1
+        },
+        "Goblin Gang": {
+            "seen": 1,
+            "lost_against": 1
         }
     }
 }
