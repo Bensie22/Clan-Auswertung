@@ -383,6 +383,7 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
                 pname = p.get("name")
                 decks = p.get("decksUsed", 0)
                 fame = p.get("fame", 0)
+                boat_attacks = p.get("boatAttacks", 0)
 
                 if ptag not in players_data:
                     is_curr = ptag in current_members
@@ -400,7 +401,7 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
                         "history": {}
                     }
 
-                players_data[ptag]["history"][race_id] = {"decks": decks, "fame": fame}
+                players_data[ptag]["history"][race_id] = {"decks": decks, "fame": fame, "boat_attacks": boat_attacks}
 
     for tag, data in current_members.items():
         if tag not in players_data:
@@ -432,11 +433,12 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
         "player_trophies",
         "player_contribution_count",
         "player_participating_count",
-        "player_total_decks_used"
+        "player_total_decks_used",
+        "player_total_boat_attacks"
     ]
 
     for rid in race_ids:
-        headers_csv.extend([f"s_{rid}_fame", f"s_{rid}_decks_used"])
+        headers_csv.extend([f"s_{rid}_fame", f"s_{rid}_decks_used", f"s_{rid}_boat_attacks"])
 
     with open(filename, mode="w", newline="", encoding="utf-8") as file:
         writer = csv.writer(file)
@@ -445,16 +447,19 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
 
         for tag, data in players_data.items():
             total_decks = 0
+            total_boat_attacks = 0
             contribution_count = 0
             row_history = []
 
             for rid in race_ids:
-                r_data = data["history"].get(rid, {"decks": 0, "fame": 0})
+                r_data = data["history"].get(rid, {"decks": 0, "fame": 0, "boat_attacks": 0})
                 decks = r_data["decks"]
                 fame = r_data["fame"]
-                row_history.extend([fame, decks])
+                ba = r_data.get("boat_attacks", 0)
+                row_history.extend([fame, decks, ba])
 
                 total_decks += decks
+                total_boat_attacks += ba
                 if decks > 0:
                     contribution_count += 1
 
@@ -474,7 +479,8 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
                 data.get("trophies", 0),
                 contribution_count,
                 wars_in_clan,
-                total_decks
+                total_decks,
+                total_boat_attacks
             ]
             row.extend(row_history)
             writer.writerow(row)
@@ -483,14 +489,94 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
     return True, current_members
 
 
+# === 2.3 Clan-Gesamtdaten abrufen ===
+
+def fetch_clan_overview() -> dict:
+    """Ruft Clan-Profil ab: Kriegstrophäen, Spenden/Woche, Mitgliederanzahl."""
+    if not API_TOKEN:
+        return {}
+
+    headers = {"Authorization": f"Bearer {API_TOKEN}", "Accept": "application/json"}
+    try:
+        resp = requests.get(f"{BASE_URL}/clans/{CLAN_TAG}", headers=headers, timeout=30)
+        if resp.status_code != 200:
+            print(f"⚠️ Clan-Profil konnte nicht abgerufen werden: {resp.status_code}")
+            return {}
+
+        data = resp.json()
+        return {
+            "clan_war_trophies": data.get("clanWarTrophies", 0),
+            "donations_per_week": data.get("donationsPerWeek", 0),
+            "member_count": data.get("members", 0),
+            "required_trophies": data.get("requiredTrophies", 0),
+            "description": data.get("description", ""),
+            "clan_score": data.get("clanScore", 0),
+        }
+    except Exception as e:
+        print(f"⚠️ Fehler beim Abruf des Clan-Profils: {e}")
+        return {}
+
+
+# === 2.4 Spieler-Profile abrufen ===
+
+def fetch_player_profiles(current_members: dict) -> dict:
+    """Ruft erweiterte Spielerprofile ab: Win/Loss, Best Trophies, Level, Lieblingskarte."""
+    if not API_TOKEN:
+        return {}
+
+    headers = {"Authorization": f"Bearer {API_TOKEN}", "Accept": "application/json"}
+    profiles = {}
+    count = 0
+
+    print("Schritt 5: Rufe Spieler-Profile ab (Bitte warten)...")
+    for tag in current_members.keys():
+        clean_tag = tag.replace("#", "%23")
+        try:
+            resp = requests.get(f"{BASE_URL}/players/{clean_tag}", headers=headers, timeout=30)
+        except Exception:
+            time.sleep(0.1)
+            continue
+
+        if resp.status_code != 200:
+            time.sleep(0.1)
+            continue
+
+        data = resp.json()
+        wins = data.get("wins", 0)
+        losses = data.get("losses", 0)
+        total_battles = wins + losses
+
+        profiles[tag] = {
+            "exp_level": data.get("expLevel", 0),
+            "best_trophies": data.get("bestTrophies", 0),
+            "wins": wins,
+            "losses": losses,
+            "win_rate": round((wins / total_battles) * 100) if total_battles > 0 else 0,
+            "three_crown_wins": data.get("threeCrownWins", 0),
+            "challenge_max_wins": data.get("challengeMaxWins", 0),
+            "war_day_wins": data.get("warDayWins", 0),
+            "total_donations": data.get("totalDonations", 0),
+            "favourite_card": data.get("currentFavouriteCard", {}).get("name", ""),
+        }
+
+        count += 1
+        if count % 10 == 0:
+            print(f"  ... {count}/{len(current_members)} Profile geladen")
+        time.sleep(0.1)
+
+    print(f"✅ {len(profiles)} Spieler-Profile geladen.\n")
+    return profiles
+
+
 # === 2.5 Battlelogs analysieren (Top Decks) ===
 
-def update_top_decks(current_members: dict, top_decks_data: dict) -> dict:
+def update_top_decks(current_members: dict, top_decks_data: dict) -> tuple[dict, dict]:
     print("Schritt 4: Spioniere Battlelogs für Clan-Meta Decks aus (Bitte warten)...")
     headers = {"Authorization": f"Bearer {API_TOKEN}", "Accept": "application/json"}
 
     metadata = top_decks_data.get("_metadata", {"last_battles": {}})
     decks = top_decks_data.get("decks", {})
+    opponent_decks = {}  # Gegner-Deck-Analyse
     cutoff_dt = datetime.now(timezone.utc) - timedelta(days=DECK_LOOKBACK_DAYS)
 
     for deck_data in decks.values():
@@ -574,6 +660,18 @@ def update_top_decks(current_members: dict, top_decks_data: dict) -> dict:
                                 "tag": raw_tag
                             })
 
+                        # Gegner-Deck-Analyse
+                        opp_cards = opponent.get("cards", [])
+                        if len(opp_cards) == 8:
+                            for oc in opp_cards:
+                                card_name = oc.get("name", "")
+                                if card_name:
+                                    if card_name not in opponent_decks:
+                                        opponent_decks[card_name] = {"seen": 0, "lost_against": 0}
+                                    opponent_decks[card_name]["seen"] += 1
+                                    if is_loss:
+                                        opponent_decks[card_name]["lost_against"] += 1
+
         if latest_time_in_log:
             metadata["last_battles"][tag] = latest_time_in_log
 
@@ -620,7 +718,7 @@ def update_top_decks(current_members: dict, top_decks_data: dict) -> dict:
     top_decks_data["_metadata"] = metadata
     top_decks_data["decks"] = decks
     print("✅ Battlelogs erfolgreich gescannt. Top-Decks aktualisiert.\n")
-    return top_decks_data
+    return top_decks_data, opponent_decks
 
 
 def parse_battle_time(battle_time: str) -> datetime | None:
@@ -911,7 +1009,9 @@ def render_html_template(
     table_html,
     deck_html,
     impressum_html,
-    datenschutz_html
+    datenschutz_html,
+    clan_overview_html="",
+    opponent_meta_html=""
 ):
     return f"""
     <html>
@@ -1190,6 +1290,8 @@ def render_html_template(
                         <ul>{top_leecher}</ul>
                     </div>
 
+                    {clan_overview_html}
+
                     <div id="admin-chat-container" style="display: none; width: 100%;">
                         <div class="card messenger">
                             <h3 style="color: #f1c40f; margin-bottom: 10px;">🎮 Chat-Hilfe ({total_msgs}-Teiler)</h3>
@@ -1389,6 +1491,7 @@ def render_html_template(
                 <div>
                     {deck_html}
                 </div>
+                {opponent_meta_html}
             </div>
 
             <div id="Impressum" class="tab-content">
@@ -1560,7 +1663,10 @@ def generate_html_report(
     rueckkehrer: list,
     warn_rueckkehrer: list,
     kicked_players: dict,
-    is_weekly_run: bool
+    is_weekly_run: bool,
+    clan_overview: dict = None,
+    player_profiles: dict = None,
+    opponent_decks: dict = None
 ) -> Tuple[str, pd.DataFrame, str, dict, dict, dict]:
     player_stats = []
     urlauber_liste = []
@@ -1610,6 +1716,11 @@ def generate_html_report(
         donations = int(row.get("player_donations", 0) or 0)
         donations_received = int(row.get("player_donations_received", 0) or 0)
         aktueller_trophy = int(row.get("player_trophies", 0) or 0)
+        total_boat_attacks = int(row.get("player_total_boat_attacks", 0) or 0)
+
+        # Spieler-Profil (wenn vorhanden)
+        player_tag = str(row.get("player_tag", ""))
+        profile = (player_profiles or {}).get(player_tag, {})
 
         # Score-Logik: Anwesenheits-Rate x Deck-Nutzung
         # Anwesenheits-Rate: Wie viele der Kriege im Fenster war der Spieler ueberhaupt dabei?
@@ -1796,7 +1907,14 @@ def generate_html_report(
             "strike_badge": strike_badge,
             "welpenschutz_badge": welpenschutz_badge,
             "focus_badge": focus_badge,
-            "raw_role": raw_role
+            "raw_role": raw_role,
+            "boat_attacks": total_boat_attacks,
+            "exp_level": profile.get("exp_level", 0),
+            "best_trophies": profile.get("best_trophies", 0),
+            "win_rate": profile.get("win_rate", 0),
+            "challenge_max_wins": profile.get("challenge_max_wins", 0),
+            "war_day_wins": profile.get("war_day_wins", 0),
+            "favourite_card": profile.get("favourite_card", ""),
         })
 
         if is_weekly_run:
@@ -2254,9 +2372,35 @@ def generate_html_report(
                 spenden_zelle = f"<span class='custom-tooltip dotted'>{p['donations']}<span class='tooltip-text'>Gespendet: {p['donations']} | Empfangen: {p['donations_received']}</span></span>"
                 spenden_block = f"<span class='spenden-cell'><span>{spenden_zelle}</span><span class='spenden-extra'>{spenden_warnung}</span></span>" if spenden_warnung else spenden_zelle
 
+                # Boot-Angriff-Badge
+                boat_badge = ""
+                if p.get("boat_attacks", 0) > 0:
+                    boat_badge = f" <span class='custom-tooltip' style='font-size: 0.9em;'>⛵<span class='tooltip-text'>Boot-Angriffe: {p['boat_attacks']}</span></span>"
+
+                # Spieler-Profil-Tooltip
+                profile_tooltip = ""
+                if p.get("win_rate", 0) > 0 or p.get("best_trophies", 0) > 0:
+                    tt_parts = []
+                    if p.get("exp_level", 0) > 0:
+                        tt_parts.append(f"Level: {p['exp_level']}")
+                    if p.get("best_trophies", 0) > 0:
+                        tt_parts.append(f"Best: {p['best_trophies']} 🏆")
+                    if p.get("win_rate", 0) > 0:
+                        tt_parts.append(f"Winrate: {p['win_rate']}%")
+                    if p.get("challenge_max_wins", 0) > 0:
+                        tt_parts.append(f"Challenge-Max: {p['challenge_max_wins']}")
+                    if p.get("war_day_wins", 0) > 0:
+                        tt_parts.append(f"Kriegssiege: {p['war_day_wins']}")
+                    if p.get("favourite_card"):
+                        tt_parts.append(f"Lieblingskarte: {p['favourite_card']}")
+                    if tt_parts:
+                        profile_tooltip = f" <span class='custom-tooltip' style='font-size: 0.85em; cursor: help;'>ℹ️<span class='tooltip-text'>{'<br>'.join(tt_parts)}</span></span>"
+
+                name_cell = f"{p['name']}{p['welpenschutz_badge']}{p['streak_badge']}{p['strike_badge']}{boat_badge}{profile_tooltip}"
+
                 table_html += (
                     f"<tr>"
-                    f"<td class='name-col'><span class='name-inline'>{p['name']}{p['welpenschutz_badge']}{p['streak_badge']}{p['strike_badge']}</span></td>"
+                    f"<td class='name-col'><span class='name-inline'>{name_cell}</span></td>"
                     f"<td>{p['focus_badge']}</td>"
                     f"<td>{p['status']}</td>"
                     f"<td><b>{p['score']}%</b></td>"
@@ -2277,6 +2421,90 @@ def generate_html_report(
         del strikes[k]
 
     impressum_html, datenschutz_html = build_legal_pages()
+
+    # ── Clan-Steckbrief (clan_overview_html) ──
+    clan_overview_html = ""
+    if clan_overview:
+        co = clan_overview
+        clan_overview_html = f"""
+        <div class="card" style="grid-column: span 2;">
+            <h3>🏰 Clan-Steckbrief</h3>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 10px;">
+                <div style="text-align: center;">
+                    <div style="font-size: 1.6em; font-weight: 800; color: #f97316;">{co.get('clan_war_trophies', 0)}</div>
+                    <div style="color: #94a3b8; font-size: 0.85em;">Kriegstrophäen</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 1.6em; font-weight: 800; color: #38bdf8;">{co.get('donations_per_week', 0)}</div>
+                    <div style="color: #94a3b8; font-size: 0.85em;">Spenden/Woche</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 1.6em; font-weight: 800; color: #10b981;">{co.get('member_count', 0)}/50</div>
+                    <div style="color: #94a3b8; font-size: 0.85em;">Mitglieder</div>
+                </div>
+            </div>
+            <div style="margin-top: 12px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+                <div style="text-align: center;">
+                    <div style="font-size: 1.2em; font-weight: 700; color: #e2e8f0;">{co.get('clan_score', 0)}</div>
+                    <div style="color: #94a3b8; font-size: 0.85em;">Clan-Score</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 1.2em; font-weight: 700; color: #e2e8f0;">{co.get('required_trophies', 0)} 🏆</div>
+                    <div style="color: #94a3b8; font-size: 0.85em;">Min. Trophäen</div>
+                </div>
+            </div>
+        </div>
+        """
+
+    # ── Gegner-Meta-Analyse (opponent_meta_html) ──
+    opponent_meta_html = ""
+    if opponent_decks:
+        sorted_cards = sorted(
+            opponent_decks.items(),
+            key=lambda x: x[1].get("lost_against", 0),
+            reverse=True
+        )[:10]
+        if sorted_cards:
+            rows_html = ""
+            for card_name, stats in sorted_cards:
+                seen = stats.get("seen", 0)
+                lost = stats.get("lost_against", 0)
+                loss_pct = round((lost / seen) * 100) if seen > 0 else 0
+                bar_color = "#ef4444" if loss_pct >= 60 else "#f59e0b" if loss_pct >= 40 else "#10b981"
+                rows_html += f"""
+                <tr>
+                    <td style="color: #e2e8f0; font-weight: 600;">{card_name}</td>
+                    <td style="text-align: center; color: #94a3b8;">{seen}</td>
+                    <td style="text-align: center; color: #ef4444; font-weight: 700;">{lost}</td>
+                    <td style="text-align: center;">
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <div style="flex: 1; background: rgba(255,255,255,0.1); border-radius: 4px; height: 8px;">
+                                <div style="width: {loss_pct}%; background: {bar_color}; height: 100%; border-radius: 4px;"></div>
+                            </div>
+                            <span style="color: {bar_color}; font-weight: 700; font-size: 0.9em;">{loss_pct}%</span>
+                        </div>
+                    </td>
+                </tr>
+                """
+            opponent_meta_html = f"""
+            <div style="margin-top: 40px; margin-bottom: 30px;">
+                <h2 style="font-weight: 800; font-size: 1.5em; text-align: center; color: #ffffff; margin-bottom: 5px;">🛡️ Gegner-Meta: Karten, gegen die wir verlieren</h2>
+                <p style="text-align: center; color: #94a3b8; margin-bottom: 20px; font-size: 0.9em;">Top 10 Karten aus gegnerischen Decks, gegen die der Clan am häufigsten verliert. Nutzt das als Hinweis, um eure Decks gezielt anzupassen.</p>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                    <tr style="border-bottom: 2px solid rgba(255,255,255,0.15);">
+                        <th style="text-align: left; padding: 8px; color: #94a3b8;">Karte</th>
+                        <th style="text-align: center; padding: 8px; color: #94a3b8;">Gesehen</th>
+                        <th style="text-align: center; padding: 8px; color: #94a3b8;">Verloren</th>
+                        <th style="text-align: center; padding: 8px; color: #94a3b8; min-width: 120px;">Verlustrate</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {rows_html}
+                    </tbody>
+                </table>
+            </div>
+            """
 
     anzeige_stand = datetime.now().strftime("%d.%m.%Y, %H:%M Uhr")
 
@@ -2305,7 +2533,9 @@ def generate_html_report(
         table_html=table_html,
         deck_html=deck_html,
         impressum_html=impressum_html,
-        datenschutz_html=datenschutz_html
+        datenschutz_html=datenschutz_html,
+        clan_overview_html=clan_overview_html,
+        opponent_meta_html=opponent_meta_html
     )
 
     default_mail_texts = [list(block.values())[0] for block in chat_blocks]
@@ -2546,7 +2776,11 @@ def main():
         except Exception as e:
             print(f"⚠️ Warnung: top_decks.json fehlerhaft, fange bei 0 an. ({e})")
 
-    top_decks_data = update_top_decks(current_members, top_decks_data)
+    top_decks_data, opponent_decks = update_top_decks(current_members, top_decks_data)
+
+    print("Schritt 5.5: Rufe Clan-Gesamtdaten und Spieler-Profile ab...")
+    clan_overview = fetch_clan_overview()
+    player_profiles = fetch_player_profiles(current_members)
 
     records = {"donations": {"name": "-", "val": 0}, "delta": {"name": "-", "val": 0}, "trophies": {"name": "-", "val": 0}}
     if records_path.exists():
