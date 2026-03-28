@@ -1233,8 +1233,14 @@ def render_html_template(
 
                 <button class="accordion-btn">🎯 Der Score (Zuverlässigkeit & Welpenschutz)</button>
                 <div class="accordion-content">
-                    <p>Der Score ist die wichtigste Zahl im Dashboard. Er misst nicht, wie stark du bist oder wie viel du gewinnst, sondern <b>wie verlässlich du bist</b>.<br><br>
-                    Stell dir vor, du hast für jede Kriegswochen 16 "Decks" (4 Tage × 4 Decks). Der Score zeigt einfach, wie viele deiner verfügbaren Decks du auch wirklich genutzt hast.</p>
+                    <p>Der Score ist die wichtigste Zahl im Dashboard. Er misst nicht, wie stark du bist oder wie viel du gewinnst, sondern <b>wie verlässlich du bist</b> – und zwar in zwei Dimensionen gleichzeitig.</p>
+                    <p>Der Score setzt sich aus zwei Faktoren zusammen, die miteinander multipliziert werden:</p>
+                    <ul>
+                        <li><b>Anwesenheits-Rate:</b> In wie vielen der letzten Kriege warst du überhaupt dabei? <br><span style="color:#94a3b8; font-size:0.9em;">Beispiel: 8 von 10 Kriegen mitgespielt = 80%</span></li>
+                        <li><b>Deck-Nutzung:</b> Wenn du dabei warst – wie viele deiner 16 möglichen Decks hast du dann auch wirklich gespielt? <br><span style="color:#94a3b8; font-size:0.9em;">Beispiel: Alle 16 Decks in jedem Krieg gespielt = 100%</span></li>
+                    </ul>
+                    <p>Der <b>Score</b> ist dann: <code style="background:rgba(0,0,0,0.4); padding:2px 6px; border-radius:4px;">Anwesenheits-Rate × Deck-Nutzung</code></p>
+                    <p style="color:#94a3b8; font-size:0.9em;">Beispiel: 80% Anwesenheit × 100% Deck-Nutzung = <b>80% Score</b>. Wer 2 Kriege komplett fehlt, aber wenn er da ist immer alle Decks spielt, bekommt keinen 100%er – weil die fehlenden Kriege jetzt mitzählen.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
@@ -1243,27 +1249,30 @@ def render_html_template(
                         </table>
                     </div>
                     <ul>
-                        <li><b>100% (Der Streak 🔥):</b> Perfekt! Du hast keinen einzigen Angriff verpasst. Schaffst du das über mehrere Wochen in Folge, erhältst du das Flammen-Symbol (wie <b>Spieler C</b> oben mit 4 Wochen am Stück!).</li>
-                        <li><b>50%:</b> Du hast nur die Hälfte deiner möglichen Angriffe gemacht.</li>
+                        <li><b>100% (Der Streak 🔥):</b> Perfekt! Du warst in allen Kriegen dabei und hast keinen einzigen Angriff verpasst. Schaffst du das über mehrere Wochen in Folge, erhältst du das Flammen-Symbol (wie <b>Spieler C</b> oben mit 4 Wochen am Stück!).</li>
+                        <li><b>80%:</b> Beispielsweise 2 Kriege verpasst, aber wenn du da warst alle Decks gespielt – oder immer dabei, aber ab und zu Decks liegen gelassen.</li>
+                        <li><b>50%:</b> Entweder die Hälfte der Kriege verpasst, oder immer dabei aber nur die Hälfte der Decks gespielt – oder eine Mischung aus beidem.</li>
                         <li><b>Welpenschutz (🌱):</b> Wenn du neu im Clan bist (wie <b>Spieler D</b> oben), fangen wir fair an. Du wirst nur an den Kriegen gemessen, bei denen du auch wirklich schon im Clan warst und bist vorerst vor Strafen geschützt.</li>
                     </ul>
                 </div>
 
                 <button class="accordion-btn">🟢🟡🔴 Der Trend (Deine Konstanz)</button>
                 <div class="accordion-content">
-                    <p>Die Ampel-Punkte zeigen deine Leistung (deinen Score) der letzten 4 Wochen auf einen Blick. Jeder Punkt steht für eine Woche, wobei der <b>Punkt ganz rechts die aktuellste Auswertung</b> ist.</p>
+                    <p>Die Ampel-Punkte zeigen deinen Score der letzten <b>6 Wochen</b> auf einen Blick. Jeder Punkt steht für eine Woche, wobei der <b>Punkt ganz rechts die aktuellste Auswertung</b> ist.</p>
+                    <p style="color:#94a3b8; font-size:0.9em;">6 Wochen sind bewusst gewählt: Das Strike-System arbeitet über mehrere Wochen – der Trend soll den vollen Kontext zeigen, über den Strikes entstehen oder sich abbauen.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler E</td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Mitglied</td><td><b>45.0%</b></td><td class='trend-cell'>🟢🟢🟡🔴</td><td style='color:#cbd5e1;'>180</td><td>8/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>150</span></td></tr>
-                            <tr><td class='name-col'>Spieler F</td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>🛡️ stabil</span></td><td>Ältester</td><td><b>90.0%</b></td><td class='trend-cell'>🔴🔴🟢🟢</td><td style='color:#cbd5e1;'>160</td><td>6/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>200</span></td></tr>
+                            <tr><td class='name-col'>Spieler E</td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Mitglied</td><td><b>45.0%</b></td><td class='trend-cell'>🟢🟢🟡🟡🟡🔴</td><td style='color:#cbd5e1;'>180</td><td>8/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>150</span></td></tr>
+                            <tr><td class='name-col'>Spieler F</td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>🛡️ stabil</span></td><td>Ältester</td><td><b>90.0%</b></td><td class='trend-cell'>🔴🔴🟡🟢🟢🟢</td><td style='color:#cbd5e1;'>160</td><td>6/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>200</span></td></tr>
                         </table>
                     </div>
                     <ul>
                         <li><b>🟢 Grün (Leistungsträger):</b> Starker Score von 80% bis 100%.</li>
                         <li><b>🟡 Gelb (Mittelfeld):</b> Akzeptabler Score von 50% bis 79%, aber mit Luft nach oben.</li>
-                        <li><b>🔴 Rot (Kritisch):</b> Score unter 50% (Zu wenig Teilnahme im Flussrennen).</li>
-                        <li><i>Beispiel Spieler E:</i> Hat stark angefangen, aber in der letzten Woche leider stark nachgelassen (rechter Punkt ist rot).</li>
+                        <li><b>🔴 Rot (Kritisch):</b> Score unter 50% – zu wenig Anwesenheit oder zu viele liegen gelassene Decks.</li>
+                        <li><i>Beispiel Spieler E:</i> War früher stark, aber die letzten vier Wochen gehen zunehmend nach unten – das ist genau der Kontext, den das Strike-System benötigt.</li>
+                        <li><i>Beispiel Spieler F:</i> Hat sich nach einem schwachen Start klar erholt. Drei grüne Wochen in Folge rechts zeigen, dass der Trend stimmt.</li>
                     </ul>
                 </div>
 
@@ -1293,16 +1302,18 @@ def render_html_template(
 
                 <button class="accordion-btn">⚔️ Ø Punkte (Der Qualitäts-Check)</button>
                 <div class="accordion-content">
-                    <p>Hier schauen wir, wie effektiv du deine Decks einsetzt. Das System teilt deine gesammelten Kriegspunkte durch die Anzahl deiner gespielten Decks.</p>
+                    <p>Hier schauen wir, wie effektiv du deine Decks einsetzt. Das System teilt deine gesammelten Kriegspunkte durch die Anzahl deiner gespielten Decks – und das als <b>rollierender Schnitt über die letzten 3–4 Kriege</b>.</p>
+                    <p style="color:#94a3b8; font-size:0.9em;">Warum mehrere Kriege? Ein einzelner Krieg kann durch starke oder schwache Gegner verzerrt sein. Der Schnitt über 3–4 Wochen gibt ein faireres, stabileres Bild deiner tatsächlichen Kampfqualität.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler J <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Ältester</td><td><b>27.34%</b></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#cbd5e1;'>100 <span class='custom-tooltip'>⚠️</span></td><td>8/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>72</span></td></tr>
+                            <tr><td class='name-col'>Spieler J <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Ältester</td><td><b>27.34%</b></td><td class='trend-cell'>🔴🔴🔴🔴🔴🔴</td><td style='color:#cbd5e1;'>100 <span class='custom-tooltip'>⚠️</span></td><td>8/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>72</span></td></tr>
                         </table>
                     </div>
                     <ul>
                         <li><b>Normalwert:</b> Selbst wenn du verlierst, bekommst du in normalen Kämpfen mindestens 115 Punkte. Ein Sieg bringt deutlich mehr.</li>
-                        <li><b>⚠️ Auffälliger Bereich (&lt; 115 Punkte):</b> Wenn dein Durchschnitt unter 115 fällt, ist das ein klarer Hinweis auf zu wenig Ertrag pro Deck. Häufig steckt dahinter, dass Decks nicht in normalen Kämpfen ausgespielt werden.</li>
+                        <li><b>⚠️ Auffälliger Bereich (&lt; 115 Punkte):</b> Wenn dein Schnitt dauerhaft unter 115 fällt, ist das ein klarer Hinweis auf zu wenig Ertrag pro Deck. Häufig steckt dahinter, dass Decks nicht in normalen Kämpfen ausgespielt werden.</li>
+                        <li><b>Ein einzelner schwacher Krieg reicht nicht für eine Warnung:</b> Erst wenn der Schnitt über mehrere Wochen unter 115 bleibt, wird das Symbol angezeigt. Ausreißer nach unten durch Pech beim Matchmaking werden so herausgefiltert.</li>
                     </ul>
                 </div>
 
@@ -1580,10 +1591,14 @@ def generate_html_report(
         donations_received = int(row.get("player_donations_received", 0) or 0)
         aktueller_trophy = int(row.get("player_trophies", 0) or 0)
 
-        # Wiki-konforme Score-Logik:
-        # Nur Kriege zählen, in denen tatsächlich gespielt wurde.
+        # Score-Logik: Anwesenheits-Rate x Deck-Nutzung
+        # Anwesenheits-Rate: Wie viele der Kriege im Fenster war der Spieler ueberhaupt dabei?
+        # Deck-Nutzung: Wenn dabei, wie viele der 16 moeglichen Decks wurden gespielt?
+        # Beide Faktoren multipliziert - wer Kriege komplett fehlt, verliert auch im Score.
+        anwesenheits_rate = (wars_with_participation / wars_in_history_window) if wars_in_history_window > 0 else 0.0
         max_moegliche_decks = wars_with_participation * 16
-        score = round((decks_total / max_moegliche_decks) * 100, 2) if max_moegliche_decks > 0 else 0.0
+        deck_nutzung = (decks_total / max_moegliche_decks) if max_moegliche_decks > 0 else 0.0
+        score = round(anwesenheits_rate * deck_nutzung * 100, 2)
 
         fame_columns_all = [col for col in row.index if str(col).startswith("s_") and str(col).endswith("_fame")]
         total_war_points = sum(int(row.get(col, 0) or 0) for col in fame_columns_all)
@@ -1591,19 +1606,29 @@ def generate_html_report(
         aktueller_fame = int(row.get(fame_spalte, 0) or 0)
         aktueller_decks_spalte = fame_spalte.replace("_fame", "_decks_used")
         aktueller_decks = int(row.get(aktueller_decks_spalte, 0) or 0)
-        fame_per_deck = round(aktueller_fame / aktueller_decks) if aktueller_decks > 0 else 0
+
+        # Ø Punkte: rollierender Schnitt ueber die letzten 3-4 Kriege.
+        # Glaettet Ausreisser durch Pech beim Matchmaking für ein faireres Bild.
+        fame_cols_rolling = sorted(
+            [col for col in row.index if str(col).startswith("s_") and str(col).endswith("_fame")],
+            reverse=True
+        )[:4]
+        decks_cols_rolling = [col.replace("_fame", "_decks_used") for col in fame_cols_rolling]
+        rolling_fame = sum(int(row.get(c, 0) or 0) for c in fame_cols_rolling)
+        rolling_decks = sum(int(row.get(c, 0) or 0) for c in decks_cols_rolling)
+        fame_per_deck = round(rolling_fame / rolling_decks) if rolling_decks > 0 else 0
 
         leecher_warnung = ""
         if 0 < fame_per_deck < APP_CONFIG["DROPPER_THRESHOLD"]:
             leecher_warnung = (
                 " <span class='custom-tooltip'>⚠️"
                 "<span class='tooltip-text'>Auffällig niedriger Ertrag pro Deck "
-                "(bitte Spielweise prüfen)</span></span>"
+                "(Schnitt der letzten 3–4 Kriege, bitte Spielweise prüfen)</span></span>"
             )
 
         historie_spieler = df_history[df_history["player_name"] == name].copy()
         historie_spieler = historie_spieler.sort_values("date")
-        vergangene_scores = historie_spieler.tail(3)["score"].tolist()
+        vergangene_scores = historie_spieler.tail(5)["score"].tolist()  # 5 vergangene + aktuelle = 6 Punkte im Trend
 
         past_trophy = aktueller_trophy
         if not historie_spieler.empty and "trophies" in historie_spieler.columns:
@@ -1624,7 +1649,7 @@ def generate_html_report(
 
         trend_scores = vergangene_scores + [score]
         trend_str = "".join(
-            ["🟢" if s >= 80 else "🟡" if s >= APP_CONFIG["STRIKE_THRESHOLD"] else "🔴" for s in trend_scores[-4:]]
+            ["🟢" if s >= 80 else "🟡" if s >= APP_CONFIG["STRIKE_THRESHOLD"] else "🔴" for s in trend_scores[-6:]]
         )
 
         # Streak-Logik
