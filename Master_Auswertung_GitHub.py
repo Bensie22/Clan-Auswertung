@@ -2876,7 +2876,10 @@ def main():
         rueckkehrer=rueckkehrer,
         warn_rueckkehrer=warn_rueckkehrer,
         kicked_players=kicked_players,
-        is_weekly_run=is_weekly_run
+        is_weekly_run=is_weekly_run,
+        clan_overview=clan_overview,
+        player_profiles=player_profiles,
+        opponent_decks=opponent_decks
     )
 
     html_path = speichere_html_bericht(
