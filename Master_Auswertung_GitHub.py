@@ -308,7 +308,7 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
             print(f"⚠️ Gedächtnis konnte nicht geladen werden: {e}")
 
     now = datetime.utcnow()
-    curr_week = now.isocalendar()[1]
+    curr_week = now.isocalendar()[:2]  # (Jahr, Woche) – verhindert Fehler beim Jahreswechsel
 
     if now.weekday() == 3 and memory.get("last_reset_week") != curr_week:
         print("🧹 Donnerstag: Spenden-Gedächtnis wird für den neuen Krieg zurückgesetzt.")
@@ -1202,7 +1202,7 @@ def render_html_template(
                         <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>❌ 1/3:</b> Interner Hinweis bei längerer Inaktivität</div>
                         <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>📦 Spenden auffällig:</b> Fordert, spendet aber 0</div>
                         <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>💤 Spenden inaktiv:</b> Spendet 0, fordert 0</div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>⚠️ Ø Punkte:</b> Auffällig niedriger Punkteschnitt pro Deck (&lt;115)</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>⚠️ Ø Punkte:</b> Auffällig niedriger Punkteschnitt pro Deck (&lt;130)</div>
                         <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>🔥 Streak:</b> Mehrere Wochen 100% Score</div>
                     </div>
                 </div>
@@ -1367,6 +1367,8 @@ def render_html_template(
                         Beispiel: <b>90%+</b> ist stark, weil fast alle ihre Decks sauber spielen. Ein Wert um <b>60%</b> oder darunter zeigt, dass dem Clan viele Decks fehlen.</li>
                         <li><b>⚔️ Clan-Ø Punkte:</b> Dieser Wert teilt die <b>gesamten aktuellen Kriegspunkte</b> des Clans durch die <b>gesamt gespielten Decks</b> der aktiven Mitglieder. Er zeigt also, wie stark der Clan pro eingesetztem Deck kämpft.
                         Beispiel: Ein Wert von <b>185+</b> ist stark (viele Siege). <b>162</b> ist ein solider Durchschnitt. Werte unter <b>130</b> sind auffällig schwach und deuten auf Bootsangriffe oder viele Niederlagen hin.</li>
+                        <li><b>Verteilungsampel (🟢 🟡 🔴):</b> Direkt unter dem Clan-Ø Punkte-Wert seht ihr wie viele aktive Spieler in welchem Bereich liegen: 🟢 stark (≥ 162 Punkte/Deck), 🟡 solide (130–161), 🔴 auffällig (&lt; 130). So sieht man auf einen Blick, ob ein niedriger Clan-Wert an wenigen Ausreißern oder am gesamten Clan liegt.</li>
+                        <li><b>Trend-Pfeil (▲ / ▼):</b> Zeigt die Veränderung des Clan-Ø Punkte-Werts gegenüber der Vorwoche. Erscheint ab dem zweiten Weekly Run nach einem Update.</li>
                         <li><b>Unterschied:</b> Ein hoher Clan-Durchschnitt heißt, dass viele Leute ihre Decks spielen. Ein hoher Clan-Ø Punkte heißt, dass diese Decks auch qualitativ gute Punkte holen. Beides zusammen ist ideal.</li>
                         <li><b>Die Urlaubs-Regel:</b> Wenn jemand offiziell im Urlaub (🏖️) ist und pausiert, wird er aus beiden Clan-Werten komplett herausgenommen.</li>
                     </ul>
@@ -1570,7 +1572,7 @@ def generate_html_report(
     strikes = strikes_data.get("players", {})
     last_strike_week = strikes_data.get("last_strike_week", 0)
 
-    curr_week = datetime.utcnow().isocalendar()[1]
+    curr_week = datetime.utcnow().isocalendar()[:2]  # (Jahr, Woche) – verhindert Fehler beim Jahreswechsel
 
     apply_strikes_now = False
     if is_weekly_run:
@@ -1813,6 +1815,17 @@ def generate_html_report(
     clan_avg_points_per_deck = round(clan_total_fame / clan_total_decks) if clan_total_decks > 0 else 0
     clan_teamplay, teamplay_details = calculate_teamplay_score(aktive_spieler)
 
+    # --- KAMPFQUALITÄT: Verteilung & Trend ---
+    quality_green  = sum(1 for p in aktive_spieler if p["current_decks"] > 0 and p["fame_per_deck"] >= 162)
+    quality_yellow = sum(1 for p in aktive_spieler if p["current_decks"] > 0 and 130 <= p["fame_per_deck"] < 162)
+    quality_red    = sum(1 for p in aktive_spieler if p["current_decks"] > 0 and 0 < p["fame_per_deck"] < 130)
+
+    prev_quality = records.get("clan_quality", {}).get("val", 0)
+    quality_delta = clan_avg_points_per_deck - prev_quality if prev_quality > 0 else None
+
+    if is_weekly_run:
+        records["clan_quality"] = {"val": clan_avg_points_per_deck}
+
     # --- HISTORIE CLEANUP (Nur aktive behalten & max. die letzten 6 Wochen) ---
     aktive_namen_set = set(df_active["player_name"].tolist())
     df_history = df_history[df_history["player_name"].isin(aktive_namen_set)]
@@ -1851,6 +1864,17 @@ def generate_html_report(
     quality_state, quality_color = get_signal_state(clan_avg_points_per_deck, 185, 145)
     teamplay_state, teamplay_color = get_signal_state(clan_teamplay, 60, 35)
 
+    if quality_delta is None:
+        quality_trend_html = ""
+    elif quality_delta > 0:
+        quality_trend_html = f"<div style='color:#10b981; font-size:0.88em; margin-top:2px;'>▲ +{quality_delta} zur Vorwoche</div>"
+    elif quality_delta < 0:
+        quality_trend_html = f"<div style='color:#ef4444; font-size:0.88em; margin-top:2px;'>▼ {quality_delta} zur Vorwoche</div>"
+    else:
+        quality_trend_html = "<div style='color:#94a3b8; font-size:0.88em; margin-top:2px;'>→ unverändert</div>"
+
+    quality_dist_html = f"<div style='font-size:0.88em; margin-top:6px; letter-spacing:1px;'>🟢 {quality_green}&nbsp;&nbsp;🟡 {quality_yellow}&nbsp;&nbsp;🔴 {quality_red}</div>"
+
     clan_ampel_html = f"""
     <div class='signal-board'>
         <div class='signal-card'>
@@ -1861,9 +1885,10 @@ def generate_html_report(
         </div>
         <div class='signal-card'>
             <h4>⚔️ Kampfqualität</h4>
-            <div class='signal-value' style='color:{quality_color};'>{quality_state.upper()}</div>
-            <div style='color:#94a3b8; font-size:0.92em;'>Bewertung der Punkte pro Deck</div>
-            <div class='signal-state' style='color:{quality_color};'>{quality_state.upper()}</div>
+            <div class='signal-value' style='color:{quality_color};'>{clan_avg_points_per_deck}</div>
+            {quality_trend_html}
+            {quality_dist_html}
+            <div style='color:#94a3b8; font-size:0.8em; margin-top:4px;'>Ø Punkte pro Deck</div>
         </div>
         <div class='signal-card'>
             <h4>🤝 Teamplay</h4>
