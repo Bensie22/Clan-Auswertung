@@ -1716,6 +1716,9 @@ def generate_html_report(
                 " <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱"
                 "<span class='tooltip-text'>Neu im Clan / Wenig Kriege / Welpenschutz aktiv</span></span>"
             )
+            # Trend bei Welpenschutz leeren - alte History-Einträge aus früheren
+            # Aufenthalten würden sonst ein irreführendes Bild erzeugen.
+            trend_str = "🟢" * wars_with_participation if score >= 80 else "🟡" * wars_with_participation if score >= APP_CONFIG["STRIKE_THRESHOLD"] else "🔴" * wars_with_participation
 
         focus_label, focus_color = get_player_focus(
             score=score,
@@ -1777,15 +1780,21 @@ def generate_html_report(
         })
 
         if is_weekly_run:
-            df_history = pd.concat([
-                df_history,
-                pd.DataFrame([{
-                    "player_name": name,
-                    "score": score,
-                    "date": heute_datum,
-                    "trophies": aktueller_trophy
-                }])
-            ], ignore_index=True)
+            # Nur schreiben wenn für diesen Spieler noch kein Eintrag mit diesem Datum existiert.
+            # Verhindert Doppeleinträge falls der Weekly-Run versehentlich mehrfach läuft.
+            already_written = (
+                (df_history["player_name"] == name) & (df_history["date"] == heute_datum)
+            ).any()
+            if not already_written:
+                df_history = pd.concat([
+                    df_history,
+                    pd.DataFrame([{
+                        "player_name": name,
+                        "score": score,
+                        "date": heute_datum,
+                        "trophies": aktueller_trophy
+                    }])
+                ], ignore_index=True)
 
     aktive_spieler = [p for p in player_stats if not p["is_urlaub"]]
     clan_avg = round(sum([p["score"] for p in aktive_spieler]) / len(aktive_spieler), 2) if aktive_spieler else 0
