@@ -27,7 +27,14 @@ APP_CONFIG = {
     "BADGE_STARK_FAME": 185,     # ⭐ stark: Ø Punkte-Schwelle (deutlich über Durchschnitt)
     "BADGE_STABIL_SCORE": 75,    # 🛡️ stabil: Score-Schwelle
     "BADGE_STABIL_FAME": 145,    # 🛡️ stabil: Ø Punkte-Schwelle (leicht über Durchschnitt)
+    "TIER_SEHR_STARK": 95,      # Tier-Grenze: Sehr stark
+    "TIER_SOLIDE": 80,           # Tier-Grenze: Solide Basis
+    "CLAN_RELIABLE_GREEN": 85,   # Clan-Ampel Zuverlässigkeit: Grün ab
+    "CLAN_RELIABLE_YELLOW": 70,  # Clan-Ampel Zuverlässigkeit: Gelb ab
 }
+
+CHAT_COLORS = ["#38bdf8", "#a855f7", "#ef4444", "#f97316", "#10b981", "#fbbf24", "#6366f1", "#ec4899"]
+MAHNWACHE_COLORS = ["#7dd3fc", "#fdba74"]
 
 JOIN_EVENT_TTL_HOURS = 24
 
@@ -40,6 +47,7 @@ DECK_BEGINNER_MIN_MATCHES = 3
 API_TOKEN = os.environ.get("SUPERCELL_API_TOKEN")
 CLAN_TAG = "%23Y9YQC8UG"
 CLAN_NAME = "HAMBURG"
+CLAN_URL = "clan-hamburg.de"
 BASE_URL = "https://proxy.royaleapi.dev/v1"
 
 # Cloud-taugliche Pfade (relativ zur Skript-Datei)
@@ -816,7 +824,7 @@ def enforce_chat_limit(message: str, prefix: str = "", limit: int = 255) -> str:
 
 
 def escape_for_html(text: str) -> str:
-    return text.replace('"', "&quot;").replace("'", "&#39;")
+    return html.escape(text, quote=True)
 
 
 def is_clan_war_period(now_utc: datetime | None = None) -> bool:
@@ -1661,7 +1669,7 @@ def generate_html_report(
 
         trend_scores = vergangene_scores + [score]
         trend_str = "".join(
-            ["🟢" if s >= 80 else "🟡" if s >= APP_CONFIG["STRIKE_THRESHOLD"] else "🔴" for s in trend_scores[-6:]]
+            ["🟢" if s >= APP_CONFIG["TIER_SOLIDE"] else "🟡" if s >= APP_CONFIG["STRIKE_THRESHOLD"] else "🔴" for s in trend_scores[-6:]]
         )
 
         # Streak-Logik
@@ -1730,7 +1738,7 @@ def generate_html_report(
             )
             # Trend bei Welpenschutz leeren - alte History-Einträge aus früheren
             # Aufenthalten würden sonst ein irreführendes Bild erzeugen.
-            trend_str = "🟢" * wars_with_participation if score >= 80 else "🟡" * wars_with_participation if score >= APP_CONFIG["STRIKE_THRESHOLD"] else "🔴" * wars_with_participation
+            trend_str = "🟢" * wars_with_participation if score >= APP_CONFIG["TIER_SOLIDE"] else "🟡" * wars_with_participation if score >= APP_CONFIG["STRIKE_THRESHOLD"] else "🔴" * wars_with_participation
 
         focus_label, focus_color = get_player_focus(
             score=score,
@@ -1755,12 +1763,12 @@ def generate_html_report(
                 else role_de
             )
 
-            if score >= 95:
-                tier = "Sehr stark (95-100%)"
-            elif score >= 80:
-                tier = "Solide Basis (80-94%)"
+            if score >= APP_CONFIG["TIER_SEHR_STARK"]:
+                tier = f"Sehr stark ({APP_CONFIG['TIER_SEHR_STARK']}-100%)"
+            elif score >= APP_CONFIG["TIER_SOLIDE"]:
+                tier = f"Solide Basis ({APP_CONFIG['TIER_SOLIDE']}-{APP_CONFIG['TIER_SEHR_STARK'] - 1}%)"
             elif score >= APP_CONFIG["STRIKE_THRESHOLD"]:
-                tier = f"Mehr drin ({APP_CONFIG['STRIKE_THRESHOLD']}-79%)"
+                tier = f"Mehr drin ({APP_CONFIG['STRIKE_THRESHOLD']}-{APP_CONFIG['TIER_SOLIDE'] - 1}%)"
             else:
                 tier = f"Ausbaufaehig (< {APP_CONFIG['STRIKE_THRESHOLD']}%)"
 
@@ -1860,8 +1868,8 @@ def generate_html_report(
     top_spender_html = "".join([f"<li><b>{p['name']}</b> ({p['donations']})</li>" for p in top_spender_list]) if top_spender_list else "<li>Keine Spenden</li>"
     top_leecher_html = "".join([f"<li><b>{p['name']}</b> ({p['donations']} gesp. / {p['donations_received']} empf.)</li>" for p in top_leecher_list]) if top_leecher_list else "<li>Keine Auffälligkeiten 🎉</li>"
 
-    reliability_state, reliability_color = get_signal_state(clan_avg, 85, 70)
-    quality_state, quality_color = get_signal_state(clan_avg_points_per_deck, 185, 145)
+    reliability_state, reliability_color = get_signal_state(clan_avg, APP_CONFIG["CLAN_RELIABLE_GREEN"], APP_CONFIG["CLAN_RELIABLE_YELLOW"])
+    quality_state, quality_color = get_signal_state(clan_avg_points_per_deck, APP_CONFIG["BADGE_STARK_FAME"], APP_CONFIG["BADGE_STABIL_FAME"])
     teamplay_state, teamplay_color = get_signal_state(clan_teamplay, 60, 35)
 
     if quality_delta is None:
@@ -1900,16 +1908,16 @@ def generate_html_report(
     """
 
     summary_lines = []
-    if clan_avg >= 85:
+    if clan_avg >= APP_CONFIG["CLAN_RELIABLE_GREEN"]:
         summary_lines.append("Der Clan spielt seine Decks sehr zuverlässig aus.")
-    elif clan_avg >= 70:
+    elif clan_avg >= APP_CONFIG["CLAN_RELIABLE_YELLOW"]:
         summary_lines.append("Die Zuverlässigkeit ist okay, aber es bleiben noch zu viele Decks liegen.")
     else:
         summary_lines.append("Beim Ausspielen der Decks verlieren wir aktuell zu viel Boden.")
 
-    if clan_avg_points_per_deck >= 185:
+    if clan_avg_points_per_deck >= APP_CONFIG["BADGE_STARK_FAME"]:
         summary_lines.append("Die Kampfqualität ist stark – der Clan gewinnt deutlich mehr als er verliert.")
-    elif clan_avg_points_per_deck >= 145:
+    elif clan_avg_points_per_deck >= APP_CONFIG["BADGE_STABIL_FAME"]:
         summary_lines.append("Die Kampfqualität ist solide, hat aber noch Luft nach oben.")
     else:
         summary_lines.append("Die Kämpfe bringen aktuell zu wenig Ertrag pro Deck – mehr normale Kämpfe und Duelle helfen.")
@@ -1932,7 +1940,7 @@ def generate_html_report(
 
     coach_items = []
     low_quality_count = sum(1 for p in aktive_spieler if p["current_decks"] > 0 and p["fame_per_deck"] < APP_CONFIG["DROPPER_THRESHOLD"])
-    low_score_count = sum(1 for p in aktive_spieler if p["score"] < 80)
+    low_score_count = sum(1 for p in aktive_spieler if p["score"] < APP_CONFIG["TIER_SOLIDE"])
     newbie_count = sum(1 for p in aktive_spieler if p["is_welpenschutz"])
 
     if preliminary_open_decks > 0:
@@ -1951,11 +1959,14 @@ def generate_html_report(
     kandidaten_demote = strikes_data.get("demoted_this_week", [])
     kandidaten_kick = strikes_data.get("kicked_this_week", [])
 
-    top_pusher = sorted(aktive_spieler, key=lambda x: x["trophy_push"], reverse=True)
-    if top_pusher and top_pusher[0]["trophy_push"] > 0:
-        pusher_name, pusher_val = top_pusher[0]["name"], top_pusher[0]["trophy_push"]
-        pusher_html = f"<li><b>{pusher_name}</b> (+{pusher_val} 🏆)</li>"
-        pusher_chat = f"🚀 Top-Pusher: {pusher_name} (+{pusher_val}🏆)"
+    top_pusher_list = sorted(
+        [p for p in aktive_spieler if p["trophy_push"] > 0],
+        key=lambda x: x["trophy_push"],
+        reverse=True
+    )[:3]
+    if top_pusher_list:
+        pusher_html = "".join([f"<li><b>{p['name']}</b> (+{p['trophy_push']} 🏆)</li>" for p in top_pusher_list])
+        pusher_chat = f"🚀 Top-Pusher: {top_pusher_list[0]['name']} (+{top_pusher_list[0]['trophy_push']}🏆)"
     else:
         pusher_html = "<li>Niemand</li>"
         pusher_chat = ""
@@ -1975,7 +1986,7 @@ def generate_html_report(
             bold_name = f"<b style='color:#fff;'>{c['name']} (WIR)</b>" if c["is_us"] else c["name"]
             bg_color = "rgba(255,255,255,0.05)" if idx % 2 == 0 else "transparent"
             radar_html += f"<tr style='background: {bg_color}; border-bottom: 1px solid rgba(255,255,255,0.02);'>"
-            radar_html += f"<td style='padding: 10px 5px;'>{bold_name}<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 {c['decks_used']} / 200 Decks</span></td>"
+            radar_html += f"<td style='padding: 10px 5px;'>{bold_name}<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 {c['decks_used']} / {c.get('max_decks', 200)} Decks</span></td>"
             radar_html += f"<td style='text-align: center; font-weight: bold; color: #f8fafc;'>{c['boat_attacks']}</td>"
             radar_html += f"<td style='text-align: center; font-weight: bold; color: #fbbf24;'>{c['medals']}</td>"
             radar_html += f"<td style='text-align: center; font-weight: bold; color: #c084fc;'>{c['trophies']}</td>"
@@ -1993,7 +2004,7 @@ def generate_html_report(
     if ist_kampftag:
         aktive_namen_list = df_active["player_name"].tolist()
         gefilterte_mahnwache = []
-        mahnwache_colors = ["#7dd3fc", "#fdba74"]
+        mahnwache_colors = MAHNWACHE_COLORS
         mahnwache_idx = 0
         for m in raw_mahnwache:
             if m["name"] not in urlauber_liste and m["name"] in aktive_namen_list:
@@ -2038,9 +2049,9 @@ def generate_html_report(
     for chunk in chunk_list(echte_neulinge, 3):
         names_str = ", ".join(chunk)
         welcome_vars = {
-            "Sachlich": f"👋 Moin {names_str}, willkommen bei uns im Clan. Alles Wichtige findet ihr unter clan-hamburg.de",
-            "Motivierend": f"🎉 Moin {names_str}, herzlich willkommen in der HAMBURG-Family! Alles Wichtige findet ihr unter clan-hamburg.de",
-            "Kurz & Knackig": f"👋 Moin {names_str}, willkommen im Clan! Alles Wichtige: clan-hamburg.de"
+            "Sachlich": f"👋 Moin {names_str}, willkommen bei uns im Clan. Alles Wichtige findet ihr unter {CLAN_URL}",
+            "Motivierend": f"🎉 Moin {names_str}, herzlich willkommen in der {CLAN_NAME}-Family! Alles Wichtige findet ihr unter {CLAN_URL}",
+            "Kurz & Knackig": f"👋 Moin {names_str}, willkommen im Clan! Alles Wichtige: {CLAN_URL}"
         }
         chat_blocks.append(welcome_vars)
 
@@ -2124,7 +2135,7 @@ def generate_html_report(
         chat_blocks.append(nokick_vars)
 
     total_msgs = len(chat_blocks)
-    colors = ["#38bdf8", "#a855f7", "#ef4444", "#f97316", "#10b981", "#fbbf24", "#6366f1", "#ec4899"]
+    colors = CHAT_COLORS
     chat_boxes_html = ""
 
     for i, block_vars in enumerate(chat_blocks):
@@ -2200,9 +2211,9 @@ def generate_html_report(
             """
 
     tiers = [
-        "Sehr stark (95-100%)",
-        "Solide Basis (80-94%)",
-        f"Mehr drin ({APP_CONFIG['STRIKE_THRESHOLD']}-79%)",
+        f"Sehr stark ({APP_CONFIG['TIER_SEHR_STARK']}-100%)",
+        f"Solide Basis ({APP_CONFIG['TIER_SOLIDE']}-{APP_CONFIG['TIER_SEHR_STARK'] - 1}%)",
+        f"Mehr drin ({APP_CONFIG['STRIKE_THRESHOLD']}-{APP_CONFIG['TIER_SOLIDE'] - 1}%)",
         f"Ausbaufaehig (< {APP_CONFIG['STRIKE_THRESHOLD']}%)",
         "Im Urlaub (Pausiert)"
     ]
@@ -2506,13 +2517,15 @@ def main():
                 boat_attacks = sum(p.get("boatAttacks", 0) for p in c.get("participants", []))
                 decks_used = sum(p.get("decksUsedToday", 0) for p in c.get("participants", []))
 
+                participants_count = len(c.get("participants", []))
                 radar_clans.append({
                     "name": c.get("name", ""),
                     "is_us": is_us,
                     "trophies": trophies,
                     "medals": medals,
                     "boat_attacks": boat_attacks,
-                    "decks_used": decks_used
+                    "decks_used": decks_used,
+                    "max_decks": participants_count * 4
                 })
 
                 if is_us:
