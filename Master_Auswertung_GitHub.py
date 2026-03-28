@@ -576,7 +576,7 @@ def update_top_decks(current_members: dict, top_decks_data: dict) -> tuple[dict,
 
     metadata = top_decks_data.get("_metadata", {"last_battles": {}})
     decks = top_decks_data.get("decks", {})
-    opponent_decks = {}  # Gegner-Deck-Analyse
+    opponent_decks = top_decks_data.get("_opponent_decks", {})  # Gegner-Deck-Analyse (persistiert)
     cutoff_dt = datetime.now(timezone.utc) - timedelta(days=DECK_LOOKBACK_DAYS)
 
     for deck_data in decks.values():
@@ -717,6 +717,7 @@ def update_top_decks(current_members: dict, top_decks_data: dict) -> tuple[dict,
 
     top_decks_data["_metadata"] = metadata
     top_decks_data["decks"] = decks
+    top_decks_data["_opponent_decks"] = opponent_decks
     print("✅ Battlelogs erfolgreich gescannt. Top-Decks aktualisiert.\n")
     return top_decks_data, opponent_decks
 
