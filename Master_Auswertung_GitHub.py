@@ -1221,11 +1221,12 @@ def render_html_template(
                 table:not(.radar-table) td:nth-child(8) .custom-tooltip.dotted,
                 .wiki-table td:nth-child(8) .custom-tooltip.dotted {{ border-bottom: none !important; }}
                 .spenden-cell .custom-tooltip.dotted {{ border-bottom: none; }}
-                .radar-table {{ width: 100%; table-layout: fixed; font-size: 0.84em !important; }}
-                .radar-table th {{ display: table-cell; position: static; box-shadow: none; font-size: 0.82em; padding: 8px 6px; }}
+                .radar-table {{ width: 100%; table-layout: auto !important; font-size: 0.78em !important; }}
+                .radar-table colgroup {{ display: none; }}
+                .radar-table th {{ display: table-cell; position: static; box-shadow: none; font-size: 0.78em; padding: 6px 3px; }}
                 .radar-table tbody {{ display: table-row-group; }}
                 .radar-table tr {{ display: table-row; background: transparent !important; border: none; box-shadow: none; padding: 0; }}
-                .radar-table td {{ display: table-cell; width: auto; padding: 10px 6px; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: center !important; vertical-align: middle; }}
+                .radar-table td {{ display: table-cell; width: auto; padding: 8px 3px; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: center !important; vertical-align: middle; word-break: break-word; }}
                 .radar-table td:first-child {{ text-align: left !important; }}
                 .radar-table td::before {{ content: none !important; }}
             }}
