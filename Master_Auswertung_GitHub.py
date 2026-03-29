@@ -1455,6 +1455,21 @@ def render_html_template(
                     </ul>
                 </div>
 
+                <button class="accordion-btn">📊 Clan-Durchschnitt & ⚔️ Clan-Ø Punkte</button>
+                <div class="accordion-content">
+                    <p>In der Übersicht seht ihr zwei Clan-Werte, die absichtlich zwei verschiedene Fragen beantworten: <b>Wie zuverlässig spielen wir unsere Decks aus?</b> und <b>wie stark kämpfen wir pro Deck?</b></p>
+                    <ul>
+                        <li><b>📈 Clan-Durchschnitt:</b> Das ist der Durchschnitt aller <b>Score</b>-Werte der aktiven Mitglieder. Er zeigt also, wie zuverlässig der Clan seine verfügbaren Kriegs-Decks insgesamt nutzt.
+                        Beispiel: <b>90%+</b> ist stark, weil fast alle ihre Decks sauber spielen. Ein Wert um <b>60%</b> oder darunter zeigt, dass dem Clan viele Decks fehlen.</li>
+                        <li><b>⚔️ Clan-Ø Punkte:</b> Dieser Wert teilt die <b>gesamten aktuellen Kriegspunkte</b> des Clans durch die <b>gesamt gespielten Decks</b> der aktiven Mitglieder. Er zeigt also, wie stark der Clan pro eingesetztem Deck kämpft.
+                        Beispiel: Ein Wert von <b>185+</b> ist stark (viele Siege). <b>162</b> ist ein solider Durchschnitt. Werte unter <b>130</b> sind auffällig schwach und deuten auf Bootsangriffe oder viele Niederlagen hin.</li>
+                        <li><b>Verteilungsampel (🟢 🟡 🔴):</b> Direkt unter dem Clan-Ø Punkte-Wert seht ihr wie viele aktive Spieler in welchem Bereich liegen: 🟢 stark (≥ 162 Punkte/Deck), 🟡 solide (130–161), 🔴 auffällig (&lt; 130). So sieht man auf einen Blick, ob ein niedriger Clan-Wert an wenigen Ausreißern oder am gesamten Clan liegt.</li>
+                        <li><b>Trend-Pfeil (▲ / ▼):</b> Zeigt die Veränderung des Clan-Ø Punkte-Werts gegenüber der Vorwoche. Erscheint ab dem zweiten Weekly Run nach einem Update.</li>
+                        <li><b>Unterschied:</b> Ein hoher Clan-Durchschnitt heißt, dass viele Leute ihre Decks spielen. Ein hoher Clan-Ø Punkte heißt, dass diese Decks auch qualitativ gute Punkte holen. Beides zusammen ist ideal.</li>
+                        <li><b>Die Urlaubs-Regel:</b> Wenn jemand offiziell im Urlaub (🏖️) ist und pausiert, wird er aus beiden Clan-Werten komplett herausgenommen.</li>
+                    </ul>
+                </div>
+
                 <button class="accordion-btn">🃏 Spenden-Verhalten (Teamplay)</button>
                 <div class="accordion-content">
                     <p>Ein starker Clan hilft sich gegenseitig beim Leveln der Karten. Deshalb schauen wir auch auf das Spendenverhalten im Clan.</p>
@@ -1533,20 +1548,6 @@ def render_html_template(
                     </ul>
                 </div>
 
-                <button class="accordion-btn">📊 Clan-Durchschnitt & ⚔️ Clan-Ø Punkte</button>
-                <div class="accordion-content">
-                    <p>In der Übersicht seht ihr zwei Clan-Werte, die absichtlich zwei verschiedene Fragen beantworten: <b>Wie zuverlässig spielen wir unsere Decks aus?</b> und <b>wie stark kämpfen wir pro Deck?</b></p>
-                    <ul>
-                        <li><b>📈 Clan-Durchschnitt:</b> Das ist der Durchschnitt aller <b>Score</b>-Werte der aktiven Mitglieder. Er zeigt also, wie zuverlässig der Clan seine verfügbaren Kriegs-Decks insgesamt nutzt.
-                        Beispiel: <b>90%+</b> ist stark, weil fast alle ihre Decks sauber spielen. Ein Wert um <b>60%</b> oder darunter zeigt, dass dem Clan viele Decks fehlen.</li>
-                        <li><b>⚔️ Clan-Ø Punkte:</b> Dieser Wert teilt die <b>gesamten aktuellen Kriegspunkte</b> des Clans durch die <b>gesamt gespielten Decks</b> der aktiven Mitglieder. Er zeigt also, wie stark der Clan pro eingesetztem Deck kämpft.
-                        Beispiel: Ein Wert von <b>185+</b> ist stark (viele Siege). <b>162</b> ist ein solider Durchschnitt. Werte unter <b>130</b> sind auffällig schwach und deuten auf Bootsangriffe oder viele Niederlagen hin.</li>
-                        <li><b>Verteilungsampel (🟢 🟡 🔴):</b> Direkt unter dem Clan-Ø Punkte-Wert seht ihr wie viele aktive Spieler in welchem Bereich liegen: 🟢 stark (≥ 162 Punkte/Deck), 🟡 solide (130–161), 🔴 auffällig (&lt; 130). So sieht man auf einen Blick, ob ein niedriger Clan-Wert an wenigen Ausreißern oder am gesamten Clan liegt.</li>
-                        <li><b>Trend-Pfeil (▲ / ▼):</b> Zeigt die Veränderung des Clan-Ø Punkte-Werts gegenüber der Vorwoche. Erscheint ab dem zweiten Weekly Run nach einem Update.</li>
-                        <li><b>Unterschied:</b> Ein hoher Clan-Durchschnitt heißt, dass viele Leute ihre Decks spielen. Ein hoher Clan-Ø Punkte heißt, dass diese Decks auch qualitativ gute Punkte holen. Beides zusammen ist ideal.</li>
-                        <li><b>Die Urlaubs-Regel:</b> Wenn jemand offiziell im Urlaub (🏖️) ist und pausiert, wird er aus beiden Clan-Werten komplett herausgenommen.</li>
-                    </ul>
-                </div>
             </div>
 
             <div id="Decks" class="tab-content">
