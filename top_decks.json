@@ -21,14 +21,14 @@
             "#QVQGCV8Y9": "20260328T152610.000Z",
             "#Q8L0RJ8Y8": "20260328T193255.000Z",
             "#P2GUCG2Y": "20260327T201655.000Z",
-            "#2CPRGY8G": "20260328T180743.000Z",
+            "#2CPRGY8G": "20260329T000948.000Z",
             "#LLQQJCLC": "20260328T172514.000Z",
             "#2VJR80RL": "20260328T114741.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260328T201455.000Z",
             "#2CJYG9UG": "20260328T121105.000Z",
             "#2PUQYJC02": "20260328T200120.000Z",
-            "#YQVQYUYRV": "20260327T172110.000Z",
+            "#YQVQYUYRV": "20260329T002309.000Z",
             "#2V800VCQ0": "20260328T175935.000Z",
             "#2UQUPYQCJ": "20260328T192740.000Z",
             "#JUUR8UGL8": "20260328T224540.000Z",
@@ -46,7 +46,7 @@
             "#UUPCULU9V": "20260327T152657.000Z",
             "#202VP2QL9P": "20260328T192922.000Z",
             "#LVUGLUCP9": "20260326T195000.000Z",
-            "#20QGJVPG8Q": "20260328T224917.000Z",
+            "#20QGJVPG8Q": "20260329T014946.000Z",
             "#V9GYJQ0J9": "20260328T114514.000Z",
             "#URJ0LUYPV": "20260328T105102.000Z",
             "#Q2GRGLQR": "20260328T082403.000Z",
@@ -6260,7 +6260,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Fxry"
             ],
@@ -6268,6 +6268,12 @@
                 "YQVQYUYRV"
             ],
             "recent_matches": [
+                {
+                    "time": "20260329T001813.000Z",
+                    "result": "loss",
+                    "player": "Fxry",
+                    "tag": "YQVQYUYRV"
+                },
                 {
                     "time": "20260327T172110.000Z",
                     "result": "win",
@@ -7083,8 +7089,8 @@
             "lost_against": 1
         },
         "Musketeer": {
-            "seen": 4,
-            "lost_against": 3
+            "seen": 5,
+            "lost_against": 4
         },
         "Mega Minion": {
             "seen": 1,
@@ -7103,8 +7109,8 @@
             "lost_against": 1
         },
         "Hog Rider": {
-            "seen": 3,
-            "lost_against": 3
+            "seen": 4,
+            "lost_against": 4
         },
         "Goblin Gang": {
             "seen": 1,
@@ -7123,8 +7129,8 @@
             "lost_against": 2
         },
         "Fireball": {
-            "seen": 3,
-            "lost_against": 3
+            "seen": 4,
+            "lost_against": 4
         },
         "Minion Horde": {
             "seen": 2,
@@ -7163,8 +7169,8 @@
             "lost_against": 1
         },
         "Cannon": {
-            "seen": 1,
-            "lost_against": 1
+            "seen": 2,
+            "lost_against": 2
         },
         "Mini P.E.K.K.A": {
             "seen": 2,
@@ -7279,6 +7285,22 @@
             "lost_against": 1
         },
         "Dark Prince": {
+            "seen": 1,
+            "lost_against": 1
+        },
+        "Skeletons": {
+            "seen": 1,
+            "lost_against": 1
+        },
+        "Ice Golem": {
+            "seen": 1,
+            "lost_against": 1
+        },
+        "The Log": {
+            "seen": 1,
+            "lost_against": 1
+        },
+        "Ice Spirit": {
             "seen": 1,
             "lost_against": 1
         }
