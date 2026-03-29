@@ -11,12 +11,12 @@
             "#R22R8GYG": "20260328T102119.000Z",
             "#YQ82VR9JQ": "20260329T100225.000Z",
             "#G02LC9C8": "20260328T202826.000Z",
-            "#2U8288CVY": "20260328T213541.000Z",
+            "#2U8288CVY": "20260329T115347.000Z",
             "#2L8LLRUYV": "20260328T215620.000Z",
             "#Y8PVULPU0": "20260328T082133.000Z",
             "#9CG2CRRJG": "20260329T102822.000Z",
             "#PPR2QQC0U": "20260329T104500.000Z",
-            "#QULCQGGG": "20260329T112335.000Z",
+            "#QULCQGGG": "20260329T113529.000Z",
             "#JRGC9RRQG": "20260329T074308.000Z",
             "#QVQGCV8Y9": "20260328T152610.000Z",
             "#Q8L0RJ8Y8": "20260328T193255.000Z",
@@ -26,21 +26,21 @@
             "#2VJR80RL": "20260329T084701.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260328T201455.000Z",
-            "#2CJYG9UG": "20260328T121105.000Z",
+            "#2CJYG9UG": "20260329T115206.000Z",
             "#2PUQYJC02": "20260329T091611.000Z",
             "#YQVQYUYRV": "20260329T002309.000Z",
             "#2V800VCQ0": "20260329T101829.000Z",
             "#2UQUPYQCJ": "20260329T102848.000Z",
             "#JUUR8UGL8": "20260329T071818.000Z",
             "#2U09UULRR": "20260329T074715.000Z",
-            "#YJ0LUU0JJ": "20260329T104552.000Z",
+            "#YJ0LUU0JJ": "20260329T113816.000Z",
             "#8QYYL8LCQ": "20260329T063303.000Z",
             "#8P0J8P0L": "20260329T101350.000Z",
             "#Y882QLJQJ": "20260329T080314.000Z",
             "#CUJ9PJ2UV": "20260328T192343.000Z",
             "#2P0U2RLGY": "20260328T205518.000Z",
             "#8P89UPQ0": "20260329T094449.000Z",
-            "#RLJPJL8C2": "20260329T112746.000Z",
+            "#RLJPJL8C2": "20260329T115144.000Z",
             "#RG02LG88": "20260329T101950.000Z",
             "#29L2P9YJ": "20260324T220030.000Z",
             "#UUPCULU9V": "20260329T105652.000Z",
@@ -48,7 +48,7 @@
             "#LVUGLUCP9": "20260326T195000.000Z",
             "#20QGJVPG8Q": "20260329T014946.000Z",
             "#V9GYJQ0J9": "20260329T090259.000Z",
-            "#URJ0LUYPV": "20260329T112746.000Z",
+            "#URJ0LUYPV": "20260329T114558.000Z",
             "#Q2GRGLQR": "20260329T070651.000Z",
             "#J9RQPGLVP": "20260329T100311.000Z"
         }
@@ -5324,7 +5324,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "_spc07"
             ],
@@ -5332,6 +5332,12 @@
                 "2U8288CVY"
             ],
             "recent_matches": [
+                {
+                    "time": "20260329T113505.000Z",
+                    "result": "loss",
+                    "player": "_spc07",
+                    "tag": "2U8288CVY"
+                },
                 {
                     "time": "20260328T194529.000Z",
                     "result": "win",
@@ -6977,24 +6983,24 @@
             "lost_against": 1
         },
         "P.E.K.K.A": {
-            "seen": 4,
-            "lost_against": 2
+            "seen": 5,
+            "lost_against": 3
         },
         "Goblin Barrel": {
             "seen": 9,
             "lost_against": 3
         },
         "Electro Wizard": {
-            "seen": 5,
-            "lost_against": 1
+            "seen": 6,
+            "lost_against": 2
         },
         "Miner": {
             "seen": 8,
             "lost_against": 3
         },
         "Dart Goblin": {
-            "seen": 10,
-            "lost_against": 2
+            "seen": 11,
+            "lost_against": 3
         },
         "Tombstone": {
             "seen": 2,
@@ -7013,8 +7019,8 @@
             "lost_against": 4
         },
         "Battle Ram": {
-            "seen": 4,
-            "lost_against": 2
+            "seen": 5,
+            "lost_against": 3
         },
         "Goblin Drill": {
             "seen": 3,
@@ -7053,12 +7059,12 @@
             "lost_against": 4
         },
         "Baby Dragon": {
-            "seen": 5,
-            "lost_against": 3
+            "seen": 6,
+            "lost_against": 4
         },
         "Royal Ghost": {
-            "seen": 5,
-            "lost_against": 3
+            "seen": 6,
+            "lost_against": 4
         },
         "Hog Rider": {
             "seen": 11,
@@ -7105,8 +7111,8 @@
             "lost_against": 1
         },
         "Skeleton Army": {
-            "seen": 8,
-            "lost_against": 5
+            "seen": 9,
+            "lost_against": 6
         },
         "Electro Dragon": {
             "seen": 5,
@@ -7125,8 +7131,8 @@
             "lost_against": 4
         },
         "Mini P.E.K.K.A": {
-            "seen": 4,
-            "lost_against": 3
+            "seen": 5,
+            "lost_against": 4
         },
         "Archers": {
             "seen": 3,
@@ -7181,8 +7187,8 @@
             "lost_against": 1
         },
         "Valkyrie": {
-            "seen": 3,
-            "lost_against": 1
+            "seen": 4,
+            "lost_against": 2
         },
         "Electro Giant": {
             "seen": 1,
@@ -7205,8 +7211,8 @@
             "lost_against": 1
         },
         "Magic Archer": {
-            "seen": 4,
-            "lost_against": 1
+            "seen": 5,
+            "lost_against": 2
         },
         "Spear Goblins": {
             "seen": 1,
@@ -7225,8 +7231,8 @@
             "lost_against": 3
         },
         "Zap": {
-            "seen": 9,
-            "lost_against": 3
+            "seen": 10,
+            "lost_against": 4
         },
         "Golden Knight": {
             "seen": 4,
@@ -7249,8 +7255,8 @@
             "lost_against": 1
         },
         "The Log": {
-            "seen": 6,
-            "lost_against": 2
+            "seen": 7,
+            "lost_against": 3
         },
         "Ice Spirit": {
             "seen": 5,
@@ -7305,8 +7311,8 @@
             "lost_against": 1
         },
         "Bandit": {
-            "seen": 5,
-            "lost_against": 1
+            "seen": 6,
+            "lost_against": 2
         },
         "Giant Snowball": {
             "seen": 3,
@@ -7345,8 +7351,12 @@
             "lost_against": 0
         },
         "Elixir Golem": {
-            "seen": 1,
-            "lost_against": 0
+            "seen": 2,
+            "lost_against": 1
+        },
+        "Poison": {
+            "seen": 2,
+            "lost_against": 2
         }
     }
 }
