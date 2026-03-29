@@ -2533,9 +2533,9 @@ def generate_html_report(
             records["clan_war_rank"] = {"rank": local_rank, "trophies": co.get("clan_war_trophies", 0)}
 
         clan_overview_html = f"""
-        <div class="card" style="grid-column: span 2;">
-            <h3>🏰 Clan-Steckbrief</h3>
-            <div style="display: grid; grid-template-columns: repeat({'4' if local_rank else '3'}, 1fr); gap: 12px; margin-top: 10px;">
+        <div class="info-box" style="border-left-color: #c084fc; background: rgba(192, 132, 252, 0.08); margin-bottom: 25px; padding: 20px 25px;">
+            <h3 style="margin-top: 0; color: #c084fc; margin-bottom: 15px; font-size: 1.2em;">🏰 Clan-Steckbrief</h3>
+            <div style="display: grid; grid-template-columns: repeat({'4' if local_rank else '3'}, 1fr); gap: 12px;">
                 <div style="text-align: center;">
                     <div style="font-size: 1.6em; font-weight: 800; color: #f97316;">{co.get('clan_war_trophies', 0)}</div>
                     <div style="color: #94a3b8; font-size: 0.85em;">Kriegstrophäen</div>
