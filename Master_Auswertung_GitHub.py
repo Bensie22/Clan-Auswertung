@@ -1240,7 +1240,8 @@ def render_html_template(
             <div class="header-container">
                 <h1 class="header-title"><span onclick="toggleChat()" style="cursor: pointer;" title="Chat-Hilfe ein-/ausblenden">📊</span> Clan-Auswertung: {clan_name} <br>
                 <span class="header-date">{heute_datum}</span>
-                <span class="header-mobile-tip">📱 Tipp: Für die beste Übersicht am Handy bitte quer halten 🔄</span></h1>
+                <span class="header-mobile-tip">📱 Tipp: Für die beste Übersicht am Handy bitte quer halten 🔄</span>
+                <span class="header-mobile-tip" style="margin-top: 2px;">🔄 Diese Seite wird an Kriegstagen automatisch alle 30 Minuten aktualisiert</span></h1>
             </div>
 
             <div class="tab-container">
@@ -1262,6 +1263,7 @@ def render_html_template(
 
                 {radar_html}
                 {mahnwache_html}
+                {clan_overview_html}
                 {clan_ampel_html}
                 {weekly_summary_html}
                 {coach_html}
@@ -1307,8 +1309,6 @@ def render_html_template(
                         <h3>📦 Spenden auffällig</h3>
                         <ul>{top_leecher}</ul>
                     </div>
-
-                    {clan_overview_html}
 
                     <div id="admin-chat-container" style="display: none; width: 100%;">
                         <div class="card messenger">
@@ -2162,16 +2162,19 @@ def generate_html_report(
     if radar_clans:
         radar_hint = f" <span style='font-size:0.8em; opacity:0.8; font-weight:normal;'>(Status: {race_state_de})</span>"
         radar_html = f"<div class='info-box' style='border-left-color: #f43f5e; background: rgba(159, 18, 57, 0.15); margin-bottom: 25px;'><h3 style='margin-top: 0; color: #f43f5e; margin-bottom: 12px; font-size: 1.2em;'>📡 Live Kriegs-Radar{radar_hint}</h3>"
-        radar_html += "<div style='overflow-x: auto;'><table class='radar-table' style='width: 100%; border-collapse: collapse; font-size: 0.95em;'>"
-        radar_html += "<tr style='border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; font-weight: 600; text-align: left;'><td style='padding-bottom: 8px; border: none; text-align: left;'>Clan</td><td style='padding-bottom: 8px; border: none; text-align: center;'>⛵ Boot</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🥇 Medaille</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🏆 Trophäe</td></tr>"
+        radar_html += "<div style='overflow-x: auto;'><table class='radar-table' style='width: 100%; border-collapse: collapse; font-size: 0.95em; table-layout: fixed;'>"
+        radar_html += "<colgroup><col style='width:30%'><col style='width:14%'><col style='width:18%'><col style='width:18%'><col style='width:20%'></colgroup>"
+        radar_html += "<tr style='border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; font-weight: 600; text-align: left;'><td style='padding-bottom: 8px; border: none; text-align: left;'>Clan</td><td style='padding-bottom: 8px; border: none; text-align: center;'>⛵ Boot</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🥇 Medaille</td><td style='padding-bottom: 8px; border: none; text-align: center;'>⚡ Effizienz</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🏆 Trophäe</td></tr>"
 
         for idx, c in enumerate(radar_clans):
             bold_name = f"<b style='color:#fff;'>{c['name']} (WIR)</b>" if c["is_us"] else c["name"]
             bg_color = "rgba(255,255,255,0.05)" if idx % 2 == 0 else "transparent"
+            effizienz = round(c['medals'] / c['decks_used']) if c['decks_used'] > 0 else 0
             radar_html += f"<tr style='background: {bg_color}; border-bottom: 1px solid rgba(255,255,255,0.02);'>"
             radar_html += f"<td style='padding: 10px 5px;'>{bold_name}<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 {c['decks_used']} / {c.get('max_decks', 200)} Decks</span></td>"
             radar_html += f"<td style='text-align: center; font-weight: bold; color: #f8fafc;'>{c['boat_attacks']}</td>"
             radar_html += f"<td style='text-align: center; font-weight: bold; color: #fbbf24;'>{c['medals']}</td>"
+            radar_html += f"<td style='text-align: center; font-weight: bold; color: #22d3ee;'>{effizienz}</td>"
             radar_html += f"<td style='text-align: center; font-weight: bold; color: #c084fc;'>{c['trophies']}</td>"
             radar_html += "</tr>"
         radar_html += "</table></div></div>"
