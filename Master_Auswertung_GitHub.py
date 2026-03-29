@@ -492,7 +492,7 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
 # === 2.3 Clan-Gesamtdaten abrufen ===
 
 def fetch_clan_overview() -> dict:
-    """Ruft Clan-Profil ab: Kriegstrophäen, Spenden/Woche, Mitgliederanzahl."""
+    """Ruft Clan-Profil ab: Kriegstrophäen, Spenden/Woche, Mitgliederanzahl, Liga, lokales Ranking."""
     if not API_TOKEN:
         return {}
 
@@ -504,6 +504,21 @@ def fetch_clan_overview() -> dict:
             return {}
 
         data = resp.json()
+        war_league_name = data.get("warLeague", {}).get("name", "")
+
+        # Lokales Ranking (Deutschland = 57000094)
+        local_rank = None
+        try:
+            our_tag = CLAN_TAG.replace("%23", "#")
+            rank_resp = requests.get(f"{BASE_URL}/locations/57000094/rankings/clanwars", headers=headers, timeout=30)
+            if rank_resp.status_code == 200:
+                for item in rank_resp.json().get("items", []):
+                    if item.get("tag") == our_tag:
+                        local_rank = item.get("rank")
+                        break
+        except Exception as e:
+            print(f"⚠️ Lokales Ranking konnte nicht abgerufen werden: {e}")
+
         return {
             "clan_war_trophies": data.get("clanWarTrophies", 0),
             "donations_per_week": data.get("donationsPerWeek", 0),
@@ -511,6 +526,8 @@ def fetch_clan_overview() -> dict:
             "required_trophies": data.get("requiredTrophies", 0),
             "description": data.get("description", ""),
             "clan_score": data.get("clanScore", 0),
+            "war_league_name": war_league_name,
+            "local_rank": local_rank,
         }
     except Exception as e:
         print(f"⚠️ Fehler beim Abruf des Clan-Profils: {e}")
@@ -1455,18 +1472,64 @@ def render_html_template(
                     </ul>
                 </div>
 
-                <button class="accordion-btn">⚔️ Aktive Kriege (Deine Clan-Treue)</button>
+                <button class="accordion-btn">🔧 Tools</button>
                 <div class="accordion-content">
-                    <p>Zeigt, in wie vielen der letzten 10 Clankriege du wirklich aktiv warst, also mindestens ein Deck gespielt hast.</p>
-                    <div style="overflow-x:auto;">
-                        <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler M</td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'>⭐ stark</span></td><td>Vize</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>200</td><td>10/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>100</span></td></tr>
-                            <tr><td class='name-col'>Spieler N <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>neu dabei</span></td><td>Mitglied</td><td><b>100.0%</b></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#cbd5e1;'>200</td><td>2/10</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>50</span></td></tr>
-                        </table>
-                    </div>
                     <ul>
-                        <li><b>Langzeit-Aktivität:</b> Zeigt, wie treu du dem Clan über die letzten Wochen zur Seite standest.</li>
+                        <li><b><a href="https://deckai.app/" target="_blank" style="color: #38bdf8;">DeckAI</a></b> — Analyse- und Deckbau-Tool für Clash Royale. Hilft beim Bewerten von Decks, zeigt Matchups, schlägt Kartenwechsel vor, erstelle einen optimierten Satz Clan-War-Decks mit deinen besten Karten und Vorlieben (Beatdown, Cycle, Control, Bridge Spam, Siege, Bait) und gibt Hinweise zu sinnvollen Upgrades. Nützlich für Spieler, die ihre Decks verbessern und gezielter für Ladder, Duelle und Clan-Krieg bauen wollen.</li>
+                        <li><b><a href="https://www.noff.gg/clash-royale/" target="_blank" style="color: #38bdf8;">NOFF</a></b> — In der Art wie DeckAI, nur in Englisch.</li>
+                    </ul>
+                </div>
+
+                <button class="accordion-btn">⚔️ Clash Royale Angriffsarten</button>
+                <div class="accordion-content">
+                    <p>Diese Decks repräsentieren die Kerntaktiken der jeweiligen Angriffsarten. Je nach aktueller „Meta" können einzelne Karten variieren, aber das strategische Prinzip bleibt gleich.</p>
+
+                    <h4 style="color: #f97316; margin-top: 18px;">1. Beatdown (Der Dampfwalzen-Angriff)</h4>
+                    <p>Das Ziel ist ein massiver Angriff mit einem Tank an der Spitze, der kaum aufzuhalten ist.</p>
+                    <ul>
+                        <li><b>Vorgehensweise:</b> Ein Tank mit hohen Trefferpunkten wird hinten platziert, um Elixier für Unterstützungstruppen zu sammeln.</li>
+                        <li><b>Beispiel-Deck (Golem Night Witch):</b> Golem, Nachthexe, Baby-Drache, Blitzeinschlag, Der Stamm (Log), Tornado, Holzfäller, Megaminion.
+                        <br><a href="https://royaleapi.com/decks/stats/golem,night-witch,baby-dragon,lightning,the-log,tornado,lumberjack,mega-minion" target="_blank" style="color: #38bdf8;">🔗 Auf RoyaleAPI öffnen</a></li>
+                    </ul>
+
+                    <h4 style="color: #f97316; margin-top: 18px;">2. Cycle / Chip Damage (Die Nadelstiche)</h4>
+                    <p>Man versucht, den gegnerischen Turm durch viele schnelle, kostengünstige Angriffe langsam zu zermürben.</p>
+                    <ul>
+                        <li><b>Vorgehensweise:</b> Schnelle Kartenrotation, um die eigene Win-Condition öfter auszuspielen, als der Gegner kontern kann.</li>
+                        <li><b>Beispiel-Deck (2.6 Hog Cycle):</b> Hog Rider, Eisgeist, Skelette, Eis-Golem, Kanone, Feuerball, Der Stamm (Log), Musketierin.
+                        <br><a href="https://royaleapi.com/decks/stats/hog-rider,ice-spirit,skeletons,ice-golem,cannon,fireball,the-log,musketeer" target="_blank" style="color: #38bdf8;">🔗 Auf RoyaleAPI öffnen</a></li>
+                    </ul>
+
+                    <h4 style="color: #f97316; margin-top: 18px;">3. Control / Counter-Push (Aus der Defensive glänzen)</h4>
+                    <p>Ein reaktiver Stil, bei dem die überlebenden Verteidigungstruppen sofort zum Gegenangriff genutzt werden.</p>
+                    <ul>
+                        <li><b>Vorgehensweise:</b> Den Gegner effizient abwehren und den daraus resultierenden Elixier-Vorteil bestrafen.</li>
+                        <li><b>Beispiel-Deck (P.E.K.K.A. Bridge Spam):</b> P.E.K.K.A., Kampfholzfäller, Königsgeist, Magieschütze, Kampframme, Gift, Zap, Elektromagier.
+                        <br><a href="https://royaleapi.com/decks/stats/pekka,lumberjack,royal-ghost,magic-archer,battle-ram,poison,zap,electro-wizard" target="_blank" style="color: #38bdf8;">🔗 Auf RoyaleAPI öffnen</a></li>
+                    </ul>
+
+                    <h4 style="color: #f97316; margin-top: 18px;">4. Bridge Spam (Tempo-Druck)</h4>
+                    <p>Truppen werden direkt an der Brücke platziert, um den Gegner zu sofortigen und oft hektischen Reaktionen zu zwingen.</p>
+                    <ul>
+                        <li><b>Vorgehensweise:</b> Karten mit hoher Geschwindigkeit nutzen, sobald der Gegner wenig Elixier hat oder eine teure Karte hinten spielt.</li>
+                        <li><b>Beispiel-Deck (Ram Rider Spam):</b> Ram Rider, Dunkler Prinz, Banditin, Infernodrache, Elektro-Geist, Barbarenfass, Riesenschneeball, Blitz.
+                        <br><a href="https://royaleapi.com/decks/stats/ram-rider,dark-prince,bandit,inferno-dragon,electro-spirit,barbarian-barrel,giant-snowball,lightning" target="_blank" style="color: #38bdf8;">🔗 Auf RoyaleAPI öffnen</a></li>
+                    </ul>
+
+                    <h4 style="color: #f97316; margin-top: 18px;">5. Siege (Belagerung)</h4>
+                    <p>Angriffe erfolgen von der eigenen Spielfeldhälfte aus, ohne die Brücke zu überqueren.</p>
+                    <ul>
+                        <li><b>Vorgehensweise:</b> Gebäude wie den X-Bogen an der Brücke platzieren und diese mit allen Mitteln verteidigen.</li>
+                        <li><b>Beispiel-Deck (X-Bow 3.0):</b> X-Bogen, Tesla, Ritter, Bogenschützen, Eisgeist, Skelette, Feuerball, Der Stamm (Log).
+                        <br><a href="https://royaleapi.com/decks/stats/x-bow,tesla,knight,archers,ice-spirit,skeletons,fireball,the-log" target="_blank" style="color: #38bdf8;">🔗 Auf RoyaleAPI öffnen</a></li>
+                    </ul>
+
+                    <h4 style="color: #f97316; margin-top: 18px;">6. Bait (Die Köder-Taktik)</h4>
+                    <p>Den Gegner dazu verleiten, seine Zauber für weniger wichtige Karten zu verschwenden, um dann mit der eigentlichen Gefahr zuzuschlagen.</p>
+                    <ul>
+                        <li><b>Vorgehensweise:</b> Karten wie die Prinzessin nutzen, um „Log" oder „Arrows" zu erzwingen, und dann das Koboldfass werfen.</li>
+                        <li><b>Beispiel-Deck (Classic Log Bait):</b> Koboldfass, Prinzessin, Koboldgang, Infernoturm, Ritter, Eisgeist, Rakete, Der Stamm (Log).
+                        <br><a href="https://royaleapi.com/decks/stats/goblin-barrel,princess,goblin-gang,inferno-tower,knight,ice-spirit,rocket,the-log" target="_blank" style="color: #38bdf8;">🔗 Auf RoyaleAPI öffnen</a></li>
                     </ul>
                 </div>
 
@@ -2122,6 +2185,7 @@ def generate_html_report(
 
     if ist_kampftag:
         aktive_namen_list = df_active["player_name"].tolist()
+        raw_mahnwache.sort(key=lambda x: x["offen"], reverse=True)
         gefilterte_mahnwache = []
         mahnwache_colors = MAHNWACHE_COLORS
         mahnwache_idx = 0
@@ -2427,10 +2491,47 @@ def generate_html_report(
     clan_overview_html = ""
     if clan_overview:
         co = clan_overview
+
+        # Ranking-Trend berechnen
+        local_rank = co.get("local_rank")
+        prev_rank_data = records.get("clan_war_rank", {})
+        prev_rank = prev_rank_data.get("rank")
+        rank_html = ""
+        if local_rank:
+            rank_trend = ""
+            if prev_rank and prev_rank > 0:
+                rank_delta = prev_rank - local_rank  # positiv = aufgestiegen
+                if rank_delta > 0:
+                    rank_trend = f"<div style='color: #10b981; font-size: 0.8em;'>↑ +{rank_delta} Plätze</div>"
+                elif rank_delta < 0:
+                    rank_trend = f"<div style='color: #ef4444; font-size: 0.8em;'>↓ {rank_delta} Plätze</div>"
+                else:
+                    rank_trend = "<div style='color: #94a3b8; font-size: 0.8em;'>→ unverändert</div>"
+            rank_html = f"""
+                <div style="text-align: center;">
+                    <div style="font-size: 1.6em; font-weight: 800; color: #c084fc;">#{local_rank}</div>
+                    <div style="color: #94a3b8; font-size: 0.85em;">🏅 Rang (DE)</div>
+                    {rank_trend}
+                </div>"""
+
+        # Liga-Anzeige
+        league_name = co.get("war_league_name", "")
+        league_html = ""
+        if league_name:
+            league_html = f"""
+                <div style="text-align: center;">
+                    <div style="font-size: 1.2em; font-weight: 700; color: #fbbf24;">{league_name}</div>
+                    <div style="color: #94a3b8; font-size: 0.85em;">Kriegsliga</div>
+                </div>"""
+
+        # Ranking beim Weekly Run speichern
+        if is_weekly_run and local_rank:
+            records["clan_war_rank"] = {"rank": local_rank, "trophies": co.get("clan_war_trophies", 0)}
+
         clan_overview_html = f"""
         <div class="card" style="grid-column: span 2;">
             <h3>🏰 Clan-Steckbrief</h3>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 10px;">
+            <div style="display: grid; grid-template-columns: repeat({'4' if local_rank else '3'}, 1fr); gap: 12px; margin-top: 10px;">
                 <div style="text-align: center;">
                     <div style="font-size: 1.6em; font-weight: 800; color: #f97316;">{co.get('clan_war_trophies', 0)}</div>
                     <div style="color: #94a3b8; font-size: 0.85em;">Kriegstrophäen</div>
@@ -2443,8 +2544,9 @@ def generate_html_report(
                     <div style="font-size: 1.6em; font-weight: 800; color: #10b981;">{co.get('member_count', 0)}/50</div>
                     <div style="color: #94a3b8; font-size: 0.85em;">Mitglieder</div>
                 </div>
+                {rank_html}
             </div>
-            <div style="margin-top: 12px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+            <div style="margin-top: 12px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
                 <div style="text-align: center;">
                     <div style="font-size: 1.2em; font-weight: 700; color: #e2e8f0;">{co.get('clan_score', 0)}</div>
                     <div style="color: #94a3b8; font-size: 0.85em;">Clan-Score</div>
@@ -2453,6 +2555,7 @@ def generate_html_report(
                     <div style="font-size: 1.2em; font-weight: 700; color: #e2e8f0;">{co.get('required_trophies', 0)} 🏆</div>
                     <div style="color: #94a3b8; font-size: 0.85em;">Min. Trophäen</div>
                 </div>
+                {league_html}
             </div>
         </div>
         """
@@ -2748,7 +2851,18 @@ def main():
                 boat_attacks = sum(p.get("boatAttacks", 0) for p in c.get("participants", []))
                 decks_used = sum(p.get("decksUsedToday", 0) for p in c.get("participants", []))
 
-                participants_count = len(c.get("participants", []))
+                if is_us:
+                    member_count = len(current_members)
+                else:
+                    try:
+                        clan_tag_encoded = c.get("tag", "").replace("#", "%23")
+                        clan_resp = requests.get(f"{BASE_URL}/clans/{clan_tag_encoded}", headers=headers, timeout=15)
+                        if clan_resp.status_code == 200:
+                            member_count = clan_resp.json().get("members", 50)
+                        else:
+                            member_count = min(len(c.get("participants", [])), 50)
+                    except Exception:
+                        member_count = min(len(c.get("participants", [])), 50)
                 radar_clans.append({
                     "name": c.get("name", ""),
                     "is_us": is_us,
@@ -2756,7 +2870,7 @@ def main():
                     "medals": medals,
                     "boat_attacks": boat_attacks,
                     "decks_used": decks_used,
-                    "max_decks": participants_count * 4
+                    "max_decks": member_count * 4
                 })
 
                 if is_us:
