@@ -7,8 +7,8 @@
             "#2QRVR9L8": "20260330T061240.000Z",
             "#ULYJ2CQP": "20260329T070349.000Z",
             "#UJ2P9UYUV": "20260329T200330.000Z",
-            "#P0JYR9YUY": "20260330T075511.000Z",
-            "#R22R8GYG": "20260329T184521.000Z",
+            "#P0JYR9YUY": "20260330T080636.000Z",
+            "#R22R8GYG": "20260330T080430.000Z",
             "#YQ82VR9JQ": "20260329T194023.000Z",
             "#G02LC9C8": "20260329T201745.000Z",
             "#2U8288CVY": "20260329T205227.000Z",
@@ -16,7 +16,7 @@
             "#Y8PVULPU0": "20260329T174428.000Z",
             "#9CG2CRRJG": "20260330T045000.000Z",
             "#PPR2QQC0U": "20260330T055159.000Z",
-            "#QULCQGGG": "20260330T080224.000Z",
+            "#QULCQGGG": "20260330T080541.000Z",
             "#JRGC9RRQG": "20260329T232010.000Z",
             "#QVQGCV8Y9": "20260329T201900.000Z",
             "#Q8L0RJ8Y8": "20260329T145958.000Z",
@@ -4388,7 +4388,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "bequemo"
             ],
@@ -4396,6 +4396,12 @@
                 "R22R8GYG"
             ],
             "recent_matches": [
+                {
+                    "time": "20260330T080430.000Z",
+                    "result": "loss",
+                    "player": "bequemo",
+                    "tag": "R22R8GYG"
+                },
                 {
                     "time": "20260327T150210.000Z",
                     "result": "win",
@@ -6915,8 +6921,8 @@
             "lost_against": 6
         },
         "Mini P.E.K.K.A": {
-            "seen": 14,
-            "lost_against": 7
+            "seen": 15,
+            "lost_against": 8
         },
         "Archers": {
             "seen": 8,
@@ -6927,8 +6933,8 @@
             "lost_against": 1
         },
         "Arrows": {
-            "seen": 18,
-            "lost_against": 6
+            "seen": 19,
+            "lost_against": 7
         },
         "Knight": {
             "seen": 22,
@@ -6947,8 +6953,8 @@
             "lost_against": 5
         },
         "Minions": {
-            "seen": 6,
-            "lost_against": 0
+            "seen": 7,
+            "lost_against": 1
         },
         "Flying Machine": {
             "seen": 5,
@@ -6987,8 +6993,8 @@
             "lost_against": 1
         },
         "Witch": {
-            "seen": 13,
-            "lost_against": 5
+            "seen": 14,
+            "lost_against": 6
         },
         "Bomb Tower": {
             "seen": 8,
@@ -7047,8 +7053,8 @@
             "lost_against": 2
         },
         "Bowler": {
-            "seen": 4,
-            "lost_against": 2
+            "seen": 5,
+            "lost_against": 3
         },
         "Hunter": {
             "seen": 8,
@@ -7099,16 +7105,16 @@
             "lost_against": 6
         },
         "Giant Snowball": {
-            "seen": 8,
-            "lost_against": 2
+            "seen": 9,
+            "lost_against": 3
         },
         "Zappies": {
             "seen": 2,
             "lost_against": 1
         },
         "Giant": {
-            "seen": 10,
-            "lost_against": 4
+            "seen": 11,
+            "lost_against": 5
         },
         "Elite Barbarians": {
             "seen": 10,
@@ -7179,8 +7185,8 @@
             "lost_against": 1
         },
         "Graveyard": {
-            "seen": 2,
-            "lost_against": 1
+            "seen": 3,
+            "lost_against": 2
         },
         "Night Witch": {
             "seen": 1,
