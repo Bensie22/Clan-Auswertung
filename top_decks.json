@@ -4,7 +4,7 @@
             "#22Q920RLR": "20260402T114755.000Z",
             "#L8PV090J": "20260401T200112.000Z",
             "#22CQPRR0J": "20260331T224338.000Z",
-            "#2QRVR9L8": "20260402T092322.000Z",
+            "#2QRVR9L8": "20260402T135253.000Z",
             "#ULYJ2CQP": "20260402T131140.000Z",
             "#UJ2P9UYUV": "20260402T103216.000Z",
             "#P0JYR9YUY": "20260402T113850.000Z",
@@ -30,9 +30,9 @@
             "#2PUQYJC02": "20260401T200236.000Z",
             "#YQVQYUYRV": "20260401T144336.000Z",
             "#2V800VCQ0": "20260402T115841.000Z",
-            "#2UQUPYQCJ": "20260402T110211.000Z",
+            "#2UQUPYQCJ": "20260402T131856.000Z",
             "#JUUR8UGL8": "20260401T203005.000Z",
-            "#2U09UULRR": "20260402T050923.000Z",
+            "#2U09UULRR": "20260402T142419.000Z",
             "#YJ0LUU0JJ": "20260402T130340.000Z",
             "#8QYYL8LCQ": "20260402T021310.000Z",
             "#8P0J8P0L": "20260330T162640.000Z",
@@ -43,7 +43,7 @@
             "#RLJPJL8C2": "20260402T101132.000Z",
             "#RG02LG88": "20260329T133159.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20260401T132306.000Z",
+            "#UUPCULU9V": "20260402T142853.000Z",
             "#202VP2QL9P": "20260402T044849.000Z",
             "#LVUGLUCP9": "20260329T200020.000Z",
             "#20QGJVPG8Q": "20260402T113330.000Z",
@@ -1970,7 +1970,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "OmniOni"
             ],
@@ -1978,6 +1978,12 @@
                 "UUPCULU9V"
             ],
             "recent_matches": [
+                {
+                    "time": "20260402T142853.000Z",
+                    "result": "loss",
+                    "player": "OmniOni",
+                    "tag": "UUPCULU9V"
+                },
                 {
                     "time": "20260322T164458.000Z",
                     "result": "win",
@@ -4219,7 +4225,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
                 }
             ],
-            "wins": 5,
+            "wins": 6,
             "losses": 0,
             "players": [
                 "OmniOni"
@@ -4228,6 +4234,12 @@
                 "UUPCULU9V"
             ],
             "recent_matches": [
+                {
+                    "time": "20260402T141834.000Z",
+                    "result": "win",
+                    "player": "OmniOni",
+                    "tag": "UUPCULU9V"
+                },
                 {
                     "time": "20260401T131139.000Z",
                     "result": "win",
@@ -4670,7 +4682,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Dolphin"
             ],
@@ -4678,6 +4690,12 @@
                 "2U09UULRR"
             ],
             "recent_matches": [
+                {
+                    "time": "20260402T142419.000Z",
+                    "result": "loss",
+                    "player": "Dolphin",
+                    "tag": "2U09UULRR"
+                },
                 {
                     "time": "20260329T142658.000Z",
                     "result": "win",
@@ -6591,8 +6609,8 @@
     },
     "_opponent_decks": {
         "Firecracker": {
-            "seen": 34,
-            "lost_against": 18
+            "seen": 35,
+            "lost_against": 19
         },
         "Inferno Dragon": {
             "seen": 14,
@@ -6603,12 +6621,12 @@
             "lost_against": 13
         },
         "Goblin Barrel": {
-            "seen": 30,
+            "seen": 31,
             "lost_against": 14
         },
         "Electro Wizard": {
-            "seen": 24,
-            "lost_against": 11
+            "seen": 25,
+            "lost_against": 12
         },
         "Miner": {
             "seen": 16,
@@ -6655,16 +6673,16 @@
             "lost_against": 8
         },
         "Tesla": {
-            "seen": 28,
-            "lost_against": 13
+            "seen": 29,
+            "lost_against": 14
         },
         "Executioner": {
             "seen": 27,
             "lost_against": 17
         },
         "Musketeer": {
-            "seen": 26,
-            "lost_against": 16
+            "seen": 28,
+            "lost_against": 17
         },
         "Mega Minion": {
             "seen": 9,
@@ -6703,8 +6721,8 @@
             "lost_against": 8
         },
         "Fireball": {
-            "seen": 45,
-            "lost_against": 24
+            "seen": 46,
+            "lost_against": 25
         },
         "Minion Horde": {
             "seen": 12,
@@ -6719,8 +6737,8 @@
             "lost_against": 7
         },
         "Tornado": {
-            "seen": 8,
-            "lost_against": 6
+            "seen": 9,
+            "lost_against": 7
         },
         "Guards": {
             "seen": 10,
@@ -6731,8 +6749,8 @@
             "lost_against": 19
         },
         "Electro Dragon": {
-            "seen": 20,
-            "lost_against": 9
+            "seen": 21,
+            "lost_against": 10
         },
         "Bomber": {
             "seen": 22,
@@ -6743,15 +6761,15 @@
             "lost_against": 3
         },
         "Cannon": {
-            "seen": 21,
+            "seen": 22,
             "lost_against": 10
         },
         "Mini P.E.K.K.A": {
-            "seen": 29,
-            "lost_against": 18
+            "seen": 31,
+            "lost_against": 19
         },
         "Archers": {
-            "seen": 23,
+            "seen": 24,
             "lost_against": 14
         },
         "Balloon": {
@@ -6759,7 +6777,7 @@
             "lost_against": 6
         },
         "Arrows": {
-            "seen": 39,
+            "seen": 40,
             "lost_against": 21
         },
         "Knight": {
@@ -6803,7 +6821,7 @@
             "lost_against": 8
         },
         "Valkyrie": {
-            "seen": 35,
+            "seen": 36,
             "lost_against": 17
         },
         "Electro Giant": {
@@ -6827,8 +6845,8 @@
             "lost_against": 5
         },
         "Magic Archer": {
-            "seen": 28,
-            "lost_against": 14
+            "seen": 29,
+            "lost_against": 15
         },
         "Spear Goblins": {
             "seen": 7,
@@ -6903,8 +6921,8 @@
             "lost_against": 2
         },
         "Princess": {
-            "seen": 21,
-            "lost_against": 10
+            "seen": 23,
+            "lost_against": 11
         },
         "Royal Recruits": {
             "seen": 9,
@@ -6959,20 +6977,20 @@
             "lost_against": 4
         },
         "Goblin Hut": {
-            "seen": 4,
-            "lost_against": 1
+            "seen": 5,
+            "lost_against": 2
         },
         "Lava Hound": {
             "seen": 2,
             "lost_against": 1
         },
         "Elixir Golem": {
-            "seen": 13,
-            "lost_against": 8
+            "seen": 14,
+            "lost_against": 9
         },
         "Poison": {
-            "seen": 13,
-            "lost_against": 7
+            "seen": 14,
+            "lost_against": 8
         },
         "Cannon Cart": {
             "seen": 2,
@@ -7007,16 +7025,16 @@
             "lost_against": 3
         },
         "Goblin Giant": {
-            "seen": 2,
-            "lost_against": 2
+            "seen": 3,
+            "lost_against": 3
         },
         "Graveyard": {
             "seen": 3,
             "lost_against": 2
         },
         "Night Witch": {
-            "seen": 6,
-            "lost_against": 3
+            "seen": 7,
+            "lost_against": 4
         },
         "Monk": {
             "seen": 5,
@@ -7027,8 +7045,8 @@
             "lost_against": 3
         },
         "Battle Healer": {
-            "seen": 5,
-            "lost_against": 2
+            "seen": 6,
+            "lost_against": 3
         },
         "Skeleton Dragons": {
             "seen": 4,
