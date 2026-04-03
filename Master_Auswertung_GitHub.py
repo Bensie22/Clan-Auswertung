@@ -2181,7 +2181,7 @@ def generate_html_report(
         radar_html += "</table></div></div>"
 
     mahnwache_html = ""
-    ist_kampftag = is_clan_war_period()
+    ist_kampftag = race_state_de in ("Clankrieg", "Colosseum")
 
     total_active_players = len(aktive_spieler)
     total_decks_today = total_active_players * 4
@@ -2846,6 +2846,15 @@ def main():
         race_resp = requests.get(f"{BASE_URL}/clans/{CLAN_TAG}/currentriverrace", headers=headers, timeout=30)
         if race_resp.status_code == 200:
             data = race_resp.json()
+
+            # Echten Status aus API lesen statt Wochentag-Schätzung
+            period_type = data.get("periodType", "")
+            if period_type == "colosseum":
+                race_state_de = "Colosseum"
+            elif period_type == "warDay":
+                race_state_de = "Clankrieg"
+            else:
+                race_state_de = "Trainingstag"
 
             clans_in_race = data.get("clans", [])
             for c in clans_in_race:
