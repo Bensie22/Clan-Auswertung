@@ -1981,6 +1981,9 @@ def generate_html_report(
             "challenge_max_wins": profile.get("challenge_max_wins", 0),
             "war_day_wins": profile.get("war_day_wins", 0),
             "favourite_card": profile.get("favourite_card", ""),
+            "tag": player_tag,
+            "total_decks": decks_total,
+            "wars_in_window": wars_in_history_window,
         })
 
         if is_weekly_run:
@@ -1999,6 +2002,25 @@ def generate_html_report(
                         "trophies": aktueller_trophy
                     }])
                 ], ignore_index=True)
+
+    player_stats_path = BASE_DIR / "player_stats.json"
+    with open(player_stats_path, "w", encoding="utf-8") as f:
+        json.dump([
+            {
+                "tag": p["tag"],
+                "name": p["name"],
+                "role": p["raw_role"],
+                "score": p["score"],
+                "trophies": p["trophies"],
+                "fame_per_deck": p["fame_per_deck"],
+                "participation_count": p["teilnahme_int"],
+                "total_decks": p["total_decks"],
+                "wars_in_window": p["wars_in_window"],
+                "donations": p["donations"],
+                "donations_received": p["donations_received"],
+            }
+            for p in player_stats
+        ], f, ensure_ascii=False, indent=2)
 
     aktive_spieler = [p for p in player_stats if not p["is_urlaub"]]
     clan_avg = round(sum([p["score"] for p in aktive_spieler]) / len(aktive_spieler), 2) if aktive_spieler else 0
