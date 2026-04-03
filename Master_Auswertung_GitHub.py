@@ -2862,6 +2862,9 @@ def main():
 
                 trophies = c.get("clanScore", 0)
                 medals = c.get("periodPoints", 0)
+                if medals == 0:
+                    # Fallback für Colosseum: Summe der Teilnehmer-Fame
+                    medals = sum(p.get("fame", 0) for p in c.get("participants", []))
                 boat_attacks = sum(p.get("boatAttacks", 0) for p in c.get("participants", []))
                 decks_used = sum(p.get("decksUsedToday", 0) for p in c.get("participants", []))
 
