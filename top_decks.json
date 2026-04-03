@@ -21,12 +21,12 @@
             "#QVQGCV8Y9": "20260402T191144.000Z",
             "#Q8L0RJ8Y8": "20260402T064242.000Z",
             "#P2GUCG2Y": "20260402T183410.000Z",
-            "#2CPRGY8G": "20260402T211551.000Z",
+            "#2CPRGY8G": "20260403T015312.000Z",
             "#LLQQJCLC": "20260402T194521.000Z",
             "#2VJR80RL": "20260401T200844.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260402T225609.000Z",
-            "#2CJYG9UG": "20260329T115835.000Z",
+            "#2CJYG9UG": "20260403T000133.000Z",
             "#2PUQYJC02": "20260402T193022.000Z",
             "#YQVQYUYRV": "20260402T213031.000Z",
             "#2V800VCQ0": "20260402T165037.000Z",
@@ -817,7 +817,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/NA6W8S1JBYBlOPwD3dNvJLFvVDKq-UuBs_J3i3ewLFI.png"
                 }
             ],
-            "wins": 2,
+            "wins": 3,
             "losses": 0,
             "players": [
                 "Jackhammer"
@@ -826,6 +826,12 @@
                 "2CJYG9UG"
             ],
             "recent_matches": [
+                {
+                    "time": "20260403T000133.000Z",
+                    "result": "win",
+                    "player": "Jackhammer",
+                    "tag": "2CJYG9UG"
+                },
                 {
                     "time": "20260327T173842.000Z",
                     "result": "win",
@@ -4315,7 +4321,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "Jackhammer"
@@ -4324,6 +4330,12 @@
                 "2CJYG9UG"
             ],
             "recent_matches": [
+                {
+                    "time": "20260402T235805.000Z",
+                    "result": "win",
+                    "player": "Jackhammer",
+                    "tag": "2CJYG9UG"
+                },
                 {
                     "time": "20260329T115835.000Z",
                     "result": "win",
@@ -6685,7 +6697,7 @@
             "lost_against": 22
         },
         "Mega Minion": {
-            "seen": 9,
+            "seen": 10,
             "lost_against": 3
         },
         "Wizard": {
@@ -6725,7 +6737,7 @@
             "lost_against": 32
         },
         "Minion Horde": {
-            "seen": 14,
+            "seen": 15,
             "lost_against": 9
         },
         "Mirror": {
@@ -6741,11 +6753,11 @@
             "lost_against": 7
         },
         "Guards": {
-            "seen": 11,
+            "seen": 12,
             "lost_against": 4
         },
         "Skeleton Army": {
-            "seen": 30,
+            "seen": 32,
             "lost_against": 19
         },
         "Electro Dragon": {
@@ -6765,7 +6777,7 @@
             "lost_against": 12
         },
         "Mini P.E.K.K.A": {
-            "seen": 37,
+            "seen": 39,
             "lost_against": 22
         },
         "Archers": {
@@ -6821,7 +6833,7 @@
             "lost_against": 9
         },
         "Valkyrie": {
-            "seen": 40,
+            "seen": 41,
             "lost_against": 19
         },
         "Electro Giant": {
@@ -6837,7 +6849,7 @@
             "lost_against": 4
         },
         "Witch": {
-            "seen": 31,
+            "seen": 33,
             "lost_against": 16
         },
         "Bomb Tower": {
@@ -6897,7 +6909,7 @@
             "lost_against": 10
         },
         "Bowler": {
-            "seen": 12,
+            "seen": 13,
             "lost_against": 7
         },
         "Hunter": {
@@ -6929,7 +6941,7 @@
             "lost_against": 5
         },
         "Prince": {
-            "seen": 18,
+            "seen": 19,
             "lost_against": 9
         },
         "Ice Wizard": {
@@ -6949,7 +6961,7 @@
             "lost_against": 13
         },
         "Giant Snowball": {
-            "seen": 23,
+            "seen": 24,
             "lost_against": 8
         },
         "Zappies": {
@@ -6957,7 +6969,7 @@
             "lost_against": 4
         },
         "Giant": {
-            "seen": 14,
+            "seen": 15,
             "lost_against": 6
         },
         "Elite Barbarians": {
@@ -6985,7 +6997,7 @@
             "lost_against": 1
         },
         "Elixir Golem": {
-            "seen": 17,
+            "seen": 18,
             "lost_against": 11
         },
         "Poison": {
@@ -7073,6 +7085,10 @@
             "lost_against": 1
         },
         "Void": {
+            "seen": 1,
+            "lost_against": 0
+        },
+        "Barbarian Hut": {
             "seen": 1,
             "lost_against": 0
         }
