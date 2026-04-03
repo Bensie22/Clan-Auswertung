@@ -1,15 +1,11 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.openapi.utils import get_openapi
 from pathlib import Path
+from typing import Any, Dict, List, Optional
+import csv
 import json
-import pandas as pd
-from typing import Any, Dict, List
 
-app = FastAPI(
-    title="Clash Royale Clan Management API",
-    version="1.0.0",
-    description="API für Clanführung, Warnungen, Beförderungen und Spielerübersichten."
-)
+app = FastAPI(title="Clash Royale Clan Management API", version="2.0.0")
 
 
 def custom_openapi():
@@ -17,17 +13,11 @@ def custom_openapi():
         return app.openapi_schema
     openapi_schema = get_openapi(
         title="Clash Royale Clan Management API",
-        version="1.0.0",
-        description=(
-            "Diese API liefert aktuelle Clanführungsdaten für Clash Royale. "
-            "Sie stellt Health-Check, Clan-Zusammenfassung, Verwarnungskandidaten, "
-            "Beförderungskandidaten, Strike-Status und Spielerberichte bereit."
-        ),
+        version="2.0.0",
+        description="JSON-first API für Clanführung, Warnungen, Beförderungen und Spielerübersichten.",
         routes=app.routes,
     )
-    openapi_schema["servers"] = [
-        {"url": "https://clan-gpt-api.onrender.com"}
-    ]
+    openapi_schema["servers"] = [{"url": "https://clan-gpt-api.onrender.com"}]
     app.openapi_schema = openapi_schema
     return app.openapi_schema
 
@@ -37,13 +27,15 @@ app.openapi = custom_openapi
 BASE_DIR = Path(__file__).parent.resolve()
 STRIKES_PATH = BASE_DIR / "strikes.json"
 RECORDS_PATH = BASE_DIR / "records.json"
+SCORE_HISTORY_PATH = BASE_DIR / "score_history.csv"
+MEMBER_MEMORY_PATH = BASE_DIR / "member_memory.json"
+KICKED_PLAYERS_PATH = BASE_DIR / "kicked_players.json"
+DONATIONS_MEMORY_PATH = BASE_DIR / "donations_memory.json"
 
 STRIKE_THRESHOLD = 50
-DROPPER_THRESHOLD = 130
-MIN_PARTICIPATION = 3
 PROMOTION_SCORE_MIN = 85
 PROMOTION_DONATIONS_MIN = 50
-
+NAME_STRIKE_LOOKUP = {"amp", "gang", "bequemo"}
 
 
 def load_json(path: Path, default: Any):
@@ -56,235 +48,264 @@ def load_json(path: Path, default: Any):
         return default
 
 
-
-def get_latest_csv() -> Path:
-    uploads = BASE_DIR / "uploads"
-    csvs = sorted(uploads.glob("*.csv"), key=lambda p: p.stat().st_mtime)
-    if not csvs:
-        raise FileNotFoundError("Keine CSV-Datei in uploads gefunden")
-    return csvs[-1]
-
-
-
-def score_from_row(row: pd.Series) -> float:
-    wars_with_participation = int(row.get("playercontributioncount", 0) or 0)
-    wars_in_window = int(row.get("playerparticipatingcount", 0) or 0)
-    total_decks = int(row.get("playertotaldecksused", 0) or 0)
-    max_possible_decks = wars_with_participation * 4
-    attendance = wars_with_participation / wars_in_window if wars_in_window > 0 else 0.0
-    deck_usage = total_decks / max_possible_decks if max_possible_decks > 0 else 0.0
-    return round(attendance * deck_usage * 100, 2)
+def normalize_tag(tag: str) -> str:
+    tag = str(tag or "").strip().upper()
+    if not tag:
+        return ""
+    if not tag.startswith("#"):
+        tag = f"#{tag}"
+    return tag
 
 
-
-def fame_per_deck_from_row(row: pd.Series) -> int:
-    fame_cols = [c for c in row.index if str(c).startswith("s") and str(c).endswith("fame")]
-    fame_cols = sorted(fame_cols, reverse=True)[:4]
-    rolling_fame = sum(int(row.get(c, 0) or 0) for c in fame_cols)
-    deck_cols = [str(c).replace("fame", "decksused") for c in fame_cols]
-    rolling_decks = sum(int(row.get(c, 0) or 0) for c in deck_cols)
-    if rolling_decks <= 0:
-        return 0
-    return int(round(rolling_fame / rolling_decks))
+def normalize_name(name: str) -> str:
+    return str(name or "").strip().lower().replace("_", "")
 
 
+def load_member_memory() -> Dict[str, Any]:
+    return load_json(MEMBER_MEMORY_PATH, {"current_players": {}, "pending_events": []})
 
-def player_tag_map(df: pd.DataFrame) -> Dict[str, Dict[str, Any]]:
+
+def load_donations_memory() -> Dict[str, Any]:
+    return load_json(DONATIONS_MEMORY_PATH, {"players": {}})
+
+
+def load_strikes_raw() -> Dict[str, Any]:
+    return load_json(STRIKES_PATH, {"players": {}, "demoted_this_week": [], "kicked_this_week": []})
+
+
+def load_records() -> Dict[str, Any]:
+    return load_json(RECORDS_PATH, {})
+
+
+def load_kicked_players() -> List[Any]:
+    data = load_json(KICKED_PLAYERS_PATH, [])
+    return data if isinstance(data, list) else []
+
+
+def load_current_players() -> Dict[str, Dict[str, Any]]:
+    raw = load_member_memory()
+    players = raw.get("current_players", {}) if isinstance(raw, dict) else {}
     result: Dict[str, Dict[str, Any]] = {}
-    for _, row in df.iterrows():
-        tag = str(row.get("playertag", "")).strip().upper()
+    for raw_tag, info in players.items():
+        tag = normalize_tag(raw_tag)
         if not tag:
             continue
-        if not tag.startswith("#"):
-            tag = f"#{tag}"
+        info = info if isinstance(info, dict) else {}
         result[tag] = {
-            "name": row.get("playername", "Unbekannt"),
-            "role": row.get("playerrole", "member"),
-            "donations": int(row.get("playerdonations", 0) or 0),
-            "donations_received": int(row.get("playerdonationsreceived", 0) or 0),
-            "trophies": int(row.get("playertrophies", 0) or 0),
-            "participation_count": int(row.get("playercontributioncount", 0) or 0),
-            "wars_in_window": int(row.get("playerparticipatingcount", 0) or 0),
-            "total_decks": int(row.get("playertotaldecksused", 0) or 0),
-            "score": score_from_row(row),
-            "fame_per_deck": fame_per_deck_from_row(row),
+            "tag": tag,
+            "name": info.get("name", "Unbekannt"),
+            "role": info.get("role", "member"),
+            "last_seen": info.get("last_seen"),
+            "first_seen": info.get("first_seen"),
         }
     return result
 
 
-
-def load_current_players() -> Dict[str, Dict[str, Any]]:
-    csv_path = get_latest_csv()
-    df = pd.read_csv(csv_path)
-    df.columns = [str(c).strip().lower() for c in df.columns]
-
-    possible_member_columns = [
-        "playeriscurrentmember",
-        "iscurrentmember",
-        "currentmember",
-        "member",
-        "is_member"
-    ]
-
-    member_col = next((c for c in possible_member_columns if c in df.columns), None)
-
-    print("CSV FILE:", str(csv_path))
-    print("CSV COLUMNS:", list(df.columns))
-    print("MEMBER COLUMN FOUND:", member_col)
-
-    if member_col:
-        mask = df[member_col].astype(str).str.strip().str.lower().isin(["true", "1", "yes"])
-        active = df[mask].copy()
-    else:
-        active = df.copy()
-
-    print("ACTIVE PLAYER ROWS:", len(active))
-    return player_tag_map(active)
-
-
-
-def load_strikes_map() -> Dict[str, Any]:
-    raw = load_json(STRIKES_PATH, {"players": {}})
+def load_donations_map() -> Dict[str, Dict[str, int]]:
+    raw = load_donations_memory()
     players = raw.get("players", {}) if isinstance(raw, dict) else {}
-    return players if isinstance(players, dict) else {}
+    result: Dict[str, Dict[str, int]] = {}
+    for raw_tag, info in players.items():
+        tag = normalize_tag(raw_tag)
+        info = info if isinstance(info, dict) else {}
+        result[tag] = {
+            "donations": int(info.get("donations", 0) or 0),
+            "received": int(info.get("received", 0) or 0),
+        }
+    return result
 
+
+def load_strikes_map() -> Dict[str, int]:
+    raw = load_strikes_raw()
+    players = raw.get("players", {}) if isinstance(raw, dict) else {}
+    result: Dict[str, int] = {}
+    if not isinstance(players, dict):
+        return result
+    for key, value in players.items():
+        try:
+            result[normalize_name(key)] = int(value or 0)
+        except Exception:
+            result[normalize_name(key)] = 0
+    return result
+
+
+def score_history_rows() -> List[Dict[str, Any]]:
+    if not SCORE_HISTORY_PATH.exists():
+        return []
+    try:
+        with open(SCORE_HISTORY_PATH, "r", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            return list(reader)
+    except Exception:
+        return []
+
+
+def parse_float(value: Any, default: float = 0.0) -> float:
+    try:
+        return float(str(value).strip())
+    except Exception:
+        return default
+
+
+def parse_int(value: Any, default: int = 0) -> int:
+    try:
+        return int(float(str(value).strip()))
+    except Exception:
+        return default
+
+
+def latest_score_map() -> Dict[str, Dict[str, Any]]:
+    rows = score_history_rows()
+    latest: Dict[str, Dict[str, Any]] = {}
+    for row in rows:
+        name = str(row.get("player_name") or row.get("playername") or "").strip()
+        if not name:
+            continue
+        date = str(row.get("date") or "")
+        current = latest.get(normalize_name(name))
+        if current is None or date >= current.get("date", ""):
+            latest[normalize_name(name)] = {
+                "score": parse_float(row.get("score", 0)),
+                "trophies": parse_int(row.get("trophies", 0)),
+                "date": date,
+            }
+    return latest
+
+
+def strikes_for_player(tag: str, name: str) -> int:
+    strikes = load_strikes_map()
+    return int(strikes.get(normalize_name(name), strikes.get(normalize_name(tag), 0)) or 0)
+
+
+def build_players_enriched() -> Dict[str, Dict[str, Any]]:
+    members = load_current_players()
+    donations = load_donations_map()
+    scores = latest_score_map()
+    enriched: Dict[str, Dict[str, Any]] = {}
+    for tag, base in members.items():
+        score_entry = scores.get(normalize_name(base.get("name"))) or {}
+        donation_entry = donations.get(tag, {"donations": 0, "received": 0})
+        enriched[tag] = {
+            **base,
+            "donations": donation_entry.get("donations", 0),
+            "donations_received": donation_entry.get("received", 0),
+            "score": score_entry.get("score", 0.0),
+            "trophies": score_entry.get("trophies", 0),
+            "score_date": score_entry.get("date"),
+            "strikes": strikes_for_player(tag, base.get("name", "")),
+        }
+    return enriched
 
 
 def build_warning_candidates() -> List[Dict[str, Any]]:
-    players = load_current_players()
-    strikes = load_strikes_map()
+    players = build_players_enriched()
     out: List[Dict[str, Any]] = []
     for tag, p in players.items():
-        score = p["score"]
-        fame_per_deck = p["fame_per_deck"]
-        participation = p["participation_count"]
-        current_strikes = strikes.get(tag, strikes.get(p["name"], 0))
-        if isinstance(current_strikes, dict):
-            current_strikes = current_strikes.get("count", 0)
-        if participation <= MIN_PARTICIPATION:
-            continue
-        reasons = []
-        if score < STRIKE_THRESHOLD:
+        reasons: List[str] = []
+        if p["score"] < STRIKE_THRESHOLD:
             reasons.append(f"Score unter {STRIKE_THRESHOLD}")
-        if 0 < fame_per_deck < DROPPER_THRESHOLD:
-            reasons.append(f"Ø Punkte/Deck unter {DROPPER_THRESHOLD}")
+        if p["strikes"] >= 2:
+            reasons.append("bereits mehrere Strikes vorhanden")
         if reasons:
             out.append({
                 "name": p["name"],
                 "tag": tag,
                 "role": p["role"],
-                "score": score,
-                "fame_per_deck": fame_per_deck,
+                "score": p["score"],
                 "donations": p["donations"],
-                "participation_count": participation,
-                "strikes": int(current_strikes or 0),
+                "donations_received": p["donations_received"],
+                "trophies": p["trophies"],
+                "strikes": p["strikes"],
                 "reason": "; ".join(reasons),
                 "recommended_action": "warning",
             })
-    return sorted(out, key=lambda x: (x["score"], x["fame_per_deck"]))
-
+    return sorted(out, key=lambda x: (x["score"], -x["strikes"], x["donations"]))
 
 
 def build_promotion_candidates() -> List[Dict[str, Any]]:
-    players = load_current_players()
-    strikes = load_strikes_map()
+    players = build_players_enriched()
     out: List[Dict[str, Any]] = []
     for tag, p in players.items():
-        role = str(p["role"] or "member").lower()
-        current_strikes = strikes.get(tag, strikes.get(p["name"], 0))
-        if isinstance(current_strikes, dict):
-            current_strikes = current_strikes.get("count", 0)
-        if role != "member":
-            continue
-        if p["participation_count"] <= MIN_PARTICIPATION:
+        role = normalize_name(p.get("role", "member"))
+        if role not in {"member", "mitglied", ""}:
             continue
         if p["score"] < PROMOTION_SCORE_MIN:
             continue
         if p["donations"] < PROMOTION_DONATIONS_MIN:
             continue
-        if int(current_strikes or 0) > 0:
+        if p["strikes"] > 0:
             continue
         out.append({
             "name": p["name"],
             "tag": tag,
-            "current_role": role,
+            "current_role": p.get("role", "member"),
             "score": p["score"],
-            "fame_per_deck": p["fame_per_deck"],
             "donations": p["donations"],
-            "participation_count": p["participation_count"],
+            "donations_received": p["donations_received"],
+            "trophies": p["trophies"],
             "recommended_action": "promote_to_elder",
         })
-    return sorted(out, key=lambda x: (-x["score"], -x["donations"]))
+    return sorted(out, key=lambda x: (-x["score"], -x["donations"], -x["trophies"]))
 
 
 @app.get("/health")
 def health():
-    return {"status": "ok"}
+    return {"status": "ok", "mode": "json-first"}
 
 
 @app.get("/summary")
 def summary():
-    try:
-        players = load_current_players()
-        warnings = build_warning_candidates()
-        promotions = build_promotion_candidates()
-        records = load_json(RECORDS_PATH, {})
-        return {
-            "status": "ok",
-            "member_count": len(players),
-            "warning_candidates": len(warnings),
-            "promotion_candidates": len(promotions),
-            "records_available": list(records.keys()) if isinstance(records, dict) else [],
-        }
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Summary failed: {repr(e)}")
+    players = build_players_enriched()
+    warnings = build_warning_candidates()
+    promotions = build_promotion_candidates()
+    records = load_records()
+    strikes = load_strikes_raw()
+    return {
+        "status": "ok",
+        "mode": "json-first",
+        "member_count": len(players),
+        "warning_candidates": len(warnings),
+        "promotion_candidates": len(promotions),
+        "records_available": list(records.keys()) if isinstance(records, dict) else [],
+        "strike_week": strikes.get("last_strike_week", []),
+    }
+
+
+@app.get("/players")
+def players():
+    data = list(build_players_enriched().values())
+    return {"players": sorted(data, key=lambda x: x["name"].lower())}
 
 
 @app.get("/warnings")
 def warnings():
-    try:
-        return {"players": build_warning_candidates()}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Warnings failed: {repr(e)}")
+    return {"players": build_warning_candidates()}
 
 
 @app.get("/promotions")
 def promotions():
-    try:
-        result = {"players": build_promotion_candidates()}
-        print("PROMOTIONS RESULT:", result)
-        return result
-    except Exception as e:
-        print("PROMOTIONS ERROR:", repr(e))
-        raise HTTPException(status_code=500, detail=f"Promotions failed: {repr(e)}")
+    return {"players": build_promotion_candidates()}
 
 
 @app.get("/strikes")
 def strikes():
-    try:
-        return load_json(STRIKES_PATH, {"players": {}})
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Strikes failed: {repr(e)}")
+    return load_strikes_raw()
+
+
+@app.get("/records")
+def records():
+    return load_records()
+
+
+@app.get("/kicked")
+def kicked():
+    return {"players": load_kicked_players()}
 
 
 @app.get("/player/{player_tag}")
 def player(player_tag: str):
-    try:
-        tag = player_tag.strip().upper()
-        if not tag.startswith("#"):
-            tag = f"#{tag}"
-        players = load_current_players()
-        if tag not in players:
-            raise HTTPException(status_code=404, detail="Spieler nicht gefunden")
-        strikes = load_strikes_map()
-        payload = dict(players[tag])
-        current_strikes = strikes.get(tag, strikes.get(payload["name"], 0))
-        if isinstance(current_strikes, dict):
-            current_strikes = current_strikes.get("count", 0)
-        payload["tag"] = tag
-        payload["strikes"] = int(current_strikes or 0)
-        return payload
-    except HTTPException:
-        raise
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Player failed: {repr(e)}")
+    tag = normalize_tag(player_tag)
+    players = build_players_enriched()
+    if tag not in players:
+        raise HTTPException(status_code=404, detail="Spieler nicht gefunden")
+    return players[tag]
