@@ -13,7 +13,7 @@
             "#G02LC9C8": "20260403T044303.000Z",
             "#2U8288CVY": "20260402T122429.000Z",
             "#2L8LLRUYV": "20260331T162006.000Z",
-            "#Y8PVULPU0": "20260403T150756.000Z",
+            "#Y8PVULPU0": "20260403T155424.000Z",
             "#9CG2CRRJG": "20260403T073151.000Z",
             "#PPR2QQC0U": "20260403T095437.000Z",
             "#QULCQGGG": "20260403T101806.000Z",
@@ -21,18 +21,18 @@
             "#QVQGCV8Y9": "20260403T095933.000Z",
             "#Q8L0RJ8Y8": "20260403T073520.000Z",
             "#P2GUCG2Y": "20260403T092616.000Z",
-            "#2CPRGY8G": "20260403T141419.000Z",
+            "#2CPRGY8G": "20260403T151800.000Z",
             "#LLQQJCLC": "20260403T094701.000Z",
             "#2VJR80RL": "20260401T200844.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
-            "#PYG8RLUJ": "20260403T101510.000Z",
+            "#PYG8RLUJ": "20260403T152318.000Z",
             "#2CJYG9UG": "20260403T000133.000Z",
             "#2PUQYJC02": "20260403T142923.000Z",
             "#YQVQYUYRV": "20260402T213031.000Z",
             "#2V800VCQ0": "20260403T141327.000Z",
             "#2UQUPYQCJ": "20260403T144700.000Z",
             "#JUUR8UGL8": "20260403T121037.000Z",
-            "#2U09UULRR": "20260403T064644.000Z",
+            "#2U09UULRR": "20260403T153959.000Z",
             "#YJ0LUU0JJ": "20260402T171116.000Z",
             "#8QYYL8LCQ": "20260403T055456.000Z",
             "#8P0J8P0L": "20260403T110845.000Z",
@@ -44,7 +44,7 @@
             "#RG02LG88": "20260329T133159.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
             "#UUPCULU9V": "20260402T142853.000Z",
-            "#202VP2QL9P": "20260403T120029.000Z",
+            "#202VP2QL9P": "20260403T152949.000Z",
             "#LVUGLUCP9": "20260329T200020.000Z",
             "#20QGJVPG8Q": "20260403T150357.000Z",
             "#V9GYJQ0J9": "20260403T083421.000Z",
@@ -3997,7 +3997,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/i0RoY1fs6ay7VAxyFEfZGIPnD002nAKcne9FtJsWBHM.png"
                 }
             ],
-            "wins": 2,
+            "wins": 3,
             "losses": 0,
             "players": [
                 "Dolphin"
@@ -4006,6 +4006,12 @@
                 "2U09UULRR"
             ],
             "recent_matches": [
+                {
+                    "time": "20260403T153514.000Z",
+                    "result": "win",
+                    "player": "Dolphin",
+                    "tag": "2U09UULRR"
+                },
                 {
                     "time": "20260402T222230.000Z",
                     "result": "win",
@@ -6505,15 +6511,15 @@
             "lost_against": 29
         },
         "Inferno Dragon": {
-            "seen": 20,
-            "lost_against": 5
+            "seen": 22,
+            "lost_against": 7
         },
         "P.E.K.K.A": {
             "seen": 32,
             "lost_against": 15
         },
         "Goblin Barrel": {
-            "seen": 42,
+            "seen": 43,
             "lost_against": 22
         },
         "Electro Wizard": {
@@ -6521,7 +6527,7 @@
             "lost_against": 17
         },
         "Miner": {
-            "seen": 20,
+            "seen": 21,
             "lost_against": 10
         },
         "Dart Goblin": {
@@ -6569,12 +6575,12 @@
             "lost_against": 25
         },
         "Executioner": {
-            "seen": 33,
-            "lost_against": 21
+            "seen": 34,
+            "lost_against": 22
         },
         "Musketeer": {
-            "seen": 47,
-            "lost_against": 27
+            "seen": 48,
+            "lost_against": 28
         },
         "Mega Minion": {
             "seen": 14,
@@ -6585,11 +6591,11 @@
             "lost_against": 30
         },
         "Baby Dragon": {
-            "seen": 27,
+            "seen": 28,
             "lost_against": 13
         },
         "Royal Ghost": {
-            "seen": 16,
+            "seen": 18,
             "lost_against": 11
         },
         "Hog Rider": {
@@ -6613,7 +6619,7 @@
             "lost_against": 9
         },
         "Fireball": {
-            "seen": 67,
+            "seen": 68,
             "lost_against": 38
         },
         "Minion Horde": {
@@ -6625,15 +6631,15 @@
             "lost_against": 7
         },
         "Barbarian Barrel": {
-            "seen": 26,
-            "lost_against": 10
+            "seen": 27,
+            "lost_against": 11
         },
         "Tornado": {
-            "seen": 12,
-            "lost_against": 8
+            "seen": 13,
+            "lost_against": 9
         },
         "Guards": {
-            "seen": 15,
+            "seen": 16,
             "lost_against": 6
         },
         "Skeleton Army": {
@@ -6641,20 +6647,20 @@
             "lost_against": 24
         },
         "Electro Dragon": {
-            "seen": 28,
-            "lost_against": 15
+            "seen": 30,
+            "lost_against": 16
         },
         "Bomber": {
             "seen": 28,
             "lost_against": 15
         },
         "Golem": {
-            "seen": 9,
-            "lost_against": 3
+            "seen": 10,
+            "lost_against": 4
         },
         "Cannon": {
-            "seen": 28,
-            "lost_against": 15
+            "seen": 29,
+            "lost_against": 16
         },
         "Mini P.E.K.K.A": {
             "seen": 49,
@@ -6673,7 +6679,7 @@
             "lost_against": 28
         },
         "Knight": {
-            "seen": 52,
+            "seen": 53,
             "lost_against": 28
         },
         "Barbarians": {
@@ -6689,11 +6695,11 @@
             "lost_against": 8
         },
         "Minions": {
-            "seen": 19,
-            "lost_against": 5
+            "seen": 20,
+            "lost_against": 6
         },
         "Flying Machine": {
-            "seen": 11,
+            "seen": 12,
             "lost_against": 6
         },
         "Goblin Cage": {
@@ -6709,19 +6715,19 @@
             "lost_against": 9
         },
         "Freeze": {
-            "seen": 16,
-            "lost_against": 10
+            "seen": 18,
+            "lost_against": 11
         },
         "Valkyrie": {
-            "seen": 50,
-            "lost_against": 26
+            "seen": 52,
+            "lost_against": 27
         },
         "Electro Giant": {
             "seen": 9,
             "lost_against": 7
         },
         "Mega Knight": {
-            "seen": 43,
+            "seen": 45,
             "lost_against": 24
         },
         "Mother Witch": {
@@ -6757,12 +6763,12 @@
             "lost_against": 17
         },
         "Zap": {
-            "seen": 38,
+            "seen": 39,
             "lost_against": 21
         },
         "Golden Knight": {
-            "seen": 29,
-            "lost_against": 16
+            "seen": 30,
+            "lost_against": 17
         },
         "Berserker": {
             "seen": 4,
@@ -6789,8 +6795,8 @@
             "lost_against": 10
         },
         "Bowler": {
-            "seen": 17,
-            "lost_against": 9
+            "seen": 18,
+            "lost_against": 10
         },
         "Hunter": {
             "seen": 17,
@@ -6845,8 +6851,8 @@
             "lost_against": 11
         },
         "Zappies": {
-            "seen": 7,
-            "lost_against": 4
+            "seen": 8,
+            "lost_against": 5
         },
         "Giant": {
             "seen": 17,
@@ -6893,7 +6899,7 @@
             "lost_against": 3
         },
         "Skeleton King": {
-            "seen": 7,
+            "seen": 8,
             "lost_against": 3
         },
         "Goblin Curse": {
@@ -6921,8 +6927,8 @@
             "lost_against": 4
         },
         "Graveyard": {
-            "seen": 4,
-            "lost_against": 3
+            "seen": 5,
+            "lost_against": 4
         },
         "Night Witch": {
             "seen": 8,
