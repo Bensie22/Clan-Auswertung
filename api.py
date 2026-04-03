@@ -31,6 +31,7 @@ SCORE_HISTORY_PATH = BASE_DIR / "score_history.csv"
 MEMBER_MEMORY_PATH = BASE_DIR / "member_memory.json"
 KICKED_PLAYERS_PATH = BASE_DIR / "kicked_players.json"
 DONATIONS_MEMORY_PATH = BASE_DIR / "donations_memory.json"
+PLAYER_STATS_PATH = BASE_DIR / "player_stats.json"
 
 STRIKE_THRESHOLD = 50
 PROMOTION_SCORE_MIN = 85
@@ -80,6 +81,17 @@ def load_records() -> Dict[str, Any]:
 def load_kicked_players() -> List[Any]:
     data = load_json(KICKED_PLAYERS_PATH, [])
     return data if isinstance(data, list) else []
+
+
+def load_player_stats() -> Dict[str, Dict[str, Any]]:
+    raw = load_json(PLAYER_STATS_PATH, [])
+    result: Dict[str, Dict[str, Any]] = {}
+    if isinstance(raw, list):
+        for entry in raw:
+            tag = normalize_tag(entry.get("tag", ""))
+            if tag:
+                result[tag] = entry
+    return result
 
 
 def load_current_players() -> Dict[str, Dict[str, Any]]:
@@ -181,18 +193,24 @@ def build_players_enriched() -> Dict[str, Dict[str, Any]]:
     members = load_current_players()
     donations = load_donations_map()
     scores = latest_score_map()
+    stats = load_player_stats()
     enriched: Dict[str, Dict[str, Any]] = {}
     for tag, base in members.items():
         score_entry = scores.get(normalize_name(base.get("name"))) or {}
         donation_entry = donations.get(tag, {"donations": 0, "received": 0})
+        stat_entry = stats.get(tag, {})
         enriched[tag] = {
             **base,
-            "donations": donation_entry.get("donations", 0),
-            "donations_received": donation_entry.get("received", 0),
-            "score": score_entry.get("score", 0.0),
-            "trophies": score_entry.get("trophies", 0),
+            "donations": stat_entry.get("donations", donation_entry.get("donations", 0)),
+            "donations_received": stat_entry.get("donations_received", donation_entry.get("received", 0)),
+            "score": stat_entry.get("score", score_entry.get("score", 0.0)),
+            "trophies": stat_entry.get("trophies", score_entry.get("trophies", 0)),
             "score_date": score_entry.get("date"),
             "strikes": strikes_for_player(tag, base.get("name", "")),
+            "fame_per_deck": stat_entry.get("fame_per_deck", 0),
+            "participation_count": stat_entry.get("participation_count", 0),
+            "total_decks": stat_entry.get("total_decks", 0),
+            "wars_in_window": stat_entry.get("wars_in_window", 0),
         }
     return enriched
 
