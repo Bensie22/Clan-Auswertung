@@ -3095,7 +3095,9 @@ def main():
         strikes_data=updated_strikes_data,
         file_suffix=jetzt_datei,
         top_decks_data=top_decks_data,
-        kicked_players=updated_kicked
+        kicked_players=updated_kicked,
+        impressumhtml=impressumhtml,
+        datenschutzhtml=datenschutzhtml,
     )
     archiviere_alte_auswertungen(output_folder)
 
