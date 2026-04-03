@@ -2762,6 +2762,8 @@ def speichere_html_bericht(
     with open(kicked_players_path, "w", encoding="utf-8") as f:
         json.dump(kicked_players, f, ensure_ascii=False, indent=4)
 
+    write_static_legal_pages(impressumhtml, datenschutzhtml)
+
     return html_path
 
 
@@ -3087,6 +3089,8 @@ def main():
         player_profiles=player_profiles,
         opponent_decks=opponent_decks
     )
+
+    impressumhtml, datenschutzhtml = build_legal_pages()
 
     html_path = speichere_html_bericht(
         html_content=html_bericht,
