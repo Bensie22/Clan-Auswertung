@@ -2656,6 +2656,78 @@ def generate_html_report(
     strikes_data["players"] = strikes
     return html, df_history, mail_chat_text, records, strikes_data, kicked_players
 
+def write_static_legal_pages(impressumhtml: str, datenschutzhtml: str) -> None:
+    def wrap_legal_page(title: str, body_html: str) -> str:
+        return f"""<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{html.escape(title)}</title>
+  <style>
+    body {{
+      margin: 0;
+      padding: 24px;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      line-height: 1.7;
+    }}
+    .container {{
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 28px;
+      box-sizing: border-box;
+    }}
+    .legal-page {{
+      background: transparent;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      color: #e2e8f0;
+    }}
+    .legal-page h2 {{
+      margin-top: 0;
+      color: #f8fafc;
+    }}
+    .legal-page h3 {{
+      color: #38bdf8;
+    }}
+    .legal-page a {{
+      color: #38bdf8;
+    }}
+    .legal-section {{
+      margin-top: 24px;
+    }}
+    .legal-warning {{
+      background: rgba(251, 191, 36, 0.12);
+      border-left: 4px solid #fbbf24;
+      color: #fde68a;
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }}
+  </style>
+</head>
+<body>
+  <main class="container">
+    {body_html}
+  </main>
+</body>
+</html>"""
+
+    impressum_path = BASEDIR / "impressum.html"
+    datenschutz_path = BASEDIR / "datenschutz.html"
+
+    with impressum_path.open("w", encoding="utf-8") as f:
+        f.write(wrap_legal_page("Impressum", impressumhtml))
+
+    with datenschutz_path.open("w", encoding="utf-8") as f:
+        f.write(wrap_legal_page("Datenschutzerklärung", datenschutzhtml))
+
 
 def speichere_html_bericht(
     html_content: str,
@@ -2664,7 +2736,9 @@ def speichere_html_bericht(
     strikes_data: dict,
     file_suffix: str,
     top_decks_data: dict,
-    kicked_players: dict
+    kicked_players: dict,
+    impressumhtml: str,
+    datenschutzhtml: str
 ) -> Path:
     html_path = output_folder / f"auswertung_{file_suffix}.html"
     with html_path.open("w", encoding="utf-8") as f:
