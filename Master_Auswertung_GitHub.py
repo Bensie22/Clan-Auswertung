@@ -2719,8 +2719,8 @@ def write_static_legal_pages(impressumhtml: str, datenschutzhtml: str) -> None:
 </body>
 </html>"""
 
-    impressum_path = BASEDIR / "impressum.html"
-    datenschutz_path = BASEDIR / "datenschutz.html"
+    impressum_path = BASE_DIR / "impressum.html"
+    datenschutz_path = BASE_DIR / "datenschutz.html"
 
     with impressum_path.open("w", encoding="utf-8") as f:
         f.write(wrap_legal_page("Impressum", impressumhtml))
