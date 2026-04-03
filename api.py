@@ -37,15 +37,13 @@ app.openapi = custom_openapi
 BASE_DIR = Path(__file__).parent.resolve()
 STRIKES_PATH = BASE_DIR / "strikes.json"
 RECORDS_PATH = BASE_DIR / "records.json"
-SCORE_HISTORY_PATH = BASE_DIR / "scorehistory.csv"
-KICKED_PLAYERS_PATH = BASE_DIR / "kickedplayers.json"
-TOP_DECKS_PATH = BASE_DIR / "topdecks.json"
 
 STRIKE_THRESHOLD = 50
 DROPPER_THRESHOLD = 130
 MIN_PARTICIPATION = 3
 PROMOTION_SCORE_MIN = 85
 PROMOTION_DONATIONS_MIN = 50
+
 
 
 def load_json(path: Path, default: Any):
@@ -65,12 +63,6 @@ def get_latest_csv() -> Path:
     if not csvs:
         raise FileNotFoundError("Keine CSV-Datei in uploads gefunden")
     return csvs[-1]
-
-
-
-def latest_fame_columns(df: pd.DataFrame) -> List[str]:
-    cols = [c for c in df.columns if str(c).startswith("s") and str(c).endswith("fame")]
-    return sorted(cols, reverse=True)
 
 
 
@@ -124,8 +116,29 @@ def player_tag_map(df: pd.DataFrame) -> Dict[str, Dict[str, Any]]:
 def load_current_players() -> Dict[str, Dict[str, Any]]:
     csv_path = get_latest_csv()
     df = pd.read_csv(csv_path)
-    mask = df["playeriscurrentmember"].astype(str).str.strip().str.lower().isin(["true", "1", "yes"])
-    active = df[mask].copy()
+    df.columns = [str(c).strip().lower() for c in df.columns]
+
+    possible_member_columns = [
+        "playeriscurrentmember",
+        "iscurrentmember",
+        "currentmember",
+        "member",
+        "is_member"
+    ]
+
+    member_col = next((c for c in possible_member_columns if c in df.columns), None)
+
+    print("CSV FILE:", str(csv_path))
+    print("CSV COLUMNS:", list(df.columns))
+    print("MEMBER COLUMN FOUND:", member_col)
+
+    if member_col:
+        mask = df[member_col].astype(str).str.strip().str.lower().isin(["true", "1", "yes"])
+        active = df[mask].copy()
+    else:
+        active = df.copy()
+
+    print("ACTIVE PLAYER ROWS:", len(active))
     return player_tag_map(active)
 
 
@@ -204,12 +217,12 @@ def build_promotion_candidates() -> List[Dict[str, Any]]:
     return sorted(out, key=lambda x: (-x["score"], -x["donations"]))
 
 
-@app.get("/health", summary="Health Check", description="Prüft, ob die API erreichbar ist.")
+@app.get("/health")
 def health():
     return {"status": "ok"}
 
 
-@app.get("/summary", summary="Clan-Zusammenfassung", description="Liefert eine Kurz-Zusammenfassung zur aktuellen Clanlage.")
+@app.get("/summary")
 def summary():
     try:
         players = load_current_players()
@@ -227,7 +240,7 @@ def summary():
         raise HTTPException(status_code=500, detail=f"Summary failed: {repr(e)}")
 
 
-@app.get("/warnings", summary="Warnungskandidaten", description="Liefert aktuelle Spieler, die für eine Verwarnung infrage kommen.")
+@app.get("/warnings")
 def warnings():
     try:
         return {"players": build_warning_candidates()}
@@ -235,7 +248,7 @@ def warnings():
         raise HTTPException(status_code=500, detail=f"Warnings failed: {repr(e)}")
 
 
-@app.get("/promotions", summary="Beförderungskandidaten", description="Liefert aktuelle Spieler, die für eine Beförderung infrage kommen.")
+@app.get("/promotions")
 def promotions():
     try:
         result = {"players": build_promotion_candidates()}
@@ -246,7 +259,7 @@ def promotions():
         raise HTTPException(status_code=500, detail=f"Promotions failed: {repr(e)}")
 
 
-@app.get("/strikes", summary="Strike-Status", description="Liefert den aktuellen Strike-Stand aus der Strike-Datei.")
+@app.get("/strikes")
 def strikes():
     try:
         return load_json(STRIKES_PATH, {"players": {}})
@@ -254,7 +267,7 @@ def strikes():
         raise HTTPException(status_code=500, detail=f"Strikes failed: {repr(e)}")
 
 
-@app.get("/player/{player_tag}", summary="Spielerbericht", description="Liefert einen Bericht zu einem bestimmten Spieler anhand seines Tags.")
+@app.get("/player/{player_tag}")
 def player(player_tag: str):
     try:
         tag = player_tag.strip().upper()
