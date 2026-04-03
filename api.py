@@ -1,10 +1,33 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.openapi.utils import get_openapi
 from pathlib import Path
 import json
 import pandas as pd
 from typing import Any, Dict, List
 
-app = FastAPI(title="Clash Royale Clan Management API", version="1.0.0")
+app = FastAPI(
+    title="Clash Royale Clan Management API",
+    version="1.0.0"
+)
+
+
+def custom_openapi():
+    if app.openapi_schema:
+        return app.openapi_schema
+    openapi_schema = get_openapi(
+        title="Clash Royale Clan Management API",
+        version="1.0.0",
+        description="API für Clanführung, Warnungen, Beförderungen und Spielerübersichten.",
+        routes=app.routes,
+    )
+    openapi_schema["servers"] = [
+        {"url": "https://clan-gpt-api.onrender.com"}
+    ]
+    app.openapi_schema = openapi_schema
+    return app.openapi_schema
+
+
+app.openapi = custom_openapi
 
 BASE_DIR = Path(__file__).parent.resolve()
 STRIKES_PATH = BASE_DIR / "strikes.json"
