@@ -4,12 +4,12 @@
             "#22Q920RLR": "20260403T170153.000Z",
             "#L8PV090J": "20260403T215105.000Z",
             "#22CQPRR0J": "20260403T084532.000Z",
-            "#2QRVR9L8": "20260403T201656.000Z",
+            "#2QRVR9L8": "20260404T032225.000Z",
             "#ULYJ2CQP": "20260402T150847.000Z",
             "#UJ2P9UYUV": "20260402T103216.000Z",
             "#P0JYR9YUY": "20260403T111003.000Z",
             "#R22R8GYG": "20260404T011345.000Z",
-            "#YQ82VR9JQ": "20260403T122105.000Z",
+            "#YQ82VR9JQ": "20260404T032229.000Z",
             "#G02LC9C8": "20260403T192531.000Z",
             "#2U8288CVY": "20260403T210713.000Z",
             "#2L8LLRUYV": "20260403T165205.000Z",
@@ -21,7 +21,7 @@
             "#QVQGCV8Y9": "20260403T095933.000Z",
             "#Q8L0RJ8Y8": "20260403T173217.000Z",
             "#P2GUCG2Y": "20260403T193439.000Z",
-            "#2CPRGY8G": "20260404T021017.000Z",
+            "#2CPRGY8G": "20260404T035239.000Z",
             "#LLQQJCLC": "20260403T174146.000Z",
             "#2VJR80RL": "20260403T181309.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
@@ -46,8 +46,8 @@
             "#UUPCULU9V": "20260402T142853.000Z",
             "#202VP2QL9P": "20260403T152949.000Z",
             "#LVUGLUCP9": "20260403T204037.000Z",
-            "#20QGJVPG8Q": "20260403T195223.000Z",
-            "#V9GYJQ0J9": "20260403T083421.000Z",
+            "#20QGJVPG8Q": "20260404T021828.000Z",
+            "#V9GYJQ0J9": "20260404T032353.000Z",
             "#URJ0LUYPV": "20260402T115043.000Z",
             "#Q2GRGLQR": "20260403T064911.000Z",
             "#J9RQPGLVP": "20260403T095153.000Z"
@@ -4832,7 +4832,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "maghrebi"
             ],
@@ -4840,6 +4840,12 @@
                 "20QGJVPG8Q"
             ],
             "recent_matches": [
+                {
+                    "time": "20260404T021828.000Z",
+                    "result": "loss",
+                    "player": "maghrebi",
+                    "tag": "20QGJVPG8Q"
+                },
                 {
                     "time": "20260402T113330.000Z",
                     "result": "win",
@@ -4897,7 +4903,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "Boi"
@@ -4906,6 +4912,12 @@
                 "V9GYJQ0J9"
             ],
             "recent_matches": [
+                {
+                    "time": "20260404T032353.000Z",
+                    "result": "win",
+                    "player": "Boi",
+                    "tag": "V9GYJQ0J9"
+                },
                 {
                     "time": "20260402T102200.000Z",
                     "result": "win",
@@ -6513,16 +6525,16 @@
     },
     "_opponent_decks": {
         "Firecracker": {
-            "seen": 55,
-            "lost_against": 31
+            "seen": 58,
+            "lost_against": 33
         },
         "Inferno Dragon": {
             "seen": 24,
             "lost_against": 7
         },
         "P.E.K.K.A": {
-            "seen": 36,
-            "lost_against": 16
+            "seen": 37,
+            "lost_against": 17
         },
         "Goblin Barrel": {
             "seen": 45,
@@ -6537,19 +6549,19 @@
             "lost_against": 10
         },
         "Dart Goblin": {
-            "seen": 49,
+            "seen": 50,
             "lost_against": 24
         },
         "Tombstone": {
-            "seen": 10,
-            "lost_against": 2
+            "seen": 11,
+            "lost_against": 3
         },
         "Ram Rider": {
             "seen": 19,
             "lost_against": 11
         },
         "Wall Breakers": {
-            "seen": 17,
+            "seen": 18,
             "lost_against": 7
         },
         "Bats": {
@@ -6565,8 +6577,8 @@
             "lost_against": 5
         },
         "Earthquake": {
-            "seen": 12,
-            "lost_against": 7
+            "seen": 13,
+            "lost_against": 8
         },
         "Suspicious Bush": {
             "seen": 4,
@@ -6609,7 +6621,7 @@
             "lost_against": 33
         },
         "Goblin Gang": {
-            "seen": 50,
+            "seen": 51,
             "lost_against": 21
         },
         "Giant Skeleton": {
@@ -6633,16 +6645,16 @@
             "lost_against": 10
         },
         "Mirror": {
-            "seen": 20,
-            "lost_against": 7
+            "seen": 21,
+            "lost_against": 8
         },
         "Barbarian Barrel": {
             "seen": 31,
             "lost_against": 13
         },
         "Tornado": {
-            "seen": 16,
-            "lost_against": 9
+            "seen": 17,
+            "lost_against": 10
         },
         "Guards": {
             "seen": 16,
@@ -6669,7 +6681,7 @@
             "lost_against": 17
         },
         "Mini P.E.K.K.A": {
-            "seen": 55,
+            "seen": 56,
             "lost_against": 34
         },
         "Archers": {
@@ -6685,8 +6697,8 @@
             "lost_against": 28
         },
         "Knight": {
-            "seen": 60,
-            "lost_against": 30
+            "seen": 61,
+            "lost_against": 31
         },
         "Barbarians": {
             "seen": 19,
@@ -6697,8 +6709,8 @@
             "lost_against": 11
         },
         "Skeleton Barrel": {
-            "seen": 18,
-            "lost_against": 8
+            "seen": 19,
+            "lost_against": 9
         },
         "Minions": {
             "seen": 23,
@@ -6725,8 +6737,8 @@
             "lost_against": 12
         },
         "Valkyrie": {
-            "seen": 56,
-            "lost_against": 29
+            "seen": 58,
+            "lost_against": 30
         },
         "Electro Giant": {
             "seen": 10,
@@ -6749,8 +6761,8 @@
             "lost_against": 5
         },
         "Magic Archer": {
-            "seen": 41,
-            "lost_against": 23
+            "seen": 42,
+            "lost_against": 24
         },
         "Spear Goblins": {
             "seen": 13,
@@ -6773,8 +6785,8 @@
             "lost_against": 22
         },
         "Golden Knight": {
-            "seen": 34,
-            "lost_against": 18
+            "seen": 36,
+            "lost_against": 19
         },
         "Berserker": {
             "seen": 4,
@@ -6821,16 +6833,16 @@
             "lost_against": 4
         },
         "Rocket": {
-            "seen": 10,
-            "lost_against": 3
+            "seen": 11,
+            "lost_against": 4
         },
         "Princess": {
-            "seen": 37,
+            "seen": 38,
             "lost_against": 19
         },
         "Royal Recruits": {
-            "seen": 15,
-            "lost_against": 8
+            "seen": 16,
+            "lost_against": 9
         },
         "Prince": {
             "seen": 23,
@@ -6841,8 +6853,8 @@
             "lost_against": 9
         },
         "Royal Delivery": {
-            "seen": 13,
-            "lost_against": 8
+            "seen": 14,
+            "lost_against": 9
         },
         "Mighty Miner": {
             "seen": 2,
@@ -6905,8 +6917,8 @@
             "lost_against": 3
         },
         "Skeleton King": {
-            "seen": 9,
-            "lost_against": 4
+            "seen": 10,
+            "lost_against": 5
         },
         "Goblin Curse": {
             "seen": 2,
