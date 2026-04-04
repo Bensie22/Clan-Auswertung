@@ -2,7 +2,7 @@
     "_metadata": {
         "last_battles": {
             "#22Q920RLR": "20260404T194438.000Z",
-            "#L8PV090J": "20260404T164650.000Z",
+            "#L8PV090J": "20260404T221046.000Z",
             "#22CQPRR0J": "20260404T182645.000Z",
             "#2QRVR9L8": "20260404T204625.000Z",
             "#ULYJ2CQP": "20260404T134615.000Z",
@@ -15,7 +15,7 @@
             "#2L8LLRUYV": "20260404T191810.000Z",
             "#Y8PVULPU0": "20260404T203035.000Z",
             "#9CG2CRRJG": "20260403T073151.000Z",
-            "#PPR2QQC0U": "20260404T192742.000Z",
+            "#PPR2QQC0U": "20260404T213937.000Z",
             "#QULCQGGG": "20260404T185336.000Z",
             "#JRGC9RRQG": "20260404T091746.000Z",
             "#QVQGCV8Y9": "20260404T114525.000Z",
@@ -5096,7 +5096,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Flauschos"
             ],
@@ -5104,6 +5104,12 @@
                 "PPR2QQC0U"
             ],
             "recent_matches": [
+                {
+                    "time": "20260404T213937.000Z",
+                    "result": "loss",
+                    "player": "Flauschos",
+                    "tag": "PPR2QQC0U"
+                },
                 {
                     "time": "20260403T161418.000Z",
                     "result": "win",
@@ -5611,7 +5617,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "Flauschos"
@@ -5621,70 +5627,16 @@
             ],
             "recent_matches": [
                 {
+                    "time": "20260404T213423.000Z",
+                    "result": "win",
+                    "player": "Flauschos",
+                    "tag": "PPR2QQC0U"
+                },
+                {
                     "time": "20260403T160935.000Z",
                     "result": "win",
                     "player": "Flauschos",
                     "tag": "PPR2QQC0U"
-                }
-            ]
-        },
-        "26000008-26000063-26000067-26000068-26000074-26000087-27000007-28000012": {
-            "cards": [
-                {
-                    "id": 26000008,
-                    "name": "Barbarians",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/TvJsuu2S4yhyk1jVYUAQwdKOnW4U77KuWWOTPOWnwfI.png"
-                },
-                {
-                    "id": 26000074,
-                    "name": "Golden Knight",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/WJd207D0O1sN-l1FTb8P9KhYL2oF5jY26vRUfTUW3FQ.png"
-                },
-                {
-                    "id": 26000063,
-                    "name": "Electro Dragon",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/tN9h6lnMNPCNsx0LMFmvpHgznbDZ1fBRkx-C7UfNmfY.png"
-                },
-                {
-                    "id": 27000007,
-                    "name": "Elixir Collector",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/BGLo3Grsp81c72EpxLLk-Sofk3VY56zahnUNOv3JcT0.png"
-                },
-                {
-                    "id": 26000087,
-                    "name": "Phoenix",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/i0RoY1fs6ay7VAxyFEfZGIPnD002nAKcne9FtJsWBHM.png"
-                },
-                {
-                    "id": 28000012,
-                    "name": "Tornado",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/QJB-QK1QJHdw4hjpAwVSyZBozc2ZWAR9pQ-SMUyKaT0.png"
-                },
-                {
-                    "id": 26000067,
-                    "name": "Elixir Golem",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/puhMsZjCIqy21HW3hYxjrk_xt8NIPyFqjRy-BeLKZwo.png"
-                },
-                {
-                    "id": 26000068,
-                    "name": "Battle Healer",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/KdwXcoigS2Kg-cgA7BJJIANbUJG6SNgjetRQ-MegZ08.png"
-                }
-            ],
-            "wins": 1,
-            "losses": 0,
-            "players": [
-                "rote sonne"
-            ],
-            "tags": [
-                "L8PV090J"
-            ],
-            "recent_matches": [
-                {
-                    "time": "20260403T212403.000Z",
-                    "result": "win",
-                    "player": "rote sonne",
-                    "tag": "L8PV090J"
                 }
             ]
         },
@@ -6593,6 +6545,66 @@
                     "tag": "2U8288CVY"
                 }
             ]
+        },
+        "26000000-26000007-26000019-26000024-26000036-26000052-28000015-28000017": {
+            "cards": [
+                {
+                    "id": 26000024,
+                    "name": "Royal Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mnlRaNtmfpQx2e6mp70sLd0ND-pKPF70Cf87_agEKg4.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 28000015,
+                    "name": "Barbarian Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Gb0G1yNy0i5cIGUHin8uoFWxqntNtRPhY_jeMXg7HnA.png"
+                },
+                {
+                    "id": 26000052,
+                    "name": "Zappies",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QZfHRpLRmutZbCr5fpLnTpIp89vLI6NrAwzGZ8tHEc4.png"
+                },
+                {
+                    "id": 26000036,
+                    "name": "Battle Ram",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dyc50V2cplKi4H7pq1B3I36pl_sEH5DQrNHboS_dbbM.png"
+                },
+                {
+                    "id": 26000019,
+                    "name": "Spear Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/FSDFotjaXidI4ku_WFpVCTWS1hKGnFh1sxX0lxM43_E.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 28000017,
+                    "name": "Giant Snowball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
+                }
+            ],
+            "wins": 1,
+            "losses": 0,
+            "players": [
+                "Flauschos"
+            ],
+            "tags": [
+                "PPR2QQC0U"
+            ],
+            "recent_matches": [
+                {
+                    "time": "20260404T213748.000Z",
+                    "result": "win",
+                    "player": "Flauschos",
+                    "tag": "PPR2QQC0U"
+                }
+            ]
         }
     },
     "_opponent_decks": {
@@ -6621,15 +6633,15 @@
             "lost_against": 12
         },
         "Dart Goblin": {
-            "seen": 68,
-            "lost_against": 32
+            "seen": 69,
+            "lost_against": 33
         },
         "Tombstone": {
             "seen": 12,
             "lost_against": 4
         },
         "Ram Rider": {
-            "seen": 24,
+            "seen": 25,
             "lost_against": 12
         },
         "Wall Breakers": {
@@ -6649,8 +6661,8 @@
             "lost_against": 5
         },
         "Earthquake": {
-            "seen": 15,
-            "lost_against": 9
+            "seen": 16,
+            "lost_against": 10
         },
         "Suspicious Bush": {
             "seen": 8,
@@ -6661,27 +6673,27 @@
             "lost_against": 16
         },
         "Tesla": {
-            "seen": 60,
-            "lost_against": 34
+            "seen": 62,
+            "lost_against": 36
         },
         "Executioner": {
-            "seen": 43,
-            "lost_against": 26
+            "seen": 45,
+            "lost_against": 27
         },
         "Musketeer": {
-            "seen": 63,
+            "seen": 64,
             "lost_against": 35
         },
         "Mega Minion": {
-            "seen": 16,
-            "lost_against": 6
+            "seen": 17,
+            "lost_against": 7
         },
         "Wizard": {
             "seen": 65,
             "lost_against": 40
         },
         "Baby Dragon": {
-            "seen": 41,
+            "seen": 42,
             "lost_against": 18
         },
         "Royal Ghost": {
@@ -6689,12 +6701,12 @@
             "lost_against": 14
         },
         "Hog Rider": {
-            "seen": 70,
-            "lost_against": 44
+            "seen": 72,
+            "lost_against": 45
         },
         "Goblin Gang": {
-            "seen": 58,
-            "lost_against": 23
+            "seen": 60,
+            "lost_against": 24
         },
         "Giant Skeleton": {
             "seen": 20,
@@ -6721,7 +6733,7 @@
             "lost_against": 11
         },
         "Barbarian Barrel": {
-            "seen": 37,
+            "seen": 38,
             "lost_against": 18
         },
         "Tornado": {
@@ -6729,7 +6741,7 @@
             "lost_against": 13
         },
         "Guards": {
-            "seen": 22,
+            "seen": 23,
             "lost_against": 8
         },
         "Skeleton Army": {
@@ -6769,15 +6781,15 @@
             "lost_against": 38
         },
         "Knight": {
-            "seen": 74,
-            "lost_against": 38
+            "seen": 76,
+            "lost_against": 39
         },
         "Barbarians": {
             "seen": 24,
             "lost_against": 12
         },
         "Goblins": {
-            "seen": 24,
+            "seen": 25,
             "lost_against": 12
         },
         "Skeleton Barrel": {
@@ -6813,16 +6825,16 @@
             "lost_against": 43
         },
         "Electro Giant": {
-            "seen": 11,
-            "lost_against": 7
+            "seen": 12,
+            "lost_against": 8
         },
         "Mega Knight": {
-            "seen": 60,
+            "seen": 61,
             "lost_against": 35
         },
         "Mother Witch": {
-            "seen": 16,
-            "lost_against": 9
+            "seen": 17,
+            "lost_against": 10
         },
         "Witch": {
             "seen": 62,
@@ -6833,7 +6845,7 @@
             "lost_against": 5
         },
         "Magic Archer": {
-            "seen": 48,
+            "seen": 49,
             "lost_against": 26
         },
         "Spear Goblins": {
@@ -6841,7 +6853,7 @@
             "lost_against": 7
         },
         "Boss Bandit": {
-            "seen": 25,
+            "seen": 26,
             "lost_against": 10
         },
         "Clone": {
@@ -6861,7 +6873,7 @@
             "lost_against": 21
         },
         "Berserker": {
-            "seen": 6,
+            "seen": 7,
             "lost_against": 6
         },
         "Dark Prince": {
@@ -6869,23 +6881,23 @@
             "lost_against": 16
         },
         "Skeletons": {
-            "seen": 34,
-            "lost_against": 20
+            "seen": 35,
+            "lost_against": 21
         },
         "Ice Golem": {
-            "seen": 14,
-            "lost_against": 7
+            "seen": 15,
+            "lost_against": 8
         },
         "The Log": {
-            "seen": 63,
-            "lost_against": 36
+            "seen": 65,
+            "lost_against": 38
         },
         "Ice Spirit": {
-            "seen": 27,
-            "lost_against": 15
+            "seen": 28,
+            "lost_against": 16
         },
         "Bowler": {
-            "seen": 23,
+            "seen": 24,
             "lost_against": 12
         },
         "Hunter": {
@@ -6901,7 +6913,7 @@
             "lost_against": 4
         },
         "Vines": {
-            "seen": 11,
+            "seen": 12,
             "lost_against": 5
         },
         "Rocket": {
