@@ -5,7 +5,7 @@
             "#L8PV090J": "20260404T075745.000Z",
             "#22CQPRR0J": "20260403T084532.000Z",
             "#2QRVR9L8": "20260404T070840.000Z",
-            "#ULYJ2CQP": "20260404T072326.000Z",
+            "#ULYJ2CQP": "20260404T082213.000Z",
             "#UJ2P9UYUV": "20260402T103216.000Z",
             "#P0JYR9YUY": "20260404T065433.000Z",
             "#R22R8GYG": "20260404T011345.000Z",
@@ -13,23 +13,23 @@
             "#G02LC9C8": "20260403T192531.000Z",
             "#2U8288CVY": "20260403T210713.000Z",
             "#2L8LLRUYV": "20260403T165205.000Z",
-            "#Y8PVULPU0": "20260404T075945.000Z",
+            "#Y8PVULPU0": "20260404T085613.000Z",
             "#9CG2CRRJG": "20260403T073151.000Z",
-            "#PPR2QQC0U": "20260403T190920.000Z",
+            "#PPR2QQC0U": "20260404T090426.000Z",
             "#QULCQGGG": "20260403T101806.000Z",
             "#JRGC9RRQG": "20260404T071436.000Z",
             "#QVQGCV8Y9": "20260403T095933.000Z",
             "#Q8L0RJ8Y8": "20260403T173217.000Z",
-            "#P2GUCG2Y": "20260404T071026.000Z",
+            "#P2GUCG2Y": "20260404T080904.000Z",
             "#2CPRGY8G": "20260404T035239.000Z",
             "#LLQQJCLC": "20260403T174146.000Z",
             "#2VJR80RL": "20260403T181309.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
-            "#PYG8RLUJ": "20260403T210417.000Z",
+            "#PYG8RLUJ": "20260404T090552.000Z",
             "#2CJYG9UG": "20260404T051950.000Z",
             "#2PUQYJC02": "20260403T142923.000Z",
             "#YQVQYUYRV": "20260402T213031.000Z",
-            "#2V800VCQ0": "20260404T070501.000Z",
+            "#2V800VCQ0": "20260404T084402.000Z",
             "#2UQUPYQCJ": "20260403T180652.000Z",
             "#JUUR8UGL8": "20260403T211636.000Z",
             "#2U09UULRR": "20260404T063552.000Z",
@@ -43,7 +43,7 @@
             "#RLJPJL8C2": "20260404T060658.000Z",
             "#RG02LG88": "20260329T133159.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20260402T142853.000Z",
+            "#UUPCULU9V": "20260404T082311.000Z",
             "#202VP2QL9P": "20260404T053432.000Z",
             "#LVUGLUCP9": "20260403T204037.000Z",
             "#20QGJVPG8Q": "20260404T021828.000Z",
@@ -631,7 +631,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
                 }
             ],
-            "wins": 3,
+            "wins": 4,
             "losses": 0,
             "players": [
                 "Desteoyer"
@@ -640,6 +640,12 @@
                 "2V800VCQ0"
             ],
             "recent_matches": [
+                {
+                    "time": "20260404T080615.000Z",
+                    "result": "win",
+                    "player": "Desteoyer",
+                    "tag": "2V800VCQ0"
+                },
                 {
                     "time": "20260326T095550.000Z",
                     "result": "win",
@@ -3368,7 +3374,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Knitte"
             ],
@@ -3376,6 +3382,12 @@
                 "ULYJ2CQP"
             ],
             "recent_matches": [
+                {
+                    "time": "20260404T082213.000Z",
+                    "result": "loss",
+                    "player": "Knitte",
+                    "tag": "ULYJ2CQP"
+                },
                 {
                     "time": "20260330T084641.000Z",
                     "result": "win",
@@ -3493,7 +3505,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
                 }
             ],
-            "wins": 6,
+            "wins": 7,
             "losses": 0,
             "players": [
                 "OmniOni"
@@ -3502,6 +3514,12 @@
                 "UUPCULU9V"
             ],
             "recent_matches": [
+                {
+                    "time": "20260404T081318.000Z",
+                    "result": "win",
+                    "player": "OmniOni",
+                    "tag": "UUPCULU9V"
+                },
                 {
                     "time": "20260402T141834.000Z",
                     "result": "win",
@@ -5220,72 +5238,6 @@
                 }
             ]
         },
-        "26000004-26000010-26000014-26000018-26000021-26000064-27000000-28000011": {
-            "cards": [
-                {
-                    "id": 26000064,
-                    "name": "Firecracker",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
-                },
-                {
-                    "id": 27000000,
-                    "name": "Cannon",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/nZK1y-beLxO5vnlyUhK6-2zH2NzXJwqykcosqQ1cmZ8.png"
-                },
-                {
-                    "id": 26000004,
-                    "name": "P.E.K.K.A",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
-                },
-                {
-                    "id": 28000011,
-                    "name": "The Log",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
-                },
-                {
-                    "id": 26000014,
-                    "name": "Musketeer",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
-                },
-                {
-                    "id": 26000010,
-                    "name": "Skeletons",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/oO7iKMU5m0cdxhYPZA3nWQiAUh2yoGgdThLWB1rVSec.png"
-                },
-                {
-                    "id": 26000021,
-                    "name": "Hog Rider",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
-                },
-                {
-                    "id": 26000018,
-                    "name": "Mini P.E.K.K.A",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
-                }
-            ],
-            "wins": 1,
-            "losses": 1,
-            "players": [
-                "Chico"
-            ],
-            "tags": [
-                "P0JYR9YUY"
-            ],
-            "recent_matches": [
-                {
-                    "time": "20260404T065047.000Z",
-                    "result": "loss",
-                    "player": "Chico",
-                    "tag": "P0JYR9YUY"
-                },
-                {
-                    "time": "20260402T112809.000Z",
-                    "result": "win",
-                    "player": "Chico",
-                    "tag": "P0JYR9YUY"
-                }
-            ]
-        },
         "26000003-26000005-26000008-26000014-26000042-26000061-28000000-28000011": {
             "cards": [
                 {
@@ -6587,6 +6539,66 @@
                     "tag": "J9RQPGLVP"
                 }
             ]
+        },
+        "26000005-26000012-26000016-26000023-26000025-26000062-28000011-28000017": {
+            "cards": [
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 28000017,
+                    "name": "Giant Snowball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
+                },
+                {
+                    "id": 26000025,
+                    "name": "Guards",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/1ArKfLJxYo6_NU_S9cAeIrfbXqWH0oULVJXedxBXQlU.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000023,
+                    "name": "Ice Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W3dkw0HTw9n1jB-zbknY2w3wHuyuLxSRIAV5fUT1SEY.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                }
+            ],
+            "wins": 1,
+            "losses": 0,
+            "players": [
+                "OmniOni"
+            ],
+            "tags": [
+                "UUPCULU9V"
+            ],
+            "recent_matches": [
+                {
+                    "time": "20260404T082311.000Z",
+                    "result": "win",
+                    "player": "OmniOni",
+                    "tag": "UUPCULU9V"
+                }
+            ]
         }
     },
     "_opponent_decks": {
@@ -6603,8 +6615,8 @@
             "lost_against": 20
         },
         "Goblin Barrel": {
-            "seen": 48,
-            "lost_against": 23
+            "seen": 50,
+            "lost_against": 24
         },
         "Electro Wizard": {
             "seen": 39,
@@ -6615,8 +6627,8 @@
             "lost_against": 10
         },
         "Dart Goblin": {
-            "seen": 56,
-            "lost_against": 26
+            "seen": 58,
+            "lost_against": 27
         },
         "Tombstone": {
             "seen": 11,
@@ -6635,7 +6647,7 @@
             "lost_against": 23
         },
         "Battle Ram": {
-            "seen": 23,
+            "seen": 24,
             "lost_against": 12
         },
         "Goblin Drill": {
@@ -6663,7 +6675,7 @@
             "lost_against": 24
         },
         "Musketeer": {
-            "seen": 50,
+            "seen": 52,
             "lost_against": 28
         },
         "Mega Minion": {
@@ -6671,8 +6683,8 @@
             "lost_against": 5
         },
         "Wizard": {
-            "seen": 53,
-            "lost_against": 33
+            "seen": 55,
+            "lost_against": 35
         },
         "Baby Dragon": {
             "seen": 36,
@@ -6683,16 +6695,16 @@
             "lost_against": 12
         },
         "Hog Rider": {
-            "seen": 59,
-            "lost_against": 36
+            "seen": 61,
+            "lost_against": 37
         },
         "Goblin Gang": {
-            "seen": 52,
-            "lost_against": 21
+            "seen": 55,
+            "lost_against": 23
         },
         "Giant Skeleton": {
-            "seen": 15,
-            "lost_against": 10
+            "seen": 16,
+            "lost_against": 11
         },
         "Furnace": {
             "seen": 40,
@@ -6703,11 +6715,11 @@
             "lost_against": 10
         },
         "Fireball": {
-            "seen": 76,
+            "seen": 77,
             "lost_against": 40
         },
         "Minion Horde": {
-            "seen": 17,
+            "seen": 18,
             "lost_against": 10
         },
         "Mirror": {
@@ -6719,12 +6731,12 @@
             "lost_against": 16
         },
         "Tornado": {
-            "seen": 18,
-            "lost_against": 11
+            "seen": 19,
+            "lost_against": 12
         },
         "Guards": {
-            "seen": 18,
-            "lost_against": 7
+            "seen": 20,
+            "lost_against": 8
         },
         "Skeleton Army": {
             "seen": 42,
@@ -6735,7 +6747,7 @@
             "lost_against": 21
         },
         "Bomber": {
-            "seen": 30,
+            "seen": 31,
             "lost_against": 17
         },
         "Golem": {
@@ -6743,7 +6755,7 @@
             "lost_against": 4
         },
         "Cannon": {
-            "seen": 32,
+            "seen": 33,
             "lost_against": 17
         },
         "Mini P.E.K.K.A": {
@@ -6751,19 +6763,19 @@
             "lost_against": 38
         },
         "Archers": {
-            "seen": 34,
+            "seen": 35,
             "lost_against": 18
         },
         "Balloon": {
-            "seen": 37,
+            "seen": 38,
             "lost_against": 8
         },
         "Arrows": {
-            "seen": 63,
-            "lost_against": 31
+            "seen": 65,
+            "lost_against": 32
         },
         "Knight": {
-            "seen": 66,
+            "seen": 68,
             "lost_against": 33
         },
         "Barbarians": {
@@ -6779,8 +6791,8 @@
             "lost_against": 10
         },
         "Minions": {
-            "seen": 26,
-            "lost_against": 10
+            "seen": 27,
+            "lost_against": 11
         },
         "Flying Machine": {
             "seen": 13,
@@ -6795,16 +6807,16 @@
             "lost_against": 5
         },
         "Lumberjack": {
-            "seen": 23,
-            "lost_against": 9
+            "seen": 24,
+            "lost_against": 10
         },
         "Freeze": {
             "seen": 21,
             "lost_against": 13
         },
         "Valkyrie": {
-            "seen": 66,
-            "lost_against": 37
+            "seen": 67,
+            "lost_against": 38
         },
         "Electro Giant": {
             "seen": 10,
@@ -6867,7 +6879,7 @@
             "lost_against": 17
         },
         "Ice Golem": {
-            "seen": 9,
+            "seen": 10,
             "lost_against": 5
         },
         "The Log": {
@@ -6879,8 +6891,8 @@
             "lost_against": 13
         },
         "Bowler": {
-            "seen": 20,
-            "lost_against": 10
+            "seen": 21,
+            "lost_against": 11
         },
         "Hunter": {
             "seen": 17,
@@ -6891,7 +6903,7 @@
             "lost_against": 14
         },
         "Fire Spirit": {
-            "seen": 11,
+            "seen": 12,
             "lost_against": 3
         },
         "Vines": {
@@ -6903,7 +6915,7 @@
             "lost_against": 4
         },
         "Princess": {
-            "seen": 40,
+            "seen": 41,
             "lost_against": 19
         },
         "Royal Recruits": {
@@ -6911,7 +6923,7 @@
             "lost_against": 9
         },
         "Prince": {
-            "seen": 23,
+            "seen": 24,
             "lost_against": 11
         },
         "Ice Wizard": {
@@ -6919,7 +6931,7 @@
             "lost_against": 9
         },
         "Royal Delivery": {
-            "seen": 14,
+            "seen": 15,
             "lost_against": 9
         },
         "Mighty Miner": {
@@ -6943,8 +6955,8 @@
             "lost_against": 10
         },
         "Elite Barbarians": {
-            "seen": 28,
-            "lost_against": 17
+            "seen": 29,
+            "lost_against": 18
         },
         "Sparky": {
             "seen": 15,
@@ -6955,7 +6967,7 @@
             "lost_against": 1
         },
         "Archer Queen": {
-            "seen": 13,
+            "seen": 14,
             "lost_against": 6
         },
         "Goblin Hut": {
@@ -6991,7 +7003,7 @@
             "lost_against": 0
         },
         "X-Bow": {
-            "seen": 5,
+            "seen": 6,
             "lost_against": 2
         },
         "Rascals": {
