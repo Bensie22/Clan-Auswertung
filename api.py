@@ -58,7 +58,7 @@ APP_CONFIG = {
 
 CLAN_TAG_RAW = "#Y9YQC8UG"
 CLAN_TAG_ENCODED = "%23Y9YQC8UG"
-CR_API_BASE = "https://api.clashroyale.com/v1"
+CR_API_BASE = "https://proxy.royaleapi.dev/v1"
 
 
 # ── Basis-Hilfsfunktionen ────────────────────────────────────────────────────
