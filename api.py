@@ -499,6 +499,16 @@ def health():
     return {"status": "ok", "mode": "json-first"}
 
 
+@app.get("/debug/ip")
+def debug_ip():
+    """Zeigt die ausgehende IP des Render-Servers – nur für Setup-Zwecke."""
+    try:
+        resp = http_requests.get("https://api.ipify.org?format=json", timeout=5)
+        return {"outbound_ip": resp.json().get("ip"), "hinweis": "Diese IP muss im Supercell Developer Key whitelisted sein."}
+    except Exception as e:
+        return {"error": str(e)}
+
+
 @app.get("/summary")
 def summary():
     players = build_players_enriched()
