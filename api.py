@@ -58,7 +58,7 @@ APP_CONFIG = {
 
 CLAN_TAG_RAW = "#Y9YQC8UG"
 CLAN_TAG_ENCODED = "%23Y9YQC8UG"
-CR_API_BASE = "https://proxy.royaleapi.dev/v1"
+CR_API_BASE = "https://api.clashroyale.com/v1"
 
 
 # ── Basis-Hilfsfunktionen ────────────────────────────────────────────────────
@@ -1661,6 +1661,8 @@ def war_status():
 
     return {
         "state": state,
+        "data_timestamp": datetime.now(timezone.utc).isoformat(),
+        "cache_hinweis": "⚠️ CR-API cached Daten für 2–5 Minuten. Bei Abweichungen zum Spiel: Ingame-Stand hat immer Vorrang.",
         "mahnwache": {
             "open_decks_count": len(open_decks),
             "open_decks": open_decks,
@@ -1881,6 +1883,8 @@ def war_live_participants():
 
     return {
         "state": state,
+        "data_timestamp": datetime.now(timezone.utc).isoformat(),
+        "cache_hinweis": "⚠️ CR-API cached Daten für 2–5 Minuten. Bei Abweichungen zum Spiel: Ingame-Stand hat immer Vorrang.",
         "participants": result,
         "total_participants": len(result),
         "clan_fame": total_fame,
