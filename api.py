@@ -1097,8 +1097,11 @@ def war_mahnwache():
             "open_decks": [],
         }
 
+    current_members = load_player_stats()
     open_decks = []
     for p in participants:
+        if normalize_tag(p.get("tag", "")) not in current_members:
+            continue
         decks_used_today = p.get("decksUsedToday", 0)
         open_today = max(0, 4 - decks_used_today)
         if open_today > 0:
@@ -1634,10 +1637,13 @@ def war_status():
     clans_data = data.get("clans", [])
     participants = clan.get("participants", [])
 
-    # Offene Decks (Mahnwache)
+    # Offene Decks (Mahnwache) – nur aktuelle Mitglieder
+    current_members = load_player_stats()
     open_decks = []
     if state in ("warDay", "war", "full"):
         for p in participants:
+            if normalize_tag(p.get("tag", "")) not in current_members:
+                continue
             decks_used_today = p.get("decksUsedToday", 0)
             open_today = max(0, 4 - decks_used_today)
             if open_today > 0:
