@@ -1090,7 +1090,7 @@ def war_mahnwache():
     participants = clan.get("participants", [])
     state = data.get("state", "unknown")
 
-    if state not in ("warDay", "war"):
+    if state not in ("warDay", "war", "full"):
         return {
             "state": state,
             "message": "Aktuell kein aktiver Kriegstag – keine offenen Decks.",
@@ -1636,7 +1636,7 @@ def war_status():
 
     # Offene Decks (Mahnwache)
     open_decks = []
-    if state in ("warDay", "war"):
+    if state in ("warDay", "war", "full"):
         for p in participants:
             decks_used_today = p.get("decksUsedToday", 0)
             open_today = max(0, 4 - decks_used_today)
