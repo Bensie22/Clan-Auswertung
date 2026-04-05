@@ -245,7 +245,7 @@ def strikes_for_player(tag: str, name: str) -> int:
 def cr_api_get(path: str) -> Optional[Dict[str, Any]]:
     api_key = os.getenv("CR_API_KEY", "")
     if not api_key:
-        return None
+        raise HTTPException(status_code=503, detail="CR_API_KEY nicht gesetzt in Render Environment Variables.")
     try:
         resp = http_requests.get(
             f"{CR_API_BASE}{path}",
@@ -254,9 +254,15 @@ def cr_api_get(path: str) -> Optional[Dict[str, Any]]:
         )
         if resp.status_code == 200:
             return resp.json()
-        return None
-    except Exception:
-        return None
+        if resp.status_code == 403:
+            raise HTTPException(status_code=403, detail=f"Supercell API: Zugriff verweigert (403) – Render-IP nicht in der Key-Whitelist eingetragen. URL: {CR_API_BASE}{path}")
+        if resp.status_code == 401:
+            raise HTTPException(status_code=401, detail=f"Supercell API: Ungültiger Key (401) – bitte CR_API_KEY in Render prüfen.")
+        raise HTTPException(status_code=502, detail=f"Supercell API Fehler: HTTP {resp.status_code} – {resp.text[:200]}")
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=f"Verbindungsfehler zur CR-API: {str(e)}")
 
 
 def fetch_riverracelog() -> Optional[List[Dict[str, Any]]]:
