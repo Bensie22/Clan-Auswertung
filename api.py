@@ -255,10 +255,10 @@ def cr_api_get(path: str) -> Optional[Dict[str, Any]]:
         if resp.status_code == 200:
             return resp.json()
         if resp.status_code == 403:
-            raise HTTPException(status_code=403, detail=f"Supercell API: Zugriff verweigert (403) – Render-IP nicht in der Key-Whitelist eingetragen. URL: {CR_API_BASE}{path}")
+            raise HTTPException(status_code=403, detail=f"RoyaleAPI Proxy: Zugriff verweigert (403) – API-Key ungültig oder gesperrt. URL: {CR_API_BASE}{path}")
         if resp.status_code == 401:
-            raise HTTPException(status_code=401, detail=f"Supercell API: Ungültiger Key (401) – bitte CR_API_KEY in Render prüfen.")
-        raise HTTPException(status_code=502, detail=f"Supercell API Fehler: HTTP {resp.status_code} – {resp.text[:200]}")
+            raise HTTPException(status_code=401, detail=f"RoyaleAPI Proxy: Ungültiger Key (401) – bitte CR_API_KEY in Render prüfen.")
+        raise HTTPException(status_code=502, detail=f"RoyaleAPI Proxy Fehler: HTTP {resp.status_code} – {resp.text[:200]}")
     except HTTPException:
         raise
     except Exception as e:
@@ -1099,13 +1099,14 @@ def war_mahnwache():
 
     open_decks = []
     for p in participants:
-        open_today = p.get("decksOpenToday", 0)
+        decks_used_today = p.get("decksUsedToday", 0)
+        open_today = max(0, 4 - decks_used_today)
         if open_today > 0:
             open_decks.append({
                 "name": p.get("name"),
                 "tag": p.get("tag"),
                 "decks_open_today": open_today,
-                "decks_used_today": p.get("decksUsedToday", 0),
+                "decks_used_today": decks_used_today,
                 "fame": p.get("fame", 0),
                 "boat_attacks": p.get("boatAttacks", 0),
             })
@@ -1177,7 +1178,7 @@ def war_prognose():
 
     our_fame = clan.get("fame", 0)
     decks_used_today = sum(p.get("decksUsedToday", 0) for p in participants)
-    remaining_decks = sum(p.get("decksOpenToday", 0) for p in participants)
+    remaining_decks = sum(max(0, 4 - p.get("decksUsedToday", 0)) for p in participants)
     avg_fame_per_deck = round(our_fame / decks_used_today) if decks_used_today > 0 else 150
 
     projected_fame = our_fame + round(remaining_decks * avg_fame_per_deck)
@@ -1637,12 +1638,14 @@ def war_status():
     open_decks = []
     if state in ("warDay", "war"):
         for p in participants:
-            if p.get("decksOpenToday", 0) > 0:
+            decks_used_today = p.get("decksUsedToday", 0)
+            open_today = max(0, 4 - decks_used_today)
+            if open_today > 0:
                 open_decks.append({
                     "name": p.get("name"),
                     "tag": p.get("tag"),
-                    "decks_open_today": p.get("decksOpenToday", 0),
-                    "decks_used_today": p.get("decksUsedToday", 0),
+                    "decks_open_today": open_today,
+                    "decks_used_today": decks_used_today,
                     "fame": p.get("fame", 0),
                     "boat_attacks": p.get("boatAttacks", 0),
                 })
@@ -1668,7 +1671,7 @@ def war_status():
 
     # Prognose
     decks_used_today = sum(p.get("decksUsedToday", 0) for p in participants)
-    remaining_decks = sum(p.get("decksOpenToday", 0) for p in participants)
+    remaining_decks = sum(max(0, 4 - p.get("decksUsedToday", 0)) for p in participants)
     avg_fame_per_deck = round(our_fame / decks_used_today) if decks_used_today > 0 else 150
     projected_fame = our_fame + round(remaining_decks * avg_fame_per_deck)
     second_fame = standings[1]["fame"] if len(standings) > 1 else 0
@@ -1887,7 +1890,7 @@ def war_live_participants():
             "fame": fame,
             "decks_used": decks_used,
             "decks_used_today": p.get("decksUsedToday", 0),
-            "decks_open_today": p.get("decksOpenToday", 0),
+            "decks_open_today": max(0, 4 - p.get("decksUsedToday", 0)),
             "boat_attacks": p.get("boatAttacks", 0),
             "repair_points": p.get("repairPoints", 0),
             "avg_fame_per_deck": round(fame / decks_used) if decks_used > 0 else 0,
