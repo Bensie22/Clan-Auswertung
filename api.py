@@ -259,6 +259,19 @@ def cr_api_get(path: str) -> Optional[Dict[str, Any]]:
         return None
 
 
+def fetch_riverracelog() -> Optional[List[Dict[str, Any]]]:
+    """Ruft den River-Race-Verlauf live von der CR-API ab."""
+    data = cr_api_get(f"/clans/{CLAN_TAG_ENCODED}/riverracelog")
+    if data is None:
+        return None
+    return data.get("items", [])
+
+
+def fetch_currentriverrace() -> Optional[Dict[str, Any]]:
+    """Ruft den aktuellen River-Race live von der CR-API ab."""
+    return cr_api_get(f"/clans/{CLAN_TAG_ENCODED}/currentriverrace")
+
+
 def compute_trend(scores: List[float]) -> str:
     return "".join([
         "🟢" if s >= APP_CONFIG["TIER_SOLIDE"] else
@@ -544,7 +557,50 @@ def player(player_tag: str):
 
 @app.get("/warlog")
 def warlog():
-    """Alle aufgezeichneten Kriegstage aus der Score-Historie, gruppiert nach Datum."""
+    """Kriegsverlauf – live von CR-API (Fame, Decks, Boat Attacks pro Spieler) oder CSV als Fallback."""
+    items = fetch_riverracelog()
+    if items:
+        wars = []
+        for item in items:
+            standings = item.get("standings", [])
+            our_standing = next(
+                (s for s in standings if s.get("clan", {}).get("tag") == CLAN_TAG_RAW), None
+            )
+            our_rank = next(
+                (i + 1 for i, s in enumerate(standings) if s.get("clan", {}).get("tag") == CLAN_TAG_RAW), None
+            )
+            if not our_standing:
+                continue
+            clan = our_standing.get("clan", {})
+            participants = clan.get("participants", [])
+            total_decks = sum(p.get("decksUsed", 0) for p in participants)
+            total_fame = clan.get("fame", 0)
+            wars.append({
+                "season_id": item.get("seasonId"),
+                "section_index": item.get("sectionIndex"),
+                "created_date": item.get("createdDate"),
+                "our_rank": our_rank,
+                "total_clans": len(standings),
+                "our_fame": total_fame,
+                "trophy_change": our_standing.get("trophyChange", 0),
+                "total_decks_used": total_decks,
+                "avg_fame_per_deck": round(total_fame / total_decks) if total_decks > 0 else 0,
+                "participants_count": len(participants),
+                "players": sorted([
+                    {
+                        "name": p.get("name"),
+                        "tag": p.get("tag"),
+                        "fame": p.get("fame", 0),
+                        "decks_used": p.get("decksUsed", 0),
+                        "boat_attacks": p.get("boatAttacks", 0),
+                        "repair_points": p.get("repairPoints", 0),
+                    }
+                    for p in participants
+                ], key=lambda x: -x["fame"]),
+            })
+        return {"source": "live", "wars": wars, "total_recorded": len(wars)}
+
+    # Fallback: CSV
     rows = score_history_rows()
     by_date: Dict[str, List[Dict[str, Any]]] = {}
     for row in rows:
@@ -558,7 +614,6 @@ def warlog():
             "score": parse_float(row.get("score", 0)),
             "trophies": parse_int(row.get("trophies", 0)),
         })
-
     wars = []
     for date, date_players in sorted(by_date.items()):
         scores = [p["score"] for p in date_players]
@@ -568,8 +623,7 @@ def warlog():
             "avg_score": round(sum(scores) / len(scores), 2) if scores else 0,
             "players": sorted(date_players, key=lambda x: -x["score"]),
         })
-
-    return {"wars": list(reversed(wars)), "total_recorded": len(wars)}
+    return {"source": "csv", "wars": list(reversed(wars)), "total_recorded": len(wars)}
 
 
 @app.get("/warlog/current")
@@ -611,35 +665,78 @@ def warlog_current():
 
 @app.get("/player/{player_tag}/warlog")
 def player_warlog(player_tag: str):
-    """Score-Verlauf eines einzelnen Spielers über alle aufgezeichneten Kriegstage."""
+    """Kriegsverlauf eines Spielers – live (Fame, Decks, Boat Attacks) oder CSV als Fallback."""
     tag = normalize_tag(player_tag)
+    tag_bare = tag.lstrip("#")
     all_players = build_players_enriched()
     if tag not in all_players:
         raise HTTPException(status_code=404, detail="Spieler nicht gefunden")
 
     player_name = all_players[tag]["name"]
+
+    # Live-Versuch
+    items = fetch_riverracelog()
+    if items:
+        wars = []
+        for item in items:
+            standings = item.get("standings", [])
+            our_standing = next(
+                (s for s in standings if s.get("clan", {}).get("tag") == CLAN_TAG_RAW), None
+            )
+            if not our_standing:
+                continue
+            participants = our_standing.get("clan", {}).get("participants", [])
+            player_entry = next(
+                (p for p in participants if p.get("tag", "").lstrip("#") == tag_bare), None
+            )
+            if not player_entry:
+                continue
+            wars.append({
+                "season_id": item.get("seasonId"),
+                "created_date": item.get("createdDate"),
+                "our_rank": next(
+                    (i + 1 for i, s in enumerate(standings) if s.get("clan", {}).get("tag") == CLAN_TAG_RAW), None
+                ),
+                "fame": player_entry.get("fame", 0),
+                "decks_used": player_entry.get("decksUsed", 0),
+                "boat_attacks": player_entry.get("boatAttacks", 0),
+                "repair_points": player_entry.get("repairPoints", 0),
+                "trophy_change": our_standing.get("trophyChange", 0),
+            })
+        if wars:
+            total_fame = sum(w["fame"] for w in wars)
+            total_decks = sum(w["decks_used"] for w in wars)
+            return {
+                "source": "live",
+                "tag": tag,
+                "name": player_name,
+                "wars": wars,
+                "total_wars": len(wars),
+                "total_fame": total_fame,
+                "avg_fame_per_deck": round(total_fame / total_decks) if total_decks > 0 else 0,
+            }
+
+    # Fallback: CSV
     history = score_history_by_player()
     entries = history.get(normalize_name(player_name), [])
-
     if not entries:
         return {"tag": tag, "name": player_name, "wars": [], "message": "Keine Kriegsdaten vorhanden"}
-
-    wars = []
+    wars_csv = []
     for i, entry in enumerate(entries):
         delta = round(entry["score"] - entries[i - 1]["score"], 2) if i > 0 else None
-        wars.append({
+        wars_csv.append({
             "date": entry["date"],
             "score": entry["score"],
             "trophies": entry["trophies"],
             "delta": delta,
             "trend_symbol": "🟢" if entry["score"] >= 80 else "🟡" if entry["score"] >= 50 else "🔴",
         })
-
     return {
+        "source": "csv",
         "tag": tag,
         "name": player_name,
-        "wars": list(reversed(wars)),
-        "total_wars": len(wars),
+        "wars": list(reversed(wars_csv)),
+        "total_wars": len(wars_csv),
         "avg_score": round(sum(e["score"] for e in entries) / len(entries), 2),
     }
 
@@ -1499,3 +1596,417 @@ def compare(
         }
 
     return {"players": comparison, "verdict": verdict}
+
+
+# ════════════════════════════════════════════════════════════════════════════
+# ZUSAMMENGEFÜHRTE ENDPUNKTE (Schema-Slot-optimiert)
+# ════════════════════════════════════════════════════════════════════════════
+
+@app.get("/war/status")
+def war_status():
+    """Alles zum aktuellen Krieg in einem Aufruf: offene Decks, Standings, Prognose. (Benötigt CR_API_KEY)"""
+    data = fetch_currentriverrace()
+    if data is None:
+        raise HTTPException(
+            status_code=503,
+            detail="CR-API nicht verfügbar. Bitte CR_API_KEY als Umgebungsvariable auf Render setzen.",
+        )
+
+    state = data.get("state", "unknown")
+    clan = data.get("clan", {})
+    clans_data = data.get("clans", [])
+    participants = clan.get("participants", [])
+
+    # Offene Decks (Mahnwache)
+    open_decks = []
+    if state in ("warDay", "war"):
+        for p in participants:
+            if p.get("decksOpenToday", 0) > 0:
+                open_decks.append({
+                    "name": p.get("name"),
+                    "tag": p.get("tag"),
+                    "decks_open_today": p.get("decksOpenToday", 0),
+                    "decks_used_today": p.get("decksUsedToday", 0),
+                    "fame": p.get("fame", 0),
+                    "boat_attacks": p.get("boatAttacks", 0),
+                })
+        open_decks.sort(key=lambda x: -x["decks_open_today"])
+
+    # Standings (Radar)
+    standings = []
+    for c in clans_data:
+        standings.append({
+            "name": c.get("name"),
+            "tag": c.get("tag"),
+            "fame": c.get("fame", 0),
+            "repair_points": c.get("repairPoints", 0),
+        })
+    standings.sort(key=lambda x: -x["fame"])
+    for i, s in enumerate(standings):
+        s["rank"] = i + 1
+
+    our_entry = next((s for s in standings if s["tag"] == CLAN_TAG_RAW), None)
+    our_rank = our_entry["rank"] if our_entry else None
+    our_fame = our_entry["fame"] if our_entry else clan.get("fame", 0)
+    leader_fame = standings[0]["fame"] if standings else 0
+
+    # Prognose
+    decks_used_today = sum(p.get("decksUsedToday", 0) for p in participants)
+    remaining_decks = sum(p.get("decksOpenToday", 0) for p in participants)
+    avg_fame_per_deck = round(our_fame / decks_used_today) if decks_used_today > 0 else 150
+    projected_fame = our_fame + round(remaining_decks * avg_fame_per_deck)
+    second_fame = standings[1]["fame"] if len(standings) > 1 else 0
+    can_win = projected_fame > leader_fame
+    can_top2 = projected_fame > second_fame if our_rank and our_rank > 2 else True
+
+    return {
+        "state": state,
+        "mahnwache": {
+            "open_decks_count": len(open_decks),
+            "open_decks": open_decks,
+            "message": f"{len(open_decks)} Spieler haben noch offene Decks!" if open_decks else "Alle Decks gespielt! 🎉",
+        },
+        "radar": {
+            "our_rank": our_rank,
+            "our_fame": our_fame,
+            "fame_gap_to_leader": max(0, leader_fame - our_fame),
+            "standings": standings,
+        },
+        "prognose": {
+            "remaining_decks": remaining_decks,
+            "avg_fame_per_deck": avg_fame_per_deck,
+            "projected_fame": projected_fame,
+            "verdict": (
+                "🏆 Sieg möglich!" if can_win else
+                "🥈 Top 2 erreichbar" if can_top2 else
+                "⚔️ Schwierig – alle Decks müssen gespielt werden"
+            ),
+        },
+    }
+
+
+@app.get("/player/{player_tag}/stats")
+def player_stats_combined(player_tag: str):
+    """Kompakt-Statistik eines Spielers: Focus-Badge, Streak, Trend, Welpenschutz in einem Aufruf."""
+    tag = normalize_tag(player_tag)
+    all_players = build_players_enriched()
+    if tag not in all_players:
+        raise HTTPException(status_code=404, detail="Spieler nicht gefunden")
+
+    p = all_players[tag]
+    history = score_history_by_player()
+    entries = history.get(normalize_name(p["name"]), [])
+    scores = [e["score"] for e in entries]
+
+    focus = get_focus_badge(p.get("score", 0), p.get("fame_per_deck", 0), p.get("participation_count", 0))
+    streak = compute_streak(scores)
+    trend = compute_trend(scores) if scores else ""
+    is_welpenschutz = p.get("participation_count", 0) <= APP_CONFIG["MIN_PARTICIPATION"]
+
+    return {
+        "name": p["name"],
+        "tag": tag,
+        "role": p.get("role"),
+        "score": p.get("score", 0),
+        "fame_per_deck": p.get("fame_per_deck", 0),
+        "trophies": p.get("trophies", 0),
+        "participation_count": p.get("participation_count", 0),
+        "focus": focus,
+        "welpenschutz": is_welpenschutz,
+        "wars_until_evaluated": max(0, APP_CONFIG["MIN_PARTICIPATION"] + 1 - p.get("participation_count", 0)) if is_welpenschutz else 0,
+        "trend": trend,
+        "streak": streak,
+        "streak_badge": f"🔥 {streak}x perfekt" if streak >= 3 else (f"🔥 {streak}" if streak >= 2 else None),
+        "recent_scores": scores[-6:],
+        "avg_score": round(sum(scores) / len(scores), 2) if scores else 0,
+        "best_score": max(scores) if scores else 0,
+    }
+
+
+@app.get("/players/meta")
+def players_meta():
+    """Trends, Streaks und Comebacks aller Spieler in einem Aufruf."""
+    all_players = build_players_enriched()
+    history = score_history_by_player()
+    clan_records = load_records()
+
+    trends = []
+    streaks = []
+    comebacks = []
+
+    for tag, p in all_players.items():
+        entries = history.get(normalize_name(p["name"]), [])
+        scores = [e["score"] for e in entries]
+        trend = compute_trend(scores) if scores else "–"
+        streak = compute_streak(scores)
+        delta = round(scores[-1] - scores[-2], 2) if len(scores) >= 2 else None
+
+        trends.append({
+            "name": p["name"],
+            "tag": tag,
+            "score": p.get("score", 0),
+            "trend": trend,
+            "streak": streak,
+            "streak_badge": f"🔥 {streak}" if streak >= 3 else None,
+            "delta": delta,
+            "delta_symbol": "📈" if delta is not None and delta > 5 else "📉" if delta is not None and delta < -5 else "➡️" if delta is not None else "–",
+        })
+
+        if streak >= 2:
+            streaks.append({
+                "name": p["name"],
+                "tag": tag,
+                "streak": streak,
+                "badge": f"🔥 {streak}x 100%",
+                "score": p.get("score", 0),
+            })
+
+        if len(scores) >= 2:
+            improvement = round(scores[-1] - scores[-2], 2)
+            if improvement > 0:
+                comebacks.append({
+                    "name": p["name"],
+                    "tag": tag,
+                    "previous_score": scores[-2],
+                    "current_score": scores[-1],
+                    "improvement": improvement,
+                    "badge": "🚀 Mega-Comeback!" if improvement >= 30 else "📈 Verbesserung",
+                })
+
+    trends.sort(key=lambda x: -x["score"])
+    streaks.sort(key=lambda x: -x["streak"])
+    comebacks.sort(key=lambda x: -x["improvement"])
+    record_delta = clan_records.get("delta", {}) if isinstance(clan_records, dict) else {}
+
+    return {
+        "trends": trends,
+        "streaks": {
+            "players": streaks,
+            "message": f"{len(streaks)} Spieler mit aktivem Streak" if streaks else "Aktuell keine aktiven Streaks",
+        },
+        "comebacks": {
+            "top10": comebacks[:10],
+            "all_time_record": {"name": record_delta.get("name"), "improvement": record_delta.get("val")} if record_delta else None,
+        },
+    }
+
+
+# ════════════════════════════════════════════════════════════════════════════
+# NEUE LIVE-ENDPUNKTE (CR_API_KEY)
+# ════════════════════════════════════════════════════════════════════════════
+
+@app.get("/war/history")
+def war_history():
+    """Vollständiger River-Race-Verlauf: Rang, Fame, Trophäen-Änderung pro vergangenen Krieg. (Benötigt CR_API_KEY)"""
+    items = fetch_riverracelog()
+    if items is None:
+        raise HTTPException(
+            status_code=503,
+            detail="CR-API nicht verfügbar. Bitte CR_API_KEY als Umgebungsvariable auf Render setzen.",
+        )
+
+    history = []
+    for item in items:
+        standings = item.get("standings", [])
+        our_standing = next(
+            (s for s in standings if s.get("clan", {}).get("tag") == CLAN_TAG_RAW), None
+        )
+        our_rank = next(
+            (i + 1 for i, s in enumerate(standings) if s.get("clan", {}).get("tag") == CLAN_TAG_RAW), None
+        )
+        clan = our_standing.get("clan", {}) if our_standing else {}
+        participants = clan.get("participants", [])
+        total_fame = clan.get("fame", 0)
+        total_decks = sum(p.get("decksUsed", 0) for p in participants)
+
+        history.append({
+            "season_id": item.get("seasonId"),
+            "section_index": item.get("sectionIndex"),
+            "created_date": item.get("createdDate"),
+            "our_rank": our_rank,
+            "total_clans": len(standings),
+            "our_fame": total_fame,
+            "trophy_change": our_standing.get("trophyChange", 0) if our_standing else 0,
+            "participants_count": len(participants),
+            "total_decks_used": total_decks,
+            "avg_fame_per_deck": round(total_fame / total_decks) if total_decks > 0 else 0,
+            "top_scorer": max(participants, key=lambda x: x.get("fame", 0)).get("name") if participants else None,
+        })
+
+    wins = sum(1 for h in history if h["our_rank"] == 1)
+    top2 = sum(1 for h in history if h["our_rank"] and h["our_rank"] <= 2)
+
+    return {
+        "races": history,
+        "total_races": len(history),
+        "wins": wins,
+        "top2_finishes": top2,
+        "avg_rank": round(sum(h["our_rank"] for h in history if h["our_rank"]) / len([h for h in history if h["our_rank"]]), 1) if history else None,
+    }
+
+
+@app.get("/war/live-participants")
+def war_live_participants():
+    """Vollständige Live-Liste aller aktuellen Kriegsteilnehmer mit Fame, Decks und Boat Attacks. (Benötigt CR_API_KEY)"""
+    data = fetch_currentriverrace()
+    if data is None:
+        raise HTTPException(
+            status_code=503,
+            detail="CR-API nicht verfügbar. Bitte CR_API_KEY als Umgebungsvariable auf Render setzen.",
+        )
+
+    state = data.get("state", "unknown")
+    clan = data.get("clan", {})
+    participants = clan.get("participants", [])
+
+    result = []
+    for p in participants:
+        decks_used = p.get("decksUsed", 0)
+        fame = p.get("fame", 0)
+        result.append({
+            "name": p.get("name"),
+            "tag": p.get("tag"),
+            "fame": fame,
+            "decks_used": decks_used,
+            "decks_used_today": p.get("decksUsedToday", 0),
+            "decks_open_today": p.get("decksOpenToday", 0),
+            "boat_attacks": p.get("boatAttacks", 0),
+            "repair_points": p.get("repairPoints", 0),
+            "avg_fame_per_deck": round(fame / decks_used) if decks_used > 0 else 0,
+        })
+
+    result.sort(key=lambda x: -x["fame"])
+    total_fame = sum(p["fame"] for p in result)
+    total_decks = sum(p["decks_used"] for p in result)
+
+    return {
+        "state": state,
+        "participants": result,
+        "total_participants": len(result),
+        "clan_fame": total_fame,
+        "clan_decks_used": total_decks,
+        "clan_avg_fame_per_deck": round(total_fame / total_decks) if total_decks > 0 else 0,
+    }
+
+
+@app.get("/player/{player_tag}/battlelog")
+def player_battlelog(player_tag: str):
+    """Letzte River-Race-Kämpfe eines Spielers live: Ergebnis, Kronen, eigenes Deck, Gegner-Deck. (Benötigt CR_API_KEY)"""
+    tag = normalize_tag(player_tag)
+    tag_encoded = f"%23{tag.lstrip('#')}"
+    all_players = build_players_enriched()
+    if tag not in all_players:
+        raise HTTPException(status_code=404, detail="Spieler nicht gefunden")
+
+    data = cr_api_get(f"/players/{tag_encoded}/battlelog")
+    if data is None:
+        raise HTTPException(
+            status_code=503,
+            detail="CR-API nicht verfügbar. Bitte CR_API_KEY als Umgebungsvariable auf Render setzen.",
+        )
+
+    battles = data if isinstance(data, list) else []
+    river_race_battles = [b for b in battles if "riverRace" in b.get("type", "").lower() or "river" in b.get("type", "").lower()][:25]
+
+    result = []
+    for b in river_race_battles:
+        team = b.get("team", [{}])[0] if b.get("team") else {}
+        opponent = b.get("opponent", [{}])[0] if b.get("opponent") else {}
+        player_crowns = team.get("crowns", 0)
+        opp_crowns = opponent.get("crowns", 0)
+
+        result.append({
+            "battle_time": b.get("battleTime"),
+            "type": b.get("type"),
+            "result": "win" if player_crowns > opp_crowns else "loss" if player_crowns < opp_crowns else "draw",
+            "crowns": player_crowns,
+            "opponent_crowns": opp_crowns,
+            "opponent_name": opponent.get("name"),
+            "opponent_tag": opponent.get("tag"),
+            "player_deck": [c.get("name") for c in team.get("cards", []) if isinstance(c, dict)],
+            "opponent_deck": [c.get("name") for c in opponent.get("cards", []) if isinstance(c, dict)],
+        })
+
+    wins = sum(1 for b in result if b["result"] == "win")
+    total = len(result)
+
+    return {
+        "tag": tag,
+        "name": all_players[tag]["name"],
+        "battles": result,
+        "total_battles": total,
+        "wins": wins,
+        "losses": total - wins,
+        "winrate_pct": round(wins / total * 100, 1) if total > 0 else 0,
+    }
+
+
+@app.get("/player/{player_tag}/live")
+def player_live(player_tag: str):
+    """Live-Profil eines Spielers direkt aus der CR-API: aktuelle Trophäen, Rolle, Donationen. (Benötigt CR_API_KEY)"""
+    tag = normalize_tag(player_tag)
+    tag_encoded = f"%23{tag.lstrip('#')}"
+
+    data = cr_api_get(f"/players/{tag_encoded}")
+    if data is None:
+        raise HTTPException(
+            status_code=503,
+            detail="CR-API nicht verfügbar. Bitte CR_API_KEY als Umgebungsvariable auf Render setzen.",
+        )
+
+    clan_info = data.get("clan", {})
+    return {
+        "name": data.get("name"),
+        "tag": data.get("tag"),
+        "trophies": data.get("trophies"),
+        "best_trophies": data.get("bestTrophies"),
+        "level": data.get("expLevel"),
+        "war_day_wins": data.get("warDayWins"),
+        "donations": data.get("donations"),
+        "donations_received": data.get("donationsReceived"),
+        "donations_total": data.get("totalDonations"),
+        "clan_name": clan_info.get("name"),
+        "clan_tag": clan_info.get("tag"),
+        "role": data.get("role"),
+        "last_seen": data.get("lastSeen"),
+        "arena": data.get("arena", {}).get("name"),
+    }
+
+
+@app.get("/clan/live")
+def clan_live():
+    """Live Clan-Profil: Mitglieder, Trophäen, Liga, Spenden-Woche. (Benötigt CR_API_KEY)"""
+    data = cr_api_get(f"/clans/{CLAN_TAG_ENCODED}")
+    if data is None:
+        raise HTTPException(
+            status_code=503,
+            detail="CR-API nicht verfügbar. Bitte CR_API_KEY als Umgebungsvariable auf Render setzen.",
+        )
+
+    member_list = data.get("memberList", [])
+    members_summary = [
+        {
+            "name": m.get("name"),
+            "tag": m.get("tag"),
+            "role": m.get("role"),
+            "trophies": m.get("trophies"),
+            "donations": m.get("donations"),
+            "donations_received": m.get("donationsReceived"),
+        }
+        for m in member_list
+    ]
+    members_summary.sort(key=lambda x: -x["trophies"])
+
+    return {
+        "name": data.get("name"),
+        "tag": data.get("tag"),
+        "description": data.get("description"),
+        "type": data.get("type"),
+        "members": data.get("members"),
+        "required_trophies": data.get("requiredTrophies"),
+        "clan_score": data.get("clanScore"),
+        "clan_war_trophies": data.get("clanWarTrophies"),
+        "donations_per_week": data.get("donationsPerWeek"),
+        "location": data.get("location", {}).get("name"),
+        "member_list": members_summary,
+    }
