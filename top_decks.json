@@ -35,7 +35,7 @@
             "#2U09UULRR": "20260405T134601.000Z",
             "#YJ0LUU0JJ": "20260402T171116.000Z",
             "#8QYYL8LCQ": "20260405T052901.000Z",
-            "#8P0J8P0L": "20260404T114115.000Z",
+            "#8P0J8P0L": "20260405T145551.000Z",
             "#Y882QLJQJ": "20260405T103311.000Z",
             "#CUJ9PJ2UV": "20260405T100809.000Z",
             "#2P0U2RLGY": "20260405T002401.000Z",
@@ -2822,7 +2822,7 @@
                 }
             ],
             "wins": 5,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "OneAndOnly"
             ],
@@ -2830,6 +2830,12 @@
                 "8P0J8P0L"
             ],
             "recent_matches": [
+                {
+                    "time": "20260405T145551.000Z",
+                    "result": "loss",
+                    "player": "OneAndOnly",
+                    "tag": "8P0J8P0L"
+                },
                 {
                     "time": "20260404T114115.000Z",
                     "result": "win",
@@ -6651,8 +6657,8 @@
     },
     "_opponent_decks": {
         "Firecracker": {
-            "seen": 87,
-            "lost_against": 52
+            "seen": 88,
+            "lost_against": 53
         },
         "Inferno Dragon": {
             "seen": 38,
@@ -6663,8 +6669,8 @@
             "lost_against": 25
         },
         "Goblin Barrel": {
-            "seen": 64,
-            "lost_against": 32
+            "seen": 65,
+            "lost_against": 33
         },
         "Electro Wizard": {
             "seen": 46,
@@ -6711,20 +6717,20 @@
             "lost_against": 4
         },
         "Royal Giant": {
-            "seen": 40,
-            "lost_against": 19
+            "seen": 41,
+            "lost_against": 20
         },
         "Tesla": {
-            "seen": 72,
-            "lost_against": 41
+            "seen": 73,
+            "lost_against": 42
         },
         "Executioner": {
             "seen": 52,
             "lost_against": 30
         },
         "Musketeer": {
-            "seen": 72,
-            "lost_against": 38
+            "seen": 73,
+            "lost_against": 39
         },
         "Mega Minion": {
             "seen": 20,
@@ -6751,20 +6757,20 @@
             "lost_against": 29
         },
         "Giant Skeleton": {
-            "seen": 22,
-            "lost_against": 12
+            "seen": 23,
+            "lost_against": 13
         },
         "Furnace": {
-            "seen": 49,
-            "lost_against": 28
+            "seen": 50,
+            "lost_against": 29
         },
         "Rage": {
             "seen": 23,
             "lost_against": 12
         },
         "Fireball": {
-            "seen": 91,
-            "lost_against": 47
+            "seen": 92,
+            "lost_against": 48
         },
         "Minion Horde": {
             "seen": 26,
@@ -6795,8 +6801,8 @@
             "lost_against": 25
         },
         "Bomber": {
-            "seen": 40,
-            "lost_against": 19
+            "seen": 41,
+            "lost_against": 20
         },
         "Golem": {
             "seen": 12,
@@ -6815,12 +6821,12 @@
             "lost_against": 23
         },
         "Balloon": {
-            "seen": 46,
-            "lost_against": 12
+            "seen": 47,
+            "lost_against": 13
         },
         "Arrows": {
-            "seen": 87,
-            "lost_against": 45
+            "seen": 88,
+            "lost_against": 46
         },
         "Knight": {
             "seen": 84,
@@ -6879,8 +6885,8 @@
             "lost_against": 10
         },
         "Witch": {
-            "seen": 67,
-            "lost_against": 35
+            "seen": 68,
+            "lost_against": 36
         },
         "Bomb Tower": {
             "seen": 22,
@@ -6923,8 +6929,8 @@
             "lost_against": 17
         },
         "Skeletons": {
-            "seen": 41,
-            "lost_against": 24
+            "seen": 42,
+            "lost_against": 25
         },
         "Ice Golem": {
             "seen": 16,
@@ -6943,12 +6949,12 @@
             "lost_against": 14
         },
         "Hunter": {
-            "seen": 23,
-            "lost_against": 12
+            "seen": 24,
+            "lost_against": 13
         },
         "Electro Spirit": {
-            "seen": 31,
-            "lost_against": 16
+            "seen": 32,
+            "lost_against": 17
         },
         "Fire Spirit": {
             "seen": 20,
@@ -6979,8 +6985,8 @@
             "lost_against": 11
         },
         "Royal Delivery": {
-            "seen": 17,
-            "lost_against": 10
+            "seen": 18,
+            "lost_against": 11
         },
         "Mighty Miner": {
             "seen": 6,
