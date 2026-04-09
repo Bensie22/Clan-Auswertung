@@ -55,6 +55,9 @@ jobs:
       - name: Coaching Mode starten
         run: python coaching_mode.py
 
+      - name: Commander Mode starten
+        run: python commander_mode.py
+
       - name: Commit und Push der neuen Dateien
         run: |
           git config --local user.email "action@github.com"
