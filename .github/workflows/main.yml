@@ -52,6 +52,9 @@ jobs:
       - name: Smart Mode starten
         run: python smart_mode.py
 
+      - name: Coaching Mode starten
+        run: python coaching_mode.py
+
       - name: Commit und Push der neuen Dateien
         run: |
           git config --local user.email "action@github.com"
