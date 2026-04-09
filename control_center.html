@@ -40,6 +40,7 @@ async function loadData() {
     const smart = await fetch("smart_output.json").then(r => r.json());
     const coaching = await fetch("coaching_output.json").then(r => r.json());
 
+    // 👑 STRATEGIE
     document.getElementById("commander").innerHTML =
     `
     <h2>👑 Strategie</h2>
@@ -55,18 +56,24 @@ async function loadData() {
     </div>
     `;
 
+    // 🟡 RISIKO (Smart Mode)
     let smartHTML = "<h2>🟡 Risiko</h2>";
+
     smart.forEach(p => {
         if (p.status === "RISIKO") {
             smartHTML += p.name + "<br>";
         }
     });
+
     document.getElementById("smart").innerHTML = smartHTML;
 
+    // 🎯 COACHING
     let coachingHTML = "<h2>🎯 Coaching</h2>";
+
     coaching.forEach(p => {
         coachingHTML += p.name + ": " + p.tip + "<br>";
     });
+
     document.getElementById("coaching").innerHTML = coachingHTML;
 }
 
