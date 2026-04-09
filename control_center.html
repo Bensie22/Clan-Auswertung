@@ -177,6 +177,21 @@ const API_BASE = "http://127.0.0.1:5000/api";
 let currentActionFilter = "pending";
 let cachedActions = [];
 
+// API-Key aus localStorage laden (einmalig eingeben, dann gespeichert)
+function getApiKey() {
+    let key = localStorage.getItem("action_api_key") || "";
+    if (!key) {
+        key = prompt("Bitte API-Key eingeben (leer lassen wenn keiner gesetzt):") || "";
+        if (key) localStorage.setItem("action_api_key", key);
+    }
+    return key;
+}
+
+function getAuthHeaders() {
+    const key = localStorage.getItem("action_api_key") || "";
+    return key ? { "Content-Type": "application/json", "X-API-Key": key } : { "Content-Type": "application/json" };
+}
+
 function showToast(message, type = "info") {
     const toast = document.getElementById("toast");
     toast.textContent = message;
@@ -207,9 +222,7 @@ async function executeClanAction(action, playerTag, playerName, extra = {}) {
     try {
         const response = await fetch(`${API_BASE}/actions/execute`, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: getAuthHeaders(),
             body: JSON.stringify({
                 action: action,
                 player_tag: playerTag,
@@ -255,9 +268,7 @@ async function updateActionStatus(actionId, status) {
     try {
         const response = await fetch(`${API_BASE}/actions/${actionId}`, {
             method: "PATCH",
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: getAuthHeaders(),
             body: JSON.stringify({ status })
         });
 

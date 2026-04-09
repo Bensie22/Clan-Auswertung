@@ -1,12 +1,14 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Header
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from pathlib import Path
 from datetime import datetime
+from typing import Annotated
 import json
 import uuid
+import os
 
-app = FastAPI(title="Clan Action API", version="1.2.0")
+app = FastAPI(title="Clan Action API", version="1.3.0")
 
 # CORS freigeben für dein lokales Dashboard
 app.add_middleware(
@@ -18,9 +20,17 @@ app.add_middleware(
         "http://localhost:5500",
     ],
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PATCH"],
     allow_headers=["*"],
 )
+
+# API-Key-Authentifizierung (setze ACTION_API_KEY als Umgebungsvariable)
+_API_KEY = os.environ.get("ACTION_API_KEY", "")
+
+
+def verify_api_key(x_api_key: Annotated[str, Header()] = ""):
+    if _API_KEY and x_api_key != _API_KEY:
+        raise HTTPException(status_code=401, detail="Ungültiger API-Key")
 
 BASE_DIR = Path(__file__).parent.resolve()
 ACTION_LOG_PATH = BASE_DIR / "action_log.json"
@@ -72,7 +82,8 @@ def list_actions():
 
 
 @app.post("/api/actions/execute")
-def execute_action(payload: ActionRequest):
+def execute_action(payload: ActionRequest, x_api_key: Annotated[str, Header()] = ""):
+    verify_api_key(x_api_key)
     if payload.action not in {"warn", "kick", "promote"}:
         return {
             "success": False,
@@ -110,7 +121,8 @@ def execute_action(payload: ActionRequest):
 
 
 @app.patch("/api/actions/{action_id}")
-def update_action_status(action_id: str, payload: ActionStatusUpdate):
+def update_action_status(action_id: str, payload: ActionStatusUpdate, x_api_key: Annotated[str, Header()] = ""):
+    verify_api_key(x_api_key)
     if payload.status not in {"pending", "done"}:
         raise HTTPException(status_code=400, detail="Ungültiger Status")
 
