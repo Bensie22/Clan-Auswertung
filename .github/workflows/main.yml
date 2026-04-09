@@ -49,6 +49,9 @@ jobs:
       - name: Full Auto starten
         run: python full_auto.py
 
+      - name: Smart Mode starten
+        run: python smart_mode.py
+
       - name: Commit und Push der neuen Dateien
         run: |
           git config --local user.email "action@github.com"
