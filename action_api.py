@@ -1,11 +1,26 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from pathlib import Path
 from datetime import datetime
 import json
 import uuid
 
-app = FastAPI(title="Clan Action API", version="1.1.0")
+app = FastAPI(title="Clan Action API", version="1.2.0")
+
+# CORS freigeben für dein lokales Dashboard
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://127.0.0.1:8000",
+        "http://localhost:8000",
+        "http://127.0.0.1:5500",
+        "http://localhost:5500",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 BASE_DIR = Path(__file__).parent.resolve()
 ACTION_LOG_PATH = BASE_DIR / "action_log.json"
