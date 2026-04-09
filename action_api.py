@@ -14,6 +14,8 @@ app = FastAPI(title="Clan Action API", version="1.3.0")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
+        "https://www.clan-hamburg.de",
+        "https://clan-hamburg.de",
         "http://127.0.0.1:8000",
         "http://localhost:8000",
         "http://127.0.0.1:5500",
