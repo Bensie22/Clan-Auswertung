@@ -22,6 +22,19 @@
         .red { border-left: 5px solid red; }
         .yellow { border-left: 5px solid orange; }
         .green { border-left: 5px solid lime; }
+
+        button {
+            margin-top: 5px;
+            margin-right: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
     </style>
 </head>
 
@@ -47,21 +60,34 @@ async function loadData() {
 
     <div class="card red">
         <h3>🔴 Remove</h3>
-        ${commander.remove.join("<br>")}
+        ${commander.remove.map(name => `
+            <div>
+                ${name}<br>
+                <button onclick="warnPlayer('${name}')">⚠️ Warn</button>
+                <button onclick="kickPlayer('${name}')">❌ Kick</button>
+                <br><br>
+            </div>
+        `).join("")}
     </div>
 
     <div class="card green">
         <h3>🟢 Core</h3>
-        ${commander.core.join("<br>")}
+        ${commander.core.map(name => `
+            <div>
+                ${name}<br>
+                <button onclick="promotePlayer('${name}')">👑 Promote</button>
+                <br><br>
+            </div>
+        `).join("")}
     </div>
     `;
 
-    // 🟡 RISIKO (Smart Mode)
+    // 🟡 RISIKO
     let smartHTML = "<h2>🟡 Risiko</h2>";
 
     smart.forEach(p => {
         if (p.status === "RISIKO") {
-            smartHTML += p.name + "<br>";
+            smartHTML += `<div>${p.name}</div>`;
         }
     });
 
@@ -71,15 +97,31 @@ async function loadData() {
     let coachingHTML = "<h2>🎯 Coaching</h2>";
 
     coaching.forEach(p => {
-        coachingHTML += p.name + ": " + p.tip + "<br>";
+        coachingHTML += `<div>${p.name}: ${p.tip}</div>`;
     });
 
     document.getElementById("coaching").innerHTML = coachingHTML;
 }
 
+
+// 🔴 Aktionen (aktuell Demo)
+function warnPlayer(name) {
+    alert("⚠️ Warnung für " + name);
+}
+
+function kickPlayer(name) {
+    alert("❌ Kick für " + name);
+}
+
+function promotePlayer(name) {
+    alert("👑 Beförderung für " + name);
+}
+
+
+// ▶️ Start
 loadData();
 
 </script>
 
 </body>
-</html>
+</html> 
