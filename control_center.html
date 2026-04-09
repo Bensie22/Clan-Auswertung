@@ -41,9 +41,19 @@ async function loadData() {
     const coaching = await fetch("coaching_output.json").then(r => r.json());
 
     document.getElementById("commander").innerHTML =
-        "<h2>👑 Strategie</h2>" +
-        "Remove:<br>" + commander.remove.join("<br>") + "<br><br>" +
-        "Core:<br>" + commander.core.join("<br>");
+    `
+    <h2>👑 Strategie</h2>
+
+    <div class="card red">
+        <h3>🔴 Remove</h3>
+        ${commander.remove.join("<br>")}
+    </div>
+
+    <div class="card green">
+        <h3>🟢 Core</h3>
+        ${commander.core.join("<br>")}
+    </div>
+    `;
 
     let smartHTML = "<h2>🟡 Risiko</h2>";
     smart.forEach(p => {
