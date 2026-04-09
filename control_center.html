@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Clan Control Center</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #0f172a;
+            color: white;
+            padding: 20px;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+        }
+
+        .red { border-left: 5px solid red; }
+        .yellow { border-left: 5px solid orange; }
+        .green { border-left: 5px solid lime; }
+    </style>
+</head>
+
+<body>
+
+<h1>🔥 Clan Control Center</h1>
+
+<div id="commander" class="card"></div>
+<div id="smart" class="card yellow"></div>
+<div id="coaching" class="card"></div>
+
+<script>
+
+async function loadData() {
+    const commander = await fetch("commander_output.json").then(r => r.json());
+    const smart = await fetch("smart_output.json").then(r => r.json());
+    const coaching = await fetch("coaching_output.json").then(r => r.json());
+
+    document.getElementById("commander").innerHTML =
+        "<h2>👑 Strategie</h2>" +
+        "Remove:<br>" + commander.remove.join("<br>") + "<br><br>" +
+        "Core:<br>" + commander.core.join("<br>");
+
+    let smartHTML = "<h2>🟡 Risiko</h2>";
+    smart.forEach(p => {
+        if (p.status === "RISIKO") {
+            smartHTML += p.name + "<br>";
+        }
+    });
+    document.getElementById("smart").innerHTML = smartHTML;
+
+    let coachingHTML = "<h2>🎯 Coaching</h2>";
+    coaching.forEach(p => {
+        coachingHTML += p.name + ": " + p.tip + "<br>";
+    });
+    document.getElementById("coaching").innerHTML = coachingHTML;
+}
+
+loadData();
+
+</script>
+
+</body>
+</html>
