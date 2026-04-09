@@ -79,6 +79,7 @@
         .btn-kick { background: #ef4444; color: white; }
         .btn-promote { background: #22c55e; color: black; }
         .btn-done { background: #38bdf8; color: black; }
+        .btn-pending { background: #94a3b8; color: black; }
 
         .muted {
             color: #94a3b8;
@@ -121,6 +122,42 @@
             font-size: 12px;
             margin-top: 4px;
         }
+
+        .status-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 4px;
+        }
+
+        .status-pending {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+        }
+
+        .status-done {
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .filter-btn {
+            background: #334155;
+            color: white;
+        }
+
+        .filter-btn.active {
+            background: #38bdf8;
+            color: black;
+        }
     </style>
 </head>
 
@@ -137,6 +174,8 @@
 
 <script>
 const API_BASE = "http://127.0.0.1:5000/api";
+let currentActionFilter = "pending";
+let cachedActions = [];
 
 function showToast(message, type = "info") {
     const toast = document.getElementById("toast");
@@ -212,16 +251,14 @@ function promotePlayer(playerTag, playerName, reason = "") {
     });
 }
 
-async function markActionDone(actionId) {
+async function updateActionStatus(actionId, status) {
     try {
         const response = await fetch(`${API_BASE}/actions/${actionId}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-                status: "done"
-            })
+            body: JSON.stringify({ status })
         });
 
         const result = await response.json();
@@ -236,6 +273,19 @@ async function markActionDone(actionId) {
         console.error("STATUS ERROR:", error);
         showToast(`❌ ${error.message}`, "error");
     }
+}
+
+function markActionDone(actionId) {
+    updateActionStatus(actionId, "done");
+}
+
+function markActionPending(actionId) {
+    updateActionStatus(actionId, "pending");
+}
+
+function setActionFilter(filter) {
+    currentActionFilter = filter;
+    renderActions({ actions: cachedActions });
 }
 
 function renderCommander(commander) {
@@ -339,15 +389,29 @@ function renderCoaching(coaching) {
 }
 
 function renderActions(data) {
-    const actions = Array.isArray(data.actions) ? data.actions : [];
-    const pending = actions.filter(a => a.status === "pending");
+    const actions = safeArray(data.actions);
+    cachedActions = actions;
 
-    let html = `<h2>📌 Offene Aktionen</h2>`;
+    let filtered = actions;
+    if (currentActionFilter === "pending") {
+        filtered = actions.filter(a => a.status === "pending");
+    } else if (currentActionFilter === "done") {
+        filtered = actions.filter(a => a.status === "done");
+    }
 
-    if (!pending.length) {
-        html += `<div class="muted">Keine offenen Aktionen.</div>`;
+    let html = `
+        <h2>📌 Aktionen</h2>
+        <div class="filter-row">
+            <button class="filter-btn ${currentActionFilter === "all" ? "active" : ""}" onclick="setActionFilter('all')">Alle</button>
+            <button class="filter-btn ${currentActionFilter === "pending" ? "active" : ""}" onclick="setActionFilter('pending')">Pending</button>
+            <button class="filter-btn ${currentActionFilter === "done" ? "active" : ""}" onclick="setActionFilter('done')">Done</button>
+        </div>
+    `;
+
+    if (!filtered.length) {
+        html += `<div class="muted">Keine Aktionen in diesem Filter.</div>`;
     } else {
-        html += pending.map(a => `
+        html += filtered.map(a => `
             <div class="player-row">
                 <div class="player-name">${escapeHtml(a.player_name)}</div>
                 <div class="tag-badge">${escapeHtml(a.player_tag || "-")}</div>
@@ -355,10 +419,17 @@ function renderActions(data) {
                     Aktion: ${escapeHtml(a.action)}<br>
                     Quelle: ${escapeHtml(a.action_source || "-")}<br>
                     Grund: ${escapeHtml(a.reason || "Kein Grund angegeben")}<br>
-                    Status: ${escapeHtml(a.status)}
+                    Erstellt: ${escapeHtml(a.timestamp || "-")}<br>
+                    Status:
+                    <span class="status-badge ${a.status === "done" ? "status-done" : "status-pending"}">
+                        ${escapeHtml(a.status || "-")}
+                    </span>
                 </div>
                 <div class="button-row">
-                    <button class="btn-done" onclick="markActionDone('${a.id}')">✅ Done</button>
+                    ${a.status === "pending"
+                        ? `<button class="btn-done" onclick="markActionDone('${a.id}')">✅ Done</button>`
+                        : `<button class="btn-pending" onclick="markActionPending('${a.id}')">↩️ Pending</button>`
+                    }
                 </div>
             </div>
         `).join("");
@@ -380,7 +451,7 @@ async function loadActions() {
     } catch (error) {
         console.error("LOAD ACTIONS ERROR:", error);
         document.getElementById("actions").innerHTML = `
-            <h2>📌 Offene Aktionen</h2>
+            <h2>📌 Aktionen</h2>
             <div class="muted">Action API nicht erreichbar.</div>
         `;
     }
