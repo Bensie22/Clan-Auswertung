@@ -2,11 +2,7 @@ name: Clan Auswertung Automatisierung
 
 on:
   schedule:
-    - cron: '*/30 10-23 * * 4'
-    - cron: '*/30 * * * 5,6,0'
-    - cron: '*/30 0-9 * * 1'
-    - cron: '0 10 * * 1'
-    - cron: '30 10 * * 1'
+    - cron: '*/10 * * * *'  # 🔥 alle 10 Minuten, jeden Tag
   workflow_dispatch:
 
 env:
@@ -31,7 +27,7 @@ jobs:
       IMPRESSUM_RESPONSIBLE_NAME: ${{ secrets.IMPRESSUM_RESPONSIBLE_NAME }}
       IMPRESSUM_RESPONSIBLE_STREET: ${{ secrets.IMPRESSUM_RESPONSIBLE_STREET }}
       IMPRESSUM_RESPONSIBLE_CITY: ${{ secrets.IMPRESSUM_RESPONSIBLE_CITY }}
-      RUN_MODE: ${{ github.event.schedule == '30 10 * * 1' && 'weekly' || 'radar' }}
+      RUN_MODE: radar
 
     steps:
       - name: Repository klonen
@@ -50,10 +46,13 @@ jobs:
       - name: Auswertung starten
         run: python Master_Auswertung_GitHub.py
 
+      - name: Full Auto starten
+        run: python full_auto.py
+
       - name: Commit und Push der neuen Dateien
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
           git add .
-          git commit -m "📊 Automatische Clan-Auswertung aktualisiert" || echo "Keine Änderungen zum Speichern"
-          git push
+          git commit -m "📊 Automatische Clan-Auswertung + Full Auto" || echo "Keine Änderungen zum Speichern"
+          git push 
