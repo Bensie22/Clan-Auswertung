@@ -78,6 +78,7 @@
         .btn-warn { background: #f59e0b; color: black; }
         .btn-kick { background: #ef4444; color: white; }
         .btn-promote { background: #22c55e; color: black; }
+        .btn-done { background: #38bdf8; color: black; }
 
         .muted {
             color: #94a3b8;
@@ -130,10 +131,13 @@
 <div id="commander" class="section-card"></div>
 <div id="smart" class="section-card yellow"></div>
 <div id="coaching" class="section-card"></div>
+<div id="actions" class="section-card"></div>
 
 <div id="toast"></div>
 
 <script>
+const API_BASE = "http://127.0.0.1:5000/api";
+
 function showToast(message, type = "info") {
     const toast = document.getElementById("toast");
     toast.textContent = message;
@@ -160,19 +164,78 @@ function safeArray(value) {
     return Array.isArray(value) ? value : [];
 }
 
-function warnPlayer(playerTag, playerName) {
-    console.log("WARN", { playerTag, playerName });
-    showToast(`⚠️ Warnung vorbereitet für ${playerName} (${playerTag})`, "info");
+async function executeClanAction(action, playerTag, playerName, extra = {}) {
+    try {
+        const response = await fetch(`${API_BASE}/actions/execute`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                action: action,
+                player_tag: playerTag,
+                player_name: playerName,
+                action_source: "control_center",
+                ...extra
+            })
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+            throw new Error(result.message || "Aktion fehlgeschlagen");
+        }
+
+        showToast(`✅ ${result.message}`, "success");
+        await loadActions();
+    } catch (error) {
+        console.error("ACTION ERROR:", error);
+        showToast(`❌ ${error.message}`, "error");
+    }
 }
 
-function kickPlayer(playerTag, playerName) {
-    console.log("KICK", { playerTag, playerName });
-    showToast(`❌ Kick vorbereitet für ${playerName} (${playerTag})`, "error");
+function warnPlayer(playerTag, playerName, reason = "") {
+    executeClanAction("warn", playerTag, playerName, { reason });
 }
 
-function promotePlayer(playerTag, playerName) {
-    console.log("PROMOTE", { playerTag, playerName });
-    showToast(`👑 Beförderung vorbereitet für ${playerName} (${playerTag})`, "success");
+function kickPlayer(playerTag, playerName, reason = "") {
+    const confirmed = confirm(`Soll ${playerName} wirklich als Kick-Fall gespeichert werden?`);
+    if (!confirmed) return;
+
+    executeClanAction("kick", playerTag, playerName, { reason });
+}
+
+function promotePlayer(playerTag, playerName, reason = "") {
+    executeClanAction("promote", playerTag, playerName, {
+        target_role: "elder",
+        reason
+    });
+}
+
+async function markActionDone(actionId) {
+    try {
+        const response = await fetch(`${API_BASE}/actions/${actionId}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                status: "done"
+            })
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+            throw new Error(result.detail || result.message || "Status konnte nicht geändert werden");
+        }
+
+        showToast(`✅ ${result.message}`, "success");
+        await loadActions();
+    } catch (error) {
+        console.error("STATUS ERROR:", error);
+        showToast(`❌ ${error.message}`, "error");
+    }
 }
 
 function renderCommander(commander) {
@@ -191,8 +254,8 @@ function renderCommander(commander) {
                     Grund: ${escapeHtml(player.reason || "Kein Grund angegeben")}
                 </div>
                 <div class="button-row">
-                    <button class="btn-warn" onclick="warnPlayer('${String(player.player_tag || "").replaceAll("'", "\\'")}', '${String(player.name || "").replaceAll("'", "\\'")}')">⚠️ Warn</button>
-                    <button class="btn-kick" onclick="kickPlayer('${String(player.player_tag || "").replaceAll("'", "\\'")}', '${String(player.name || "").replaceAll("'", "\\'")}')">❌ Kick</button>
+                    <button class="btn-warn" onclick="warnPlayer('${String(player.player_tag || "").replaceAll("'", "\\'")}', '${String(player.name || "").replaceAll("'", "\\'")}', '${String(player.reason || "").replaceAll("'", "\\'")}')">⚠️ Warn</button>
+                    <button class="btn-kick" onclick="kickPlayer('${String(player.player_tag || "").replaceAll("'", "\\'")}', '${String(player.name || "").replaceAll("'", "\\'")}', '${String(player.reason || "").replaceAll("'", "\\'")}')">❌ Kick</button>
                 </div>
             </div>
         `).join("")
@@ -210,7 +273,7 @@ function renderCommander(commander) {
                     Grund: ${escapeHtml(player.reason || "Kein Grund angegeben")}
                 </div>
                 <div class="button-row">
-                    <button class="btn-promote" onclick="promotePlayer('${String(player.player_tag || "").replaceAll("'", "\\'")}', '${String(player.name || "").replaceAll("'", "\\'")}')">👑 Promote</button>
+                    <button class="btn-promote" onclick="promotePlayer('${String(player.player_tag || "").replaceAll("'", "\\'")}', '${String(player.name || "").replaceAll("'", "\\'")}', '${String(player.reason || "").replaceAll("'", "\\'")}')">👑 Promote</button>
                 </div>
             </div>
         `).join("")
@@ -275,6 +338,54 @@ function renderCoaching(coaching) {
     document.getElementById("coaching").innerHTML = coachingHTML;
 }
 
+function renderActions(data) {
+    const actions = Array.isArray(data.actions) ? data.actions : [];
+    const pending = actions.filter(a => a.status === "pending");
+
+    let html = `<h2>📌 Offene Aktionen</h2>`;
+
+    if (!pending.length) {
+        html += `<div class="muted">Keine offenen Aktionen.</div>`;
+    } else {
+        html += pending.map(a => `
+            <div class="player-row">
+                <div class="player-name">${escapeHtml(a.player_name)}</div>
+                <div class="tag-badge">${escapeHtml(a.player_tag || "-")}</div>
+                <div class="player-meta">
+                    Aktion: ${escapeHtml(a.action)}<br>
+                    Quelle: ${escapeHtml(a.action_source || "-")}<br>
+                    Grund: ${escapeHtml(a.reason || "Kein Grund angegeben")}<br>
+                    Status: ${escapeHtml(a.status)}
+                </div>
+                <div class="button-row">
+                    <button class="btn-done" onclick="markActionDone('${a.id}')">✅ Done</button>
+                </div>
+            </div>
+        `).join("");
+    }
+
+    document.getElementById("actions").innerHTML = html;
+}
+
+async function loadActions() {
+    try {
+        const response = await fetch(`${API_BASE}/actions`);
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+            throw new Error(result.message || "Aktionen konnten nicht geladen werden");
+        }
+
+        renderActions(result);
+    } catch (error) {
+        console.error("LOAD ACTIONS ERROR:", error);
+        document.getElementById("actions").innerHTML = `
+            <h2>📌 Offene Aktionen</h2>
+            <div class="muted">Action API nicht erreichbar.</div>
+        `;
+    }
+}
+
 async function loadData() {
     try {
         const [commander, smart, coaching] = await Promise.all([
@@ -293,6 +404,7 @@ async function loadData() {
 }
 
 loadData();
+loadActions();
 </script>
 
 </body>
