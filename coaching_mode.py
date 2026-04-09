@@ -1,29 +1,19 @@
-import requests
 import json
-import sys
-
-BASE_URL = "https://clan-gpt-api.onrender.com"
-
-def get(endpoint: str) -> dict:
-    try:
-        response = requests.get(BASE_URL + endpoint, timeout=20)
-        response.raise_for_status()
-        return response.json()
-    except requests.exceptions.RequestException as e:
-        print(f"❌ API-Fehler bei {endpoint}: {e}")
-        sys.exit(1)
+from config import COACHING_WARN_THRESHOLD, COACHING_MID_THRESHOLD
 
 def run():
-    leaderboard = get("/players/leaderboard")
+    with open("_prefetch.json", encoding="utf-8") as f:
+        data = json.load(f)
 
+    leaderboard = data.get("leaderboard", {})
     output = []
 
     for p in leaderboard.get("players", []):
         score = p["score"]
 
-        if score < 50:
+        if score < COACHING_WARN_THRESHOLD:
             tip = "Mehr Teilnahme notwendig"
-        elif score < 70:
+        elif score < COACHING_MID_THRESHOLD:
             tip = "Konstanz verbessern"
         else:
             tip = "Weiter so"
@@ -34,8 +24,8 @@ def run():
             "tip": tip
         })
 
-    with open("coaching_output.json", "w") as f:
-        json.dump(output, f, indent=2)
+    with open("coaching_output.json", "w", encoding="utf-8") as f:
+        json.dump(output, f, indent=2, ensure_ascii=False)
 
     print("COACHING DONE")
 

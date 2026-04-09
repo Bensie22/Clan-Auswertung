@@ -246,23 +246,26 @@ async function executeClanAction(action, playerTag, playerName, extra = {}) {
     }
 }
 
-function warnPlayer(playerTag, playerName, reason = "") {
-    executeClanAction("warn", playerTag, playerName, { reason });
-}
+document.addEventListener("click", function(e) {
+    const btn = e.target.closest(".action-btn");
+    if (!btn) return;
 
-function kickPlayer(playerTag, playerName, reason = "") {
-    const confirmed = confirm(`Soll ${playerName} wirklich als Kick-Fall gespeichert werden?`);
-    if (!confirmed) return;
+    const action = btn.dataset.action;
+    const tag = btn.dataset.tag;
+    const name = btn.dataset.name;
+    const reason = btn.dataset.reason || "";
 
-    executeClanAction("kick", playerTag, playerName, { reason });
-}
-
-function promotePlayer(playerTag, playerName, reason = "") {
-    executeClanAction("promote", playerTag, playerName, {
-        target_role: "elder",
-        reason
-    });
-}
+    if (action === "warn") {
+        if (!confirm(`Soll ${name} wirklich verwarnt werden?`)) return;
+        executeClanAction("warn", tag, name, { reason });
+    } else if (action === "kick") {
+        if (!confirm(`Soll ${name} wirklich als Kick-Fall gespeichert werden?`)) return;
+        executeClanAction("kick", tag, name, { reason });
+    } else if (action === "promote") {
+        if (!confirm(`Soll ${name} wirklich befördert werden?`)) return;
+        executeClanAction("promote", tag, name, { target_role: "elder", reason });
+    }
+});
 
 async function updateActionStatus(actionId, status) {
     try {
@@ -315,8 +318,8 @@ function renderCommander(commander) {
                     Grund: ${escapeHtml(player.reason || "Kein Grund angegeben")}
                 </div>
                 <div class="button-row">
-                    <button class="btn-warn" onclick="warnPlayer('${String(player.player_tag || "").replaceAll("'", "\\'")}', '${String(player.name || "").replaceAll("'", "\\'")}', '${String(player.reason || "").replaceAll("'", "\\'")}')">⚠️ Warn</button>
-                    <button class="btn-kick" onclick="kickPlayer('${String(player.player_tag || "").replaceAll("'", "\\'")}', '${String(player.name || "").replaceAll("'", "\\'")}', '${String(player.reason || "").replaceAll("'", "\\'")}')">❌ Kick</button>
+                    <button class="btn-warn action-btn" data-action="warn" data-tag="${escapeHtml(player.player_tag || "")}" data-name="${escapeHtml(player.name || "")}" data-reason="${escapeHtml(player.reason || "")}">⚠️ Warn</button>
+                    <button class="btn-kick action-btn" data-action="kick" data-tag="${escapeHtml(player.player_tag || "")}" data-name="${escapeHtml(player.name || "")}" data-reason="${escapeHtml(player.reason || "")}">❌ Kick</button>
                 </div>
             </div>
         `).join("")
@@ -334,7 +337,7 @@ function renderCommander(commander) {
                     Grund: ${escapeHtml(player.reason || "Kein Grund angegeben")}
                 </div>
                 <div class="button-row">
-                    <button class="btn-promote" onclick="promotePlayer('${String(player.player_tag || "").replaceAll("'", "\\'")}', '${String(player.name || "").replaceAll("'", "\\'")}', '${String(player.reason || "").replaceAll("'", "\\'")}')">👑 Promote</button>
+                    <button class="btn-promote action-btn" data-action="promote" data-tag="${escapeHtml(player.player_tag || "")}" data-name="${escapeHtml(player.name || "")}" data-reason="${escapeHtml(player.reason || "")}">👑 Promote</button>
                 </div>
             </div>
         `).join("")

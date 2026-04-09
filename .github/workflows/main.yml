@@ -46,6 +46,9 @@ jobs:
       - name: Auswertung starten
         run: python Master_Auswertung_GitHub.py
 
+      - name: API-Daten einmalig abrufen
+        run: python prefetch.py
+
       - name: Full Auto starten
         run: python full_auto.py
 
