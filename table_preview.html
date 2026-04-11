@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Tabellen-Vorschau</title>
+<style>
+  body { background: #0f172a; color: #e2e8f0; font-family: 'Segoe UI', sans-serif; padding: 30px; }
+  h2 { color: #f8fafc; margin-bottom: 6px; }
+  p { color: #94a3b8; margin-top: 0; margin-bottom: 20px; font-size: 0.9em; }
+
+  .tier-section { margin-bottom: 30px; }
+  .tier-title {
+    font-weight: 800; font-size: 1em; padding: 6px 14px;
+    border-radius: 6px; display: inline-block; margin-bottom: 10px;
+  }
+  .tier-gruen  { background: rgba(16,185,129,0.15); color: #10b981; }
+  .tier-gelb   { background: rgba(251,191,36,0.15);  color: #fbbf24; }
+  .tier-orange { background: rgba(249,115,22,0.15);  color: #f97316; }
+  .tier-rot    { background: rgba(239,68,68,0.15);   color: #ef4444; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.9em; }
+  th {
+    text-align: left; padding: 10px 12px;
+    color: #64748b; font-weight: 600; font-size: 0.8em; text-transform: uppercase;
+    border-bottom: 2px solid rgba(255,255,255,0.08);
+  }
+  td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: middle; }
+  tr:hover td { background: rgba(255,255,255,0.03); }
+
+  .player-name { font-weight: 700; color: #f8fafc; }
+  .badge {
+    display: inline-block; font-size: 0.72em; padding: 2px 7px;
+    border-radius: 10px; margin-left: 6px; font-weight: 600; vertical-align: middle;
+  }
+  .badge-stark    { background: rgba(16,185,129,0.2);  color: #10b981; }
+  .badge-stabil   { background: rgba(251,191,36,0.2);  color: #fbbf24; }
+  .badge-warn     { background: rgba(239,68,68,0.2);   color: #ef4444; }
+  .badge-neu      { background: rgba(96,165,250,0.2);  color: #60a5fa; }
+  .badge-strike   { background: rgba(239,68,68,0.3);   color: #fca5a5; }
+
+  .role { font-size: 0.8em; color: #94a3b8; }
+  .promote { color: #fbbf24; font-size: 0.8em; }
+
+  /* NEU: Dabei-Zelle */
+  .dabei-cell { white-space: nowrap; }
+  .dabei-val  { font-weight: 800; font-size: 1.1em; color: #e2e8f0; }
+  .dabei-sub  { font-size: 0.78em; color: #64748b; }
+
+  /* NEU: Fame-Qualität */
+  .fame-cell  { white-space: nowrap; }
+  .fame-val   { font-weight: 800; font-size: 1.1em; }
+  .fame-sub   { font-size: 0.78em; color: #64748b; }
+  .fame-gruen { color: #10b981; }
+  .fame-gelb  { color: #fbbf24; }
+  .fame-rot   { color: #ef4444; }
+
+  /* NEU: Fame gesamt */
+  .total-fame { font-weight: 700; color: #c4b5fd; font-size: 1em; }
+  .total-sub  { font-size: 0.78em; color: #64748b; }
+
+  /* Trend */
+  .trend { letter-spacing: 2px; font-size: 1em; }
+
+  /* Spenden */
+  .spenden { font-size: 0.85em; color: #94a3b8; }
+  .spenden strong { color: #e2e8f0; }
+
+  /* Strikethrough alt für Vergleich */
+  .old-score { text-decoration: line-through; color: #475569; font-size: 0.85em; }
+
+  .compare-note {
+    background: rgba(96,165,250,0.08); border: 1px solid rgba(96,165,250,0.2);
+    border-radius: 8px; padding: 12px 16px; margin-bottom: 24px; font-size: 0.85em; color: #93c5fd;
+  }
+
+  /* Vergleichstabelle alt/neu */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px; }
+  .split h3 { font-size: 1em; margin-bottom: 10px; }
+  .alt h3 { color: #ef4444; }
+  .neu h3 { color: #10b981; }
+</style>
+</head>
+<body>
+
+<h2>Tabellen-Vorschau: Alt vs. Neu</h2>
+<p>Mockup mit Beispielspielern — zeigt nur die geänderten Spalten</p>
+
+<div class="compare-note">
+  💡 <strong>Änderung:</strong> Score (abstrakte Formel) → aufgeteilt in <strong>Dabei</strong> (Anwesenheit) + <strong>Ø Fame/Deck</strong> (Qualität) + <strong>Fame gesamt</strong> (Gesamtbeitrag). Strikes und Tier-Klassifikation bleiben intern erhalten.
+</div>
+
+<!-- ALT vs NEU Erklärung -->
+<div class="split">
+  <div class="alt">
+    <h3>❌ Alte Spalten</h3>
+    <table>
+      <thead><tr>
+        <th>Spieler</th><th>Score</th><th>Trend</th><th>Ø Punkte</th><th>Aktive Kriege</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="player-name">Bensie</span></td>
+          <td><span style="color:#10b981;font-weight:800;">84%</span></td>
+          <td><span class="trend">🟢🟢🟡🟢🟢🟢</span></td>
+          <td><span style="color:#10b981;font-weight:700;">178</span></td>
+          <td>9/10</td>
+        </tr>
+        <tr>
+          <td><span class="player-name">MaxMuster</span></td>
+          <td><span style="color:#fbbf24;font-weight:800;">61%</span></td>
+          <td><span class="trend">🟡🟡🟢🟡🟡🟡</span></td>
+          <td><span style="color:#fbbf24;font-weight:700;">155</span></td>
+          <td>7/10</td>
+        </tr>
+        <tr>
+          <td><span class="player-name">Tricky</span></td>
+          <td><span style="color:#f97316;font-weight:800;">45%</span></td>
+          <td><span class="trend">🟡🔴🔴🟡🔴🔴</span></td>
+          <td><span style="color:#ef4444;font-weight:700;">112</span></td>
+          <td>5/10</td>
+        </tr>
+        <tr>
+          <td><span class="player-name">NewJoiner</span></td>
+          <td><span style="color:#60a5fa;font-weight:800;">30%</span></td>
+          <td><span class="trend">🟢🟢🟢</span></td>
+          <td><span style="color:#10b981;font-weight:700;">190</span></td>
+          <td>3/10</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="color:#64748b;font-size:0.8em;margin-top:8px;">Problem: NewJoiner hat 30% Score aber 190 Ø Fame — wirkt schwach, ist aber neu und spielt stark.</p>
+  </div>
+
+  <div class="neu">
+    <h3>✅ Neue Spalten</h3>
+    <table>
+      <thead><tr>
+        <th>Spieler</th><th>Dabei</th><th>Ø Fame/Deck</th><th>Fame gesamt</th><th>Trend</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="player-name">Bensie</span></td>
+          <td class="dabei-cell">
+            <span class="dabei-val">9/10</span><br>
+            <span class="dabei-sub">Kriege aktiv</span>
+          </td>
+          <td class="fame-cell">
+            <span class="fame-val fame-gruen">178</span><br>
+            <span class="fame-sub">Ø pro Deck</span>
+          </td>
+          <td>
+            <span class="total-fame">12.840</span><br>
+            <span class="total-sub">letzte 30 Tage</span>
+          </td>
+          <td><span class="trend">🟢🟢🟡🟢🟢🟢</span></td>
+        </tr>
+        <tr>
+          <td><span class="player-name">MaxMuster</span></td>
+          <td class="dabei-cell">
+            <span class="dabei-val">7/10</span><br>
+            <span class="dabei-sub">Kriege aktiv</span>
+          </td>
+          <td class="fame-cell">
+            <span class="fame-val fame-gelb">155</span><br>
+            <span class="fame-sub">Ø pro Deck</span>
+          </td>
+          <td>
+            <span class="total-fame">8.680</span><br>
+            <span class="total-sub">letzte 30 Tage</span>
+          </td>
+          <td><span class="trend">🟡🟡🟢🟡🟡🟡</span></td>
+        </tr>
+        <tr>
+          <td><span class="player-name">Tricky</span></td>
+          <td class="dabei-cell">
+            <span class="dabei-val">5/10</span><br>
+            <span class="dabei-sub">Kriege aktiv</span>
+          </td>
+          <td class="fame-cell">
+            <span class="fame-val fame-rot">112</span><br>
+            <span class="fame-sub">Ø pro Deck</span>
+          </td>
+          <td>
+            <span class="total-fame">4.480</span><br>
+            <span class="total-sub">letzte 30 Tage</span>
+          </td>
+          <td><span class="trend">🟡🔴🔴🟡🔴🔴</span></td>
+        </tr>
+        <tr>
+          <td><span class="player-name">NewJoiner ⭐</span></td>
+          <td class="dabei-cell">
+            <span class="dabei-val">3/10</span><br>
+            <span class="dabei-sub" style="color:#60a5fa;">neu dabei</span>
+          </td>
+          <td class="fame-cell">
+            <span class="fame-val fame-gruen">190</span><br>
+            <span class="fame-sub">Ø pro Deck</span>
+          </td>
+          <td>
+            <span class="total-fame">2.280</span><br>
+            <span class="total-sub">letzte 30 Tage</span>
+          </td>
+          <td><span class="trend">🟢🟢🟢</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="color:#64748b;font-size:0.8em;margin-top:8px;">NewJoiner: 3/10 Kriege (neu), aber 190 Ø Fame — sofort erkennbar als guter Spieler der einfach noch nicht lange dabei ist.</p>
+  </div>
+</div>
+
+<!-- VOLLE NEUE TABELLE -->
+<h2>Vollständige neue Tabelle (wie sie im System aussähe)</h2>
+
+<!-- TIER: Sehr stark -->
+<div class="tier-section">
+  <div class="tier-title tier-gruen">🟢 Sehr stark (80–100%)</div>
+  <table>
+    <thead><tr>
+      <th>Spieler</th>
+      <th>Check</th>
+      <th>Status</th>
+      <th>Dabei</th>
+      <th>Ø Fame/Deck</th>
+      <th>Fame gesamt</th>
+      <th>Trend</th>
+      <th>🃏 Spenden</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td>
+          <span class="player-name">Bensie</span>
+          <span class="badge badge-stark">⭐ stark</span>
+        </td>
+        <td><span class="badge badge-stark">⭐ stark</span></td>
+        <td><span class="role">Anführer</span></td>
+        <td class="dabei-cell">
+          <span class="dabei-val">9/10</span><br>
+          <span class="dabei-sub">Kriege aktiv</span>
+        </td>
+        <td class="fame-cell">
+          <span class="fame-val fame-gruen">178</span><br>
+          <span class="fame-sub">Ø pro Deck</span>
+        </td>
+        <td>
+          <span class="total-fame">12.840</span><br>
+          <span class="total-sub">30 Tage</span>
+        </td>
+        <td><span class="trend">🟢🟢🟡🟢🟢🟢</span></td>
+        <td class="spenden"><strong>320</strong> | 45</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="player-name">ClashKing</span>
+          <span class="badge badge-stark">⭐ stark</span>
+        </td>
+        <td><span class="badge badge-stark">⭐ stark</span></td>
+        <td><span class="role">Vize-Anführer <span class="promote">✅</span></span></td>
+        <td class="dabei-cell">
+          <span class="dabei-val">10/10</span><br>
+          <span class="dabei-sub">Kriege aktiv</span>
+        </td>
+        <td class="fame-cell">
+          <span class="fame-val fame-gruen">195</span><br>
+          <span class="fame-sub">Ø pro Deck</span>
+        </td>
+        <td>
+          <span class="total-fame">15.600</span><br>
+          <span class="total-sub">30 Tage</span>
+        </td>
+        <td><span class="trend">🟢🟢🟢🟢🟢🟢</span></td>
+        <td class="spenden"><strong>410</strong> | 80</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- TIER: Solide -->
+<div class="tier-section">
+  <div class="tier-title tier-gelb">🟡 Solide Basis (60–79%)</div>
+  <table>
+    <thead><tr>
+      <th>Spieler</th>
+      <th>Check</th>
+      <th>Status</th>
+      <th>Dabei</th>
+      <th>Ø Fame/Deck</th>
+      <th>Fame gesamt</th>
+      <th>Trend</th>
+      <th>🃏 Spenden</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td>
+          <span class="player-name">MaxMuster</span>
+          <span class="badge badge-stabil">🛡️ stabil</span>
+        </td>
+        <td><span class="badge badge-stabil">🛡️ stabil</span></td>
+        <td><span class="role">Ältester</span></td>
+        <td class="dabei-cell">
+          <span class="dabei-val">7/10</span><br>
+          <span class="dabei-sub">Kriege aktiv</span>
+        </td>
+        <td class="fame-cell">
+          <span class="fame-val fame-gelb">155</span><br>
+          <span class="fame-sub">Ø pro Deck</span>
+        </td>
+        <td>
+          <span class="total-fame">8.680</span><br>
+          <span class="total-sub">30 Tage</span>
+        </td>
+        <td><span class="trend">🟡🟡🟢🟡🟡🟡</span></td>
+        <td class="spenden"><strong>180</strong> | 60</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="player-name">NewJoiner</span>
+          <span class="badge badge-neu">🐣 neu</span>
+        </td>
+        <td><span class="badge badge-neu">🐣 neu</span></td>
+        <td><span class="role">Mitglied</span></td>
+        <td class="dabei-cell">
+          <span class="dabei-val">3/10</span><br>
+          <span class="dabei-sub" style="color:#60a5fa;">neu dabei</span>
+        </td>
+        <td class="fame-cell">
+          <span class="fame-val fame-gruen">190</span><br>
+          <span class="fame-sub">Ø pro Deck</span>
+        </td>
+        <td>
+          <span class="total-fame">2.280</span><br>
+          <span class="total-sub">30 Tage</span>
+        </td>
+        <td><span class="trend">🟢🟢🟢</span></td>
+        <td class="spenden"><strong>40</strong> | 20</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- TIER: Ausbaufähig -->
+<div class="tier-section">
+  <div class="tier-title tier-rot">🔴 Ausbaufähig (&lt; 40%)</div>
+  <table>
+    <thead><tr>
+      <th>Spieler</th>
+      <th>Check</th>
+      <th>Status</th>
+      <th>Dabei</th>
+      <th>Ø Fame/Deck</th>
+      <th>Fame gesamt</th>
+      <th>Trend</th>
+      <th>🃏 Spenden</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td>
+          <span class="player-name">Tricky</span>
+          <span class="badge badge-warn">👀 auffällig</span>
+          <span title="Boot-Angriffe: 3">⛵</span>
+        </td>
+        <td><span class="badge badge-warn">👀 auffällig</span></td>
+        <td><span class="role">Mitglied</span></td>
+        <td class="dabei-cell">
+          <span class="dabei-val">5/10</span><br>
+          <span class="dabei-sub">Kriege aktiv</span>
+        </td>
+        <td class="fame-cell">
+          <span class="fame-val fame-rot">112</span><br>
+          <span class="fame-sub">Ø pro Deck</span>
+        </td>
+        <td>
+          <span class="total-fame">4.480</span><br>
+          <span class="total-sub">30 Tage</span>
+        </td>
+        <td><span class="trend">🟡🔴🔴🟡🔴🔴</span></td>
+        <td class="spenden"><strong>20</strong> | 120</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="player-name">Sleeper99</span>
+          <span class="badge badge-strike">⚠️ Strike 2/3</span>
+        </td>
+        <td><span class="badge badge-warn">⚠️ ausbaufähig</span></td>
+        <td><span class="role">Mitglied</span></td>
+        <td class="dabei-cell">
+          <span class="dabei-val">3/10</span><br>
+          <span class="dabei-sub">Kriege aktiv</span>
+        </td>
+        <td class="fame-cell">
+          <span class="fame-val fame-rot">88</span><br>
+          <span class="fame-sub">Ø pro Deck</span>
+        </td>
+        <td>
+          <span class="total-fame">1.056</span><br>
+          <span class="total-sub">30 Tage</span>
+        </td>
+        <td><span class="trend">🔴🔴🔴🔴🔴🔴</span></td>
+        <td class="spenden"><strong>0</strong> | 90</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="margin-top:30px; padding: 16px; background: rgba(255,255,255,0.04); border-radius: 8px; font-size:0.85em; color:#64748b;">
+  <strong style="color:#94a3b8;">Interne Score-Logik bleibt erhalten</strong> — Tier-Einteilung, Strikes, Beförderungsempfehlungen laufen weiterhin über die Anwesenheits × Deck-Nutzung Formel. Sie wird nur nicht mehr als Prozentzahl angezeigt, da sie für Außenstehende schwer interpretierbar ist.
+</div>
+
+</body>
+</html>
