@@ -8,7 +8,7 @@
             "#ULYJ2CQP": "20260411T084728.000Z",
             "#UJ2P9UYUV": "20260410T103953.000Z",
             "#P0JYR9YUY": "20260411T084751.000Z",
-            "#R22R8GYG": "20260411T010108.000Z",
+            "#R22R8GYG": "20260411T100925.000Z",
             "#YQ82VR9JQ": "20260411T055344.000Z",
             "#G02LC9C8": "20260411T084550.000Z",
             "#2U8288CVY": "20260411T083351.000Z",
@@ -43,14 +43,14 @@
             "#RLJPJL8C2": "20260410T190159.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20260411T095356.000Z",
+            "#UUPCULU9V": "20260411T100416.000Z",
             "#202VP2QL9P": "20260411T070829.000Z",
             "#LVUGLUCP9": "20260410T215005.000Z",
             "#20QGJVPG8Q": "20260410T230619.000Z",
             "#V9GYJQ0J9": "20260409T104803.000Z",
             "#URJ0LUYPV": "20260410T100128.000Z",
             "#Q2GRGLQR": "20260411T073850.000Z",
-            "#J9RQPGLVP": "20260410T114137.000Z",
+            "#J9RQPGLVP": "20260411T101310.000Z",
             "#8GYCJY0U": "20260410T114245.000Z",
             "#9VLRQ9GR9": "20260410T170840.000Z",
             "#29RLRYLQL": "20260411T004433.000Z"
@@ -4655,7 +4655,7 @@
                 }
             ],
             "wins": 3,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Ted"
             ],
@@ -4663,6 +4663,12 @@
                 "J9RQPGLVP"
             ],
             "recent_matches": [
+                {
+                    "time": "20260411T101310.000Z",
+                    "result": "loss",
+                    "player": "Ted",
+                    "tag": "J9RQPGLVP"
+                },
                 {
                     "time": "20260410T113403.000Z",
                     "result": "win",
@@ -6646,8 +6652,8 @@
             "lost_against": 28
         },
         "P.E.K.K.A": {
-            "seen": 85,
-            "lost_against": 39
+            "seen": 86,
+            "lost_against": 40
         },
         "Goblin Barrel": {
             "seen": 97,
@@ -6662,8 +6668,8 @@
             "lost_against": 17
         },
         "Dart Goblin": {
-            "seen": 122,
-            "lost_against": 63
+            "seen": 123,
+            "lost_against": 64
         },
         "Tombstone": {
             "seen": 24,
@@ -6710,8 +6716,8 @@
             "lost_against": 48
         },
         "Musketeer": {
-            "seen": 121,
-            "lost_against": 65
+            "seen": 122,
+            "lost_against": 66
         },
         "Mega Minion": {
             "seen": 35,
@@ -6722,28 +6728,28 @@
             "lost_against": 70
         },
         "Baby Dragon": {
-            "seen": 73,
-            "lost_against": 33
+            "seen": 74,
+            "lost_against": 34
         },
         "Royal Ghost": {
             "seen": 57,
             "lost_against": 27
         },
         "Hog Rider": {
-            "seen": 134,
-            "lost_against": 82
+            "seen": 136,
+            "lost_against": 84
         },
         "Goblin Gang": {
-            "seen": 105,
-            "lost_against": 49
+            "seen": 106,
+            "lost_against": 50
         },
         "Giant Skeleton": {
             "seen": 44,
             "lost_against": 28
         },
         "Furnace": {
-            "seen": 86,
-            "lost_against": 45
+            "seen": 87,
+            "lost_against": 46
         },
         "Rage": {
             "seen": 42,
@@ -6770,8 +6776,8 @@
             "lost_against": 20
         },
         "Guards": {
-            "seen": 42,
-            "lost_against": 17
+            "seen": 43,
+            "lost_against": 18
         },
         "Skeleton Army": {
             "seen": 103,
@@ -6798,16 +6804,16 @@
             "lost_against": 76
         },
         "Archers": {
-            "seen": 75,
-            "lost_against": 32
+            "seen": 76,
+            "lost_against": 33
         },
         "Balloon": {
             "seen": 80,
             "lost_against": 27
         },
         "Arrows": {
-            "seen": 135,
-            "lost_against": 71
+            "seen": 136,
+            "lost_against": 72
         },
         "Knight": {
             "seen": 136,
@@ -6818,8 +6824,8 @@
             "lost_against": 28
         },
         "Goblins": {
-            "seen": 49,
-            "lost_against": 19
+            "seen": 50,
+            "lost_against": 20
         },
         "Skeleton Barrel": {
             "seen": 50,
@@ -6850,16 +6856,16 @@
             "lost_against": 22
         },
         "Valkyrie": {
-            "seen": 140,
-            "lost_against": 83
+            "seen": 141,
+            "lost_against": 84
         },
         "Electro Giant": {
             "seen": 18,
             "lost_against": 10
         },
         "Mega Knight": {
-            "seen": 113,
-            "lost_against": 67
+            "seen": 114,
+            "lost_against": 68
         },
         "Mother Witch": {
             "seen": 34,
@@ -6878,8 +6884,8 @@
             "lost_against": 50
         },
         "Spear Goblins": {
-            "seen": 31,
-            "lost_against": 13
+            "seen": 32,
+            "lost_against": 14
         },
         "Boss Bandit": {
             "seen": 46,
@@ -6898,8 +6904,8 @@
             "lost_against": 48
         },
         "Golden Knight": {
-            "seen": 74,
-            "lost_against": 36
+            "seen": 75,
+            "lost_against": 37
         },
         "Berserker": {
             "seen": 16,
