@@ -2100,13 +2100,13 @@ def generate_html_report(
             )
 
             if score >= APP_CONFIG["TIER_SEHR_STARK"]:
-                tier = f"Sehr stark ({APP_CONFIG['TIER_SEHR_STARK']}-100%)"
+                tier = "Sehr stark"
             elif score >= APP_CONFIG["TIER_SOLIDE"]:
-                tier = f"Solide Basis ({APP_CONFIG['TIER_SOLIDE']}-{APP_CONFIG['TIER_SEHR_STARK'] - 1}%)"
+                tier = "Solide Basis"
             elif score >= APP_CONFIG["STRIKE_THRESHOLD"]:
-                tier = f"Mehr drin ({APP_CONFIG['STRIKE_THRESHOLD']}-{APP_CONFIG['TIER_SOLIDE'] - 1}%)"
+                tier = "Mehr drin"
             else:
-                tier = f"Ausbaufaehig (< {APP_CONFIG['STRIKE_THRESHOLD']}%)"
+                tier = "Ausbaufaehig"
 
         player_stats.append({
             "name": name,
@@ -2625,11 +2625,11 @@ def generate_html_report(
         """
 
     tiers = [
-        f"Sehr stark ({APP_CONFIG['TIER_SEHR_STARK']}-100%)",
-        f"Solide Basis ({APP_CONFIG['TIER_SOLIDE']}-{APP_CONFIG['TIER_SEHR_STARK'] - 1}%)",
-        f"Mehr drin ({APP_CONFIG['STRIKE_THRESHOLD']}-{APP_CONFIG['TIER_SOLIDE'] - 1}%)",
-        f"Ausbaufaehig (< {APP_CONFIG['STRIKE_THRESHOLD']}%)",
-        "Im Urlaub (Pausiert)"
+        "Sehr stark",
+        "Solide Basis",
+        "Mehr drin",
+        "Ausbaufaehig",
+        "🏖️ Im Urlaub (Pausiert)"
     ]
 
     table_html = ""
