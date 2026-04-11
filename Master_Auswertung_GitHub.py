@@ -908,7 +908,7 @@ def build_best_player_deck_set(player_war_decks: dict, top_n: int = 10) -> list:
         decks = []
         for stats in deck_stats.values():
             cards = stats["cards"]
-            if not cards:
+            if not cards or stats["wins"] == 0:
                 continue
             total = stats["wins"] + stats["losses"]
             winrate = int(round(stats["wins"] / total * 100)) if total > 0 else 0
@@ -933,7 +933,11 @@ def build_best_player_deck_set(player_war_decks: dict, top_n: int = 10) -> list:
         overall_wr    = total_wins / total_matches if total_matches > 0 else 0
         return (total_wins, overall_wr)
 
-    ranked_tags = sorted(player_decks.keys(), key=player_score, reverse=True)[:top_n]
+    ranked_tags = sorted(
+        [t for t in player_decks if player_score(t)[0] > 0],
+        key=player_score,
+        reverse=True
+    )[:top_n]
 
     result = []
     for rank, tag in enumerate(ranked_tags, start=1):
