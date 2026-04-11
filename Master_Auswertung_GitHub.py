@@ -2636,7 +2636,7 @@ def generate_html_report(
     for t in tiers:
         players_in_tier = sorted(
             [p for p in player_stats if p["tier"] == t],
-            key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]),
+            key=lambda x: (x["teilnahme_int"], x["fame_per_deck"], x["war_points_total"]),
             reverse=True
         )
         if players_in_tier:
