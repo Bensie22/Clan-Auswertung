@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Action API",
+      "runtimeExecutable": "uvicorn",
+      "runtimeArgs": ["action_api:app", "--port", "5000", "--reload"],
+      "port": 5000
+    },
+    {
+      "name": "Clan API",
+      "runtimeExecutable": "uvicorn",
+      "runtimeArgs": ["api:app", "--port", "8000", "--reload"],
+      "port": 8000
+    }
+  ]
+}

@@ -829,6 +829,75 @@ def build_deck_sections(top_decks_data: dict) -> list:
     ]
 
 
+def build_best_player_deck_set(top_decks_data: dict) -> dict | None:
+    """Findet den Spieler mit den meisten Kriegssiegen und gibt alle seine Decks zurück."""
+    from collections import defaultdict
+
+    player_decks  = defaultdict(list)
+    player_names  = {}
+
+    for deck_data in top_decks_data.get("decks", {}).values():
+        cards = deck_data.get("cards", [])
+        if not cards:
+            continue
+
+        per_player = defaultdict(lambda: {"wins": 0, "losses": 0, "name": ""})
+        for match in deck_data.get("recent_matches", []):
+            tag = match.get("tag", "")
+            if not tag:
+                continue
+            per_player[tag]["name"] = match.get("player", "")
+            if match.get("result") == "win":
+                per_player[tag]["wins"] += 1
+            else:
+                per_player[tag]["losses"] += 1
+
+        for tag, stats in per_player.items():
+            total = stats["wins"] + stats["losses"]
+            if total == 0:
+                continue
+            winrate = int(round(stats["wins"] / total * 100))
+            player_decks[tag].append({
+                "cards":         cards,
+                "wins":          stats["wins"],
+                "losses":        stats["losses"],
+                "total_matches": total,
+                "winrate":       winrate,
+                "archetype":     get_deck_archetype(cards),
+            })
+            player_names[tag] = stats["name"]
+
+    if not player_decks:
+        return None
+
+    def player_score(tag):
+        decks = player_decks[tag]
+        total_wins    = sum(d["wins"]          for d in decks)
+        total_matches = sum(d["total_matches"] for d in decks)
+        overall_wr    = total_wins / total_matches if total_matches > 0 else 0
+        return (total_wins, overall_wr)
+
+    best_tag   = max(player_decks.keys(), key=player_score)
+    best_name  = player_names.get(best_tag, best_tag)
+    best_decks = sorted(
+        player_decks[best_tag],
+        key=lambda d: (d["wins"], d["winrate"]),
+        reverse=True
+    )[:4]
+
+    total_wins    = sum(d["wins"]          for d in best_decks)
+    total_matches = sum(d["total_matches"] for d in best_decks)
+    overall_wr    = int(round(total_wins / total_matches * 100)) if total_matches > 0 else 0
+
+    return {
+        "player_name":    best_name,
+        "total_wins":     total_wins,
+        "total_matches":  total_matches,
+        "overall_winrate": overall_wr,
+        "decks":          best_decks,
+    }
+
+
 def get_signal_state(value: float, green_min: float, yellow_min: float) -> tuple[str, str]:
     if value >= green_min:
         return "stark", "#10b981"
@@ -2419,6 +2488,41 @@ def generate_html_report(
                 </div>
             </div>
             """
+
+    # ⭐ Bester Kriegsspieler – alle 4 Decks
+    best_player = build_best_player_deck_set(top_decks_data)
+    if best_player and best_player["decks"]:
+        best_cards_html = ""
+        for idx, d in enumerate(best_player["decks"], start=1):
+            images_html = "".join([
+                f"<img src='{c['icon']}' style='width: 23%; border-radius: 4px; margin: 1%;' title='{c['name']}'>"
+                for c in d["cards"]
+            ])
+            api_names = [c["name"].lower().replace(".", "").replace(" ", "-") for c in d["cards"]]
+            royaleapi_link = f"https://royaleapi.com/decks/stats/{','.join(api_names)}"
+            best_cards_html += f"""
+            <div class="deck-card">
+                <div class="archetype-badge">{d['archetype']}</div>
+                <div class="deck-header">
+                    <h3 style="margin: 0; color: #a78bfa; font-size: 1.1em; font-weight: 800;">Deck #{idx}</h3>
+                    <span class="winrate">🔥 {d['winrate']}% Win</span>
+                </div>
+                <div class="deck-images">{images_html}</div>
+                <p style="font-size: 0.85em; color: #94a3b8; margin: 10px 0;">{d['wins']} Siege / {d['losses']} Niederlagen in {d['total_matches']} Kämpfen</p>
+                <div style="margin-top: auto;">
+                    <a href="{royaleapi_link}" class="copy-btn" style="background: #7c3aed; color: #fff;" target="_blank">🔗 Auf RoyaleAPI öffnen</a>
+                </div>
+            </div>
+            """
+        deck_html += f"""
+        <div style="margin-bottom: 30px;">
+            <h3 style="color: #a78bfa; margin-bottom: 8px; font-size: 1.3em;">⭐ Bester Kriegsspieler: {best_player['player_name']}</h3>
+            <p style="color: #94a3b8; margin-top: 0; margin-bottom: 18px; font-size: 0.95em;">
+                Alle 4 Kriegsdecks des stärksten Spielers — {best_player['total_wins']} Siege in {best_player['total_matches']} Kämpfen ({best_player['overall_winrate']}% Win gesamt)
+            </p>
+            <div class="deck-slider">{best_cards_html}</div>
+        </div>
+        """
 
     tiers = [
         f"Sehr stark ({APP_CONFIG['TIER_SEHR_STARK']}-100%)",
