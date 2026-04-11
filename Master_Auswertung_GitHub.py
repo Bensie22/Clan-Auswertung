@@ -2797,48 +2797,41 @@ def generate_html_report(
     top_opp = build_top_opponent_decks(opponent_decks, top_n=10)
     if top_opp:
         rank_medals = {1: "🥇", 2: "🥈", 3: "🥉"}
-        opp_players_html = ""
+        opp_decks_html = ""
         for opp in top_opp:
             medal = rank_medals.get(opp["rank"], f"#{opp['rank']}")
-            loss_rate = opp["loss_rate"]
-            bar_color = "#ef4444" if loss_rate >= 60 else "#f59e0b" if loss_rate >= 40 else "#10b981"
             images_html = "".join([
                 f"<img src='{c['icon']}' style='width: 23%; border-radius: 4px; margin: 1%;' title='{c['name']}'>"
                 for c in opp["cards"]
             ])
             api_names = [c["name"].lower().replace(".", "").replace(" ", "-") for c in opp["cards"]]
-            deck_link = f"https://royaleapi.com/decks/stats/{','.join(api_names)}"
-            opp_players_html += f"""
-            <div style="background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.25); border-radius: 12px; padding: 16px; margin-bottom: 16px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <span style="font-size: 1.4em;">{medal}</span>
-                        <span style="color: #e2e8f0; font-weight: 700; font-size: 1em;">{opp['archetype']}</span>
-                    </div>
-                    <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
-                        <span style="color: #94a3b8; font-size: 0.85em;">Gesehen: <strong style="color:#e2e8f0;">{opp['seen']}</strong></span>
-                        <span style="color: #ef4444; font-size: 0.85em; font-weight: 700;">Verloren: {opp['losses']}×</span>
-                        <div style="display: flex; align-items: center; gap: 6px;">
-                            <div style="width: 60px; background: rgba(255,255,255,0.1); border-radius: 4px; height: 8px;">
-                                <div style="width: {loss_rate}%; background: {bar_color}; height: 100%; border-radius: 4px;"></div>
-                            </div>
-                            <span style="color: {bar_color}; font-weight: 700; font-size: 0.85em;">{loss_rate}%</span>
+            royaleapi_link = f"https://royaleapi.com/decks/stats/{','.join(api_names)}"
+            opp_decks_html += f"""
+            <div style="margin-bottom: 30px; border-left: 3px solid #ef4444; padding-left: 16px;">
+                <h4 style="color: #fca5a5; margin: 0 0 4px 0; font-size: 1.1em;">{medal} Platz {opp['rank']} <span style="color:#64748b; font-weight:400; font-size:0.9em;">— {opp['losses']} Niederlagen / {opp['seen']} Kämpfe ({opp['loss_rate']}% Verlustrate)</span></h4>
+                <div class="deck-slider">
+                    <div class="deck-card">
+                        <div class="archetype-badge">{opp['archetype']}</div>
+                        <div class="deck-header">
+                            <h3 style="margin: 0; color: #ef4444; font-size: 1.1em; font-weight: 800;">Gegner-Deck #{opp['rank']}</h3>
+                            <span class="winrate" style="background: rgba(239,68,68,0.15); color: #fca5a5;">💀 {opp['loss_rate']}% Loss</span>
+                        </div>
+                        <div class="deck-images">{images_html}</div>
+                        <p style="font-size: 0.85em; color: #94a3b8; margin: 10px 0;">{opp['losses']} Niederlagen / {opp['seen']} Kämpfe gegen dieses Deck</p>
+                        <div style="margin-top: auto;">
+                            <a href="{royaleapi_link}" class="copy-btn" style="background: #ef4444; color: #fff;" target="_blank">🔗 Auf RoyaleAPI öffnen</a>
                         </div>
                     </div>
-                </div>
-                <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px;">
-                    {images_html}
-                </div>
-                <div style="text-align: right;">
-                    <a href="{deck_link}" target="_blank" style="color: #60a5fa; font-size: 0.8em; text-decoration: none;">🔗 RoyaleAPI</a>
                 </div>
             </div>
             """
         opponent_meta_html = f"""
-        <div style="margin-top: 40px; margin-bottom: 30px;">
-            <h2 style="font-weight: 800; font-size: 1.5em; text-align: center; color: #ffffff; margin-bottom: 5px;">🛡️ Top 10 Gegner-Decks</h2>
-            <p style="text-align: center; color: #94a3b8; margin-bottom: 20px; font-size: 0.9em;">Gegner-Decks gegen die unser Clan im Krieg am häufigsten verliert. Nutzt das als Hinweis, um eure Decks gezielt anzupassen.</p>
-            {opp_players_html}
+        <div style="margin-bottom: 30px;">
+            <h3 style="color: #fca5a5; margin-bottom: 8px; font-size: 1.3em;">🛡️ Top 10 Gegner-Decks</h3>
+            <p style="color: #94a3b8; margin-top: 0; margin-bottom: 18px; font-size: 0.95em;">
+                Gegner-Decks gegen die unser Clan im Krieg am häufigsten verliert. Nutzt das als Hinweis, um eure Decks gezielt anzupassen.
+            </p>
+            {opp_decks_html}
         </div>
         """
 
