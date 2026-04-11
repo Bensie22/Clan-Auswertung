@@ -701,17 +701,26 @@ def update_top_decks(current_members: dict, top_decks_data: dict, player_war_dec
                                 ]
                             })
 
-                        # Gegner-Deck-Analyse
+                        # Gegner-Deck-Tracking (vollständige Decks)
                         opp_cards = opponent.get("cards", [])
                         if len(opp_cards) == 8:
-                            for oc in opp_cards:
-                                card_name = oc.get("name", "")
-                                if card_name:
-                                    if card_name not in opponent_decks:
-                                        opponent_decks[card_name] = {"seen": 0, "lost_against": 0}
-                                    opponent_decks[card_name]["seen"] += 1
-                                    if is_loss:
-                                        opponent_decks[card_name]["lost_against"] += 1
+                            opp_deck_ids = sorted([str(oc["id"]) for oc in opp_cards])
+                            opp_deck_hash = "-".join(opp_deck_ids)
+                            if opp_deck_hash not in opponent_decks or not isinstance(opponent_decks[opp_deck_hash], dict) or "cards" not in opponent_decks[opp_deck_hash]:
+                                opponent_decks[opp_deck_hash] = {
+                                    "cards": [
+                                        {
+                                            "id":   oc["id"],
+                                            "name": oc["name"],
+                                            "icon": oc.get("iconUrls", {}).get("medium", "")
+                                        } for oc in opp_cards
+                                    ],
+                                    "seen":   0,
+                                    "losses": 0
+                                }
+                            opponent_decks[opp_deck_hash]["seen"] += 1
+                            if is_loss:
+                                opponent_decks[opp_deck_hash]["losses"] += 1
 
         if latest_time_in_log:
             metadata["last_battles"][tag] = latest_time_in_log
@@ -945,6 +954,33 @@ def build_best_player_deck_set(player_war_decks: dict, top_n: int = 10) -> list:
             "decks":          decks,
         })
 
+    return result
+
+
+def build_top_opponent_decks(opponent_decks: dict, top_n: int = 10) -> list:
+    """Findet die Top-N Gegner-Decks gegen die wir am häufigsten verloren haben."""
+    valid = [
+        (deck_hash, data)
+        for deck_hash, data in opponent_decks.items()
+        if isinstance(data, dict) and "cards" in data and data.get("losses", 0) > 0
+    ]
+    if not valid:
+        return []
+
+    valid.sort(key=lambda x: (x[1].get("losses", 0), x[1].get("seen", 0)), reverse=True)
+    result = []
+    for rank, (deck_hash, data) in enumerate(valid[:top_n], start=1):
+        seen   = data.get("seen", 0)
+        losses = data.get("losses", 0)
+        loss_rate = int(round(losses / seen * 100)) if seen > 0 else 0
+        result.append({
+            "rank":      rank,
+            "cards":     data["cards"],
+            "seen":      seen,
+            "losses":    losses,
+            "loss_rate": loss_rate,
+            "archetype": get_deck_archetype(data["cards"]),
+        })
     return result
 
 
@@ -2752,55 +2788,55 @@ def generate_html_report(
         </div>
         """
 
-    # ── Gegner-Meta-Analyse (opponent_meta_html) ──
+    # ── Gegner-Decks gegen die wir am häufigsten verlieren ──
     opponent_meta_html = ""
-    if opponent_decks:
-        sorted_cards = sorted(
-            opponent_decks.items(),
-            key=lambda x: x[1].get("lost_against", 0),
-            reverse=True
-        )[:10]
-        if sorted_cards:
-            rows_html = ""
-            for card_name, stats in sorted_cards:
-                seen = stats.get("seen", 0)
-                lost = stats.get("lost_against", 0)
-                loss_pct = round((lost / seen) * 100) if seen > 0 else 0
-                bar_color = "#ef4444" if loss_pct >= 60 else "#f59e0b" if loss_pct >= 40 else "#10b981"
-                rows_html += f"""
-                <tr>
-                    <td style="color: #e2e8f0; font-weight: 600;">{card_name}</td>
-                    <td style="text-align: center; color: #94a3b8;">{seen}</td>
-                    <td style="text-align: center; color: #ef4444; font-weight: 700;">{lost}</td>
-                    <td style="text-align: center;">
+    top_opp = build_top_opponent_decks(opponent_decks, top_n=10)
+    if top_opp:
+        rank_medals = {1: "🥇", 2: "🥈", 3: "🥉"}
+        opp_players_html = ""
+        for opp in top_opp:
+            medal = rank_medals.get(opp["rank"], f"#{opp['rank']}")
+            loss_rate = opp["loss_rate"]
+            bar_color = "#ef4444" if loss_rate >= 60 else "#f59e0b" if loss_rate >= 40 else "#10b981"
+            images_html = "".join([
+                f"<img src='{c['icon']}' style='width: 23%; border-radius: 4px; margin: 1%;' title='{c['name']}'>"
+                for c in opp["cards"]
+            ])
+            api_names = [c["name"].lower().replace(".", "").replace(" ", "-") for c in opp["cards"]]
+            deck_link = f"https://royaleapi.com/decks/stats/{','.join(api_names)}"
+            opp_players_html += f"""
+            <div style="background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.25); border-radius: 12px; padding: 16px; margin-bottom: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 1.4em;">{medal}</span>
+                        <span style="color: #e2e8f0; font-weight: 700; font-size: 1em;">{opp['archetype']}</span>
+                    </div>
+                    <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+                        <span style="color: #94a3b8; font-size: 0.85em;">Gesehen: <strong style="color:#e2e8f0;">{opp['seen']}</strong></span>
+                        <span style="color: #ef4444; font-size: 0.85em; font-weight: 700;">Verloren: {opp['losses']}×</span>
                         <div style="display: flex; align-items: center; gap: 6px;">
-                            <div style="flex: 1; background: rgba(255,255,255,0.1); border-radius: 4px; height: 8px;">
-                                <div style="width: {loss_pct}%; background: {bar_color}; height: 100%; border-radius: 4px;"></div>
+                            <div style="width: 60px; background: rgba(255,255,255,0.1); border-radius: 4px; height: 8px;">
+                                <div style="width: {loss_rate}%; background: {bar_color}; height: 100%; border-radius: 4px;"></div>
                             </div>
-                            <span style="color: {bar_color}; font-weight: 700; font-size: 0.9em;">{loss_pct}%</span>
+                            <span style="color: {bar_color}; font-weight: 700; font-size: 0.85em;">{loss_rate}%</span>
                         </div>
-                    </td>
-                </tr>
-                """
-            opponent_meta_html = f"""
-            <div style="margin-top: 40px; margin-bottom: 30px;">
-                <h2 style="font-weight: 800; font-size: 1.5em; text-align: center; color: #ffffff; margin-bottom: 5px;">🛡️ Gegner-Meta: Karten, gegen die wir verlieren</h2>
-                <p style="text-align: center; color: #94a3b8; margin-bottom: 20px; font-size: 0.9em;">Top 10 Karten aus gegnerischen Decks, gegen die der Clan am häufigsten verliert. Nutzt das als Hinweis, um eure Decks gezielt anzupassen.</p>
-                <table style="width: 100%; border-collapse: collapse;">
-                    <thead>
-                    <tr style="border-bottom: 2px solid rgba(255,255,255,0.15);">
-                        <th style="text-align: left; padding: 8px; color: #94a3b8;">Karte</th>
-                        <th style="text-align: center; padding: 8px; color: #94a3b8;">Gesehen</th>
-                        <th style="text-align: center; padding: 8px; color: #94a3b8;">Verloren</th>
-                        <th style="text-align: center; padding: 8px; color: #94a3b8; min-width: 120px;">Verlustrate</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {rows_html}
-                    </tbody>
-                </table>
+                    </div>
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px;">
+                    {images_html}
+                </div>
+                <div style="text-align: right;">
+                    <a href="{deck_link}" target="_blank" style="color: #60a5fa; font-size: 0.8em; text-decoration: none;">🔗 RoyaleAPI</a>
+                </div>
             </div>
             """
+        opponent_meta_html = f"""
+        <div style="margin-top: 40px; margin-bottom: 30px;">
+            <h2 style="font-weight: 800; font-size: 1.5em; text-align: center; color: #ffffff; margin-bottom: 5px;">🛡️ Top 10 Gegner-Decks</h2>
+            <p style="text-align: center; color: #94a3b8; margin-bottom: 20px; font-size: 0.9em;">Gegner-Decks gegen die unser Clan im Krieg am häufigsten verliert. Nutzt das als Hinweis, um eure Decks gezielt anzupassen.</p>
+            {opp_players_html}
+        </div>
+        """
 
     anzeige_stand = datetime.now().strftime("%d.%m.%Y, %H:%M Uhr")
 
