@@ -59,6 +59,7 @@ score_history_path = BASE_DIR / "score_history.csv"
 records_path = BASE_DIR / "records.json"
 strikes_path = BASE_DIR / "strikes.json"
 top_decks_path = BASE_DIR / "top_decks.json"
+player_war_decks_path = BASE_DIR / "player_war_decks.json"
 donations_memory_path = BASE_DIR / "donations_memory.json"
 member_memory_path = BASE_DIR / "member_memory.json"
 urlaub_path = BASE_DIR / "urlaub.txt"
@@ -587,7 +588,7 @@ def fetch_player_profiles(current_members: dict) -> dict:
 
 # === 2.5 Battlelogs analysieren (Top Decks) ===
 
-def update_top_decks(current_members: dict, top_decks_data: dict) -> tuple[dict, dict]:
+def update_top_decks(current_members: dict, top_decks_data: dict, player_war_decks: dict) -> tuple[dict, dict, dict]:
     print("Schritt 4: Spioniere Battlelogs für Clan-Meta Decks aus (Bitte warten)...")
     headers = {"Authorization": f"Bearer {API_TOKEN}", "Accept": "application/json"}
 
@@ -677,6 +678,29 @@ def update_top_decks(current_members: dict, top_decks_data: dict) -> tuple[dict,
                                 "tag": raw_tag
                             })
 
+                        # Spieler-spezifisches Deck-Tracking
+                        if raw_tag not in player_war_decks:
+                            player_war_decks[raw_tag] = {"name": p_name, "battles": []}
+                        player_war_decks[raw_tag]["name"] = p_name
+                        pw_battles = player_war_decks[raw_tag]["battles"]
+                        pw_key = f"{b_time}|{deck_hash}|{match_result}"
+                        if not any(
+                            f"{b.get('time', '')}|{b.get('deck_hash', '')}|{b.get('result', '')}" == pw_key
+                            for b in pw_battles
+                        ):
+                            pw_battles.append({
+                                "time":      b_time,
+                                "result":    match_result,
+                                "deck_hash": deck_hash,
+                                "cards": [
+                                    {
+                                        "id":   c["id"],
+                                        "name": c["name"],
+                                        "icon": c.get("iconUrls", {}).get("medium", "")
+                                    } for c in cards
+                                ]
+                            })
+
                         # Gegner-Deck-Analyse
                         opp_cards = opponent.get("cards", [])
                         if len(opp_cards) == 8:
@@ -735,8 +759,20 @@ def update_top_decks(current_members: dict, top_decks_data: dict) -> tuple[dict,
     top_decks_data["_metadata"] = metadata
     top_decks_data["decks"] = decks
     top_decks_data["_opponent_decks"] = opponent_decks
+
+    # Spieler-Decks: alte Einträge (> DECK_LOOKBACK_DAYS) entfernen
+    for raw_tag in list(player_war_decks.keys()):
+        recent = [
+            b for b in player_war_decks[raw_tag]["battles"]
+            if (dt := parse_battle_time(b.get("time", ""))) and dt >= cutoff_dt
+        ]
+        if recent:
+            player_war_decks[raw_tag]["battles"] = sorted(recent, key=lambda b: b.get("time", ""), reverse=True)
+        else:
+            del player_war_decks[raw_tag]
+
     print("✅ Battlelogs erfolgreich gescannt. Top-Decks aktualisiert.\n")
-    return top_decks_data, opponent_decks
+    return top_decks_data, opponent_decks, player_war_decks
 
 
 def parse_battle_time(battle_time: str) -> datetime | None:
@@ -829,35 +865,45 @@ def build_deck_sections(top_decks_data: dict) -> list:
     ]
 
 
-def build_best_player_deck_set(top_decks_data: dict, top_n: int = 10) -> list:
-    """Findet die Top-N Spieler mit den meisten Kriegssiegen und gibt ihre Decks zurück."""
+def build_best_player_deck_set(player_war_decks: dict, top_n: int = 10) -> list:
+    """Findet die Top-N Spieler mit den meisten Kriegssiegen aus player_war_decks.json."""
     from collections import defaultdict
 
-    player_decks = defaultdict(list)
+    if not player_war_decks:
+        return []
+
+    # Für jeden Spieler: Decks (nach deck_hash) mit Siegen/Niederlagen aggregieren
+    player_decks = {}   # tag -> list of deck dicts
     player_names = {}
 
-    for deck_data in top_decks_data.get("decks", {}).values():
-        cards = deck_data.get("cards", [])
-        if not cards:
+    for tag, pdata in player_war_decks.items():
+        p_name = pdata.get("name", tag)
+        player_names[tag] = p_name
+        battles = pdata.get("battles", [])
+        if not battles:
             continue
 
-        per_player = defaultdict(lambda: {"wins": 0, "losses": 0, "name": ""})
-        for match in deck_data.get("recent_matches", []):
-            tag = match.get("tag", "")
-            if not tag:
+        deck_stats = defaultdict(lambda: {"wins": 0, "losses": 0, "cards": []})
+        for battle in battles:
+            deck_hash = battle.get("deck_hash", "")
+            if not deck_hash:
                 continue
-            per_player[tag]["name"] = match.get("player", "")
-            if match.get("result") == "win":
-                per_player[tag]["wins"] += 1
+            result = battle.get("result", "")
+            if result == "win":
+                deck_stats[deck_hash]["wins"] += 1
             else:
-                per_player[tag]["losses"] += 1
+                deck_stats[deck_hash]["losses"] += 1
+            if not deck_stats[deck_hash]["cards"]:
+                deck_stats[deck_hash]["cards"] = battle.get("cards", [])
 
-        for tag, stats in per_player.items():
-            total = stats["wins"] + stats["losses"]
-            if total == 0:
+        decks = []
+        for stats in deck_stats.values():
+            cards = stats["cards"]
+            if not cards:
                 continue
-            winrate = int(round(stats["wins"] / total * 100))
-            player_decks[tag].append({
+            total = stats["wins"] + stats["losses"]
+            winrate = int(round(stats["wins"] / total * 100)) if total > 0 else 0
+            decks.append({
                 "cards":         cards,
                 "wins":          stats["wins"],
                 "losses":        stats["losses"],
@@ -865,7 +911,8 @@ def build_best_player_deck_set(top_decks_data: dict, top_n: int = 10) -> list:
                 "winrate":       winrate,
                 "archetype":     get_deck_archetype(cards),
             })
-            player_names[tag] = stats["name"]
+        if decks:
+            player_decks[tag] = decks
 
     if not player_decks:
         return []
@@ -1804,7 +1851,8 @@ def generate_html_report(
     is_weekly_run: bool,
     clan_overview: dict = None,
     player_profiles: dict = None,
-    opponent_decks: dict = None
+    opponent_decks: dict = None,
+    player_war_decks: dict = None
 ) -> Tuple[str, pd.DataFrame, str, dict, dict, dict]:
     player_stats = []
     urlauber_liste = []
@@ -2493,7 +2541,7 @@ def generate_html_report(
             """
 
     # ⭐ Top 10 Kriegsspieler – je alle 4 Decks
-    top_players = build_best_player_deck_set(top_decks_data, top_n=10)
+    top_players = build_best_player_deck_set(player_war_decks or {}, top_n=10)
     if top_players:
         rank_medals = {1: "🥇", 2: "🥈", 3: "🥉"}
         players_html = ""
@@ -2877,7 +2925,8 @@ def speichere_html_bericht(
     top_decks_data: dict,
     kicked_players: dict,
     impressumhtml: str,
-    datenschutzhtml: str
+    datenschutzhtml: str,
+    player_war_decks: dict = None
 ) -> Path:
     html_path = output_folder / f"auswertung_{file_suffix}.html"
     with html_path.open("w", encoding="utf-8") as f:
@@ -2897,6 +2946,10 @@ def speichere_html_bericht(
 
     with open(top_decks_path, "w", encoding="utf-8") as f:
         json.dump(top_decks_data, f, ensure_ascii=False, indent=4)
+
+    if player_war_decks is not None:
+        with open(player_war_decks_path, "w", encoding="utf-8") as f:
+            json.dump(player_war_decks, f, ensure_ascii=False, indent=4)
 
     with open(kicked_players_path, "w", encoding="utf-8") as f:
         json.dump(kicked_players, f, ensure_ascii=False, indent=4)
@@ -3123,7 +3176,15 @@ def main():
         except Exception as e:
             print(f"⚠️ Warnung: top_decks.json fehlerhaft, fange bei 0 an. ({e})")
 
-    top_decks_data, opponent_decks = update_top_decks(current_members, top_decks_data)
+    player_war_decks = {}
+    if player_war_decks_path.exists():
+        try:
+            with open(player_war_decks_path, "r", encoding="utf-8") as f:
+                player_war_decks = json.load(f)
+        except Exception as e:
+            print(f"⚠️ Warnung: player_war_decks.json fehlerhaft, fange bei 0 an. ({e})")
+
+    top_decks_data, opponent_decks, player_war_decks = update_top_decks(current_members, top_decks_data, player_war_decks)
 
     print("Schritt 5.5: Rufe Clan-Gesamtdaten und Spieler-Profile ab...")
     clan_overview = fetch_clan_overview()
@@ -3226,7 +3287,8 @@ def main():
         is_weekly_run=is_weekly_run,
         clan_overview=clan_overview,
         player_profiles=player_profiles,
-        opponent_decks=opponent_decks
+        opponent_decks=opponent_decks,
+        player_war_decks=player_war_decks
     )
 
     impressumhtml, datenschutzhtml = build_legal_pages()
@@ -3241,6 +3303,7 @@ def main():
         kicked_players=updated_kicked,
         impressumhtml=impressumhtml,
         datenschutzhtml=datenschutzhtml,
+        player_war_decks=player_war_decks,
     )
     archiviere_alte_auswertungen(output_folder)
 
