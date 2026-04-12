@@ -3375,14 +3375,10 @@ def main():
                 clan_tag_raw = c.get("tag", "")
 
                 trophies = c.get("clanScore", 0)
-                # Immer kumulative Rennen-Fame verwenden (sum participant.fame),
-                # damit alle Clans dieselbe Metrik zeigen – unabhängig davon ob
-                # periodPoints heute schon > 0 ist oder nicht.
+                # periodPoints = Punkte des aktuellen Kriegstages (setzt täglich zurück)
+                # Kein Fallback auf participant.fame (das wäre kumulativ über die ganze Woche)
                 participants = c.get("participants", [])
-                medals = sum(p.get("fame", 0) for p in participants)
-                if medals == 0:
-                    # Fallback wenn keine Teilnehmerdaten vorhanden
-                    medals = c.get("periodPoints", 0)
+                medals = c.get("periodPoints", 0)
                 boat_attacks = sum(p.get("boatAttacks", 0) for p in participants)
                 decks_used = sum(p.get("decksUsedToday", 0) for p in participants)
 
