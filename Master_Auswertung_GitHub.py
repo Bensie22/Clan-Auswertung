@@ -441,6 +441,61 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
             players_data[tag]["donations_received"] = data["donations_received"]
             players_data[tag]["trophies"] = data["trophies"]
 
+    # Schritt 2b: Aktuellen Krieg live integrieren (currentriverrace)
+    # Strategie: Montag dieser Woche = ID des laufenden Krieges.
+    # Falls dieser ID bereits im Warlog steht → Krieg ist fertig, Log-Daten gewinnen.
+    # Falls nicht → Krieg läuft noch, Live-Daten als neueste Spalte einbauen.
+    print("Schritt 2b: Prüfe aktuellen Krieg (currentriverrace)...")
+    try:
+        today_utc = datetime.utcnow().date()
+        monday_this_week = today_utc - timedelta(days=today_utc.weekday())
+        current_race_id = monday_this_week.strftime("%Y%m%d")
+
+        if current_race_id in race_ids:
+            print(f"✅ Aktueller Krieg ({current_race_id}) bereits im Warlog – Log-Daten gewinnen.")
+        else:
+            cur_resp = requests.get(f"{BASE_URL}/clans/{CLAN_TAG}/currentriverrace", headers=headers, timeout=30)
+            if cur_resp.status_code == 200:
+                cur_data = cur_resp.json()
+                my_clan_live = None
+                for c in cur_data.get("clans", []):
+                    if c.get("tag") == CLAN_TAG.replace("%23", "#"):
+                        my_clan_live = c
+                        break
+
+                if my_clan_live:
+                    for p in my_clan_live.get("participants", []):
+                        ptag = p.get("tag")
+                        pname = p.get("name")
+                        fame = p.get("fame", 0)        # kumulative Fame im aktuellen Krieg
+                        decks = p.get("decksUsed", 0)  # Decks gesamt im aktuellen Krieg
+                        ba = p.get("boatAttacks", 0)
+
+                        if ptag not in players_data:
+                            is_curr = ptag in current_members
+                            players_data[ptag] = {
+                                "name": pname,
+                                "is_current": is_curr,
+                                "role": current_members[ptag]["role"] if is_curr else "unknown",
+                                "donations": current_members[ptag]["donations"] if is_curr else 0,
+                                "donations_received": current_members[ptag]["donations_received"] if is_curr else 0,
+                                "trophies": current_members[ptag]["trophies"] if is_curr else 0,
+                                "history": {}
+                            }
+
+                        players_data[ptag]["history"][current_race_id] = {
+                            "decks": decks, "fame": fame, "boat_attacks": ba
+                        }
+
+                    race_ids.append(current_race_id)
+                    print(f"✅ Aktueller Krieg ({current_race_id}) als Live-Spalte eingefügt.")
+                else:
+                    print("ℹ️ Unser Clan nicht im aktuellen Rennen gefunden.")
+            else:
+                print(f"ℹ️ currentriverrace nicht verfügbar ({cur_resp.status_code}).")
+    except Exception as e:
+        print(f"⚠️ Live-Kriegsdaten konnten nicht geladen werden: {e}")
+
     date_str = datetime.now().strftime("%Y%m%d_%H%M%S")
     filename = upload_folder / f"clan_export_{date_str}.csv"
 
