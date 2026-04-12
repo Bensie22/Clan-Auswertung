@@ -2310,6 +2310,55 @@ def generate_html_report(
     low_score_count = sum(1 for p in aktive_spieler if p["score"] < APP_CONFIG["TIER_SOLIDE"])
     newbie_count = sum(1 for p in aktive_spieler if p["is_welpenschutz"])
 
+    # ── Sieg-Prognose aus Radar-Daten ────────────────────────────────────────
+    if ist_kampftag and len(radar_clans) >= 2:
+        us = next((c for c in radar_clans if c["is_us"]), None)
+        if us:
+            played = [c for c in radar_clans if c["decks_used"] > 0]
+            fallback_eff = round(
+                sum(c["medals"] / c["decks_used"] for c in played) / len(played)
+            ) if played else 160
+
+            projections = []
+            for c in radar_clans:
+                eff = round(c["medals"] / c["decks_used"]) if c["decks_used"] > 0 else fallback_eff
+                remaining = max(0, c["max_decks"] - c["decks_used"])
+                projected = c["medals"] + remaining * eff
+                projections.append({**c, "eff": eff, "remaining": remaining, "projected": int(projected)})
+
+            projections.sort(key=lambda x: x["projected"], reverse=True)
+            our_proj = next(c for c in projections if c["is_us"])
+            our_rank = projections.index(our_proj) + 1
+            leader = projections[0]
+            second = projections[1] if len(projections) > 1 else None
+
+            if our_rank == 1 and second:
+                gap = our_proj["projected"] - second["projected"]
+                catchup = second["remaining"] * second["eff"]
+                if gap > catchup:
+                    prognose_item = (f"<li>🟢 <b>Sieg-Prognose: sehr gut</b> – aktuell <b>Platz 1</b> mit ~{gap:,} Punkten Vorsprung. "
+                                     f"Selbst wenn {second['name']} alle {second['remaining']} Decks spielt, reicht es nicht zum Überholen. Decks trotzdem vollständig spielen!</li>")
+                elif gap > 0:
+                    prognose_item = (f"<li>🟡 <b>Sieg-Prognose: knapp vorne</b> – aktuell <b>Platz 1</b>, aber nur ~{gap:,} Punkte vor "
+                                     f"{second['name']} (hat noch {second['remaining']} Decks offen). Offene Decks jetzt schließen!</li>")
+                else:
+                    prognose_item = "<li>🟡 <b>Sieg-Prognose: sehr knapp</b> – Platz 1 projiziert, aber hauchdünn. Alle Decks sofort spielen!</li>"
+            elif our_rank == 2:
+                gap = leader["projected"] - our_proj["projected"]
+                our_potential = our_proj["remaining"] * our_proj["eff"]
+                if our_potential >= gap:
+                    prognose_item = (f"<li>🟡 <b>Sieg-Prognose: aufholbar</b> – aktuell <b>Platz 2</b>, ~{gap:,} Punkte hinter "
+                                     f"<i>{leader['name']}</i>. Mit {our_proj['remaining']} offenen Decks ist der Rückstand noch aufholbar – jetzt alle Angriffe spielen!</li>")
+                else:
+                    prognose_item = (f"<li>🔴 <b>Sieg-Prognose: schwierig</b> – aktuell <b>Platz 2</b>, ~{gap:,} Punkte hinter "
+                                     f"<i>{leader['name']}</i>. Platz 2 verteidigen und alle Decks spielen.</li>")
+            else:
+                gap = second["projected"] - our_proj["projected"] if second else 0
+                prognose_item = (f"<li>🔴 <b>Sieg-Prognose: gering</b> – aktuell <b>Platz {our_rank}</b> (projiziert), "
+                                 f"~{gap:,} Punkte hinter Platz 2. Trotzdem alle Decks spielen – jeder Punkt zählt für die Trophäen.</li>")
+
+            coach_items.append(prognose_item)
+
     if preliminary_open_decks > 0:
         coach_items.append(f"<li><b>Offene Decks zuerst dicht machen:</b> Heute sind noch <b>{preliminary_open_decks}</b> Decks offen. Konstanz bringt uns im Moment am schnellsten nach vorne.</li>")
     if low_quality_count > 0:
@@ -2321,7 +2370,7 @@ def generate_html_report(
 
     coach_html = ""
     if coach_items:
-        coach_html = "<div class='info-box' style='border-left-color: #10b981;'><h3 style='margin-top:0; color:#10b981;'>🧠 Coach-Ecke</h3><p style='margin-top:0;'>Ein paar einfache Wochen-Hinweise, mit denen wir als Clan direkt mehr rausholen können:</p><ul style='margin-bottom:0;'>" + "".join(coach_items[:4]) + "</ul></div>"
+        coach_html = "<div class='info-box' style='border-left-color: #10b981;'><h3 style='margin-top:0; color:#10b981;'>🧠 Coach-Ecke</h3><p style='margin-top:0;'>Hinweise und Prognose für den aktuellen Stand:</p><ul style='margin-bottom:0;'>" + "".join(coach_items[:5]) + "</ul></div>"
 
     kandidaten_demote = strikes_data.get("demoted_this_week", [])
     kandidaten_kick = strikes_data.get("kicked_this_week", [])
