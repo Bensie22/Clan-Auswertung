@@ -1021,8 +1021,12 @@ def build_best_player_deck_set(
     player_all_matches = {}
     player_names       = {}
 
-    # Wenn kein aktiver Krieg läuft (current_war_participants leer) → historischer Modus für alle
+    # Krieg aktiv wenn mindestens ein Spieler heute schon gekämpft hat
     war_is_active = bool(current_war_participants)
+
+    # Heutiges Datum (UTC) als Präfix für Datumsfilter — Battle-Zeiten: "20260412T105210.000Z"
+    from datetime import datetime, timezone as _tz
+    today_prefix = datetime.now(_tz.utc).strftime("%Y%m%d")
 
     for tag, pdata in player_war_decks.items():
         p_name = pdata.get("name", tag)
@@ -1033,14 +1037,15 @@ def build_best_player_deck_set(
             continue
 
         if war_is_active:
-            # Aktiver Krieg: N neueste Kämpfe = aktuelle Kriegsdecks
-            n_current = current_war_participants.get(tag, 0)
-            if n_current > 0:
-                current_battles = battles[:n_current]
-            else:
-                # Spieler hat im aktuellen Krieg noch nicht gekämpft → überspringen
+            # Aktiver Kriegstag: NUR Kämpfe von heute filtern (nach Datum, nicht nach Index).
+            # battles[:n_current] wäre falsch, weil player_war_decks hinter der API-Zeit
+            # hinterher sein kann (GitHub Action läuft alle 10 Min) und dann Vortags-Kämpfe
+            # mit einschließen würde.
+            today_battles = [b for b in battles if b.get("time", "").startswith(today_prefix)]
+            if not today_battles:
+                # Spieler hat heute noch nicht gekämpft → überspringen
                 continue
-            use_pool = battles_to_deck_pool(current_battles, is_current=True)
+            use_pool = battles_to_deck_pool(today_battles, is_current=True)
         else:
             # Kein aktiver Krieg → alle historischen Kämpfe zeigen (letzte 30 Tage)
             use_pool = battles_to_deck_pool(battles, is_current=False)
