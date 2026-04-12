@@ -2462,20 +2462,25 @@ def generate_html_report(
             fallback_eff = round(sum(eff_values) / len(eff_values)) if eff_values else 160
             fallback_eff = max(75, min(250, fallback_eff))
 
-            def project_rank(clans, medals_per_deck: int):
-                """Projiziert den Endstand aller Clans mit einheitlicher Effizienz."""
+            def project_rank_asymmetric(clans, our_eff: int):
+                """WIR spielen mit our_eff, Gegner mit ihrem eigenen aktuellen Schnitt."""
                 results = []
                 for c in clans:
                     remaining = max(0, c["max_decks"] - c["decks_used"])
-                    projected = c["medals"] + remaining * medals_per_deck
+                    if c["is_us"]:
+                        eff = max(75, min(250, our_eff))
+                    else:
+                        eff = get_eff(c) or fallback_eff
+                        eff = max(75, min(250, eff))
+                    projected = c["medals"] + remaining * eff
                     results.append({"name": c["name"], "is_us": c["is_us"],
-                                    "projected": int(projected), "remaining": remaining})
+                                    "projected": int(projected), "remaining": remaining, "eff": eff})
                 results.sort(key=lambda x: x["projected"], reverse=True)
                 our_entry = next(r for r in results if r["is_us"])
                 rank = results.index(our_entry) + 1
                 return rank, int(our_entry["projected"])
 
-            # Realistisches Szenario mit individueller Effizienz pro Clan
+            # Realistisches Szenario: jeder Clan auf seinem eigenen Schnitt
             real_projections = []
             for c in radar_clans:
                 eff = get_eff(c) or fallback_eff
@@ -2486,35 +2491,32 @@ def generate_html_report(
                                          "remaining": remaining, "eff": eff})
             real_projections.sort(key=lambda x: x["projected"], reverse=True)
             our_real = next(r for r in real_projections if r["is_us"])
-            rank_real  = real_projections.index(our_real) + 1
+            rank_real = real_projections.index(our_real) + 1
 
-            # 3 Szenarien berechnen
-            rank_worst, medals_worst = project_rank(radar_clans, 100)   # alle verlieren
-            rank_best,  medals_best  = project_rank(radar_clans, 200)   # alle gewinnen
-            rank_real_val = rank_real
-            medals_real   = our_real["projected"]
+            # 3 asymmetrische Szenarien: WIR variieren, Gegner bleiben bei ihrem Schnitt
+            rank_worst, medals_worst = project_rank_asymmetric(radar_clans, 75)   # wir schlecht
+            rank_best,  medals_best  = project_rank_asymmetric(radar_clans, 200)  # wir gut
+            medals_real = our_real["projected"]
 
             # Szenarien-Zeilen
             def rank_badge(r):
                 return {1: "🥇 Platz 1", 2: "🥈 Platz 2", 3: "🥉 Platz 3"}.get(r, f"Platz {r}")
 
-            row_worst = f"🔴 Worst Case <i>(alle Decks verloren, 100/Deck)</i>: <b>{rank_badge(rank_worst)}</b> — ~{medals_worst:,} Punkte"
-            row_real  = f"🟡 Realistisch <i>(aktueller Schnitt ~{our_real['eff']}/Deck)</i>: <b>{rank_badge(rank_real_val)}</b> — ~{medals_real:,} Punkte"
-            row_best  = f"🟢 Best Case <i>(alle Decks gewonnen, 200/Deck)</i>: <b>{rank_badge(rank_best)}</b> — ~{medals_best:,} Punkte"
+            row_worst = f"🔴 Worst Case <i>(wir 75/Deck, Gegner ihr Schnitt)</i>: <b>{rank_badge(rank_worst)}</b> — ~{medals_worst:,} Punkte"
+            row_real  = f"🟡 Realistisch <i>(alle auf aktuellem Schnitt, wir ~{our_real['eff']}/Deck)</i>: <b>{rank_badge(rank_real)}</b> — ~{medals_real:,} Punkte"
+            row_best  = f"🟢 Best Case <i>(wir 200/Deck, Gegner ihr Schnitt)</i>: <b>{rank_badge(rank_best)}</b> — ~{medals_best:,} Punkte"
 
-            # Fazit-Satz – alle 3 Ränge berücksichtigen
-            if rank_worst == 1 and rank_real == 1 and rank_best == 1:
-                fazit = "Selbst im schlechtesten Fall halten wir <b>Platz 1</b>. Einfach alle Decks spielen!"
-            elif rank_worst == 1 and rank_real == 1 and rank_best >= 2:
-                fazit = f"Realistisch <b>Platz 1</b>, im Best Case aber <b>Platz {rank_best}</b> – Gegner haben mehr offene Decks. Qualität zählt!"
-            elif rank_worst == 1 and rank_real >= 2:
-                fazit = f"Im Worst Case <b>Platz 1</b>, realistisch aber <b>Platz {rank_real}</b>. Mehr Siege bringen uns nach vorne!"
-            elif rank_worst <= 2 and rank_best == 1:
-                fazit = f"Im Worst Case <b>Platz {rank_worst}</b>, im Best Case <b>Platz 1</b>. Qualität der Kämpfe entscheidet!"
+            # Fazit-Satz
+            if rank_worst == 1:
+                fazit = "Selbst wenn wir alle Decks verlieren, halten wir <b>Platz 1</b>. Einfach alle Decks spielen!"
+            elif rank_best == 1 and rank_worst <= 2:
+                fazit = f"Zwischen <b>Platz {rank_worst}</b> und <b>Platz 1</b> – unsere Kampfqualität entscheidet!"
             elif rank_best == 1:
-                fazit = "Platz 1 ist nur möglich wenn wir deutlich besser kämpfen als die Gegner. Alle Siege zählen!"
+                fazit = "Platz 1 ist möglich – aber nur wenn wir deutlich besser kämpfen als aktuell. Alle Siege zählen!"
+            elif rank_real == 1 and rank_worst >= 2:
+                fazit = f"Realistisch <b>Platz 1</b>, aber bei schlechten Kämpfen droht <b>Platz {rank_worst}</b>. Qualität halten!"
             elif rank_best <= 2:
-                fazit = f"<b>Platz {rank_best}</b> ist das beste erreichbare Ergebnis. Alle Decks spielen und so viel wie möglich gewinnen."
+                fazit = f"<b>Platz {rank_best}</b> ist das beste erreichbare Ergebnis heute. Alle Decks spielen!"
             else:
                 fazit = "Platz 1 oder 2 ist heute nicht mehr erreichbar. Alle Decks spielen für maximale Trophäen."
 
