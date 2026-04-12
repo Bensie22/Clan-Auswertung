@@ -27,8 +27,8 @@ APP_CONFIG = {
     "BADGE_STARK_FAME": 185,     # ⭐ stark: Ø Punkte-Schwelle (deutlich über Durchschnitt)
     "BADGE_STABIL_SCORE": 75,    # 🛡️ stabil: Score-Schwelle
     "BADGE_STABIL_FAME": 145,    # 🛡️ stabil: Ø Punkte-Schwelle (leicht über Durchschnitt)
-    "TIER_SEHR_STARK": 95,      # Tier-Grenze: Sehr stark
-    "TIER_SOLIDE": 80,           # Tier-Grenze: Solide Basis
+    "TIER_SEHR_STARK": 90,      # Tier-Grenze: Sehr stark
+    "TIER_SOLIDE": 75,           # Tier-Grenze: Solide Basis
     "CLAN_RELIABLE_GREEN": 85,   # Clan-Ampel Zuverlässigkeit: Grün ab
     "CLAN_RELIABLE_YELLOW": 70,  # Clan-Ampel Zuverlässigkeit: Gelb ab
 }
@@ -534,16 +534,19 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
                 ba = r_data.get("boat_attacks", 0)
                 row_history.extend([fame, decks, ba])
 
-                total_decks += decks
-                total_boat_attacks += ba
-                if decks > 0:
-                    contribution_count += 1
+                # zzzcurrent ist der laufende Krieg (noch nicht abgeschlossen).
+                # Er wird nicht in den Score-Metriken gezählt – unfair, da noch nicht fertig.
+                if rid != "zzzcurrent":
+                    total_decks += decks
+                    total_boat_attacks += ba
+                    if decks > 0:
+                        contribution_count += 1
 
             # wars_in_clan: Anzahl Kriege in denen der Spieler laut API teilgenommen hat.
             # Entspricht der tatsaechlichen Clan-Zugehoerigkeit im Auswertungsfenster.
             # Nicht total_races (immer 10), weil neue Spieler die frueheren Kriege schlicht
-            # noch nicht kennen konnten.
-            wars_in_clan = len(data["history"])
+            # noch nicht kennen konnten. zzzcurrent (laufender Krieg) wird nicht mitgezählt.
+            wars_in_clan = len([k for k in data["history"] if k != "zzzcurrent"])
 
             row = [
                 tag,
@@ -1486,21 +1489,22 @@ def render_html_template(
                 table:not(.radar-table) td:nth-child(2)::before, .wiki-table td:nth-child(2)::before {{ content: "Check"; }}
                 table:not(.radar-table) td:nth-child(3)::before, .wiki-table td:nth-child(3)::before {{ content: "Status"; }}
                 table:not(.radar-table) td:nth-child(4)::before, .wiki-table td:nth-child(4)::before {{ content: "Dabei"; }}
-                table:not(.radar-table) td:nth-child(5)::before, .wiki-table td:nth-child(5)::before {{ content: "Ø Fame/Deck"; }}
-                table:not(.radar-table) td:nth-child(6)::before, .wiki-table td:nth-child(6)::before {{ content: "Fame gesamt"; }}
-                table:not(.radar-table) td:nth-child(7)::before, .wiki-table td:nth-child(7)::before {{ content: "Trend"; }}
-                table:not(.radar-table) td:nth-child(8)::before, .wiki-table td:nth-child(8)::before {{ content: "Spenden"; }}
+                table:not(.radar-table) td:nth-child(5)::before, .wiki-table td:nth-child(5)::before {{ content: "Deck-Nutzung"; }}
+                table:not(.radar-table) td:nth-child(6)::before, .wiki-table td:nth-child(6)::before {{ content: "Ø Fame/Deck"; }}
+                table:not(.radar-table) td:nth-child(7)::before, .wiki-table td:nth-child(7)::before {{ content: "Fame gesamt"; }}
+                table:not(.radar-table) td:nth-child(8)::before, .wiki-table td:nth-child(8)::before {{ content: "Trend"; }}
+                table:not(.radar-table) td:nth-child(9)::before, .wiki-table td:nth-child(9)::before {{ content: "Spenden"; }}
                 .wiki-table td {{ font-size: 0.92em; }}
                 .name-col {{ font-size: 1.05em; }}
                 .focus-pill {{ min-width: 0; width: fit-content; }}
                 .trend-cell {{ font-size: 18px !important; }}
                 .custom-tooltip .tooltip-text {{ max-width: 220px; width: max-content; white-space: normal; }}
-                table:not(.radar-table) td:nth-child(6), .wiki-table td:nth-child(6),
-                table:not(.radar-table) td:nth-child(8), .wiki-table td:nth-child(8) {{ white-space: nowrap; }}
-                table:not(.radar-table) td:nth-child(6) > *, .wiki-table td:nth-child(6) > *,
-                table:not(.radar-table) td:nth-child(8) > *, .wiki-table td:nth-child(8) > * {{ white-space: nowrap; }}
-                table:not(.radar-table) td:nth-child(8) .custom-tooltip.dotted,
-                .wiki-table td:nth-child(8) .custom-tooltip.dotted {{ border-bottom: none !important; }}
+                table:not(.radar-table) td:nth-child(7), .wiki-table td:nth-child(7),
+                table:not(.radar-table) td:nth-child(9), .wiki-table td:nth-child(9) {{ white-space: nowrap; }}
+                table:not(.radar-table) td:nth-child(7) > *, .wiki-table td:nth-child(7) > *,
+                table:not(.radar-table) td:nth-child(9) > *, .wiki-table td:nth-child(9) > * {{ white-space: nowrap; }}
+                table:not(.radar-table) td:nth-child(9) .custom-tooltip.dotted,
+                .wiki-table td:nth-child(9) .custom-tooltip.dotted {{ border-bottom: none !important; }}
                 .spenden-cell .custom-tooltip.dotted {{ border-bottom: none; }}
                 .radar-table {{ width: 100%; table-layout: auto !important; font-size: 0.78em !important; }}
                 .radar-table colgroup {{ display: none; }}
@@ -1639,9 +1643,9 @@ def render_html_template(
                     <p>Damit nicht eine einzelne schwache Woche sofort Folgen hat, arbeitet unsere Auswertung mit einem fairen Langzeit-Gedächtnis. Wer sich nicht abmeldet und im Clankrieg dauerhaft zu wenig beiträgt (zu wenig Kriege dabei oder Decks nicht gespielt), sammelt im Hintergrund interne Hinweise (❌).</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Dabei</th><th>Ø Fame/Deck</th><th>Fame gesamt</th><th>Trend</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler A <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Ältester</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>179</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>14.320</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>303</span></td></tr>
-                            <tr><td class='name-col'>Spieler B <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>4/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>100</span> ⚠️<br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>3.200</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> 💤</td></tr>
+                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Dabei</th><th>Deck-Nutzung</th><th>Ø Fame/Deck</th><th>Fame gesamt</th><th>Trend</th><th>🃏 Spenden</th></tr>
+                            <tr><td class='name-col'>Spieler A <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Ältester</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>95/160</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>179</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>14.320</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>303</span></td></tr>
+                            <tr><td class='name-col'>Spieler B <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>4/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>28/64</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>100</span> ⚠️<br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>3.200</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> 💤</td></tr>
                         </table>
                     </div>
                     <ul>
@@ -1659,12 +1663,12 @@ def render_html_template(
                         <li><b>Anwesenheit:</b> In wie vielen Kriegen seit deinem Beitritt warst du aktiv dabei? <br><span style="color:#94a3b8; font-size:0.9em;">Beispiel: 8/10 bedeutet du hast 8 von 10 möglichen Kriegen mitgespielt. Die Kriege vor deinem Beitritt zählen nie gegen dich.</span></li>
                         <li><b>Farben:</b> 🟢 ≥ 80% Anwesenheit, 🟡 ≥ 50%, 🔴 unter 50%, 🔵 Welpenschutz (neu dabei)</li>
                     </ul>
-                    <p style="color:#94a3b8; font-size:0.9em;">Im Hintergrund läuft zusätzlich ein internes Zuverlässigkeits-System (Anwesenheits-Rate × Deck-Nutzung), das als Grundlage für Strikes und Beförderungen genutzt wird — aber nicht direkt angezeigt wird.</p>
+                    <p style="color:#94a3b8; font-size:0.9em;">Im Hintergrund läuft ein gewichtetes Bewertungs-System aus drei Faktoren: <b>50% Deck-Nutzung</b> (hast du alle Decks gespielt?), <b>30% Dabei-Quote</b> (warst du in den Kriegen dabei?) und <b>20% Qualität</b> (wie viele Punkte pro Deck?). Dieser Score ist die Grundlage für Strikes und Beförderungen.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Dabei</th><th>Ø Fame/Deck</th><th>Fame gesamt</th><th>Trend</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler C <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥 4</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>🛡️ stabil</span></td><td>Vize</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>131</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>10.480</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>146</span></td></tr>
-                            <tr><td class='name-col'>Spieler D <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>neu dabei</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#60a5fa;'>2/10</span><br><span style='font-size:0.75em; color:#60a5fa;'>neu dabei</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>200</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>3.200</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🔴🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span></td></tr>
+                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Dabei</th><th>Deck-Nutzung</th><th>Ø Fame/Deck</th><th>Fame gesamt</th><th>Trend</th><th>🃏 Spenden</th></tr>
+                            <tr><td class='name-col'>Spieler C <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥 4</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>🛡️ stabil</span></td><td>Vize</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>160/160</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>131</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>10.480</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>146</span></td></tr>
+                            <tr><td class='name-col'>Spieler D <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>neu dabei</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#60a5fa;'>2/10</span><br><span style='font-size:0.75em; color:#60a5fa;'>neu dabei</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>32/32</span><br><span style='font-size:0.75em; color:#60a5fa;'>neu dabei</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>200</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>3.200</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🔴🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span></td></tr>
                         </table>
                     </div>
                     <ul>
@@ -1675,15 +1679,38 @@ def render_html_template(
                     </ul>
                 </div>
 
+                <button class="accordion-btn">🃏 Deck-Nutzung (Dein größter Hebel)</button>
+                <div class="accordion-content">
+                    <p>Die <b>Deck-Nutzung</b>-Spalte zeigt, wie viele deiner möglichen Kriegs-Decks du tatsächlich gespielt hast — das ist der <b>wichtigste Einzelfaktor</b> im Bewertungs-System (50% des Scores).</p>
+                    <p>Die Zahl <b>X/Y</b> bedeutet: Du hast X von maximal Y Decks gespielt. <br><span style="color:#94a3b8; font-size:0.9em;">Y = Anzahl der Kriege, in denen du dabei warst × 16 (= 4 Decks pro Tag × 4 Kriegstage).</span></p>
+                    <ul>
+                        <li><b>Farben:</b> 🟢 ≥ 90% gespielt, 🟡 ≥ 70%, 🔴 unter 70%</li>
+                        <li><b>Warum so wichtig?</b> Jedes nicht gespielte Deck kostet den Clan direkt Medaillen. Wer zuverlässig alle Decks einsetzt, ist für das Team wertvoller als jemand, der zwar hervorragende Einzelkämpfe liefert, aber oft Decks stehen lässt.</li>
+                        <li><b>Beispiel:</b> 160/160 🟢 = Alle Decks in allen Kriegen gespielt. Perfekt!</li>
+                        <li><b>Beispiel:</b> 95/160 🔴 = Trotz voller Anwesenheit wurden viele Decks nicht gespielt — hier liegt der größte Verbesserungshebel.</li>
+                    </ul>
+                    <div style="overflow-x:auto;">
+                        <table class="wiki-table">
+                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Dabei</th><th>Deck-Nutzung</th><th>Ø Fame/Deck</th><th>Fame gesamt</th><th>Trend</th><th>🃏 Spenden</th></tr>
+                            <tr><td class='name-col'>Spieler X</td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'>⭐ stark</span></td><td>Ältester</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>160/160</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>185</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>14.800</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>180</span></td></tr>
+                            <tr><td class='name-col'>Spieler Y</td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>95/160</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>175</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>11.875</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟡🟡🔴🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>60</span></td></tr>
+                        </table>
+                    </div>
+                    <ul>
+                        <li><i>Spieler X</i>: Alle 160 Decks gespielt — das ist der Idealfall. Trotz nicht außergewöhnlichem Ø Fame/Deck ist dieser Spieler ein echter Rückhalt für den Clan.</li>
+                        <li><i>Spieler Y</i>: Immer dabei, aber 65 Decks liegen gelassen. Trotz guter Kampfqualität (175 Punkte/Deck) kostet das den Score deutlich — weil jedes ungespielte Deck dem Clan fehlt.</li>
+                    </ul>
+                </div>
+
                 <button class="accordion-btn">🟢🟡🔴 Der Trend (Deine Konstanz)</button>
                 <div class="accordion-content">
                     <p>Die Ampel-Punkte zeigen deine Zuverlässigkeit der letzten <b>6 Wochen</b> auf einen Blick. Jeder Punkt steht für eine Woche, wobei der <b>Punkt ganz rechts die aktuellste Auswertung</b> ist.</p>
                     <p style="color:#94a3b8; font-size:0.9em;">6 Wochen sind bewusst gewählt: Das Strike-System arbeitet über mehrere Wochen – der Trend soll den vollen Kontext zeigen, über den Strikes entstehen oder sich abbauen.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Dabei</th><th>Ø Fame/Deck</th><th>Fame gesamt</th><th>Trend</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler E</td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>8/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>180</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>11.520</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟢🟢🟡🟡🟡🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>150</span></td></tr>
-                            <tr><td class='name-col'>Spieler F</td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>🛡️ stabil</span></td><td>Ältester</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>6/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>160</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>7.680</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🔴🔴🟡🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>200</span></td></tr>
+                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Dabei</th><th>Deck-Nutzung</th><th>Ø Fame/Deck</th><th>Fame gesamt</th><th>Trend</th><th>🃏 Spenden</th></tr>
+                            <tr><td class='name-col'>Spieler E</td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>8/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>100/128</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>180</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>11.520</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟢🟢🟡🟡🟡🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>150</span></td></tr>
+                            <tr><td class='name-col'>Spieler F</td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>🛡️ stabil</span></td><td>Ältester</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>6/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>80/96</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>160</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>7.680</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🔴🔴🟡🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>200</span></td></tr>
                         </table>
                     </div>
                     <ul>
@@ -1700,13 +1727,13 @@ def render_html_template(
                     <p>Die <b>Check</b>-Spalte ist eine kurze, leicht lesbare Orientierung auf einen Blick. Sie ersetzt keine Zahlen, sondern hilft nur dabei, Spieler schneller einzuordnen.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Dabei</th><th>Ø Fame/Deck</th><th>Fame gesamt</th><th>Trend</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler P</td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'>⭐ stark</span></td><td>Ältester</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>182</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>14.560</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>220</span></td></tr>
-                            <tr><td class='name-col'>Spieler Q</td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>🛡️ stabil</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>9/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>142</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>10.224</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟢🟢🟡🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>95</span></td></tr>
-                            <tr><td class='name-col'>Spieler R</td><td><span class='focus-pill' style='background:#94a3b822; color:#94a3b8; border:1px solid #94a3b855;'>🙂 solide</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>7/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>150</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>8.400</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟡🟡🟡🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>70</span></td></tr>
-                            <tr><td class='name-col'>Spieler S</td><td><span class='focus-pill' style='background:#ef444422; color:#ef4444; border:1px solid #ef444455;'>👀 auffällig</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>9/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>102</span> ⚠️<br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>7.344</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟢🟡🟡🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>40</span></td></tr>
-                            <tr><td class='name-col'>Spieler T</td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>4/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>140</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>4.480</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🔴🔴🟡🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>30</span></td></tr>
-                            <tr><td class='name-col'>Spieler U <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>neu dabei</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#60a5fa;'>2/10</span><br><span style='font-size:0.75em; color:#60a5fa;'>neu dabei</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>170</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>2.720</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>35</span></td></tr>
+                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Dabei</th><th>Deck-Nutzung</th><th>Ø Fame/Deck</th><th>Fame gesamt</th><th>Trend</th><th>🃏 Spenden</th></tr>
+                            <tr><td class='name-col'>Spieler P</td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'>⭐ stark</span></td><td>Ältester</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>160/160</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>182</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>14.560</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>220</span></td></tr>
+                            <tr><td class='name-col'>Spieler Q</td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>🛡️ stabil</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>9/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>130/144</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>142</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>10.224</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟢🟢🟡🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>95</span></td></tr>
+                            <tr><td class='name-col'>Spieler R</td><td><span class='focus-pill' style='background:#94a3b822; color:#94a3b8; border:1px solid #94a3b855;'>🙂 solide</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>7/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>95/112</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>150</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>8.400</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟡🟡🟡🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>70</span></td></tr>
+                            <tr><td class='name-col'>Spieler S</td><td><span class='focus-pill' style='background:#ef444422; color:#ef4444; border:1px solid #ef444455;'>👀 auffällig</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>9/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>138/144</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>102</span> ⚠️<br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>7.344</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟢🟡🟡🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>40</span></td></tr>
+                            <tr><td class='name-col'>Spieler T</td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>4/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>40/64</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>140</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>4.480</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🔴🔴🟡🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>30</span></td></tr>
+                            <tr><td class='name-col'>Spieler U <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>neu dabei</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#60a5fa;'>2/10</span><br><span style='font-size:0.75em; color:#60a5fa;'>neu dabei</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>32/32</span><br><span style='font-size:0.75em; color:#60a5fa;'>neu dabei</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>170</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>2.720</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>35</span></td></tr>
                         </table>
                     </div>
                     <ul>
@@ -1725,8 +1752,8 @@ def render_html_template(
                     <p style="color:#94a3b8; font-size:0.9em;">Warum mehrere Kriege? Ein einzelner Krieg kann durch starke oder schwache Gegner verzerrt sein. Der Schnitt über 3–4 Wochen gibt ein faireres, stabileres Bild deiner tatsächlichen Kampfqualität.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Dabei</th><th>Ø Fame/Deck</th><th>Fame gesamt</th><th>Trend</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler J <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Ältester</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>8/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>100</span> ⚠️<br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>6.400</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🔴🔴🔴🔴🔴🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>72</span></td></tr>
+                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Dabei</th><th>Deck-Nutzung</th><th>Ø Fame/Deck</th><th>Fame gesamt</th><th>Trend</th><th>🃏 Spenden</th></tr>
+                            <tr><td class='name-col'>Spieler J <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Ältester</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>8/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>125/128</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>100</span> ⚠️<br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>6.400</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🔴🔴🔴🔴🔴🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>72</span></td></tr>
                         </table>
                     </div>
                     <ul>
@@ -1740,7 +1767,7 @@ def render_html_template(
                 <div class="accordion-content">
                     <p>In der Übersicht seht ihr zwei Clan-Werte, die absichtlich zwei verschiedene Fragen beantworten: <b>Wie zuverlässig spielen wir unsere Decks aus?</b> und <b>wie stark kämpfen wir pro Deck?</b></p>
                     <ul>
-                        <li><b>📈 Clan-Durchschnitt:</b> Zeigt intern, wie zuverlässig der Clan seine verfügbaren Kriegs-Decks insgesamt nutzt (Anwesenheit × Deck-Nutzung aller aktiven Mitglieder).
+                        <li><b>📈 Clan-Durchschnitt:</b> Zeigt den Durchschnitt des gewichteten Scores aller aktiven Mitglieder (50% Deck-Nutzung, 30% Anwesenheit, 20% Kampfqualität).
                         Beispiel: <b>90%+</b> ist stark, weil fast alle ihre Decks sauber spielen. Ein Wert um <b>60%</b> oder darunter zeigt, dass dem Clan viele Decks fehlen.</li>
                         <li><b>⚔️ Clan-Ø Punkte:</b> Dieser Wert teilt die <b>gesamten aktuellen Kriegspunkte</b> des Clans durch die <b>gesamt gespielten Decks</b> der aktiven Mitglieder. Er zeigt also, wie stark der Clan pro eingesetztem Deck kämpft.
                         Beispiel: Ein Wert von <b>185+</b> ist stark (viele Siege). <b>162</b> ist ein solider Durchschnitt. Werte unter <b>130</b> sind auffällig schwach und deuten auf Bootsangriffe oder viele Niederlagen hin.</li>
@@ -1756,9 +1783,9 @@ def render_html_template(
                     <p>Ein starker Clan hilft sich gegenseitig beim Leveln der Karten. Deshalb schauen wir auch auf das Spendenverhalten im Clan.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Dabei</th><th>Ø Fame/Deck</th><th>Fame gesamt</th><th>Trend</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler K</td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'>⭐ stark</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>200</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>16.000</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>📦</span></td></tr>
-                            <tr><td class='name-col'>Spieler L</td><td><span class='focus-pill' style='background:#94a3b822; color:#94a3b8; border:1px solid #94a3b855;'>🙂 solide</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>5/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>150</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>6.000</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟡🟡🟡🟡</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>💤</span></td></tr>
+                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Dabei</th><th>Deck-Nutzung</th><th>Ø Fame/Deck</th><th>Fame gesamt</th><th>Trend</th><th>🃏 Spenden</th></tr>
+                            <tr><td class='name-col'>Spieler K</td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'>⭐ stark</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>160/160</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>200</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>16.000</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>📦</span></td></tr>
+                            <tr><td class='name-col'>Spieler L</td><td><span class='focus-pill' style='background:#94a3b822; color:#94a3b8; border:1px solid #94a3b855;'>🙂 solide</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>5/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>72/80</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>150</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>6.000</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟡🟡🟡🟡</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>💤</span></td></tr>
                         </table>
                     </div>
                     <ul>
@@ -2071,14 +2098,14 @@ def generate_html_report(
         player_tag = str(row.get("player_tag", ""))
         profile = (player_profiles or {}).get(player_tag, {})
 
-        # Score-Logik: Anwesenheits-Rate x Deck-Nutzung
-        # Anwesenheits-Rate: Wie viele der Kriege im Fenster war der Spieler ueberhaupt dabei?
-        # Deck-Nutzung: Wenn dabei, wie viele der 16 moeglichen Decks wurden gespielt?
-        # Beide Faktoren multipliziert - wer Kriege komplett fehlt, verliert auch im Score.
+        # Score-Logik: Gewichteter 3-Faktor-Score
+        # 50% Deck-Vollstaendigkeit: Wie viele der moeglichen Decks wurden gespielt?
+        # 30% Dabei-Quote (Anwesenheit): In wie vielen Kriegen war der Spieler dabei?
+        # 20% Qualitaet: Normierter Ø Fame/Deck-Wert (75 = min, 225 = max)
+        # Die Qualitaet wird erst spaeter berechnet (nach fame_per_deck), Score-Berechnung folgt unten.
         anwesenheits_rate = (wars_with_participation / wars_in_history_window) if wars_in_history_window > 0 else 0.0
         max_moegliche_decks = wars_with_participation * 16
-        deck_nutzung = (decks_total / max_moegliche_decks) if max_moegliche_decks > 0 else 0.0
-        score = round(anwesenheits_rate * deck_nutzung * 100, 2)
+        deck_vollstaendigkeit = (decks_total / max_moegliche_decks) if max_moegliche_decks > 0 else 0.0
 
         fame_columns_all = [col for col in row.index if str(col).startswith("s_") and str(col).endswith("_fame")]
         total_war_points = sum(int(row.get(col, 0) or 0) for col in fame_columns_all)
@@ -2097,6 +2124,15 @@ def generate_html_report(
         rolling_fame = sum(int(row.get(c, 0) or 0) for c in fame_cols_rolling)
         rolling_decks = sum(int(row.get(c, 0) or 0) for c in decks_cols_rolling)
         fame_per_deck = round(rolling_fame / rolling_decks) if rolling_decks > 0 else 0
+
+        # Score-Berechnung: 50% Deck-Vollständigkeit + 30% Dabei-Quote + 20% Qualität
+        qualitaet = max(0.0, min(1.0, (fame_per_deck - 75) / 150)) if fame_per_deck > 0 else 0.0
+        score = round(
+            50 * deck_vollstaendigkeit +
+            30 * anwesenheits_rate +
+            20 * qualitaet,
+            2
+        )
 
         leecher_warnung = ""
         if 0 < fame_per_deck < APP_CONFIG["DROPPER_THRESHOLD"]:
@@ -2266,6 +2302,8 @@ def generate_html_report(
             "favourite_card": profile.get("favourite_card", ""),
             "tag": player_tag,
             "total_decks": decks_total,
+            "deck_vollstaendigkeit": deck_vollstaendigkeit,
+            "max_moegliche_decks": max_moegliche_decks,
             "wars_in_window": wars_in_history_window,
         })
 
@@ -2887,6 +2925,7 @@ def generate_html_report(
                     <th>Check</th>
                     <th>Status</th>
                     <th>Dabei</th>
+                    <th>Deck-Nutzung</th>
                     <th>Ø Fame/Deck</th>
                     <th>Fame gesamt</th>
                     <th>Trend</th>
@@ -2948,6 +2987,13 @@ def generate_html_report(
                 fame_total = p.get("war_points_total", 0)
                 fame_total_str = f"{fame_total:,}".replace(",", ".")
 
+                # Deck-Nutzung: gespielt / maximum | Farbe: >=90%=grün, >=70%=gelb, sonst rot
+                deck_vollst = p.get("deck_vollstaendigkeit", 0.0)
+                max_decks = p.get("max_moegliche_decks", 0)
+                total_decks_played = p.get("total_decks", 0)
+                deck_color = "#10b981" if deck_vollst >= 0.90 else "#fbbf24" if deck_vollst >= 0.70 else "#ef4444"
+                deck_label = "Decksets" if max_decks > 0 else "-"
+
                 table_html += (
                     f"<tr>"
                     f"<td class='name-col'><span class='name-inline'>{name_cell}</span></td>"
@@ -2956,6 +3002,10 @@ def generate_html_report(
                     f"<td style='white-space:nowrap;'>"
                     f"<span style='font-weight:800; color:{dabei_color};'>{dabei_wars}/{dabei_total}</span>"
                     f"<br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span>"
+                    f"</td>"
+                    f"<td style='white-space:nowrap;'>"
+                    f"<span style='font-weight:800; color:{deck_color};'>{total_decks_played}/{max_decks}</span>"
+                    f"<br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span>"
                     f"</td>"
                     f"<td style='white-space:nowrap;'>"
                     f"<span style='font-weight:800; color:{fpd_color};'>{fpd}</span>{p['leecher_warnung']}"
