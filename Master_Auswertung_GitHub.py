@@ -1021,6 +1021,9 @@ def build_best_player_deck_set(
     player_all_matches = {}
     player_names       = {}
 
+    # Wenn kein aktiver Krieg läuft (current_war_participants leer) → historischer Modus für alle
+    war_is_active = bool(current_war_participants)
+
     for tag, pdata in player_war_decks.items():
         p_name = pdata.get("name", tag)
         player_names[tag] = p_name
@@ -1029,28 +1032,26 @@ def build_best_player_deck_set(
         if not battles:
             continue
 
-        # Aktuelle Kriegsdecks: N neueste Kämpfe (N = decksUsed aus currentriverrace API)
-        n_current = current_war_participants.get(tag, 0)
-        if n_current > 0:
-            current_battles = battles[:n_current]
-            historic_battles = battles[n_current:]
+        if war_is_active:
+            # Aktiver Krieg: N neueste Kämpfe = aktuelle Kriegsdecks
+            n_current = current_war_participants.get(tag, 0)
+            if n_current > 0:
+                current_battles = battles[:n_current]
+            else:
+                # Spieler hat im aktuellen Krieg noch nicht gekämpft → überspringen
+                continue
+            use_pool = battles_to_deck_pool(current_battles, is_current=True)
         else:
-            # Spieler nicht im aktuellen Krieg → alle Kämpfe historisch
-            current_battles = []
-            historic_battles = battles
+            # Kein aktiver Krieg → alle historischen Kämpfe zeigen (letzte 30 Tage)
+            use_pool = battles_to_deck_pool(battles, is_current=False)
 
-        current_pool  = battles_to_deck_pool(current_battles, is_current=True)
-        historic_pool = battles_to_deck_pool(historic_battles, is_current=False)
-
-        # Nur aktuelle Kriegsdecks anzeigen – kein historischer Füller
-        # Wenn noch nicht alle 4 gespielt: nur die gespielten zeigen
-        if not current_pool:
+        if not use_pool:
             continue
 
-        total_wins    = sum(d["wins"]          for d in current_pool)
-        total_matches = sum(d["total_matches"] for d in current_pool)
+        total_wins    = sum(d["wins"]          for d in use_pool)
+        total_matches = sum(d["total_matches"] for d in use_pool)
 
-        final_set = greedy_set(current_pool, max_decks=4)
+        final_set = greedy_set(use_pool, max_decks=4)
 
         player_final_decks[tag] = final_set
         player_all_wins[tag]    = total_wins
@@ -2894,7 +2895,7 @@ def generate_html_report(
         <div style="margin-bottom: 30px;">
             <h3 style="color: #a78bfa; margin-bottom: 8px; font-size: 1.3em;">⭐ Top 10 Kriegsspieler</h3>
             <p style="color: #94a3b8; margin-top: 0; margin-bottom: 18px; font-size: 0.95em;">
-                Die 10 stärksten Spieler der letzten {DECK_LOOKBACK_DAYS} Tage — je alle 4 Kriegsdecks, sortiert nach Gesamtsiegen.
+                {'Die 10 stärksten Spieler des <b style="color:#10b981;">aktuellen Kriegs</b> — nur bereits gespielte Decks, sortiert nach Siegen.' if current_war_participants else f'Die 10 stärksten Spieler der letzten {DECK_LOOKBACK_DAYS} Tage — historische Bestdecks (kein aktiver Krieg).' }
             </p>
             {players_html}
         </div>
