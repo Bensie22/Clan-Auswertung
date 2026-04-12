@@ -2405,47 +2405,69 @@ def generate_html_report(
             played = [c for c in radar_clans if c["decks_used"] > 0]
             eff_values = [get_eff(c) for c in played if get_eff(c) is not None]
             fallback_eff = round(sum(eff_values) / len(eff_values)) if eff_values else 160
-            # Effizienz auf realistische Grenzen kappen (75–250 Medals/Deck)
             fallback_eff = max(75, min(250, fallback_eff))
 
-            projections = []
+            def project_rank(clans, medals_per_deck: int):
+                """Projiziert den Endstand aller Clans mit einheitlicher Effizienz."""
+                results = []
+                for c in clans:
+                    remaining = max(0, c["max_decks"] - c["decks_used"])
+                    projected = c["medals"] + remaining * medals_per_deck
+                    results.append({"name": c["name"], "is_us": c["is_us"],
+                                    "projected": int(projected), "remaining": remaining})
+                results.sort(key=lambda x: x["projected"], reverse=True)
+                our_entry = next(r for r in results if r["is_us"])
+                rank = results.index(our_entry) + 1
+                return rank, int(our_entry["projected"])
+
+            # Realistisches Szenario mit individueller Effizienz pro Clan
+            real_projections = []
             for c in radar_clans:
                 eff = get_eff(c) or fallback_eff
-                eff = max(75, min(250, eff))  # immer kappen
+                eff = max(75, min(250, eff))
                 remaining = max(0, c["max_decks"] - c["decks_used"])
-                projected = c["medals"] + remaining * eff
-                projections.append({**c, "eff": eff, "remaining": remaining, "projected": int(projected)})
+                real_projections.append({"name": c["name"], "is_us": c["is_us"],
+                                         "projected": int(c["medals"] + remaining * eff),
+                                         "remaining": remaining, "eff": eff})
+            real_projections.sort(key=lambda x: x["projected"], reverse=True)
+            our_real = next(r for r in real_projections if r["is_us"])
+            rank_real  = real_projections.index(our_real) + 1
 
-            projections.sort(key=lambda x: x["projected"], reverse=True)
-            our_proj = next(c for c in projections if c["is_us"])
-            our_rank = projections.index(our_proj) + 1
-            leader = projections[0]
-            second = projections[1] if len(projections) > 1 else None
+            # 3 Szenarien berechnen
+            rank_worst, medals_worst = project_rank(radar_clans, 100)   # alle verlieren
+            rank_best,  medals_best  = project_rank(radar_clans, 200)   # alle gewinnen
+            rank_real_val = rank_real
+            medals_real   = our_real["projected"]
 
-            if our_rank == 1 and second:
-                gap = our_proj["projected"] - second["projected"]
-                catchup = second["remaining"] * second["eff"]
-                if gap > catchup:
-                    prognose_item = (f"<li>🟢 <b>Sieg-Prognose: sehr gut</b> – aktuell <b>Platz 1</b> mit ~{gap:,} Punkten Vorsprung. "
-                                     f"Selbst wenn {second['name']} alle {second['remaining']} Decks spielt, reicht es nicht zum Überholen. Decks trotzdem vollständig spielen!</li>")
-                elif gap > 0:
-                    prognose_item = (f"<li>🟡 <b>Sieg-Prognose: knapp vorne</b> – aktuell <b>Platz 1</b>, aber nur ~{gap:,} Punkte vor "
-                                     f"{second['name']} (hat noch {second['remaining']} Decks offen). Offene Decks jetzt schließen!</li>")
-                else:
-                    prognose_item = "<li>🟡 <b>Sieg-Prognose: sehr knapp</b> – Platz 1 projiziert, aber hauchdünn. Alle Decks sofort spielen!</li>"
-            elif our_rank == 2:
-                gap = leader["projected"] - our_proj["projected"]
-                our_potential = our_proj["remaining"] * our_proj["eff"]
-                if our_potential >= gap:
-                    prognose_item = (f"<li>🟡 <b>Sieg-Prognose: aufholbar</b> – aktuell <b>Platz 2</b>, ~{gap:,} Punkte hinter "
-                                     f"<i>{leader['name']}</i>. Mit {our_proj['remaining']} offenen Decks ist der Rückstand noch aufholbar – jetzt alle Angriffe spielen!</li>")
-                else:
-                    prognose_item = (f"<li>🔴 <b>Sieg-Prognose: schwierig</b> – aktuell <b>Platz 2</b>, ~{gap:,} Punkte hinter "
-                                     f"<i>{leader['name']}</i>. Platz 2 verteidigen und alle Decks spielen.</li>")
+            # Szenarien-Zeilen
+            def rank_badge(r):
+                return {1: "🥇 Platz 1", 2: "🥈 Platz 2", 3: "🥉 Platz 3"}.get(r, f"Platz {r}")
+
+            row_worst = f"🔴 Worst Case <i>(alle Decks verloren, 100/Deck)</i>: <b>{rank_badge(rank_worst)}</b> — ~{medals_worst:,} Punkte"
+            row_real  = f"🟡 Realistisch <i>(aktueller Schnitt ~{our_real['eff']}/Deck)</i>: <b>{rank_badge(rank_real_val)}</b> — ~{medals_real:,} Punkte"
+            row_best  = f"🟢 Best Case <i>(alle Decks gewonnen, 200/Deck)</i>: <b>{rank_badge(rank_best)}</b> — ~{medals_best:,} Punkte"
+
+            # Fazit-Satz
+            if rank_worst == 1:
+                fazit = "Selbst im schlechtesten Fall halten wir <b>Platz 1</b>. Einfach alle Decks spielen!"
+            elif rank_worst <= 2 and rank_best == 1:
+                fazit = f"Im Worst Case <b>Platz {rank_worst}</b>, im Best Case <b>Platz 1</b>. Qualität der Kämpfe entscheidet!"
+            elif rank_best == 1:
+                fazit = "Platz 1 ist nur möglich wenn wir deutlich besser kämpfen als die Gegner. Alle Siege zählen!"
+            elif rank_best <= 2:
+                fazit = f"<b>Platz {rank_best}</b> ist das beste erreichbare Ergebnis. Alle Decks spielen und so viel wie möglich gewinnen."
             else:
-                gap = second["projected"] - our_proj["projected"] if second else 0
-                prognose_item = (f"<li>🔴 <b>Sieg-Prognose: gering</b> – aktuell <b>Platz {our_rank}</b> (projiziert), "
-                                 f"~{gap:,} Punkte hinter Platz 2. Trotzdem alle Decks spielen – jeder Punkt zählt für die Trophäen.</li>")
+                fazit = "Platz 1 oder 2 ist heute nicht mehr erreichbar. Alle Decks spielen für maximale Trophäen."
+
+            prognose_item = (
+                f"<li><b>📊 Sieg-Prognose – 3 Szenarien</b> ({us['decks_used']}/{us['max_decks']} Decks gespielt heute):"
+                f"<ul style='margin: 6px 0 4px 0; padding-left: 18px; font-size: 0.95em;'>"
+                f"<li>{row_worst}</li>"
+                f"<li>{row_real}</li>"
+                f"<li>{row_best}</li>"
+                f"</ul>"
+                f"<span style='color:#94a3b8; font-size:0.9em;'>→ {fazit}</span></li>"
+            )
 
             coach_items.append(prognose_item)
 
@@ -2460,7 +2482,7 @@ def generate_html_report(
 
     coach_html = ""
     if coach_items:
-        coach_html = "<div class='info-box' style='border-left-color: #10b981;'><h3 style='margin-top:0; color:#10b981;'>🧠 Coach-Ecke</h3><p style='margin-top:0;'>Hinweise und Prognose für den aktuellen Stand:</p><ul style='margin-bottom:0;'>" + "".join(coach_items[:5]) + "</ul></div>"
+        coach_html = "<div class='info-box' style='border-left-color: #10b981;'><h3 style='margin-top:0; color:#10b981;'>🧠 Coach-Ecke</h3><p style='margin-top:0;'>Hinweise und Prognose für den aktuellen Stand:</p><ul style='margin-bottom:0;'>" + "".join(coach_items[:6]) + "</ul></div>"
 
     kandidaten_demote = strikes_data.get("demoted_this_week", [])
     kandidaten_kick = strikes_data.get("kicked_this_week", [])
