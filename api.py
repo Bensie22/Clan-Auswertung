@@ -432,6 +432,9 @@ def build_players_enriched() -> Dict[str, Dict[str, Any]]:
             "score_date": score_entry.get("date"),
             "strikes": strikes_for_player(tag, base.get("name", "")),
             "fame_per_deck": stat_entry.get("fame_per_deck", 0),
+            "war_points_total": stat_entry.get("war_points_total", 0),
+            "wars_with_participation": stat_entry.get("participation_count", 0),
+            "wars_in_history_window": stat_entry.get("wars_in_window", 0),
             "participation_count": stat_entry.get("participation_count", 0),
             "total_decks": stat_entry.get("total_decks", 0),
             "wars_in_window": stat_entry.get("wars_in_window", 0),
@@ -912,6 +915,32 @@ def players_activity():
         reverse=True,
     )
     return {"players": result, "total": len(result)}
+
+
+@app.get("/players/search")
+def players_search(name: str = Query(..., description="Namensteil des Spielers (Teilstring, nicht case-sensitiv)")):
+    """Sucht Spieler im Clan anhand eines Namens. Gibt Tag, Name, Rolle, Dabei-Quote und Ø Fame/Deck zurück."""
+    if not name or len(name.strip()) < 2:
+        raise HTTPException(status_code=400, detail="Bitte mindestens 2 Zeichen eingeben.")
+    query = name.strip().lower()
+    all_players = build_players_enriched()
+    results = []
+    for tag, p in all_players.items():
+        if query in p.get("name", "").lower():
+            dabei_total = p.get("wars_in_history_window", 0)
+            dabei_count = p.get("wars_with_participation", 0)
+            results.append({
+                "name": p["name"],
+                "tag": tag,
+                "role": p.get("role", "member"),
+                "wars_with_participation": dabei_count,
+                "wars_in_history_window": dabei_total,
+                "dabei_display": f"{dabei_count}/{dabei_total}" if dabei_total > 0 else "–",
+                "fame_per_deck": p.get("fame_per_deck", 0),
+                "strikes": p.get("strikes", 0),
+            })
+    results.sort(key=lambda x: x["name"].lower())
+    return {"results": results, "count": len(results)}
 
 
 @app.get("/players/inaktiv")

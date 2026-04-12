@@ -2175,6 +2175,7 @@ def generate_html_report(
                 "participation_count": p["teilnahme_int"],
                 "total_decks": p["total_decks"],
                 "wars_in_window": p["wars_in_window"],
+                "war_points_total": p["war_points_total"],
                 "donations": p["donations"],
                 "donations_received": p["donations_received"],
             }
