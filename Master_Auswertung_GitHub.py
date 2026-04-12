@@ -2024,7 +2024,8 @@ def generate_html_report(
     clan_overview: dict = None,
     player_profiles: dict = None,
     opponent_decks: dict = None,
-    player_war_decks: dict = None
+    player_war_decks: dict = None,
+    current_war_participants: dict = None
 ) -> Tuple[str, pd.DataFrame, str, dict, dict, dict]:
     player_stats = []
     urlauber_liste = []
@@ -2810,7 +2811,11 @@ def generate_html_report(
             """
 
     # ⭐ Top 10 Kriegsspieler – je alle 4 Decks
-    top_players = build_best_player_deck_set(player_war_decks or {}, top_n=10)
+    top_players = build_best_player_deck_set(
+        player_war_decks or {},
+        current_war_participants=current_war_participants or {},
+        top_n=10
+    )
     if top_players:
         rank_medals = {1: "🥇", 2: "🥈", 3: "🥉"}
         players_html = ""
@@ -3409,6 +3414,7 @@ def main():
     radar_clans = []
     race_state_de = get_river_race_status_de()
     raw_mahnwache = []
+    current_war_participants = {}  # tag → decksUsed im aktuellen Krieg
 
     try:
         headers = {"Authorization": f"Bearer {API_TOKEN}", "Accept": "application/json"}
@@ -3481,6 +3487,11 @@ def main():
                         decks_today = p.get("decksUsedToday", 0)
                         if decks_today < 4:
                             raw_mahnwache.append({"name": p.get("name"), "offen": 4 - decks_today})
+                        # Aktuelle Kriegsteilnehmer mit Gesamt-Decks sammeln
+                        ptag = p.get("tag")
+                        decks_total = p.get("decksUsed", 0)
+                        if ptag and decks_total > 0:
+                            current_war_participants[ptag] = decks_total
 
             save_war_radar_cache(new_radar_cache)
 
@@ -3608,7 +3619,8 @@ def main():
         clan_overview=clan_overview,
         player_profiles=player_profiles,
         opponent_decks=opponent_decks,
-        player_war_decks=player_war_decks
+        player_war_decks=player_war_decks,
+        current_war_participants=current_war_participants
     )
 
     impressumhtml, datenschutzhtml = build_legal_pages()
