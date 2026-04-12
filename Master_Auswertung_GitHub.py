@@ -949,29 +949,23 @@ def build_deck_sections(top_decks_data: dict) -> list:
     ]
 
 
-def build_best_player_deck_set(player_war_decks: dict, top_n: int = 10) -> list:
+def build_best_player_deck_set(
+    player_war_decks: dict,
+    current_war_participants: dict = None,
+    top_n: int = 10
+) -> list:
     """Findet die Top-N Spieler mit den meisten Kriegssiegen.
-    Zeigt primär die Decks aus dem aktuellen Krieg (letzte 5 Tage).
-    Fehlende Slots werden konfliktfrei mit historischen Bestdecks aufgefüllt.
-    Ranking basiert auf Gesamtsiegen über alle gespeicherten Kämpfe."""
+    Aktuelle Kriegsdecks werden über current_war_participants bestimmt:
+    Die N neuesten Kämpfe eines Spielers = aktuelle Kriegsdecks (N = decksUsed aus API).
+    Fallback auf historische Bestdecks wenn kein aktueller Krieg vorhanden."""
     from collections import defaultdict
-    from datetime import datetime, timezone, timedelta
-
-    CURRENT_WAR_DAYS = 5  # River Race dauert max. 4 Tage → 5 Tage Puffer
 
     if not player_war_decks:
         return []
 
-    now = datetime.now(timezone.utc)
-    cutoff = now - timedelta(days=CURRENT_WAR_DAYS)
+    current_war_participants = current_war_participants or {}
 
-    def parse_battle_time(time_str: str):
-        try:
-            return datetime.strptime(time_str, "%Y%m%dT%H%M%S.%fZ").replace(tzinfo=timezone.utc)
-        except Exception:
-            return None
-
-    def battles_to_deck_pool(battles):
+    def battles_to_deck_pool(battles, is_current=False):
         """Aggregiert eine Liste von Battles zu einem Deck-Pool (nach deck_hash)."""
         deck_stats = defaultdict(lambda: {"wins": 0, "losses": 0, "cards": []})
         for battle in battles:
@@ -991,19 +985,19 @@ def build_best_player_deck_set(player_war_decks: dict, top_n: int = 10) -> list:
             total   = stats["wins"] + stats["losses"]
             winrate = int(round(stats["wins"] / total * 100)) if total > 0 else 0
             pool.append({
-                "cards":         stats["cards"],
-                "card_ids":      set(c["id"] for c in stats["cards"]),
-                "wins":          stats["wins"],
-                "losses":        stats["losses"],
-                "total_matches": total,
-                "winrate":       winrate,
-                "archetype":     get_deck_archetype(stats["cards"]),
-                "is_current_war": False,  # wird unten gesetzt
+                "cards":          stats["cards"],
+                "card_ids":       set(c["id"] for c in stats["cards"]),
+                "wins":           stats["wins"],
+                "losses":         stats["losses"],
+                "total_matches":  total,
+                "winrate":        winrate,
+                "archetype":      get_deck_archetype(stats["cards"]),
+                "is_current_war": is_current,
             })
         return pool
 
     def greedy_set(deck_pool, max_decks=4):
-        """Baut gierig ein konfliktfreies Set: beste Decks zuerst, keine Karte doppelt."""
+        """Baut gierig ein konfliktfreies Set: aktuelle Kriegsdecks zuerst, keine Karte doppelt."""
         sorted_pool = sorted(
             deck_pool,
             key=lambda d: (d["is_current_war"], d["wins"] > 0, d["wins"], d["winrate"]),
@@ -1027,35 +1021,33 @@ def build_best_player_deck_set(player_war_decks: dict, top_n: int = 10) -> list:
     for tag, pdata in player_war_decks.items():
         p_name = pdata.get("name", tag)
         player_names[tag] = p_name
-        battles = pdata.get("battles", [])
+        # Kämpfe nach Zeit sortieren: neueste zuerst
+        battles = sorted(pdata.get("battles", []), key=lambda b: b.get("time", ""), reverse=True)
         if not battles:
             continue
 
-        # Aufteilen in aktuellen Krieg und ältere Kämpfe
-        current_battles = []
-        historic_battles = []
-        for b in battles:
-            bt = parse_battle_time(b.get("time", ""))
-            if bt and bt >= cutoff:
-                current_battles.append(b)
-            else:
-                historic_battles.append(b)
+        # Aktuelle Kriegsdecks: N neueste Kämpfe (N = decksUsed aus currentriverrace API)
+        n_current = current_war_participants.get(tag, 0)
+        if n_current > 0:
+            current_battles = battles[:n_current]
+            historic_battles = battles[n_current:]
+        else:
+            # Spieler nicht im aktuellen Krieg → alle Kämpfe historisch
+            current_battles = []
+            historic_battles = battles
 
-        current_pool  = battles_to_deck_pool(current_battles)
-        historic_pool = battles_to_deck_pool(historic_battles)
+        current_pool  = battles_to_deck_pool(current_battles, is_current=True)
+        historic_pool = battles_to_deck_pool(historic_battles, is_current=False)
 
-        for d in current_pool:
-            d["is_current_war"] = True
+        # Gesamtsiege für Ranking (nur aktuelle Kriegskämpfe zählen)
+        total_wins    = sum(d["wins"]         for d in current_pool)
+        total_matches = sum(d["total_matches"] for d in current_pool)
 
-        # Gesamtsiege für Ranking
-        all_pool = battles_to_deck_pool(battles)
-        total_wins    = sum(d["wins"]          for d in all_pool)
-        total_matches = sum(d["total_matches"] for d in all_pool)
-
-        if total_wins == 0:
+        # Spieler ohne Siege im aktuellen Krieg nicht in Top 10
+        if total_wins == 0 and not current_pool:
             continue
 
-        # Aktuellen Krieg zuerst aufbauen, dann mit Historie auffüllen
+        # Aktuellen Krieg zuerst aufbauen, dann mit Historie konfliktfrei auffüllen
         combined_pool = current_pool + [d for d in historic_pool
                                         if not any(d["card_ids"] == c["card_ids"] for c in current_pool)]
         final_set = greedy_set(combined_pool, max_decks=4)
