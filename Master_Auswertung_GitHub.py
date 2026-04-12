@@ -1023,49 +1023,40 @@ def fetch_top_war_players_live(
             if "riverRace" in b.get("type", "")
         ]
 
-        # Die letzten decksUsedToday Einzelkämpfe herausziehen
-        # Duell (rounds) → jede Runde einzeln zählen
-        decks_list = []
+        # Die letzten decksUsedToday Einzelkämpfe herausziehen.
+        # Duell (rounds) → jede Runde einzeln zählen.
+        # Deduplizierung per deck_hash: pro Kriegstag ist jede Karte nur in
+        # einem Deck erlaubt — gleiche Karten = selber Slot aus einem anderen Tag.
+        decks_list  = []
+        seen_hashes = set()
+
         for b in war_battles:
             if len(decks_list) >= decks_today:
                 break
 
             b_type = b.get("type", "")
 
-            if "team" in b:
-                # Standard-Battle
-                team     = b["team"][0]
-                opponent = b["opponent"][0]
-                cards    = team.get("cards", [])
-                if len(cards) == 8:
-                    crowns_t = team.get("crowns", 0)
-                    crowns_o = opponent.get("crowns", 0)
-                    result_str = "win" if crowns_t > crowns_o else "loss"
-                    decks_list.append({
-                        "cards":   cards,
-                        "result":  result_str,
-                        "type":    b_type,
-                    })
+            def try_add(team_data, opp_data):
+                cards = team_data.get("cards", [])
+                if len(cards) != 8:
+                    return
+                deck_hash = "-".join(sorted(str(c["id"]) for c in cards))
+                if deck_hash in seen_hashes:
+                    return  # Duplikat (selber Deck aus anderem Kriegstag)
+                seen_hashes.add(deck_hash)
+                crowns_t   = team_data.get("crowns", 0)
+                crowns_o   = opp_data.get("crowns", 0)
+                result_str = "win" if crowns_t > crowns_o else "loss"
+                decks_list.append({"cards": cards, "result": result_str, "type": b_type})
 
+            if "team" in b:
+                try_add(b["team"][0], b["opponent"][0])
             elif "rounds" in b:
-                # Duell-Battle (Bo3) — jede Runde als eigenes Deck
                 for rnd in b.get("rounds", []):
                     if len(decks_list) >= decks_today:
                         break
-                    if "team" not in rnd or "opponent" not in rnd:
-                        continue
-                    team     = rnd["team"][0]
-                    opponent = rnd["opponent"][0]
-                    cards    = team.get("cards", [])
-                    if len(cards) == 8:
-                        crowns_t = team.get("crowns", 0)
-                        crowns_o = opponent.get("crowns", 0)
-                        result_str = "win" if crowns_t > crowns_o else "loss"
-                        decks_list.append({
-                            "cards":   cards,
-                            "result":  result_str,
-                            "type":    b_type,
-                        })
+                    if "team" in rnd and "opponent" in rnd:
+                        try_add(rnd["team"][0], rnd["opponent"][0])
 
         # Deck-Objekte für HTML bauen
         decks_out = []
