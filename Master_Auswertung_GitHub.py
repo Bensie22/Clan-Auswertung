@@ -3416,13 +3416,13 @@ def main():
                     "max_decks": member_count * 4
                 })
 
-            save_war_radar_cache(new_radar_cache)
-
                 if is_us:
                     for p in c.get("participants", []):
                         decks_today = p.get("decksUsedToday", 0)
                         if decks_today < 4:
                             raw_mahnwache.append({"name": p.get("name"), "offen": 4 - decks_today})
+
+            save_war_radar_cache(new_radar_cache)
 
             radar_clans.sort(key=lambda x: (x["medals"], x["boat_attacks"], x["trophies"]), reverse=True)
     except Exception as e:
