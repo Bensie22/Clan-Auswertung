@@ -734,9 +734,8 @@ def update_top_decks(current_members: dict, top_decks_data: dict, player_war_dec
 
                         is_win  = crowns_t > crowns_o
                         is_loss = crowns_o > crowns_t
-                        is_draw = not is_win and not is_loss
 
-                        if is_win or is_loss or is_draw:
+                        if is_win or is_loss:
                             deck_ids = sorted([str(c["id"]) for c in cards])
                             deck_hash = "-".join(deck_ids)
 
@@ -756,7 +755,7 @@ def update_top_decks(current_members: dict, top_decks_data: dict, player_war_dec
                                     "recent_matches": []
                                 }
 
-                            match_result = "win" if is_win else ("loss" if is_loss else "draw")
+                            match_result = "win" if is_win else "loss"
                             existing_matches = decks[deck_hash].setdefault("recent_matches", [])
                             match_key = f"{b_time}|{raw_tag}|{match_result}"
                             if not any(
@@ -985,32 +984,28 @@ def build_best_player_deck_set(
 
     def battles_to_deck_pool(battles, is_current=False):
         """Aggregiert eine Liste von Battles zu einem Deck-Pool (nach deck_hash)."""
-        deck_stats = defaultdict(lambda: {"wins": 0, "losses": 0, "draws": 0, "cards": []})
+        deck_stats = defaultdict(lambda: {"wins": 0, "losses": 0, "cards": []})
         for battle in battles:
             deck_hash = battle.get("deck_hash", "")
             if not deck_hash:
                 continue
-            result = battle.get("result", "")
-            if result == "win":
+            if battle.get("result") == "win":
                 deck_stats[deck_hash]["wins"] += 1
-            elif result == "loss":
-                deck_stats[deck_hash]["losses"] += 1
             else:
-                deck_stats[deck_hash]["draws"] += 1
+                deck_stats[deck_hash]["losses"] += 1
             if not deck_stats[deck_hash]["cards"]:
                 deck_stats[deck_hash]["cards"] = battle.get("cards", [])
         pool = []
         for stats in deck_stats.values():
             if not stats["cards"]:
                 continue
-            total   = stats["wins"] + stats["losses"] + stats["draws"]
+            total   = stats["wins"] + stats["losses"]
             winrate = int(round(stats["wins"] / total * 100)) if total > 0 else 0
             pool.append({
                 "cards":          stats["cards"],
                 "card_ids":       set(c["id"] for c in stats["cards"]),
                 "wins":           stats["wins"],
                 "losses":         stats["losses"],
-                "draws":          stats["draws"],
                 "total_matches":  total,
                 "winrate":        winrate,
                 "archetype":      get_deck_archetype(stats["cards"]),
@@ -2882,9 +2877,7 @@ def generate_html_report(
                 ])
                 api_names = [c["name"].lower().replace(".", "").replace(" ", "-") for c in d["cards"]]
                 royaleapi_link = f"https://royaleapi.com/decks/stats/{','.join(api_names)}"
-                d_draws         = d.get("draws", 0)
-                is_loss_deck    = d["wins"] == 0 and d_draws == 0
-                is_draw_only    = d["wins"] == 0 and d_draws > 0
+                is_loss_deck    = d["wins"] == 0
                 is_current_war  = d.get("is_current_war", False)
                 deck_border     = "border: 1px solid rgba(239,68,68,0.4);" if is_loss_deck else ""
                 deck_title_color = "#f87171" if is_loss_deck else "#a78bfa"
@@ -2896,8 +2889,6 @@ def generate_html_report(
                 winrate_badge = (
                     f"<span style='background:rgba(239,68,68,0.2); color:#f87171; padding:2px 8px; border-radius:12px; font-size:0.82em; font-weight:700;'>❌ Nur Niederlagen</span>"
                     if is_loss_deck else
-                    f"<span style='background:rgba(148,163,184,0.2); color:#94a3b8; padding:2px 8px; border-radius:12px; font-size:0.82em; font-weight:700;'>🤝 Unentschieden</span>"
-                    if is_draw_only else
                     f"<span class='winrate'>🔥 {d['winrate']}% Win</span>"
                 )
                 player_cards_html += f"""
@@ -2908,7 +2899,7 @@ def generate_html_report(
                         {winrate_badge}
                     </div>
                     <div class="deck-images">{images_html}</div>
-                    <p style="font-size: 0.85em; color: #94a3b8; margin: 10px 0;">{d['wins']} Siege / {d['losses']} Niederlagen{f" / {d_draws} Unentschieden" if d_draws > 0 else ""} in {d['total_matches']} Kämpfen</p>
+                    <p style="font-size: 0.85em; color: #94a3b8; margin: 10px 0;">{d['wins']} Siege / {d['losses']} Niederlagen in {d['total_matches']} Kämpfen</p>
                     <div style="margin-top: auto;">
                         <a href="{royaleapi_link}" class="copy-btn" style="background: #7c3aed; color: #fff;" target="_blank">🔗 Auf RoyaleAPI öffnen</a>
                     </div>
