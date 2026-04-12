@@ -3528,12 +3528,13 @@ def main():
                         decks_today = p.get("decksUsedToday", 0)
                         if decks_today < 4:
                             raw_mahnwache.append({"name": p.get("name"), "offen": 4 - decks_today})
-                        # Aktuelle Kriegsteilnehmer mit Gesamt-Decks sammeln
+                        # Nur heutige Decks speichern – Top 10 soll sich auf den aktuellen Kriegstag beziehen.
+                        # decksUsed wäre die Summe der ganzen River Race (mehrere Tage), was zu falschen
+                        # Battle-Auswahlen führen würde (z.B. Siege vom Vortag werden mitgezählt).
                         # Tag ohne '#' speichern – player_war_decks verwendet diese Schreibweise
                         ptag = p.get("tag", "").lstrip("#")
-                        decks_total = p.get("decksUsed", 0)
-                        if ptag and decks_total > 0:
-                            current_war_participants[ptag] = decks_total
+                        if ptag and decks_today > 0:
+                            current_war_participants[ptag] = decks_today
 
             save_war_radar_cache(new_radar_cache)
 
