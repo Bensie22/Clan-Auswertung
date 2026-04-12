@@ -3375,12 +3375,16 @@ def main():
                 clan_tag_raw = c.get("tag", "")
 
                 trophies = c.get("clanScore", 0)
-                medals = c.get("periodPoints", 0)
+                # Immer kumulative Rennen-Fame verwenden (sum participant.fame),
+                # damit alle Clans dieselbe Metrik zeigen – unabhängig davon ob
+                # periodPoints heute schon > 0 ist oder nicht.
+                participants = c.get("participants", [])
+                medals = sum(p.get("fame", 0) for p in participants)
                 if medals == 0:
-                    # Fallback für Colosseum: Summe der Teilnehmer-Fame
-                    medals = sum(p.get("fame", 0) for p in c.get("participants", []))
-                boat_attacks = sum(p.get("boatAttacks", 0) for p in c.get("participants", []))
-                decks_used = sum(p.get("decksUsedToday", 0) for p in c.get("participants", []))
+                    # Fallback wenn keine Teilnehmerdaten vorhanden
+                    medals = c.get("periodPoints", 0)
+                boat_attacks = sum(p.get("boatAttacks", 0) for p in participants)
+                decks_used = sum(p.get("decksUsedToday", 0) for p in participants)
 
                 # Delta-Effizienz: medals_heute = periodPoints - Tagesbasis
                 cache_entry = radar_cache.get(clan_tag_raw, {})
@@ -3402,9 +3406,9 @@ def main():
                         if clan_resp.status_code == 200:
                             member_count = clan_resp.json().get("members", 50)
                         else:
-                            member_count = min(len(c.get("participants", [])), 50)
+                            member_count = min(len(participants), 50)
                     except Exception:
-                        member_count = min(len(c.get("participants", [])), 50)
+                        member_count = min(len(participants), 50)
                 radar_clans.append({
                     "name": c.get("name", ""),
                     "is_us": is_us,
@@ -3417,7 +3421,7 @@ def main():
                 })
 
                 if is_us:
-                    for p in c.get("participants", []):
+                    for p in participants:
                         decks_today = p.get("decksUsedToday", 0)
                         if decks_today < 4:
                             raw_mahnwache.append({"name": p.get("name"), "offen": 4 - decks_today})
