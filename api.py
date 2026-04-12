@@ -1195,7 +1195,7 @@ def war_radar():
 
 @app.get("/war/prognose")
 def war_prognose():
-    """Fame-Prognose: Können wir den Krieg noch gewinnen? (Benötigt CR_API_KEY)"""
+    """Sieg-Prognose für den laufenden Krieg: Vergleicht alle Clans, projiziert Endstand und gibt GPT-freundliche Einschätzung zurück. (Benötigt CR_API_KEY)"""
     data = cr_api_get(f"/clans/{CLAN_TAG_ENCODED}/currentriverrace")
     if data is None:
         raise HTTPException(
@@ -1203,40 +1203,114 @@ def war_prognose():
             detail="CR-API nicht verfügbar. Bitte CR_API_KEY als Umgebungsvariable auf Render setzen.",
         )
 
-    clan = data.get("clan", {})
-    clans_data = data.get("clans", [])
     state = data.get("state", "unknown")
-    participants = clan.get("participants", [])
+    period_type = data.get("periodType", "")
+    clans_data = data.get("clans", [])
 
-    our_fame = clan.get("fame", 0)
-    decks_used_today = sum(p.get("decksUsedToday", 0) for p in participants)
-    remaining_decks = sum(max(0, 4 - p.get("decksUsedToday", 0)) for p in participants)
-    avg_fame_per_deck = round(our_fame / decks_used_today) if decks_used_today > 0 else 150
+    if not clans_data:
+        return {"state": state, "prognose": "Keine Clan-Daten verfügbar.", "verdict": "unbekannt"}
 
-    projected_fame = our_fame + round(remaining_decks * avg_fame_per_deck)
+    # Für jeden Clan: Daten aggregieren
+    clan_projections = []
+    for c in clans_data:
+        is_us = c.get("tag") == CLAN_TAG_RAW
+        participants = c.get("participants", [])
+        medals = c.get("periodPoints", 0) or sum(p.get("fame", 0) for p in participants)
+        decks_used = sum(p.get("decksUsedToday", 0) for p in participants)
+        member_count = max(len(participants), 1)
+        max_decks = member_count * 4
+        remaining = max(0, max_decks - decks_used)
+        effizienz = round(medals / decks_used) if decks_used > 0 else None
+        clan_projections.append({
+            "name": c.get("name", "Unbekannt"),
+            "tag": c.get("tag"),
+            "is_us": is_us,
+            "medals": medals,
+            "decks_used": decks_used,
+            "remaining_decks": remaining,
+            "effizienz": effizienz,
+        })
 
-    standings = sorted(clans_data, key=lambda c: -c.get("fame", 0))
-    our_rank = next((i + 1 for i, c in enumerate(standings) if c.get("tag") == CLAN_TAG_RAW), None)
-    leader_fame = standings[0].get("fame", 0) if standings else 0
-    second_fame = standings[1].get("fame", 0) if len(standings) > 1 else 0
+    # Fallback-Effizienz: Durchschnitt aller Clans die gespielt haben
+    played = [c for c in clan_projections if c["effizienz"] is not None]
+    fallback_eff = round(sum(c["effizienz"] for c in played) / len(played)) if played else 160
 
-    can_win = projected_fame > leader_fame
-    can_reach_top2 = projected_fame > second_fame if our_rank and our_rank > 2 else True
+    # Projektion berechnen
+    for c in clan_projections:
+        eff = c["effizienz"] if c["effizienz"] is not None else fallback_eff
+        c["effizienz"] = eff
+        c["projected_medals"] = c["medals"] + c["remaining_decks"] * eff
+
+    # Rangliste projiziert
+    clan_projections.sort(key=lambda x: x["projected_medals"], reverse=True)
+    for i, c in enumerate(clan_projections):
+        c["projected_rank"] = i + 1
+
+    # Unser Clan
+    us = next((c for c in clan_projections if c["is_us"]), None)
+    if not us:
+        return {"state": state, "prognose": "Unser Clan nicht im Rennen gefunden.", "verdict": "unbekannt"}
+
+    our_rank = us["projected_rank"]
+    leader = clan_projections[0]
+    second = clan_projections[1] if len(clan_projections) > 1 else None
+
+    # Prognose-Text und Verdict
+    if our_rank == 1:
+        gap_to_2nd = us["projected_medals"] - second["projected_medals"] if second else us["projected_medals"]
+        catchup = second["remaining_decks"] * second["effizienz"] if second else 0
+        if gap_to_2nd > catchup:
+            verdict = "sehr_gut"
+            prognose = (f"🟢 Sieg-Prognose: sehr gut – aktuell Platz 1 mit ~{gap_to_2nd:,} Punkten Vorsprung. "
+                        f"Selbst wenn {second['name'] if second else '?'} alle Decks spielt, reicht es nicht zum Überholen.")
+            empfehlung = "Decks vollständig spielen, um den Vorsprung zu sichern."
+        else:
+            verdict = "knapp_vorne"
+            prognose = (f"🟡 Sieg-Prognose: knapp vorne – Platz 1, aber nur ~{gap_to_2nd:,} Punkte vor "
+                        f"{second['name'] if second else '?'} (noch {second['remaining_decks'] if second else 0} Decks offen).")
+            empfehlung = "Offene Decks sofort schließen – der Vorsprung ist nicht sicher."
+    elif our_rank == 2:
+        gap = leader["projected_medals"] - us["projected_medals"]
+        if us["remaining_decks"] * us["effizienz"] >= gap:
+            verdict = "aufholbar"
+            prognose = (f"🟡 Sieg-Prognose: aufholbar – Platz 2, ~{gap:,} Punkte hinter {leader['name']}. "
+                        f"Mit {us['remaining_decks']} offenen Decks und ~{us['effizienz']} Fame/Deck ist aufholen möglich.")
+            empfehlung = "Alle Decks sofort spielen – der Rückstand ist noch aufholbar."
+        else:
+            verdict = "schwierig"
+            prognose = (f"🔴 Sieg-Prognose: schwierig – Platz 2, ~{gap:,} Punkte hinter {leader['name']}. "
+                        f"Platz 2 ist das realistische Ziel.")
+            empfehlung = "Platz 2 verteidigen und alle Decks spielen."
+    else:
+        gap_to_top2 = clan_projections[1]["projected_medals"] - us["projected_medals"] if len(clan_projections) > 1 else 0
+        verdict = "gering"
+        prognose = (f"🔴 Sieg-Prognose: gering – projiziert Platz {our_rank}, "
+                    f"~{gap_to_top2:,} Punkte hinter Platz 2.")
+        empfehlung = "Alle Decks spielen für maximale Kriegspunkte und beste Trophäen-Ausbeute."
 
     return {
         "state": state,
-        "current_fame": our_fame,
-        "remaining_decks": remaining_decks,
-        "avg_fame_per_deck": avg_fame_per_deck,
-        "projected_fame": projected_fame,
-        "current_rank": our_rank,
-        "leader_fame": leader_fame,
-        "prognose": (
-            "🏆 Sieg möglich!" if can_win else
-            "🥈 Top 2 erreichbar" if can_reach_top2 else
-            "⚔️ Schwierig – alle Decks müssen gespielt werden"
-        ),
-        "message": f"Mit {remaining_decks} offenen Decks und ~{avg_fame_per_deck} Fame/Deck → projiziertes Fame: {projected_fame}",
+        "period_type": period_type,
+        "verdict": verdict,
+        "prognose": prognose,
+        "empfehlung": empfehlung,
+        "our_projected_rank": our_rank,
+        "our_medals": us["medals"],
+        "our_projected_medals": us["projected_medals"],
+        "our_remaining_decks": us["remaining_decks"],
+        "our_effizienz": us["effizienz"],
+        "standings": [
+            {
+                "projected_rank": c["projected_rank"],
+                "name": c["name"],
+                "is_us": c["is_us"],
+                "medals": c["medals"],
+                "projected_medals": c["projected_medals"],
+                "remaining_decks": c["remaining_decks"],
+                "effizienz": c["effizienz"],
+            }
+            for c in clan_projections
+        ],
     }
 
 
