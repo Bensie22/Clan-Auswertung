@@ -60,12 +60,33 @@ records_path = BASE_DIR / "records.json"
 strikes_path = BASE_DIR / "strikes.json"
 top_decks_path = BASE_DIR / "top_decks.json"
 player_war_decks_path = BASE_DIR / "player_war_decks.json"
+war_radar_cache_path  = BASE_DIR / "war_radar_cache.json"
 donations_memory_path = BASE_DIR / "donations_memory.json"
 member_memory_path = BASE_DIR / "member_memory.json"
 urlaub_path = BASE_DIR / "urlaub.txt"
 kicked_players_path = BASE_DIR / "kicked_players.json"
 HEADER_IMAGE_PATH = BASE_DIR / "clash_pix.jpg"
 website_opt_out_path = BASE_DIR / "website_opt_out.json"
+
+
+def load_war_radar_cache() -> dict:
+    """Lädt den gespeicherten periodPoints-Stand pro Clan (für Delta-Berechnung)."""
+    if war_radar_cache_path.exists():
+        try:
+            with open(war_radar_cache_path, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            return {}
+    return {}
+
+
+def save_war_radar_cache(cache: dict):
+    """Speichert den aktuellen periodPoints-Stand pro Clan."""
+    try:
+        with open(war_radar_cache_path, "w", encoding="utf-8") as f:
+            json.dump(cache, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        print(f"⚠️ war_radar_cache konnte nicht gespeichert werden: {e}")
 
 
 def safe_env(name: str, default: str = "") -> str:
@@ -2372,14 +2393,25 @@ def generate_html_report(
     if race_state_de in ("Clankrieg", "Colosseum") and len(radar_clans) >= 2:
         us = next((c for c in radar_clans if c["is_us"]), None)
         if us:
+            # Effizienz: heutige Medals (Delta) bevorzugen, sonst Gesamtschnitt
+            def get_eff(c):
+                mh = c.get("medals_heute")
+                if mh is not None and c["decks_used"] > 0:
+                    return round(mh / c["decks_used"])
+                if c["decks_used"] > 0:
+                    return round(c["medals"] / c["decks_used"])
+                return None
+
             played = [c for c in radar_clans if c["decks_used"] > 0]
-            fallback_eff = round(
-                sum(c["medals"] / c["decks_used"] for c in played) / len(played)
-            ) if played else 160
+            eff_values = [get_eff(c) for c in played if get_eff(c) is not None]
+            fallback_eff = round(sum(eff_values) / len(eff_values)) if eff_values else 160
+            # Effizienz auf realistische Grenzen kappen (75–250 Medals/Deck)
+            fallback_eff = max(75, min(250, fallback_eff))
 
             projections = []
             for c in radar_clans:
-                eff = round(c["medals"] / c["decks_used"]) if c["decks_used"] > 0 else fallback_eff
+                eff = get_eff(c) or fallback_eff
+                eff = max(75, min(250, eff))  # immer kappen
                 remaining = max(0, c["max_decks"] - c["decks_used"])
                 projected = c["medals"] + remaining * eff
                 projections.append({**c, "eff": eff, "remaining": remaining, "projected": int(projected)})
@@ -2460,12 +2492,19 @@ def generate_html_report(
         for idx, c in enumerate(radar_clans):
             bold_name = f"<b style='color:#fff;'>{c['name']} (WIR)</b>" if c["is_us"] else c["name"]
             bg_color = "rgba(255,255,255,0.05)" if idx % 2 == 0 else "transparent"
-            effizienz = round(c['medals'] / c['decks_used']) if c['decks_used'] > 0 else 0
+            medals_heute = c.get("medals_heute")
+            if medals_heute is not None and c['decks_used'] > 0:
+                effizienz = round(medals_heute / c['decks_used'])
+                effizienz_str = str(effizienz)
+            elif medals_heute is None and c['decks_used'] > 0:
+                effizienz_str = "<span style='color:#64748b; font-size:0.85em;'>~</span>"
+            else:
+                effizienz_str = "–"
             radar_html += f"<tr style='background: {bg_color}; border-bottom: 1px solid rgba(255,255,255,0.02);'>"
             radar_html += f"<td style='padding: 10px 5px;'>{bold_name}<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 {c['decks_used']} / {c.get('max_decks', 200)} Decks</span></td>"
             radar_html += f"<td style='text-align: center; font-weight: bold; color: #f8fafc;'>{c['boat_attacks']}</td>"
             radar_html += f"<td style='text-align: center; font-weight: bold; color: #fbbf24;'>{c['medals']}</td>"
-            radar_html += f"<td style='text-align: center; font-weight: bold; color: #22d3ee;'>{effizienz}</td>"
+            radar_html += f"<td style='text-align: center; font-weight: bold; color: #22d3ee;'>{effizienz_str}</td>"
             radar_html += f"<td style='text-align: center; font-weight: bold; color: #c084fc;'>{c['trophies']}</td>"
             radar_html += "</tr>"
         radar_html += "</table></div></div>"
@@ -3305,8 +3344,13 @@ def main():
                 race_state_de = "Trainingstag"
 
             clans_in_race = data.get("clans", [])
+            today_str = datetime.utcnow().strftime("%Y-%m-%d")
+            radar_cache = load_war_radar_cache()
+            new_radar_cache = {}
+
             for c in clans_in_race:
                 is_us = c.get("tag") == CLAN_TAG.replace("%23", "#")
+                clan_tag_raw = c.get("tag", "")
 
                 trophies = c.get("clanScore", 0)
                 medals = c.get("periodPoints", 0)
@@ -3316,11 +3360,22 @@ def main():
                 boat_attacks = sum(p.get("boatAttacks", 0) for p in c.get("participants", []))
                 decks_used = sum(p.get("decksUsedToday", 0) for p in c.get("participants", []))
 
+                # Delta-Effizienz: medals_heute = periodPoints - Tagesbasis
+                cache_entry = radar_cache.get(clan_tag_raw, {})
+                if cache_entry.get("date") != today_str:
+                    # Erster Run des Tages → Tagesbasis setzen
+                    medals_heute = None  # noch unbekannt
+                    new_radar_cache[clan_tag_raw] = {"date": today_str, "baseline": medals}
+                else:
+                    baseline = cache_entry.get("baseline", medals)
+                    medals_heute = max(0, medals - baseline)
+                    new_radar_cache[clan_tag_raw] = cache_entry  # unverändert behalten
+
                 if is_us:
                     member_count = len(current_members)
                 else:
                     try:
-                        clan_tag_encoded = c.get("tag", "").replace("#", "%23")
+                        clan_tag_encoded = clan_tag_raw.replace("#", "%23")
                         clan_resp = requests.get(f"{BASE_URL}/clans/{clan_tag_encoded}", headers=headers, timeout=15)
                         if clan_resp.status_code == 200:
                             member_count = clan_resp.json().get("members", 50)
@@ -3333,10 +3388,13 @@ def main():
                     "is_us": is_us,
                     "trophies": trophies,
                     "medals": medals,
+                    "medals_heute": medals_heute,
                     "boat_attacks": boat_attacks,
                     "decks_used": decks_used,
                     "max_decks": member_count * 4
                 })
+
+            save_war_radar_cache(new_radar_cache)
 
                 if is_us:
                     for p in c.get("participants", []):
