@@ -966,138 +966,141 @@ def build_deck_sections(top_decks_data: dict) -> list:
     ]
 
 
-def build_best_player_deck_set(
-    player_war_decks: dict,
-    current_war_participants: dict = None,
+def fetch_top_war_players_live(
+    participants: list,
+    api_token: str,
+    base_url: str,
     top_n: int = 10
 ) -> list:
-    """Findet die Top-N Spieler mit den meisten Kriegssiegen.
-    Aktuelle Kriegsdecks werden über current_war_participants bestimmt:
-    Die N neuesten Kämpfe eines Spielers = aktuelle Kriegsdecks (N = decksUsed aus API).
-    Fallback auf historische Bestdecks wenn kein aktueller Krieg vorhanden."""
-    from collections import defaultdict
+    """Holt die Top-N Kriegsspieler direkt live aus der API.
 
-    if not player_war_decks:
+    Ranking: Fame/Deck (Effizienz) — nur Spieler mit decksUsedToday > 0.
+    Für jeden Top-Spieler werden die letzten decksUsedToday Battles aus dem
+    Battle Log geholt und als Decks angezeigt.
+    Kein player_war_decks.json nötig — alles frisch aus der API.
+    """
+    import time as _time
+
+    if not participants:
         return []
 
-    current_war_participants = current_war_participants or {}
+    headers = {"Authorization": f"Bearer {api_token}", "Accept": "application/json"}
 
-    def battles_to_deck_pool(battles, is_current=False):
-        """Aggregiert eine Liste von Battles zu einem Deck-Pool (nach deck_hash)."""
-        deck_stats = defaultdict(lambda: {"wins": 0, "losses": 0, "cards": []})
-        for battle in battles:
-            deck_hash = battle.get("deck_hash", "")
-            if not deck_hash:
-                continue
-            if battle.get("result") == "win":
-                deck_stats[deck_hash]["wins"] += 1
-            else:
-                deck_stats[deck_hash]["losses"] += 1
-            if not deck_stats[deck_hash]["cards"]:
-                deck_stats[deck_hash]["cards"] = battle.get("cards", [])
-        pool = []
-        for stats in deck_stats.values():
-            if not stats["cards"]:
-                continue
-            total   = stats["wins"] + stats["losses"]
-            winrate = int(round(stats["wins"] / total * 100)) if total > 0 else 0
-            pool.append({
-                "cards":          stats["cards"],
-                "card_ids":       set(c["id"] for c in stats["cards"]),
-                "wins":           stats["wins"],
-                "losses":         stats["losses"],
-                "total_matches":  total,
-                "winrate":        winrate,
-                "archetype":      get_deck_archetype(stats["cards"]),
-                "is_current_war": is_current,
-            })
-        return pool
+    # Nur Spieler die heute schon gekämpft haben, sortiert nach Fame/Deck (Effizienz)
+    active = [
+        p for p in participants
+        if p.get("decksUsedToday", 0) > 0
+    ]
+    for p in active:
+        decks_today = p.get("decksUsedToday", 1)
+        p["_fame_per_deck"] = p.get("fame", 0) / decks_today
 
-    def greedy_set(deck_pool, max_decks=4):
-        """Baut gierig ein konfliktfreies Set: aktuelle Kriegsdecks zuerst, keine Karte doppelt."""
-        sorted_pool = sorted(
-            deck_pool,
-            key=lambda d: (d["is_current_war"], d["wins"] > 0, d["wins"], d["winrate"]),
-            reverse=True
-        )
-        used_ids = set()
-        selected = []
-        for deck in sorted_pool:
-            if len(selected) >= max_decks:
-                break
-            if deck["card_ids"].isdisjoint(used_ids):
-                selected.append(deck)
-                used_ids.update(deck["card_ids"])
-        return selected
-
-    player_final_decks = {}
-    player_all_wins    = {}
-    player_all_matches = {}
-    player_names       = {}
-
-    # Krieg aktiv wenn mindestens ein Spieler heute schon gekämpft hat
-    war_is_active = bool(current_war_participants)
-
-    for tag, pdata in player_war_decks.items():
-        p_name = pdata.get("name", tag)
-        player_names[tag] = p_name
-        # Kämpfe nach Zeit sortieren: neueste zuerst
-        battles = sorted(pdata.get("battles", []), key=lambda b: b.get("time", ""), reverse=True)
-        if not battles:
-            continue
-
-        if war_is_active:
-            # Aktiver Kriegstag: decksUsedToday aus der API bestimmt wie viele der neuesten
-            # Battles zum aktuellen Kriegstag gehören. Der Kriegstag-Reset liegt NICHT
-            # zwingend bei UTC-Mitternacht — Datumsfilter wäre falsch (würde Battles vom
-            # Vortags-Kriegstag einschließen wenn dieser noch auf dasselbe Kalenderdatum fällt).
-            n_today = current_war_participants.get(tag, 0)
-            if n_today == 0:
-                # Spieler hat heute noch nicht gekämpft → überspringen
-                continue
-            use_pool = battles_to_deck_pool(battles[:n_today], is_current=True)
-        else:
-            # Kein aktiver Krieg → alle historischen Kämpfe zeigen (letzte 30 Tage)
-            use_pool = battles_to_deck_pool(battles, is_current=False)
-
-        if not use_pool:
-            continue
-
-        total_wins    = sum(d["wins"]          for d in use_pool)
-        total_matches = sum(d["total_matches"] for d in use_pool)
-
-        final_set = greedy_set(use_pool, max_decks=4)
-
-        player_final_decks[tag] = final_set
-        player_all_wins[tag]    = total_wins
-        player_all_matches[tag] = total_matches
-
-    if not player_final_decks:
-        return []
-
-    def player_score(tag):
-        wins    = player_all_wins[tag]
-        matches = player_all_matches[tag]
-        return (wins, wins / matches if matches > 0 else 0)
-
-    ranked_tags = sorted(player_final_decks.keys(), key=player_score, reverse=True)[:top_n]
+    active.sort(key=lambda p: p["_fame_per_deck"], reverse=True)
+    top_candidates = active[:top_n]
 
     result = []
-    for rank, tag in enumerate(ranked_tags, start=1):
-        # card_ids und is_current_war aus Output entfernen
-        clean_decks = [
-            {k: v for k, v in d.items() if k not in ("card_ids",)}
-            for d in player_final_decks[tag]
+    for rank, p in enumerate(top_candidates, start=1):
+        p_name      = p.get("name", "?")
+        p_tag       = p.get("tag", "")
+        decks_today = p.get("decksUsedToday", 0)
+        fame        = p.get("fame", 0)
+        fame_pd     = p["_fame_per_deck"]
+
+        # Battle Log abrufen
+        safe_tag = p_tag.replace("#", "%23")
+        try:
+            resp = requests.get(
+                f"{base_url}/players/{safe_tag}/battlelog",
+                headers=headers, timeout=15
+            )
+            battles_raw = resp.json() if resp.status_code == 200 else []
+        except Exception:
+            battles_raw = []
+
+        # Nur River Race Battles, neueste zuerst
+        war_battles = [
+            b for b in battles_raw
+            if "riverRace" in b.get("type", "")
         ]
+
+        # Die letzten decksUsedToday Einzelkämpfe herausziehen
+        # Duell (rounds) → jede Runde einzeln zählen
+        decks_list = []
+        for b in war_battles:
+            if len(decks_list) >= decks_today:
+                break
+
+            b_type = b.get("type", "")
+
+            if "team" in b:
+                # Standard-Battle
+                team     = b["team"][0]
+                opponent = b["opponent"][0]
+                cards    = team.get("cards", [])
+                if len(cards) == 8:
+                    crowns_t = team.get("crowns", 0)
+                    crowns_o = opponent.get("crowns", 0)
+                    result_str = "win" if crowns_t > crowns_o else "loss"
+                    decks_list.append({
+                        "cards":   cards,
+                        "result":  result_str,
+                        "type":    b_type,
+                    })
+
+            elif "rounds" in b:
+                # Duell-Battle (Bo3) — jede Runde als eigenes Deck
+                for rnd in b.get("rounds", []):
+                    if len(decks_list) >= decks_today:
+                        break
+                    if "team" not in rnd or "opponent" not in rnd:
+                        continue
+                    team     = rnd["team"][0]
+                    opponent = rnd["opponent"][0]
+                    cards    = team.get("cards", [])
+                    if len(cards) == 8:
+                        crowns_t = team.get("crowns", 0)
+                        crowns_o = opponent.get("crowns", 0)
+                        result_str = "win" if crowns_t > crowns_o else "loss"
+                        decks_list.append({
+                            "cards":   cards,
+                            "result":  result_str,
+                            "type":    b_type,
+                        })
+
+        # Deck-Objekte für HTML bauen
+        decks_out = []
+        for idx, d in enumerate(decks_list, start=1):
+            cards   = d["cards"]
+            is_win  = d["result"] == "win"
+            api_names = [c["name"].lower().replace(".", "").replace(" ", "-") for c in cards]
+            decks_out.append({
+                "slot":     idx,
+                "cards":    [{"id": c["id"], "name": c["name"],
+                              "icon": c.get("iconUrls", {}).get("medium", "")}
+                             for c in cards],
+                "result":   d["result"],
+                "wins":     1 if is_win else 0,
+                "losses":   0 if is_win else 1,
+                "archetype": get_deck_archetype(cards),
+                "royaleapi_link": f"https://royaleapi.com/decks/stats/{','.join(api_names)}",
+            })
+
+        total_wins    = sum(d["wins"]   for d in decks_out)
+        total_matches = len(decks_out)
+
         result.append({
             "rank":            rank,
-            "player_name":     player_names.get(tag, tag),
-            "total_wins":      player_all_wins[tag],
-            "total_matches":   player_all_matches[tag],
-            "overall_winrate": int(round(player_all_wins[tag] / player_all_matches[tag] * 100))
-                               if player_all_matches[tag] > 0 else 0,
-            "decks":           clean_decks,
+            "player_name":     p_name,
+            "fame":            fame,
+            "fame_per_deck":   round(fame_pd, 1),
+            "decks_used_today": decks_today,
+            "total_wins":      total_wins,
+            "total_matches":   total_matches,
+            "overall_winrate": int(round(total_wins / total_matches * 100)) if total_matches > 0 else 0,
+            "decks":           decks_out,
         })
+
+        _time.sleep(0.1)  # API rate limit
 
     return result
 
@@ -2058,7 +2061,8 @@ def generate_html_report(
     player_profiles: dict = None,
     opponent_decks: dict = None,
     player_war_decks: dict = None,
-    current_war_participants: dict = None
+    current_war_participants: dict = None,
+    war_participants_list: list = None
 ) -> Tuple[str, pd.DataFrame, str, dict, dict, dict]:
     player_stats = []
     urlauber_liste = []
@@ -2854,56 +2858,52 @@ def generate_html_report(
             </div>
             """
 
-    # ⭐ Top 10 Kriegsspieler – je alle 4 Decks
-    top_players = build_best_player_deck_set(
-        player_war_decks or {},
-        current_war_participants=current_war_participants or {},
-        top_n=10
-    )
+    # ⭐ Top 10 Kriegsspieler – live aus der API
+    top_players = []
+    if war_participants_list:
+        print("  Lade Top 10 Kriegsspieler live aus Battle Logs...")
+        top_players = fetch_top_war_players_live(
+            participants=war_participants_list,
+            api_token=API_TOKEN,
+            base_url=BASE_URL,
+            top_n=10
+        )
+
     if top_players:
         rank_medals = {1: "🥇", 2: "🥈", 3: "🥉"}
         players_html = ""
         for player in top_players:
             medal = rank_medals.get(player["rank"], f"#{player['rank']}")
             player_cards_html = ""
-            for idx, d in enumerate(player["decks"], start=1):
+            for d in player["decks"]:
                 images_html = "".join([
                     f"<img src='{c['icon']}' style='width: 23%; border-radius: 4px; margin: 1%;' title='{c['name']}'>"
                     for c in d["cards"]
                 ])
-                api_names = [c["name"].lower().replace(".", "").replace(" ", "-") for c in d["cards"]]
-                royaleapi_link = f"https://royaleapi.com/decks/stats/{','.join(api_names)}"
-                is_loss_deck    = d["wins"] == 0
-                is_current_war  = d.get("is_current_war", False)
-                deck_border     = "border: 1px solid rgba(239,68,68,0.4);" if is_loss_deck else ""
-                deck_title_color = "#f87171" if is_loss_deck else "#a78bfa"
-                war_badge       = (
-                    "<span style='background:rgba(16,185,129,0.2); color:#10b981; padding:2px 7px; border-radius:10px; font-size:0.75em; font-weight:700; margin-left:6px;'>⚔️ Aktuell</span>"
-                    if is_current_war else
-                    "<span style='background:rgba(100,116,139,0.2); color:#94a3b8; padding:2px 7px; border-radius:10px; font-size:0.75em; font-weight:700; margin-left:6px;'>📜 Historisch</span>"
-                )
-                winrate_badge = (
-                    f"<span style='background:rgba(239,68,68,0.2); color:#f87171; padding:2px 8px; border-radius:12px; font-size:0.82em; font-weight:700;'>❌ Nur Niederlagen</span>"
-                    if is_loss_deck else
-                    f"<span class='winrate'>🔥 {d['winrate']}% Win</span>"
+                is_win       = d["result"] == "win"
+                deck_border  = "" if is_win else "border: 1px solid rgba(239,68,68,0.4);"
+                title_color  = "#a78bfa" if is_win else "#f87171"
+                result_badge = (
+                    "<span style='background:rgba(16,185,129,0.2); color:#10b981; padding:2px 8px; border-radius:12px; font-size:0.82em; font-weight:700;'>✅ Sieg</span>"
+                    if is_win else
+                    "<span style='background:rgba(239,68,68,0.2); color:#f87171; padding:2px 8px; border-radius:12px; font-size:0.82em; font-weight:700;'>❌ Niederlage</span>"
                 )
                 player_cards_html += f"""
                 <div class="deck-card" style="{deck_border}">
                     <div class="archetype-badge">{d['archetype']}</div>
                     <div class="deck-header">
-                        <h3 style="margin: 0; color: {deck_title_color}; font-size: 1.1em; font-weight: 800;">Deck #{idx}{war_badge}</h3>
-                        {winrate_badge}
+                        <h3 style="margin: 0; color: {title_color}; font-size: 1.1em; font-weight: 800;">Deck #{d['slot']}</h3>
+                        {result_badge}
                     </div>
                     <div class="deck-images">{images_html}</div>
-                    <p style="font-size: 0.85em; color: #94a3b8; margin: 10px 0;">{d['wins']} Siege / {d['losses']} Niederlagen in {d['total_matches']} Kämpfen</p>
                     <div style="margin-top: auto;">
-                        <a href="{royaleapi_link}" class="copy-btn" style="background: #7c3aed; color: #fff;" target="_blank">🔗 Auf RoyaleAPI öffnen</a>
+                        <a href="{d['royaleapi_link']}" class="copy-btn" style="background: #7c3aed; color: #fff;" target="_blank">🔗 Auf RoyaleAPI öffnen</a>
                     </div>
                 </div>
                 """
             players_html += f"""
             <div style="margin-bottom: 30px; border-left: 3px solid #7c3aed; padding-left: 16px;">
-                <h4 style="color: #a78bfa; margin: 0 0 4px 0; font-size: 1.1em;">{medal} {player['player_name']} <span style="color:#64748b; font-weight:400; font-size:0.9em;">— {player['total_wins']} Siege / {player['total_matches']} Kämpfe ({player['overall_winrate']}% Win)</span></h4>
+                <h4 style="color: #a78bfa; margin: 0 0 4px 0; font-size: 1.1em;">{medal} {player['player_name']} <span style="color:#64748b; font-weight:400; font-size:0.9em;">— {player['total_wins']}W / {player['total_matches'] - player['total_wins']}L &nbsp;·&nbsp; {player['fame_per_deck']} Fame/Deck &nbsp;·&nbsp; {player['fame']} Fame gesamt</span></h4>
                 <div class="deck-slider">{player_cards_html}</div>
             </div>
             """
@@ -2911,7 +2911,7 @@ def generate_html_report(
         <div style="margin-bottom: 30px;">
             <h3 style="color: #a78bfa; margin-bottom: 8px; font-size: 1.3em;">⭐ Top 10 Kriegsspieler</h3>
             <p style="color: #94a3b8; margin-top: 0; margin-bottom: 18px; font-size: 0.95em;">
-                {'Die 10 stärksten Spieler des <b style="color:#10b981;">aktuellen Kriegs</b> — nur bereits gespielte Decks, sortiert nach Siegen.' if current_war_participants else f'Die 10 stärksten Spieler der letzten {DECK_LOOKBACK_DAYS} Tage — historische Bestdecks (kein aktiver Krieg).' }
+                Die 10 effizientesten Spieler des <b style="color:#10b981;">aktuellen Kriegstags</b> — sortiert nach Fame/Deck. Alle bereits gespielten Decks mit Ergebnis.
             </p>
             {players_html}
         </div>
@@ -3470,7 +3470,8 @@ def main():
     radar_clans = []
     race_state_de = get_river_race_status_de()
     raw_mahnwache = []
-    current_war_participants = {}  # tag → decksUsed im aktuellen Krieg
+    current_war_participants = {}  # tag → decksUsedToday
+    war_participants_list    = []  # vollständige Teilnehmer-Liste für live Top 10
 
     try:
         headers = {"Authorization": f"Bearer {API_TOKEN}", "Accept": "application/json"}
@@ -3539,14 +3540,11 @@ def main():
                 })
 
                 if is_us:
+                    war_participants_list = participants  # für live Top 10
                     for p in participants:
                         decks_today = p.get("decksUsedToday", 0)
                         if decks_today < 4:
                             raw_mahnwache.append({"name": p.get("name"), "offen": 4 - decks_today})
-                        # Nur heutige Decks speichern – Top 10 soll sich auf den aktuellen Kriegstag beziehen.
-                        # decksUsed wäre die Summe der ganzen River Race (mehrere Tage), was zu falschen
-                        # Battle-Auswahlen führen würde (z.B. Siege vom Vortag werden mitgezählt).
-                        # Tag ohne '#' speichern – player_war_decks verwendet diese Schreibweise
                         ptag = p.get("tag", "").lstrip("#")
                         if ptag and decks_today > 0:
                             current_war_participants[ptag] = decks_today
@@ -3678,7 +3676,8 @@ def main():
         player_profiles=player_profiles,
         opponent_decks=opponent_decks,
         player_war_decks=player_war_decks,
-        current_war_participants=current_war_participants
+        current_war_participants=current_war_participants,
+        war_participants_list=war_participants_list
     )
 
     impressumhtml, datenschutzhtml = build_legal_pages()
