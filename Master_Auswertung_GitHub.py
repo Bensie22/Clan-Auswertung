@@ -2092,7 +2092,7 @@ def generate_html_report(
 
         if is_urlaub:
             status_html = "🏖️ Urlaub"
-            tier = "🏖️ Im Urlaub (Pausiert)"
+            tier = "🏖️ Abgemeldet / Im Urlaub (Pausiert)"
         else:
             status_html = (
                 f"{role_de} <span class='badge-ja'>➔ BEFÖRDERN</span>"
@@ -2680,7 +2680,7 @@ def generate_html_report(
         "Solide Basis",
         "Mehr drin",
         "Ausbaufaehig",
-        "🏖️ Im Urlaub (Pausiert)"
+        "🏖️ Abgemeldet / Im Urlaub (Pausiert)"
     ]
 
     table_html = ""
