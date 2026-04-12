@@ -1899,6 +1899,7 @@ def generate_html_report(
     if urlaub_path.exists():
         with urlaub_path.open("r", encoding="utf-8") as f:
             urlauber_liste = [line.strip() for line in f if line.strip()]
+    urlauber_liste_lower = [u.lower() for u in urlauber_liste]
 
     role_map = {
         "member": "Mitglied",
@@ -1933,7 +1934,7 @@ def generate_html_report(
 
         name = row.get("player_name", "Unbekannt")
         role_de = role_map.get(raw_role, raw_role.capitalize())
-        is_urlaub = name in urlauber_liste
+        is_urlaub = name.lower() in urlauber_liste_lower
 
         wars_with_participation = int(row.get("player_contribution_count", 0) or 0)
         wars_in_history_window = int(row.get("player_participating_count", 0) or 0)
@@ -2301,7 +2302,7 @@ def generate_html_report(
     preliminary_open_decks = sum(
         m["offen"]
         for m in raw_mahnwache
-        if m["name"] not in urlauber_liste and m["name"] in aktive_namen_set
+        if m["name"].lower() not in urlauber_liste_lower and m["name"] in aktive_namen_set
     )
 
     coach_items = []
@@ -2377,7 +2378,7 @@ def generate_html_report(
         mahnwache_colors = MAHNWACHE_COLORS
         mahnwache_idx = 0
         for m in raw_mahnwache:
-            if m["name"] not in urlauber_liste and m["name"] in aktive_namen_list:
+            if m["name"].lower() not in urlauber_liste_lower and m["name"] in aktive_namen_list:
                 name_color = mahnwache_colors[mahnwache_idx % len(mahnwache_colors)]
                 gefilterte_mahnwache.append(
                     f"<span style='color:{name_color}; font-weight:800;'>{m['name']}</span> "
