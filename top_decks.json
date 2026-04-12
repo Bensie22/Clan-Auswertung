@@ -1,10 +1,10 @@
 {
     "_metadata": {
         "last_battles": {
-            "#22Q920RLR": "20260412T093642.000Z",
+            "#22Q920RLR": "20260412T103739.000Z",
             "#L8PV090J": "20260412T102159.000Z",
             "#22CQPRR0J": "20260411T222759.000Z",
-            "#2QRVR9L8": "20260412T074240.000Z",
+            "#2QRVR9L8": "20260412T104244.000Z",
             "#ULYJ2CQP": "20260412T094942.000Z",
             "#UJ2P9UYUV": "20260411T191051.000Z",
             "#P0JYR9YUY": "20260412T072326.000Z",
@@ -18,7 +18,7 @@
             "#PPR2QQC0U": "20260411T122313.000Z",
             "#QULCQGGG": "20260411T132923.000Z",
             "#JRGC9RRQG": "20260412T080736.000Z",
-            "#QVQGCV8Y9": "20260412T084234.000Z",
+            "#QVQGCV8Y9": "20260412T104442.000Z",
             "#Q8L0RJ8Y8": "20260412T083439.000Z",
             "#P2GUCG2Y": "20260412T095010.000Z",
             "#2CPRGY8G": "20260412T044410.000Z",
@@ -29,13 +29,13 @@
             "#2CJYG9UG": "20260411T171926.000Z",
             "#2PUQYJC02": "20260411T153615.000Z",
             "#YQVQYUYRV": "20260411T221100.000Z",
-            "#2V800VCQ0": "20260412T102635.000Z",
+            "#2V800VCQ0": "20260412T103836.000Z",
             "#2UQUPYQCJ": "20260411T170405.000Z",
             "#JUUR8UGL8": "20260412T095254.000Z",
             "#2U09UULRR": "20260412T050744.000Z",
             "#YJ0LUU0JJ": "20260402T171116.000Z",
             "#8QYYL8LCQ": "20260412T010537.000Z",
-            "#8P0J8P0L": "20260411T133802.000Z",
+            "#8P0J8P0L": "20260412T103940.000Z",
             "#Y882QLJQJ": "20260406T113957.000Z",
             "#CUJ9PJ2UV": "20260412T102948.000Z",
             "#2P0U2RLGY": "20260411T204036.000Z",
@@ -5017,7 +5017,7 @@
                 }
             ],
             "wins": 4,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "OneAndOnly",
                 "Bensie"
@@ -5027,6 +5027,12 @@
                 "2QRVR9L8"
             ],
             "recent_matches": [
+                {
+                    "time": "20260412T103940.000Z",
+                    "result": "loss",
+                    "player": "OneAndOnly",
+                    "tag": "8P0J8P0L"
+                },
                 {
                     "time": "20260411T133802.000Z",
                     "result": "win",
@@ -11238,6 +11244,52 @@
                     "id": 28000004,
                     "name": "Goblin Barrel",
                     "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000000-26000024-26000029-26000031-26000053-26000087-27000003-28000024": {
+            "cards": [
+                {
+                    "id": 26000024,
+                    "name": "Royal Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mnlRaNtmfpQx2e6mp70sLd0ND-pKPF70Cf87_agEKg4.png"
+                },
+                {
+                    "id": 26000087,
+                    "name": "Phoenix",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/i0RoY1fs6ay7VAxyFEfZGIPnD002nAKcne9FtJsWBHM.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000029,
+                    "name": "Lava Hound",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/unicRQ975sBY2oLtfgZbAI56ZvaWz7azj-vXTLxc0r8.png"
+                },
+                {
+                    "id": 28000024,
+                    "name": "Goblin Curse",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OQPfGgT5mHEUvPuKKt0plZT0PNtIjCqUgQ3Rm86dQ2k.png"
+                },
+                {
+                    "id": 26000031,
+                    "name": "Fire Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/16-BqusVvynIgYI8_Jci3LDC-r8AI_xaIYLgXqtlmS8.png"
+                },
+                {
+                    "id": 27000003,
+                    "name": "Inferno Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
+                },
+                {
+                    "id": 26000053,
+                    "name": "Rascals",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/KV48DfwVHKx9XCjzBdk3daT_Eb52Me4VgjVO7WctRc4.png"
                 }
             ],
             "seen": 1,
