@@ -1195,7 +1195,7 @@ def war_radar():
 
 @app.get("/war/prognose")
 def war_prognose():
-    """Sieg-Prognose für den laufenden Krieg: Vergleicht alle Clans, projiziert Endstand und gibt GPT-freundliche Einschätzung zurück. (Benötigt CR_API_KEY)"""
+    """3-Szenarien Sieg-Prognose für den laufenden Krieg (Worst/Realistisch/Best Case). (Benötigt CR_API_KEY)"""
     data = cr_api_get(f"/clans/{CLAN_TAG_ENCODED}/currentriverrace")
     if data is None:
         raise HTTPException(
@@ -1208,10 +1208,10 @@ def war_prognose():
     clans_data = data.get("clans", [])
 
     if not clans_data:
-        return {"state": state, "prognose": "Keine Clan-Daten verfügbar.", "verdict": "unbekannt"}
+        return {"state": state, "message": "Keine Clan-Daten verfügbar."}
 
     # Für jeden Clan: Daten aggregieren
-    clan_projections = []
+    clans = []
     for c in clans_data:
         is_us = c.get("tag") == CLAN_TAG_RAW
         participants = c.get("participants", [])
@@ -1221,95 +1221,110 @@ def war_prognose():
         max_decks = member_count * 4
         remaining = max(0, max_decks - decks_used)
         effizienz = round(medals / decks_used) if decks_used > 0 else None
-        clan_projections.append({
+        clans.append({
             "name": c.get("name", "Unbekannt"),
             "tag": c.get("tag"),
             "is_us": is_us,
             "medals": medals,
             "decks_used": decks_used,
+            "max_decks": max_decks,
             "remaining_decks": remaining,
             "effizienz": effizienz,
         })
 
-    # Fallback-Effizienz: Durchschnitt aller Clans die gespielt haben
-    played = [c for c in clan_projections if c["effizienz"] is not None]
+    # Fallback-Effizienz: Durchschnitt aller Clans die gespielt haben (cap 75–250)
+    played = [c for c in clans if c["effizienz"] is not None]
     fallback_eff = round(sum(c["effizienz"] for c in played) / len(played)) if played else 160
-
-    # Projektion berechnen
-    for c in clan_projections:
-        eff = c["effizienz"] if c["effizienz"] is not None else fallback_eff
-        c["effizienz"] = eff
-        c["projected_medals"] = c["medals"] + c["remaining_decks"] * eff
-
-    # Rangliste projiziert
-    clan_projections.sort(key=lambda x: x["projected_medals"], reverse=True)
-    for i, c in enumerate(clan_projections):
-        c["projected_rank"] = i + 1
+    fallback_eff = max(75, min(250, fallback_eff))
 
     # Unser Clan
-    us = next((c for c in clan_projections if c["is_us"]), None)
+    us = next((c for c in clans if c["is_us"]), None)
     if not us:
-        return {"state": state, "prognose": "Unser Clan nicht im Rennen gefunden.", "verdict": "unbekannt"}
+        return {"state": state, "message": "Unser Clan nicht im Rennen gefunden."}
 
-    our_rank = us["projected_rank"]
-    leader = clan_projections[0]
-    second = clan_projections[1] if len(clan_projections) > 1 else None
+    def project_rank(clan_list, medals_per_deck: int):
+        """Projiziert Endstand aller Clans mit einheitlicher Effizienz."""
+        results = []
+        for c in clan_list:
+            projected = c["medals"] + c["remaining_decks"] * medals_per_deck
+            results.append({"name": c["name"], "is_us": c["is_us"],
+                            "projected": int(projected), "remaining": c["remaining_decks"]})
+        results.sort(key=lambda x: x["projected"], reverse=True)
+        our_entry = next(r for r in results if r["is_us"])
+        rank = results.index(our_entry) + 1
+        return rank, int(our_entry["projected"]), results
 
-    # Prognose-Text und Verdict
-    if our_rank == 1:
-        gap_to_2nd = us["projected_medals"] - second["projected_medals"] if second else us["projected_medals"]
-        catchup = second["remaining_decks"] * second["effizienz"] if second else 0
-        if gap_to_2nd > catchup:
-            verdict = "sehr_gut"
-            prognose = (f"🟢 Sieg-Prognose: sehr gut – aktuell Platz 1 mit ~{gap_to_2nd:,} Punkten Vorsprung. "
-                        f"Selbst wenn {second['name'] if second else '?'} alle Decks spielt, reicht es nicht zum Überholen.")
-            empfehlung = "Decks vollständig spielen, um den Vorsprung zu sichern."
-        else:
-            verdict = "knapp_vorne"
-            prognose = (f"🟡 Sieg-Prognose: knapp vorne – Platz 1, aber nur ~{gap_to_2nd:,} Punkte vor "
-                        f"{second['name'] if second else '?'} (noch {second['remaining_decks'] if second else 0} Decks offen).")
-            empfehlung = "Offene Decks sofort schließen – der Vorsprung ist nicht sicher."
-    elif our_rank == 2:
-        gap = leader["projected_medals"] - us["projected_medals"]
-        if us["remaining_decks"] * us["effizienz"] >= gap:
-            verdict = "aufholbar"
-            prognose = (f"🟡 Sieg-Prognose: aufholbar – Platz 2, ~{gap:,} Punkte hinter {leader['name']}. "
-                        f"Mit {us['remaining_decks']} offenen Decks und ~{us['effizienz']} Fame/Deck ist aufholen möglich.")
-            empfehlung = "Alle Decks sofort spielen – der Rückstand ist noch aufholbar."
-        else:
-            verdict = "schwierig"
-            prognose = (f"🔴 Sieg-Prognose: schwierig – Platz 2, ~{gap:,} Punkte hinter {leader['name']}. "
-                        f"Platz 2 ist das realistische Ziel.")
-            empfehlung = "Platz 2 verteidigen und alle Decks spielen."
+    # Realistisches Szenario: individuelle Effizienz pro Clan (cap 75–250)
+    real_projections = []
+    for c in clans:
+        eff = c["effizienz"] if c["effizienz"] is not None else fallback_eff
+        eff = max(75, min(250, eff))
+        projected = int(c["medals"] + c["remaining_decks"] * eff)
+        real_projections.append({"name": c["name"], "is_us": c["is_us"],
+                                 "projected": projected, "remaining": c["remaining_decks"], "eff": eff})
+    real_projections.sort(key=lambda x: x["projected"], reverse=True)
+    our_real = next(r for r in real_projections if r["is_us"])
+    rank_real = real_projections.index(our_real) + 1
+
+    # 3 Szenarien
+    rank_worst, medals_worst, standings_worst = project_rank(clans, 100)
+    rank_best,  medals_best,  standings_best  = project_rank(clans, 200)
+    medals_real = our_real["projected"]
+    our_eff_real = our_real["eff"]
+
+    def rank_label(r):
+        return {1: "Platz 1", 2: "Platz 2", 3: "Platz 3"}.get(r, f"Platz {r}")
+
+    # Fazit-Satz
+    if rank_worst == 1:
+        fazit = "Selbst im schlechtesten Fall halten wir Platz 1. Einfach alle Decks spielen!"
+    elif rank_worst <= 2 and rank_best == 1:
+        fazit = f"Im Worst Case Platz {rank_worst}, im Best Case Platz 1. Die Qualität der Kämpfe entscheidet!"
+    elif rank_best == 1:
+        fazit = "Platz 1 ist nur möglich wenn wir deutlich besser kämpfen als die Gegner. Alle Siege zählen!"
+    elif rank_best <= 2:
+        fazit = f"Platz 1 nicht mehr erreichbar. Platz 2 ist das Ziel – alle Decks spielen!"
     else:
-        gap_to_top2 = clan_projections[1]["projected_medals"] - us["projected_medals"] if len(clan_projections) > 1 else 0
-        verdict = "gering"
-        prognose = (f"🔴 Sieg-Prognose: gering – projiziert Platz {our_rank}, "
-                    f"~{gap_to_top2:,} Punkte hinter Platz 2.")
-        empfehlung = "Alle Decks spielen für maximale Kriegspunkte und beste Trophäen-Ausbeute."
+        fazit = "Platz 1 oder 2 ist heute nicht mehr erreichbar. Alle Decks spielen für maximale Trophäen."
 
     return {
         "state": state,
         "period_type": period_type,
-        "verdict": verdict,
-        "prognose": prognose,
-        "empfehlung": empfehlung,
-        "our_projected_rank": our_rank,
         "our_medals": us["medals"],
-        "our_projected_medals": us["projected_medals"],
+        "our_decks_used": us["decks_used"],
+        "our_max_decks": us["max_decks"],
         "our_remaining_decks": us["remaining_decks"],
-        "our_effizienz": us["effizienz"],
-        "standings": [
+        "scenario_worst": {
+            "medals_per_deck": 100,
+            "our_rank": rank_worst,
+            "our_rank_label": rank_label(rank_worst),
+            "our_projected_medals": medals_worst,
+            "beschreibung": "Alle verbleibenden Decks verloren (100 Fame/Deck)",
+        },
+        "scenario_real": {
+            "our_effizienz": our_eff_real,
+            "our_rank": rank_real,
+            "our_rank_label": rank_label(rank_real),
+            "our_projected_medals": medals_real,
+            "beschreibung": f"Hochrechnung mit aktuellem Schnitt (~{our_eff_real} Fame/Deck)",
+        },
+        "scenario_best": {
+            "medals_per_deck": 200,
+            "our_rank": rank_best,
+            "our_rank_label": rank_label(rank_best),
+            "our_projected_medals": medals_best,
+            "beschreibung": "Alle verbleibenden Decks gewonnen (200 Fame/Deck)",
+        },
+        "fazit": fazit,
+        "standings_real": [
             {
-                "projected_rank": c["projected_rank"],
+                "rank": i + 1,
                 "name": c["name"],
                 "is_us": c["is_us"],
-                "medals": c["medals"],
-                "projected_medals": c["projected_medals"],
-                "remaining_decks": c["remaining_decks"],
-                "effizienz": c["effizienz"],
+                "projected_medals": c["projected"],
+                "effizienz": c["eff"],
             }
-            for c in clan_projections
+            for i, c in enumerate(real_projections)
         ],
     }
 
