@@ -876,26 +876,28 @@ def build_deck_sections(top_decks_data: dict) -> list:
 
 def build_best_player_deck_set(player_war_decks: dict, top_n: int = 10) -> list:
     """Findet die Top-N Spieler mit den meisten Kriegssiegen.
-    Zeigt ein konfliktfreies 4er-Set: beste Decks zuerst, jede Karte nur einmal im Set.
+    Zeigt primär die Decks aus dem aktuellen Krieg (letzte 5 Tage).
+    Fehlende Slots werden konfliktfrei mit historischen Bestdecks aufgefüllt.
     Ranking basiert auf Gesamtsiegen über alle gespeicherten Kämpfe."""
     from collections import defaultdict
+    from datetime import datetime, timezone, timedelta
+
+    CURRENT_WAR_DAYS = 5  # River Race dauert max. 4 Tage → 5 Tage Puffer
 
     if not player_war_decks:
         return []
 
-    player_deck_pool  = {}   # tag -> alle einzigartigen Decks (über alle Kämpfe)
-    player_all_wins   = {}
-    player_all_matches = {}
-    player_names      = {}
+    now = datetime.now(timezone.utc)
+    cutoff = now - timedelta(days=CURRENT_WAR_DAYS)
 
-    for tag, pdata in player_war_decks.items():
-        p_name = pdata.get("name", tag)
-        player_names[tag] = p_name
-        battles = pdata.get("battles", [])
-        if not battles:
-            continue
+    def parse_battle_time(time_str: str):
+        try:
+            return datetime.strptime(time_str, "%Y%m%dT%H%M%S.%fZ").replace(tzinfo=timezone.utc)
+        except Exception:
+            return None
 
-        # Alle Decks über alle Kämpfe aggregieren (nach deck_hash)
+    def battles_to_deck_pool(battles):
+        """Aggregiert eine Liste von Battles zu einem Deck-Pool (nach deck_hash)."""
         deck_stats = defaultdict(lambda: {"wins": 0, "losses": 0, "cards": []})
         for battle in battles:
             deck_hash = battle.get("deck_hash", "")
@@ -907,14 +909,13 @@ def build_best_player_deck_set(player_war_decks: dict, top_n: int = 10) -> list:
                 deck_stats[deck_hash]["losses"] += 1
             if not deck_stats[deck_hash]["cards"]:
                 deck_stats[deck_hash]["cards"] = battle.get("cards", [])
-
-        all_decks = []
+        pool = []
         for stats in deck_stats.values():
             if not stats["cards"]:
                 continue
             total   = stats["wins"] + stats["losses"]
             winrate = int(round(stats["wins"] / total * 100)) if total > 0 else 0
-            all_decks.append({
+            pool.append({
                 "cards":         stats["cards"],
                 "card_ids":      set(c["id"] for c in stats["cards"]),
                 "wins":          stats["wins"],
@@ -922,17 +923,73 @@ def build_best_player_deck_set(player_war_decks: dict, top_n: int = 10) -> list:
                 "total_matches": total,
                 "winrate":       winrate,
                 "archetype":     get_deck_archetype(stats["cards"]),
+                "is_current_war": False,  # wird unten gesetzt
             })
+        return pool
 
-        total_wins    = sum(d["wins"]          for d in all_decks)
-        total_matches = sum(d["total_matches"] for d in all_decks)
+    def greedy_set(deck_pool, max_decks=4):
+        """Baut gierig ein konfliktfreies Set: beste Decks zuerst, keine Karte doppelt."""
+        sorted_pool = sorted(
+            deck_pool,
+            key=lambda d: (d["is_current_war"], d["wins"] > 0, d["wins"], d["winrate"]),
+            reverse=True
+        )
+        used_ids = set()
+        selected = []
+        for deck in sorted_pool:
+            if len(selected) >= max_decks:
+                break
+            if deck["card_ids"].isdisjoint(used_ids):
+                selected.append(deck)
+                used_ids.update(deck["card_ids"])
+        return selected
 
-        if total_wins > 0 and all_decks:
-            player_deck_pool[tag]    = all_decks
-            player_all_wins[tag]    = total_wins
-            player_all_matches[tag] = total_matches
+    player_final_decks = {}
+    player_all_wins    = {}
+    player_all_matches = {}
+    player_names       = {}
 
-    if not player_deck_pool:
+    for tag, pdata in player_war_decks.items():
+        p_name = pdata.get("name", tag)
+        player_names[tag] = p_name
+        battles = pdata.get("battles", [])
+        if not battles:
+            continue
+
+        # Aufteilen in aktuellen Krieg und ältere Kämpfe
+        current_battles = []
+        historic_battles = []
+        for b in battles:
+            bt = parse_battle_time(b.get("time", ""))
+            if bt and bt >= cutoff:
+                current_battles.append(b)
+            else:
+                historic_battles.append(b)
+
+        current_pool  = battles_to_deck_pool(current_battles)
+        historic_pool = battles_to_deck_pool(historic_battles)
+
+        for d in current_pool:
+            d["is_current_war"] = True
+
+        # Gesamtsiege für Ranking
+        all_pool = battles_to_deck_pool(battles)
+        total_wins    = sum(d["wins"]          for d in all_pool)
+        total_matches = sum(d["total_matches"] for d in all_pool)
+
+        if total_wins == 0:
+            continue
+
+        # Aktuellen Krieg zuerst aufbauen, dann mit Historie auffüllen
+        combined_pool = current_pool + [d for d in historic_pool
+                                        if not any(d["card_ids"] == c["card_ids"] for c in current_pool)]
+        final_set = greedy_set(combined_pool, max_decks=4)
+
+        player_final_decks[tag] = final_set
+        player_all_wins[tag]    = total_wins
+        player_all_matches[tag] = total_matches
+
+    if not player_final_decks:
         return []
 
     def player_score(tag):
@@ -940,30 +997,15 @@ def build_best_player_deck_set(player_war_decks: dict, top_n: int = 10) -> list:
         matches = player_all_matches[tag]
         return (wins, wins / matches if matches > 0 else 0)
 
-    ranked_tags = sorted(player_deck_pool.keys(), key=player_score, reverse=True)[:top_n]
+    ranked_tags = sorted(player_final_decks.keys(), key=player_score, reverse=True)[:top_n]
 
     result = []
     for rank, tag in enumerate(ranked_tags, start=1):
-        # Alle Decks sortieren: Siege-Decks zuerst, dann nach Winrate
-        sorted_decks = sorted(
-            player_deck_pool[tag],
-            key=lambda d: (d["wins"] > 0, d["wins"], d["winrate"]),
-            reverse=True
-        )
-
-        # Gierig ein konfliktfreies 4er-Set zusammenstellen (keine Karte doppelt)
-        used_card_ids = set()
-        selected = []
-        for deck in sorted_decks:
-            if len(selected) >= 4:
-                break
-            if deck["card_ids"].isdisjoint(used_card_ids):
-                selected.append(deck)
-                used_card_ids.update(deck["card_ids"])
-
-        # card_ids nicht im Output mitgeben
-        clean_decks = [{k: v for k, v in d.items() if k != "card_ids"} for d in selected]
-
+        # card_ids und is_current_war aus Output entfernen
+        clean_decks = [
+            {k: v for k, v in d.items() if k not in ("card_ids",)}
+            for d in player_final_decks[tag]
+        ]
         result.append({
             "rank":            rank,
             "player_name":     player_names.get(tag, tag),
@@ -2661,9 +2703,15 @@ def generate_html_report(
                 ])
                 api_names = [c["name"].lower().replace(".", "").replace(" ", "-") for c in d["cards"]]
                 royaleapi_link = f"https://royaleapi.com/decks/stats/{','.join(api_names)}"
-                is_loss_deck = d["wins"] == 0
-                deck_border   = "border: 1px solid rgba(239,68,68,0.4);" if is_loss_deck else ""
+                is_loss_deck    = d["wins"] == 0
+                is_current_war  = d.get("is_current_war", False)
+                deck_border     = "border: 1px solid rgba(239,68,68,0.4);" if is_loss_deck else ""
                 deck_title_color = "#f87171" if is_loss_deck else "#a78bfa"
+                war_badge       = (
+                    "<span style='background:rgba(16,185,129,0.2); color:#10b981; padding:2px 7px; border-radius:10px; font-size:0.75em; font-weight:700; margin-left:6px;'>⚔️ Aktuell</span>"
+                    if is_current_war else
+                    "<span style='background:rgba(100,116,139,0.2); color:#94a3b8; padding:2px 7px; border-radius:10px; font-size:0.75em; font-weight:700; margin-left:6px;'>📜 Historisch</span>"
+                )
                 winrate_badge = (
                     f"<span style='background:rgba(239,68,68,0.2); color:#f87171; padding:2px 8px; border-radius:12px; font-size:0.82em; font-weight:700;'>❌ Nur Niederlagen</span>"
                     if is_loss_deck else
@@ -2673,7 +2721,7 @@ def generate_html_report(
                 <div class="deck-card" style="{deck_border}">
                     <div class="archetype-badge">{d['archetype']}</div>
                     <div class="deck-header">
-                        <h3 style="margin: 0; color: {deck_title_color}; font-size: 1.1em; font-weight: 800;">Deck #{idx}</h3>
+                        <h3 style="margin: 0; color: {deck_title_color}; font-size: 1.1em; font-weight: 800;">Deck #{idx}{war_badge}</h3>
                         {winrate_badge}
                     </div>
                     <div class="deck-images">{images_html}</div>
