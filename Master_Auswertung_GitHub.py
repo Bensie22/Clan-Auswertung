@@ -442,21 +442,17 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
             players_data[tag]["trophies"] = data["trophies"]
 
     # Schritt 2b: Aktuellen Krieg live integrieren (currentriverrace)
-    # Strategie: Montag dieser Woche = ID des laufenden Krieges.
-    # Falls dieser ID bereits im Warlog steht → Krieg ist fertig, Log-Daten gewinnen.
-    # Falls nicht → Krieg läuft noch, Live-Daten als neueste Spalte einbauen.
-    print("Schritt 2b: Prüfe aktuellen Krieg (currentriverrace)...")
+    # Strategie: Fester Schlüssel "zzzcurrent" – sortiert immer ganz vorne (z > Ziffern).
+    # Nur einbauen wenn ein aktiver Krieg läuft (warDay oder colosseum).
+    # Kein Datums-Kalkül → kein Konflikt mit Warlog-Einträgen möglich.
+    print("Schritt 2b: Lade Live-Daten aus aktuellem Krieg...")
     try:
-        today_utc = datetime.utcnow().date()
-        monday_this_week = today_utc - timedelta(days=today_utc.weekday())
-        current_race_id = monday_this_week.strftime("%Y%m%d")
+        cur_resp = requests.get(f"{BASE_URL}/clans/{CLAN_TAG}/currentriverrace", headers=headers, timeout=30)
+        if cur_resp.status_code == 200:
+            cur_data = cur_resp.json()
+            period_type = cur_data.get("periodType", "")
 
-        if current_race_id in race_ids:
-            print(f"✅ Aktueller Krieg ({current_race_id}) bereits im Warlog – Log-Daten gewinnen.")
-        else:
-            cur_resp = requests.get(f"{BASE_URL}/clans/{CLAN_TAG}/currentriverrace", headers=headers, timeout=30)
-            if cur_resp.status_code == 200:
-                cur_data = cur_resp.json()
+            if period_type in ("warDay", "colosseum"):
                 my_clan_live = None
                 for c in cur_data.get("clans", []):
                     if c.get("tag") == CLAN_TAG.replace("%23", "#"):
@@ -464,6 +460,7 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
                         break
 
                 if my_clan_live:
+                    current_race_id = "zzzcurrent"
                     for p in my_clan_live.get("participants", []):
                         ptag = p.get("tag")
                         pname = p.get("name")
@@ -488,11 +485,13 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
                         }
 
                     race_ids.append(current_race_id)
-                    print(f"✅ Aktueller Krieg ({current_race_id}) als Live-Spalte eingefügt.")
+                    print(f"✅ Aktiver Krieg ({period_type}) als Live-Spalte 'zzzcurrent' eingefügt.")
                 else:
                     print("ℹ️ Unser Clan nicht im aktuellen Rennen gefunden.")
             else:
-                print(f"ℹ️ currentriverrace nicht verfügbar ({cur_resp.status_code}).")
+                print(f"ℹ️ Kein aktiver Krieg (periodType={period_type}) – keine Live-Spalte.")
+        else:
+            print(f"ℹ️ currentriverrace nicht verfügbar ({cur_resp.status_code}).")
     except Exception as e:
         print(f"⚠️ Live-Kriegsdaten konnten nicht geladen werden: {e}")
 
