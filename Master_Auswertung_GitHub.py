@@ -1039,18 +1039,15 @@ def build_best_player_deck_set(
         current_pool  = battles_to_deck_pool(current_battles, is_current=True)
         historic_pool = battles_to_deck_pool(historic_battles, is_current=False)
 
-        # Gesamtsiege für Ranking (nur aktuelle Kriegskämpfe zählen)
-        total_wins    = sum(d["wins"]         for d in current_pool)
-        total_matches = sum(d["total_matches"] for d in current_pool)
-
-        # Spieler ohne Siege im aktuellen Krieg nicht in Top 10
-        if total_wins == 0 and not current_pool:
+        # Nur aktuelle Kriegsdecks anzeigen – kein historischer Füller
+        # Wenn noch nicht alle 4 gespielt: nur die gespielten zeigen
+        if not current_pool:
             continue
 
-        # Aktuellen Krieg zuerst aufbauen, dann mit Historie konfliktfrei auffüllen
-        combined_pool = current_pool + [d for d in historic_pool
-                                        if not any(d["card_ids"] == c["card_ids"] for c in current_pool)]
-        final_set = greedy_set(combined_pool, max_decks=4)
+        total_wins    = sum(d["wins"]          for d in current_pool)
+        total_matches = sum(d["total_matches"] for d in current_pool)
+
+        final_set = greedy_set(current_pool, max_decks=4)
 
         player_final_decks[tag] = final_set
         player_all_wins[tag]    = total_wins
