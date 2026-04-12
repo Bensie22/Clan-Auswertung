@@ -2311,7 +2311,7 @@ def generate_html_report(
     newbie_count = sum(1 for p in aktive_spieler if p["is_welpenschutz"])
 
     # ── Sieg-Prognose aus Radar-Daten ────────────────────────────────────────
-    if ist_kampftag and len(radar_clans) >= 2:
+    if race_state_de in ("Clankrieg", "Colosseum") and len(radar_clans) >= 2:
         us = next((c for c in radar_clans if c["is_us"]), None)
         if us:
             played = [c for c in radar_clans if c["decks_used"] > 0]
