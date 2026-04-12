@@ -3528,7 +3528,8 @@ def main():
                         if decks_today < 4:
                             raw_mahnwache.append({"name": p.get("name"), "offen": 4 - decks_today})
                         # Aktuelle Kriegsteilnehmer mit Gesamt-Decks sammeln
-                        ptag = p.get("tag")
+                        # Tag ohne '#' speichern – player_war_decks verwendet diese Schreibweise
+                        ptag = p.get("tag", "").lstrip("#")
                         decks_total = p.get("decksUsed", 0)
                         if ptag and decks_total > 0:
                             current_war_participants[ptag] = decks_total
