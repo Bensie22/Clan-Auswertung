@@ -908,7 +908,7 @@ def build_best_player_deck_set(player_war_decks: dict, top_n: int = 10) -> list:
         decks = []
         for stats in deck_stats.values():
             cards = stats["cards"]
-            if not cards or stats["wins"] == 0:
+            if not cards:
                 continue
             total = stats["wins"] + stats["losses"]
             winrate = int(round(stats["wins"] / total * 100)) if total > 0 else 0
@@ -943,7 +943,7 @@ def build_best_player_deck_set(player_war_decks: dict, top_n: int = 10) -> list:
     for rank, tag in enumerate(ranked_tags, start=1):
         decks = sorted(
             player_decks[tag],
-            key=lambda d: (d["wins"], d["winrate"]),
+            key=lambda d: (d["wins"] > 0, d["wins"], d["winrate"]),
             reverse=True
         )[:4]
         total_wins    = sum(d["wins"]          for d in decks)
@@ -2645,12 +2645,20 @@ def generate_html_report(
                 ])
                 api_names = [c["name"].lower().replace(".", "").replace(" ", "-") for c in d["cards"]]
                 royaleapi_link = f"https://royaleapi.com/decks/stats/{','.join(api_names)}"
+                is_loss_deck = d["wins"] == 0
+                deck_border   = "border: 1px solid rgba(239,68,68,0.4);" if is_loss_deck else ""
+                deck_title_color = "#f87171" if is_loss_deck else "#a78bfa"
+                winrate_badge = (
+                    f"<span style='background:rgba(239,68,68,0.2); color:#f87171; padding:2px 8px; border-radius:12px; font-size:0.82em; font-weight:700;'>❌ Nur Niederlagen</span>"
+                    if is_loss_deck else
+                    f"<span class='winrate'>🔥 {d['winrate']}% Win</span>"
+                )
                 player_cards_html += f"""
-                <div class="deck-card">
+                <div class="deck-card" style="{deck_border}">
                     <div class="archetype-badge">{d['archetype']}</div>
                     <div class="deck-header">
-                        <h3 style="margin: 0; color: #a78bfa; font-size: 1.1em; font-weight: 800;">Deck #{idx}</h3>
-                        <span class="winrate">🔥 {d['winrate']}% Win</span>
+                        <h3 style="margin: 0; color: {deck_title_color}; font-size: 1.1em; font-weight: 800;">Deck #{idx}</h3>
+                        {winrate_badge}
                     </div>
                     <div class="deck-images">{images_html}</div>
                     <p style="font-size: 0.85em; color: #94a3b8; margin: 10px 0;">{d['wins']} Siege / {d['losses']} Niederlagen in {d['total_matches']} Kämpfen</p>
