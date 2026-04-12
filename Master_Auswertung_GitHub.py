@@ -875,15 +875,18 @@ def build_deck_sections(top_decks_data: dict) -> list:
 
 
 def build_best_player_deck_set(player_war_decks: dict, top_n: int = 10) -> list:
-    """Findet die Top-N Spieler mit den meisten Kriegssiegen aus player_war_decks.json."""
+    """Findet die Top-N Spieler mit den meisten Kriegssiegen.
+    Zeigt den besten einzelnen Kriegstag als kopierbares Deck-Set (kein Kartenkonflikt möglich).
+    Ranking basiert auf Gesamtsiegen über alle gespeicherten Tage."""
     from collections import defaultdict
 
     if not player_war_decks:
         return []
 
-    # Für jeden Spieler: Decks (nach deck_hash) mit Siegen/Niederlagen aggregieren
-    player_decks = {}   # tag -> list of deck dicts
-    player_names = {}
+    player_best_day  = {}   # tag -> bester Kriegstag als Deck-Liste
+    player_all_wins  = {}   # tag -> Gesamtsiege (für Ranking)
+    player_all_matches = {} # tag -> Gesamtkämpfe (für Ranking)
+    player_names     = {}
 
     for tag, pdata in player_war_decks.items():
         p_name = pdata.get("name", tag)
@@ -892,70 +895,90 @@ def build_best_player_deck_set(player_war_decks: dict, top_n: int = 10) -> list:
         if not battles:
             continue
 
-        deck_stats = defaultdict(lambda: {"wins": 0, "losses": 0, "cards": []})
+        # Battles nach Kriegstag (YYYYMMDD) gruppieren
+        days = defaultdict(list)
         for battle in battles:
-            deck_hash = battle.get("deck_hash", "")
-            if not deck_hash:
-                continue
-            result = battle.get("result", "")
-            if result == "win":
-                deck_stats[deck_hash]["wins"] += 1
-            else:
-                deck_stats[deck_hash]["losses"] += 1
-            if not deck_stats[deck_hash]["cards"]:
-                deck_stats[deck_hash]["cards"] = battle.get("cards", [])
+            time_str = battle.get("time", "")
+            day_key  = time_str[:8] if len(time_str) >= 8 else "unknown"
+            days[day_key].append(battle)
 
-        decks = []
-        for stats in deck_stats.values():
-            cards = stats["cards"]
-            if not cards:
-                continue
-            total = stats["wins"] + stats["losses"]
-            winrate = int(round(stats["wins"] / total * 100)) if total > 0 else 0
-            decks.append({
-                "cards":         cards,
-                "wins":          stats["wins"],
-                "losses":        stats["losses"],
-                "total_matches": total,
-                "winrate":       winrate,
-                "archetype":     get_deck_archetype(cards),
-            })
-        if decks:
-            player_decks[tag] = decks
+        # Pro Tag: einzigartige Decks (nach deck_hash) aggregieren
+        day_summaries = []
+        for day_key, day_battles in days.items():
+            deck_stats = defaultdict(lambda: {"wins": 0, "losses": 0, "cards": []})
+            for battle in day_battles:
+                deck_hash = battle.get("deck_hash", "")
+                if not deck_hash:
+                    continue
+                if battle.get("result") == "win":
+                    deck_stats[deck_hash]["wins"] += 1
+                else:
+                    deck_stats[deck_hash]["losses"] += 1
+                if not deck_stats[deck_hash]["cards"]:
+                    deck_stats[deck_hash]["cards"] = battle.get("cards", [])
 
-    if not player_decks:
+            day_decks = []
+            for stats in deck_stats.values():
+                if not stats["cards"]:
+                    continue
+                total   = stats["wins"] + stats["losses"]
+                winrate = int(round(stats["wins"] / total * 100)) if total > 0 else 0
+                day_decks.append({
+                    "cards":         stats["cards"],
+                    "wins":          stats["wins"],
+                    "losses":        stats["losses"],
+                    "total_matches": total,
+                    "winrate":       winrate,
+                    "archetype":     get_deck_archetype(stats["cards"]),
+                })
+
+            if day_decks:
+                day_wins = sum(d["wins"] for d in day_decks)
+                day_summaries.append((day_wins, day_key, day_decks))
+
+        if not day_summaries:
+            continue
+
+        # Bester Tag = meiste Siege; bei Gleichstand neuester Tag
+        day_summaries.sort(key=lambda x: (x[0], x[1]), reverse=True)
+        best_wins, _, best_decks = day_summaries[0]
+
+        # Gesamtsiege/-kämpfe über ALLE Tage für Ranking
+        total_wins    = sum(x[0] for x in day_summaries)
+        total_matches = sum(sum(d["total_matches"] for d in x[2]) for x in day_summaries)
+
+        if total_wins > 0:
+            player_best_day[tag]    = best_decks
+            player_all_wins[tag]    = total_wins
+            player_all_matches[tag] = total_matches
+
+    if not player_best_day:
         return []
 
     def player_score(tag):
-        decks = player_decks[tag]
-        total_wins    = sum(d["wins"]          for d in decks)
-        total_matches = sum(d["total_matches"] for d in decks)
-        overall_wr    = total_wins / total_matches if total_matches > 0 else 0
-        return (total_wins, overall_wr)
+        wins    = player_all_wins[tag]
+        matches = player_all_matches[tag]
+        wr      = wins / matches if matches > 0 else 0
+        return (wins, wr)
 
-    ranked_tags = sorted(
-        [t for t in player_decks if player_score(t)[0] > 0],
-        key=player_score,
-        reverse=True
-    )[:top_n]
+    ranked_tags = sorted(player_best_day.keys(), key=player_score, reverse=True)[:top_n]
 
     result = []
     for rank, tag in enumerate(ranked_tags, start=1):
+        # Bester-Tag-Decks: Siege-Decks zuerst, Verlust-Decks am Ende
         decks = sorted(
-            player_decks[tag],
+            player_best_day[tag],
             key=lambda d: (d["wins"] > 0, d["wins"], d["winrate"]),
             reverse=True
         )[:4]
-        total_wins    = sum(d["wins"]          for d in decks)
-        total_matches = sum(d["total_matches"] for d in decks)
-        overall_wr    = int(round(total_wins / total_matches * 100)) if total_matches > 0 else 0
         result.append({
-            "rank":           rank,
-            "player_name":    player_names.get(tag, tag),
-            "total_wins":     total_wins,
-            "total_matches":  total_matches,
-            "overall_winrate": overall_wr,
-            "decks":          decks,
+            "rank":            rank,
+            "player_name":     player_names.get(tag, tag),
+            "total_wins":      player_all_wins[tag],
+            "total_matches":   player_all_matches[tag],
+            "overall_winrate": int(round(player_all_wins[tag] / player_all_matches[tag] * 100))
+                               if player_all_matches[tag] > 0 else 0,
+            "decks":           decks,
         })
 
     return result
