@@ -2502,9 +2502,13 @@ def generate_html_report(
             row_real  = f"🟡 Realistisch <i>(aktueller Schnitt ~{our_real['eff']}/Deck)</i>: <b>{rank_badge(rank_real_val)}</b> — ~{medals_real:,} Punkte"
             row_best  = f"🟢 Best Case <i>(alle Decks gewonnen, 200/Deck)</i>: <b>{rank_badge(rank_best)}</b> — ~{medals_best:,} Punkte"
 
-            # Fazit-Satz
-            if rank_worst == 1:
+            # Fazit-Satz – alle 3 Ränge berücksichtigen
+            if rank_worst == 1 and rank_real == 1 and rank_best == 1:
                 fazit = "Selbst im schlechtesten Fall halten wir <b>Platz 1</b>. Einfach alle Decks spielen!"
+            elif rank_worst == 1 and rank_real == 1 and rank_best >= 2:
+                fazit = f"Realistisch <b>Platz 1</b>, im Best Case aber <b>Platz {rank_best}</b> – Gegner haben mehr offene Decks. Qualität zählt!"
+            elif rank_worst == 1 and rank_real >= 2:
+                fazit = f"Im Worst Case <b>Platz 1</b>, realistisch aber <b>Platz {rank_real}</b>. Mehr Siege bringen uns nach vorne!"
             elif rank_worst <= 2 and rank_best == 1:
                 fazit = f"Im Worst Case <b>Platz {rank_worst}</b>, im Best Case <b>Platz 1</b>. Qualität der Kämpfe entscheidet!"
             elif rank_best == 1:
