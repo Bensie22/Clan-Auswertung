@@ -709,75 +709,89 @@ def update_top_decks(current_members: dict, top_decks_data: dict, player_war_dec
 
             b_type = battle.get("type", "")
 
-            if "riverRace" in b_type and "team" in battle:
-                team = battle["team"][0]
-                opponent = battle["opponent"][0]
-                cards = team.get("cards", [])
+            if "riverRace" in b_type:
+                raw_tag = tag.replace("#", "")
 
-                if len(cards) == 8:
-                    crowns_t = team.get("crowns", 0)
-                    crowns_o = opponent.get("crowns", 0)
+                # Einzel-Kämpfe sammeln: entweder direkt (team) oder aus Duell-Runden (rounds)
+                round_list = []
 
-                    is_win = crowns_t > crowns_o
-                    is_loss = crowns_o > crowns_t
+                if "team" in battle:
+                    # Standard-Battle oder Triple Elixir etc.: direkt auswerten
+                    round_list.append((battle["team"][0], battle["opponent"][0]))
 
-                    if is_win or is_loss:
-                        deck_ids = sorted([str(c["id"]) for c in cards])
-                        deck_hash = "-".join(deck_ids)
-                        raw_tag = tag.replace("#", "")
+                elif "rounds" in battle:
+                    # Duell-Battle: jede Runde einzeln auswerten (Bo3)
+                    for rnd in battle.get("rounds", []):
+                        if "team" in rnd and "opponent" in rnd:
+                            round_list.append((rnd["team"][0], rnd["opponent"][0]))
 
-                        if deck_hash not in decks:
-                            decks[deck_hash] = {
-                                "cards": [
-                                    {
-                                        "id": c["id"],
-                                        "name": c["name"],
-                                        "icon": c.get("iconUrls", {}).get("medium", "")
-                                    } for c in cards
-                                ],
-                                "wins": 0,
-                                "losses": 0,
-                                "players": [],
-                                "tags": [],
-                                "recent_matches": []
-                            }
+                for team, opponent in round_list:
+                    cards = team.get("cards", [])
 
-                        match_result = "win" if is_win else "loss"
-                        existing_matches = decks[deck_hash].setdefault("recent_matches", [])
-                        match_key = f"{b_time}|{raw_tag}|{match_result}"
-                        if not any(
-                            f"{m.get('time', '')}|{m.get('tag', '')}|{m.get('result', '')}" == match_key
-                            for m in existing_matches
-                        ):
-                            existing_matches.append({
-                                "time": b_time,
-                                "result": match_result,
-                                "player": p_name,
-                                "tag": raw_tag
-                            })
+                    if len(cards) == 8:
+                        crowns_t = team.get("crowns", 0)
+                        crowns_o = opponent.get("crowns", 0)
 
-                        # Spieler-spezifisches Deck-Tracking
-                        if raw_tag not in player_war_decks:
-                            player_war_decks[raw_tag] = {"name": p_name, "battles": []}
-                        player_war_decks[raw_tag]["name"] = p_name
-                        pw_battles = player_war_decks[raw_tag]["battles"]
-                        pw_key = f"{b_time}|{deck_hash}|{match_result}"
-                        if not any(
-                            f"{b.get('time', '')}|{b.get('deck_hash', '')}|{b.get('result', '')}" == pw_key
-                            for b in pw_battles
-                        ):
-                            pw_battles.append({
-                                "time":      b_time,
-                                "result":    match_result,
-                                "deck_hash": deck_hash,
-                                "cards": [
-                                    {
-                                        "id":   c["id"],
-                                        "name": c["name"],
-                                        "icon": c.get("iconUrls", {}).get("medium", "")
-                                    } for c in cards
-                                ]
-                            })
+                        is_win = crowns_t > crowns_o
+                        is_loss = crowns_o > crowns_t
+
+                        if is_win or is_loss:
+                            deck_ids = sorted([str(c["id"]) for c in cards])
+                            deck_hash = "-".join(deck_ids)
+
+                            if deck_hash not in decks:
+                                decks[deck_hash] = {
+                                    "cards": [
+                                        {
+                                            "id": c["id"],
+                                            "name": c["name"],
+                                            "icon": c.get("iconUrls", {}).get("medium", "")
+                                        } for c in cards
+                                    ],
+                                    "wins": 0,
+                                    "losses": 0,
+                                    "players": [],
+                                    "tags": [],
+                                    "recent_matches": []
+                                }
+
+                            match_result = "win" if is_win else "loss"
+                            existing_matches = decks[deck_hash].setdefault("recent_matches", [])
+                            match_key = f"{b_time}|{raw_tag}|{match_result}"
+                            if not any(
+                                f"{m.get('time', '')}|{m.get('tag', '')}|{m.get('result', '')}" == match_key
+                                for m in existing_matches
+                            ):
+                                existing_matches.append({
+                                    "time": b_time,
+                                    "result": match_result,
+                                    "player": p_name,
+                                    "tag": raw_tag
+                                })
+
+                            # Spieler-spezifisches Deck-Tracking (inkl. Battle-Typ)
+                            if raw_tag not in player_war_decks:
+                                player_war_decks[raw_tag] = {"name": p_name, "battles": []}
+                            player_war_decks[raw_tag]["name"] = p_name
+                            pw_battles = player_war_decks[raw_tag]["battles"]
+                            pw_key = f"{b_time}|{deck_hash}|{match_result}"
+                            if not any(
+                                f"{b.get('time', '')}|{b.get('deck_hash', '')}|{b.get('result', '')}" == pw_key
+                                for b in pw_battles
+                            ):
+                                pw_battles.append({
+                                    "time":      b_time,
+                                    "result":    match_result,
+                                    "type":      b_type,
+                                    "deck_hash": deck_hash,
+                                    "cards": [
+                                        {
+                                            "id":   c["id"],
+                                            "name": c["name"],
+                                            "icon": c.get("iconUrls", {}).get("medium", "")
+                                        } for c in cards
+                                    ]
+                                })
 
                         # Gegner-Deck-Tracking (vollständige Decks)
                         opp_cards = opponent.get("cards", [])
