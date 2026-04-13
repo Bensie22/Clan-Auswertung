@@ -11,6 +11,7 @@ import traceback
 import html
 import copy
 from datetime import datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 from typing import List, Tuple
 from pathlib import Path
 import pandas as pd
@@ -910,12 +911,20 @@ def is_beginner_friendly_deck(cards: list) -> bool:
 
 def build_deck_sections(top_decks_data: dict) -> list:
     decks = []
-    for deck_data in top_decks_data.get("decks", {}).values():
+    seen_card_names: set = set()
+    for deck_hash, deck_data in top_decks_data.get("decks", {}).items():
         total_matches = deck_data.get("wins", 0) + deck_data.get("losses", 0)
         if total_matches <= 0:
             continue
 
+        # Deduplication by card names (handles evolved card variants with different IDs)
+        card_key = frozenset(c["name"] for c in deck_data.get("cards", []))
+        if card_key in seen_card_names:
+            continue
+        seen_card_names.add(card_key)
+
         deck_copy = dict(deck_data)
+        deck_copy["_hash"] = deck_hash
         deck_copy["total_matches"] = total_matches
         deck_copy["winrate"] = int(round(get_deck_winrate(deck_data) * 100))
         deck_copy["archetype"] = get_deck_archetype(deck_data.get("cards", []))
@@ -927,13 +936,15 @@ def build_deck_sections(top_decks_data: dict) -> list:
         key=lambda d: (d["winrate"], d["total_matches"], d["wins"]),
         reverse=True
     )[:10]
+    meta_hashes = {d["_hash"] for d in meta_decks}
 
     solid_decks = sorted(
         [d for d in decks if d["total_matches"] >= DECK_SOLID_MIN_MATCHES and d["winrate"] >= 55],
         key=lambda d: (d["total_matches"], d["winrate"], d["wins"]),
         reverse=True
     )
-    solid_decks = [d for d in solid_decks if d not in meta_decks][:10]
+    solid_decks = [d for d in solid_decks if d["_hash"] not in meta_hashes][:10]
+    solid_hashes = {d["_hash"] for d in solid_decks}
 
     beginner_decks = sorted(
         [
@@ -945,7 +956,7 @@ def build_deck_sections(top_decks_data: dict) -> list:
         key=lambda d: (d["winrate"], d["total_matches"], d["wins"]),
         reverse=True
     )
-    beginner_decks = [d for d in beginner_decks if d not in meta_decks and d not in solid_decks][:10]
+    beginner_decks = [d for d in beginner_decks if d["_hash"] not in meta_hashes and d["_hash"] not in solid_hashes][:10]
 
     return [
         {
@@ -1407,9 +1418,9 @@ def render_html_template(
         <div class="container">
             <div class="header-container">
                 <h1 class="header-title"><span onclick="toggleChat()" style="cursor: pointer;" title="Chat-Hilfe ein-/ausblenden">📊</span> Clan-Auswertung: {clan_name} <br>
-                <span class="header-date">{heute_datum}</span>
+                <span class="header-date">Stand: {heute_datum}</span>
                 <span class="header-mobile-tip">📱 Tipp: Für die beste Übersicht am Handy bitte quer halten 🔄</span>
-                <span class="header-mobile-tip" style="margin-top: 2px;">🔄 Diese Seite wird an Kriegstagen automatisch alle 30 Minuten aktualisiert</span></h1>
+                <span class="header-mobile-tip" style="margin-top: 2px;">🔄 An Kriegstagen wird alle 10 Minuten eine neue Version erstellt – zum Anzeigen der neuesten Daten bitte die Seite manuell neu laden (F5).</span></h1>
             </div>
 
             <div class="tab-container">
@@ -3105,7 +3116,7 @@ def generate_html_report(
         </div>
         """
 
-    anzeige_stand = datetime.now().strftime("%d.%m.%Y, %H:%M Uhr")
+    anzeige_stand = datetime.now(ZoneInfo("Europe/Berlin")).strftime("%d.%m.%Y, %H:%M Uhr")
 
     html = render_html_template(
         clan_name=CLAN_NAME,
