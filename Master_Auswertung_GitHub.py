@@ -1411,12 +1411,10 @@ def render_html_template(
             @media (orientation: landscape) and (max-width: 1024px) {{
                 body {{ background-attachment: scroll; }}
                 .container {{ max-width: 100%; padding: 12px 14px; }}
-                .tier-section {{ overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }}
-                .tier-section::-webkit-scrollbar {{ display: none; }}
-                table:not(.radar-table) {{ table-layout: auto; min-width: 680px; font-size: 0.82em; }}
+                table:not(.radar-table) {{ table-layout: auto; font-size: 0.82em; }}
                 th:not(.radar-table th):not(.wiki-table th) {{
                     position: sticky;
-                    top: 0;
+                    top: 78px;
                     white-space: nowrap;
                     padding: 8px 5px;
                     font-size: 0.8em;
