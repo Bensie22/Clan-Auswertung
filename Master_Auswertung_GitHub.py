@@ -1412,7 +1412,7 @@ def render_html_template(
                 body {{ background-attachment: scroll; }}
                 .container {{ max-width: 100%; padding: 12px 14px; }}
                 table:not(.radar-table) {{ table-layout: auto; font-size: 0.82em; }}
-                th:not(.radar-table th):not(.wiki-table th) {{
+                table:not(.radar-table):not(.wiki-table) th {{
                     position: sticky;
                     top: 78px;
                     white-space: nowrap;
