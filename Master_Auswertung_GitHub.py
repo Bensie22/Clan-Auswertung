@@ -1340,65 +1340,30 @@ def render_html_template(
                 .container {{ max-width: 100%; padding: 12px; }}
                 .header-container {{ padding: 28px 16px; }}
                 .header-title {{ font-size: 1.6em; }}
-                .tier-title {{ position: static; font-size: 1.15em; padding: 12px 0 10px 0; }}
-                table:not(.radar-table), .wiki-table {{
-                    width: 100%;
+                .tier-title {{ font-size: 1.1em; padding: 12px 0 10px 0; }}
+                /* Detail-Auswertung: scrollbare Tabelle mit fixiertem Header */
+                .tier-section {{ overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }}
+                .tier-section::-webkit-scrollbar {{ display: none; }}
+                table:not(.radar-table):not(.wiki-table) {{
                     table-layout: auto;
-                    border: none;
-                    background: transparent;
+                    min-width: 620px;
+                    font-size: 0.76em;
                     margin-bottom: 18px;
                 }}
-                table:not(.radar-table) th, .wiki-table th {{ display: none; }}
-                table:not(.radar-table) tbody, table:not(.radar-table) tr, table:not(.radar-table) td,
-                .wiki-table tbody, .wiki-table tr, .wiki-table td {{
-                    display: block;
-                    width: 100%;
+                th:not(.radar-table th):not(.wiki-table th) {{
+                    display: table-cell;
+                    position: sticky;
+                    top: 0;
+                    white-space: nowrap;
+                    padding: 8px 4px;
+                    font-size: 0.75em;
                 }}
-                table:not(.radar-table) tr, .wiki-table tr {{
-                    background: rgba(15, 23, 42, 0.92) !important;
-                    border: 1px solid rgba(255,255,255,0.08);
-                    border-radius: 14px;
-                    margin-bottom: 14px;
-                    padding: 10px 12px;
-                    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
-                }}
-                table:not(.radar-table) td, .wiki-table td {{
-                    border: none;
-                    padding: 8px 0;
-                    display: grid;
-                    grid-template-columns: 110px 1fr;
-                    gap: 12px;
-                    align-items: center;
-                    text-align: left !important;
-                    font-size: 0.98em;
-                }}
-                table:not(.radar-table) td::before, .wiki-table td::before {{
-                    color: #94a3b8;
-                    font-weight: 700;
-                    font-size: 0.86em;
-                    text-transform: none;
-                }}
-                table:not(.radar-table) td:nth-child(1)::before, .wiki-table td:nth-child(1)::before {{ content: "Spieler"; }}
-                table:not(.radar-table) td:nth-child(2)::before, .wiki-table td:nth-child(2)::before {{ content: "Check"; }}
-                table:not(.radar-table) td:nth-child(3)::before, .wiki-table td:nth-child(3)::before {{ content: "Status"; }}
-                table:not(.radar-table) td:nth-child(4)::before, .wiki-table td:nth-child(4)::before {{ content: "Dabei"; }}
-                table:not(.radar-table) td:nth-child(5)::before, .wiki-table td:nth-child(5)::before {{ content: "Deck-Nutzung"; }}
-                table:not(.radar-table) td:nth-child(6)::before, .wiki-table td:nth-child(6)::before {{ content: "Ø Fame/Deck"; }}
-                table:not(.radar-table) td:nth-child(7)::before, .wiki-table td:nth-child(7)::before {{ content: "Fame gesamt"; }}
-                table:not(.radar-table) td:nth-child(8)::before, .wiki-table td:nth-child(8)::before {{ content: "Trend"; }}
-                table:not(.radar-table) td:nth-child(9)::before, .wiki-table td:nth-child(9)::before {{ content: "Spenden"; }}
-                .wiki-table td {{ font-size: 0.92em; }}
-                .name-col {{ font-size: 1.05em; }}
-                .focus-pill {{ min-width: 0; width: fit-content; }}
-                .trend-cell {{ font-size: 18px !important; }}
-                .custom-tooltip .tooltip-text {{ max-width: 220px; width: max-content; white-space: normal; }}
-                table:not(.radar-table) td:nth-child(7), .wiki-table td:nth-child(7),
-                table:not(.radar-table) td:nth-child(9), .wiki-table td:nth-child(9) {{ white-space: nowrap; }}
-                table:not(.radar-table) td:nth-child(7) > *, .wiki-table td:nth-child(7) > *,
-                table:not(.radar-table) td:nth-child(9) > *, .wiki-table td:nth-child(9) > * {{ white-space: nowrap; }}
-                table:not(.radar-table) td:nth-child(9) .custom-tooltip.dotted,
-                .wiki-table td:nth-child(9) .custom-tooltip.dotted {{ border-bottom: none !important; }}
-                .spenden-cell .custom-tooltip.dotted {{ border-bottom: none; }}
+                td:not(.radar-table td):not(.wiki-table td) {{ padding: 7px 4px; }}
+                .focus-pill {{ min-width: 68px; font-size: 0.7em; padding: 3px 6px; }}
+                .name-col {{ font-size: 0.9em; }}
+                .trend-cell {{ font-size: 14px !important; }}
+                .custom-tooltip .tooltip-text {{ max-width: 200px; white-space: normal; }}
+                /* Radar-Tabelle bleibt unverändert */
                 .radar-table {{ width: 100%; table-layout: auto !important; font-size: 0.78em !important; }}
                 .radar-table colgroup {{ display: none; }}
                 .radar-table th {{ display: table-cell; position: static; box-shadow: none; font-size: 0.78em; padding: 6px 3px; }}
