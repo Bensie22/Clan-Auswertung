@@ -2353,106 +2353,178 @@ def generate_html_report(
     low_score_count = sum(1 for p in aktive_spieler if p["score"] < APP_CONFIG["TIER_SOLIDE"])
     newbie_count = sum(1 for p in aktive_spieler if p["is_welpenschutz"])
 
-    # ── Sieg-Prognose aus Radar-Daten ────────────────────────────────────────
-    if race_state_de in ("Clankrieg", "Colosseum") and len(radar_clans) >= 2:
-        us = next((c for c in radar_clans if c["is_us"]), None)
-        if us:
-            # Effizienz: heutige Medals (Delta) bevorzugen, sonst Gesamtschnitt
-            def get_eff(c):
-                mh = c.get("medals_heute")
-                if mh is not None and c["decks_used"] > 0:
-                    return round(mh / c["decks_used"])
-                if c["decks_used"] > 0:
-                    return round(c["medals"] / c["decks_used"])
-                return None
+    # ── Trainingstag: motivierende Coach-Ecke ────────────────────────────────
+    if race_state_de == "Trainingstag":
+        training_items = []
 
-            played = [c for c in radar_clans if c["decks_used"] > 0]
-            eff_values = [get_eff(c) for c in played if get_eff(c) is not None]
-            fallback_eff = round(sum(eff_values) / len(eff_values)) if eff_values else 160
-            fallback_eff = max(75, min(250, fallback_eff))
-
-            def project_rank_asymmetric(clans, our_eff: int):
-                """WIR spielen mit our_eff, Gegner mit ihrem eigenen aktuellen Schnitt."""
-                results = []
-                for c in clans:
-                    remaining = max(0, c["max_decks"] - c["decks_used"])
-                    if c["is_us"]:
-                        eff = max(75, min(250, our_eff))
-                    else:
-                        eff = get_eff(c) or fallback_eff
-                        eff = max(75, min(250, eff))
-                    projected = c["medals"] + remaining * eff
-                    results.append({"name": c["name"], "is_us": c["is_us"],
-                                    "projected": int(projected), "remaining": remaining, "eff": eff})
-                results.sort(key=lambda x: x["projected"], reverse=True)
-                our_entry = next(r for r in results if r["is_us"])
-                rank = results.index(our_entry) + 1
-                return rank, int(our_entry["projected"])
-
-            # Realistisches Szenario: jeder Clan auf seinem eigenen Schnitt
-            real_projections = []
-            for c in radar_clans:
-                eff = get_eff(c) or fallback_eff
-                eff = max(75, min(250, eff))
-                remaining = max(0, c["max_decks"] - c["decks_used"])
-                real_projections.append({"name": c["name"], "is_us": c["is_us"],
-                                         "projected": int(c["medals"] + remaining * eff),
-                                         "remaining": remaining, "eff": eff})
-            real_projections.sort(key=lambda x: x["projected"], reverse=True)
-            our_real = next(r for r in real_projections if r["is_us"])
-            rank_real = real_projections.index(our_real) + 1
-
-            # 3 asymmetrische Szenarien: WIR variieren, Gegner bleiben bei ihrem Schnitt
-            rank_worst, medals_worst = project_rank_asymmetric(radar_clans, 75)   # wir schlecht
-            rank_best,  medals_best  = project_rank_asymmetric(radar_clans, 200)  # wir gut
-            medals_real = our_real["projected"]
-
-            # Szenarien-Zeilen
-            def rank_badge(r):
-                return {1: "🥇 Platz 1", 2: "🥈 Platz 2", 3: "🥉 Platz 3"}.get(r, f"Platz {r}")
-
-            row_worst = f"🔴 Worst Case <i>(wir 75/Deck, Gegner ihr Schnitt)</i>: <b>{rank_badge(rank_worst)}</b> — ~{medals_worst:,} Punkte"
-            row_real  = f"🟡 Realistisch <i>(alle auf aktuellem Schnitt, wir ~{our_real['eff']}/Deck)</i>: <b>{rank_badge(rank_real)}</b> — ~{medals_real:,} Punkte"
-            row_best  = f"🟢 Best Case <i>(wir 200/Deck, Gegner ihr Schnitt)</i>: <b>{rank_badge(rank_best)}</b> — ~{medals_best:,} Punkte"
-
-            # Fazit-Satz
-            if rank_worst == 1:
-                fazit = "Selbst wenn wir alle Decks verlieren, halten wir <b>Platz 1</b>. Einfach alle Decks spielen!"
-            elif rank_best == 1 and rank_worst <= 2:
-                fazit = f"Zwischen <b>Platz {rank_worst}</b> und <b>Platz 1</b> – unsere Kampfqualität entscheidet!"
-            elif rank_best == 1:
-                fazit = "Platz 1 ist möglich – aber nur wenn wir deutlich besser kämpfen als aktuell. Alle Siege zählen!"
-            elif rank_real == 1 and rank_worst >= 2:
-                fazit = f"Realistisch <b>Platz 1</b>, aber bei schlechten Kämpfen droht <b>Platz {rank_worst}</b>. Qualität halten!"
-            elif rank_best <= 2:
-                fazit = f"<b>Platz {rank_best}</b> ist das beste erreichbare Ergebnis heute. Alle Decks spielen!"
-            else:
-                fazit = "Platz 1 oder 2 ist heute nicht mehr erreichbar. Alle Decks spielen für maximale Trophäen."
-
-            prognose_item = (
-                f"<li><b>📊 Sieg-Prognose – 3 Szenarien</b> ({us['decks_used']}/{us['max_decks']} Decks gespielt heute):"
-                f"<ul style='margin: 6px 0 4px 0; padding-left: 18px; font-size: 0.95em;'>"
-                f"<li>{row_worst}</li>"
-                f"<li>{row_real}</li>"
-                f"<li>{row_best}</li>"
-                f"</ul>"
-                f"<span style='color:#94a3b8; font-size:0.9em;'>→ {fazit}</span></li>"
+        # Clan-Gesamtstärke
+        if clan_avg >= APP_CONFIG["CLAN_RELIABLE_GREEN"]:
+            training_items.append(
+                f"<li><b>💪 Starke Clan-Performance!</b> Unser Clan-Durchschnitt liegt bei <b>{clan_avg}%</b> — das ist ein richtig solides Fundament. Weiter so!</li>"
+            )
+        elif clan_avg >= APP_CONFIG["CLAN_RELIABLE_YELLOW"]:
+            training_items.append(
+                f"<li><b>📈 Auf gutem Kurs!</b> Clan-Schnitt: <b>{clan_avg}%</b>. Noch ein Schritt und wir sind auf Top-Niveau — der nächste Krieg ist unsere Chance.</li>"
+            )
+        else:
+            training_items.append(
+                f"<li><b>🔥 Jetzt angreifen!</b> Clan-Schnitt liegt bei <b>{clan_avg}%</b>. Der Trainingstag ist die perfekte Zeit, neue Decks zu testen und sich für den nächsten Krieg bereit zu machen.</li>"
             )
 
-            coach_items.append(prognose_item)
+        # Aufsteiger shoutout
+        aufsteiger = sorted(
+            [p for p in aktive_spieler if p["delta"] > 0],
+            key=lambda x: x["delta"], reverse=True
+        )[:3]
+        if aufsteiger:
+            names_str = ", ".join(
+                f"<b>{p['name']}</b> <span style='color:#10b981;'>+{p['delta']}%</span>"
+                for p in aufsteiger
+            )
+            training_items.append(
+                f"<li><b>🚀 Shoutout an unsere Aufsteiger!</b> {names_str} — diese Spieler haben sich zuletzt besonders verbessert. Top!</li>"
+            )
 
-    if preliminary_open_decks > 0:
-        coach_items.append(f"<li><b>Offene Decks zuerst dicht machen:</b> Heute sind noch <b>{preliminary_open_decks}</b> Decks offen. Konstanz bringt uns im Moment am schnellsten nach vorne.</li>")
-    if low_quality_count > 0:
-        coach_items.append(f"<li><b>Kämpfe sauber ausspielen:</b> Bei <b>{low_quality_count}</b> Spielern liegt der Ø-Wert unter {APP_CONFIG['DROPPER_THRESHOLD']}. Lieber normale Kämpfe als Bootsangriffe verschwenden.</li>")
-    if teamplay_details["leecher"] > 0 or teamplay_details["sleeper"] > 0:
-        coach_items.append(f"<li><b>Mehr Teamplay hilft sofort:</b> Aktuell haben wir <b>{teamplay_details['leecher']}</b> Spieler mit auffaelligem Spendenverhalten und <b>{teamplay_details['sleeper']}</b> spendeninaktive Spieler. Ein paar Spenden mehr machen den Clan direkt runder.</li>")
-    if newbie_count > 0 or low_score_count > 0:
-        coach_items.append("<li><b>Sauber statt kompliziert:</b> Auch mit Erfahrung bringen im Krieg oft klar aufgebaute, verlaesslich spielbare Decks mehr Konstanz als sehr spezielle Listen. Erst sauber ausspielen, dann experimentieren.</li>")
+        # Streak-Highlights (3+ grüne Kriege)
+        streak_players = sorted(
+            [p for p in aktive_spieler if p.get("streak_badge") and not p["is_welpenschutz"]],
+            key=lambda x: x["score"], reverse=True
+        )[:3]
+        if streak_players:
+            names_str = ", ".join(f"<b>{p['name']}</b>" for p in streak_players)
+            training_items.append(
+                f"<li><b>🔥 Konstanz zahlt sich aus!</b> {names_str} liefern Krieg für Krieg ab — genau das trägt den Clan nach vorne.</li>"
+            )
 
-    coach_html = ""
-    if coach_items:
-        coach_html = "<div class='info-box' style='border-left-color: #10b981;'><h3 style='margin-top:0; color:#10b981;'>🧠 Coach-Ecke</h3><p style='margin-top:0;'>Hinweise und Prognose für den aktuellen Stand:</p><ul style='margin-bottom:0;'>" + "".join(coach_items[:6]) + "</ul></div>"
+        # Spieler kurz vor Tier-Aufstieg
+        kurz_vor_aufstieg = sorted(
+            [p for p in aktive_spieler
+             if not p["is_welpenschutz"] and not p["is_urlaub"]
+             and p["score"] < APP_CONFIG["TIER_SOLIDE"]
+             and p["score"] >= APP_CONFIG["TIER_SOLIDE"] - 8],
+            key=lambda x: x["score"], reverse=True
+        )
+        if kurz_vor_aufstieg:
+            names_str = ", ".join(
+                f"<b>{p['name']}</b> ({p['score']}%)"
+                for p in kurz_vor_aufstieg[:3]
+            )
+            grenze = APP_CONFIG["TIER_SOLIDE"]
+            training_items.append(
+                f"<li><b>⚡ Fast da!</b> {names_str} stehen kurz vor dem Sprung in die <i>Solide Basis</i> (ab {grenze}%). Noch ein guter Krieg reicht!</li>"
+            )
+
+        # Neulinge willkommen
+        neulinge = [p for p in aktive_spieler if p["is_welpenschutz"]]
+        if neulinge:
+            namen = ", ".join(f"<b>{p['name']}</b>" for p in neulinge[:4])
+            training_items.append(
+                f"<li><b>👋 Willkommen im Team!</b> {namen} — schön, euch dabei zu haben. Einfach Decks spielen, ausprobieren, Spaß haben. Der Rest kommt von alleine.</li>"
+            )
+
+        # Allgemeiner Motivations-Abschluss
+        training_items.append(
+            "<li><b>🎯 Trainingstag-Tipp:</b> Jetzt ist der beste Moment, neue Deck-Ideen auszuprobieren — ohne Druck, ohne Konsequenzen. Wer den nächsten Krieg stark starten will, nutzt diese Zeit zum Testen.</li>"
+        )
+
+        coach_html = (
+            "<div class='info-box' style='border-left-color: #a78bfa;'>"
+            "<h3 style='margin-top:0; color:#a78bfa;'>🧠 Coach-Ecke</h3>"
+            "<p style='margin-top:0;'>Trainingstag — Zeit zum Durchatmen, Ausprobieren und Vorbereiten:</p>"
+            "<ul style='margin-bottom:0;'>" + "".join(training_items[:6]) + "</ul>"
+            "</div>"
+        )
+    else:
+        # ── Sieg-Prognose aus Radar-Daten ─────────────────────────────────────
+        if race_state_de in ("Clankrieg", "Colosseum") and len(radar_clans) >= 2:
+            us = next((c for c in radar_clans if c["is_us"]), None)
+            if us:
+                def get_eff(c):
+                    mh = c.get("medals_heute")
+                    if mh is not None and c["decks_used"] > 0:
+                        return round(mh / c["decks_used"])
+                    if c["decks_used"] > 0:
+                        return round(c["medals"] / c["decks_used"])
+                    return None
+
+                played = [c for c in radar_clans if c["decks_used"] > 0]
+                eff_values = [get_eff(c) for c in played if get_eff(c) is not None]
+                fallback_eff = round(sum(eff_values) / len(eff_values)) if eff_values else 160
+                fallback_eff = max(75, min(250, fallback_eff))
+
+                def project_rank_asymmetric(clans, our_eff: int):
+                    results = []
+                    for c in clans:
+                        remaining = max(0, c["max_decks"] - c["decks_used"])
+                        if c["is_us"]:
+                            eff = max(75, min(250, our_eff))
+                        else:
+                            eff = get_eff(c) or fallback_eff
+                            eff = max(75, min(250, eff))
+                        projected = c["medals"] + remaining * eff
+                        results.append({"name": c["name"], "is_us": c["is_us"],
+                                        "projected": int(projected), "remaining": remaining, "eff": eff})
+                    results.sort(key=lambda x: x["projected"], reverse=True)
+                    our_entry = next(r for r in results if r["is_us"])
+                    rank = results.index(our_entry) + 1
+                    return rank, int(our_entry["projected"])
+
+                real_projections = []
+                for c in radar_clans:
+                    eff = get_eff(c) or fallback_eff
+                    eff = max(75, min(250, eff))
+                    remaining = max(0, c["max_decks"] - c["decks_used"])
+                    real_projections.append({"name": c["name"], "is_us": c["is_us"],
+                                             "projected": int(c["medals"] + remaining * eff),
+                                             "remaining": remaining, "eff": eff})
+                real_projections.sort(key=lambda x: x["projected"], reverse=True)
+                our_real = next(r for r in real_projections if r["is_us"])
+                rank_real = real_projections.index(our_real) + 1
+
+                rank_worst, medals_worst = project_rank_asymmetric(radar_clans, 75)
+                rank_best,  medals_best  = project_rank_asymmetric(radar_clans, 200)
+                medals_real = our_real["projected"]
+
+                def rank_badge(r):
+                    return {1: "🥇 Platz 1", 2: "🥈 Platz 2", 3: "🥉 Platz 3"}.get(r, f"Platz {r}")
+
+                row_worst = f"🔴 Worst Case <i>(wir 75/Deck, Gegner ihr Schnitt)</i>: <b>{rank_badge(rank_worst)}</b> — ~{medals_worst:,} Punkte"
+                row_real  = f"🟡 Realistisch <i>(alle auf aktuellem Schnitt, wir ~{our_real['eff']}/Deck)</i>: <b>{rank_badge(rank_real)}</b> — ~{medals_real:,} Punkte"
+                row_best  = f"🟢 Best Case <i>(wir 200/Deck, Gegner ihr Schnitt)</i>: <b>{rank_badge(rank_best)}</b> — ~{medals_best:,} Punkte"
+
+                if rank_worst == 1:
+                    fazit = "Selbst wenn wir alle Decks verlieren, halten wir <b>Platz 1</b>. Einfach alle Decks spielen!"
+                elif rank_best == 1 and rank_worst <= 2:
+                    fazit = f"Zwischen <b>Platz {rank_worst}</b> und <b>Platz 1</b> – unsere Kampfqualität entscheidet!"
+                elif rank_best == 1:
+                    fazit = "Platz 1 ist möglich – aber nur wenn wir deutlich besser kämpfen als aktuell. Alle Siege zählen!"
+                elif rank_real == 1 and rank_worst >= 2:
+                    fazit = f"Realistisch <b>Platz 1</b>, aber bei schlechten Kämpfen droht <b>Platz {rank_worst}</b>. Qualität halten!"
+                elif rank_best <= 2:
+                    fazit = f"<b>Platz {rank_best}</b> ist das beste erreichbare Ergebnis heute. Alle Decks spielen!"
+                else:
+                    fazit = "Platz 1 oder 2 ist heute nicht mehr erreichbar. Alle Decks spielen für maximale Trophäen."
+
+                prognose_item = (
+                    f"<li><b>📊 Sieg-Prognose – 3 Szenarien</b> ({us['decks_used']}/{us['max_decks']} Decks gespielt heute):"
+                    f"<ul style='margin: 6px 0 4px 0; padding-left: 18px; font-size: 0.95em;'>"
+                    f"<li>{row_worst}</li><li>{row_real}</li><li>{row_best}</li>"
+                    f"</ul><span style='color:#94a3b8; font-size:0.9em;'>→ {fazit}</span></li>"
+                )
+                coach_items.append(prognose_item)
+
+        if preliminary_open_decks > 0:
+            coach_items.append(f"<li><b>Offene Decks zuerst dicht machen:</b> Heute sind noch <b>{preliminary_open_decks}</b> Decks offen. Konstanz bringt uns im Moment am schnellsten nach vorne.</li>")
+        if low_quality_count > 0:
+            coach_items.append(f"<li><b>Kämpfe sauber ausspielen:</b> Bei <b>{low_quality_count}</b> Spielern liegt der Ø-Wert unter {APP_CONFIG['DROPPER_THRESHOLD']}. Lieber normale Kämpfe als Bootsangriffe verschwenden.</li>")
+        if teamplay_details["leecher"] > 0 or teamplay_details["sleeper"] > 0:
+            coach_items.append(f"<li><b>Mehr Teamplay hilft sofort:</b> Aktuell haben wir <b>{teamplay_details['leecher']}</b> Spieler mit auffaelligem Spendenverhalten und <b>{teamplay_details['sleeper']}</b> spendeninaktive Spieler. Ein paar Spenden mehr machen den Clan direkt runder.</li>")
+        if newbie_count > 0 or low_score_count > 0:
+            coach_items.append("<li><b>Sauber statt kompliziert:</b> Auch mit Erfahrung bringen im Krieg oft klar aufgebaute, verlaesslich spielbare Decks mehr Konstanz als sehr spezielle Listen. Erst sauber ausspielen, dann experimentieren.</li>")
+
+        coach_html = ""
+        if coach_items:
+            coach_html = "<div class='info-box' style='border-left-color: #10b981;'><h3 style='margin-top:0; color:#10b981;'>🧠 Coach-Ecke</h3><p style='margin-top:0;'>Hinweise und Prognose für den aktuellen Stand:</p><ul style='margin-bottom:0;'>" + "".join(coach_items[:6]) + "</ul></div>"
 
     kandidaten_demote = strikes_data.get("demoted_this_week", [])
     kandidaten_kick = strikes_data.get("kicked_this_week", [])
