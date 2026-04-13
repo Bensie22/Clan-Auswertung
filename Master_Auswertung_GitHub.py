@@ -926,14 +926,14 @@ def build_deck_sections(top_decks_data: dict) -> list:
         [d for d in decks if d["total_matches"] >= DECK_META_MIN_MATCHES],
         key=lambda d: (d["winrate"], d["total_matches"], d["wins"]),
         reverse=True
-    )[:4]
+    )[:10]
 
     solid_decks = sorted(
         [d for d in decks if d["total_matches"] >= DECK_SOLID_MIN_MATCHES and d["winrate"] >= 55],
         key=lambda d: (d["total_matches"], d["winrate"], d["wins"]),
         reverse=True
     )
-    solid_decks = [d for d in solid_decks if d not in meta_decks][:4]
+    solid_decks = [d for d in solid_decks if d not in meta_decks][:10]
 
     beginner_decks = sorted(
         [
@@ -945,7 +945,7 @@ def build_deck_sections(top_decks_data: dict) -> list:
         key=lambda d: (d["winrate"], d["total_matches"], d["wins"]),
         reverse=True
     )
-    beginner_decks = [d for d in beginner_decks if d not in meta_decks and d not in solid_decks][:4]
+    beginner_decks = [d for d in beginner_decks if d not in meta_decks and d not in solid_decks][:10]
 
     return [
         {
