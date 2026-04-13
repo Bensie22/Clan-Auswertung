@@ -1274,7 +1274,6 @@ def render_html_template(
 
             .tier-section {{ position: relative; }}
             .tier-title {{ margin: 0; padding: 15px 0 10px 0; font-weight: 800; font-size: 1.4em; color: #fbbf24; border-bottom: 2px solid rgba(255,255,255,0.1); }}
-            .table-scroll {{ overflow-x: auto; overflow-y: clip; -webkit-overflow-scrolling: touch; }}
             table {{ width: 100%; table-layout: fixed; border-collapse: collapse; background: rgba(15, 23, 42, 0.9); border-radius: 8px; margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.1); }}
             th:nth-child(1) {{ width: 18%; }}
             th:nth-child(2) {{ width: 12%; text-align: center; }}
@@ -1412,10 +1411,12 @@ def render_html_template(
             @media (orientation: landscape) and (max-width: 1024px) {{
                 body {{ background-attachment: scroll; }}
                 .container {{ max-width: 100%; padding: 12px 14px; }}
-                .table-scroll {{ overflow-x: auto; overflow-y: clip; }}
-                table:not(.radar-table) {{ table-layout: auto; font-size: 0.82em; }}
+                .tier-section {{ overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }}
+                .tier-section::-webkit-scrollbar {{ display: none; }}
+                table:not(.radar-table) {{ table-layout: auto; min-width: 680px; font-size: 0.82em; }}
                 th:not(.radar-table th):not(.wiki-table th) {{
-                    top: 75px;
+                    position: sticky;
+                    top: 0;
                     white-space: nowrap;
                     padding: 8px 5px;
                     font-size: 0.8em;
@@ -2895,7 +2896,7 @@ def generate_html_report(
         if players_in_tier:
             table_html += "<div class='tier-section'>"
             table_html += f"<div class='tier-title'>{t}</div>"
-            table_html += """<div class='table-scroll'><table>
+            table_html += """<table>
                 <thead>
                 <tr>
                     <th>Spieler</th>
@@ -2997,7 +2998,7 @@ def generate_html_report(
                     f"</tr>"
                 )
 
-            table_html += "</tbody></table></div></div>"
+            table_html += "</tbody></table></div>"
 
     keys_to_delete = []
     for s_name in strikes.keys():
