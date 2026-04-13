@@ -2061,22 +2061,17 @@ def generate_html_report(
             ["🟢" if s >= APP_CONFIG["TIER_SOLIDE"] else "🟡" if s >= APP_CONFIG["STRIKE_THRESHOLD"] else "🔴" for s in trend_scores[-6:]]
         )
 
-        # Streak-Logik: X Auswertungen in Folge im grünen Bereich (>= TIER_SOLIDE)
-        streak_count = 0
-        for s in reversed(trend_scores):
-            if s >= APP_CONFIG["TIER_SOLIDE"]:
-                streak_count += 1
-            else:
-                break
-
-        if streak_count > wars_with_participation:
-            streak_count = wars_with_participation
-
+        # Streak-Logik: alle Decks in allen Kriegen seit Clan-Beitritt gespielt
+        # Bedingung: kein Krieg verpasst UND immer alle 16 Decks gespielt, mind. 3 Kriege
         streak_badge = ""
-        if streak_count >= 3:
+        if (
+            wars_with_participation >= 3
+            and wars_with_participation == wars_in_history_window
+            and decks_total == wars_with_participation * 16
+        ):
             streak_badge = (
-                f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥 {streak_count}"
-                f"<span class='tooltip-text'>{streak_count} Auswertungen in Folge im grünen Bereich!</span></span>"
+                f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥 {wars_with_participation}"
+                f"<span class='tooltip-text'>{wars_with_participation}x alle Decks gespielt – ohne Ausnahme!</span></span>"
             )
 
         # Verwarnungen nur bei mehr als MIN_PARTICIPATION und nicht im Urlaub
