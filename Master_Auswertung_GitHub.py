@@ -2318,6 +2318,8 @@ def generate_html_report(
     """
 
     summary_lines = []
+
+    # 1. Zuverlässigkeit
     if clan_avg >= APP_CONFIG["CLAN_RELIABLE_GREEN"]:
         summary_lines.append("Der Clan spielt seine Decks sehr zuverlässig aus.")
     elif clan_avg >= APP_CONFIG["CLAN_RELIABLE_YELLOW"]:
@@ -2325,19 +2327,83 @@ def generate_html_report(
     else:
         summary_lines.append("Beim Ausspielen der Decks verlieren wir aktuell zu viel Boden.")
 
+    # 2. Kampfqualität + Trend
     if clan_avg_points_per_deck >= APP_CONFIG["BADGE_STARK_FAME"]:
-        summary_lines.append("Die Kampfqualität ist stark – der Clan gewinnt deutlich mehr als er verliert.")
+        quality_text = "Die Kampfqualität ist stark – der Clan gewinnt deutlich mehr als er verliert."
     elif clan_avg_points_per_deck >= APP_CONFIG["BADGE_STABIL_FAME"]:
-        summary_lines.append("Die Kampfqualität ist solide, hat aber noch Luft nach oben.")
+        quality_text = "Die Kampfqualität ist solide, hat aber noch Luft nach oben."
     else:
-        summary_lines.append("Die Kämpfe bringen aktuell zu wenig Ertrag pro Deck – mehr normale Kämpfe und Duelle helfen.")
+        quality_text = "Die Kämpfe bringen aktuell zu wenig Ertrag pro Deck – mehr normale Kämpfe und Duelle helfen."
+    if quality_delta is not None and quality_delta > 0:
+        quality_text += f" <span style='color:#10b981;'>▲ +{quality_delta} zur Vorwoche.</span>"
+    elif quality_delta is not None and quality_delta < 0:
+        quality_text += f" <span style='color:#ef4444;'>▼ {quality_delta} zur Vorwoche.</span>"
+    summary_lines.append(quality_text)
 
+    # 3. Teamplay
     if teamplay_state == "kritisch":
         summary_lines.append("Beim Spenden und Unterstützen im Clan ist gerade noch Luft nach oben.")
     elif teamplay_state == "okay":
         summary_lines.append("Beim Teamplay ist schon was da, aber noch nicht jeder zieht mit.")
     else:
         summary_lines.append("Auch beim Teamplay wirkt der Clan im Moment sehr geschlossen.")
+
+    # 4. Tier-Verteilung
+    wf_gruen = sum(1 for p in aktive_spieler if p["score"] >= APP_CONFIG["TIER_SOLIDE"])
+    wf_gelb  = sum(1 for p in aktive_spieler if APP_CONFIG["STRIKE_THRESHOLD"] <= p["score"] < APP_CONFIG["TIER_SOLIDE"])
+    wf_rot   = sum(1 for p in aktive_spieler if p["score"] < APP_CONFIG["STRIKE_THRESHOLD"])
+    summary_lines.append(f"📊 Tier-Verteilung: 🟢 {wf_gruen} stark &nbsp; 🟡 {wf_gelb} solide &nbsp; 🔴 {wf_rot} auffällig.")
+
+    # 5. Deutschland-Ranking
+    if clan_overview:
+        current_rank = clan_overview.get("local_rank")
+        if current_rank:
+            prev_rank = records.get("clan_war_rank", {}).get("rank")
+            if prev_rank and prev_rank > 0:
+                rank_delta = prev_rank - current_rank  # positiv = aufgestiegen
+                if rank_delta > 0:
+                    summary_lines.append(f"🏅 Deutschland-Ranking: <b>Platz #{current_rank}</b> — <span style='color:#10b981;'>↑ {rank_delta} Plätze besser als letzte Woche!</span>")
+                elif rank_delta < 0:
+                    summary_lines.append(f"🏅 Deutschland-Ranking: <b>Platz #{current_rank}</b> — <span style='color:#ef4444;'>↓ {abs(rank_delta)} Plätze schlechter als letzte Woche.</span>")
+                else:
+                    summary_lines.append(f"🏅 Deutschland-Ranking: <b>Platz #{current_rank}</b> — unverändert zur Vorwoche.")
+            else:
+                summary_lines.append(f"🏅 Deutschland-Ranking: <b>Platz #{current_rank}</b>")
+
+    # 6. Aufsteiger (top 3 mit delta > 0)
+    if top_aufsteiger_list:
+        names_str = ", ".join(f"<b>{p['name']}</b> <span style='color:#10b981;'>(+{p['delta']}%)</span>" for p in top_aufsteiger_list)
+        summary_lines.append(f"🚀 Stärkste Verbesserung: {names_str}")
+
+    # 6. Absteiger (top 3 mit delta < 0, keine Neulinge)
+    top_absteiger_list = sorted(
+        [p for p in aktive_spieler if p["delta"] < 0 and not p["is_welpenschutz"]],
+        key=lambda x: x["delta"]
+    )[:3]
+    if top_absteiger_list:
+        names_str = ", ".join(f"<b>{p['name']}</b> <span style='color:#ef4444;'>({p['delta']}%)</span>" for p in top_absteiger_list)
+        summary_lines.append(f"⚠️ Stärkster Rückgang: {names_str}")
+
+    # 7+8. Nur an Kampftagen (nicht Trainingstag, da dort bereits in Coach-Ecke)
+    if race_state_de in ("Clankrieg", "Colosseum"):
+        streak_players = sorted(
+            [p for p in aktive_spieler if p.get("streak_badge") and not p["is_welpenschutz"]],
+            key=lambda x: x["score"], reverse=True
+        )[:3]
+        if streak_players:
+            names_str = ", ".join(f"<b>{p['name']}</b>" for p in streak_players)
+            summary_lines.append(f"🔥 Konstant stark: {names_str}")
+
+        kurz_vor_aufstieg = sorted(
+            [p for p in aktive_spieler
+             if not p["is_welpenschutz"] and not p["is_urlaub"]
+             and p["score"] < APP_CONFIG["TIER_SOLIDE"]
+             and p["score"] >= APP_CONFIG["TIER_SOLIDE"] - 8],
+            key=lambda x: x["score"], reverse=True
+        )
+        if kurz_vor_aufstieg:
+            names_str = ", ".join(f"<b>{p['name']}</b> ({p['score']}%)" for p in kurz_vor_aufstieg)
+            summary_lines.append(f"⚡ Fast im grünen Bereich: {names_str} – noch ein paar Kämpfe!")
 
     weekly_summary_html = "<div class='info-box' style='border-left-color: #fbbf24;'><h3 style='margin-top:0; color:#fbbf24;'>🧭 Wochenfazit</h3><ul style='margin:0;'>" + "".join([f"<li>{line}</li>" for line in summary_lines]) + "</ul></div>"
 
