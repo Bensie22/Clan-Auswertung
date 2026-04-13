@@ -2061,10 +2061,10 @@ def generate_html_report(
             ["🟢" if s >= APP_CONFIG["TIER_SOLIDE"] else "🟡" if s >= APP_CONFIG["STRIKE_THRESHOLD"] else "🔴" for s in trend_scores[-6:]]
         )
 
-        # Streak-Logik
+        # Streak-Logik: X Auswertungen in Folge im grünen Bereich (>= TIER_SOLIDE)
         streak_count = 0
         for s in reversed(trend_scores):
-            if s >= 100.0:
+            if s >= APP_CONFIG["TIER_SOLIDE"]:
                 streak_count += 1
             else:
                 break
@@ -2076,7 +2076,7 @@ def generate_html_report(
         if streak_count >= 3:
             streak_badge = (
                 f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥 {streak_count}"
-                f"<span class='tooltip-text'>{streak_count} Auswertungen in Folge 100% Score!</span></span>"
+                f"<span class='tooltip-text'>{streak_count} Auswertungen in Folge im grünen Bereich!</span></span>"
             )
 
         # Verwarnungen nur bei mehr als MIN_PARTICIPATION und nicht im Urlaub
