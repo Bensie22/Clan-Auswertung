@@ -131,30 +131,65 @@
                 .container { max-width: 100%; padding: 12px; }
                 .header-container { padding: 28px 16px; }
                 .header-title { font-size: 1.6em; }
-                .tier-title { font-size: 1.1em; padding: 12px 0 10px 0; }
-                /* Detail-Auswertung: scrollbare Tabelle mit fixiertem Header */
-                .tier-section { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
-                .tier-section::-webkit-scrollbar { display: none; }
-                table:not(.radar-table):not(.wiki-table) {
+                .tier-title { position: static; font-size: 1.15em; padding: 12px 0 10px 0; }
+                table:not(.radar-table), .wiki-table {
+                    width: 100%;
                     table-layout: auto;
-                    min-width: 620px;
-                    font-size: 0.76em;
+                    border: none;
+                    background: transparent;
                     margin-bottom: 18px;
                 }
-                th:not(.radar-table th):not(.wiki-table th) {
-                    display: table-cell;
-                    position: sticky;
-                    top: 0;
-                    white-space: nowrap;
-                    padding: 8px 4px;
-                    font-size: 0.75em;
+                table:not(.radar-table) th, .wiki-table th { display: none; }
+                table:not(.radar-table) tbody, table:not(.radar-table) tr, table:not(.radar-table) td,
+                .wiki-table tbody, .wiki-table tr, .wiki-table td {
+                    display: block;
+                    width: 100%;
                 }
-                td:not(.radar-table td):not(.wiki-table td) { padding: 7px 4px; }
-                .focus-pill { min-width: 68px; font-size: 0.7em; padding: 3px 6px; }
-                .name-col { font-size: 0.9em; }
-                .trend-cell { font-size: 14px !important; }
-                .custom-tooltip .tooltip-text { max-width: 200px; white-space: normal; }
-                /* Radar-Tabelle bleibt unverändert */
+                table:not(.radar-table) tr, .wiki-table tr {
+                    background: rgba(15, 23, 42, 0.92) !important;
+                    border: 1px solid rgba(255,255,255,0.08);
+                    border-radius: 14px;
+                    margin-bottom: 14px;
+                    padding: 10px 12px;
+                    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+                }
+                table:not(.radar-table) td, .wiki-table td {
+                    border: none;
+                    padding: 8px 0;
+                    display: grid;
+                    grid-template-columns: 110px 1fr;
+                    gap: 12px;
+                    align-items: center;
+                    text-align: left !important;
+                    font-size: 0.98em;
+                }
+                table:not(.radar-table) td::before, .wiki-table td::before {
+                    color: #94a3b8;
+                    font-weight: 700;
+                    font-size: 0.86em;
+                    text-transform: none;
+                }
+                table:not(.radar-table) td:nth-child(1)::before, .wiki-table td:nth-child(1)::before { content: "Spieler"; }
+                table:not(.radar-table) td:nth-child(2)::before, .wiki-table td:nth-child(2)::before { content: "Check"; }
+                table:not(.radar-table) td:nth-child(3)::before, .wiki-table td:nth-child(3)::before { content: "Status"; }
+                table:not(.radar-table) td:nth-child(4)::before, .wiki-table td:nth-child(4)::before { content: "Dabei"; }
+                table:not(.radar-table) td:nth-child(5)::before, .wiki-table td:nth-child(5)::before { content: "Deck-Nutzung"; }
+                table:not(.radar-table) td:nth-child(6)::before, .wiki-table td:nth-child(6)::before { content: "Ø Fame/Deck"; }
+                table:not(.radar-table) td:nth-child(7)::before, .wiki-table td:nth-child(7)::before { content: "Fame gesamt"; }
+                table:not(.radar-table) td:nth-child(8)::before, .wiki-table td:nth-child(8)::before { content: "Trend"; }
+                table:not(.radar-table) td:nth-child(9)::before, .wiki-table td:nth-child(9)::before { content: "Spenden"; }
+                .wiki-table td { font-size: 0.92em; }
+                .name-col { font-size: 1.05em; }
+                .focus-pill { min-width: 0; width: fit-content; }
+                .trend-cell { font-size: 18px !important; }
+                .custom-tooltip .tooltip-text { max-width: 220px; width: max-content; white-space: normal; }
+                table:not(.radar-table) td:nth-child(7), .wiki-table td:nth-child(7),
+                table:not(.radar-table) td:nth-child(9), .wiki-table td:nth-child(9) { white-space: nowrap; }
+                table:not(.radar-table) td:nth-child(7) > *, .wiki-table td:nth-child(7) > *,
+                table:not(.radar-table) td:nth-child(9) > *, .wiki-table td:nth-child(9) > * { white-space: nowrap; }
+                table:not(.radar-table) td:nth-child(9) .custom-tooltip.dotted,
+                .wiki-table td:nth-child(9) .custom-tooltip.dotted { border-bottom: none !important; }
+                .spenden-cell .custom-tooltip.dotted { border-bottom: none; }
                 .radar-table { width: 100%; table-layout: auto !important; font-size: 0.78em !important; }
                 .radar-table colgroup { display: none; }
                 .radar-table th { display: table-cell; position: static; box-shadow: none; font-size: 0.78em; padding: 6px 3px; }
@@ -188,7 +223,7 @@
         <div class="container">
             <div class="header-container">
                 <h1 class="header-title"><span onclick="toggleChat()" style="cursor: pointer;" title="Chat-Hilfe ein-/ausblenden">📊</span> Clan-Auswertung: HAMBURG <br>
-                <span class="header-date">Stand: 13.04.2026, 23:21 Uhr</span>
+                <span class="header-date">Stand: 13.04.2026, 23:29 Uhr</span>
                 <span class="header-mobile-tip">📱 Tipp: Für die beste Übersicht am Handy bitte quer halten 🔄</span>
                 <span class="header-mobile-tip" style="margin-top: 2px;">🔄 An Kriegstagen wird alle 10 Minuten eine neue Version erstellt – zum Anzeigen der neuesten Daten bitte die Seite manuell neu laden (F5).</span></h1>
             </div>
@@ -210,7 +245,7 @@
 
                 
 
-                <div class='info-box' style='border-left-color: #f43f5e; background: rgba(159, 18, 57, 0.15); margin-bottom: 25px;'><h3 style='margin-top: 0; color: #f43f5e; margin-bottom: 12px; font-size: 1.2em;'>📡 Live Kriegs-Radar <span style='font-size:0.8em; opacity:0.8; font-weight:normal;'>(Status: Trainingstag)</span></h3><div style='overflow-x: auto;'><table class='radar-table' style='width: 100%; border-collapse: collapse; font-size: 0.95em; table-layout: fixed;'><colgroup><col style='width:30%'><col style='width:14%'><col style='width:18%'><col style='width:18%'><col style='width:20%'></colgroup><tr style='border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; font-weight: 600; text-align: left;'><td style='padding-bottom: 8px; border: none; text-align: left;'>Clan</td><td style='padding-bottom: 8px; border: none; text-align: center;'>⛵ Boot</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🥇 Medaille</td><td style='padding-bottom: 8px; border: none; text-align: center;'>⚡ Effizienz</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🏆 Trophäe</td></tr><tr style='background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.02);'><td style='padding: 10px 5px;'>"Atacabros"2<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 31 / 196 Decks</span></td><td style='text-align: center; font-weight: bold; color: #f8fafc;'>0</td><td style='text-align: center; font-weight: bold; color: #fbbf24;'>0</td><td style='text-align: center; font-weight: bold; color: #22d3ee;'>0</td><td style='text-align: center; font-weight: bold; color: #c084fc;'>3371</td></tr><tr style='background: transparent; border-bottom: 1px solid rgba(255,255,255,0.02);'><td style='padding: 10px 5px;'>Br god<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 31 / 188 Decks</span></td><td style='text-align: center; font-weight: bold; color: #f8fafc;'>0</td><td style='text-align: center; font-weight: bold; color: #fbbf24;'>0</td><td style='text-align: center; font-weight: bold; color: #22d3ee;'>0</td><td style='text-align: center; font-weight: bold; color: #c084fc;'>3365</td></tr><tr style='background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.02);'><td style='padding: 10px 5px;'>Amatorzy Wojny<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 14 / 200 Decks</span></td><td style='text-align: center; font-weight: bold; color: #f8fafc;'>0</td><td style='text-align: center; font-weight: bold; color: #fbbf24;'>0</td><td style='text-align: center; font-weight: bold; color: #22d3ee;'>0</td><td style='text-align: center; font-weight: bold; color: #c084fc;'>3340</td></tr><tr style='background: transparent; border-bottom: 1px solid rgba(255,255,255,0.02);'><td style='padding: 10px 5px;'>El Salvador 503<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 22 / 176 Decks</span></td><td style='text-align: center; font-weight: bold; color: #f8fafc;'>0</td><td style='text-align: center; font-weight: bold; color: #fbbf24;'>0</td><td style='text-align: center; font-weight: bold; color: #22d3ee;'>0</td><td style='text-align: center; font-weight: bold; color: #c084fc;'>3330</td></tr><tr style='background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.02);'><td style='padding: 10px 5px;'><b style='color:#fff;'>Hamburg (WIR)</b><br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 31 / 188 Decks</span></td><td style='text-align: center; font-weight: bold; color: #f8fafc;'>0</td><td style='text-align: center; font-weight: bold; color: #fbbf24;'>0</td><td style='text-align: center; font-weight: bold; color: #22d3ee;'>0</td><td style='text-align: center; font-weight: bold; color: #c084fc;'>3327</td></tr></table></div></div>
+                <div class='info-box' style='border-left-color: #f43f5e; background: rgba(159, 18, 57, 0.15); margin-bottom: 25px;'><h3 style='margin-top: 0; color: #f43f5e; margin-bottom: 12px; font-size: 1.2em;'>📡 Live Kriegs-Radar <span style='font-size:0.8em; opacity:0.8; font-weight:normal;'>(Status: Trainingstag)</span></h3><div style='overflow-x: auto;'><table class='radar-table' style='width: 100%; border-collapse: collapse; font-size: 0.95em; table-layout: fixed;'><colgroup><col style='width:30%'><col style='width:14%'><col style='width:18%'><col style='width:18%'><col style='width:20%'></colgroup><tr style='border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; font-weight: 600; text-align: left;'><td style='padding-bottom: 8px; border: none; text-align: left;'>Clan</td><td style='padding-bottom: 8px; border: none; text-align: center;'>⛵ Boot</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🥇 Medaille</td><td style='padding-bottom: 8px; border: none; text-align: center;'>⚡ Effizienz</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🏆 Trophäe</td></tr><tr style='background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.02);'><td style='padding: 10px 5px;'>"Atacabros"2<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 35 / 196 Decks</span></td><td style='text-align: center; font-weight: bold; color: #f8fafc;'>0</td><td style='text-align: center; font-weight: bold; color: #fbbf24;'>0</td><td style='text-align: center; font-weight: bold; color: #22d3ee;'>0</td><td style='text-align: center; font-weight: bold; color: #c084fc;'>3371</td></tr><tr style='background: transparent; border-bottom: 1px solid rgba(255,255,255,0.02);'><td style='padding: 10px 5px;'>Br god<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 31 / 188 Decks</span></td><td style='text-align: center; font-weight: bold; color: #f8fafc;'>0</td><td style='text-align: center; font-weight: bold; color: #fbbf24;'>0</td><td style='text-align: center; font-weight: bold; color: #22d3ee;'>0</td><td style='text-align: center; font-weight: bold; color: #c084fc;'>3365</td></tr><tr style='background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.02);'><td style='padding: 10px 5px;'>Amatorzy Wojny<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 14 / 200 Decks</span></td><td style='text-align: center; font-weight: bold; color: #f8fafc;'>0</td><td style='text-align: center; font-weight: bold; color: #fbbf24;'>0</td><td style='text-align: center; font-weight: bold; color: #22d3ee;'>0</td><td style='text-align: center; font-weight: bold; color: #c084fc;'>3340</td></tr><tr style='background: transparent; border-bottom: 1px solid rgba(255,255,255,0.02);'><td style='padding: 10px 5px;'>El Salvador 503<br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 23 / 176 Decks</span></td><td style='text-align: center; font-weight: bold; color: #f8fafc;'>0</td><td style='text-align: center; font-weight: bold; color: #fbbf24;'>0</td><td style='text-align: center; font-weight: bold; color: #22d3ee;'>0</td><td style='text-align: center; font-weight: bold; color: #c084fc;'>3330</td></tr><tr style='background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.02);'><td style='padding: 10px 5px;'><b style='color:#fff;'>Hamburg (WIR)</b><br><span style='font-size: 0.8em; color: #cbd5e1;'>🃏 31 / 188 Decks</span></td><td style='text-align: center; font-weight: bold; color: #f8fafc;'>0</td><td style='text-align: center; font-weight: bold; color: #fbbf24;'>0</td><td style='text-align: center; font-weight: bold; color: #22d3ee;'>0</td><td style='text-align: center; font-weight: bold; color: #c084fc;'>3327</td></tr></table></div></div>
                 
                 
         <div class="info-box" style="border-left-color: #c084fc; background: rgba(192, 132, 252, 0.08); margin-bottom: 25px; padding: 20px 25px;">
@@ -237,7 +272,7 @@
             </div>
             <div style="margin-top: 12px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
                 <div style="text-align: center;">
-                    <div style="font-size: 1.2em; font-weight: 700; color: #e2e8f0;">118474</div>
+                    <div style="font-size: 1.2em; font-weight: 700; color: #e2e8f0;">118466</div>
                     <div style="color: #94a3b8; font-size: 0.85em;">Clan-Score</div>
                 </div>
                 <div style="text-align: center;">
