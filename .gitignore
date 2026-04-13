@@ -1,4 +1,18 @@
 _prefetch.json
 __pycache__/
 *.pyc
+*.pyo
 .env
+.DS_Store
+Thumbs.db
+
+# Automatisch generierte CSV-Exporte
+uploads/*.csv
+uploads/archiv/
+
+# Archivierte HTML-Berichte
+output/auswertung_*.html
+output/archiv/
+
+# Laufzeit-Artefakte
+action_log.json.migrated
