@@ -7,15 +7,15 @@
             "#2QRVR9L8": "20260417T043935.000Z",
             "#ULYJ2CQP": "20260416T151039.000Z",
             "#UJ2P9UYUV": "20260416T193659.000Z",
-            "#P0JYR9YUY": "20260416T155335.000Z",
+            "#P0JYR9YUY": "20260417T071621.000Z",
             "#R22R8GYG": "20260416T120433.000Z",
-            "#YQ82VR9JQ": "20260417T054304.000Z",
+            "#YQ82VR9JQ": "20260417T055038.000Z",
             "#G02LC9C8": "20260416T201407.000Z",
             "#2U8288CVY": "20260416T195750.000Z",
             "#2L8LLRUYV": "20260414T083222.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260415T051726.000Z",
-            "#PPR2QQC0U": "20260417T054825.000Z",
+            "#PPR2QQC0U": "20260417T060542.000Z",
             "#QULCQGGG": "20260416T171200.000Z",
             "#JRGC9RRQG": "20260416T171308.000Z",
             "#QVQGCV8Y9": "20260416T072641.000Z",
@@ -29,10 +29,10 @@
             "#2CJYG9UG": "20260416T145247.000Z",
             "#2PUQYJC02": "20260416T164337.000Z",
             "#YQVQYUYRV": "20260413T073134.000Z",
-            "#2V800VCQ0": "20260416T085700.000Z",
+            "#2V800VCQ0": "20260417T070321.000Z",
             "#2UQUPYQCJ": "20260416T131254.000Z",
             "#JUUR8UGL8": "20260417T053348.000Z",
-            "#2U09UULRR": "20260417T043718.000Z",
+            "#2U09UULRR": "20260417T070328.000Z",
             "#YJ0LUU0JJ": "20260413T210607.000Z",
             "#8QYYL8LCQ": "20260417T014115.000Z",
             "#8P0J8P0L": "20260416T110135.000Z",
@@ -5176,7 +5176,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "Chico"
@@ -5185,6 +5185,12 @@
                 "P0JYR9YUY"
             ],
             "recent_matches": [
+                {
+                    "time": "20260417T071621.000Z",
+                    "result": "win",
+                    "player": "Chico",
+                    "tag": "P0JYR9YUY"
+                },
                 {
                     "time": "20260413T073043.000Z",
                     "result": "win",
@@ -24074,6 +24080,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000001-26000011-26000013-26000018-26000043-26000052-27000004-28000003": {
+            "cards": [
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000013,
+                    "name": "Bomber",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 26000052,
+                    "name": "Zappies",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QZfHRpLRmutZbCr5fpLnTpIp89vLI6NrAwzGZ8tHEc4.png"
+                },
+                {
+                    "id": 27000004,
+                    "name": "Bomb Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/rirYRyHPc97emRjoH-c1O8uZCBzPVnToaGuNGusF3TQ.png"
+                },
+                {
+                    "id": 26000043,
+                    "name": "Elite Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/C88C5JH_F3lLZj6K-tLcMo5DPjrFmvzIb1R2M6xCfTE.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 28000003,
+                    "name": "Rocket",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ie07nQNK9CjhKOa4-arFAewi4EroqaA-86Xo7r5tx94.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
