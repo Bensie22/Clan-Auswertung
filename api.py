@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 
 from config import (
     STRIKE_THRESHOLD, KICK_THRESHOLD, PROMOTION_SCORE_MIN,
@@ -49,6 +51,19 @@ APP_CONFIG = {
     "SMART_STARK_THRESHOLD":   SMART_STARK_THRESHOLD,
     "COACHING_MID_THRESHOLD":  COACHING_MID_THRESHOLD,
 }
+
+
+@app.get("/")
+def root():
+    return FileResponse("index.html")
+
+@app.get("/datenschutz.html")
+def datenschutz():
+    return FileResponse("datenschutz.html")
+
+@app.get("/impressum.html")
+def impressum():
+    return FileResponse("impressum.html")
 
 
 @app.get("/config")
