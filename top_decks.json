@@ -28,7 +28,7 @@
             "#PYG8RLUJ": "20260413T105340.000Z",
             "#2CJYG9UG": "20260418T110525.000Z",
             "#2PUQYJC02": "20260418T183120.000Z",
-            "#YQVQYUYRV": "20260419T081104.000Z",
+            "#YQVQYUYRV": "20260419T081811.000Z",
             "#2V800VCQ0": "20260418T160106.000Z",
             "#2UQUPYQCJ": "20260418T171213.000Z",
             "#JUUR8UGL8": "20260419T055132.000Z",
@@ -6016,7 +6016,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/LjSfSbwQfkZuRJY4pVxKspZ-a0iM5KAhU8w-a_N5Z7Y.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "Fxry"
@@ -6025,6 +6025,12 @@
                 "YQVQYUYRV"
             ],
             "recent_matches": [
+                {
+                    "time": "20260419T081811.000Z",
+                    "result": "win",
+                    "player": "Fxry",
+                    "tag": "YQVQYUYRV"
+                },
                 {
                     "time": "20260418T090714.000Z",
                     "result": "win",
@@ -32272,6 +32278,98 @@
                     "id": 28000014,
                     "name": "Earthquake",
                     "icon": "https://api-assets.clashroyale.com/cards/300/XeQXcrUu59C52DslyZVwCnbi4yamID-WxfVZLShgZmE.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000008-26000016-26000017-26000027-26000037-26000046-27000008-28000009": {
+            "cards": [
+                {
+                    "id": 26000037,
+                    "name": "Inferno Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
+                },
+                {
+                    "id": 26000008,
+                    "name": "Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/TvJsuu2S4yhyk1jVYUAQwdKOnW4U77KuWWOTPOWnwfI.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000046,
+                    "name": "Bandit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QWDdXMKJNpv0go-HYaWQWP6p8uIOHjqn-zX7G0p3DyM.png"
+                },
+                {
+                    "id": 27000008,
+                    "name": "X-Bow",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/zVQ9Hme1hlj9Dc6e1ORl9xWwglcSrP7ejow5mAhLUJc.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 26000027,
+                    "name": "Dark Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/M7fXlrKXHu2IvpSGpk36kXVstslbR08Bbxcy0jQcln8.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000001-26000021-26000027-26000062-26000063-27000000-27000010-28000011": {
+            "cards": [
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000063,
+                    "name": "Electro Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/tN9h6lnMNPCNsx0LMFmvpHgznbDZ1fBRkx-C7UfNmfY.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 26000027,
+                    "name": "Dark Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/M7fXlrKXHu2IvpSGpk36kXVstslbR08Bbxcy0jQcln8.png"
+                },
+                {
+                    "id": 27000000,
+                    "name": "Cannon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nZK1y-beLxO5vnlyUhK6-2zH2NzXJwqykcosqQ1cmZ8.png"
                 }
             ],
             "seen": 1,
