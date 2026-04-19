@@ -101,11 +101,6 @@
       "priority": 2
     },
     {
-      "name": "AaleDieter",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "DST",
       "scenario": "TOP",
       "priority": 2
@@ -117,6 +112,11 @@
     },
     {
       "name": "mauza",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "AaleDieter",
       "scenario": "TOP",
       "priority": 2
     },
@@ -194,7 +194,7 @@
     },
     {
       "name": "andiquariat",
-      "score": 89.1,
+      "score": 88.97,
       "status": "STARK"
     },
     {
@@ -213,23 +213,23 @@
       "status": "STARK"
     },
     {
-      "name": "AaleDieter",
-      "score": 87.94,
-      "status": "STARK"
-    },
-    {
       "name": "DST",
       "score": 87.87,
       "status": "STARK"
     },
     {
       "name": "_spc07",
-      "score": 87.63,
+      "score": 87.77,
       "status": "STARK"
     },
     {
       "name": "mauza",
       "score": 87.57,
+      "status": "STARK"
+    },
+    {
+      "name": "AaleDieter",
+      "score": 87.54,
       "status": "STARK"
     },
     {
@@ -339,7 +339,7 @@
     },
     {
       "name": "bequemo",
-      "score": 70.84,
+      "score": 70.57,
       "status": "OK"
     },
     {
@@ -446,7 +446,7 @@
     },
     {
       "name": "andiquariat",
-      "score": 89.1,
+      "score": 88.97,
       "tip": "Weiter so"
     },
     {
@@ -465,23 +465,23 @@
       "tip": "Weiter so"
     },
     {
-      "name": "AaleDieter",
-      "score": 87.94,
-      "tip": "Weiter so"
-    },
-    {
       "name": "DST",
       "score": 87.87,
       "tip": "Weiter so"
     },
     {
       "name": "_spc07",
-      "score": 87.63,
+      "score": 87.77,
       "tip": "Weiter so"
     },
     {
       "name": "mauza",
       "score": 87.57,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "AaleDieter",
+      "score": 87.54,
       "tip": "Weiter so"
     },
     {
@@ -591,7 +591,7 @@
     },
     {
       "name": "bequemo",
-      "score": 70.84,
+      "score": 70.57,
       "tip": "Weiter so"
     },
     {
@@ -841,7 +841,7 @@
         "name": "andiquariat",
         "player_tag": "#2UQUPYQCJ",
         "role": "member",
-        "score": 89.1,
+        "score": 88.97,
         "strikes": 0,
         "donations": 10,
         "participation_count": 10,
@@ -886,18 +886,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "AaleDieter",
-        "player_tag": "#CUJ9PJ2UV",
-        "role": "member",
-        "score": 87.94,
-        "strikes": 0,
-        "donations": 66,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "DST",
         "player_tag": "#9VLRQ9GR9",
         "role": "member",
@@ -913,7 +901,7 @@
         "name": "_spc07",
         "player_tag": "#2U8288CVY",
         "role": "member",
-        "score": 87.63,
+        "score": 87.77,
         "strikes": 0,
         "donations": 276,
         "participation_count": 10,
@@ -928,6 +916,18 @@
         "score": 87.57,
         "strikes": 0,
         "donations": 418,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "AaleDieter",
+        "player_tag": "#CUJ9PJ2UV",
+        "role": "member",
+        "score": 87.54,
+        "strikes": 0,
+        "donations": 66,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
