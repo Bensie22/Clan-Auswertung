@@ -1,5 +1,6 @@
 import os
 import glob
+import heapq
 import shutil
 import requests
 import csv
@@ -20,18 +21,26 @@ import smtplib
 
 # === 1. Konfiguration & Pfade ===
 
+from config import (
+    STRIKE_THRESHOLD, DROPPER_THRESHOLD, MIN_PARTICIPATION,
+    BADGE_STARK_SCORE, BADGE_STARK_FAME,
+    BADGE_STABIL_SCORE, BADGE_STABIL_FAME,
+    TIER_SEHR_STARK, TIER_SOLIDE,
+    CLAN_RELIABLE_GREEN, CLAN_RELIABLE_YELLOW,
+)
+
 APP_CONFIG = {
-    "STRIKE_THRESHOLD": 50,      # Score in %: Unter diesem Wert gibt es eine Verwarnung
-    "DROPPER_THRESHOLD": 130,    # Ø Punkte pro Deck: Unter diesem Wert Warnung (Solide=162, Schlecht=112)
-    "MIN_PARTICIPATION": 3,      # Welpenschutz: Bis einschließlich 3 Teilnahmen keine Strafen
-    "BADGE_STARK_SCORE": 90,     # ⭐ stark: Score-Schwelle
-    "BADGE_STARK_FAME": 185,     # ⭐ stark: Ø Punkte-Schwelle (deutlich über Durchschnitt)
-    "BADGE_STABIL_SCORE": 75,    # 🛡️ stabil: Score-Schwelle
-    "BADGE_STABIL_FAME": 145,    # 🛡️ stabil: Ø Punkte-Schwelle (leicht über Durchschnitt)
-    "TIER_SEHR_STARK": 90,      # Tier-Grenze: Sehr stark
-    "TIER_SOLIDE": 75,           # Tier-Grenze: Solide Basis
-    "CLAN_RELIABLE_GREEN": 85,   # Clan-Ampel Zuverlässigkeit: Grün ab
-    "CLAN_RELIABLE_YELLOW": 70,  # Clan-Ampel Zuverlässigkeit: Gelb ab
+    "STRIKE_THRESHOLD":    STRIKE_THRESHOLD,
+    "DROPPER_THRESHOLD":   DROPPER_THRESHOLD,
+    "MIN_PARTICIPATION":   MIN_PARTICIPATION,
+    "BADGE_STARK_SCORE":   BADGE_STARK_SCORE,
+    "BADGE_STARK_FAME":    BADGE_STARK_FAME,
+    "BADGE_STABIL_SCORE":  BADGE_STABIL_SCORE,
+    "BADGE_STABIL_FAME":   BADGE_STABIL_FAME,
+    "TIER_SEHR_STARK":     TIER_SEHR_STARK,
+    "TIER_SOLIDE":         TIER_SOLIDE,
+    "CLAN_RELIABLE_GREEN": CLAN_RELIABLE_GREEN,
+    "CLAN_RELIABLE_YELLOW":CLAN_RELIABLE_YELLOW,
 }
 
 CHAT_COLORS = ["#38bdf8", "#a855f7", "#ef4444", "#f97316", "#10b981", "#fbbf24", "#6366f1", "#ec4899"]
@@ -338,7 +347,7 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
         except Exception as e:
             print(f"⚠️ Gedächtnis konnte nicht geladen werden: {e}")
 
-    now = datetime.utcnow()
+    now = datetime.now(timezone.utc)
     curr_week = now.isocalendar()[:2]  # (Jahr, Woche) – verhindert Fehler beim Jahreswechsel
 
     if now.weekday() == 3 and memory.get("last_reset_week") != curr_week:
@@ -499,7 +508,7 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
     date_str = datetime.now().strftime("%Y%m%d_%H%M%S")
     filename = upload_folder / f"clan_export_{date_str}.csv"
 
-    race_ids = sorted(list(set(race_ids)), reverse=True)
+    race_ids = sorted(set(race_ids), reverse=True)
     headers_csv = [
         "player_tag",
         "player_name",
@@ -846,16 +855,11 @@ def update_top_decks(current_members: dict, top_decks_data: dict, player_war_dec
 
     # --- DECK CLEANUP (Max 100 Decks behalten, um JSON klein zu halten) ---
     if len(decks) > 100:
-        sorted_keys = sorted(
-            decks.keys(),
-            key=lambda k: (
-                get_deck_winrate(decks[k]),
-                decks[k]["wins"] + decks[k]["losses"],
-                decks[k]["wins"]
-            ),
-            reverse=True
+        to_remove = heapq.nsmallest(
+            len(decks) - 100, decks,
+            key=lambda k: (get_deck_winrate(decks[k]), decks[k]["wins"] + decks[k]["losses"], decks[k]["wins"])
         )
-        for k in sorted_keys[100:]:
+        for k in to_remove:
             del decks[k]
 
     top_decks_data["_metadata"] = metadata
@@ -1121,7 +1125,7 @@ def escape_for_html(text: str) -> str:
 
 def is_clan_war_period(now_utc: datetime | None = None) -> bool:
     if now_utc is None:
-        now_utc = datetime.utcnow()
+        now_utc = datetime.now(timezone.utc)
 
     weekday = now_utc.weekday()
     current_minutes = now_utc.hour * 60 + now_utc.minute
@@ -1967,7 +1971,7 @@ def generate_html_report(
     strikes = strikes_data.get("players", {})
     last_strike_week = strikes_data.get("last_strike_week", 0)
 
-    curr_week = datetime.utcnow().isocalendar()[:2]  # (Jahr, Woche) – verhindert Fehler beim Jahreswechsel
+    curr_week = datetime.now(timezone.utc).isocalendar()[:2]  # (Jahr, Woche) – verhindert Fehler beim Jahreswechsel
 
     apply_strikes_now = False
     if is_weekly_run:
@@ -1978,56 +1982,57 @@ def generate_html_report(
             strikes_data["kicked_this_week"] = []
 
     # Vorhandene Historie vorbereiten
-    df_history = df_history.copy()
     if df_history.empty:
         df_history = pd.DataFrame(columns=["player_name", "score", "date", "trophies"])
 
-    for _, row in df_active.iterrows():
-        raw_role = str(row.get("player_role", "unknown")).strip().lower()
+    # Loop-invariante Spalten einmal vor der Schleife berechnen
+    _all_cols = df_active.columns
+    fame_columns_all = sorted(
+        [col for col in _all_cols if str(col).startswith("s_") and str(col).endswith("_fame")],
+        reverse=True
+    )
+    fame_cols_rolling  = fame_columns_all[:4]
+    decks_cols_rolling = [col.replace("_fame", "_decks_used") for col in fame_cols_rolling]
+    aktueller_decks_spalte = fame_spalte.replace("_fame", "_decks_used")
+    _player_profiles   = player_profiles or {}
+
+    for row in df_active.itertuples(index=False):
+        raw_role = str(getattr(row, "player_role", "unknown") or "unknown").strip().lower()
         if raw_role == "unknown":
             continue
 
-        name = row.get("player_name", "Unbekannt")
+        name = getattr(row, "player_name", "Unbekannt") or "Unbekannt"
         role_de = role_map.get(raw_role, raw_role.capitalize())
         is_urlaub = name.lower() in urlauber_liste_lower
 
-        wars_with_participation = int(row.get("player_contribution_count", 0) or 0)
-        wars_in_history_window = int(row.get("player_participating_count", 0) or 0)
-        decks_total = int(row.get("player_total_decks_used", 0) or 0)
-        donations = int(row.get("player_donations", 0) or 0)
-        donations_received = int(row.get("player_donations_received", 0) or 0)
-        aktueller_trophy = int(row.get("player_trophies", 0) or 0)
-        total_boat_attacks = int(row.get("player_total_boat_attacks", 0) or 0)
+        wars_with_participation = int(getattr(row, "player_contribution_count", 0) or 0)
+        wars_in_history_window  = int(getattr(row, "player_participating_count", 0) or 0)
+        decks_total             = int(getattr(row, "player_total_decks_used", 0) or 0)
+        donations               = int(getattr(row, "player_donations", 0) or 0)
+        donations_received      = int(getattr(row, "player_donations_received", 0) or 0)
+        aktueller_trophy        = int(getattr(row, "player_trophies", 0) or 0)
+        total_boat_attacks      = int(getattr(row, "player_total_boat_attacks", 0) or 0)
 
         # Spieler-Profil (wenn vorhanden)
-        player_tag = str(row.get("player_tag", ""))
-        profile = (player_profiles or {}).get(player_tag, {})
+        player_tag = str(getattr(row, "player_tag", "") or "")
+        profile = _player_profiles.get(player_tag, {})
 
         # Score-Logik: Gewichteter 3-Faktor-Score
         # 50% Deck-Vollstaendigkeit: Wie viele der moeglichen Decks wurden gespielt?
         # 30% Dabei-Quote (Anwesenheit): In wie vielen Kriegen war der Spieler dabei?
         # 20% Qualitaet: Normierter Ø Fame/Deck-Wert (75 = min, 225 = max)
-        # Die Qualitaet wird erst spaeter berechnet (nach fame_per_deck), Score-Berechnung folgt unten.
         anwesenheits_rate = (wars_with_participation / wars_in_history_window) if wars_in_history_window > 0 else 0.0
-        max_moegliche_decks = wars_with_participation * 16
+        max_moegliche_decks   = wars_with_participation * 16
         deck_vollstaendigkeit = (decks_total / max_moegliche_decks) if max_moegliche_decks > 0 else 0.0
 
-        fame_columns_all = [col for col in row.index if str(col).startswith("s_") and str(col).endswith("_fame")]
-        total_war_points = sum(int(row.get(col, 0) or 0) for col in fame_columns_all)
-
-        aktueller_fame = int(row.get(fame_spalte, 0) or 0)
-        aktueller_decks_spalte = fame_spalte.replace("_fame", "_decks_used")
-        aktueller_decks = int(row.get(aktueller_decks_spalte, 0) or 0)
+        total_war_points   = sum(int(getattr(row, col, 0) or 0) for col in fame_columns_all)
+        aktueller_fame     = int(getattr(row, fame_spalte, 0) or 0)
+        aktueller_decks    = int(getattr(row, aktueller_decks_spalte, 0) or 0)
 
         # Ø Punkte: rollierender Schnitt ueber die letzten 3-4 Kriege.
         # Glaettet Ausreisser durch Pech beim Matchmaking für ein faireres Bild.
-        fame_cols_rolling = sorted(
-            [col for col in row.index if str(col).startswith("s_") and str(col).endswith("_fame")],
-            reverse=True
-        )[:4]
-        decks_cols_rolling = [col.replace("_fame", "_decks_used") for col in fame_cols_rolling]
-        rolling_fame = sum(int(row.get(c, 0) or 0) for c in fame_cols_rolling)
-        rolling_decks = sum(int(row.get(c, 0) or 0) for c in decks_cols_rolling)
+        rolling_fame  = sum(int(getattr(row, c, 0) or 0) for c in fame_cols_rolling)
+        rolling_decks = sum(int(getattr(row, c, 0) or 0) for c in decks_cols_rolling)
         fame_per_deck = round(rolling_fame / rolling_decks) if rolling_decks > 0 else 0
 
         # Score-Berechnung: 50% Deck-Vollständigkeit + 30% Dabei-Quote + 20% Qualität
@@ -2245,16 +2250,33 @@ def generate_html_report(
         ], f, ensure_ascii=False, indent=2)
 
     aktive_spieler = [p for p in player_stats if not p["is_urlaub"]]
-    clan_avg = round(sum([p["score"] for p in aktive_spieler]) / len(aktive_spieler), 2) if aktive_spieler else 0
-    clan_total_fame = sum(p["fame"] for p in aktive_spieler if p["current_decks"] > 0)
-    clan_total_decks = sum(p["current_decks"] for p in aktive_spieler if p["current_decks"] > 0)
+
+    # Einen Durchlauf für alle Clan-Aggregate
+    _score_sum = _fame_sum = _decks_sum = 0
+    quality_green = quality_yellow = quality_red = 0
+    wf_gruen = wf_gelb = wf_rot = 0
+    _n = len(aktive_spieler)
+    for _p in aktive_spieler:
+        _score_sum += _p["score"]
+        if _p["current_decks"] > 0:
+            _fame_sum  += _p["fame"]
+            _decks_sum += _p["current_decks"]
+            _fpd = _p["fame_per_deck"]
+            if   _fpd >= 162:           quality_green  += 1
+            elif _fpd >= 130:           quality_yellow += 1
+            elif _fpd >  0:             quality_red    += 1
+        _s = _p["score"]
+        if   _s >= TIER_SOLIDE:         wf_gruen += 1
+        elif _s >= STRIKE_THRESHOLD:    wf_gelb  += 1
+        else:                           wf_rot   += 1
+
+    clan_avg              = round(_score_sum / _n, 2) if _n else 0
+    clan_total_fame       = _fame_sum
+    clan_total_decks      = _decks_sum
     clan_avg_points_per_deck = round(clan_total_fame / clan_total_decks) if clan_total_decks > 0 else 0
     clan_teamplay, teamplay_details = calculate_teamplay_score(aktive_spieler)
 
     # --- KAMPFQUALITÄT: Verteilung & Trend ---
-    quality_green  = sum(1 for p in aktive_spieler if p["current_decks"] > 0 and p["fame_per_deck"] >= 162)
-    quality_yellow = sum(1 for p in aktive_spieler if p["current_decks"] > 0 and 130 <= p["fame_per_deck"] < 162)
-    quality_red    = sum(1 for p in aktive_spieler if p["current_decks"] > 0 and 0 < p["fame_per_deck"] < 130)
 
     prev_quality = records.get("clan_quality", {}).get("val", 0)
     quality_delta = clan_avg_points_per_deck - prev_quality if prev_quality > 0 else None
@@ -2267,29 +2289,20 @@ def generate_html_report(
     df_history = df_history[df_history["player_name"].isin(aktive_namen_set)]
     df_history = df_history.groupby("player_name").tail(6).reset_index(drop=True)
 
-    top_performers_list = sorted(
-        aktive_spieler,
-        key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]),
-        reverse=True
-    )[:3]
+    top_performers_list = heapq.nlargest(3, aktive_spieler,
+        key=lambda x: (x["score"], x["teilnahme_int"], x["fame"], x["donations"]))
 
-    top_aufsteiger_list = sorted(
-        [p for p in aktive_spieler if p["delta"] > 0],
-        key=lambda x: x["delta"],
-        reverse=True
-    )[:3]
+    top_aufsteiger_list = heapq.nlargest(3,
+        (p for p in aktive_spieler if p["delta"] > 0),
+        key=lambda x: x["delta"])
 
-    top_spender_list = sorted(
-        [p for p in aktive_spieler if p["donations"] > 0],
-        key=lambda x: x["donations"],
-        reverse=True
-    )[:3]
+    top_spender_list = heapq.nlargest(3,
+        (p for p in aktive_spieler if p["donations"] > 0),
+        key=lambda x: x["donations"])
 
-    top_leecher_list = sorted(
-        [p for p in aktive_spieler if p["teilnahme_int"] > APP_CONFIG["MIN_PARTICIPATION"] and p["donations"] == 0 and p["donations_received"] > 0],
-        key=lambda x: x["donations_received"],
-        reverse=True
-    )[:3]
+    top_leecher_list = heapq.nlargest(3,
+        (p for p in aktive_spieler if p["teilnahme_int"] > MIN_PARTICIPATION and p["donations"] == 0 and p["donations_received"] > 0),
+        key=lambda x: x["donations_received"])
 
     top_performers_html = "".join([f"<li><b>{p['name']}</b> ({p['score']}%)</li>" for p in top_performers_list])
     top_aufsteiger_html = "".join([f"<li><b>{p['name']}</b> (+{p['delta']}%)</li>" for p in top_aufsteiger_list]) if top_aufsteiger_list else "<li>Keine Verbesserungen</li>"
@@ -2366,10 +2379,7 @@ def generate_html_report(
     else:
         summary_lines.append("Auch beim Teamplay wirkt der Clan im Moment sehr geschlossen.")
 
-    # 4. Tier-Verteilung
-    wf_gruen = sum(1 for p in aktive_spieler if p["score"] >= APP_CONFIG["TIER_SOLIDE"])
-    wf_gelb  = sum(1 for p in aktive_spieler if APP_CONFIG["STRIKE_THRESHOLD"] <= p["score"] < APP_CONFIG["TIER_SOLIDE"])
-    wf_rot   = sum(1 for p in aktive_spieler if p["score"] < APP_CONFIG["STRIKE_THRESHOLD"])
+    # 4. Tier-Verteilung (wf_gruen/gelb/rot aus dem Aggregations-Loop oben)
     summary_lines.append(f"📊 Tier-Verteilung: 🟢 {wf_gruen} stark &nbsp; 🟡 {wf_gelb} solide &nbsp; 🔴 {wf_rot} auffällig.")
 
     # 5. Deutschland-Ranking
@@ -3334,7 +3344,7 @@ def main():
     current_known_players = member_memory.get("current_players", {})
     ever_seen_players = member_memory.get("ever_seen_players", {})
     pending_events = member_memory.get("pending_events", [])
-    now_utc = datetime.utcnow()
+    now_utc = datetime.now(timezone.utc)
     pending_cutoff = now_utc - timedelta(hours=JOIN_EVENT_TTL_HOURS)
 
     neue_tags = [tag for tag in current_members.keys() if tag not in current_known_players]
@@ -3354,7 +3364,7 @@ def main():
         if event_tag not in current_members or event_type not in {"new", "returning", "warn_returning"}:
             continue
         try:
-            detected_dt = datetime.strptime(detected_at, "%Y-%m-%dT%H:%M:%SZ")
+            detected_dt = datetime.strptime(detected_at, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
         except Exception:
             continue
         if detected_dt >= pending_cutoff:
@@ -3413,8 +3423,8 @@ def main():
         previous_entry = current_known_players.get(tag, ever_seen_players.get(tag, {}))
         player_entry = {
             "name": data["name"],
-            "last_seen": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "first_seen": previous_entry.get("first_seen", datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"))
+            "last_seen": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "first_seen": previous_entry.get("first_seen", datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
         }
         updated_current_players[tag] = player_entry
         updated_ever_seen_players[tag] = player_entry
@@ -3447,7 +3457,7 @@ def main():
                 race_state_de = "Trainingstag"
 
             clans_in_race = data.get("clans", [])
-            today_str = datetime.utcnow().strftime("%Y-%m-%d")
+            today_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
             radar_cache = load_war_radar_cache()
             new_radar_cache = {}
 

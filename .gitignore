@@ -16,3 +16,9 @@ output/archiv/
 
 # Laufzeit-Artefakte
 action_log.json.migrated
+
+# Debug/Temp-Dateien
+*.log
+env_debug.json
+debug_python.txt
+start_debug.txt

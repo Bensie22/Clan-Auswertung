@@ -1,15 +1,20 @@
 import json
+import sys
 from config import SMART_RISIKO_THRESHOLD, SMART_STARK_THRESHOLD
 
 def run():
-    with open("_prefetch.json", encoding="utf-8") as f:
-        data = json.load(f)
+    try:
+        with open("_prefetch.json", encoding="utf-8") as f:
+            data = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        print(f"[ERROR] _prefetch.json nicht lesbar: {e}")
+        sys.exit(1)
 
     leaderboard = data.get("leaderboard", {})
     results = []
 
     for p in leaderboard.get("players", []):
-        score = p["score"]
+        score = p.get("score", 0)
 
         if score < SMART_RISIKO_THRESHOLD:
             status = "RISIKO"
