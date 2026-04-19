@@ -20,3 +20,17 @@ COACHING_MID_THRESHOLD  = 70               # "Konstanz verbessern"
 # --- Deck-Qualität ---
 DROPPER_THRESHOLD  = 130   # Ø Punkte pro Deck unter diesem Wert → Hinweis
 MIN_PARTICIPATION  = 3     # Welpenschutz: Bis einschließlich 3 Teilnahmen keine Strafen
+
+# --- Spieler-Badges ---
+BADGE_STARK_SCORE  = 90    # ⭐ stark: Score-Schwelle
+BADGE_STARK_FAME   = 185   # ⭐ stark: Ø Punkte-Schwelle
+BADGE_STABIL_SCORE = 75    # 🛡️ stabil: Score-Schwelle
+BADGE_STABIL_FAME  = 145   # 🛡️ stabil: Ø Punkte-Schwelle
+
+# --- Tier-Grenzen ---
+TIER_SEHR_STARK    = 90    # Tier: Sehr stark
+TIER_SOLIDE        = 75    # Tier: Solide Basis
+
+# --- Clan-Ampel ---
+CLAN_RELIABLE_GREEN  = 85  # Zuverlässigkeit: Grün ab
+CLAN_RELIABLE_YELLOW = 70  # Zuverlässigkeit: Gelb ab

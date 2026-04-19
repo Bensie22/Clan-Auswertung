@@ -1,7 +1,7 @@
+import os
 import requests
-import sys
 
-BASE_URL = "https://clan-gpt-api.onrender.com"
+BASE_URL = os.environ.get("API_BASE_URL", "https://clan-gpt-api.onrender.com")
 
 
 def get(endpoint: str) -> dict:
@@ -10,5 +10,4 @@ def get(endpoint: str) -> dict:
         response.raise_for_status()
         return response.json()
     except requests.exceptions.RequestException as e:
-        print(f"❌ API-Fehler bei {endpoint}: {e}")
-        sys.exit(1)
+        raise RuntimeError(f"API-Fehler bei {endpoint}: {e}") from e
