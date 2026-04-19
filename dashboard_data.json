@@ -86,11 +86,6 @@
       "priority": 2
     },
     {
-      "name": "Swordfish",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "_spc07",
       "scenario": "TOP",
       "priority": 2
@@ -102,6 +97,11 @@
     },
     {
       "name": "Wario",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
@@ -198,11 +198,6 @@
       "status": "STARK"
     },
     {
-      "name": "Swordfish",
-      "score": 88.2,
-      "status": "STARK"
-    },
-    {
       "name": "_spc07",
       "score": 88.17,
       "status": "STARK"
@@ -215,6 +210,11 @@
     {
       "name": "Wario",
       "score": 88.03,
+      "status": "STARK"
+    },
+    {
+      "name": "Swordfish",
+      "score": 87.93,
       "status": "STARK"
     },
     {
@@ -294,7 +294,12 @@
     },
     {
       "name": "Ian",
-      "score": 80.66,
+      "score": 80.92,
+      "status": "STARK"
+    },
+    {
+      "name": "bes",
+      "score": 80.38,
       "status": "STARK"
     },
     {
@@ -310,11 +315,6 @@
     {
       "name": "Citykingalex",
       "score": 79.97,
-      "status": "OK"
-    },
-    {
-      "name": "bes",
-      "score": 79.84,
       "status": "OK"
     },
     {
@@ -359,7 +359,7 @@
     },
     {
       "name": "Bmbeno",
-      "score": 47.43,
+      "score": 49.17,
       "status": "RISIKO"
     },
     {
@@ -450,11 +450,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Swordfish",
-      "score": 88.2,
-      "tip": "Weiter so"
-    },
-    {
       "name": "_spc07",
       "score": 88.17,
       "tip": "Weiter so"
@@ -467,6 +462,11 @@
     {
       "name": "Wario",
       "score": 88.03,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Swordfish",
+      "score": 87.93,
       "tip": "Weiter so"
     },
     {
@@ -546,7 +546,12 @@
     },
     {
       "name": "Ian",
-      "score": 80.66,
+      "score": 80.92,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "bes",
+      "score": 80.38,
       "tip": "Weiter so"
     },
     {
@@ -562,11 +567,6 @@
     {
       "name": "Citykingalex",
       "score": 79.97,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "bes",
-      "score": 79.84,
       "tip": "Weiter so"
     },
     {
@@ -611,7 +611,7 @@
     },
     {
       "name": "Bmbeno",
-      "score": 47.43,
+      "score": 49.17,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
@@ -819,7 +819,7 @@
         "role": "member",
         "score": 90.55,
         "strikes": 0,
-        "donations": 530,
+        "donations": 550,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -844,18 +844,6 @@
         "score": 88.43,
         "strikes": 0,
         "donations": 10,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Swordfish",
-        "player_tag": "#2CPRGY8G",
-        "role": "member",
-        "score": 88.2,
-        "strikes": 0,
-        "donations": 402,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -892,6 +880,18 @@
         "score": 88.03,
         "strikes": 0,
         "donations": 222,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Swordfish",
+        "player_tag": "#2CPRGY8G",
+        "role": "member",
+        "score": 87.93,
+        "strikes": 0,
+        "donations": 402,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
