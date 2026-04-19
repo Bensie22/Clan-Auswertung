@@ -1,4 +1,5 @@
 import json
+import sys
 from config import KICK_THRESHOLD, PROMOTION_SCORE_MIN
 
 
@@ -41,8 +42,12 @@ def is_promotable(player: dict) -> bool:
 
 
 def run():
-    with open("_prefetch.json", encoding="utf-8") as f:
-        data = json.load(f)
+    try:
+        with open("_prefetch.json", encoding="utf-8") as f:
+            data = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        print(f"[ERROR] _prefetch.json nicht lesbar: {e}")
+        sys.exit(1)
 
     players = data.get("leaderboard", {}).get("players", [])
 

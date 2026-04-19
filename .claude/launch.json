@@ -2,16 +2,22 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "Website",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "3000"],
+      "port": 3000
+    },
+    {
       "name": "Action API",
-      "runtimeExecutable": "uvicorn",
-      "runtimeArgs": ["action_api:app", "--port", "5000", "--reload"],
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "uvicorn", "action_api:app", "--port", "5000", "--reload"],
       "port": 5000
     },
     {
       "name": "Clan API",
-      "runtimeExecutable": "uvicorn",
-      "runtimeArgs": ["api:app", "--port", "8000", "--reload"],
-      "port": 8000
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "uvicorn", "api:app", "--port", "8001", "--reload"],
+      "port": 8001
     }
   ]
 }

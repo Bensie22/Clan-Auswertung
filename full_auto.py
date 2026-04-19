@@ -1,26 +1,39 @@
 import json
+import sys
 from config import STRIKE_THRESHOLD, PROMOTION_SCORE_MIN
 
+PRIORITY = {
+    "OK": 1,
+    "TOP": 2,
+    "STRIKE": 4,
+    "KEINE_TEILNAHME": 4,
+    "STRIKE_ESKALATION": 5,
+}
+
 def classify_player(p):
-    score = p["score"]
-    strikes = p["strikes"]
+    score = p.get("score", 0)
+    strikes = p.get("strikes", 0)
 
     if score == 0:
-        return "KEINE_TEILNAHME", 4
+        return "KEINE_TEILNAHME", PRIORITY["KEINE_TEILNAHME"]
 
     if score < STRIKE_THRESHOLD:
         if strikes >= 2:
-            return "STRIKE_ESKALATION", 5
-        return "STRIKE", 4
+            return "STRIKE_ESKALATION", PRIORITY["STRIKE_ESKALATION"]
+        return "STRIKE", PRIORITY["STRIKE"]
 
     if score >= PROMOTION_SCORE_MIN:
-        return "TOP", 2
+        return "TOP", PRIORITY["TOP"]
 
-    return "OK", 1
+    return "OK", PRIORITY["OK"]
 
 def run():
-    with open("_prefetch.json", encoding="utf-8") as f:
-        data = json.load(f)
+    try:
+        with open("_prefetch.json", encoding="utf-8") as f:
+            data = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        print(f"[ERROR] _prefetch.json nicht lesbar: {e}")
+        sys.exit(1)
 
     warnings   = data.get("warnings", {})
     promotions = data.get("promotions", {})
@@ -38,7 +51,7 @@ def run():
         events.append({
             "name": p["name"],
             "scenario": "TOP",
-            "priority": 2
+            "priority": PRIORITY["TOP"]
         })
 
     events = sorted(events, key=lambda x: x["priority"], reverse=True)
