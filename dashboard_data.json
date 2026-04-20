@@ -1,11 +1,6 @@
 {
   "full_auto": [
     {
-      "name": "Valar Morghulis",
-      "scenario": "STRIKE",
-      "priority": 4
-    },
-    {
       "name": "maghrebi",
       "scenario": "TOP",
       "priority": 2
@@ -336,31 +331,6 @@
       "name": "elazeto",
       "score": 66.63,
       "status": "OK"
-    },
-    {
-      "name": "MF Tarje",
-      "score": 66.02,
-      "status": "OK"
-    },
-    {
-      "name": "Bmbeno",
-      "score": 55.42,
-      "status": "RISIKO"
-    },
-    {
-      "name": "Milchreis",
-      "score": 53.42,
-      "status": "RISIKO"
-    },
-    {
-      "name": "saycan:)",
-      "score": 51.62,
-      "status": "RISIKO"
-    },
-    {
-      "name": "Valar Morghulis",
-      "score": 24.58,
-      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -588,49 +558,11 @@
       "name": "elazeto",
       "score": 66.63,
       "tip": "Konstanz verbessern"
-    },
-    {
-      "name": "MF Tarje",
-      "score": 66.02,
-      "tip": "Konstanz verbessern"
-    },
-    {
-      "name": "Bmbeno",
-      "score": 55.42,
-      "tip": "Konstanz verbessern"
-    },
-    {
-      "name": "Milchreis",
-      "score": 53.42,
-      "tip": "Konstanz verbessern"
-    },
-    {
-      "name": "saycan:)",
-      "score": 51.62,
-      "tip": "Konstanz verbessern"
-    },
-    {
-      "name": "Valar Morghulis",
-      "score": 24.58,
-      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
-    "remove": [
-      {
-        "name": "Valar Morghulis",
-        "player_tag": "#8GYCJY0U",
-        "role": "member",
-        "score": 24.58,
-        "strikes": 0,
-        "donations": 155,
-        "participation_count": 1,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      }
-    ],
+    "remove": [],
     "core": [
       {
         "name": "maghrebi",
