@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "AHMAD the Goat",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "maghrebi",
       "scenario": "TOP",
       "priority": 2
@@ -336,6 +341,11 @@
       "name": "elazeto",
       "score": 66.63,
       "status": "OK"
+    },
+    {
+      "name": "AHMAD the Goat",
+      "score": 0.0,
+      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -563,11 +573,29 @@
       "name": "elazeto",
       "score": 66.63,
       "tip": "Konstanz verbessern"
+    },
+    {
+      "name": "AHMAD the Goat",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
-    "remove": [],
+    "remove": [
+      {
+        "name": "AHMAD the Goat",
+        "player_tag": "#CLC8JVPRG",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      }
+    ],
     "core": [
       {
         "name": "maghrebi",
