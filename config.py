@@ -19,7 +19,7 @@ COACHING_MID_THRESHOLD  = 70               # "Konstanz verbessern"
 
 # --- Deck-Qualität ---
 DROPPER_THRESHOLD  = 130   # Ø Punkte pro Deck unter diesem Wert → Hinweis
-MIN_PARTICIPATION  = 3     # Welpenschutz: Bis einschließlich 3 Teilnahmen keine Strafen
+MIN_PARTICIPATION  = 1     # Welpenschutz: Nur der erste Clankrieg ist geschützt
 
 # --- Spieler-Badges ---
 BADGE_STARK_SCORE  = 90    # ⭐ stark: Score-Schwelle

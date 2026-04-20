@@ -40,7 +40,7 @@ def get_focus_badge(score: float, fame_per_deck: float, participation_count: int
         return {
             "badge": "🌱 neu dabei",
             "label": "NEWCOMER",
-            "description": "Noch im Welpenschutz – Bewertung startet nach 3 Kriegen",
+            "description": "Noch im Welpenschutz – gilt nur für den ersten Clankrieg",
         }
     if score >= BADGE_STARK_SCORE and fame_per_deck >= BADGE_STARK_FAME:
         return {
@@ -185,8 +185,8 @@ def build_warning_candidates() -> List[Dict[str, Any]]:
         reasons: List[str] = []
         if p["score"] < STRIKE_THRESHOLD:
             reasons.append(f"Score unter {STRIKE_THRESHOLD}")
-        if p["strikes"] >= 2:
-            reasons.append("bereits mehrere Strikes vorhanden")
+        if p["strikes"] >= 1:
+            reasons.append("interner Hinweis vorhanden")
         if reasons:
             out.append({
                 "name": p["name"],

@@ -18,7 +18,7 @@ def classify_player(p):
         return "KEINE_TEILNAHME", PRIORITY["KEINE_TEILNAHME"]
 
     if score < STRIKE_THRESHOLD:
-        if strikes >= 2:
+        if strikes >= 1:
             return "STRIKE_ESKALATION", PRIORITY["STRIKE_ESKALATION"]
         return "STRIKE", PRIORITY["STRIKE"]
 
