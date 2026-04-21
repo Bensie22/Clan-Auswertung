@@ -1,6 +1,16 @@
 {
   "full_auto": [
     {
+      "name": "Julian",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
+      "name": "NurEinJan",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "AHMAD the Goat",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -343,6 +353,16 @@
       "status": "RISIKO"
     },
     {
+      "name": "Julian",
+      "score": 0.0,
+      "status": "RISIKO"
+    },
+    {
+      "name": "NurEinJan",
+      "score": 0.0,
+      "status": "RISIKO"
+    },
+    {
       "name": "AHMAD the Goat",
       "score": 0.0,
       "status": "RISIKO"
@@ -575,6 +595,16 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
+      "name": "Julian",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "NurEinJan",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "AHMAD the Goat",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
@@ -594,7 +624,31 @@
         "role": "member",
         "score": 0.0,
         "strikes": 0,
-        "donations": 42,
+        "donations": 66,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "Julian",
+        "player_tag": "#CQ0JQ0PC",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "NurEinJan",
+        "player_tag": "#VRCVPQU2Y",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
