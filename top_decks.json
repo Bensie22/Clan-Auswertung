@@ -4,11 +4,11 @@
             "#22Q920RLR": "20260420T180052.000Z",
             "#L8PV090J": "20260420T093655.000Z",
             "#22CQPRR0J": "20260419T205855.000Z",
-            "#2QRVR9L8": "20260420T211659.000Z",
+            "#2QRVR9L8": "20260421T032853.000Z",
             "#ULYJ2CQP": "20260420T150932.000Z",
             "#UJ2P9UYUV": "20260420T094140.000Z",
             "#P0JYR9YUY": "20260420T190702.000Z",
-            "#R22R8GYG": "20260420T170716.000Z",
+            "#R22R8GYG": "20260421T002608.000Z",
             "#YQ82VR9JQ": "20260420T191412.000Z",
             "#G02LC9C8": "20260420T194317.000Z",
             "#2U8288CVY": "20260420T210758.000Z",
@@ -19,7 +19,7 @@
             "#QULCQGGG": "20260420T145421.000Z",
             "#JRGC9RRQG": "20260420T190317.000Z",
             "#QVQGCV8Y9": "20260420T181924.000Z",
-            "#Q8L0RJ8Y8": "20260420T051925.000Z",
+            "#Q8L0RJ8Y8": "20260421T034512.000Z",
             "#P2GUCG2Y": "20260420T190259.000Z",
             "#2CPRGY8G": "20260420T200806.000Z",
             "#LLQQJCLC": "20260420T163601.000Z",
@@ -32,9 +32,9 @@
             "#2V800VCQ0": "20260420T172335.000Z",
             "#2UQUPYQCJ": "20260420T144004.000Z",
             "#JUUR8UGL8": "20260420T184124.000Z",
-            "#2U09UULRR": "20260419T172417.000Z",
+            "#2U09UULRR": "20260421T025900.000Z",
             "#YJ0LUU0JJ": "20260419T175737.000Z",
-            "#8QYYL8LCQ": "20260420T232801.000Z",
+            "#8QYYL8LCQ": "20260421T005716.000Z",
             "#8P0J8P0L": "20260419T104335.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260420T131005.000Z",
@@ -3554,7 +3554,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Erastus"
             ],
@@ -3562,6 +3562,12 @@
                 "Q8L0RJ8Y8"
             ],
             "recent_matches": [
+                {
+                    "time": "20260421T034512.000Z",
+                    "result": "loss",
+                    "player": "Erastus",
+                    "tag": "Q8L0RJ8Y8"
+                },
                 {
                     "time": "20260419T160302.000Z",
                     "result": "win",
@@ -34517,6 +34523,52 @@
                     "id": 26000030,
                     "name": "Ice Spirit",
                     "icon": "https://api-assets.clashroyale.com/cards/300/lv1budiafU9XmSdrDkk0NYyqASAFYyZ06CPysXKZXlA.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000016-26000017-26000032-26000055-26000080-27000003-27000009-28000015": {
+            "cards": [
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 27000003,
+                    "name": "Inferno Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
+                },
+                {
+                    "id": 26000032,
+                    "name": "Miner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Y4yWvdwBCg2FpAZgs8T09Gy34WOwpLZW-ttL52Ae8NE.png"
+                },
+                {
+                    "id": 28000015,
+                    "name": "Barbarian Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Gb0G1yNy0i5cIGUHin8uoFWxqntNtRPhY_jeMXg7HnA.png"
+                },
+                {
+                    "id": 26000080,
+                    "name": "Skeleton Dragons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qPOtg9uONh47_NLxGhhFc_ww9PlZ6z3Ry507q1NZUXs.png"
+                },
+                {
+                    "id": 27000009,
+                    "name": "Tombstone",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LjSfSbwQfkZuRJY4pVxKspZ-a0iM5KAhU8w-a_N5Z7Y.png"
                 }
             ],
             "seen": 1,

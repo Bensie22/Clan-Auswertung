@@ -6,6 +6,11 @@
       "priority": 4
     },
     {
+      "name": "Merlin1659",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "wshbr",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -341,6 +346,11 @@
       "name": "AHMAD the Goat",
       "score": 0.0,
       "status": "RISIKO"
+    },
+    {
+      "name": "Merlin1659",
+      "score": 0.0,
+      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -568,6 +578,11 @@
       "name": "AHMAD the Goat",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "Merlin1659",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
@@ -588,6 +603,18 @@
       {
         "name": "AHMAD the Goat",
         "player_tag": "#CLC8JVPRG",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "Merlin1659",
+        "player_tag": "#P8GRG0UCY",
         "role": "member",
         "score": 0.0,
         "strikes": 0,
