@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "Vortex Babe",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "Julian",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -348,6 +353,11 @@
       "status": "OK"
     },
     {
+      "name": "Vortex Babe",
+      "score": 0.0,
+      "status": "RISIKO"
+    },
+    {
       "name": "wshbr",
       "score": 0.0,
       "status": "RISIKO"
@@ -590,6 +600,11 @@
       "tip": "Konstanz verbessern"
     },
     {
+      "name": "Vortex Babe",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "wshbr",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
@@ -618,6 +633,18 @@
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
+      {
+        "name": "Vortex Babe",
+        "player_tag": "#88GPYVR8P",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
       {
         "name": "wshbr",
         "player_tag": "#G8RVJJ2R",
