@@ -1,11 +1,6 @@
 {
   "full_auto": [
     {
-      "name": "Vortex Babe",
-      "scenario": "KEINE_TEILNAHME",
-      "priority": 4
-    },
-    {
       "name": "Julian",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -17,6 +12,11 @@
     },
     {
       "name": "NurEinJan",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
+      "name": "Vortex Babe",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
     },
@@ -639,7 +639,7 @@
         "role": "member",
         "score": 0.0,
         "strikes": 0,
-        "donations": 0,
+        "donations": 32,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
