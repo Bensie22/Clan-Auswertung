@@ -1,11 +1,6 @@
 {
   "full_auto": [
     {
-      "name": "Julian",
-      "scenario": "KEINE_TEILNAHME",
-      "priority": 4
-    },
-    {
       "name": "krümelmonster",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -17,6 +12,11 @@
     },
     {
       "name": "NurEinJan",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
+      "name": "Julian",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
     },
@@ -363,12 +363,12 @@
       "status": "RISIKO"
     },
     {
-      "name": "wshbr",
+      "name": "Julian",
       "score": 0.0,
       "status": "RISIKO"
     },
     {
-      "name": "Julian",
+      "name": "wshbr",
       "score": 0.0,
       "status": "RISIKO"
     },
@@ -615,12 +615,12 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
-      "name": "wshbr",
+      "name": "Julian",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
-      "name": "Julian",
+      "name": "wshbr",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
     },
@@ -661,24 +661,24 @@
         "recommended_action": "kick_review"
       },
       {
-        "name": "wshbr",
-        "player_tag": "#G8RVJJ2R",
+        "name": "Julian",
+        "player_tag": "#CQ0JQ0PC",
         "role": "member",
         "score": 0.0,
         "strikes": 0,
-        "donations": 190,
+        "donations": 24,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
         "recommended_action": "kick_review"
       },
       {
-        "name": "Julian",
-        "player_tag": "#CQ0JQ0PC",
+        "name": "wshbr",
+        "player_tag": "#G8RVJJ2R",
         "role": "member",
         "score": 0.0,
         "strikes": 0,
-        "donations": 0,
+        "donations": 190,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",

@@ -4,7 +4,7 @@
             "#22Q920RLR": "20260422T162256.000Z",
             "#L8PV090J": "20260422T180504.000Z",
             "#22CQPRR0J": "20260422T174657.000Z",
-            "#2QRVR9L8": "20260422T172253.000Z",
+            "#2QRVR9L8": "20260422T200608.000Z",
             "#ULYJ2CQP": "20260420T150932.000Z",
             "#UJ2P9UYUV": "20260420T094140.000Z",
             "#P0JYR9YUY": "20260422T182715.000Z",
@@ -15,10 +15,10 @@
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260420T043008.000Z",
-            "#PPR2QQC0U": "20260421T060856.000Z",
+            "#PPR2QQC0U": "20260422T200547.000Z",
             "#QULCQGGG": "20260422T153008.000Z",
             "#JRGC9RRQG": "20260421T222008.000Z",
-            "#QVQGCV8Y9": "20260422T185147.000Z",
+            "#QVQGCV8Y9": "20260422T190057.000Z",
             "#Q8L0RJ8Y8": "20260422T164730.000Z",
             "#P2GUCG2Y": "20260422T091550.000Z",
             "#2CPRGY8G": "20260422T090654.000Z",
@@ -34,7 +34,7 @@
             "#JUUR8UGL8": "20260422T052746.000Z",
             "#2U09UULRR": "20260422T065844.000Z",
             "#YJ0LUU0JJ": "20260419T175737.000Z",
-            "#8QYYL8LCQ": "20260422T143849.000Z",
+            "#8QYYL8LCQ": "20260422T193415.000Z",
             "#8P0J8P0L": "20260419T104335.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260420T131005.000Z",
@@ -56,12 +56,12 @@
             "#29RLRYLQL": "20260420T155237.000Z",
             "#QGGU22L9": "20260420T144732.000Z",
             "#2RQU00RLR": "20260421T120601.000Z",
-            "#JVV29Q8V0": "20260422T150945.000Z",
+            "#JVV29Q8V0": "20260422T191726.000Z",
             "#9UJ9GUL9Q": "20260421T171612.000Z",
             "#CLC8JVPRG": "20260421T200904.000Z",
             "#G8RVJJ2R": "20260422T142851.000Z",
             "#P8GRG0UCY": "20260422T125716.000Z",
-            "#CQ0JQ0PC": "20260422T180037.000Z",
+            "#CQ0JQ0PC": "20260422T193754.000Z",
             "#VRCVPQU2Y": "20260421T184335.000Z",
             "#88GPYVR8P": "20260422T092620.000Z",
             "#P9V2PUVUV": "20260422T180323.000Z"
@@ -333,7 +333,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
                 }
             ],
-            "wins": 5,
+            "wins": 4,
             "losses": 0,
             "players": [
                 "chris"
@@ -362,12 +362,6 @@
                 },
                 {
                     "time": "20260326T182939.000Z",
-                    "result": "win",
-                    "player": "chris",
-                    "tag": "YQ82VR9JQ"
-                },
-                {
-                    "time": "20260323T200738.000Z",
                     "result": "win",
                     "player": "chris",
                     "tag": "YQ82VR9JQ"
@@ -3660,7 +3654,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Davblack"
             ],
@@ -3668,6 +3662,12 @@
                 "JVV29Q8V0"
             ],
             "recent_matches": [
+                {
+                    "time": "20260422T191726.000Z",
+                    "result": "loss",
+                    "player": "Davblack",
+                    "tag": "JVV29Q8V0"
+                },
                 {
                     "time": "20260420T023754.000Z",
                     "result": "win",
@@ -35681,6 +35681,52 @@
                     "id": 26000006,
                     "name": "Balloon",
                     "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000007-26000009-26000014-26000016-26000021-26000064-28000001-28000026": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 28000026,
+                    "name": "Vines",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/V5sJlPuo2WBRtirJ1lGEPJA4NvQ0KPwFeMrpxLX5z_8.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 26000009,
+                    "name": "Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/npdmCnET7jmVjJvjJQkFnNSNnDxYHDBigbvIAloFMds.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
                 }
             ],
             "seen": 1,
