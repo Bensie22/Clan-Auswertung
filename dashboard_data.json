@@ -6,11 +6,6 @@
       "priority": 4
     },
     {
-      "name": "NurEinJan",
-      "scenario": "KEINE_TEILNAHME",
-      "priority": 4
-    },
-    {
       "name": "AHMAD the Goat",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -22,16 +17,21 @@
     },
     {
       "name": "Merlin1659",
-      "scenario": "KEINE_TEILNAHME",
+      "scenario": "STRIKE",
       "priority": 4
     },
     {
-      "name": "wshbr",
-      "scenario": "KEINE_TEILNAHME",
+      "name": "NurEinJan",
+      "scenario": "STRIKE",
       "priority": 4
     },
     {
       "name": "Vortex Babe",
+      "scenario": "STRIKE",
+      "priority": 4
+    },
+    {
+      "name": "wshbr",
       "scenario": "STRIKE",
       "priority": 4
     },
@@ -106,7 +106,7 @@
       "priority": 2
     },
     {
-      "name": "Swordfish",
+      "name": "Bensie",
       "scenario": "TOP",
       "priority": 2
     },
@@ -116,7 +116,7 @@
       "priority": 2
     },
     {
-      "name": "Bensie",
+      "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
@@ -144,7 +144,7 @@
     },
     {
       "name": "OmniOni",
-      "score": 93.73,
+      "score": 94.0,
       "status": "STARK"
     },
     {
@@ -184,7 +184,7 @@
     },
     {
       "name": "Dolphin",
-      "score": 89.68,
+      "score": 89.82,
       "status": "STARK"
     },
     {
@@ -213,18 +213,18 @@
       "status": "STARK"
     },
     {
-      "name": "Swordfish",
-      "score": 87.93,
+      "name": "Bensie",
+      "score": 88.22,
       "status": "STARK"
     },
     {
       "name": "DST",
-      "score": 87.87,
+      "score": 88.0,
       "status": "STARK"
     },
     {
-      "name": "Bensie",
-      "score": 87.68,
+      "name": "Swordfish",
+      "score": 87.93,
       "status": "STARK"
     },
     {
@@ -239,7 +239,7 @@
     },
     {
       "name": "Fxry",
-      "score": 85.28,
+      "score": 85.02,
       "status": "STARK"
     },
     {
@@ -263,11 +263,6 @@
       "status": "STARK"
     },
     {
-      "name": "Chico",
-      "score": 83.12,
-      "status": "STARK"
-    },
-    {
       "name": "rote sonne",
       "score": 82.95,
       "status": "STARK"
@@ -275,6 +270,11 @@
     {
       "name": "Ted",
       "score": 82.77,
+      "status": "STARK"
+    },
+    {
+      "name": "Chico",
+      "score": 82.72,
       "status": "STARK"
     },
     {
@@ -349,26 +349,31 @@
     },
     {
       "name": "elazeto",
-      "score": 65.57,
+      "score": 65.7,
       "status": "OK"
     },
     {
+      "name": "wshbr",
+      "score": 13.33,
+      "status": "RISIKO"
+    },
+    {
       "name": "Vortex Babe",
+      "score": 7.73,
+      "status": "RISIKO"
+    },
+    {
+      "name": "NurEinJan",
+      "score": 6.67,
+      "status": "RISIKO"
+    },
+    {
+      "name": "Merlin1659",
       "score": 3.33,
       "status": "RISIKO"
     },
     {
       "name": "Julian",
-      "score": 0.0,
-      "status": "RISIKO"
-    },
-    {
-      "name": "wshbr",
-      "score": 0.0,
-      "status": "RISIKO"
-    },
-    {
-      "name": "NurEinJan",
       "score": 0.0,
       "status": "RISIKO"
     },
@@ -379,11 +384,6 @@
     },
     {
       "name": "krümelmonster",
-      "score": 0.0,
-      "status": "RISIKO"
-    },
-    {
-      "name": "Merlin1659",
       "score": 0.0,
       "status": "RISIKO"
     }
@@ -396,7 +396,7 @@
     },
     {
       "name": "OmniOni",
-      "score": 93.73,
+      "score": 94.0,
       "tip": "Weiter so"
     },
     {
@@ -436,7 +436,7 @@
     },
     {
       "name": "Dolphin",
-      "score": 89.68,
+      "score": 89.82,
       "tip": "Weiter so"
     },
     {
@@ -465,18 +465,18 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Swordfish",
-      "score": 87.93,
+      "name": "Bensie",
+      "score": 88.22,
       "tip": "Weiter so"
     },
     {
       "name": "DST",
-      "score": 87.87,
+      "score": 88.0,
       "tip": "Weiter so"
     },
     {
-      "name": "Bensie",
-      "score": 87.68,
+      "name": "Swordfish",
+      "score": 87.93,
       "tip": "Weiter so"
     },
     {
@@ -491,7 +491,7 @@
     },
     {
       "name": "Fxry",
-      "score": 85.28,
+      "score": 85.02,
       "tip": "Weiter so"
     },
     {
@@ -515,11 +515,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Chico",
-      "score": 83.12,
-      "tip": "Weiter so"
-    },
-    {
       "name": "rote sonne",
       "score": 82.95,
       "tip": "Weiter so"
@@ -527,6 +522,11 @@
     {
       "name": "Ted",
       "score": 82.77,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Chico",
+      "score": 82.72,
       "tip": "Weiter so"
     },
     {
@@ -601,26 +601,31 @@
     },
     {
       "name": "elazeto",
-      "score": 65.57,
+      "score": 65.7,
       "tip": "Konstanz verbessern"
     },
     {
+      "name": "wshbr",
+      "score": 13.33,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "Vortex Babe",
+      "score": 7.73,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "NurEinJan",
+      "score": 6.67,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "Merlin1659",
       "score": 3.33,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
       "name": "Julian",
-      "score": 0.0,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "wshbr",
-      "score": 0.0,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "NurEinJan",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
     },
@@ -631,11 +636,6 @@
     },
     {
       "name": "krümelmonster",
-      "score": 0.0,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "Merlin1659",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
     }
@@ -650,30 +650,6 @@
         "score": 0.0,
         "strikes": 0,
         "donations": 42,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
-        "name": "wshbr",
-        "player_tag": "#G8RVJJ2R",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 190,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
-        "name": "NurEinJan",
-        "player_tag": "#VRCVPQU2Y",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 8,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -707,9 +683,21 @@
         "name": "Merlin1659",
         "player_tag": "#P8GRG0UCY",
         "role": "member",
-        "score": 0.0,
+        "score": 3.33,
         "strikes": 0,
-        "donations": 164,
+        "donations": 180,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "NurEinJan",
+        "player_tag": "#VRCVPQU2Y",
+        "role": "member",
+        "score": 6.67,
+        "strikes": 0,
+        "donations": 8,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -719,9 +707,21 @@
         "name": "Vortex Babe",
         "player_tag": "#88GPYVR8P",
         "role": "member",
-        "score": 3.33,
+        "score": 7.73,
         "strikes": 0,
-        "donations": 190,
+        "donations": 198,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "wshbr",
+        "player_tag": "#G8RVJJ2R",
+        "role": "member",
+        "score": 13.33,
+        "strikes": 0,
+        "donations": 214,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -745,9 +745,9 @@
         "name": "OmniOni",
         "player_tag": "#UUPCULU9V",
         "role": "member",
-        "score": 93.73,
+        "score": 94.0,
         "strikes": 0,
-        "donations": 464,
+        "donations": 496,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -795,7 +795,7 @@
         "role": "member",
         "score": 91.47,
         "strikes": 0,
-        "donations": 84,
+        "donations": 92,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -807,7 +807,7 @@
         "role": "member",
         "score": 90.96,
         "strikes": 0,
-        "donations": 440,
+        "donations": 472,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -841,9 +841,9 @@
         "name": "Dolphin",
         "player_tag": "#2U09UULRR",
         "role": "member",
-        "score": 89.68,
+        "score": 89.82,
         "strikes": 0,
-        "donations": 92,
+        "donations": 100,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -910,12 +910,12 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Swordfish",
-        "player_tag": "#2CPRGY8G",
+        "name": "Bensie",
+        "player_tag": "#2QRVR9L8",
         "role": "member",
-        "score": 87.93,
+        "score": 88.22,
         "strikes": 0,
-        "donations": 282,
+        "donations": 866,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -925,21 +925,21 @@
         "name": "DST",
         "player_tag": "#9VLRQ9GR9",
         "role": "member",
-        "score": 87.87,
+        "score": 88.0,
         "strikes": 0,
-        "donations": 122,
+        "donations": 138,
         "participation_count": 2,
         "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
       {
-        "name": "Bensie",
-        "player_tag": "#2QRVR9L8",
+        "name": "Swordfish",
+        "player_tag": "#2CPRGY8G",
         "role": "member",
-        "score": 87.68,
+        "score": 87.93,
         "strikes": 0,
-        "donations": 830,
+        "donations": 298,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -973,9 +973,9 @@
         "name": "Fxry",
         "player_tag": "#YQVQYUYRV",
         "role": "member",
-        "score": 85.28,
+        "score": 85.02,
         "strikes": 0,
-        "donations": 70,
+        "donations": 110,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟡",
         "reason": "Score über 85",
