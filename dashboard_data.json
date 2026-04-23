@@ -26,13 +26,13 @@
       "priority": 4
     },
     {
-      "name": "Vortex Babe",
+      "name": "wshbr",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
     },
     {
-      "name": "wshbr",
-      "scenario": "KEINE_TEILNAHME",
+      "name": "Vortex Babe",
+      "scenario": "STRIKE",
       "priority": 4
     },
     {
@@ -87,6 +87,11 @@
     },
     {
       "name": "chris",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "AaleDieter",
       "scenario": "TOP",
       "priority": 2
     },
@@ -159,7 +164,7 @@
     },
     {
       "name": "OneAndOnly",
-      "score": 91.2,
+      "score": 91.47,
       "status": "STARK"
     },
     {
@@ -189,7 +194,7 @@
     },
     {
       "name": "AaleDieter",
-      "score": 88.69,
+      "score": 89.22,
       "status": "STARK"
     },
     {
@@ -264,7 +269,7 @@
     },
     {
       "name": "rote sonne",
-      "score": 83.08,
+      "score": 82.95,
       "status": "STARK"
     },
     {
@@ -303,6 +308,11 @@
       "status": "STARK"
     },
     {
+      "name": "Davblack",
+      "score": 80.03,
+      "status": "STARK"
+    },
+    {
       "name": "bes",
       "score": 79.91,
       "status": "OK"
@@ -310,11 +320,6 @@
     {
       "name": "lukasl 5",
       "score": 79.82,
-      "status": "OK"
-    },
-    {
-      "name": "Davblack",
-      "score": 79.77,
       "status": "OK"
     },
     {
@@ -349,7 +354,7 @@
     },
     {
       "name": "Vortex Babe",
-      "score": 0.0,
+      "score": 3.33,
       "status": "RISIKO"
     },
     {
@@ -411,7 +416,7 @@
     },
     {
       "name": "OneAndOnly",
-      "score": 91.2,
+      "score": 91.47,
       "tip": "Weiter so"
     },
     {
@@ -441,7 +446,7 @@
     },
     {
       "name": "AaleDieter",
-      "score": 88.69,
+      "score": 89.22,
       "tip": "Weiter so"
     },
     {
@@ -516,7 +521,7 @@
     },
     {
       "name": "rote sonne",
-      "score": 83.08,
+      "score": 82.95,
       "tip": "Weiter so"
     },
     {
@@ -555,6 +560,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Davblack",
+      "score": 80.03,
+      "tip": "Weiter so"
+    },
+    {
       "name": "bes",
       "score": 79.91,
       "tip": "Weiter so"
@@ -562,11 +572,6 @@
     {
       "name": "lukasl 5",
       "score": 79.82,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Davblack",
-      "score": 79.77,
       "tip": "Weiter so"
     },
     {
@@ -601,7 +606,7 @@
     },
     {
       "name": "Vortex Babe",
-      "score": 0.0,
+      "score": 3.33,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
@@ -638,18 +643,6 @@
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
-      {
-        "name": "Vortex Babe",
-        "player_tag": "#88GPYVR8P",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 190,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
       {
         "name": "Julian",
         "player_tag": "#CQ0JQ0PC",
@@ -721,6 +714,18 @@
         "trend": "",
         "reason": "Score unter 40",
         "recommended_action": "kick_review"
+      },
+      {
+        "name": "Vortex Babe",
+        "player_tag": "#88GPYVR8P",
+        "role": "member",
+        "score": 3.33,
+        "strikes": 0,
+        "donations": 190,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
       }
     ],
     "core": [
@@ -766,7 +771,7 @@
         "role": "member",
         "score": 92.13,
         "strikes": 0,
-        "donations": 386,
+        "donations": 412,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -788,7 +793,7 @@
         "name": "OneAndOnly",
         "player_tag": "#8P0J8P0L",
         "role": "member",
-        "score": 91.2,
+        "score": 91.47,
         "strikes": 0,
         "donations": 244,
         "participation_count": 10,
@@ -860,9 +865,9 @@
         "name": "AaleDieter",
         "player_tag": "#CUJ9PJ2UV",
         "role": "member",
-        "score": 88.69,
+        "score": 89.22,
         "strikes": 0,
-        "donations": 44,
+        "donations": 54,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -922,7 +927,7 @@
         "role": "member",
         "score": 87.68,
         "strikes": 0,
-        "donations": 812,
+        "donations": 830,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
