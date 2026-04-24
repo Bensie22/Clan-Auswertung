@@ -1,7 +1,7 @@
 {
     "_metadata": {
         "last_battles": {
-            "#22Q920RLR": "20260424T145154.000Z",
+            "#22Q920RLR": "20260424T174952.000Z",
             "#L8PV090J": "20260424T155420.000Z",
             "#22CQPRR0J": "20260424T132725.000Z",
             "#2QRVR9L8": "20260424T153612.000Z",
@@ -10,7 +10,7 @@
             "#P0JYR9YUY": "20260424T115505.000Z",
             "#R22R8GYG": "20260424T123623.000Z",
             "#YQ82VR9JQ": "20260424T152908.000Z",
-            "#G02LC9C8": "20260424T141224.000Z",
+            "#G02LC9C8": "20260424T175403.000Z",
             "#2U8288CVY": "20260423T090236.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
@@ -60,7 +60,7 @@
             "#9UJ9GUL9Q": "20260421T171612.000Z",
             "#CLC8JVPRG": "20260424T145321.000Z",
             "#G8RVJJ2R": "20260424T143438.000Z",
-            "#P8GRG0UCY": "20260424T121802.000Z",
+            "#P8GRG0UCY": "20260424T182819.000Z",
             "#CQ0JQ0PC": "20260424T155243.000Z",
             "#VRCVPQU2Y": "20260424T064627.000Z",
             "#88GPYVR8P": "20260424T001456.000Z",
@@ -2249,7 +2249,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
                 }
             ],
-            "wins": 4,
+            "wins": 5,
             "losses": 0,
             "players": [
                 "LazyFrog"
@@ -2258,6 +2258,12 @@
                 "22Q920RLR"
             ],
             "recent_matches": [
+                {
+                    "time": "20260424T174952.000Z",
+                    "result": "win",
+                    "player": "LazyFrog",
+                    "tag": "22Q920RLR"
+                },
                 {
                     "time": "20260419T160835.000Z",
                     "result": "win",
@@ -41907,6 +41913,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000001-26000008-26000011-26000017-26000024-26000038-28000011-28000017": {
+            "cards": [
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000038,
+                    "name": "Ice Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/r05cmpwV1o7i7FHodtZwW3fmjbXCW34IJCsDEV5cZC4.png"
+                },
+                {
+                    "id": 26000024,
+                    "name": "Royal Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mnlRaNtmfpQx2e6mp70sLd0ND-pKPF70Cf87_agEKg4.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 26000008,
+                    "name": "Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/TvJsuu2S4yhyk1jVYUAQwdKOnW4U77KuWWOTPOWnwfI.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 28000017,
+                    "name": "Giant Snowball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
