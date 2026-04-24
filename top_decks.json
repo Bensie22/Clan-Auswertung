@@ -1,16 +1,16 @@
 {
     "_metadata": {
         "last_battles": {
-            "#22Q920RLR": "20260424T053331.000Z",
+            "#22Q920RLR": "20260424T145154.000Z",
             "#L8PV090J": "20260424T103545.000Z",
             "#22CQPRR0J": "20260424T132725.000Z",
-            "#2QRVR9L8": "20260424T135228.000Z",
+            "#2QRVR9L8": "20260424T153612.000Z",
             "#ULYJ2CQP": "20260424T095754.000Z",
             "#UJ2P9UYUV": "20260424T085947.000Z",
             "#P0JYR9YUY": "20260424T115505.000Z",
             "#R22R8GYG": "20260424T123623.000Z",
-            "#YQ82VR9JQ": "20260424T125414.000Z",
-            "#G02LC9C8": "20260423T192536.000Z",
+            "#YQ82VR9JQ": "20260424T152908.000Z",
+            "#G02LC9C8": "20260424T141224.000Z",
             "#2U8288CVY": "20260423T090236.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
@@ -43,7 +43,7 @@
             "#RLJPJL8C2": "20260424T113244.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20260424T141042.000Z",
+            "#UUPCULU9V": "20260424T142103.000Z",
             "#202VP2QL9P": "20260424T070900.000Z",
             "#LVUGLUCP9": "20260419T184349.000Z",
             "#20QGJVPG8Q": "20260424T140922.000Z",
@@ -58,8 +58,8 @@
             "#2RQU00RLR": "20260421T120601.000Z",
             "#JVV29Q8V0": "20260424T141011.000Z",
             "#9UJ9GUL9Q": "20260421T171612.000Z",
-            "#CLC8JVPRG": "20260423T110220.000Z",
-            "#G8RVJJ2R": "20260424T133126.000Z",
+            "#CLC8JVPRG": "20260424T145321.000Z",
+            "#G8RVJJ2R": "20260424T143438.000Z",
             "#P8GRG0UCY": "20260424T121802.000Z",
             "#CQ0JQ0PC": "20260423T161403.000Z",
             "#VRCVPQU2Y": "20260424T064627.000Z",
@@ -5987,7 +5987,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "chris"
@@ -5996,6 +5996,12 @@
                 "YQ82VR9JQ"
             ],
             "recent_matches": [
+                {
+                    "time": "20260424T152908.000Z",
+                    "result": "win",
+                    "player": "chris",
+                    "tag": "YQ82VR9JQ"
+                },
                 {
                     "time": "20260423T200538.000Z",
                     "result": "win",
@@ -41613,6 +41619,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000015-26000040-26000041-26000059-26000062-26000064-27000012-28000002": {
+            "cards": [
+                {
+                    "id": 27000012,
+                    "name": "Goblin Cage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vD24bBgK4rSq7wx5QEbuqChtPMRFviL_ep76GwQw1yA.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 28000002,
+                    "name": "Rage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
