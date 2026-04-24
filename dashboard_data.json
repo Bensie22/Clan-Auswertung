@@ -1,11 +1,6 @@
 {
   "full_auto": [
     {
-      "name": "krümelmonster",
-      "scenario": "KEINE_TEILNAHME",
-      "priority": 4
-    },
-    {
       "name": "AHMAD the Goat",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -22,6 +17,11 @@
     },
     {
       "name": "NurEinJan",
+      "scenario": "STRIKE",
+      "priority": 4
+    },
+    {
+      "name": "krümelmonster",
       "scenario": "STRIKE",
       "priority": 4
     },
@@ -71,12 +71,12 @@
       "priority": 2
     },
     {
-      "name": "_spc07",
+      "name": "honigmelone",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "honigmelone",
+      "name": "_spc07",
       "scenario": "TOP",
       "priority": 2
     },
@@ -178,13 +178,13 @@
       "status": "STARK"
     },
     {
-      "name": "_spc07",
-      "score": 90.22,
+      "name": "honigmelone",
+      "score": 90.4,
       "status": "STARK"
     },
     {
-      "name": "honigmelone",
-      "score": 90.13,
+      "name": "_spc07",
+      "score": 90.22,
       "status": "STARK"
     },
     {
@@ -224,7 +224,7 @@
     },
     {
       "name": "DST",
-      "score": 88.0,
+      "score": 88.13,
       "status": "STARK"
     },
     {
@@ -368,6 +368,11 @@
       "status": "RISIKO"
     },
     {
+      "name": "krümelmonster",
+      "score": 10.0,
+      "status": "RISIKO"
+    },
+    {
       "name": "NurEinJan",
       "score": 6.67,
       "status": "RISIKO"
@@ -384,11 +389,6 @@
     },
     {
       "name": "AHMAD the Goat",
-      "score": 0.0,
-      "status": "RISIKO"
-    },
-    {
-      "name": "krümelmonster",
       "score": 0.0,
       "status": "RISIKO"
     }
@@ -430,13 +430,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "_spc07",
-      "score": 90.22,
+      "name": "honigmelone",
+      "score": 90.4,
       "tip": "Weiter so"
     },
     {
-      "name": "honigmelone",
-      "score": 90.13,
+      "name": "_spc07",
+      "score": 90.22,
       "tip": "Weiter so"
     },
     {
@@ -476,7 +476,7 @@
     },
     {
       "name": "DST",
-      "score": 88.0,
+      "score": 88.13,
       "tip": "Weiter so"
     },
     {
@@ -620,6 +620,11 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
+      "name": "krümelmonster",
+      "score": 10.0,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "NurEinJan",
       "score": 6.67,
       "tip": "Mehr Teilnahme notwendig"
@@ -636,11 +641,6 @@
     },
     {
       "name": "AHMAD the Goat",
-      "score": 0.0,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "krümelmonster",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
     }
@@ -673,24 +673,12 @@
         "recommended_action": "kick_review"
       },
       {
-        "name": "krümelmonster",
-        "player_tag": "#P9V2PUVUV",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 0,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
         "name": "Merlin1659",
         "player_tag": "#P8GRG0UCY",
         "role": "member",
         "score": 3.33,
         "strikes": 0,
-        "donations": 262,
+        "donations": 322,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -721,12 +709,24 @@
         "recommended_action": "kick_review"
       },
       {
+        "name": "krümelmonster",
+        "player_tag": "#P9V2PUVUV",
+        "role": "member",
+        "score": 10.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
         "name": "wshbr",
         "player_tag": "#G8RVJJ2R",
         "role": "member",
         "score": 13.33,
         "strikes": 0,
-        "donations": 230,
+        "donations": 298,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -776,7 +776,7 @@
         "role": "member",
         "score": 92.13,
         "strikes": 0,
-        "donations": 412,
+        "donations": 504,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -800,7 +800,7 @@
         "role": "member",
         "score": 91.47,
         "strikes": 0,
-        "donations": 100,
+        "donations": 124,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -812,7 +812,19 @@
         "role": "member",
         "score": 90.96,
         "strikes": 0,
-        "donations": 506,
+        "donations": 558,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "honigmelone",
+        "player_tag": "#Q2GRGLQR",
+        "role": "member",
+        "score": 90.4,
+        "strikes": 0,
+        "donations": 88,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -831,24 +843,12 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "honigmelone",
-        "player_tag": "#Q2GRGLQR",
-        "role": "member",
-        "score": 90.13,
-        "strikes": 0,
-        "donations": 72,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Dolphin",
         "player_tag": "#2U09UULRR",
         "role": "member",
         "score": 89.28,
         "strikes": 0,
-        "donations": 110,
+        "donations": 120,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -920,7 +920,7 @@
         "role": "member",
         "score": 88.22,
         "strikes": 0,
-        "donations": 991,
+        "donations": 999,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -930,9 +930,9 @@
         "name": "DST",
         "player_tag": "#9VLRQ9GR9",
         "role": "member",
-        "score": 88.0,
+        "score": 88.13,
         "strikes": 0,
-        "donations": 138,
+        "donations": 204,
         "participation_count": 2,
         "trend": "",
         "reason": "Score über 85",
