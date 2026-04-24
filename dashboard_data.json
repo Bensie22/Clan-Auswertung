@@ -96,6 +96,11 @@
       "priority": 2
     },
     {
+      "name": "Bensie",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "hi2oka",
       "scenario": "TOP",
       "priority": 2
@@ -107,11 +112,6 @@
     },
     {
       "name": "DST",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Bensie",
       "scenario": "TOP",
       "priority": 2
     },
@@ -208,6 +208,11 @@
       "status": "STARK"
     },
     {
+      "name": "Bensie",
+      "score": 88.75,
+      "status": "STARK"
+    },
+    {
       "name": "hi2oka",
       "score": 88.45,
       "status": "STARK"
@@ -219,12 +224,7 @@
     },
     {
       "name": "DST",
-      "score": 88.4,
-      "status": "STARK"
-    },
-    {
-      "name": "Bensie",
-      "score": 88.22,
+      "score": 88.13,
       "status": "STARK"
     },
     {
@@ -460,6 +460,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Bensie",
+      "score": 88.75,
+      "tip": "Weiter so"
+    },
+    {
       "name": "hi2oka",
       "score": 88.45,
       "tip": "Weiter so"
@@ -471,12 +476,7 @@
     },
     {
       "name": "DST",
-      "score": 88.4,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Bensie",
-      "score": 88.22,
+      "score": 88.13,
       "tip": "Weiter so"
     },
     {
@@ -781,7 +781,7 @@
         "role": "member",
         "score": 92.13,
         "strikes": 0,
-        "donations": 512,
+        "donations": 528,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -841,7 +841,7 @@
         "role": "member",
         "score": 90.22,
         "strikes": 0,
-        "donations": 130,
+        "donations": 148,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -884,6 +884,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Bensie",
+        "player_tag": "#2QRVR9L8",
+        "role": "member",
+        "score": 88.75,
+        "strikes": 0,
+        "donations": 1195,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "hi2oka",
         "player_tag": "#UJ2P9UYUV",
         "role": "member",
@@ -911,23 +923,11 @@
         "name": "DST",
         "player_tag": "#9VLRQ9GR9",
         "role": "member",
-        "score": 88.4,
+        "score": 88.13,
         "strikes": 0,
         "donations": 236,
         "participation_count": 2,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Bensie",
-        "player_tag": "#2QRVR9L8",
-        "role": "member",
-        "score": 88.22,
-        "strikes": 0,
-        "donations": 1187,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
