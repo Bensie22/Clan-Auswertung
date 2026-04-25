@@ -5,7 +5,7 @@
             "#L8PV090J": "20260425T173111.000Z",
             "#22CQPRR0J": "20260424T132725.000Z",
             "#2QRVR9L8": "20260425T184519.000Z",
-            "#ULYJ2CQP": "20260425T180229.000Z",
+            "#ULYJ2CQP": "20260425T200747.000Z",
             "#UJ2P9UYUV": "20260424T085947.000Z",
             "#P0JYR9YUY": "20260425T151311.000Z",
             "#R22R8GYG": "20260425T134452.000Z",
@@ -38,7 +38,7 @@
             "#8P0J8P0L": "20260425T123737.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260425T125314.000Z",
-            "#2P0U2RLGY": "20260424T102123.000Z",
+            "#2P0U2RLGY": "20260425T201257.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260425T122414.000Z",
             "#RG02LG88": "20260405T075546.000Z",
@@ -60,7 +60,7 @@
             "#9UJ9GUL9Q": "20260421T171612.000Z",
             "#CLC8JVPRG": "20260424T234312.000Z",
             "#G8RVJJ2R": "20260425T194721.000Z",
-            "#P8GRG0UCY": "20260425T160701.000Z",
+            "#P8GRG0UCY": "20260425T202338.000Z",
             "#CQ0JQ0PC": "20260424T155243.000Z",
             "#VRCVPQU2Y": "20260424T064627.000Z",
             "#88GPYVR8P": "20260425T183726.000Z",
@@ -1506,7 +1506,7 @@
                 }
             ],
             "wins": 7,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "mauza"
             ],
@@ -1514,6 +1514,12 @@
                 "2P0U2RLGY"
             ],
             "recent_matches": [
+                {
+                    "time": "20260425T201257.000Z",
+                    "result": "loss",
+                    "player": "mauza",
+                    "tag": "2P0U2RLGY"
+                },
                 {
                     "time": "20260424T102123.000Z",
                     "result": "win",
@@ -46428,6 +46434,52 @@
                     "id": 26000032,
                     "name": "Miner",
                     "icon": "https://api-assets.clashroyale.com/cards/300/Y4yWvdwBCg2FpAZgs8T09Gy34WOwpLZW-ttL52Ae8NE.png"
+                },
+                {
+                    "id": 26000019,
+                    "name": "Spear Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/FSDFotjaXidI4ku_WFpVCTWS1hKGnFh1sxX0lxM43_E.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000011-26000019-26000043-26000045-26000049-27000003-28000001-28000002": {
+            "cards": [
+                {
+                    "id": 26000043,
+                    "name": "Elite Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/C88C5JH_F3lLZj6K-tLcMo5DPjrFmvzIb1R2M6xCfTE.png"
+                },
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 27000003,
+                    "name": "Inferno Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 28000002,
+                    "name": "Rage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
                 },
                 {
                     "id": 26000019,
