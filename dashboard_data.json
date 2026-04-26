@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "Suren 187",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "Julian",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -189,7 +194,7 @@
     },
     {
       "name": "Dolphin",
-      "score": 89.28,
+      "score": 89.15,
       "status": "STARK"
     },
     {
@@ -234,7 +239,7 @@
     },
     {
       "name": "kl.kranker Affe",
-      "score": 87.27,
+      "score": 87.14,
       "status": "STARK"
     },
     {
@@ -249,7 +254,7 @@
     },
     {
       "name": "eco",
-      "score": 84.42,
+      "score": 84.82,
       "status": "STARK"
     },
     {
@@ -289,7 +294,7 @@
     },
     {
       "name": "Citykingalex",
-      "score": 81.8,
+      "score": 81.67,
       "status": "STARK"
     },
     {
@@ -354,7 +359,7 @@
     },
     {
       "name": "elazeto",
-      "score": 64.9,
+      "score": 65.03,
       "status": "OK"
     },
     {
@@ -384,6 +389,11 @@
     },
     {
       "name": "Julian",
+      "score": 0.0,
+      "status": "RISIKO"
+    },
+    {
+      "name": "Suren 187",
       "score": 0.0,
       "status": "RISIKO"
     }
@@ -436,7 +446,7 @@
     },
     {
       "name": "Dolphin",
-      "score": 89.28,
+      "score": 89.15,
       "tip": "Weiter so"
     },
     {
@@ -481,7 +491,7 @@
     },
     {
       "name": "kl.kranker Affe",
-      "score": 87.27,
+      "score": 87.14,
       "tip": "Weiter so"
     },
     {
@@ -496,7 +506,7 @@
     },
     {
       "name": "eco",
-      "score": 84.42,
+      "score": 84.82,
       "tip": "Weiter so"
     },
     {
@@ -536,7 +546,7 @@
     },
     {
       "name": "Citykingalex",
-      "score": 81.8,
+      "score": 81.67,
       "tip": "Weiter so"
     },
     {
@@ -601,7 +611,7 @@
     },
     {
       "name": "elazeto",
-      "score": 64.9,
+      "score": 65.03,
       "tip": "Konstanz verbessern"
     },
     {
@@ -633,6 +643,11 @@
       "name": "Julian",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "Suren 187",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
@@ -645,6 +660,18 @@
         "score": 0.0,
         "strikes": 0,
         "donations": 70,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "Suren 187",
+        "player_tag": "#U0JQL9Q0",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -718,7 +745,7 @@
         "role": "member",
         "score": 94.13,
         "strikes": 0,
-        "donations": 909,
+        "donations": 917,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -824,7 +851,7 @@
         "name": "Dolphin",
         "player_tag": "#2U09UULRR",
         "role": "member",
-        "score": 89.28,
+        "score": 89.15,
         "strikes": 0,
         "donations": 196,
         "participation_count": 10,
@@ -932,7 +959,7 @@
         "name": "kl.kranker Affe",
         "player_tag": "#RLJPJL8C2",
         "role": "member",
-        "score": 87.27,
+        "score": 87.14,
         "strikes": 0,
         "donations": 94,
         "participation_count": 10,
