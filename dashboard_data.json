@@ -6,16 +6,6 @@
       "priority": 4
     },
     {
-      "name": "Julian",
-      "scenario": "KEINE_TEILNAHME",
-      "priority": 4
-    },
-    {
-      "name": "AHMAD the Goat",
-      "scenario": "STRIKE",
-      "priority": 4
-    },
-    {
       "name": "Merlin1659",
       "scenario": "STRIKE",
       "priority": 4
@@ -96,11 +86,6 @@
       "priority": 2
     },
     {
-      "name": "Bensie",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
@@ -112,6 +97,11 @@
     },
     {
       "name": "Wario",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Bensie",
       "scenario": "TOP",
       "priority": 2
     },
@@ -208,13 +198,8 @@
       "status": "STARK"
     },
     {
-      "name": "Bensie",
-      "score": 88.62,
-      "status": "STARK"
-    },
-    {
       "name": "Swordfish",
-      "score": 88.47,
+      "score": 88.6,
       "status": "STARK"
     },
     {
@@ -225,6 +210,11 @@
     {
       "name": "Wario",
       "score": 88.43,
+      "status": "STARK"
+    },
+    {
+      "name": "Bensie",
+      "score": 88.22,
       "status": "STARK"
     },
     {
@@ -318,11 +308,6 @@
       "status": "STARK"
     },
     {
-      "name": "Davblack",
-      "score": 80.03,
-      "status": "STARK"
-    },
-    {
       "name": "lukasl 5",
       "score": 79.95,
       "status": "OK"
@@ -359,7 +344,7 @@
     },
     {
       "name": "elazeto",
-      "score": 65.03,
+      "score": 64.9,
       "status": "OK"
     },
     {
@@ -378,18 +363,8 @@
       "status": "RISIKO"
     },
     {
-      "name": "AHMAD the Goat",
-      "score": 3.33,
-      "status": "RISIKO"
-    },
-    {
       "name": "Merlin1659",
       "score": 3.33,
-      "status": "RISIKO"
-    },
-    {
-      "name": "Julian",
-      "score": 0.0,
       "status": "RISIKO"
     },
     {
@@ -460,13 +435,8 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Bensie",
-      "score": 88.62,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Swordfish",
-      "score": 88.47,
+      "score": 88.6,
       "tip": "Weiter so"
     },
     {
@@ -477,6 +447,11 @@
     {
       "name": "Wario",
       "score": 88.43,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Bensie",
+      "score": 88.22,
       "tip": "Weiter so"
     },
     {
@@ -570,11 +545,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Davblack",
-      "score": 80.03,
-      "tip": "Weiter so"
-    },
-    {
       "name": "lukasl 5",
       "score": 79.95,
       "tip": "Weiter so"
@@ -611,7 +581,7 @@
     },
     {
       "name": "elazeto",
-      "score": 65.03,
+      "score": 64.9,
       "tip": "Konstanz verbessern"
     },
     {
@@ -630,18 +600,8 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
-      "name": "AHMAD the Goat",
-      "score": 3.33,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
       "name": "Merlin1659",
       "score": 3.33,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "Julian",
-      "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
@@ -654,36 +614,12 @@
     "generated_from": "_prefetch.json",
     "remove": [
       {
-        "name": "Julian",
-        "player_tag": "#CQ0JQ0PC",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 70,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
         "name": "Suren 187",
         "player_tag": "#U0JQL9Q0",
         "role": "member",
         "score": 0.0,
         "strikes": 0,
         "donations": 0,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
-        "name": "AHMAD the Goat",
-        "player_tag": "#CLC8JVPRG",
-        "role": "member",
-        "score": 3.33,
-        "strikes": 0,
-        "donations": 83,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -884,24 +820,12 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Bensie",
-        "player_tag": "#2QRVR9L8",
-        "role": "member",
-        "score": 88.62,
-        "strikes": 0,
-        "donations": 1728,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Swordfish",
         "player_tag": "#2CPRGY8G",
         "role": "member",
-        "score": 88.47,
+        "score": 88.6,
         "strikes": 0,
-        "donations": 391,
+        "donations": 399,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -926,6 +850,18 @@
         "score": 88.43,
         "strikes": 0,
         "donations": 172,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Bensie",
+        "player_tag": "#2QRVR9L8",
+        "role": "member",
+        "score": 88.22,
+        "strikes": 0,
+        "donations": 1736,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
