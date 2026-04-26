@@ -4,7 +4,7 @@
             "#22Q920RLR": "20260426T152232.000Z",
             "#L8PV090J": "20260426T133329.000Z",
             "#22CQPRR0J": "20260426T090540.000Z",
-            "#2QRVR9L8": "20260426T142901.000Z",
+            "#2QRVR9L8": "20260426T153701.000Z",
             "#ULYJ2CQP": "20260426T114634.000Z",
             "#UJ2P9UYUV": "20260426T072201.000Z",
             "#P0JYR9YUY": "20260426T125903.000Z",
@@ -37,7 +37,7 @@
             "#8QYYL8LCQ": "20260426T061445.000Z",
             "#8P0J8P0L": "20260425T123737.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20260426T152131.000Z",
+            "#CUJ9PJ2UV": "20260426T152829.000Z",
             "#2P0U2RLGY": "20260425T201257.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260426T111106.000Z",
@@ -46,26 +46,26 @@
             "#UUPCULU9V": "20260426T145802.000Z",
             "#202VP2QL9P": "20260426T142731.000Z",
             "#LVUGLUCP9": "20260425T190015.000Z",
-            "#20QGJVPG8Q": "20260426T152334.000Z",
+            "#20QGJVPG8Q": "20260426T153028.000Z",
             "#V9GYJQ0J9": "",
             "#URJ0LUYPV": "20260426T120902.000Z",
             "#Q2GRGLQR": "20260426T071602.000Z",
             "#J9RQPGLVP": "20260426T141818.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
-            "#9VLRQ9GR9": "20260426T135527.000Z",
+            "#9VLRQ9GR9": "20260426T160343.000Z",
             "#29RLRYLQL": "20260420T155237.000Z",
             "#QGGU22L9": "20260420T144732.000Z",
             "#2RQU00RLR": "20260421T120601.000Z",
             "#JVV29Q8V0": "20260425T214617.000Z",
             "#9UJ9GUL9Q": "20260421T171612.000Z",
             "#CLC8JVPRG": "20260424T234312.000Z",
-            "#G8RVJJ2R": "20260426T135922.000Z",
+            "#G8RVJJ2R": "20260426T155736.000Z",
             "#P8GRG0UCY": "20260426T141739.000Z",
             "#CQ0JQ0PC": "20260424T155243.000Z",
             "#VRCVPQU2Y": "20260424T064627.000Z",
             "#88GPYVR8P": "20260425T183726.000Z",
             "#P9V2PUVUV": "20260424T103052.000Z",
-            "#U0JQL9Q0": "20260426T105803.000Z"
+            "#U0JQL9Q0": "20260426T154735.000Z"
         }
     },
     "decks": {
@@ -5629,7 +5629,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "DST"
             ],
@@ -5637,6 +5637,12 @@
                 "9VLRQ9GR9"
             ],
             "recent_matches": [
+                {
+                    "time": "20260426T160343.000Z",
+                    "result": "loss",
+                    "player": "DST",
+                    "tag": "9VLRQ9GR9"
+                },
                 {
                     "time": "20260426T021853.000Z",
                     "result": "win",
@@ -50674,6 +50680,98 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000018-26000035-26000039-26000048-26000050-26000062-26000083-28000009": {
+            "cards": [
+                {
+                    "id": 26000035,
+                    "name": "Lumberjack",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
+                },
+                {
+                    "id": 26000039,
+                    "name": "Mega Minion",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/-T_e4YLbuhPBKbYnBwQfXgynNpp5eOIN_0RracYwL9c.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000050,
+                    "name": "Royal Ghost",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3En2cz0ISQAaMTHY3hj3rTveFN2kJYq-H4VxvdJNvCM.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                },
+                {
+                    "id": 26000083,
+                    "name": "Mother Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fO-Xah8XZkYKaSK9SCp3wnzwxtvIhun9NVY-zzte1Ng.png"
+                },
+                {
+                    "id": 26000048,
+                    "name": "Night Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NpCrXDEDBBJgNv9QrBAcJmmMFbS7pe3KCY8xJ5VB18A.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000011-26000014-26000031-26000034-26000084-26000103-28000023-28000026": {
+            "cards": [
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000103,
+                    "name": "Boss Bandit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nuceG9o7rAyvyc7D3sp2QSiRYtSOEgraq0NJkDf729s.png"
+                },
+                {
+                    "id": 26000031,
+                    "name": "Fire Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/16-BqusVvynIgYI8_Jci3LDC-r8AI_xaIYLgXqtlmS8.png"
+                },
+                {
+                    "id": 26000084,
+                    "name": "Electro Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WKd4-IAFsgPpMo7dDi9sujmYjRhOMEWiE07OUJpvD9g.png"
+                },
+                {
+                    "id": 28000023,
+                    "name": "Void",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BykyeWDqzn4PlHSszu3NbrXT1mHxW2EA8vHbQGR5LDE.png"
+                },
+                {
+                    "id": 28000026,
+                    "name": "Vines",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/V5sJlPuo2WBRtirJ1lGEPJA4NvQ0KPwFeMrpxLX5z_8.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
