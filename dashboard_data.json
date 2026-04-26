@@ -1,11 +1,6 @@
 {
   "full_auto": [
     {
-      "name": "Suren 187",
-      "scenario": "KEINE_TEILNAHME",
-      "priority": 4
-    },
-    {
       "name": "Merlin1659",
       "scenario": "STRIKE",
       "priority": 4
@@ -22,6 +17,11 @@
     },
     {
       "name": "Vortex Babe",
+      "scenario": "STRIKE",
+      "priority": 4
+    },
+    {
+      "name": "Suren 187",
       "scenario": "STRIKE",
       "priority": 4
     },
@@ -249,7 +249,7 @@
     },
     {
       "name": "seroo",
-      "score": 84.06,
+      "score": 84.19,
       "status": "STARK"
     },
     {
@@ -348,6 +348,11 @@
       "status": "OK"
     },
     {
+      "name": "Suren 187",
+      "score": 13.33,
+      "status": "RISIKO"
+    },
+    {
       "name": "Vortex Babe",
       "score": 11.07,
       "status": "RISIKO"
@@ -365,11 +370,6 @@
     {
       "name": "Merlin1659",
       "score": 4.53,
-      "status": "RISIKO"
-    },
-    {
-      "name": "Suren 187",
-      "score": 0.0,
       "status": "RISIKO"
     }
   ],
@@ -486,7 +486,7 @@
     },
     {
       "name": "seroo",
-      "score": 84.06,
+      "score": 84.19,
       "tip": "Weiter so"
     },
     {
@@ -585,6 +585,11 @@
       "tip": "Konstanz verbessern"
     },
     {
+      "name": "Suren 187",
+      "score": 13.33,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "Vortex Babe",
       "score": 11.07,
       "tip": "Mehr Teilnahme notwendig"
@@ -603,28 +608,11 @@
       "name": "Merlin1659",
       "score": 4.53,
       "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "Suren 187",
-      "score": 0.0,
-      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
-      {
-        "name": "Suren 187",
-        "player_tag": "#U0JQL9Q0",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 54,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
       {
         "name": "Merlin1659",
         "player_tag": "#P8GRG0UCY",
@@ -668,6 +656,18 @@
         "score": 11.07,
         "strikes": 0,
         "donations": 281,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "Suren 187",
+        "player_tag": "#U0JQL9Q0",
+        "role": "member",
+        "score": 13.33,
+        "strikes": 0,
+        "donations": 82,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -777,7 +777,7 @@
         "role": "member",
         "score": 89.86,
         "strikes": 0,
-        "donations": 170,
+        "donations": 180,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -861,7 +861,7 @@
         "role": "member",
         "score": 88.22,
         "strikes": 0,
-        "donations": 1852,
+        "donations": 1860,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
