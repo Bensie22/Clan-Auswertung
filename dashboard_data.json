@@ -76,17 +76,17 @@
       "priority": 2
     },
     {
-      "name": "chris",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "AaleDieter",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
@@ -188,11 +188,6 @@
       "status": "STARK"
     },
     {
-      "name": "chris",
-      "score": 89.37,
-      "status": "STARK"
-    },
-    {
       "name": "Dolphin",
       "score": 89.28,
       "status": "STARK"
@@ -200,6 +195,11 @@
     {
       "name": "AaleDieter",
       "score": 88.96,
+      "status": "STARK"
+    },
+    {
+      "name": "chris",
+      "score": 88.84,
       "status": "STARK"
     },
     {
@@ -264,7 +264,7 @@
     },
     {
       "name": "Flauschos",
-      "score": 83.8,
+      "score": 83.93,
       "status": "STARK"
     },
     {
@@ -273,13 +273,13 @@
       "status": "STARK"
     },
     {
-      "name": "Chico",
-      "score": 82.59,
+      "name": "Ted",
+      "score": 82.63,
       "status": "STARK"
     },
     {
-      "name": "Ted",
-      "score": 82.5,
+      "name": "Chico",
+      "score": 82.59,
       "status": "STARK"
     },
     {
@@ -435,11 +435,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "chris",
-      "score": 89.37,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Dolphin",
       "score": 89.28,
       "tip": "Weiter so"
@@ -447,6 +442,11 @@
     {
       "name": "AaleDieter",
       "score": 88.96,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "chris",
+      "score": 88.84,
       "tip": "Weiter so"
     },
     {
@@ -511,7 +511,7 @@
     },
     {
       "name": "Flauschos",
-      "score": 83.8,
+      "score": 83.93,
       "tip": "Weiter so"
     },
     {
@@ -520,13 +520,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Chico",
-      "score": 82.59,
+      "name": "Ted",
+      "score": 82.63,
       "tip": "Weiter so"
     },
     {
-      "name": "Ted",
-      "score": 82.5,
+      "name": "Chico",
+      "score": 82.59,
       "tip": "Weiter so"
     },
     {
@@ -778,7 +778,7 @@
         "role": "member",
         "score": 90.93,
         "strikes": 0,
-        "donations": 466,
+        "donations": 476,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -790,7 +790,7 @@
         "role": "member",
         "score": 90.62,
         "strikes": 0,
-        "donations": 247,
+        "donations": 307,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -821,18 +821,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "chris",
-        "player_tag": "#YQ82VR9JQ",
-        "role": "member",
-        "score": 89.37,
-        "strikes": 0,
-        "donations": 762,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Dolphin",
         "player_tag": "#2U09UULRR",
         "role": "member",
@@ -857,12 +845,24 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "chris",
+        "player_tag": "#YQ82VR9JQ",
+        "role": "member",
+        "score": 88.84,
+        "strikes": 0,
+        "donations": 802,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Bensie",
         "player_tag": "#2QRVR9L8",
         "role": "member",
         "score": 88.62,
         "strikes": 0,
-        "donations": 1658,
+        "donations": 1698,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
