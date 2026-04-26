@@ -76,17 +76,17 @@
       "priority": 2
     },
     {
-      "name": "AaleDieter",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Swordfish",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "AaleDieter",
       "scenario": "TOP",
       "priority": 2
     },
@@ -101,12 +101,12 @@
       "priority": 2
     },
     {
-      "name": "DST",
+      "name": "Bensie",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Bensie",
+      "name": "DST",
       "scenario": "TOP",
       "priority": 2
     },
@@ -188,11 +188,6 @@
       "status": "STARK"
     },
     {
-      "name": "AaleDieter",
-      "score": 88.96,
-      "status": "STARK"
-    },
-    {
       "name": "chris",
       "score": 88.84,
       "status": "STARK"
@@ -200,6 +195,11 @@
     {
       "name": "Swordfish",
       "score": 88.73,
+      "status": "STARK"
+    },
+    {
+      "name": "AaleDieter",
+      "score": 88.69,
       "status": "STARK"
     },
     {
@@ -213,13 +213,13 @@
       "status": "STARK"
     },
     {
-      "name": "DST",
-      "score": 88.27,
+      "name": "Bensie",
+      "score": 88.22,
       "status": "STARK"
     },
     {
-      "name": "Bensie",
-      "score": 88.22,
+      "name": "DST",
+      "score": 88.13,
       "status": "STARK"
     },
     {
@@ -425,11 +425,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "AaleDieter",
-      "score": 88.96,
-      "tip": "Weiter so"
-    },
-    {
       "name": "chris",
       "score": 88.84,
       "tip": "Weiter so"
@@ -437,6 +432,11 @@
     {
       "name": "Swordfish",
       "score": 88.73,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "AaleDieter",
+      "score": 88.69,
       "tip": "Weiter so"
     },
     {
@@ -450,13 +450,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "DST",
-      "score": 88.27,
+      "name": "Bensie",
+      "score": 88.22,
       "tip": "Weiter so"
     },
     {
-      "name": "Bensie",
-      "score": 88.22,
+      "name": "DST",
+      "score": 88.13,
       "tip": "Weiter so"
     },
     {
@@ -619,7 +619,7 @@
         "role": "member",
         "score": 0.0,
         "strikes": 0,
-        "donations": 0,
+        "donations": 38,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -655,7 +655,7 @@
         "role": "member",
         "score": 9.2,
         "strikes": 0,
-        "donations": 534,
+        "donations": 542,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -693,7 +693,7 @@
         "role": "member",
         "score": 93.6,
         "strikes": 0,
-        "donations": 935,
+        "donations": 981,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -753,7 +753,7 @@
         "role": "member",
         "score": 90.7,
         "strikes": 0,
-        "donations": 852,
+        "donations": 868,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -796,18 +796,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "AaleDieter",
-        "player_tag": "#CUJ9PJ2UV",
-        "role": "member",
-        "score": 88.96,
-        "strikes": 0,
-        "donations": 142,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "chris",
         "player_tag": "#YQ82VR9JQ",
         "role": "member",
@@ -832,12 +820,24 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "AaleDieter",
+        "player_tag": "#CUJ9PJ2UV",
+        "role": "member",
+        "score": 88.69,
+        "strikes": 0,
+        "donations": 142,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "hi2oka",
         "player_tag": "#UJ2P9UYUV",
         "role": "member",
         "score": 88.45,
         "strikes": 0,
-        "donations": 306,
+        "donations": 332,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -856,26 +856,26 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "DST",
-        "player_tag": "#9VLRQ9GR9",
-        "role": "member",
-        "score": 88.27,
-        "strikes": 0,
-        "donations": 342,
-        "participation_count": 2,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Bensie",
         "player_tag": "#2QRVR9L8",
         "role": "member",
         "score": 88.22,
         "strikes": 0,
-        "donations": 1756,
+        "donations": 1782,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "DST",
+        "player_tag": "#9VLRQ9GR9",
+        "role": "member",
+        "score": 88.13,
+        "strikes": 0,
+        "donations": 342,
+        "participation_count": 2,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
