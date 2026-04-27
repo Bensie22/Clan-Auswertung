@@ -1,7 +1,17 @@
 {
   "full_auto": [
     {
+      "name": "joeeedom",
+      "scenario": "STRIKE",
+      "priority": 4
+    },
+    {
       "name": "Merlin1659",
+      "scenario": "STRIKE",
+      "priority": 4
+    },
+    {
+      "name": "krokodiesel",
       "scenario": "STRIKE",
       "priority": 4
     },
@@ -254,7 +264,7 @@
     },
     {
       "name": "Fxry",
-      "score": 83.95,
+      "score": 84.08,
       "status": "STARK"
     },
     {
@@ -264,7 +274,7 @@
     },
     {
       "name": "rote sonne",
-      "score": 83.62,
+      "score": 83.48,
       "status": "STARK"
     },
     {
@@ -278,13 +288,13 @@
       "status": "STARK"
     },
     {
-      "name": "Rainer",
-      "score": 81.9,
+      "name": "Citykingalex",
+      "score": 81.67,
       "status": "STARK"
     },
     {
-      "name": "Citykingalex",
-      "score": 81.67,
+      "name": "Rainer",
+      "score": 81.5,
       "status": "STARK"
     },
     {
@@ -324,7 +334,7 @@
     },
     {
       "name": "SirHenry87",
-      "score": 76.96,
+      "score": 77.23,
       "status": "OK"
     },
     {
@@ -339,7 +349,7 @@
     },
     {
       "name": "bequemo",
-      "score": 73.6,
+      "score": 73.74,
       "status": "OK"
     },
     {
@@ -368,8 +378,18 @@
       "status": "RISIKO"
     },
     {
+      "name": "krokodiesel",
+      "score": 6.67,
+      "status": "RISIKO"
+    },
+    {
       "name": "Merlin1659",
       "score": 4.4,
+      "status": "RISIKO"
+    },
+    {
+      "name": "joeeedom",
+      "score": 3.33,
       "status": "RISIKO"
     }
   ],
@@ -491,7 +511,7 @@
     },
     {
       "name": "Fxry",
-      "score": 83.95,
+      "score": 84.08,
       "tip": "Weiter so"
     },
     {
@@ -501,7 +521,7 @@
     },
     {
       "name": "rote sonne",
-      "score": 83.62,
+      "score": 83.48,
       "tip": "Weiter so"
     },
     {
@@ -515,13 +535,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Rainer",
-      "score": 81.9,
+      "name": "Citykingalex",
+      "score": 81.67,
       "tip": "Weiter so"
     },
     {
-      "name": "Citykingalex",
-      "score": 81.67,
+      "name": "Rainer",
+      "score": 81.5,
       "tip": "Weiter so"
     },
     {
@@ -561,7 +581,7 @@
     },
     {
       "name": "SirHenry87",
-      "score": 76.96,
+      "score": 77.23,
       "tip": "Weiter so"
     },
     {
@@ -576,7 +596,7 @@
     },
     {
       "name": "bequemo",
-      "score": 73.6,
+      "score": 73.74,
       "tip": "Weiter so"
     },
     {
@@ -605,8 +625,18 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
+      "name": "krokodiesel",
+      "score": 6.67,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "Merlin1659",
       "score": 4.4,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "joeeedom",
+      "score": 3.33,
       "tip": "Mehr Teilnahme notwendig"
     }
   ],
@@ -614,12 +644,36 @@
     "generated_from": "_prefetch.json",
     "remove": [
       {
+        "name": "joeeedom",
+        "player_tag": "#Y29LJJCQ2",
+        "role": "member",
+        "score": 3.33,
+        "strikes": 0,
+        "donations": 9,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
         "name": "Merlin1659",
         "player_tag": "#P8GRG0UCY",
         "role": "member",
         "score": 4.4,
         "strikes": 0,
         "donations": 560,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "krokodiesel",
+        "player_tag": "#8PJY2GUY9",
+        "role": "member",
+        "score": 6.67,
+        "strikes": 0,
+        "donations": 18,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
