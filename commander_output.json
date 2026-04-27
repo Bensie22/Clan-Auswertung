@@ -1,6 +1,19 @@
 {
   "generated_from": "_prefetch.json",
-  "remove": [],
+  "remove": [
+    {
+      "name": "SPURS",
+      "player_tag": "#GJVVGUYJC",
+      "role": "member",
+      "score": 0.0,
+      "strikes": 0,
+      "donations": 0,
+      "participation_count": 0,
+      "trend": "",
+      "reason": "Score unter 40",
+      "recommended_action": "kick_review"
+    }
+  ],
   "core": [
     {
       "name": "maghrebi",
