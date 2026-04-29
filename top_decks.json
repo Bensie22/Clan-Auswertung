@@ -6,22 +6,22 @@
             "#22CQPRR0J": "20260429T090058.000Z",
             "#2QRVR9L8": "20260429T103922.000Z",
             "#ULYJ2CQP": "20260428T100615.000Z",
-            "#UJ2P9UYUV": "20260429T064028.000Z",
-            "#P0JYR9YUY": "20260429T104343.000Z",
-            "#R22R8GYG": "20260429T073025.000Z",
+            "#UJ2P9UYUV": "20260429T111430.000Z",
+            "#P0JYR9YUY": "20260429T115213.000Z",
+            "#R22R8GYG": "20260429T123135.000Z",
             "#YQ82VR9JQ": "20260428T195210.000Z",
-            "#G02LC9C8": "20260429T104405.000Z",
+            "#G02LC9C8": "20260429T124728.000Z",
             "#2U8288CVY": "20260428T195432.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260427T044228.000Z",
             "#PPR2QQC0U": "20260429T053925.000Z",
-            "#QULCQGGG": "20260428T151819.000Z",
+            "#QULCQGGG": "20260429T111932.000Z",
             "#JRGC9RRQG": "20260429T073529.000Z",
-            "#QVQGCV8Y9": "20260429T103604.000Z",
+            "#QVQGCV8Y9": "20260429T121912.000Z",
             "#Q8L0RJ8Y8": "20260428T181120.000Z",
-            "#P2GUCG2Y": "20260429T070652.000Z",
-            "#2CPRGY8G": "20260428T174818.000Z",
+            "#P2GUCG2Y": "20260429T125134.000Z",
+            "#2CPRGY8G": "20260429T125124.000Z",
             "#LLQQJCLC": "20260428T205219.000Z",
             "#2VJR80RL": "20260426T202133.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
@@ -44,9 +44,9 @@
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
             "#UUPCULU9V": "20260428T161557.000Z",
-            "#202VP2QL9P": "20260429T110122.000Z",
+            "#202VP2QL9P": "20260429T111201.000Z",
             "#LVUGLUCP9": "20260426T185632.000Z",
-            "#20QGJVPG8Q": "20260429T002711.000Z",
+            "#20QGJVPG8Q": "20260429T110714.000Z",
             "#V9GYJQ0J9": "",
             "#URJ0LUYPV": "20260428T111250.000Z",
             "#Q2GRGLQR": "20260429T050643.000Z",
@@ -68,7 +68,7 @@
             "#U0JQL9Q0": "20260428T204151.000Z",
             "#8PJY2GUY9": "20260429T084632.000Z",
             "#Y29LJJCQ2": "20260428T165519.000Z",
-            "#GJVVGUYJC": "20260429T052951.000Z"
+            "#GJVVGUYJC": "20260429T115607.000Z"
         }
     },
     "decks": {
@@ -721,7 +721,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
                 }
             ],
-            "wins": 6,
+            "wins": 7,
             "losses": 0,
             "players": [
                 "maghrebi",
@@ -732,6 +732,12 @@
                 "2QRVR9L8"
             ],
             "recent_matches": [
+                {
+                    "time": "20260429T110714.000Z",
+                    "result": "win",
+                    "player": "maghrebi",
+                    "tag": "20QGJVPG8Q"
+                },
                 {
                     "time": "20260428T133549.000Z",
                     "result": "win",
@@ -56939,6 +56945,52 @@
                     "id": 28000000,
                     "name": "Fireball",
                     "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000001-26000014-26000021-26000057-26000067-27000003-28000000-28000003": {
+            "cards": [
+                {
+                    "id": 26000057,
+                    "name": "Flying Machine",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/hzKNE3QwFcrSrDDRuVW3QY_OnrDPijSiIp-PsWgFevE.png"
+                },
+                {
+                    "id": 28000003,
+                    "name": "Rocket",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ie07nQNK9CjhKOa4-arFAewi4EroqaA-86Xo7r5tx94.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000067,
+                    "name": "Elixir Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/puhMsZjCIqy21HW3hYxjrk_xt8NIPyFqjRy-BeLKZwo.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 27000003,
+                    "name": "Inferno Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
                 }
             ],
             "seen": 1,
