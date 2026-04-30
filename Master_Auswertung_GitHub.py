@@ -3466,23 +3466,32 @@ def main():
                 clan_tag_raw = c.get("tag", "")
 
                 trophies = c.get("clanScore", 0)
-                # periodPoints = Punkte des aktuellen Kriegstages (setzt täglich zurück)
-                # Kein Fallback auf participant.fame (das wäre kumulativ über die ganze Woche)
                 participants = c.get("participants", [])
-                medals = c.get("periodPoints", 0)
+                # Colosseum: periodPoints ist immer 0, Fame steckt in participants[].fame
+                # Regulärer Clankrieg: periodPoints = Punkte des aktuellen Tages (setzt täglich zurück)
+                period_points = c.get("periodPoints", 0)
+                if period_type == "colosseum" and period_points == 0:
+                    medals = sum(p.get("fame", 0) for p in participants)
+                else:
+                    medals = period_points
                 boat_attacks = sum(p.get("boatAttacks", 0) for p in participants)
                 decks_used = sum(p.get("decksUsedToday", 0) for p in participants)
 
-                # Delta-Effizienz: medals_heute = periodPoints - Tagesbasis
-                cache_entry = radar_cache.get(clan_tag_raw, {})
-                if cache_entry.get("date") != today_str:
-                    # Erster Run des Tages → Tagesbasis setzen
-                    medals_heute = None  # noch unbekannt
-                    new_radar_cache[clan_tag_raw] = {"date": today_str, "baseline": medals}
+                # Colosseum: kein täglicher Reset → medals direkt als Gesamtwert verwenden
+                if period_type == "colosseum":
+                    medals_heute = medals  # Gesamte Fame seit Colosseum-Start
+                    new_radar_cache[clan_tag_raw] = {"date": today_str, "baseline": 0}
                 else:
-                    baseline = cache_entry.get("baseline", medals)
-                    medals_heute = max(0, medals - baseline)
-                    new_radar_cache[clan_tag_raw] = cache_entry  # unverändert behalten
+                    # Delta-Effizienz: medals_heute = periodPoints - Tagesbasis
+                    cache_entry = radar_cache.get(clan_tag_raw, {})
+                    if cache_entry.get("date") != today_str:
+                        # Erster Run des Tages → Tagesbasis setzen
+                        medals_heute = None  # noch unbekannt
+                        new_radar_cache[clan_tag_raw] = {"date": today_str, "baseline": medals}
+                    else:
+                        baseline = cache_entry.get("baseline", medals)
+                        medals_heute = max(0, medals - baseline)
+                        new_radar_cache[clan_tag_raw] = cache_entry  # unverändert behalten
 
                 if is_us:
                     member_count = len(current_members)
