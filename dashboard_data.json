@@ -21,6 +21,11 @@
       "priority": 2
     },
     {
+      "name": "OmniOni",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Jackhammer",
       "scenario": "TOP",
       "priority": 2
@@ -32,11 +37,6 @@
     },
     {
       "name": "Erastus",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "OmniOni",
       "scenario": "TOP",
       "priority": 2
     },
@@ -76,12 +76,12 @@
       "priority": 2
     },
     {
-      "name": "chris",
+      "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Swordfish",
+      "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
@@ -118,6 +118,11 @@
       "status": "STARK"
     },
     {
+      "name": "OmniOni",
+      "score": 93.73,
+      "status": "STARK"
+    },
+    {
       "name": "Jackhammer",
       "score": 93.42,
       "status": "STARK"
@@ -125,11 +130,6 @@
     {
       "name": "Vortex Babe",
       "score": 93.33,
-      "status": "STARK"
-    },
-    {
-      "name": "OmniOni",
-      "score": 93.2,
       "status": "STARK"
     },
     {
@@ -183,6 +183,11 @@
       "status": "STARK"
     },
     {
+      "name": "Swordfish",
+      "score": 88.87,
+      "status": "STARK"
+    },
+    {
       "name": "chris",
       "score": 88.79,
       "status": "STARK"
@@ -190,11 +195,6 @@
     {
       "name": "AaleDieter",
       "score": 88.74,
-      "status": "STARK"
-    },
-    {
-      "name": "Swordfish",
-      "score": 88.47,
       "status": "STARK"
     },
     {
@@ -229,12 +229,7 @@
     },
     {
       "name": "Ted",
-      "score": 84.28,
-      "status": "STARK"
-    },
-    {
-      "name": "eco",
-      "score": 84.02,
+      "score": 84.42,
       "status": "STARK"
     },
     {
@@ -244,6 +239,11 @@
     },
     {
       "name": "rote sonne",
+      "score": 83.75,
+      "status": "STARK"
+    },
+    {
+      "name": "eco",
       "score": 83.75,
       "status": "STARK"
     },
@@ -293,13 +293,13 @@
       "status": "STARK"
     },
     {
-      "name": "Ian",
-      "score": 79.4,
+      "name": "Nati",
+      "score": 79.28,
       "status": "OK"
     },
     {
-      "name": "Nati",
-      "score": 79.28,
+      "name": "Ian",
+      "score": 79.27,
       "status": "OK"
     },
     {
@@ -329,7 +329,7 @@
     },
     {
       "name": "elazeto",
-      "score": 66.07,
+      "score": 66.33,
       "status": "OK"
     },
     {
@@ -344,7 +344,7 @@
     },
     {
       "name": "Suren 187",
-      "score": 55.83,
+      "score": 54.77,
       "status": "RISIKO"
     },
     {
@@ -370,6 +370,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "OmniOni",
+      "score": 93.73,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Jackhammer",
       "score": 93.42,
       "tip": "Weiter so"
@@ -377,11 +382,6 @@
     {
       "name": "Vortex Babe",
       "score": 93.33,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "OmniOni",
-      "score": 93.2,
       "tip": "Weiter so"
     },
     {
@@ -435,6 +435,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Swordfish",
+      "score": 88.87,
+      "tip": "Weiter so"
+    },
+    {
       "name": "chris",
       "score": 88.79,
       "tip": "Weiter so"
@@ -442,11 +447,6 @@
     {
       "name": "AaleDieter",
       "score": 88.74,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Swordfish",
-      "score": 88.47,
       "tip": "Weiter so"
     },
     {
@@ -481,12 +481,7 @@
     },
     {
       "name": "Ted",
-      "score": 84.28,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "eco",
-      "score": 84.02,
+      "score": 84.42,
       "tip": "Weiter so"
     },
     {
@@ -496,6 +491,11 @@
     },
     {
       "name": "rote sonne",
+      "score": 83.75,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "eco",
       "score": 83.75,
       "tip": "Weiter so"
     },
@@ -545,13 +545,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Ian",
-      "score": 79.4,
+      "name": "Nati",
+      "score": 79.28,
       "tip": "Weiter so"
     },
     {
-      "name": "Nati",
-      "score": 79.28,
+      "name": "Ian",
+      "score": 79.27,
       "tip": "Weiter so"
     },
     {
@@ -581,7 +581,7 @@
     },
     {
       "name": "elazeto",
-      "score": 66.07,
+      "score": 66.33,
       "tip": "Konstanz verbessern"
     },
     {
@@ -596,7 +596,7 @@
     },
     {
       "name": "Suren 187",
-      "score": 55.83,
+      "score": 54.77,
       "tip": "Konstanz verbessern"
     },
     {
@@ -638,8 +638,20 @@
         "role": "member",
         "score": 94.13,
         "strikes": 0,
-        "donations": 207,
+        "donations": 243,
         "participation_count": 8,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "OmniOni",
+        "player_tag": "#UUPCULU9V",
+        "role": "member",
+        "score": 93.73,
+        "strikes": 0,
+        "donations": 447,
+        "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
@@ -675,18 +687,6 @@
         "score": 93.2,
         "strikes": 0,
         "donations": 396,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "OmniOni",
-        "player_tag": "#UUPCULU9V",
-        "role": "member",
-        "score": 93.2,
-        "strikes": 0,
-        "donations": 391,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -770,7 +770,7 @@
         "role": "member",
         "score": 89.2,
         "strikes": 0,
-        "donations": 292,
+        "donations": 310,
         "participation_count": 1,
         "trend": "",
         "reason": "Score über 85",
@@ -782,7 +782,7 @@
         "role": "member",
         "score": 89.02,
         "strikes": 0,
-        "donations": 852,
+        "donations": 900,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -795,6 +795,18 @@
         "score": 89.02,
         "strikes": 0,
         "donations": 44,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Swordfish",
+        "player_tag": "#2CPRGY8G",
+        "role": "member",
+        "score": 88.87,
+        "strikes": 0,
+        "donations": 198,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -819,18 +831,6 @@
         "score": 88.74,
         "strikes": 0,
         "donations": 42,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Swordfish",
-        "player_tag": "#2CPRGY8G",
-        "role": "member",
-        "score": 88.47,
-        "strikes": 0,
-        "donations": 198,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
