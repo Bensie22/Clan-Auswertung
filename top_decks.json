@@ -11,7 +11,7 @@
             "#R22R8GYG": "20260501T103730.000Z",
             "#YQ82VR9JQ": "20260501T175831.000Z",
             "#G02LC9C8": "20260501T200405.000Z",
-            "#2U8288CVY": "20260501T203146.000Z",
+            "#2U8288CVY": "20260501T211339.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260501T154841.000Z",
@@ -22,13 +22,13 @@
             "#Q8L0RJ8Y8": "20260501T182200.000Z",
             "#P2GUCG2Y": "20260501T201632.000Z",
             "#2CPRGY8G": "20260501T174232.000Z",
-            "#LLQQJCLC": "20260501T192716.000Z",
+            "#LLQQJCLC": "20260501T211104.000Z",
             "#2VJR80RL": "20260501T144050.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
             "#2CJYG9UG": "20260501T113300.000Z",
             "#2PUQYJC02": "20260501T201919.000Z",
-            "#YQVQYUYRV": "20260501T001648.000Z",
+            "#YQVQYUYRV": "20260501T210345.000Z",
             "#2V800VCQ0": "20260501T140139.000Z",
             "#2UQUPYQCJ": "20260501T183220.000Z",
             "#JUUR8UGL8": "20260501T140346.000Z",
@@ -60,12 +60,12 @@
             "#9UJ9GUL9Q": "20260421T171612.000Z",
             "#CLC8JVPRG": "20260424T234312.000Z",
             "#G8RVJJ2R": "20260501T102030.000Z",
-            "#P8GRG0UCY": "20260501T205505.000Z",
+            "#P8GRG0UCY": "20260501T213433.000Z",
             "#CQ0JQ0PC": "20260424T155243.000Z",
             "#VRCVPQU2Y": "20260424T064627.000Z",
             "#88GPYVR8P": "20260501T141429.000Z",
             "#P9V2PUVUV": "20260424T103052.000Z",
-            "#U0JQL9Q0": "20260501T202244.000Z",
+            "#U0JQL9Q0": "20260501T215044.000Z",
             "#8PJY2GUY9": "20260429T084632.000Z",
             "#Y29LJJCQ2": "20260501T164237.000Z",
             "#GJVVGUYJC": "20260430T083058.000Z"
@@ -4401,7 +4401,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/LjSfSbwQfkZuRJY4pVxKspZ-a0iM5KAhU8w-a_N5Z7Y.png"
                 }
             ],
-            "wins": 2,
+            "wins": 3,
             "losses": 0,
             "players": [
                 "Fxry"
@@ -4410,6 +4410,12 @@
                 "YQVQYUYRV"
             ],
             "recent_matches": [
+                {
+                    "time": "20260501T210345.000Z",
+                    "result": "win",
+                    "player": "Fxry",
+                    "tag": "YQVQYUYRV"
+                },
                 {
                     "time": "20260501T001648.000Z",
                     "result": "win",
@@ -64565,6 +64571,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000007-26000026-26000051-26000057-27000009-27000010-28000000-28000006": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                },
+                {
+                    "id": 26000051,
+                    "name": "Ram Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
+                },
+                {
+                    "id": 26000057,
+                    "name": "Flying Machine",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/hzKNE3QwFcrSrDDRuVW3QY_OnrDPijSiIp-PsWgFevE.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 28000006,
+                    "name": "Mirror",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/wC6Cm9rKLEOk72zTsukVwxewKIoO4ZcMJun54zCPWvA.png"
+                },
+                {
+                    "id": 27000009,
+                    "name": "Tombstone",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LjSfSbwQfkZuRJY4pVxKspZ-a0iM5KAhU8w-a_N5Z7Y.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
