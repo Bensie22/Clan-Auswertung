@@ -26,17 +26,17 @@
       "priority": 2
     },
     {
-      "name": "Jackhammer",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Vortex Babe",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Erastus",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Jackhammer",
       "scenario": "TOP",
       "priority": 2
     },
@@ -138,11 +138,6 @@
       "status": "STARK"
     },
     {
-      "name": "Jackhammer",
-      "score": 93.42,
-      "status": "STARK"
-    },
-    {
       "name": "Vortex Babe",
       "score": 93.33,
       "status": "STARK"
@@ -150,6 +145,11 @@
     {
       "name": "Erastus",
       "score": 93.07,
+      "status": "STARK"
+    },
+    {
+      "name": "Jackhammer",
+      "score": 93.02,
       "status": "STARK"
     },
     {
@@ -164,7 +164,7 @@
     },
     {
       "name": "OneAndOnly",
-      "score": 91.07,
+      "score": 90.8,
       "status": "STARK"
     },
     {
@@ -204,7 +204,7 @@
     },
     {
       "name": "AaleDieter",
-      "score": 88.74,
+      "score": 88.6,
       "status": "STARK"
     },
     {
@@ -258,13 +258,18 @@
       "status": "STARK"
     },
     {
-      "name": "eco",
-      "score": 83.75,
+      "name": "Fxry",
+      "score": 83.68,
       "status": "STARK"
     },
     {
-      "name": "Fxry",
-      "score": 83.68,
+      "name": "Rainer",
+      "score": 83.66,
+      "status": "STARK"
+    },
+    {
+      "name": "eco",
+      "score": 83.62,
       "status": "STARK"
     },
     {
@@ -275,11 +280,6 @@
     {
       "name": "Chico",
       "score": 82.86,
-      "status": "STARK"
-    },
-    {
-      "name": "Rainer",
-      "score": 82.59,
       "status": "STARK"
     },
     {
@@ -390,11 +390,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Jackhammer",
-      "score": 93.42,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Vortex Babe",
       "score": 93.33,
       "tip": "Weiter so"
@@ -402,6 +397,11 @@
     {
       "name": "Erastus",
       "score": 93.07,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Jackhammer",
+      "score": 93.02,
       "tip": "Weiter so"
     },
     {
@@ -416,7 +416,7 @@
     },
     {
       "name": "OneAndOnly",
-      "score": 91.07,
+      "score": 90.8,
       "tip": "Weiter so"
     },
     {
@@ -456,7 +456,7 @@
     },
     {
       "name": "AaleDieter",
-      "score": 88.74,
+      "score": 88.6,
       "tip": "Weiter so"
     },
     {
@@ -510,13 +510,18 @@
       "tip": "Weiter so"
     },
     {
-      "name": "eco",
-      "score": 83.75,
+      "name": "Fxry",
+      "score": 83.68,
       "tip": "Weiter so"
     },
     {
-      "name": "Fxry",
-      "score": 83.68,
+      "name": "Rainer",
+      "score": 83.66,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "eco",
+      "score": 83.62,
       "tip": "Weiter so"
     },
     {
@@ -527,11 +532,6 @@
     {
       "name": "Chico",
       "score": 82.86,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Rainer",
-      "score": 82.59,
       "tip": "Weiter so"
     },
     {
@@ -672,18 +672,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Jackhammer",
-        "player_tag": "#2CJYG9UG",
-        "role": "member",
-        "score": 93.42,
-        "strikes": 0,
-        "donations": 53,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Vortex Babe",
         "player_tag": "#88GPYVR8P",
         "role": "member",
@@ -702,6 +690,18 @@
         "score": 93.07,
         "strikes": 0,
         "donations": 458,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Jackhammer",
+        "player_tag": "#2CJYG9UG",
+        "role": "member",
+        "score": 93.02,
+        "strikes": 0,
+        "donations": 63,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -735,9 +735,9 @@
         "name": "OneAndOnly",
         "player_tag": "#8P0J8P0L",
         "role": "member",
-        "score": 91.07,
+        "score": 90.8,
         "strikes": 0,
-        "donations": 138,
+        "donations": 156,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -831,7 +831,7 @@
         "name": "AaleDieter",
         "player_tag": "#CUJ9PJ2UV",
         "role": "member",
-        "score": 88.74,
+        "score": 88.6,
         "strikes": 0,
         "donations": 103,
         "participation_count": 10,
