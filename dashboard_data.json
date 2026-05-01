@@ -26,12 +26,12 @@
       "priority": 2
     },
     {
-      "name": "Erastus",
+      "name": "Jackhammer",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Jackhammer",
+      "name": "Erastus",
       "scenario": "TOP",
       "priority": 2
     },
@@ -66,17 +66,17 @@
       "priority": 2
     },
     {
+      "name": "chris",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "wshbr",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Bensie",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
@@ -138,13 +138,13 @@
       "status": "STARK"
     },
     {
-      "name": "Erastus",
-      "score": 93.07,
+      "name": "Jackhammer",
+      "score": 93.02,
       "status": "STARK"
     },
     {
-      "name": "Jackhammer",
-      "score": 93.02,
+      "name": "Erastus",
+      "score": 92.8,
       "status": "STARK"
     },
     {
@@ -178,6 +178,11 @@
       "status": "STARK"
     },
     {
+      "name": "chris",
+      "score": 89.59,
+      "status": "STARK"
+    },
+    {
       "name": "wshbr",
       "score": 89.2,
       "status": "STARK"
@@ -190,11 +195,6 @@
     {
       "name": "Bensie",
       "score": 89.02,
-      "status": "STARK"
-    },
-    {
-      "name": "chris",
-      "score": 88.92,
       "status": "STARK"
     },
     {
@@ -214,7 +214,7 @@
     },
     {
       "name": "andiquariat",
-      "score": 86.83,
+      "score": 86.96,
       "status": "STARK"
     },
     {
@@ -390,13 +390,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Erastus",
-      "score": 93.07,
+      "name": "Jackhammer",
+      "score": 93.02,
       "tip": "Weiter so"
     },
     {
-      "name": "Jackhammer",
-      "score": 93.02,
+      "name": "Erastus",
+      "score": 92.8,
       "tip": "Weiter so"
     },
     {
@@ -430,6 +430,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "chris",
+      "score": 89.59,
+      "tip": "Weiter so"
+    },
+    {
       "name": "wshbr",
       "score": 89.2,
       "tip": "Weiter so"
@@ -442,11 +447,6 @@
     {
       "name": "Bensie",
       "score": 89.02,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "chris",
-      "score": 88.92,
       "tip": "Weiter so"
     },
     {
@@ -466,7 +466,7 @@
     },
     {
       "name": "andiquariat",
-      "score": 86.83,
+      "score": 86.96,
       "tip": "Weiter so"
     },
     {
@@ -665,19 +665,7 @@
         "role": "member",
         "score": 93.6,
         "strikes": 0,
-        "donations": 681,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Erastus",
-        "player_tag": "#Q8L0RJ8Y8",
-        "role": "member",
-        "score": 93.07,
-        "strikes": 0,
-        "donations": 504,
+        "donations": 689,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -690,6 +678,18 @@
         "score": 93.02,
         "strikes": 0,
         "donations": 63,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Erastus",
+        "player_tag": "#Q8L0RJ8Y8",
+        "role": "member",
+        "score": 92.8,
+        "strikes": 0,
+        "donations": 512,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -737,7 +737,7 @@
         "role": "member",
         "score": 90.8,
         "strikes": 0,
-        "donations": 156,
+        "donations": 166,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -762,6 +762,18 @@
         "score": 89.6,
         "strikes": 0,
         "donations": 78,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "chris",
+        "player_tag": "#YQ82VR9JQ",
+        "role": "member",
+        "score": 89.59,
+        "strikes": 0,
+        "donations": 308,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -804,24 +816,12 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "chris",
-        "player_tag": "#YQ82VR9JQ",
-        "role": "member",
-        "score": 88.92,
-        "strikes": 0,
-        "donations": 290,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Swordfish",
         "player_tag": "#2CPRGY8G",
         "role": "member",
         "score": 88.87,
         "strikes": 0,
-        "donations": 246,
+        "donations": 264,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -855,7 +855,7 @@
         "name": "andiquariat",
         "player_tag": "#2UQUPYQCJ",
         "role": "member",
-        "score": 86.83,
+        "score": 86.96,
         "strikes": 0,
         "donations": 0,
         "participation_count": 10,
