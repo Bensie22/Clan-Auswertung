@@ -28,13 +28,13 @@
             "#PYG8RLUJ": "20260413T105340.000Z",
             "#2CJYG9UG": "20260426T103259.000Z",
             "#2PUQYJC02": "20260430T203445.000Z",
-            "#YQVQYUYRV": "20260427T064953.000Z",
+            "#YQVQYUYRV": "20260501T001648.000Z",
             "#2V800VCQ0": "20260430T153622.000Z",
             "#2UQUPYQCJ": "20260430T202444.000Z",
             "#JUUR8UGL8": "20260430T174935.000Z",
             "#2U09UULRR": "20260430T120157.000Z",
             "#YJ0LUU0JJ": "20260429T210316.000Z",
-            "#8QYYL8LCQ": "20260430T232105.000Z",
+            "#8QYYL8LCQ": "20260501T013044.000Z",
             "#8P0J8P0L": "20260430T115222.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260430T203722.000Z",
@@ -60,7 +60,7 @@
             "#9UJ9GUL9Q": "20260421T171612.000Z",
             "#CLC8JVPRG": "20260424T234312.000Z",
             "#G8RVJJ2R": "20260430T144035.000Z",
-            "#P8GRG0UCY": "20260430T201940.000Z",
+            "#P8GRG0UCY": "20260501T013801.000Z",
             "#CQ0JQ0PC": "20260424T155243.000Z",
             "#VRCVPQU2Y": "20260424T064627.000Z",
             "#88GPYVR8P": "20260430T040159.000Z",
@@ -5097,7 +5097,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/LjSfSbwQfkZuRJY4pVxKspZ-a0iM5KAhU8w-a_N5Z7Y.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "Fxry"
@@ -5106,6 +5106,12 @@
                 "YQVQYUYRV"
             ],
             "recent_matches": [
+                {
+                    "time": "20260501T001648.000Z",
+                    "result": "win",
+                    "player": "Fxry",
+                    "tag": "YQVQYUYRV"
+                },
                 {
                     "time": "20260427T064953.000Z",
                     "result": "win",
@@ -61087,6 +61093,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000007-26000026-26000027-26000058-26000074-27000010-27000012-28000026": {
+            "cards": [
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000074,
+                    "name": "Golden Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WJd207D0O1sN-l1FTb8P9KhYL2oF5jY26vRUfTUW3FQ.png"
+                },
+                {
+                    "id": 27000012,
+                    "name": "Goblin Cage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vD24bBgK4rSq7wx5QEbuqChtPMRFviL_ep76GwQw1yA.png"
+                },
+                {
+                    "id": 26000027,
+                    "name": "Dark Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/M7fXlrKXHu2IvpSGpk36kXVstslbR08Bbxcy0jQcln8.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 28000026,
+                    "name": "Vines",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/V5sJlPuo2WBRtirJ1lGEPJA4NvQ0KPwFeMrpxLX5z_8.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                },
+                {
+                    "id": 26000058,
+                    "name": "Wall Breakers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_xPphEfC8eEwFNrfU3cMQG9-f5JaLQ31ARCA7l3XtW4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
