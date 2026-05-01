@@ -46,17 +46,17 @@
       "priority": 2
     },
     {
+      "name": "_spc07",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Theezy",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "OneAndOnly",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "_spc07",
       "scenario": "TOP",
       "priority": 2
     },
@@ -158,6 +158,11 @@
       "status": "STARK"
     },
     {
+      "name": "_spc07",
+      "score": 91.23,
+      "status": "STARK"
+    },
+    {
       "name": "Theezy",
       "score": 91.2,
       "status": "STARK"
@@ -165,11 +170,6 @@
     {
       "name": "OneAndOnly",
       "score": 90.8,
-      "status": "STARK"
-    },
-    {
-      "name": "_spc07",
-      "score": 90.7,
       "status": "STARK"
     },
     {
@@ -410,6 +410,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "_spc07",
+      "score": 91.23,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Theezy",
       "score": 91.2,
       "tip": "Weiter so"
@@ -417,11 +422,6 @@
     {
       "name": "OneAndOnly",
       "score": 90.8,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "_spc07",
-      "score": 90.7,
       "tip": "Weiter so"
     },
     {
@@ -720,6 +720,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "_spc07",
+        "player_tag": "#2U8288CVY",
+        "role": "member",
+        "score": 91.23,
+        "strikes": 0,
+        "donations": 192,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Theezy",
         "player_tag": "#JUUR8UGL8",
         "role": "member",
@@ -738,18 +750,6 @@
         "score": 90.8,
         "strikes": 0,
         "donations": 166,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "_spc07",
-        "player_tag": "#2U8288CVY",
-        "role": "member",
-        "score": 90.7,
-        "strikes": 0,
-        "donations": 150,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -893,7 +893,7 @@
         "role": "member",
         "score": 86.05,
         "strikes": 0,
-        "donations": 216,
+        "donations": 250,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
