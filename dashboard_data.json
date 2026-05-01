@@ -76,17 +76,17 @@
       "priority": 2
     },
     {
-      "name": "Dolphin",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "AaleDieter",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
     },
@@ -129,12 +129,12 @@
   "smart": [
     {
       "name": "maghrebi",
-      "score": 94.53,
+      "score": 94.27,
       "status": "STARK"
     },
     {
       "name": "OmniOni",
-      "score": 93.73,
+      "score": 93.6,
       "status": "STARK"
     },
     {
@@ -193,11 +193,6 @@
       "status": "STARK"
     },
     {
-      "name": "Dolphin",
-      "score": 89.02,
-      "status": "STARK"
-    },
-    {
       "name": "chris",
       "score": 88.92,
       "status": "STARK"
@@ -205,6 +200,11 @@
     {
       "name": "AaleDieter",
       "score": 88.6,
+      "status": "STARK"
+    },
+    {
+      "name": "Dolphin",
+      "score": 88.48,
       "status": "STARK"
     },
     {
@@ -299,7 +299,7 @@
     },
     {
       "name": "Denis",
-      "score": 80.74,
+      "score": 80.6,
       "status": "STARK"
     },
     {
@@ -324,7 +324,7 @@
     },
     {
       "name": "Annefred",
-      "score": 77.72,
+      "score": 77.85,
       "status": "OK"
     },
     {
@@ -381,12 +381,12 @@
   "coaching": [
     {
       "name": "maghrebi",
-      "score": 94.53,
+      "score": 94.27,
       "tip": "Weiter so"
     },
     {
       "name": "OmniOni",
-      "score": 93.73,
+      "score": 93.6,
       "tip": "Weiter so"
     },
     {
@@ -445,11 +445,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Dolphin",
-      "score": 89.02,
-      "tip": "Weiter so"
-    },
-    {
       "name": "chris",
       "score": 88.92,
       "tip": "Weiter so"
@@ -457,6 +452,11 @@
     {
       "name": "AaleDieter",
       "score": 88.6,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Dolphin",
+      "score": 88.48,
       "tip": "Weiter so"
     },
     {
@@ -551,7 +551,7 @@
     },
     {
       "name": "Denis",
-      "score": 80.74,
+      "score": 80.6,
       "tip": "Weiter so"
     },
     {
@@ -576,7 +576,7 @@
     },
     {
       "name": "Annefred",
-      "score": 77.72,
+      "score": 77.85,
       "tip": "Weiter so"
     },
     {
@@ -651,9 +651,9 @@
         "name": "maghrebi",
         "player_tag": "#20QGJVPG8Q",
         "role": "member",
-        "score": 94.53,
+        "score": 94.27,
         "strikes": 0,
-        "donations": 303,
+        "donations": 319,
         "participation_count": 8,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -663,9 +663,9 @@
         "name": "OmniOni",
         "player_tag": "#UUPCULU9V",
         "role": "member",
-        "score": 93.73,
+        "score": 93.6,
         "strikes": 0,
-        "donations": 629,
+        "donations": 655,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -804,18 +804,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Dolphin",
-        "player_tag": "#2U09UULRR",
-        "role": "member",
-        "score": 89.02,
-        "strikes": 0,
-        "donations": 70,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "chris",
         "player_tag": "#YQ82VR9JQ",
         "role": "member",
@@ -840,12 +828,24 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Dolphin",
+        "player_tag": "#2U09UULRR",
+        "role": "member",
+        "score": 88.48,
+        "strikes": 0,
+        "donations": 70,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Swordfish",
         "player_tag": "#2CPRGY8G",
         "role": "member",
         "score": 88.47,
         "strikes": 0,
-        "donations": 222,
+        "donations": 246,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
