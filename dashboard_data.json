@@ -26,17 +26,17 @@
       "priority": 2
     },
     {
+      "name": "Vortex Babe",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Erastus",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Jackhammer",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Vortex Babe",
       "scenario": "TOP",
       "priority": 2
     },
@@ -76,12 +76,12 @@
       "priority": 2
     },
     {
-      "name": "Swordfish",
+      "name": "AaleDieter",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "AaleDieter",
+      "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
@@ -138,6 +138,11 @@
       "status": "STARK"
     },
     {
+      "name": "Vortex Babe",
+      "score": 93.2,
+      "status": "STARK"
+    },
+    {
       "name": "Erastus",
       "score": 93.07,
       "status": "STARK"
@@ -145,11 +150,6 @@
     {
       "name": "Jackhammer",
       "score": 93.02,
-      "status": "STARK"
-    },
-    {
-      "name": "Vortex Babe",
-      "score": 92.67,
       "status": "STARK"
     },
     {
@@ -193,12 +193,12 @@
       "status": "STARK"
     },
     {
-      "name": "Swordfish",
-      "score": 88.6,
+      "name": "AaleDieter",
+      "score": 88.87,
       "status": "STARK"
     },
     {
-      "name": "AaleDieter",
+      "name": "Swordfish",
       "score": 88.6,
       "status": "STARK"
     },
@@ -239,7 +239,7 @@
     },
     {
       "name": "hi2oka",
-      "score": 85.6,
+      "score": 85.07,
       "status": "STARK"
     },
     {
@@ -390,6 +390,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Vortex Babe",
+      "score": 93.2,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Erastus",
       "score": 93.07,
       "tip": "Weiter so"
@@ -397,11 +402,6 @@
     {
       "name": "Jackhammer",
       "score": 93.02,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Vortex Babe",
-      "score": 92.67,
       "tip": "Weiter so"
     },
     {
@@ -445,12 +445,12 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Swordfish",
-      "score": 88.6,
+      "name": "AaleDieter",
+      "score": 88.87,
       "tip": "Weiter so"
     },
     {
-      "name": "AaleDieter",
+      "name": "Swordfish",
       "score": 88.6,
       "tip": "Weiter so"
     },
@@ -491,7 +491,7 @@
     },
     {
       "name": "hi2oka",
-      "score": 85.6,
+      "score": 85.07,
       "tip": "Weiter so"
     },
     {
@@ -672,6 +672,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Vortex Babe",
+        "player_tag": "#88GPYVR8P",
+        "role": "member",
+        "score": 93.2,
+        "strikes": 0,
+        "donations": 286,
+        "participation_count": 1,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Erastus",
         "player_tag": "#Q8L0RJ8Y8",
         "role": "member",
@@ -692,18 +704,6 @@
         "donations": 111,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Vortex Babe",
-        "player_tag": "#88GPYVR8P",
-        "role": "member",
-        "score": 92.67,
-        "strikes": 0,
-        "donations": 252,
-        "participation_count": 1,
-        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -804,24 +804,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Swordfish",
-        "player_tag": "#2CPRGY8G",
+        "name": "AaleDieter",
+        "player_tag": "#CUJ9PJ2UV",
         "role": "member",
-        "score": 88.6,
+        "score": 88.87,
         "strikes": 0,
-        "donations": 326,
+        "donations": 139,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
       {
-        "name": "AaleDieter",
-        "player_tag": "#CUJ9PJ2UV",
+        "name": "Swordfish",
+        "player_tag": "#2CPRGY8G",
         "role": "member",
         "score": 88.6,
         "strikes": 0,
-        "donations": 111,
+        "donations": 326,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -915,9 +915,9 @@
         "name": "hi2oka",
         "player_tag": "#UJ2P9UYUV",
         "role": "member",
-        "score": 85.6,
+        "score": 85.07,
         "strikes": 0,
-        "donations": 328,
+        "donations": 352,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
