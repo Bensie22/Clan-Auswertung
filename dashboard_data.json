@@ -76,17 +76,17 @@
       "priority": 2
     },
     {
-      "name": "Bensie",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "AaleDieter",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Bensie",
       "scenario": "TOP",
       "priority": 2
     },
@@ -193,11 +193,6 @@
       "status": "STARK"
     },
     {
-      "name": "Bensie",
-      "score": 89.02,
-      "status": "STARK"
-    },
-    {
       "name": "Swordfish",
       "score": 88.73,
       "status": "STARK"
@@ -205,6 +200,11 @@
     {
       "name": "AaleDieter",
       "score": 88.6,
+      "status": "STARK"
+    },
+    {
+      "name": "Bensie",
+      "score": 88.48,
       "status": "STARK"
     },
     {
@@ -445,11 +445,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Bensie",
-      "score": 89.02,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Swordfish",
       "score": 88.73,
       "tip": "Weiter so"
@@ -457,6 +452,11 @@
     {
       "name": "AaleDieter",
       "score": 88.6,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Bensie",
+      "score": 88.48,
       "tip": "Weiter so"
     },
     {
@@ -653,7 +653,7 @@
         "role": "member",
         "score": 94.27,
         "strikes": 0,
-        "donations": 345,
+        "donations": 373,
         "participation_count": 8,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -761,7 +761,7 @@
         "role": "member",
         "score": 89.59,
         "strikes": 0,
-        "donations": 412,
+        "donations": 440,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -804,18 +804,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Bensie",
-        "player_tag": "#2QRVR9L8",
-        "role": "member",
-        "score": 89.02,
-        "strikes": 0,
-        "donations": 1320,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Swordfish",
         "player_tag": "#2CPRGY8G",
         "role": "member",
@@ -834,6 +822,18 @@
         "score": 88.6,
         "strikes": 0,
         "donations": 111,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Bensie",
+        "player_tag": "#2QRVR9L8",
+        "role": "member",
+        "score": 88.48,
+        "strikes": 0,
+        "donations": 1370,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
