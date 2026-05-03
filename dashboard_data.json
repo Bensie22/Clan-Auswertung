@@ -56,6 +56,11 @@
       "priority": 2
     },
     {
+      "name": "AaleDieter",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "wshbr",
       "scenario": "TOP",
       "priority": 2
@@ -72,11 +77,6 @@
     },
     {
       "name": "Bensie",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "AaleDieter",
       "scenario": "TOP",
       "priority": 2
     },
@@ -107,11 +107,6 @@
     },
     {
       "name": "DST",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "hi2oka",
       "scenario": "TOP",
       "priority": 2
     },
@@ -173,6 +168,11 @@
       "status": "STARK"
     },
     {
+      "name": "AaleDieter",
+      "score": 89.27,
+      "status": "STARK"
+    },
+    {
       "name": "wshbr",
       "score": 89.2,
       "status": "STARK"
@@ -190,11 +190,6 @@
     {
       "name": "Bensie",
       "score": 89.02,
-      "status": "STARK"
-    },
-    {
-      "name": "AaleDieter",
-      "score": 88.87,
       "status": "STARK"
     },
     {
@@ -239,7 +234,7 @@
     },
     {
       "name": "hi2oka",
-      "score": 85.07,
+      "score": 84.8,
       "status": "STARK"
     },
     {
@@ -420,6 +415,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "AaleDieter",
+      "score": 89.27,
+      "tip": "Weiter so"
+    },
+    {
       "name": "wshbr",
       "score": 89.2,
       "tip": "Weiter so"
@@ -437,11 +437,6 @@
     {
       "name": "Bensie",
       "score": 89.02,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "AaleDieter",
-      "score": 88.87,
       "tip": "Weiter so"
     },
     {
@@ -486,7 +481,7 @@
     },
     {
       "name": "hi2oka",
-      "score": 85.07,
+      "score": 84.8,
       "tip": "Weiter so"
     },
     {
@@ -727,7 +722,7 @@
         "role": "member",
         "score": 91.01,
         "strikes": 0,
-        "donations": 715,
+        "donations": 723,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -739,7 +734,19 @@
         "role": "member",
         "score": 90.83,
         "strikes": 0,
-        "donations": 252,
+        "donations": 288,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "AaleDieter",
+        "player_tag": "#CUJ9PJ2UV",
+        "role": "member",
+        "score": 89.27,
+        "strikes": 0,
+        "donations": 139,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -788,18 +795,6 @@
         "score": 89.02,
         "strikes": 0,
         "donations": 1570,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "AaleDieter",
-        "player_tag": "#CUJ9PJ2UV",
-        "role": "member",
-        "score": 88.87,
-        "strikes": 0,
-        "donations": 139,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -898,18 +893,6 @@
         "donations": 209,
         "participation_count": 3,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "hi2oka",
-        "player_tag": "#UJ2P9UYUV",
-        "role": "member",
-        "score": 85.07,
-        "strikes": 0,
-        "donations": 352,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       }
