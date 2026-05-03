@@ -6,11 +6,6 @@
       "priority": 4
     },
     {
-      "name": "joeeedom",
-      "scenario": "STRIKE",
-      "priority": 4
-    },
-    {
       "name": "krokodiesel",
       "scenario": "STRIKE",
       "priority": 4
@@ -77,6 +72,11 @@
     },
     {
       "name": "AaleDieter",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Wario",
       "scenario": "TOP",
       "priority": 2
     },
@@ -173,11 +173,6 @@
       "status": "STARK"
     },
     {
-      "name": "Wario",
-      "score": 89.23,
-      "status": "STARK"
-    },
-    {
       "name": "wshbr",
       "score": 89.2,
       "status": "STARK"
@@ -195,6 +190,11 @@
     {
       "name": "AaleDieter",
       "score": 88.87,
+      "status": "STARK"
+    },
+    {
+      "name": "Wario",
+      "score": 88.83,
       "status": "STARK"
     },
     {
@@ -334,7 +334,7 @@
     },
     {
       "name": "king rado",
-      "score": 74.47,
+      "score": 75.14,
       "status": "OK"
     },
     {
@@ -365,11 +365,6 @@
     {
       "name": "krokodiesel",
       "score": 49.17,
-      "status": "RISIKO"
-    },
-    {
-      "name": "joeeedom",
-      "score": 42.71,
       "status": "RISIKO"
     },
     {
@@ -425,11 +420,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Wario",
-      "score": 89.23,
-      "tip": "Weiter so"
-    },
-    {
       "name": "wshbr",
       "score": 89.2,
       "tip": "Weiter so"
@@ -447,6 +437,11 @@
     {
       "name": "AaleDieter",
       "score": 88.87,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Wario",
+      "score": 88.83,
       "tip": "Weiter so"
     },
     {
@@ -586,7 +581,7 @@
     },
     {
       "name": "king rado",
-      "score": 74.47,
+      "score": 75.14,
       "tip": "Weiter so"
     },
     {
@@ -617,11 +612,6 @@
     {
       "name": "krokodiesel",
       "score": 49.17,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "joeeedom",
-      "score": 42.71,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
@@ -665,7 +655,7 @@
         "role": "member",
         "score": 93.73,
         "strikes": 0,
-        "donations": 866,
+        "donations": 876,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -701,7 +691,7 @@
         "role": "member",
         "score": 92.8,
         "strikes": 0,
-        "donations": 566,
+        "donations": 576,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -756,18 +746,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Wario",
-        "player_tag": "#2PUQYJC02",
-        "role": "member",
-        "score": 89.23,
-        "strikes": 0,
-        "donations": 40,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "wshbr",
         "player_tag": "#G8RVJJ2R",
         "role": "member",
@@ -816,6 +794,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Wario",
+        "player_tag": "#2PUQYJC02",
+        "role": "member",
+        "score": 88.83,
+        "strikes": 0,
+        "donations": 50,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Swordfish",
         "player_tag": "#2CPRGY8G",
         "role": "member",
@@ -833,7 +823,7 @@
         "role": "member",
         "score": 88.48,
         "strikes": 0,
-        "donations": 1500,
+        "donations": 1510,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
