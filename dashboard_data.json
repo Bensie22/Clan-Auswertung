@@ -31,12 +31,12 @@
       "priority": 2
     },
     {
-      "name": "Erastus",
+      "name": "Jackhammer",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Jackhammer",
+      "name": "Erastus",
       "scenario": "TOP",
       "priority": 2
     },
@@ -61,12 +61,12 @@
       "priority": 2
     },
     {
-      "name": "honigmelone",
+      "name": "wshbr",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "wshbr",
+      "name": "honigmelone",
       "scenario": "TOP",
       "priority": 2
     },
@@ -143,13 +143,13 @@
       "status": "STARK"
     },
     {
-      "name": "Erastus",
-      "score": 93.07,
+      "name": "Jackhammer",
+      "score": 93.02,
       "status": "STARK"
     },
     {
-      "name": "Jackhammer",
-      "score": 93.02,
+      "name": "Erastus",
+      "score": 92.8,
       "status": "STARK"
     },
     {
@@ -173,11 +173,6 @@
       "status": "STARK"
     },
     {
-      "name": "honigmelone",
-      "score": 89.33,
-      "status": "STARK"
-    },
-    {
       "name": "Wario",
       "score": 89.23,
       "status": "STARK"
@@ -185,6 +180,11 @@
     {
       "name": "wshbr",
       "score": 89.2,
+      "status": "STARK"
+    },
+    {
+      "name": "honigmelone",
+      "score": 89.06,
       "status": "STARK"
     },
     {
@@ -243,13 +243,18 @@
       "status": "STARK"
     },
     {
-      "name": "Ted",
-      "score": 84.28,
+      "name": "Rainer",
+      "score": 84.19,
       "status": "STARK"
     },
     {
-      "name": "Rainer",
-      "score": 84.19,
+      "name": "Ted",
+      "score": 84.15,
+      "status": "STARK"
+    },
+    {
+      "name": "Chico",
+      "score": 84.06,
       "status": "STARK"
     },
     {
@@ -268,11 +273,6 @@
       "status": "STARK"
     },
     {
-      "name": "Chico",
-      "score": 83.26,
-      "status": "STARK"
-    },
-    {
       "name": "rote sonne",
       "score": 83.22,
       "status": "STARK"
@@ -284,7 +284,7 @@
     },
     {
       "name": "lukasl 5",
-      "score": 82.35,
+      "score": 82.49,
       "status": "STARK"
     },
     {
@@ -324,7 +324,7 @@
     },
     {
       "name": "Annefred",
-      "score": 77.32,
+      "score": 77.19,
       "status": "OK"
     },
     {
@@ -395,13 +395,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Erastus",
-      "score": 93.07,
+      "name": "Jackhammer",
+      "score": 93.02,
       "tip": "Weiter so"
     },
     {
-      "name": "Jackhammer",
-      "score": 93.02,
+      "name": "Erastus",
+      "score": 92.8,
       "tip": "Weiter so"
     },
     {
@@ -425,11 +425,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "honigmelone",
-      "score": 89.33,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Wario",
       "score": 89.23,
       "tip": "Weiter so"
@@ -437,6 +432,11 @@
     {
       "name": "wshbr",
       "score": 89.2,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "honigmelone",
+      "score": 89.06,
       "tip": "Weiter so"
     },
     {
@@ -495,13 +495,18 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Ted",
-      "score": 84.28,
+      "name": "Rainer",
+      "score": 84.19,
       "tip": "Weiter so"
     },
     {
-      "name": "Rainer",
-      "score": 84.19,
+      "name": "Ted",
+      "score": 84.15,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Chico",
+      "score": 84.06,
       "tip": "Weiter so"
     },
     {
@@ -520,11 +525,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Chico",
-      "score": 83.26,
-      "tip": "Weiter so"
-    },
-    {
       "name": "rote sonne",
       "score": 83.22,
       "tip": "Weiter so"
@@ -536,7 +536,7 @@
     },
     {
       "name": "lukasl 5",
-      "score": 82.35,
+      "score": 82.49,
       "tip": "Weiter so"
     },
     {
@@ -576,7 +576,7 @@
     },
     {
       "name": "Annefred",
-      "score": 77.32,
+      "score": 77.19,
       "tip": "Weiter so"
     },
     {
@@ -665,7 +665,7 @@
         "role": "member",
         "score": 93.73,
         "strikes": 0,
-        "donations": 806,
+        "donations": 866,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -684,18 +684,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Erastus",
-        "player_tag": "#Q8L0RJ8Y8",
-        "role": "member",
-        "score": 93.07,
-        "strikes": 0,
-        "donations": 536,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Jackhammer",
         "player_tag": "#2CJYG9UG",
         "role": "member",
@@ -708,12 +696,24 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Erastus",
+        "player_tag": "#Q8L0RJ8Y8",
+        "role": "member",
+        "score": 92.8,
+        "strikes": 0,
+        "donations": 566,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "LazyFrog",
         "player_tag": "#22Q920RLR",
         "role": "member",
         "score": 91.54,
         "strikes": 0,
-        "donations": 591,
+        "donations": 611,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -737,7 +737,7 @@
         "role": "member",
         "score": 91.07,
         "strikes": 0,
-        "donations": 153,
+        "donations": 163,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -750,18 +750,6 @@
         "score": 90.83,
         "strikes": 0,
         "donations": 252,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "honigmelone",
-        "player_tag": "#Q2GRGLQR",
-        "role": "member",
-        "score": 89.33,
-        "strikes": 0,
-        "donations": 102,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -792,12 +780,24 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "honigmelone",
+        "player_tag": "#Q2GRGLQR",
+        "role": "member",
+        "score": 89.06,
+        "strikes": 0,
+        "donations": 122,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "chris",
         "player_tag": "#YQ82VR9JQ",
         "role": "member",
         "score": 89.05,
         "strikes": 0,
-        "donations": 448,
+        "donations": 458,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -821,7 +821,7 @@
         "role": "member",
         "score": 88.6,
         "strikes": 0,
-        "donations": 366,
+        "donations": 386,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -833,7 +833,7 @@
         "role": "member",
         "score": 88.48,
         "strikes": 0,
-        "donations": 1440,
+        "donations": 1500,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
