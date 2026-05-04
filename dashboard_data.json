@@ -56,17 +56,12 @@
       "priority": 2
     },
     {
-      "name": "chris",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Bensie",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Swordfish",
+      "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
@@ -77,6 +72,11 @@
     },
     {
       "name": "honigmelone",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
@@ -96,12 +96,12 @@
       "priority": 2
     },
     {
-      "name": "mauza",
+      "name": "DST",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "DST",
+      "name": "mauza",
       "scenario": "TOP",
       "priority": 2
     },
@@ -173,18 +173,13 @@
       "status": "STARK"
     },
     {
-      "name": "chris",
-      "score": 89.19,
-      "status": "STARK"
-    },
-    {
       "name": "Bensie",
       "score": 89.02,
       "status": "STARK"
     },
     {
-      "name": "Swordfish",
-      "score": 88.87,
+      "name": "chris",
+      "score": 88.92,
       "status": "STARK"
     },
     {
@@ -198,6 +193,11 @@
       "status": "STARK"
     },
     {
+      "name": "Swordfish",
+      "score": 88.73,
+      "status": "STARK"
+    },
+    {
       "name": "wshbr",
       "score": 88.67,
       "status": "STARK"
@@ -208,13 +208,13 @@
       "status": "STARK"
     },
     {
-      "name": "andiquariat",
-      "score": 87.1,
+      "name": "Desteoyer",
+      "score": 87.18,
       "status": "STARK"
     },
     {
-      "name": "Desteoyer",
-      "score": 86.65,
+      "name": "andiquariat",
+      "score": 87.1,
       "status": "STARK"
     },
     {
@@ -223,13 +223,13 @@
       "status": "STARK"
     },
     {
-      "name": "mauza",
+      "name": "DST",
       "score": 86.18,
       "status": "STARK"
     },
     {
-      "name": "DST",
-      "score": 86.18,
+      "name": "mauza",
+      "score": 85.65,
       "status": "STARK"
     },
     {
@@ -240,11 +240,6 @@
     {
       "name": "Ted",
       "score": 84.42,
-      "status": "STARK"
-    },
-    {
-      "name": "Rainer",
-      "score": 84.06,
       "status": "STARK"
     },
     {
@@ -265,6 +260,11 @@
     {
       "name": "Flauschos",
       "score": 83.89,
+      "status": "STARK"
+    },
+    {
+      "name": "Rainer",
+      "score": 83.79,
       "status": "STARK"
     },
     {
@@ -319,7 +319,7 @@
     },
     {
       "name": "bequemo",
-      "score": 77.22,
+      "score": 77.35,
       "status": "OK"
     },
     {
@@ -420,18 +420,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "chris",
-      "score": 89.19,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Bensie",
       "score": 89.02,
       "tip": "Weiter so"
     },
     {
-      "name": "Swordfish",
-      "score": 88.87,
+      "name": "chris",
+      "score": 88.92,
       "tip": "Weiter so"
     },
     {
@@ -445,6 +440,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Swordfish",
+      "score": 88.73,
+      "tip": "Weiter so"
+    },
+    {
       "name": "wshbr",
       "score": 88.67,
       "tip": "Weiter so"
@@ -455,13 +455,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "andiquariat",
-      "score": 87.1,
+      "name": "Desteoyer",
+      "score": 87.18,
       "tip": "Weiter so"
     },
     {
-      "name": "Desteoyer",
-      "score": 86.65,
+      "name": "andiquariat",
+      "score": 87.1,
       "tip": "Weiter so"
     },
     {
@@ -470,13 +470,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "mauza",
+      "name": "DST",
       "score": 86.18,
       "tip": "Weiter so"
     },
     {
-      "name": "DST",
-      "score": 86.18,
+      "name": "mauza",
+      "score": 85.65,
       "tip": "Weiter so"
     },
     {
@@ -487,11 +487,6 @@
     {
       "name": "Ted",
       "score": 84.42,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Rainer",
-      "score": 84.06,
       "tip": "Weiter so"
     },
     {
@@ -512,6 +507,11 @@
     {
       "name": "Flauschos",
       "score": 83.89,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Rainer",
+      "score": 83.79,
       "tip": "Weiter so"
     },
     {
@@ -566,7 +566,7 @@
     },
     {
       "name": "bequemo",
-      "score": 77.22,
+      "score": 77.35,
       "tip": "Weiter so"
     },
     {
@@ -753,18 +753,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "chris",
-        "player_tag": "#YQ82VR9JQ",
-        "role": "member",
-        "score": 89.19,
-        "strikes": 0,
-        "donations": 468,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Bensie",
         "player_tag": "#2QRVR9L8",
         "role": "member",
@@ -777,12 +765,12 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Swordfish",
-        "player_tag": "#2CPRGY8G",
+        "name": "chris",
+        "player_tag": "#YQ82VR9JQ",
         "role": "member",
-        "score": 88.87,
+        "score": 88.92,
         "strikes": 0,
-        "donations": 386,
+        "donations": 468,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -813,6 +801,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Swordfish",
+        "player_tag": "#2CPRGY8G",
+        "role": "member",
+        "score": 88.73,
+        "strikes": 0,
+        "donations": 386,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "wshbr",
         "player_tag": "#G8RVJJ2R",
         "role": "member",
@@ -837,24 +837,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "andiquariat",
-        "player_tag": "#2UQUPYQCJ",
+        "name": "Desteoyer",
+        "player_tag": "#2V800VCQ0",
         "role": "member",
-        "score": 87.1,
+        "score": 87.18,
         "strikes": 0,
-        "donations": 0,
+        "donations": 8,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
       {
-        "name": "Desteoyer",
-        "player_tag": "#2V800VCQ0",
+        "name": "andiquariat",
+        "player_tag": "#2UQUPYQCJ",
         "role": "member",
-        "score": 86.65,
+        "score": 87.1,
         "strikes": 0,
-        "donations": 8,
+        "donations": 0,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -873,18 +873,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "mauza",
-        "player_tag": "#2P0U2RLGY",
-        "role": "member",
-        "score": 86.18,
-        "strikes": 0,
-        "donations": 294,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "DST",
         "player_tag": "#9VLRQ9GR9",
         "role": "member",
@@ -893,6 +881,18 @@
         "donations": 243,
         "participation_count": 3,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "mauza",
+        "player_tag": "#2P0U2RLGY",
+        "role": "member",
+        "score": 85.65,
+        "strikes": 0,
+        "donations": 294,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
