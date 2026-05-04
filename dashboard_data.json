@@ -6,17 +6,17 @@
       "priority": 4
     },
     {
+      "name": "Vortex Babe",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "maghrebi",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "OmniOni",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Vortex Babe",
       "scenario": "TOP",
       "priority": 2
     },
@@ -56,17 +56,7 @@
       "priority": 2
     },
     {
-      "name": "wshbr",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "chris",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "honigmelone",
       "scenario": "TOP",
       "priority": 2
     },
@@ -82,6 +72,16 @@
     },
     {
       "name": "Wario",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "honigmelone",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "wshbr",
       "scenario": "TOP",
       "priority": 2
     },
@@ -123,6 +123,11 @@
   ],
   "smart": [
     {
+      "name": "Vortex Babe",
+      "score": 94.27,
+      "status": "STARK"
+    },
+    {
       "name": "maghrebi",
       "score": 94.13,
       "status": "STARK"
@@ -133,18 +138,13 @@
       "status": "STARK"
     },
     {
-      "name": "Vortex Babe",
-      "score": 93.33,
-      "status": "STARK"
-    },
-    {
       "name": "Jackhammer",
       "score": 93.15,
       "status": "STARK"
     },
     {
       "name": "Erastus",
-      "score": 92.8,
+      "score": 92.67,
       "status": "STARK"
     },
     {
@@ -173,18 +173,8 @@
       "status": "STARK"
     },
     {
-      "name": "wshbr",
-      "score": 89.2,
-      "status": "STARK"
-    },
-    {
       "name": "chris",
       "score": 89.19,
-      "status": "STARK"
-    },
-    {
-      "name": "honigmelone",
-      "score": 89.06,
       "status": "STARK"
     },
     {
@@ -200,6 +190,16 @@
     {
       "name": "Wario",
       "score": 88.83,
+      "status": "STARK"
+    },
+    {
+      "name": "honigmelone",
+      "score": 88.8,
+      "status": "STARK"
+    },
+    {
+      "name": "wshbr",
+      "score": 88.67,
       "status": "STARK"
     },
     {
@@ -219,7 +219,7 @@
     },
     {
       "name": "kl.kranker Affe",
-      "score": 86.6,
+      "score": 86.47,
       "status": "STARK"
     },
     {
@@ -229,7 +229,7 @@
     },
     {
       "name": "DST",
-      "score": 85.65,
+      "score": 86.18,
       "status": "STARK"
     },
     {
@@ -294,8 +294,8 @@
     },
     {
       "name": "SirHenry87",
-      "score": 80.31,
-      "status": "STARK"
+      "score": 79.78,
+      "status": "OK"
     },
     {
       "name": "Nati",
@@ -329,7 +329,7 @@
     },
     {
       "name": "king rado",
-      "score": 75.27,
+      "score": 75.4,
       "status": "OK"
     },
     {
@@ -370,6 +370,11 @@
   ],
   "coaching": [
     {
+      "name": "Vortex Babe",
+      "score": 94.27,
+      "tip": "Weiter so"
+    },
+    {
       "name": "maghrebi",
       "score": 94.13,
       "tip": "Weiter so"
@@ -380,18 +385,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Vortex Babe",
-      "score": 93.33,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Jackhammer",
       "score": 93.15,
       "tip": "Weiter so"
     },
     {
       "name": "Erastus",
-      "score": 92.8,
+      "score": 92.67,
       "tip": "Weiter so"
     },
     {
@@ -420,18 +420,8 @@
       "tip": "Weiter so"
     },
     {
-      "name": "wshbr",
-      "score": 89.2,
-      "tip": "Weiter so"
-    },
-    {
       "name": "chris",
       "score": 89.19,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "honigmelone",
-      "score": 89.06,
       "tip": "Weiter so"
     },
     {
@@ -447,6 +437,16 @@
     {
       "name": "Wario",
       "score": 88.83,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "honigmelone",
+      "score": 88.8,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "wshbr",
+      "score": 88.67,
       "tip": "Weiter so"
     },
     {
@@ -466,7 +466,7 @@
     },
     {
       "name": "kl.kranker Affe",
-      "score": 86.6,
+      "score": 86.47,
       "tip": "Weiter so"
     },
     {
@@ -476,7 +476,7 @@
     },
     {
       "name": "DST",
-      "score": 85.65,
+      "score": 86.18,
       "tip": "Weiter so"
     },
     {
@@ -541,7 +541,7 @@
     },
     {
       "name": "SirHenry87",
-      "score": 80.31,
+      "score": 79.78,
       "tip": "Weiter so"
     },
     {
@@ -576,7 +576,7 @@
     },
     {
       "name": "king rado",
-      "score": 75.27,
+      "score": 75.4,
       "tip": "Weiter so"
     },
     {
@@ -633,6 +633,18 @@
     ],
     "core": [
       {
+        "name": "Vortex Babe",
+        "player_tag": "#88GPYVR8P",
+        "role": "member",
+        "score": 94.27,
+        "strikes": 0,
+        "donations": 286,
+        "participation_count": 1,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "maghrebi",
         "player_tag": "#20QGJVPG8Q",
         "role": "member",
@@ -657,18 +669,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Vortex Babe",
-        "player_tag": "#88GPYVR8P",
-        "role": "member",
-        "score": 93.33,
-        "strikes": 0,
-        "donations": 286,
-        "participation_count": 1,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Jackhammer",
         "player_tag": "#2CJYG9UG",
         "role": "member",
@@ -684,7 +684,7 @@
         "name": "Erastus",
         "player_tag": "#Q8L0RJ8Y8",
         "role": "member",
-        "score": 92.8,
+        "score": 92.67,
         "strikes": 0,
         "donations": 662,
         "participation_count": 10,
@@ -753,36 +753,12 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "wshbr",
-        "player_tag": "#G8RVJJ2R",
-        "role": "member",
-        "score": 89.2,
-        "strikes": 0,
-        "donations": 492,
-        "participation_count": 1,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "chris",
         "player_tag": "#YQ82VR9JQ",
         "role": "member",
         "score": 89.19,
         "strikes": 0,
         "donations": 468,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "honigmelone",
-        "player_tag": "#Q2GRGLQR",
-        "role": "member",
-        "score": 89.06,
-        "strikes": 0,
-        "donations": 122,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -821,6 +797,30 @@
         "donations": 60,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "honigmelone",
+        "player_tag": "#Q2GRGLQR",
+        "role": "member",
+        "score": 88.8,
+        "strikes": 0,
+        "donations": 122,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "wshbr",
+        "player_tag": "#G8RVJJ2R",
+        "role": "member",
+        "score": 88.67,
+        "strikes": 0,
+        "donations": 492,
+        "participation_count": 1,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -864,7 +864,7 @@
         "name": "kl.kranker Affe",
         "player_tag": "#RLJPJL8C2",
         "role": "member",
-        "score": 86.6,
+        "score": 86.47,
         "strikes": 0,
         "donations": 134,
         "participation_count": 10,
@@ -888,7 +888,7 @@
         "name": "DST",
         "player_tag": "#9VLRQ9GR9",
         "role": "member",
-        "score": 85.65,
+        "score": 86.18,
         "strikes": 0,
         "donations": 243,
         "participation_count": 3,
