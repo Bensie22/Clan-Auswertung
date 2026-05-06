@@ -4,10 +4,10 @@
             "#22Q920RLR": "20260505T183500.000Z",
             "#L8PV090J": "20260505T104929.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
-            "#2QRVR9L8": "20260506T075045.000Z",
-            "#ULYJ2CQP": "20260506T095701.000Z",
-            "#UJ2P9UYUV": "20260506T094636.000Z",
-            "#P0JYR9YUY": "20260506T082336.000Z",
+            "#2QRVR9L8": "20260506T102336.000Z",
+            "#ULYJ2CQP": "20260506T100610.000Z",
+            "#UJ2P9UYUV": "20260506T114053.000Z",
+            "#P0JYR9YUY": "20260506T112649.000Z",
             "#R22R8GYG": "20260506T092140.000Z",
             "#YQ82VR9JQ": "20260506T092212.000Z",
             "#G02LC9C8": "20260506T064741.000Z",
@@ -17,9 +17,9 @@
             "#9CG2CRRJG": "20260505T203452.000Z",
             "#PPR2QQC0U": "20260506T061207.000Z",
             "#QULCQGGG": "20260506T094049.000Z",
-            "#JRGC9RRQG": "20260506T074237.000Z",
-            "#QVQGCV8Y9": "20260506T095544.000Z",
-            "#Q8L0RJ8Y8": "20260505T154609.000Z",
+            "#JRGC9RRQG": "20260506T115353.000Z",
+            "#QVQGCV8Y9": "20260506T113403.000Z",
+            "#Q8L0RJ8Y8": "20260506T101802.000Z",
             "#P2GUCG2Y": "20260506T053502.000Z",
             "#2CPRGY8G": "20260506T040231.000Z",
             "#LLQQJCLC": "20260504T201032.000Z",
@@ -29,7 +29,7 @@
             "#2CJYG9UG": "20260503T114158.000Z",
             "#2PUQYJC02": "20260503T123719.000Z",
             "#YQVQYUYRV": "20260503T111714.000Z",
-            "#2V800VCQ0": "20260506T094642.000Z",
+            "#2V800VCQ0": "20260506T115246.000Z",
             "#2UQUPYQCJ": "20260505T123630.000Z",
             "#JUUR8UGL8": "20260505T194548.000Z",
             "#2U09UULRR": "20260506T083648.000Z",
@@ -46,7 +46,7 @@
             "#UUPCULU9V": "20260505T142032.000Z",
             "#202VP2QL9P": "20260506T034528.000Z",
             "#LVUGLUCP9": "20260503T183714.000Z",
-            "#20QGJVPG8Q": "20260506T005229.000Z",
+            "#20QGJVPG8Q": "20260506T114930.000Z",
             "#V9GYJQ0J9": "",
             "#URJ0LUYPV": "20260506T073548.000Z",
             "#Q2GRGLQR": "20260506T060846.000Z",
@@ -527,7 +527,7 @@
                 }
             ],
             "wins": 4,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Erastus"
             ],
@@ -535,6 +535,12 @@
                 "Q8L0RJ8Y8"
             ],
             "recent_matches": [
+                {
+                    "time": "20260506T101318.000Z",
+                    "result": "loss",
+                    "player": "Erastus",
+                    "tag": "Q8L0RJ8Y8"
+                },
                 {
                     "time": "20260505T154341.000Z",
                     "result": "win",
@@ -6730,7 +6736,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/BGLo3Grsp81c72EpxLLk-Sofk3VY56zahnUNOv3JcT0.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "Erastus"
@@ -6739,6 +6745,12 @@
                 "Q8L0RJ8Y8"
             ],
             "recent_matches": [
+                {
+                    "time": "20260506T101802.000Z",
+                    "result": "win",
+                    "player": "Erastus",
+                    "tag": "Q8L0RJ8Y8"
+                },
                 {
                     "time": "20260505T154609.000Z",
                     "result": "win",
@@ -77448,6 +77460,98 @@
                     "id": 26000064,
                     "name": "Firecracker",
                     "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000012-26000016-26000040-26000047-26000051-26000062-26000103-27000010": {
+            "cards": [
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000103,
+                    "name": "Boss Bandit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nuceG9o7rAyvyc7D3sp2QSiRYtSOEgraq0NJkDf729s.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 26000051,
+                    "name": "Ram Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 26000047,
+                    "name": "Royal Recruits",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jcNyYGUiXXNz3kuz8NBkHNKNREQKraXlb_Ts7rhCIdM.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000011-26000012-26000039-26000047-26000064-27000000-28000004-28000011": {
+            "cards": [
+                {
+                    "id": 26000047,
+                    "name": "Royal Recruits",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jcNyYGUiXXNz3kuz8NBkHNKNREQKraXlb_Ts7rhCIdM.png"
+                },
+                {
+                    "id": 26000039,
+                    "name": "Mega Minion",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/-T_e4YLbuhPBKbYnBwQfXgynNpp5eOIN_0RracYwL9c.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 27000000,
+                    "name": "Cannon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nZK1y-beLxO5vnlyUhK6-2zH2NzXJwqykcosqQ1cmZ8.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
                 }
             ],
             "seen": 1,
