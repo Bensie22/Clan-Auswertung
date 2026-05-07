@@ -2,7 +2,7 @@
   "full_auto": [
     {
       "name": "Johan",
-      "scenario": "KEINE_TEILNAHME",
+      "scenario": "STRIKE",
       "priority": 4
     },
     {
@@ -11,27 +11,17 @@
       "priority": 4
     },
     {
-      "name": "maghrebi",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "OmniOni",
       "scenario": "TOP",
       "priority": 2
     },
     {
+      "name": "maghrebi",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Erastus",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "OneAndOnly",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "LazyFrog",
       "scenario": "TOP",
       "priority": 2
     },
@@ -46,7 +36,12 @@
       "priority": 2
     },
     {
-      "name": "Theezy",
+      "name": "OneAndOnly",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "LazyFrog",
       "scenario": "TOP",
       "priority": 2
     },
@@ -56,12 +51,12 @@
       "priority": 2
     },
     {
-      "name": "honigmelone",
+      "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Swordfish",
+      "name": "Theezy",
       "scenario": "TOP",
       "priority": 2
     },
@@ -71,7 +66,7 @@
       "priority": 2
     },
     {
-      "name": "kl.kranker Affe",
+      "name": "honigmelone",
       "scenario": "TOP",
       "priority": 2
     },
@@ -81,12 +76,12 @@
       "priority": 2
     },
     {
-      "name": "hi2oka",
+      "name": "kl.kranker Affe",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Ted",
+      "name": "hi2oka",
       "scenario": "TOP",
       "priority": 2
     },
@@ -103,68 +98,63 @@
   ],
   "smart": [
     {
+      "name": "OmniOni",
+      "score": 94.13,
+      "status": "STARK"
+    },
+    {
       "name": "maghrebi",
       "score": 94.13,
       "status": "STARK"
     },
     {
-      "name": "OmniOni",
-      "score": 93.86,
-      "status": "STARK"
-    },
-    {
       "name": "Erastus",
-      "score": 92.67,
-      "status": "STARK"
-    },
-    {
-      "name": "OneAndOnly",
-      "score": 91.33,
-      "status": "STARK"
-    },
-    {
-      "name": "LazyFrog",
-      "score": 91.01,
+      "score": 93.73,
       "status": "STARK"
     },
     {
       "name": "Jackhammer",
-      "score": 90.96,
+      "score": 92.56,
       "status": "STARK"
     },
     {
       "name": "_spc07",
-      "score": 90.83,
+      "score": 91.63,
       "status": "STARK"
     },
     {
-      "name": "Theezy",
-      "score": 90.0,
+      "name": "OneAndOnly",
+      "score": 90.67,
       "status": "STARK"
     },
     {
-      "name": "AaleDieter",
-      "score": 89.58,
+      "name": "LazyFrog",
+      "score": 90.34,
       "status": "STARK"
     },
     {
       "name": "Bensie",
-      "score": 89.02,
-      "status": "STARK"
-    },
-    {
-      "name": "Wario",
-      "score": 88.83,
-      "status": "STARK"
-    },
-    {
-      "name": "honigmelone",
-      "score": 88.8,
+      "score": 89.55,
       "status": "STARK"
     },
     {
       "name": "Swordfish",
-      "score": 88.73,
+      "score": 89.27,
+      "status": "STARK"
+    },
+    {
+      "name": "Theezy",
+      "score": 89.2,
+      "status": "STARK"
+    },
+    {
+      "name": "Wario",
+      "score": 89.1,
+      "status": "STARK"
+    },
+    {
+      "name": "AaleDieter",
+      "score": 88.78,
       "status": "STARK"
     },
     {
@@ -173,8 +163,13 @@
       "status": "STARK"
     },
     {
-      "name": "Dolphin",
-      "score": 88.08,
+      "name": "honigmelone",
+      "score": 88.26,
+      "status": "STARK"
+    },
+    {
+      "name": "Desteoyer",
+      "score": 88.16,
       "status": "STARK"
     },
     {
@@ -183,63 +178,53 @@
       "status": "STARK"
     },
     {
-      "name": "Desteoyer",
-      "score": 87.49,
-      "status": "STARK"
-    },
-    {
-      "name": "andiquariat",
-      "score": 87.1,
-      "status": "STARK"
-    },
-    {
-      "name": "kl.kranker Affe",
-      "score": 87.1,
+      "name": "Dolphin",
+      "score": 87.55,
       "status": "STARK"
     },
     {
       "name": "mauza",
-      "score": 86.9,
+      "score": 87.03,
+      "status": "STARK"
+    },
+    {
+      "name": "andiquariat",
+      "score": 86.43,
+      "status": "STARK"
+    },
+    {
+      "name": "kl.kranker Affe",
+      "score": 86.43,
       "status": "STARK"
     },
     {
       "name": "hi2oka",
-      "score": 86.45,
+      "score": 85.92,
       "status": "STARK"
     },
     {
       "name": "Ted",
-      "score": 85.31,
-      "status": "STARK"
-    },
-    {
-      "name": "Citykingalex",
-      "score": 84.22,
-      "status": "STARK"
-    },
-    {
-      "name": "Fxry",
-      "score": 83.95,
-      "status": "STARK"
-    },
-    {
-      "name": "Rainer",
-      "score": 83.79,
+      "score": 84.91,
       "status": "STARK"
     },
     {
       "name": "Chico",
-      "score": 83.61,
-      "status": "STARK"
-    },
-    {
-      "name": "seroo",
-      "score": 83.61,
+      "score": 84.41,
       "status": "STARK"
     },
     {
       "name": "Flauschos",
-      "score": 83.58,
+      "score": 84.38,
+      "status": "STARK"
+    },
+    {
+      "name": "Fxry",
+      "score": 83.82,
+      "status": "STARK"
+    },
+    {
+      "name": "Citykingalex",
+      "score": 83.55,
       "status": "STARK"
     },
     {
@@ -248,53 +233,63 @@
       "status": "STARK"
     },
     {
-      "name": "Knitte",
-      "score": 83.04,
-      "status": "STARK"
-    },
-    {
       "name": "DST",
-      "score": 82.8,
+      "score": 83.33,
       "status": "STARK"
     },
     {
-      "name": "SirHenry87",
-      "score": 82.28,
+      "name": "Rainer",
+      "score": 83.12,
+      "status": "STARK"
+    },
+    {
+      "name": "seroo",
+      "score": 83.08,
       "status": "STARK"
     },
     {
       "name": "lukasl 5",
-      "score": 82.22,
+      "score": 82.75,
       "status": "STARK"
     },
     {
-      "name": "Denis",
-      "score": 81.82,
+      "name": "SirHenry87",
+      "score": 82.14,
+      "status": "STARK"
+    },
+    {
+      "name": "Knitte",
+      "score": 81.97,
       "status": "STARK"
     },
     {
       "name": "rote sonne",
-      "score": 81.3,
+      "score": 81.43,
+      "status": "STARK"
+    },
+    {
+      "name": "Denis",
+      "score": 81.42,
       "status": "STARK"
     },
     {
       "name": "bes",
-      "score": 80.89,
+      "score": 81.29,
       "status": "STARK"
     },
     {
       "name": "Nati",
-      "score": 80.35,
-      "status": "STARK"
-    },
-    {
-      "name": "bequemo",
-      "score": 78.91,
+      "score": 78.75,
       "status": "OK"
     },
     {
       "name": "Merlin1659",
       "score": 78.55,
+      "status": "OK"
+    },
+    {
+      "name": "bequemo",
+      "score": 78.38,
       "status": "OK"
     },
     {
@@ -304,7 +299,7 @@
     },
     {
       "name": "king rado",
-      "score": 73.67,
+      "score": 73.8,
       "status": "OK"
     },
     {
@@ -339,74 +334,69 @@
     },
     {
       "name": "Johan",
-      "score": 0.0,
+      "score": 10.0,
       "status": "RISIKO"
     }
   ],
   "coaching": [
+    {
+      "name": "OmniOni",
+      "score": 94.13,
+      "tip": "Weiter so"
+    },
     {
       "name": "maghrebi",
       "score": 94.13,
       "tip": "Weiter so"
     },
     {
-      "name": "OmniOni",
-      "score": 93.86,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Erastus",
-      "score": 92.67,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "OneAndOnly",
-      "score": 91.33,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "LazyFrog",
-      "score": 91.01,
+      "score": 93.73,
       "tip": "Weiter so"
     },
     {
       "name": "Jackhammer",
-      "score": 90.96,
+      "score": 92.56,
       "tip": "Weiter so"
     },
     {
       "name": "_spc07",
-      "score": 90.83,
+      "score": 91.63,
       "tip": "Weiter so"
     },
     {
-      "name": "Theezy",
-      "score": 90.0,
+      "name": "OneAndOnly",
+      "score": 90.67,
       "tip": "Weiter so"
     },
     {
-      "name": "AaleDieter",
-      "score": 89.58,
+      "name": "LazyFrog",
+      "score": 90.34,
       "tip": "Weiter so"
     },
     {
       "name": "Bensie",
-      "score": 89.02,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Wario",
-      "score": 88.83,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "honigmelone",
-      "score": 88.8,
+      "score": 89.55,
       "tip": "Weiter so"
     },
     {
       "name": "Swordfish",
-      "score": 88.73,
+      "score": 89.27,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Theezy",
+      "score": 89.2,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Wario",
+      "score": 89.1,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "AaleDieter",
+      "score": 88.78,
       "tip": "Weiter so"
     },
     {
@@ -415,8 +405,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Dolphin",
-      "score": 88.08,
+      "name": "honigmelone",
+      "score": 88.26,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Desteoyer",
+      "score": 88.16,
       "tip": "Weiter so"
     },
     {
@@ -425,63 +420,53 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Desteoyer",
-      "score": 87.49,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "andiquariat",
-      "score": 87.1,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "kl.kranker Affe",
-      "score": 87.1,
+      "name": "Dolphin",
+      "score": 87.55,
       "tip": "Weiter so"
     },
     {
       "name": "mauza",
-      "score": 86.9,
+      "score": 87.03,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "andiquariat",
+      "score": 86.43,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "kl.kranker Affe",
+      "score": 86.43,
       "tip": "Weiter so"
     },
     {
       "name": "hi2oka",
-      "score": 86.45,
+      "score": 85.92,
       "tip": "Weiter so"
     },
     {
       "name": "Ted",
-      "score": 85.31,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Citykingalex",
-      "score": 84.22,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Fxry",
-      "score": 83.95,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Rainer",
-      "score": 83.79,
+      "score": 84.91,
       "tip": "Weiter so"
     },
     {
       "name": "Chico",
-      "score": 83.61,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "seroo",
-      "score": 83.61,
+      "score": 84.41,
       "tip": "Weiter so"
     },
     {
       "name": "Flauschos",
-      "score": 83.58,
+      "score": 84.38,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Fxry",
+      "score": 83.82,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Citykingalex",
+      "score": 83.55,
       "tip": "Weiter so"
     },
     {
@@ -490,53 +475,63 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Knitte",
-      "score": 83.04,
-      "tip": "Weiter so"
-    },
-    {
       "name": "DST",
-      "score": 82.8,
+      "score": 83.33,
       "tip": "Weiter so"
     },
     {
-      "name": "SirHenry87",
-      "score": 82.28,
+      "name": "Rainer",
+      "score": 83.12,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "seroo",
+      "score": 83.08,
       "tip": "Weiter so"
     },
     {
       "name": "lukasl 5",
-      "score": 82.22,
+      "score": 82.75,
       "tip": "Weiter so"
     },
     {
-      "name": "Denis",
-      "score": 81.82,
+      "name": "SirHenry87",
+      "score": 82.14,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Knitte",
+      "score": 81.97,
       "tip": "Weiter so"
     },
     {
       "name": "rote sonne",
-      "score": 81.3,
+      "score": 81.43,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Denis",
+      "score": 81.42,
       "tip": "Weiter so"
     },
     {
       "name": "bes",
-      "score": 80.89,
+      "score": 81.29,
       "tip": "Weiter so"
     },
     {
       "name": "Nati",
-      "score": 80.35,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "bequemo",
-      "score": 78.91,
+      "score": 78.75,
       "tip": "Weiter so"
     },
     {
       "name": "Merlin1659",
       "score": 78.55,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "bequemo",
+      "score": 78.38,
       "tip": "Weiter so"
     },
     {
@@ -546,7 +541,7 @@
     },
     {
       "name": "king rado",
-      "score": 73.67,
+      "score": 73.8,
       "tip": "Weiter so"
     },
     {
@@ -581,7 +576,7 @@
     },
     {
       "name": "Johan",
-      "score": 0.0,
+      "score": 10.0,
       "tip": "Mehr Teilnahme notwendig"
     }
   ],
@@ -592,7 +587,7 @@
         "name": "Johan",
         "player_tag": "#UQVCVVVJL",
         "role": "member",
-        "score": 0.0,
+        "score": 10.0,
         "strikes": 0,
         "donations": 70,
         "participation_count": 0,
@@ -602,6 +597,18 @@
       }
     ],
     "core": [
+      {
+        "name": "OmniOni",
+        "player_tag": "#UUPCULU9V",
+        "role": "member",
+        "score": 94.13,
+        "strikes": 0,
+        "donations": 398,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
       {
         "name": "maghrebi",
         "player_tag": "#20QGJVPG8Q",
@@ -615,48 +622,12 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "OmniOni",
-        "player_tag": "#UUPCULU9V",
-        "role": "member",
-        "score": 93.86,
-        "strikes": 0,
-        "donations": 398,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Erastus",
         "player_tag": "#Q8L0RJ8Y8",
         "role": "member",
-        "score": 92.67,
+        "score": 93.73,
         "strikes": 0,
         "donations": 347,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "OneAndOnly",
-        "player_tag": "#8P0J8P0L",
-        "role": "member",
-        "score": 91.33,
-        "strikes": 0,
-        "donations": 354,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "LazyFrog",
-        "player_tag": "#22Q920RLR",
-        "role": "member",
-        "score": 91.01,
-        "strikes": 0,
-        "donations": 223,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -666,7 +637,7 @@
         "name": "Jackhammer",
         "player_tag": "#2CJYG9UG",
         "role": "member",
-        "score": 90.96,
+        "score": 92.56,
         "strikes": 0,
         "donations": 74,
         "participation_count": 10,
@@ -678,7 +649,7 @@
         "name": "_spc07",
         "player_tag": "#2U8288CVY",
         "role": "member",
-        "score": 90.83,
+        "score": 91.63,
         "strikes": 0,
         "donations": 178,
         "participation_count": 10,
@@ -687,24 +658,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Theezy",
-        "player_tag": "#JUUR8UGL8",
+        "name": "OneAndOnly",
+        "player_tag": "#8P0J8P0L",
         "role": "member",
-        "score": 90.0,
+        "score": 90.67,
         "strikes": 0,
-        "donations": 50,
+        "donations": 354,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
       {
-        "name": "AaleDieter",
-        "player_tag": "#CUJ9PJ2UV",
+        "name": "LazyFrog",
+        "player_tag": "#22Q920RLR",
         "role": "member",
-        "score": 89.58,
+        "score": 90.34,
         "strikes": 0,
-        "donations": 26,
+        "donations": 231,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -714,33 +685,9 @@
         "name": "Bensie",
         "player_tag": "#2QRVR9L8",
         "role": "member",
-        "score": 89.02,
+        "score": 89.55,
         "strikes": 0,
         "donations": 433,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Wario",
-        "player_tag": "#2PUQYJC02",
-        "role": "member",
-        "score": 88.83,
-        "strikes": 0,
-        "donations": 23,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "honigmelone",
-        "player_tag": "#Q2GRGLQR",
-        "role": "member",
-        "score": 88.8,
-        "strikes": 0,
-        "donations": 98,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -750,9 +697,45 @@
         "name": "Swordfish",
         "player_tag": "#2CPRGY8G",
         "role": "member",
-        "score": 88.73,
+        "score": 89.27,
         "strikes": 0,
         "donations": 240,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Theezy",
+        "player_tag": "#JUUR8UGL8",
+        "role": "member",
+        "score": 89.2,
+        "strikes": 0,
+        "donations": 50,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Wario",
+        "player_tag": "#2PUQYJC02",
+        "role": "member",
+        "score": 89.1,
+        "strikes": 0,
+        "donations": 23,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "AaleDieter",
+        "player_tag": "#CUJ9PJ2UV",
+        "role": "member",
+        "score": 88.78,
+        "strikes": 0,
+        "donations": 26,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -771,12 +754,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Dolphin",
-        "player_tag": "#2U09UULRR",
+        "name": "honigmelone",
+        "player_tag": "#Q2GRGLQR",
         "role": "member",
-        "score": 88.08,
+        "score": 88.26,
         "strikes": 0,
-        "donations": 40,
+        "donations": 98,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Desteoyer",
+        "player_tag": "#2V800VCQ0",
+        "role": "member",
+        "score": 88.16,
+        "strikes": 0,
+        "donations": 11,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -795,12 +790,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Desteoyer",
-        "player_tag": "#2V800VCQ0",
+        "name": "Dolphin",
+        "player_tag": "#2U09UULRR",
         "role": "member",
-        "score": 87.49,
+        "score": 87.55,
         "strikes": 0,
-        "donations": 11,
+        "donations": 40,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "mauza",
+        "player_tag": "#2P0U2RLGY",
+        "role": "member",
+        "score": 87.03,
+        "strikes": 0,
+        "donations": 164,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -810,7 +817,7 @@
         "name": "kl.kranker Affe",
         "player_tag": "#RLJPJL8C2",
         "role": "member",
-        "score": 87.1,
+        "score": 86.43,
         "strikes": 0,
         "donations": 114,
         "participation_count": 10,
@@ -822,21 +829,9 @@
         "name": "andiquariat",
         "player_tag": "#2UQUPYQCJ",
         "role": "member",
-        "score": 87.1,
+        "score": 86.43,
         "strikes": 0,
         "donations": 0,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "mauza",
-        "player_tag": "#2P0U2RLGY",
-        "role": "member",
-        "score": 86.9,
-        "strikes": 0,
-        "donations": 164,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -846,23 +841,11 @@
         "name": "hi2oka",
         "player_tag": "#UJ2P9UYUV",
         "role": "member",
-        "score": 86.45,
+        "score": 85.92,
         "strikes": 0,
         "donations": 340,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Ted",
-        "player_tag": "#J9RQPGLVP",
-        "role": "member",
-        "score": 85.31,
-        "strikes": 0,
-        "donations": 284,
-        "participation_count": 7,
-        "trend": "🔴🔴🔴🟡🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       }
