@@ -31,17 +31,17 @@
       "priority": 2
     },
     {
-      "name": "_spc07",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "LazyFrog",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "_spc07",
       "scenario": "TOP",
       "priority": 2
     },
@@ -56,12 +56,12 @@
       "priority": 2
     },
     {
-      "name": "Swordfish",
+      "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "chris",
+      "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
@@ -124,12 +124,7 @@
     },
     {
       "name": "Jackhammer",
-      "score": 92.7,
-      "status": "STARK"
-    },
-    {
-      "name": "_spc07",
-      "score": 90.7,
+      "score": 92.16,
       "status": "STARK"
     },
     {
@@ -143,13 +138,23 @@
       "status": "STARK"
     },
     {
+      "name": "_spc07",
+      "score": 90.43,
+      "status": "STARK"
+    },
+    {
       "name": "Theezy",
-      "score": 89.73,
+      "score": 90.13,
       "status": "STARK"
     },
     {
       "name": "Bensie",
       "score": 89.55,
+      "status": "STARK"
+    },
+    {
+      "name": "chris",
+      "score": 89.41,
       "status": "STARK"
     },
     {
@@ -160,11 +165,6 @@
     {
       "name": "Wario",
       "score": 89.1,
-      "status": "STARK"
-    },
-    {
-      "name": "chris",
-      "score": 89.01,
       "status": "STARK"
     },
     {
@@ -248,13 +248,13 @@
       "status": "STARK"
     },
     {
-      "name": "seroo",
-      "score": 83.08,
+      "name": "Rainer",
+      "score": 82.99,
       "status": "STARK"
     },
     {
-      "name": "Rainer",
-      "score": 82.99,
+      "name": "seroo",
+      "score": 82.95,
       "status": "STARK"
     },
     {
@@ -293,13 +293,13 @@
       "status": "OK"
     },
     {
-      "name": "bequemo",
-      "score": 78.38,
+      "name": "Merlin1659",
+      "score": 78.28,
       "status": "OK"
     },
     {
-      "name": "Merlin1659",
-      "score": 78.28,
+      "name": "bequemo",
+      "score": 78.11,
       "status": "OK"
     },
     {
@@ -319,7 +319,7 @@
     },
     {
       "name": "elazeto",
-      "score": 69.26,
+      "score": 69.39,
       "status": "OK"
     },
     {
@@ -329,7 +329,7 @@
     },
     {
       "name": "SPURS",
-      "score": 66.6,
+      "score": 65.0,
       "status": "OK"
     },
     {
@@ -366,12 +366,7 @@
     },
     {
       "name": "Jackhammer",
-      "score": 92.7,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "_spc07",
-      "score": 90.7,
+      "score": 92.16,
       "tip": "Weiter so"
     },
     {
@@ -385,13 +380,23 @@
       "tip": "Weiter so"
     },
     {
+      "name": "_spc07",
+      "score": 90.43,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Theezy",
-      "score": 89.73,
+      "score": 90.13,
       "tip": "Weiter so"
     },
     {
       "name": "Bensie",
       "score": 89.55,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "chris",
+      "score": 89.41,
       "tip": "Weiter so"
     },
     {
@@ -402,11 +407,6 @@
     {
       "name": "Wario",
       "score": 89.1,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "chris",
-      "score": 89.01,
       "tip": "Weiter so"
     },
     {
@@ -490,13 +490,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "seroo",
-      "score": 83.08,
+      "name": "Rainer",
+      "score": 82.99,
       "tip": "Weiter so"
     },
     {
-      "name": "Rainer",
-      "score": 82.99,
+      "name": "seroo",
+      "score": 82.95,
       "tip": "Weiter so"
     },
     {
@@ -535,13 +535,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "bequemo",
-      "score": 78.38,
+      "name": "Merlin1659",
+      "score": 78.28,
       "tip": "Weiter so"
     },
     {
-      "name": "Merlin1659",
-      "score": 78.28,
+      "name": "bequemo",
+      "score": 78.11,
       "tip": "Weiter so"
     },
     {
@@ -561,7 +561,7 @@
     },
     {
       "name": "elazeto",
-      "score": 69.26,
+      "score": 69.39,
       "tip": "Konstanz verbessern"
     },
     {
@@ -571,7 +571,7 @@
     },
     {
       "name": "SPURS",
-      "score": 66.6,
+      "score": 65.0,
       "tip": "Konstanz verbessern"
     },
     {
@@ -613,7 +613,7 @@
         "role": "member",
         "score": 94.4,
         "strikes": 0,
-        "donations": 206,
+        "donations": 217,
         "participation_count": 9,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -647,21 +647,9 @@
         "name": "Jackhammer",
         "player_tag": "#2CJYG9UG",
         "role": "member",
-        "score": 92.7,
+        "score": 92.16,
         "strikes": 0,
-        "donations": 116,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "_spc07",
-        "player_tag": "#2U8288CVY",
-        "role": "member",
-        "score": 90.7,
-        "strikes": 0,
-        "donations": 224,
+        "donations": 124,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -685,7 +673,19 @@
         "role": "member",
         "score": 90.47,
         "strikes": 0,
-        "donations": 275,
+        "donations": 285,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "_spc07",
+        "player_tag": "#2U8288CVY",
+        "role": "member",
+        "score": 90.43,
+        "strikes": 0,
+        "donations": 224,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -695,7 +695,7 @@
         "name": "Theezy",
         "player_tag": "#JUUR8UGL8",
         "role": "member",
-        "score": 89.73,
+        "score": 90.13,
         "strikes": 0,
         "donations": 50,
         "participation_count": 10,
@@ -710,6 +710,18 @@
         "score": 89.55,
         "strikes": 0,
         "donations": 569,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "chris",
+        "player_tag": "#YQ82VR9JQ",
+        "role": "member",
+        "score": 89.41,
+        "strikes": 0,
+        "donations": 266,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -734,18 +746,6 @@
         "score": 89.1,
         "strikes": 0,
         "donations": 23,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "chris",
-        "player_tag": "#YQ82VR9JQ",
-        "role": "member",
-        "score": 89.01,
-        "strikes": 0,
-        "donations": 256,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -853,7 +853,7 @@
         "role": "member",
         "score": 86.05,
         "strikes": 0,
-        "donations": 392,
+        "donations": 400,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
