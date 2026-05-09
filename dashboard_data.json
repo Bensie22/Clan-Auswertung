@@ -258,13 +258,13 @@
       "status": "STARK"
     },
     {
-      "name": "DST",
-      "score": 83.46,
+      "name": "eco",
+      "score": 83.35,
       "status": "STARK"
     },
     {
-      "name": "eco",
-      "score": 83.35,
+      "name": "DST",
+      "score": 83.33,
       "status": "STARK"
     },
     {
@@ -334,7 +334,7 @@
     },
     {
       "name": "elazeto",
-      "score": 69.53,
+      "score": 69.39,
       "status": "OK"
     },
     {
@@ -364,7 +364,7 @@
     },
     {
       "name": "SankKiI9",
-      "score": 3.33,
+      "score": 10.0,
       "status": "RISIKO"
     }
   ],
@@ -505,13 +505,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "DST",
-      "score": 83.46,
+      "name": "eco",
+      "score": 83.35,
       "tip": "Weiter so"
     },
     {
-      "name": "eco",
-      "score": 83.35,
+      "name": "DST",
+      "score": 83.33,
       "tip": "Weiter so"
     },
     {
@@ -581,7 +581,7 @@
     },
     {
       "name": "elazeto",
-      "score": 69.53,
+      "score": 69.39,
       "tip": "Konstanz verbessern"
     },
     {
@@ -611,7 +611,7 @@
     },
     {
       "name": "SankKiI9",
-      "score": 3.33,
+      "score": 10.0,
       "tip": "Mehr Teilnahme notwendig"
     }
   ],
@@ -619,24 +619,24 @@
     "generated_from": "_prefetch.json",
     "remove": [
       {
-        "name": "SankKiI9",
-        "player_tag": "#89CJRRV8",
-        "role": "member",
-        "score": 3.33,
-        "strikes": 0,
-        "donations": 16,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
         "name": "Johan",
         "player_tag": "#UQVCVVVJL",
         "role": "member",
         "score": 10.0,
         "strikes": 0,
         "donations": 142,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "SankKiI9",
+        "player_tag": "#89CJRRV8",
+        "role": "member",
+        "score": 10.0,
+        "strikes": 0,
+        "donations": 44,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -746,7 +746,7 @@
         "role": "member",
         "score": 89.42,
         "strikes": 0,
-        "donations": 719,
+        "donations": 735,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
