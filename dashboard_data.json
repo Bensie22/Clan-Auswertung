@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "Q1-Pakoo",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "SankKiI9",
       "scenario": "STRIKE",
       "priority": 4
@@ -234,7 +239,7 @@
     },
     {
       "name": "Flauschos",
-      "score": 84.51,
+      "score": 84.38,
       "status": "STARK"
     },
     {
@@ -365,6 +370,11 @@
     {
       "name": "SankKiI9",
       "score": 6.67,
+      "status": "RISIKO"
+    },
+    {
+      "name": "Q1-Pakoo",
+      "score": 0.0,
       "status": "RISIKO"
     }
   ],
@@ -481,7 +491,7 @@
     },
     {
       "name": "Flauschos",
-      "score": 84.51,
+      "score": 84.38,
       "tip": "Weiter so"
     },
     {
@@ -613,11 +623,28 @@
       "name": "SankKiI9",
       "score": 6.67,
       "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "Q1-Pakoo",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
+      {
+        "name": "Q1-Pakoo",
+        "player_tag": "#VL989Y20J",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 34,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
       {
         "name": "SankKiI9",
         "player_tag": "#89CJRRV8",
