@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "mannomatiko",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "Q1-Pakoo",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -371,6 +376,11 @@
       "name": "Q1-Pakoo",
       "score": 0.0,
       "status": "RISIKO"
+    },
+    {
+      "name": "mannomatiko",
+      "score": 0.0,
+      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -613,6 +623,11 @@
       "name": "Q1-Pakoo",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "mannomatiko",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
@@ -624,7 +639,19 @@
         "role": "member",
         "score": 0.0,
         "strikes": 0,
-        "donations": 62,
+        "donations": 102,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "mannomatiko",
+        "player_tag": "#RULG988Y",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
