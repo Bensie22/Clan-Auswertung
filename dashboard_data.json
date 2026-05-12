@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "brickbuilder",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "mannomatiko",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -381,6 +386,11 @@
       "name": "mannomatiko",
       "score": 0.0,
       "status": "RISIKO"
+    },
+    {
+      "name": "brickbuilder",
+      "score": 0.0,
+      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -628,6 +638,11 @@
       "name": "mannomatiko",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "brickbuilder",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
@@ -639,7 +654,7 @@
         "role": "member",
         "score": 0.0,
         "strikes": 0,
-        "donations": 102,
+        "donations": 130,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -652,6 +667,18 @@
         "score": 0.0,
         "strikes": 0,
         "donations": 34,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "brickbuilder",
+        "player_tag": "#VGRJJ0GL0",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 10,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
