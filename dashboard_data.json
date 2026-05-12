@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "seks je zdrav",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "mannomatiko",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -373,6 +378,11 @@
       "status": "RISIKO"
     },
     {
+      "name": "seks je zdrav",
+      "score": 0.0,
+      "status": "RISIKO"
+    },
+    {
       "name": "Q1-Pakoo",
       "score": 0.0,
       "status": "RISIKO"
@@ -620,6 +630,11 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
+      "name": "seks je zdrav",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "Q1-Pakoo",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
@@ -633,6 +648,18 @@
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
+      {
+        "name": "seks je zdrav",
+        "player_tag": "#99909G00",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
       {
         "name": "Q1-Pakoo",
         "player_tag": "#VL989Y20J",
