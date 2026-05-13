@@ -1,24 +1,61 @@
-_prefetch.json
+# --- Python ---
 __pycache__/
-*.pyc
-*.pyo
-.env
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# --- Virtuelle Umgebungen ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- Test- / Lint-Caches ---
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# --- IDE / Editor ---
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# --- OS ---
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# Automatisch generierte CSV-Exporte
+# --- Secrets ---
+.env
+.env.local
+.env.*.local
+
+# --- Pipeline-Zwischendateien ---
+# _prefetch.json wird in jedem Cron-Lauf neu erzeugt und sollte nicht committet werden
+_prefetch.json
+
+# --- Automatisch generierte CSV-Exporte ---
 uploads/*.csv
 uploads/archiv/
 
-# Archivierte HTML-Berichte
+# --- Archivierte HTML-Berichte ---
 output/auswertung_*.html
 output/archiv/
 
-# Laufzeit-Artefakte
+# --- Laufzeit-Artefakte ---
 action_log.json.migrated
 
-# Debug/Temp-Dateien
+# --- Debug / Temp ---
 *.log
+*.tmp
+*.bak
 env_debug.json
 debug_python.txt
 start_debug.txt
