@@ -1,6 +1,16 @@
 {
   "full_auto": [
     {
+      "name": "lori",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
+      "name": "Devin",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "Q1-Pakoo",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -368,7 +378,17 @@
       "status": "RISIKO"
     },
     {
+      "name": "lori",
+      "score": 0.0,
+      "status": "RISIKO"
+    },
+    {
       "name": "mannomatiko",
+      "score": 0.0,
+      "status": "RISIKO"
+    },
+    {
+      "name": "Devin",
       "score": 0.0,
       "status": "RISIKO"
     }
@@ -610,7 +630,17 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
+      "name": "lori",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "mannomatiko",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "Devin",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
     }
@@ -631,12 +661,36 @@
         "recommended_action": "kick_review"
       },
       {
+        "name": "lori",
+        "player_tag": "#GC2VQJVQR",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
         "name": "mannomatiko",
         "player_tag": "#RULG988Y",
         "role": "member",
         "score": 0.0,
         "strikes": 0,
         "donations": 156,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "Devin",
+        "player_tag": "#UP0G0P09L",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
