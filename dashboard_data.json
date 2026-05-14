@@ -1,12 +1,12 @@
 {
   "full_auto": [
     {
-      "name": "lori",
+      "name": "Devin",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
     },
     {
-      "name": "Devin",
+      "name": "lori",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
     },
@@ -17,7 +17,7 @@
     },
     {
       "name": "mannomatiko",
-      "scenario": "KEINE_TEILNAHME",
+      "scenario": "STRIKE",
       "priority": 4
     },
     {
@@ -184,7 +184,7 @@
     },
     {
       "name": "_spc07",
-      "score": 88.97,
+      "score": 88.83,
       "status": "STARK"
     },
     {
@@ -298,6 +298,11 @@
       "status": "STARK"
     },
     {
+      "name": "Nati",
+      "score": 81.07,
+      "status": "STARK"
+    },
+    {
       "name": "DST",
       "score": 81.03,
       "status": "STARK"
@@ -305,11 +310,6 @@
     {
       "name": "Merlin1659",
       "score": 80.77,
-      "status": "STARK"
-    },
-    {
-      "name": "Nati",
-      "score": 80.67,
       "status": "STARK"
     },
     {
@@ -353,17 +353,17 @@
       "status": "RISIKO"
     },
     {
+      "name": "mannomatiko",
+      "score": 4.93,
+      "status": "RISIKO"
+    },
+    {
       "name": "Q1-Pakoo",
       "score": 0.0,
       "status": "RISIKO"
     },
     {
       "name": "lori",
-      "score": 0.0,
-      "status": "RISIKO"
-    },
-    {
-      "name": "mannomatiko",
       "score": 0.0,
       "status": "RISIKO"
     },
@@ -436,7 +436,7 @@
     },
     {
       "name": "_spc07",
-      "score": 88.97,
+      "score": 88.83,
       "tip": "Weiter so"
     },
     {
@@ -550,6 +550,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Nati",
+      "score": 81.07,
+      "tip": "Weiter so"
+    },
+    {
       "name": "DST",
       "score": 81.03,
       "tip": "Weiter so"
@@ -557,11 +562,6 @@
     {
       "name": "Merlin1659",
       "score": 80.77,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Nati",
-      "score": 80.67,
       "tip": "Weiter so"
     },
     {
@@ -605,17 +605,17 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
+      "name": "mannomatiko",
+      "score": 4.93,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "Q1-Pakoo",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
       "name": "lori",
-      "score": 0.0,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "mannomatiko",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
     },
@@ -646,19 +646,7 @@
         "role": "member",
         "score": 0.0,
         "strikes": 0,
-        "donations": 92,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
-        "name": "mannomatiko",
-        "player_tag": "#RULG988Y",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 210,
+        "donations": 100,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -675,6 +663,18 @@
         "trend": "",
         "reason": "Score unter 40",
         "recommended_action": "kick_review"
+      },
+      {
+        "name": "mannomatiko",
+        "player_tag": "#RULG988Y",
+        "role": "member",
+        "score": 4.93,
+        "strikes": 0,
+        "donations": 250,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
       }
     ],
     "core": [
@@ -684,7 +684,7 @@
         "role": "member",
         "score": 94.13,
         "strikes": 0,
-        "donations": 624,
+        "donations": 648,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -696,7 +696,7 @@
         "role": "member",
         "score": 93.73,
         "strikes": 0,
-        "donations": 210,
+        "donations": 242,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -823,24 +823,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "_spc07",
-        "player_tag": "#2U8288CVY",
-        "role": "member",
-        "score": 88.97,
-        "strikes": 0,
-        "donations": 10,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Wario",
         "player_tag": "#2PUQYJC02",
         "role": "member",
         "score": 88.83,
         "strikes": 0,
         "donations": 64,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "_spc07",
+        "player_tag": "#2U8288CVY",
+        "role": "member",
+        "score": 88.83,
+        "strikes": 0,
+        "donations": 10,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -864,7 +864,7 @@
         "role": "member",
         "score": 88.47,
         "strikes": 0,
-        "donations": 276,
+        "donations": 318,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
