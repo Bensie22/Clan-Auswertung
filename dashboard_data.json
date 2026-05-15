@@ -12,7 +12,7 @@
     },
     {
       "name": "Q1-Pakoo",
-      "scenario": "KEINE_TEILNAHME",
+      "scenario": "STRIKE",
       "priority": 4
     },
     {
@@ -116,12 +116,12 @@
       "priority": 2
     },
     {
-      "name": "mauza",
+      "name": "Citykingalex",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Citykingalex",
+      "name": "mauza",
       "scenario": "TOP",
       "priority": 2
     },
@@ -149,7 +149,7 @@
     },
     {
       "name": "Erastus",
-      "score": 93.6,
+      "score": 93.73,
       "status": "STARK"
     },
     {
@@ -174,7 +174,7 @@
     },
     {
       "name": "Jackhammer",
-      "score": 90.7,
+      "score": 90.43,
       "status": "STARK"
     },
     {
@@ -248,13 +248,13 @@
       "status": "STARK"
     },
     {
-      "name": "mauza",
-      "score": 85.62,
+      "name": "Citykingalex",
+      "score": 85.42,
       "status": "STARK"
     },
     {
-      "name": "Citykingalex",
-      "score": 85.42,
+      "name": "mauza",
+      "score": 85.35,
       "status": "STARK"
     },
     {
@@ -329,7 +329,7 @@
     },
     {
       "name": "Merlin1659",
-      "score": 80.77,
+      "score": 80.9,
       "status": "STARK"
     },
     {
@@ -379,7 +379,7 @@
     },
     {
       "name": "Q1-Pakoo",
-      "score": 0.0,
+      "score": 3.33,
       "status": "RISIKO"
     },
     {
@@ -401,7 +401,7 @@
     },
     {
       "name": "Erastus",
-      "score": 93.6,
+      "score": 93.73,
       "tip": "Weiter so"
     },
     {
@@ -426,7 +426,7 @@
     },
     {
       "name": "Jackhammer",
-      "score": 90.7,
+      "score": 90.43,
       "tip": "Weiter so"
     },
     {
@@ -500,13 +500,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "mauza",
-      "score": 85.62,
+      "name": "Citykingalex",
+      "score": 85.42,
       "tip": "Weiter so"
     },
     {
-      "name": "Citykingalex",
-      "score": 85.42,
+      "name": "mauza",
+      "score": 85.35,
       "tip": "Weiter so"
     },
     {
@@ -581,7 +581,7 @@
     },
     {
       "name": "Merlin1659",
-      "score": 80.77,
+      "score": 80.9,
       "tip": "Weiter so"
     },
     {
@@ -631,7 +631,7 @@
     },
     {
       "name": "Q1-Pakoo",
-      "score": 0.0,
+      "score": 3.33,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
@@ -648,18 +648,6 @@
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
-      {
-        "name": "Q1-Pakoo",
-        "player_tag": "#VL989Y20J",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 267,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
       {
         "name": "lori",
         "player_tag": "#GC2VQJVQR",
@@ -679,6 +667,18 @@
         "score": 0.0,
         "strikes": 0,
         "donations": 140,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "Q1-Pakoo",
+        "player_tag": "#VL989Y20J",
+        "role": "member",
+        "score": 3.33,
+        "strikes": 0,
+        "donations": 283,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -714,9 +714,9 @@
         "name": "Erastus",
         "player_tag": "#Q8L0RJ8Y8",
         "role": "member",
-        "score": 93.6,
+        "score": 93.73,
         "strikes": 0,
-        "donations": 384,
+        "donations": 400,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -728,7 +728,7 @@
         "role": "member",
         "score": 93.6,
         "strikes": 0,
-        "donations": 302,
+        "donations": 336,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -752,7 +752,7 @@
         "role": "member",
         "score": 91.33,
         "strikes": 0,
-        "donations": 1149,
+        "donations": 1193,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -774,9 +774,9 @@
         "name": "Jackhammer",
         "player_tag": "#2CJYG9UG",
         "role": "member",
-        "score": 90.7,
+        "score": 90.43,
         "strikes": 0,
-        "donations": 60,
+        "donations": 68,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -812,7 +812,7 @@
         "role": "member",
         "score": 89.95,
         "strikes": 0,
-        "donations": 118,
+        "donations": 144,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -824,7 +824,7 @@
         "role": "member",
         "score": 89.47,
         "strikes": 0,
-        "donations": 123,
+        "donations": 133,
         "participation_count": 1,
         "trend": "",
         "reason": "Score über 85",
@@ -951,18 +951,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "mauza",
-        "player_tag": "#2P0U2RLGY",
-        "role": "member",
-        "score": 85.62,
-        "strikes": 0,
-        "donations": 54,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Citykingalex",
         "player_tag": "#QULCQGGG",
         "role": "member",
@@ -975,12 +963,24 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "mauza",
+        "player_tag": "#2P0U2RLGY",
+        "role": "member",
+        "score": 85.35,
+        "strikes": 0,
+        "donations": 78,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "hi2oka",
         "player_tag": "#UJ2P9UYUV",
         "role": "member",
         "score": 85.21,
         "strikes": 0,
-        "donations": 307,
+        "donations": 331,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
