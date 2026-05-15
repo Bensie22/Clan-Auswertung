@@ -76,12 +76,12 @@
       "priority": 2
     },
     {
-      "name": "Vortex Babe",
+      "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Johan",
+      "name": "Vortex Babe",
       "scenario": "TOP",
       "priority": 2
     },
@@ -116,12 +116,12 @@
       "priority": 2
     },
     {
-      "name": "Citykingalex",
+      "name": "mauza",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "mauza",
+      "name": "Citykingalex",
       "scenario": "TOP",
       "priority": 2
     },
@@ -144,7 +144,7 @@
   "smart": [
     {
       "name": "OmniOni",
-      "score": 94.13,
+      "score": 94.26,
       "status": "STARK"
     },
     {
@@ -169,7 +169,7 @@
     },
     {
       "name": "OneAndOnly",
-      "score": 91.2,
+      "score": 91.07,
       "status": "STARK"
     },
     {
@@ -189,17 +189,17 @@
     },
     {
       "name": "AaleDieter",
-      "score": 90.08,
-      "status": "STARK"
-    },
-    {
-      "name": "Vortex Babe",
-      "score": 89.43,
+      "score": 89.95,
       "status": "STARK"
     },
     {
       "name": "Johan",
       "score": 89.33,
+      "status": "STARK"
+    },
+    {
+      "name": "Vortex Babe",
+      "score": 89.3,
       "status": "STARK"
     },
     {
@@ -248,13 +248,13 @@
       "status": "STARK"
     },
     {
-      "name": "Citykingalex",
-      "score": 85.96,
+      "name": "mauza",
+      "score": 85.62,
       "status": "STARK"
     },
     {
-      "name": "mauza",
-      "score": 85.62,
+      "name": "Citykingalex",
+      "score": 85.42,
       "status": "STARK"
     },
     {
@@ -334,7 +334,7 @@
     },
     {
       "name": "Denis",
-      "score": 78.88,
+      "score": 78.75,
       "status": "OK"
     },
     {
@@ -396,7 +396,7 @@
   "coaching": [
     {
       "name": "OmniOni",
-      "score": 94.13,
+      "score": 94.26,
       "tip": "Weiter so"
     },
     {
@@ -421,7 +421,7 @@
     },
     {
       "name": "OneAndOnly",
-      "score": 91.2,
+      "score": 91.07,
       "tip": "Weiter so"
     },
     {
@@ -441,17 +441,17 @@
     },
     {
       "name": "AaleDieter",
-      "score": 90.08,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Vortex Babe",
-      "score": 89.43,
+      "score": 89.95,
       "tip": "Weiter so"
     },
     {
       "name": "Johan",
       "score": 89.33,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Vortex Babe",
+      "score": 89.3,
       "tip": "Weiter so"
     },
     {
@@ -500,13 +500,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Citykingalex",
-      "score": 85.96,
+      "name": "mauza",
+      "score": 85.62,
       "tip": "Weiter so"
     },
     {
-      "name": "mauza",
-      "score": 85.62,
+      "name": "Citykingalex",
+      "score": 85.42,
       "tip": "Weiter so"
     },
     {
@@ -586,7 +586,7 @@
     },
     {
       "name": "Denis",
-      "score": 78.88,
+      "score": 78.75,
       "tip": "Weiter so"
     },
     {
@@ -702,9 +702,9 @@
         "name": "OmniOni",
         "player_tag": "#UUPCULU9V",
         "role": "member",
-        "score": 94.13,
+        "score": 94.26,
         "strikes": 0,
-        "donations": 728,
+        "donations": 756,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -740,7 +740,7 @@
         "role": "member",
         "score": 91.33,
         "strikes": 0,
-        "donations": 1073,
+        "donations": 1111,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -762,7 +762,7 @@
         "name": "OneAndOnly",
         "player_tag": "#8P0J8P0L",
         "role": "member",
-        "score": 91.2,
+        "score": 91.07,
         "strikes": 0,
         "donations": 341,
         "participation_count": 10,
@@ -810,23 +810,11 @@
         "name": "AaleDieter",
         "player_tag": "#CUJ9PJ2UV",
         "role": "member",
-        "score": 90.08,
+        "score": 89.95,
         "strikes": 0,
         "donations": 118,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Vortex Babe",
-        "player_tag": "#88GPYVR8P",
-        "role": "member",
-        "score": 89.43,
-        "strikes": 0,
-        "donations": 244,
-        "participation_count": 3,
-        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -838,6 +826,18 @@
         "strikes": 0,
         "donations": 123,
         "participation_count": 1,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Vortex Babe",
+        "player_tag": "#88GPYVR8P",
+        "role": "member",
+        "score": 89.3,
+        "strikes": 0,
+        "donations": 244,
+        "participation_count": 3,
         "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
@@ -951,18 +951,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Citykingalex",
-        "player_tag": "#QULCQGGG",
-        "role": "member",
-        "score": 85.96,
-        "strikes": 0,
-        "donations": 340,
-        "participation_count": 10,
-        "trend": "🟡🟡🟡🟡🟡",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "mauza",
         "player_tag": "#2P0U2RLGY",
         "role": "member",
@@ -971,6 +959,18 @@
         "donations": 54,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Citykingalex",
+        "player_tag": "#QULCQGGG",
+        "role": "member",
+        "score": 85.42,
+        "strikes": 0,
+        "donations": 350,
+        "participation_count": 10,
+        "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -992,7 +992,7 @@
         "role": "member",
         "score": 85.13,
         "strikes": 0,
-        "donations": 294,
+        "donations": 312,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
