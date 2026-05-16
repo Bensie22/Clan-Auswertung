@@ -103,6 +103,11 @@ def safe_env(name: str, default: str = "") -> str:
     return os.environ.get(name, default).strip()
 
 
+def t(de: str, en: str) -> str:
+    """i18n dual-render helper. Emits both languages; CSS hides inactive one based on <html lang>."""
+    return f'<span class="i18n-de">{de}</span><span class="i18n-en">{en}</span>'
+
+
 def normalize_player_tag(tag: str) -> str:
     return str(tag or "").strip().upper()
 
@@ -220,97 +225,97 @@ def build_legal_pages() -> Tuple[str, str]:
     impressum_html = f"""
         <div class="legal-page">
             {setup_notice}
-            <h2>🧾 Impressum</h2>
-            <p><b>Angaben gemäß § 5 DDG</b></p>
+            <h2>🧾 {t('Impressum', 'Imprint')}</h2>
+            <p><b>{t('Angaben gemäß § 5 DDG', 'Information pursuant to § 5 DDG (German Digital Services Act)')}</b></p>
             <div class="legal-section">
-                <p><b>Clan Hamburg (nicht eingetragene Gemeinschaft)</b></p>
-                <p><b>Vertreten durch:</b></p>
+                <p><b>{t('Clan Hamburg (nicht eingetragene Gemeinschaft)', 'Clan Hamburg (unregistered community)')}</b></p>
+                <p><b>{t('Vertreten durch:', 'Represented by:')}</b></p>
                 <p>{html.escape(owner_name)}</p>
                 <p>{html.escape(street)}</p>
                 <p>{html.escape(city)}</p>
             </div>
             <div class="legal-section">
-                <h3>Kontakt</h3>
-                <p><b>E-Mail:</b> <a href='mailto:{html.escape(legal_email)}'>{html.escape(legal_email)}</a></p>
+                <h3>{t('Kontakt', 'Contact')}</h3>
+                <p><b>{t('E-Mail:', 'Email:')}</b> <a href='mailto:{html.escape(legal_email)}'>{html.escape(legal_email)}</a></p>
             </div>
             <div class="legal-section">
-                <h3>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h3>
+                <h3>{t('Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV', 'Responsible for content according to § 18 (2) MStV')}</h3>
                 <p>{html.escape(responsible_name)}</p>
-                <p>(Anschrift wie oben)</p>
+                <p>{t('(Anschrift wie oben)', '(Address as above)')}</p>
             </div>
             <div class="legal-section">
-                <h3>Hinweis gemäß § 36 VSBG</h3>
-                <p>Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+                <h3>{t('Hinweis gemäß § 36 VSBG', 'Notice pursuant to § 36 VSBG')}</h3>
+                <p>{t('Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.', 'We are neither willing nor obligated to take part in dispute resolution procedures before a consumer arbitration board.')}</p>
             </div>
             <div class="legal-section">
-                <h3>Haftung für Links</h3>
-                <p>Diese Website enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für diese fremden Inhalte übernehmen wir keine Gewähr. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+                <h3>{t('Haftung für Links', 'Liability for links')}</h3>
+                <p>{t('Diese Website enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für diese fremden Inhalte übernehmen wir keine Gewähr. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.', 'This website contains links to external third-party websites whose content we cannot influence. We accept no responsibility for this external content. The respective provider or operator of the linked pages is always responsible for the content of those pages.')}</p>
             </div>
         </div>
     """
 
     datenschutz_html = f"""
         <div class="legal-page">
-            <h2>🧾 Datenschutzerklärung</h2>
+            <h2>🧾 {t('Datenschutzerklärung', 'Privacy Policy')}</h2>
             <div class="legal-section">
-                <h3>1. Verantwortliche Stelle</h3>
-                <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist im Impressum dieser Website angegeben.</p>
+                <h3>{t('1. Verantwortliche Stelle', '1. Controller')}</h3>
+                <p>{t('Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist im Impressum dieser Website angegeben.', 'The controller for data processing on this website is named in the imprint of this website.')}</p>
             </div>
             <div class="legal-section">
-                <h3>2. Welche Daten verarbeitet werden</h3>
-                <p>Auf dieser Website werden spielbezogene Daten dargestellt, insbesondere Ingame-Namen, Rollen, Trophäen, Spendenwerte sowie Kriegs- und Aktivitätsstatistiken.</p>
-                <p>Diese Daten stammen aus öffentlich zugänglichen Schnittstellen (APIs) des Spiels Clash Royale sowie von Drittanbietern (z. B. RoyaleAPI).</p>
-                <p>Die dargestellten Daten beziehen sich ausschließlich auf öffentlich verfügbare Spielinformationen und lassen in der Regel keinen direkten Rückschluss auf reale Personen zu.</p>
-                <p>Beim Aufruf der Website werden zudem technisch notwendige Verbindungsdaten verarbeitet. Dazu gehören insbesondere die IP-Adresse, Datum und Uhrzeit des Zugriffs sowie Informationen zum verwendeten Browser und Endgerät. Diese Daten fallen im Rahmen des Hostings automatisch an.</p>
+                <h3>{t('2. Welche Daten verarbeitet werden', '2. What data is processed')}</h3>
+                <p>{t('Auf dieser Website werden spielbezogene Daten dargestellt, insbesondere Ingame-Namen, Rollen, Trophäen, Spendenwerte sowie Kriegs- und Aktivitätsstatistiken.', 'This website displays game-related data, in particular in-game names, roles, trophies, donation values as well as war and activity statistics.')}</p>
+                <p>{t('Diese Daten stammen aus öffentlich zugänglichen Schnittstellen (APIs) des Spiels Clash Royale sowie von Drittanbietern (z. B. RoyaleAPI).', 'This data comes from publicly accessible interfaces (APIs) of the game Clash Royale and from third parties (e.g. RoyaleAPI).')}</p>
+                <p>{t('Die dargestellten Daten beziehen sich ausschließlich auf öffentlich verfügbare Spielinformationen und lassen in der Regel keinen direkten Rückschluss auf reale Personen zu.', 'The displayed data refers exclusively to publicly available game information and as a rule does not allow direct inferences about real persons.')}</p>
+                <p>{t('Beim Aufruf der Website werden zudem technisch notwendige Verbindungsdaten verarbeitet. Dazu gehören insbesondere die IP-Adresse, Datum und Uhrzeit des Zugriffs sowie Informationen zum verwendeten Browser und Endgerät. Diese Daten fallen im Rahmen des Hostings automatisch an.', 'When the website is accessed, technically necessary connection data is also processed. This includes the IP address, date and time of access, and information about the browser and device used. This data is collected automatically as part of hosting.')}</p>
             </div>
             <div class="legal-section">
-                <h3>3. Zweck der Verarbeitung</h3>
-                <p>Die Verarbeitung der Daten erfolgt zu folgenden Zwecken:</p>
+                <h3>{t('3. Zweck der Verarbeitung', '3. Purpose of processing')}</h3>
+                <p>{t('Die Verarbeitung der Daten erfolgt zu folgenden Zwecken:', 'Data is processed for the following purposes:')}</p>
                 <ul>
-                    <li>Darstellung und Analyse der Clan-, Kriegs- und Aktivitätsdaten</li>
-                    <li>Bereitstellung der Website</li>
-                    <li>Gewährleistung eines sicheren und stabilen Betriebs</li>
+                    <li>{t('Darstellung und Analyse der Clan-, Kriegs- und Aktivitätsdaten', 'Display and analysis of clan, war and activity data')}</li>
+                    <li>{t('Bereitstellung der Website', 'Provision of the website')}</li>
+                    <li>{t('Gewährleistung eines sicheren und stabilen Betriebs', 'Ensuring secure and stable operation')}</li>
                 </ul>
             </div>
             <div class="legal-section">
-                <h3>4. Rechtsgrundlage der Verarbeitung</h3>
-                <p>Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).</p>
-                <p>Das berechtigte Interesse liegt in der Bereitstellung von Clan-Statistiken, der Analyse von Spielaktivitäten sowie der Darstellung von Informationen für die Community.</p>
+                <h3>{t('4. Rechtsgrundlage der Verarbeitung', '4. Legal basis for processing')}</h3>
+                <p>{t('Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).', 'Processing is carried out on the basis of Art. 6 (1) (f) GDPR (legitimate interest).')}</p>
+                <p>{t('Das berechtigte Interesse liegt in der Bereitstellung von Clan-Statistiken, der Analyse von Spielaktivitäten sowie der Darstellung von Informationen für die Community.', 'The legitimate interest lies in providing clan statistics, analyzing game activities and displaying information for the community.')}</p>
             </div>
             <div class="legal-section">
-                <h3>5. Hosting</h3>
-                <p>Diese Website wird über GitHub Pages bereitgestellt.</p>
-                <p>Dabei werden technisch notwendige Daten (z. B. IP-Adresse) verarbeitet, um die Website auszuliefern.</p>
-                <p>Weitere Informationen findest du unter:<br><a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">https://pages.github.com/</a></p>
-                <p>Es gilt die Datenschutzerklärung von GitHub:<br><a href="https://docs.github.com/de/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">https://docs.github.com/de/site-policy/privacy-policies/github-privacy-statement</a></p>
-                <p>Dabei kann es zu einer Übertragung personenbezogener Daten in Drittländer (z. B. USA) kommen. GitHub verwendet geeignete Garantien gemäß Art. 46 DSGVO.</p>
+                <h3>{t('5. Hosting', '5. Hosting')}</h3>
+                <p>{t('Diese Website wird über GitHub Pages bereitgestellt.', 'This website is provided via GitHub Pages.')}</p>
+                <p>{t('Dabei werden technisch notwendige Daten (z. B. IP-Adresse) verarbeitet, um die Website auszuliefern.', 'Technically necessary data (e.g. IP address) is processed to deliver the website.')}</p>
+                <p>{t('Weitere Informationen findest du unter:', 'More information at:')}<br><a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">https://pages.github.com/</a></p>
+                <p>{t('Es gilt die Datenschutzerklärung von GitHub:', "GitHub's privacy policy applies:")}<br><a href="https://docs.github.com/de/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">https://docs.github.com/de/site-policy/privacy-policies/github-privacy-statement</a></p>
+                <p>{t('Dabei kann es zu einer Übertragung personenbezogener Daten in Drittländer (z. B. USA) kommen. GitHub verwendet geeignete Garantien gemäß Art. 46 DSGVO.', 'Personal data may be transferred to third countries (e.g. USA). GitHub uses appropriate safeguards pursuant to Art. 46 GDPR.')}</p>
             </div>
             <div class="legal-section">
-                <h3>6. Cookies und Tracking</h3>
-                <p>Diese Website verwendet keine eigenen Cookies, kein Kontaktformular und keine Analyse- oder Tracking-Tools.</p>
+                <h3>{t('6. Cookies und Tracking', '6. Cookies and tracking')}</h3>
+                <p>{t('Diese Website verwendet keine eigenen Cookies, kein Kontaktformular und keine Analyse- oder Tracking-Tools.', 'This website does not use its own cookies, contact form, or analytics/tracking tools.')}</p>
             </div>
             <div class="legal-section">
-                <h3>7. Versand der Clan-Auswertung per E-Mail</h3>
-                <p>Wenn du dich per E-Mail für den Versand der Clan-Auswertung anmeldest, verarbeiten wir deine E-Mail-Adresse sowie ggf. deinen Ingame-Namen ausschließlich zum Zweck des Versands der Auswertung.</p>
-                <p>Die Verarbeitung erfolgt auf Grundlage deiner Einwilligung (Art. 6 Abs. 1 lit. a DSGVO).</p>
-                <p>Die Daten werden ausschließlich für diesen Zweck verwendet und nicht an Dritte weitergegeben. Du kannst deine Einwilligung jederzeit widerrufen, indem du dich vom Verteiler abmeldest.</p>
+                <h3>{t('7. Versand der Clan-Auswertung per E-Mail', '7. Sending the clan report by email')}</h3>
+                <p>{t('Wenn du dich per E-Mail für den Versand der Clan-Auswertung anmeldest, verarbeiten wir deine E-Mail-Adresse sowie ggf. deinen Ingame-Namen ausschließlich zum Zweck des Versands der Auswertung.', 'If you subscribe by email to receive the clan report, we process your email address and, where applicable, your in-game name solely for the purpose of sending the report.')}</p>
+                <p>{t('Die Verarbeitung erfolgt auf Grundlage deiner Einwilligung (Art. 6 Abs. 1 lit. a DSGVO).', 'Processing is based on your consent (Art. 6 (1) (a) GDPR).')}</p>
+                <p>{t('Die Daten werden ausschließlich für diesen Zweck verwendet und nicht an Dritte weitergegeben. Du kannst deine Einwilligung jederzeit widerrufen, indem du dich vom Verteiler abmeldest.', 'The data is used solely for this purpose and not shared with third parties. You can withdraw your consent at any time by unsubscribing from the list.')}</p>
             </div>
             <div class="legal-section">
-                <h3>8. Rechte betroffener Personen</h3>
-                <p>Betroffene Personen haben im Rahmen der gesetzlichen Vorschriften folgende Rechte:</p>
+                <h3>{t('8. Rechte betroffener Personen', '8. Rights of data subjects')}</h3>
+                <p>{t('Betroffene Personen haben im Rahmen der gesetzlichen Vorschriften folgende Rechte:', 'Within the framework of statutory provisions, data subjects have the following rights:')}</p>
                 <ul>
-                    <li>Recht auf Auskunft (Art. 15 DSGVO)</li>
-                    <li>Recht auf Berichtigung (Art. 16 DSGVO)</li>
-                    <li>Recht auf Löschung (Art. 17 DSGVO)</li>
-                    <li>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
-                    <li>Recht auf Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
-                    <li>Recht auf Beschwerde bei einer Datenschutzaufsichtsbehörde</li>
+                    <li>{t('Recht auf Auskunft (Art. 15 DSGVO)', 'Right of access (Art. 15 GDPR)')}</li>
+                    <li>{t('Recht auf Berichtigung (Art. 16 DSGVO)', 'Right to rectification (Art. 16 GDPR)')}</li>
+                    <li>{t('Recht auf Löschung (Art. 17 DSGVO)', 'Right to erasure (Art. 17 GDPR)')}</li>
+                    <li>{t('Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)', 'Right to restriction of processing (Art. 18 GDPR)')}</li>
+                    <li>{t('Recht auf Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)', 'Right to object to processing (Art. 21 GDPR)')}</li>
+                    <li>{t('Recht auf Beschwerde bei einer Datenschutzaufsichtsbehörde', 'Right to lodge a complaint with a supervisory authority')}</li>
                 </ul>
-                <p>Spieler haben außerdem die Möglichkeit, der Darstellung ihrer Daten auf dieser Website zu widersprechen. In diesem Fall werden die entsprechenden Daten nach Prüfung entfernt.</p>
+                <p>{t('Spieler haben außerdem die Möglichkeit, der Darstellung ihrer Daten auf dieser Website zu widersprechen. In diesem Fall werden die entsprechenden Daten nach Prüfung entfernt.', 'Players can also object to the display of their data on this website. In that case the corresponding data is removed after review.')}</p>
             </div>
             <div class="legal-section">
-                <h3>9. Kontakt zum Datenschutz</h3>
-                <p>Bei Fragen zum Datenschutz auf dieser Website kannst du dich an die im Impressum angegebene verantwortliche Stelle wenden.</p>
+                <h3>{t('9. Kontakt zum Datenschutz', '9. Privacy contact')}</h3>
+                <p>{t('Bei Fragen zum Datenschutz auf dieser Website kannst du dich an die im Impressum angegebene verantwortliche Stelle wenden.', 'For privacy questions about this website, please contact the controller named in the imprint.')}</p>
             </div>
         </div>
     """
@@ -964,18 +969,27 @@ def build_deck_sections(top_decks_data: dict) -> list:
 
     return [
         {
-            "title": "🏆 Meta-Decks",
-            "description": f"Die stärksten und belastbarsten Kriegs-Decks aus den letzten {DECK_LOOKBACK_DAYS} Tagen.",
+            "title": "🏆 " + t("Meta-Decks", "Meta Decks"),
+            "description": t(
+                f"Die stärksten und belastbarsten Kriegs-Decks aus den letzten {DECK_LOOKBACK_DAYS} Tagen.",
+                f"The strongest and most resilient war decks from the last {DECK_LOOKBACK_DAYS} days.",
+            ),
             "decks": meta_decks
         },
         {
-            "title": "🛡️ Solide Decks",
-            "description": f"Verlässliche Decks mit ordentlicher Quote und genug Spielen aus den letzten {DECK_LOOKBACK_DAYS} Tagen.",
+            "title": "🛡️ " + t("Solide Decks", "Solid Decks"),
+            "description": t(
+                f"Verlässliche Decks mit ordentlicher Quote und genug Spielen aus den letzten {DECK_LOOKBACK_DAYS} Tagen.",
+                f"Reliable decks with a decent win rate and enough games from the last {DECK_LOOKBACK_DAYS} days.",
+            ),
             "decks": solid_decks
         },
         {
-            "title": "🎯 Einsteigerfreundlich",
-            "description": f"Einfachere Decks für Leute, die ein klares und stabiles Kriegs-Deck suchen.",
+            "title": "🎯 " + t("Einsteigerfreundlich", "Beginner-friendly"),
+            "description": t(
+                "Einfachere Decks für Leute, die ein klares und stabiles Kriegs-Deck suchen.",
+                "Simpler decks for players looking for a clear and stable war deck.",
+            ),
             "decks": beginner_decks
         }
     ]
@@ -1060,14 +1074,14 @@ def get_player_focus(score: float, fame_per_deck: int, donations: int, is_welpen
 def get_deck_archetype(cards: list) -> str:
     card_names = [c.get("name", "") for c in cards]
     if any(n in card_names for n in ["Golem", "Lava Hound", "Giant", "Goblin Giant", "Electro Giant", "Elixir Golem"]):
-        return "🛡️ Schwerer Angriff (Beatdown)"
+        return "🛡️ " + t("Schwerer Angriff (Beatdown)", "Heavy Push (Beatdown)")
     if any(n in card_names for n in ["X-Bow", "Mortar"]):
-        return "🏹 Belagerung (Siege)"
+        return "🏹 " + t("Belagerung (Siege)", "Siege")
     if any(n in card_names for n in ["Goblin Barrel", "Skeleton Barrel", "Miner", "Graveyard", "Wall Breakers", "Goblin Drill"]):
-        return "🗡️ Nadelstiche (Bait/Control)"
+        return "🗡️ " + t("Nadelstiche (Bait/Control)", "Pinpricks (Bait/Control)")
     if any(n in card_names for n in ["Hog Rider", "Royal Hogs", "Battle Ram", "Ram Rider", "Balloon"]):
-        return "⚡ Schneller Angriff (Rush/Spam)"
-    return "⚔️ Hybrid / Allrounder"
+        return "⚡ " + t("Schneller Angriff (Rush/Spam)", "Fast Push (Rush/Spam)")
+    return "⚔️ " + t("Hybrid / Allrounder", "Hybrid / All-rounder")
 
 
 # === 3. Dateiverwaltung & Helfer ===
@@ -1212,13 +1226,20 @@ def render_html_template(
     opponent_meta_html=""
 ):
     return f"""
-    <html>
+    <html lang="de">
     <head>
         <meta charset='utf-8'>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Auswertung: {clan_name}</title>
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap');
+            html[lang="de"] .i18n-en {{ display: none !important; }}
+            html[lang="en"] .i18n-de {{ display: none !important; }}
+            .lang-toggle {{ position: absolute; top: 16px; right: 16px; display: inline-flex; gap: 0; background: rgba(15,23,42,0.85); border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; padding: 3px; z-index: 5; backdrop-filter: blur(4px); box-shadow: 0 4px 12px rgba(0,0,0,0.4); }}
+            .lang-toggle button {{ background: transparent; color: #94a3b8; border: 0; padding: 6px 14px; border-radius: 999px; font-family: inherit; font-weight: 800; font-size: 0.85em; letter-spacing: 0.06em; cursor: pointer; transition: all 0.2s ease; }}
+            .lang-toggle button:hover {{ color: #fff; }}
+            .lang-toggle button.active {{ background: #38bdf8; color: #0f172a; box-shadow: 0 2px 6px rgba(56,189,248,0.45); }}
+            @media (max-width: 600px) {{ .lang-toggle {{ top: 10px; right: 10px; padding: 2px; }} .lang-toggle button {{ padding: 5px 10px; font-size: 0.78em; }} }}
             html, body {{ width: 100%; max-width: 100%; overflow-x: hidden; }}
             body {{ font-family: 'Nunito', sans-serif; margin: 0; padding: 0; background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('https://images.hdqwalls.com/download/clash-royale-4k-19-1920x1080.jpg') no-repeat center center fixed; background-size: cover; color: #f8fafc; }}
             .container {{ max-width: 1200px; margin: auto; padding: 20px; box-sizing: border-box; }}
@@ -1433,25 +1454,29 @@ def render_html_template(
     <body>
         <div class="container">
             <div class="header-container">
-                <h1 class="header-title"><span onclick="toggleChat()" style="cursor: pointer;" title="Chat-Hilfe ein-/ausblenden">📊</span> Clan-Auswertung: {clan_name} <br>
-                <span class="header-date">Stand: {heute_datum}</span>
-                <span class="header-mobile-tip">📱 Tipp: Für die beste Übersicht am Handy bitte quer halten 🔄</span>
-                <span class="header-mobile-tip" style="margin-top: 2px;">🔄 An Kriegstagen wird alle 10 Minuten eine neue Version erstellt – zum Anzeigen der neuesten Daten bitte die Seite manuell neu laden (F5).</span></h1>
+                <div class="lang-toggle" role="group" aria-label="Language">
+                    <button type="button" data-lang="de" aria-pressed="true">DE</button>
+                    <button type="button" data-lang="en" aria-pressed="false">EN</button>
+                </div>
+                <h1 class="header-title"><span onclick="toggleChat()" style="cursor: pointer;" title="Chat-Hilfe ein-/ausblenden">📊</span> {t('Clan-Auswertung', 'Clan Report')}: {clan_name} <br>
+                <span class="header-date">{t('Stand', 'As of')}: {heute_datum}</span>
+                <span class="header-mobile-tip">{t('📱 Tipp: Für die beste Übersicht am Handy bitte quer halten 🔄', '📱 Tip: For the best view on mobile, hold the device sideways 🔄')}</span>
+                <span class="header-mobile-tip" style="margin-top: 2px;">{t('🔄 An Kriegstagen wird alle 10 Minuten eine neue Version erstellt – zum Anzeigen der neuesten Daten bitte die Seite manuell neu laden (F5).', '🔄 On war days a new version is generated every 10 minutes – to see the latest data please reload the page manually (F5).')}</span></h1>
             </div>
 
             <div class="tab-container">
-                <button class="tab-btn active" onclick="openTab(event, 'Overview')">🏠 Übersicht</button>
-                <button class="tab-btn" onclick="openTab(event, 'Table')">📋 Detail-Auswertung</button>
-                <button class="tab-btn" onclick="openTab(event, 'Wiki')">📖 Regeln & System</button>
-                <button class="tab-btn" onclick="openTab(event, 'Decks')">🃏 Top-Decks</button>
+                <button class="tab-btn active" onclick="openTab(event, 'Overview')">🏠 {t('Übersicht', 'Overview')}</button>
+                <button class="tab-btn" onclick="openTab(event, 'Table')">📋 {t('Detail-Auswertung', 'Detailed Stats')}</button>
+                <button class="tab-btn" onclick="openTab(event, 'Wiki')">📖 {t('Regeln & System', 'Rules & System')}</button>
+                <button class="tab-btn" onclick="openTab(event, 'Decks')">🃏 {t('Top-Decks', 'Top Decks')}</button>
             </div>
 
             <div id="Overview" class="tab-content active">
                 <div class="welcome-box">
-                    <h2 class="welcome-title">Willkommen bei der HAMBURG-Family! 🤝</h2>
-                    <p>Schön, dass du über unsere Clan-Info hierher gefunden hast. Egal ob du schon ewig dabei bist oder gerade erst überlegst, uns beizutreten: Schau dich in Ruhe um!</p>
-                    <p>Ein starker Clan braucht aktive Mitglieder. Auf dieser Seite tracken wir jede Woche transparent unseren Erfolg im Clankrieg und unsere Spendenbereitschaft.</p>
-                    <p>Wir sind eine entspannte, aber ehrgeizige Truppe. Bei uns zählt Verlässlichkeit mehr als reine Trophäen. Wenn du einen dauerhaft aktiven Clan suchst und deine 4 Decks verlässlich spielst, bist du bei uns genau <b>richtig</b>! 🛡️</p>
+                    <h2 class="welcome-title">{t('Willkommen bei der HAMBURG-Family! 🤝', 'Welcome to the HAMBURG Family! 🤝')}</h2>
+                    <p>{t('Schön, dass du über unsere Clan-Info hierher gefunden hast. Egal ob du schon ewig dabei bist oder gerade erst überlegst, uns beizutreten: Schau dich in Ruhe um!', 'Great that you found us through our clan info. Whether you have been around forever or are just thinking about joining: take a look around!')}</p>
+                    <p>{t('Ein starker Clan braucht aktive Mitglieder. Auf dieser Seite tracken wir jede Woche transparent unseren Erfolg im Clankrieg und unsere Spendenbereitschaft.', 'A strong clan needs active members. On this page we transparently track our clan war success and donation behavior every week.')}</p>
+                    <p>{t('Wir sind eine entspannte, aber ehrgeizige Truppe. Bei uns zählt Verlässlichkeit mehr als reine Trophäen. Wenn du einen dauerhaft aktiven Clan suchst und deine 4 Decks verlässlich spielst, bist du bei uns genau <b>richtig</b>! 🛡️', 'We are a relaxed but ambitious crew. Reliability matters more here than raw trophies. If you are looking for a persistently active clan and you reliably play your 4 decks, you are in exactly the <b>right</b> place! 🛡️')}</p>
                 </div>
 
                 {hype_balken_html}
@@ -1465,50 +1490,50 @@ def render_html_template(
 
                 <div class="dashboard">
                     <div class="card avg">
-                        <h3>📈 Clan-Durchschnitt</h3>
+                        <h3>📈 {t('Clan-Durchschnitt', 'Clan Average')}</h3>
                         <h1>{clan_avg}%</h1>
                     </div>
                     <div class="card avg">
-                        <h3>⚔️ Clan-Ø Punkte</h3>
+                        <h3>⚔️ {t('Clan-Ø Punkte', 'Clan Avg Points')}</h3>
                         <h1>{clan_avg_points_per_deck}</h1>
                     </div>
                     <div class="card top">
-                        <h3>🏆 Top 3 Performer</h3>
+                        <h3>🏆 {t('Top 3 Performer', 'Top 3 Performers')}</h3>
                         <ul>{top_performers}</ul>
                     </div>
                     <div class="card spender">
-                        <h3>🃏 Top 3 Spender</h3>
+                        <h3>🃏 {t('Top 3 Spender', 'Top 3 Donors')}</h3>
                         <ul>{top_spender}</ul>
                     </div>
                     <div class="card pusher">
-                        <h3>🚀 Trophäen-Pusher</h3>
+                        <h3>🚀 {t('Trophäen-Pusher', 'Trophy Pushers')}</h3>
                         <ul>{pusher_html}</ul>
                     </div>
                     <div class="card hof">
-                        <h3>📖 Hall of Fame (Ewig)</h3>
+                        <h3>📖 {t('Hall of Fame (Ewig)', 'Hall of Fame (All-Time)')}</h3>
                         <ul style="font-size: 0.95em;">
-                            <li><b>Spenden-Gott:</b> {records['donations']['name']} ({records['donations']['val']})</li>
-                            <li><b>Max Trophäen:</b> {records['trophies']['name']} ({records['trophies']['val']} 🏆)</li>
-                            <li><b>Mega-Comeback:</b> {records['delta']['name']} (+{records['delta']['val']}%)</li>
+                            <li><b>{t('Spenden-Gott', 'Donation God')}:</b> {records['donations']['name']} ({records['donations']['val']})</li>
+                            <li><b>{t('Max Trophäen', 'Max Trophies')}:</b> {records['trophies']['name']} ({records['trophies']['val']} 🏆)</li>
+                            <li><b>{t('Mega-Comeback', 'Mega Comeback')}:</b> {records['delta']['name']} (+{records['delta']['val']}%)</li>
                         </ul>
                     </div>
                     <div class="card urlaub">
-                        <h3>🏖️ Aktuell im Urlaub</h3>
+                        <h3>🏖️ {t('Aktuell im Urlaub', 'On Vacation')}</h3>
                         <ul style="font-size: 0.95em;">{urlaub_html}</ul>
                     </div>
                     <div class="card aufsteiger">
-                        <h3>🚀 Größte Aufsteiger</h3>
+                        <h3>🚀 {t('Größte Aufsteiger', 'Top Risers')}</h3>
                         <ul>{top_aufsteiger}</ul>
                     </div>
                     <div class="card leecher">
-                        <h3>📦 Spenden auffällig</h3>
+                        <h3>📦 {t('Spenden auffällig', 'Notable Donations')}</h3>
                         <ul>{top_leecher}</ul>
                     </div>
 
                     <div id="admin-chat-container" style="display: none; width: 100%;">
                         <div class="card messenger">
-                            <h3 style="color: #f1c40f; margin-bottom: 10px;">🎮 Chat-Hilfe ({total_msgs}-Teiler)</h3>
-                            <p style="font-size: 0.9em; color: #cbd5e1; margin-top: 0; margin-bottom: 15px;">Klicke oben auf das 📊-Symbol, um diese Hilfe ein- oder auszublenden. Wähle den passenden Tonfall und kopiere dann die {total_msgs} Texte nacheinander in den Chat.</p>
+                            <h3 style="color: #f1c40f; margin-bottom: 10px;">🎮 {t('Chat-Hilfe', 'Chat Helper')} ({total_msgs}-{t('Teiler', 'parts')})</h3>
+                            <p style="font-size: 0.9em; color: #cbd5e1; margin-top: 0; margin-bottom: 15px;">{t('Klicke oben auf das 📊-Symbol, um diese Hilfe ein- oder auszublenden. Wähle den passenden Tonfall und kopiere dann die', 'Click the 📊 symbol above to toggle this helper. Pick the matching tone, then copy the')} {total_msgs} {t('Texte nacheinander in den Chat.', 'texts one by one into the chat.')}</p>
                             {chat_boxes_html}
                         </div>
                     </div>
@@ -1518,43 +1543,43 @@ def render_html_template(
 
             <div id="Table" class="tab-content">
                 <div style="background: rgba(30, 41, 59, 0.8); padding: 20px; border-radius: 8px; margin-bottom: 25px; font-size: 0.95em; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-                    <h4 style="margin-top: 0; color: #38bdf8; margin-bottom: 5px;">📌 Schnelle Symbol-Legende:</h4>
-                    <p style="margin: 0 0 15px 0; font-size: 0.9em; color: #94a3b8; font-style: italic;">Weitere Infos unter <b>📖 Regeln & System</b>.</p>
+                    <h4 style="margin-top: 0; color: #38bdf8; margin-bottom: 5px;">📌 {t('Schnelle Symbol-Legende:', 'Quick Symbol Legend:')}</h4>
+                    <p style="margin: 0 0 15px 0; font-size: 0.9em; color: #94a3b8; font-style: italic;">{t('Weitere Infos unter', 'More info under')} <b>📖 {t('Regeln & System', 'Rules & System')}</b>.</p>
                     <div style="display: flex; flex-wrap: wrap; gap: 15px; color: #cbd5e1;">
-                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>🌱 Welpenschutz:</b> Erster Clankrieg geschützt – danach volle Bewertung</div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>❌ 1/1:</b> Interner Hinweis bei Inaktivität → sofortige Maßnahme</div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>📦 Spenden auffällig:</b> Fordert, spendet aber 0</div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>💤 Spenden inaktiv:</b> Spendet 0, fordert 0</div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>⚠️ Ø Punkte:</b> Auffällig niedriger Punkteschnitt pro Deck (&lt;130)</div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>🔥 Streak:</b> Mehrere Wochen 100% Score</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>🌱 {t('Welpenschutz', 'Pup Protection')}:</b> {t('Erster Clankrieg geschützt – danach volle Bewertung', 'First clan war protected – full scoring afterwards')}</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>❌ 1/1:</b> {t('Interner Hinweis bei Inaktivität → sofortige Maßnahme', 'Internal flag on inactivity → immediate action')}</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>📦 {t('Spenden auffällig', 'Notable donations')}:</b> {t('Fordert, spendet aber 0', 'Requests but donates 0')}</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>💤 {t('Spenden inaktiv', 'Donations inactive')}:</b> {t('Spendet 0, fordert 0', 'Donates 0, requests 0')}</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>⚠️ {t('Ø Punkte', 'Avg points')}:</b> {t('Auffällig niedriger Punkteschnitt pro Deck', 'Notably low points-per-deck average')} (&lt;130)</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>🔥 Streak:</b> {t('Mehrere Wochen 100% Score', 'Multiple weeks at 100% score')}</div>
                     </div>
                 </div>
 
-                <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; margin-bottom: 30px; color: #ffffff;">📋 Detail-Auswertung</h2>
+                <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; margin-bottom: 30px; color: #ffffff;">📋 {t('Detail-Auswertung', 'Detailed Stats')}</h2>
                 {table_html}
             </div>
 
             <div id="Wiki" class="tab-content">
-                <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; margin-bottom: 30px; color: #8b5cf6;">📖 Clan-Wiki: Regeln & System</h2>
+                <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; margin-bottom: 30px; color: #8b5cf6;">📖 {t('Clan-Wiki: Regeln & System', 'Clan Wiki: Rules & System')}</h2>
 
-                <button class="accordion-btn">📬 Die Montags-Auswertung per E-Mail</button>
+                <button class="accordion-btn">📬 {t('Die Montags-Auswertung per E-Mail', 'The Monday Report by Email')}</button>
                 <div class="accordion-content">
-                    <p>Willst du diese Auswertung jeden Montag ganz bequem und automatisch in dein Postfach bekommen?</p>
+                    <p><span class="i18n-de">Willst du diese Auswertung jeden Montag ganz bequem und automatisch in dein Postfach bekommen?</span><span class="i18n-en">Want this report delivered to your inbox every Monday, automatically?</span></p>
                     <ul>
-                        <li><b>Anmelden:</b> Schreib einfach eine kurze E-Mail mit deinem In-Game-Namen an: <b>strike2005-Hamburg_Royal@yahoo.com</b>. Mit deiner Anmeldung erklärst du dich damit einverstanden, dass wir deine E-Mail-Adresse zum Versand der wöchentlichen Clan-Auswertung speichern und verwenden.</li>
-                        <li>🔒 <b>Datenschutz:</b> Deine E-Mail-Adresse wird ausschließlich für den Versand der Auswertung genutzt und nicht an Dritte weitergegeben. Der Versand erfolgt ausschließlich per <b>Blindkopie (BCC)</b>, sodass keine anderen Empfänger sichtbar sind.</li>
-                        <li><b>Abmelden:</b> Eine kurze Nachricht reicht, und deine E-Mail-Adresse wird aus dem Verteiler entfernt.</li>
+                        <li><b><span class="i18n-de">Anmelden:</span><span class="i18n-en">Subscribe:</span></b> <span class="i18n-de">Schreib einfach eine kurze E-Mail mit deinem In-Game-Namen an:</span><span class="i18n-en">Send a short email with your in-game name to:</span> <b>strike2005-Hamburg_Royal@yahoo.com</b>. <span class="i18n-de">Mit deiner Anmeldung erklärst du dich damit einverstanden, dass wir deine E-Mail-Adresse zum Versand der wöchentlichen Clan-Auswertung speichern und verwenden.</span><span class="i18n-en">By subscribing you agree that we store and use your email address to send the weekly clan report.</span></li>
+                        <li>🔒 <b><span class="i18n-de">Datenschutz:</span><span class="i18n-en">Privacy:</span></b> <span class="i18n-de">Deine E-Mail-Adresse wird ausschließlich für den Versand der Auswertung genutzt und nicht an Dritte weitergegeben. Der Versand erfolgt ausschließlich per <b>Blindkopie (BCC)</b>, sodass keine anderen Empfänger sichtbar sind.</span><span class="i18n-en">Your email is used solely for sending the report and never shared with third parties. Delivery is by <b>BCC</b> only, so other recipients stay hidden.</span></li>
+                        <li><b><span class="i18n-de">Abmelden:</span><span class="i18n-en">Unsubscribe:</span></b> <span class="i18n-de">Eine kurze Nachricht reicht, und deine E-Mail-Adresse wird aus dem Verteiler entfernt.</span><span class="i18n-en">A short note is enough, and your email is removed from the list.</span></li>
                     </ul>
                 </div>
 
-                <button class="accordion-btn">⚖️ Regeln bei Inaktivität (❌)</button>
+                <button class="accordion-btn">⚖️ {t('Regeln bei Inaktivität (❌)', 'Rules on Inactivity (❌)')}</button>
                 <div class="accordion-content">
                     <p>Wer sich nicht abmeldet und im Clankrieg zu wenig beiträgt (zu wenig Kriege dabei oder Decks nicht gespielt), erhält sofort einen internen Hinweis (❌). Bereits ein einzelner Hinweis löst Konsequenzen aus — kein langer Vorlauf, klare Ansage.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Dabei</th><th>Deck-Nutzung</th><th>Ø Fame/Deck</th><th>Fame gesamt</th><th>Trend</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler A <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 1/1</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Ältester</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>95/160</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>179</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>14.320</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>303</span></td></tr>
-                            <tr><td class='name-col'>Spieler B <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 1/1</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>4/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>28/64</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>100</span> ⚠️<br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>3.200</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> 💤</td></tr>
+                            <tr><th><span class="i18n-de">Spieler</span><span class="i18n-en">Player</span></th><th><span class="i18n-de">Check</span><span class="i18n-en">Check</span></th><th><span class="i18n-de">Status</span><span class="i18n-en">Status</span></th><th><span class="i18n-de">Dabei</span><span class="i18n-en">Present</span></th><th><span class="i18n-de">Deck-Nutzung</span><span class="i18n-en">Deck Usage</span></th><th><span class="i18n-de">Ø Fame/Deck</span><span class="i18n-en">Avg Fame/Deck</span></th><th><span class="i18n-de">Fame gesamt</span><span class="i18n-en">Total Fame</span></th><th><span class="i18n-de">Trend</span><span class="i18n-en">Trend</span></th><th>🃏 <span class="i18n-de">Spenden</span><span class="i18n-en">Donations</span></th></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler A </span><span class='i18n-en'>Player A </span><span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 1/1</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'><span class='i18n-de'>⚠️ ausbaufähig</span><span class='i18n-en'>⚠️ room to grow</span></span></td><td><span class='i18n-de'>Ältester</span><span class='i18n-en'>Elder</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>95/160</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>179</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>14.320</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>303</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler B </span><span class='i18n-en'>Player B </span><span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 1/1</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'><span class='i18n-de'>⚠️ ausbaufähig</span><span class='i18n-en'>⚠️ room to grow</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>4/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>28/64</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>100</span> ⚠️<br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>3.200</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> 💤</td></tr>
                         </table>
                     </div>
                     <ul>
@@ -1564,7 +1589,7 @@ def render_html_template(
                     </ul>
                 </div>
 
-                <button class="accordion-btn">🎯 Dabei & Welpenschutz (Zuverlässigkeit)</button>
+                <button class="accordion-btn">🎯 {t('Dabei & Welpenschutz (Zuverlässigkeit)', 'Attendance & Pup Protection (Reliability)')}</button>
                 <div class="accordion-content">
                     <p>Die <b>Dabei</b>-Spalte zeigt auf einen Blick, wie zuverlässig du bist — in wie vielen der verfügbaren Kriege du aktiv dabei warst.</p>
                     <p>Die Zahl <b>X/Y</b> bedeutet: Du warst in X von Y Kriegen aktiv dabei.</p>
@@ -1575,9 +1600,9 @@ def render_html_template(
                     <p style="color:#94a3b8; font-size:0.9em;">Im Hintergrund läuft ein gewichtetes Bewertungs-System aus drei Faktoren: <b>50% Deck-Nutzung</b> (hast du alle Decks gespielt?), <b>30% Dabei-Quote</b> (warst du in den Kriegen dabei?) und <b>20% Qualität</b> (wie viele Punkte pro Deck?). Dieser Score ist die Grundlage für Strikes und Beförderungen.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Dabei</th><th>Deck-Nutzung</th><th>Ø Fame/Deck</th><th>Fame gesamt</th><th>Trend</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler C <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥 4</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>🛡️ stabil</span></td><td>Vize</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>160/160</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>131</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>10.480</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>146</span></td></tr>
-                            <tr><td class='name-col'>Spieler D <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>neu dabei</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#60a5fa;'>1/10</span><br><span style='font-size:0.75em; color:#60a5fa;'>neu dabei</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>16/16</span><br><span style='font-size:0.75em; color:#60a5fa;'>neu dabei</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>200</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>1.600</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span></td></tr>
+                            <tr><th><span class="i18n-de">Spieler</span><span class="i18n-en">Player</span></th><th><span class="i18n-de">Check</span><span class="i18n-en">Check</span></th><th><span class="i18n-de">Status</span><span class="i18n-en">Status</span></th><th><span class="i18n-de">Dabei</span><span class="i18n-en">Present</span></th><th><span class="i18n-de">Deck-Nutzung</span><span class="i18n-en">Deck Usage</span></th><th><span class="i18n-de">Ø Fame/Deck</span><span class="i18n-en">Avg Fame/Deck</span></th><th><span class="i18n-de">Fame gesamt</span><span class="i18n-en">Total Fame</span></th><th><span class="i18n-de">Trend</span><span class="i18n-en">Trend</span></th><th>🃏 <span class="i18n-de">Spenden</span><span class="i18n-en">Donations</span></th></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler C </span><span class='i18n-en'>Player C </span><span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥 4</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'><span class='i18n-de'>🛡️ stabil</span><span class='i18n-en'>🛡️ stable</span></span></td><td><span class='i18n-de'>Vize</span><span class='i18n-en'>Co-leader</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>160/160</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>131</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>10.480</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>146</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler D </span><span class='i18n-en'>Player D </span><span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'><span class='i18n-de'>neu dabei</span><span class='i18n-en'>newcomer</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#60a5fa;'>1/10</span><br><span style='font-size:0.75em; color:#60a5fa;'><span class='i18n-de'>neu dabei</span><span class='i18n-en'>newcomer</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>16/16</span><br><span style='font-size:0.75em; color:#60a5fa;'><span class='i18n-de'>neu dabei</span><span class='i18n-en'>newcomer</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>200</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>1.600</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span></td></tr>
                         </table>
                     </div>
                     <ul>
@@ -1588,7 +1613,7 @@ def render_html_template(
                     </ul>
                 </div>
 
-                <button class="accordion-btn">🃏 Deck-Nutzung (Dein größter Hebel)</button>
+                <button class="accordion-btn">🃏 {t('Deck-Nutzung (Dein größter Hebel)', 'Deck Usage (Your Biggest Lever)')}</button>
                 <div class="accordion-content">
                     <p>Die <b>Deck-Nutzung</b>-Spalte zeigt, wie viele deiner möglichen Kriegs-Decks du tatsächlich gespielt hast — das ist der <b>wichtigste Einzelfaktor</b> im Bewertungs-System (50% des Scores).</p>
                     <p>Die Zahl <b>X/Y</b> bedeutet: Du hast X von maximal Y Decks gespielt. <br><span style="color:#94a3b8; font-size:0.9em;">Y = Anzahl der Kriege, in denen du dabei warst × 16 (= 4 Decks pro Tag × 4 Kriegstage).</span></p>
@@ -1600,9 +1625,9 @@ def render_html_template(
                     </ul>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Dabei</th><th>Deck-Nutzung</th><th>Ø Fame/Deck</th><th>Fame gesamt</th><th>Trend</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler X</td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'>⭐ stark</span></td><td>Ältester</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>160/160</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>185</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>14.800</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>180</span></td></tr>
-                            <tr><td class='name-col'>Spieler Y</td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>95/160</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>175</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>11.875</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟡🟡🔴🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>60</span></td></tr>
+                            <tr><th><span class="i18n-de">Spieler</span><span class="i18n-en">Player</span></th><th><span class="i18n-de">Check</span><span class="i18n-en">Check</span></th><th><span class="i18n-de">Status</span><span class="i18n-en">Status</span></th><th><span class="i18n-de">Dabei</span><span class="i18n-en">Present</span></th><th><span class="i18n-de">Deck-Nutzung</span><span class="i18n-en">Deck Usage</span></th><th><span class="i18n-de">Ø Fame/Deck</span><span class="i18n-en">Avg Fame/Deck</span></th><th><span class="i18n-de">Fame gesamt</span><span class="i18n-en">Total Fame</span></th><th><span class="i18n-de">Trend</span><span class="i18n-en">Trend</span></th><th>🃏 <span class="i18n-de">Spenden</span><span class="i18n-en">Donations</span></th></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler X</span><span class='i18n-en'>Player X</span></td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'><span class='i18n-de'>⭐ stark</span><span class='i18n-en'>⭐ strong</span></span></td><td><span class='i18n-de'>Ältester</span><span class='i18n-en'>Elder</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>160/160</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>185</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>14.800</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>180</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler Y</span><span class='i18n-en'>Player Y</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'><span class='i18n-de'>⚠️ ausbaufähig</span><span class='i18n-en'>⚠️ room to grow</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>95/160</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>175</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>11.875</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟡🟡🔴🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>60</span></td></tr>
                         </table>
                     </div>
                     <ul>
@@ -1611,15 +1636,15 @@ def render_html_template(
                     </ul>
                 </div>
 
-                <button class="accordion-btn">🟢🟡🔴 Der Trend (Deine Konstanz)</button>
+                <button class="accordion-btn">🟢🟡🔴 {t('Der Trend (Deine Konstanz)', 'The Trend (Your Consistency)')}</button>
                 <div class="accordion-content">
                     <p>Die Ampel-Punkte zeigen deine Zuverlässigkeit der letzten <b>6 Wochen</b> auf einen Blick. Jeder Punkt steht für eine Woche, wobei der <b>Punkt ganz rechts die aktuellste Auswertung</b> ist.</p>
                     <p style="color:#94a3b8; font-size:0.9em;">6 Wochen sind bewusst gewählt: Das Strike-System arbeitet über mehrere Wochen – der Trend soll den vollen Kontext zeigen, über den Strikes entstehen oder sich abbauen.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Dabei</th><th>Deck-Nutzung</th><th>Ø Fame/Deck</th><th>Fame gesamt</th><th>Trend</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler E</td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>8/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>100/128</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>180</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>11.520</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟢🟢🟡🟡🟡🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>150</span></td></tr>
-                            <tr><td class='name-col'>Spieler F</td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>🛡️ stabil</span></td><td>Ältester</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>6/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>80/96</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>160</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>7.680</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🔴🔴🟡🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>200</span></td></tr>
+                            <tr><th><span class="i18n-de">Spieler</span><span class="i18n-en">Player</span></th><th><span class="i18n-de">Check</span><span class="i18n-en">Check</span></th><th><span class="i18n-de">Status</span><span class="i18n-en">Status</span></th><th><span class="i18n-de">Dabei</span><span class="i18n-en">Present</span></th><th><span class="i18n-de">Deck-Nutzung</span><span class="i18n-en">Deck Usage</span></th><th><span class="i18n-de">Ø Fame/Deck</span><span class="i18n-en">Avg Fame/Deck</span></th><th><span class="i18n-de">Fame gesamt</span><span class="i18n-en">Total Fame</span></th><th><span class="i18n-de">Trend</span><span class="i18n-en">Trend</span></th><th>🃏 <span class="i18n-de">Spenden</span><span class="i18n-en">Donations</span></th></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler E</span><span class='i18n-en'>Player E</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'><span class='i18n-de'>⚠️ ausbaufähig</span><span class='i18n-en'>⚠️ room to grow</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>8/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>100/128</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>180</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>11.520</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟢🟢🟡🟡🟡🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>150</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler F</span><span class='i18n-en'>Player F</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'><span class='i18n-de'>🛡️ stabil</span><span class='i18n-en'>🛡️ stable</span></span></td><td><span class='i18n-de'>Ältester</span><span class='i18n-en'>Elder</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>6/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>80/96</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>160</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>7.680</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🔴🔴🟡🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>200</span></td></tr>
                         </table>
                     </div>
                     <ul>
@@ -1631,18 +1656,18 @@ def render_html_template(
                     </ul>
                 </div>
 
-                <button class="accordion-btn">🏷️ Check-Spalte (Orientierung)</button>
+                <button class="accordion-btn">🏷️ {t('Check-Spalte (Orientierung)', 'Check Column (Orientation)')}</button>
                 <div class="accordion-content">
                     <p>Die <b>Check</b>-Spalte ist eine kurze, leicht lesbare Orientierung auf einen Blick. Sie ersetzt keine Zahlen, sondern hilft nur dabei, Spieler schneller einzuordnen.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Dabei</th><th>Deck-Nutzung</th><th>Ø Fame/Deck</th><th>Fame gesamt</th><th>Trend</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler P</td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'>⭐ stark</span></td><td>Ältester</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>160/160</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>182</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>14.560</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>220</span></td></tr>
-                            <tr><td class='name-col'>Spieler Q</td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>🛡️ stabil</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>9/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>130/144</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>142</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>10.224</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟢🟢🟡🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>95</span></td></tr>
-                            <tr><td class='name-col'>Spieler R</td><td><span class='focus-pill' style='background:#94a3b822; color:#94a3b8; border:1px solid #94a3b855;'>🙂 solide</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>7/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>95/112</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>150</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>8.400</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟡🟡🟡🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>70</span></td></tr>
-                            <tr><td class='name-col'>Spieler S</td><td><span class='focus-pill' style='background:#ef444422; color:#ef4444; border:1px solid #ef444455;'>👀 auffällig</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>9/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>138/144</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>102</span> ⚠️<br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>7.344</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟢🟡🟡🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>40</span></td></tr>
-                            <tr><td class='name-col'>Spieler T</td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>4/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>40/64</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>140</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>4.480</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🔴🔴🟡🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>30</span></td></tr>
-                            <tr><td class='name-col'>Spieler U <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'>neu dabei</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#60a5fa;'>2/10</span><br><span style='font-size:0.75em; color:#60a5fa;'>neu dabei</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>32/32</span><br><span style='font-size:0.75em; color:#60a5fa;'>neu dabei</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>170</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>2.720</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>35</span></td></tr>
+                            <tr><th><span class="i18n-de">Spieler</span><span class="i18n-en">Player</span></th><th><span class="i18n-de">Check</span><span class="i18n-en">Check</span></th><th><span class="i18n-de">Status</span><span class="i18n-en">Status</span></th><th><span class="i18n-de">Dabei</span><span class="i18n-en">Present</span></th><th><span class="i18n-de">Deck-Nutzung</span><span class="i18n-en">Deck Usage</span></th><th><span class="i18n-de">Ø Fame/Deck</span><span class="i18n-en">Avg Fame/Deck</span></th><th><span class="i18n-de">Fame gesamt</span><span class="i18n-en">Total Fame</span></th><th><span class="i18n-de">Trend</span><span class="i18n-en">Trend</span></th><th>🃏 <span class="i18n-de">Spenden</span><span class="i18n-en">Donations</span></th></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler P</span><span class='i18n-en'>Player P</span></td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'><span class='i18n-de'>⭐ stark</span><span class='i18n-en'>⭐ strong</span></span></td><td><span class='i18n-de'>Ältester</span><span class='i18n-en'>Elder</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>160/160</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>182</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>14.560</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>220</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler Q</span><span class='i18n-en'>Player Q</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'><span class='i18n-de'>🛡️ stabil</span><span class='i18n-en'>🛡️ stable</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>9/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>130/144</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>142</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>10.224</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟢🟢🟡🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>95</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler R</span><span class='i18n-en'>Player R</span></td><td><span class='focus-pill' style='background:#94a3b822; color:#94a3b8; border:1px solid #94a3b855;'><span class='i18n-de'>🙂 solide</span><span class='i18n-en'>🙂 solid</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>7/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>95/112</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>150</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>8.400</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟡🟡🟡🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>70</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler S</span><span class='i18n-en'>Player S</span></td><td><span class='focus-pill' style='background:#ef444422; color:#ef4444; border:1px solid #ef444455;'><span class='i18n-de'>👀 auffällig</span><span class='i18n-en'>👀 watch</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>9/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>138/144</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>102</span> ⚠️<br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>7.344</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟢🟡🟡🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>40</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler T</span><span class='i18n-en'>Player T</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'><span class='i18n-de'>⚠️ ausbaufähig</span><span class='i18n-en'>⚠️ room to grow</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>4/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>40/64</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>140</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>4.480</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🔴🔴🟡🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>30</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler U </span><span class='i18n-en'>Player U </span><span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'><span class='i18n-de'>neu dabei</span><span class='i18n-en'>newcomer</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#60a5fa;'>2/10</span><br><span style='font-size:0.75em; color:#60a5fa;'><span class='i18n-de'>neu dabei</span><span class='i18n-en'>newcomer</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>32/32</span><br><span style='font-size:0.75em; color:#60a5fa;'><span class='i18n-de'>neu dabei</span><span class='i18n-en'>newcomer</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>170</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>2.720</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>35</span></td></tr>
                         </table>
                     </div>
                     <ul>
@@ -1655,14 +1680,14 @@ def render_html_template(
                     </ul>
                 </div>
 
-                <button class="accordion-btn">⚔️ Ø Punkte (Der Qualitäts-Check)</button>
+                <button class="accordion-btn">⚔️ {t('Ø Punkte (Der Qualitäts-Check)', 'Avg Points (The Quality Check)')}</button>
                 <div class="accordion-content">
                     <p>Hier schauen wir, wie effektiv du deine Decks einsetzt. Das System teilt deine gesammelten Kriegspunkte durch die Anzahl deiner gespielten Decks – und das als <b>rollierender Schnitt über die letzten 3–4 Kriege</b>.</p>
                     <p style="color:#94a3b8; font-size:0.9em;">Warum mehrere Kriege? Ein einzelner Krieg kann durch starke oder schwache Gegner verzerrt sein. Der Schnitt über 3–4 Wochen gibt ein faireres, stabileres Bild deiner tatsächlichen Kampfqualität.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Dabei</th><th>Deck-Nutzung</th><th>Ø Fame/Deck</th><th>Fame gesamt</th><th>Trend</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler J <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'>⚠️ ausbaufähig</span></td><td>Ältester</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>8/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>125/128</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>100</span> ⚠️<br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>6.400</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🔴🔴🔴🔴🔴🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>72</span></td></tr>
+                            <tr><th><span class="i18n-de">Spieler</span><span class="i18n-en">Player</span></th><th><span class="i18n-de">Check</span><span class="i18n-en">Check</span></th><th><span class="i18n-de">Status</span><span class="i18n-en">Status</span></th><th><span class="i18n-de">Dabei</span><span class="i18n-en">Present</span></th><th><span class="i18n-de">Deck-Nutzung</span><span class="i18n-en">Deck Usage</span></th><th><span class="i18n-de">Ø Fame/Deck</span><span class="i18n-en">Avg Fame/Deck</span></th><th><span class="i18n-de">Fame gesamt</span><span class="i18n-en">Total Fame</span></th><th><span class="i18n-de">Trend</span><span class="i18n-en">Trend</span></th><th>🃏 <span class="i18n-de">Spenden</span><span class="i18n-en">Donations</span></th></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler J </span><span class='i18n-en'>Player J </span><span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'><span class='i18n-de'>⚠️ ausbaufähig</span><span class='i18n-en'>⚠️ room to grow</span></span></td><td><span class='i18n-de'>Ältester</span><span class='i18n-en'>Elder</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>8/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>125/128</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>100</span> ⚠️<br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>6.400</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🔴🔴🔴🔴🔴🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>72</span></td></tr>
                         </table>
                     </div>
                     <ul>
@@ -1672,7 +1697,7 @@ def render_html_template(
                     </ul>
                 </div>
 
-                <button class="accordion-btn">📊 Clan-Durchschnitt & ⚔️ Clan-Ø Punkte</button>
+                <button class="accordion-btn">📊 {t('Clan-Durchschnitt & ⚔️ Clan-Ø Punkte', 'Clan Average & ⚔️ Clan Avg Points')}</button>
                 <div class="accordion-content">
                     <p>In der Übersicht seht ihr zwei Clan-Werte, die absichtlich zwei verschiedene Fragen beantworten: <b>Wie zuverlässig spielen wir unsere Decks aus?</b> und <b>wie stark kämpfen wir pro Deck?</b></p>
                     <ul>
@@ -1687,14 +1712,14 @@ def render_html_template(
                     </ul>
                 </div>
 
-                <button class="accordion-btn">🃏 Spenden-Verhalten (Teamplay)</button>
+                <button class="accordion-btn">🃏 {t('Spenden-Verhalten (Teamplay)', 'Donation Behavior (Teamplay)')}</button>
                 <div class="accordion-content">
                     <p>Ein starker Clan hilft sich gegenseitig beim Leveln der Karten. Deshalb schauen wir auch auf das Spendenverhalten im Clan.</p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
-                            <tr><th>Spieler</th><th>Check</th><th>Status</th><th>Dabei</th><th>Deck-Nutzung</th><th>Ø Fame/Deck</th><th>Fame gesamt</th><th>Trend</th><th>🃏 Spenden</th></tr>
-                            <tr><td class='name-col'>Spieler K</td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'>⭐ stark</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>160/160</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>200</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>16.000</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>📦</span></td></tr>
-                            <tr><td class='name-col'>Spieler L</td><td><span class='focus-pill' style='background:#94a3b822; color:#94a3b8; border:1px solid #94a3b855;'>🙂 solide</span></td><td>Mitglied</td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>5/10</span><br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>72/80</span><br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>150</span><br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>6.000</span><br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span></td><td class='trend-cell'>🟡🟡🟡🟡</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>💤</span></td></tr>
+                            <tr><th><span class="i18n-de">Spieler</span><span class="i18n-en">Player</span></th><th><span class="i18n-de">Check</span><span class="i18n-en">Check</span></th><th><span class="i18n-de">Status</span><span class="i18n-en">Status</span></th><th><span class="i18n-de">Dabei</span><span class="i18n-en">Present</span></th><th><span class="i18n-de">Deck-Nutzung</span><span class="i18n-en">Deck Usage</span></th><th><span class="i18n-de">Ø Fame/Deck</span><span class="i18n-en">Avg Fame/Deck</span></th><th><span class="i18n-de">Fame gesamt</span><span class="i18n-en">Total Fame</span></th><th><span class="i18n-de">Trend</span><span class="i18n-en">Trend</span></th><th>🃏 <span class="i18n-de">Spenden</span><span class="i18n-en">Donations</span></th></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler K</span><span class='i18n-en'>Player K</span></td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'><span class='i18n-de'>⭐ stark</span><span class='i18n-en'>⭐ strong</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>160/160</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>200</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>16.000</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>📦</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler L</span><span class='i18n-en'>Player L</span></td><td><span class='focus-pill' style='background:#94a3b822; color:#94a3b8; border:1px solid #94a3b855;'><span class='i18n-de'>🙂 solide</span><span class='i18n-en'>🙂 solid</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>5/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>72/80</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>150</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>6.000</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟡🟡🟡🟡</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>💤</span></td></tr>
                         </table>
                     </div>
                     <ul>
@@ -1704,7 +1729,7 @@ def render_html_template(
                     </ul>
                 </div>
 
-                <button class="accordion-btn">🔧 Tools</button>
+                <button class="accordion-btn">🔧 {t('Tools', 'Tools')}</button>
                 <div class="accordion-content">
                     <ul>
                         <li><b><a href="https://deckai.app/" target="_blank" style="color: #38bdf8;">DeckAI</a></b> — Analyse- und Deckbau-Tool für Clash Royale. Hilft beim Bewerten von Decks, zeigt Matchups, schlägt Kartenwechsel vor, erstelle einen optimierten Satz Clan-War-Decks mit deinen besten Karten und Vorlieben (Beatdown, Cycle, Control, Bridge Spam, Siege, Bait) und gibt Hinweise zu sinnvollen Upgrades. Nützlich für Spieler, die ihre Decks verbessern und gezielter für Ladder, Duelle und Clan-Krieg bauen wollen.</li>
@@ -1712,7 +1737,7 @@ def render_html_template(
                     </ul>
                 </div>
 
-                <button class="accordion-btn">⚔️ Clash Royale Angriffsarten</button>
+                <button class="accordion-btn">⚔️ {t('Clash Royale Angriffsarten', 'Clash Royale Attack Types')}</button>
                 <div class="accordion-content">
                     <p>Diese Decks repräsentieren die Kerntaktiken der jeweiligen Angriffsarten. Je nach aktueller „Meta" können einzelne Karten variieren, aber das strategische Prinzip bleibt gleich.</p>
 
@@ -1768,8 +1793,8 @@ def render_html_template(
             </div>
 
             <div id="Decks" class="tab-content">
-                <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; margin-bottom: 10px; color: #ffffff;">🃏 Clan-Meta: Die besten Kriegs-Decks</h2>
-                <p style="text-align: center; color: #94a3b8; margin-bottom: 30px;">Das System analysiert die Clankriegs-Kämpfe der letzten 30 Tage und sortiert sie für euch in starke Meta-Decks, solide Allrounder und einsteigerfreundliche Optionen.</p>
+                <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; margin-bottom: 10px; color: #ffffff;">🃏 {t('Clan-Meta: Die besten Kriegs-Decks', 'Clan Meta: The Best War Decks')}</h2>
+                <p style="text-align: center; color: #94a3b8; margin-bottom: 30px;">{t('Das System analysiert die Clankriegs-Kämpfe der letzten 30 Tage und sortiert sie für euch in starke Meta-Decks, solide Allrounder und einsteigerfreundliche Optionen.', 'The system analyzes clan war battles from the last 30 days and sorts them into strong meta decks, solid all-rounders and beginner-friendly options.')}</p>
                 <div>
                     {deck_html}
                 </div>
@@ -1786,13 +1811,48 @@ def render_html_template(
 
             <footer class="site-footer">
                 <div class="footer-links">
-                    <a class="footer-link" onclick="openTabByName('Impressum')">Impressum</a>
-                    <a class="footer-link" onclick="openTabByName('Datenschutz')">Datenschutz</a>
+                    <a class="footer-link" onclick="openTabByName('Impressum')">{t('Impressum', 'Imprint')}</a>
+                    <a class="footer-link" onclick="openTabByName('Datenschutz')">{t('Datenschutz', 'Privacy')}</a>
                 </div>
             </footer>
         </div>
 
         <script>
+            (function initLanguage() {{
+                var stored = null;
+                try {{ stored = localStorage.getItem('clanLang'); }} catch (e) {{}}
+                var supported = ['de', 'en'];
+                var initial = supported.indexOf(stored) !== -1
+                    ? stored
+                    : ((navigator.language || 'de').toLowerCase().indexOf('en') === 0 ? 'en' : 'de');
+                setLanguage(initial);
+                document.addEventListener('DOMContentLoaded', function () {{
+                    var btns = document.querySelectorAll('.lang-toggle button[data-lang]');
+                    btns.forEach(function (btn) {{
+                        btn.addEventListener('click', function () {{
+                            setLanguage(btn.getAttribute('data-lang'));
+                        }});
+                    }});
+                    syncToggleUI(document.documentElement.lang);
+                }});
+            }})();
+
+            function setLanguage(lang) {{
+                if (lang !== 'de' && lang !== 'en') lang = 'de';
+                document.documentElement.lang = lang;
+                try {{ localStorage.setItem('clanLang', lang); }} catch (e) {{}}
+                syncToggleUI(lang);
+            }}
+
+            function syncToggleUI(lang) {{
+                var btns = document.querySelectorAll('.lang-toggle button[data-lang]');
+                btns.forEach(function (btn) {{
+                    var active = btn.getAttribute('data-lang') === lang;
+                    btn.classList.toggle('active', active);
+                    btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+                }});
+            }}
+
             function toggleChat() {{
                 var el = document.getElementById("admin-chat-container");
                 if (!el) return;
@@ -2155,8 +2215,8 @@ def generate_html_report(
         )
 
         if is_urlaub:
-            status_html = "🏖️ Urlaub"
-            tier = "🏖️ Abgemeldet / Im Urlaub (Pausiert)"
+            status_html = "🏖️ " + t("Urlaub", "Vacation")
+            tier = "🏖️ " + t("Abgemeldet / Im Urlaub (Pausiert)", "Logged Off / On Vacation (Paused)")
         else:
             status_html = (
                 f"{role_de} <span class='badge-ja'>➔ BEFÖRDERN</span>"
@@ -2165,13 +2225,13 @@ def generate_html_report(
             )
 
             if score >= APP_CONFIG["TIER_SEHR_STARK"]:
-                tier = "Sehr stark"
+                tier = t("Sehr stark", "Very Strong")
             elif score >= APP_CONFIG["TIER_SOLIDE"]:
-                tier = "Solide Basis"
+                tier = t("Solide Basis", "Solid Base")
             elif score >= APP_CONFIG["STRIKE_THRESHOLD"]:
-                tier = "Mehr drin"
+                tier = t("Mehr drin", "Underperforming")
             else:
-                tier = "Ausbaufaehig"
+                tier = t("Ausbaufaehig", "Room to Grow")
 
         player_stats.append({
             "name": name,
@@ -2327,22 +2387,22 @@ def generate_html_report(
     clan_ampel_html = f"""
     <div class='signal-board'>
         <div class='signal-card'>
-            <h4>📈 Zuverlässigkeit</h4>
+            <h4>📈 {t('Zuverlässigkeit', 'Reliability')}</h4>
             <div class='signal-value' style='color:{reliability_color};'>{reliability_state.upper()}</div>
-            <div style='color:#94a3b8; font-size:0.92em;'>Bewertung des Clan-Durchschnitts</div>
+            <div style='color:#94a3b8; font-size:0.92em;'>{t('Bewertung des Clan-Durchschnitts', 'Assessment of clan average')}</div>
             <div class='signal-state' style='color:{reliability_color};'>{reliability_state.upper()}</div>
         </div>
         <div class='signal-card'>
-            <h4>⚔️ Kampfqualität</h4>
+            <h4>⚔️ {t('Kampfqualität', 'Battle Quality')}</h4>
             <div class='signal-value' style='color:{quality_color};'>{clan_avg_points_per_deck}</div>
             {quality_trend_html}
             {quality_dist_html}
-            <div style='color:#94a3b8; font-size:0.8em; margin-top:4px;'>Ø Punkte pro Deck</div>
+            <div style='color:#94a3b8; font-size:0.8em; margin-top:4px;'>{t('Ø Punkte pro Deck', 'Avg points per deck')}</div>
         </div>
         <div class='signal-card'>
-            <h4>🤝 Teamplay</h4>
+            <h4>🤝 {t('Teamplay', 'Teamplay')}</h4>
             <div class='signal-value' style='color:{teamplay_color};'>{teamplay_state.upper()}</div>
-            <div style='color:#94a3b8; font-size:0.92em;'>{teamplay_details['donors']} von {len(aktive_spieler)} Aktiven spenden mit</div>
+            <div style='color:#94a3b8; font-size:0.92em;'>{teamplay_details['donors']} {t('von', 'of')} {len(aktive_spieler)} {t('Aktiven spenden mit', 'active members donate')}</div>
             <div class='signal-state' style='color:{teamplay_color};'>{teamplay_state.upper()}</div>
         </div>
     </div>
@@ -2352,11 +2412,11 @@ def generate_html_report(
 
     # 1. Zuverlässigkeit
     if clan_avg >= APP_CONFIG["CLAN_RELIABLE_GREEN"]:
-        summary_lines.append("Der Clan spielt seine Decks sehr zuverlässig aus.")
+        summary_lines.append(t("Der Clan spielt seine Decks sehr zuverlässig aus.", "The clan plays its decks very reliably."))
     elif clan_avg >= APP_CONFIG["CLAN_RELIABLE_YELLOW"]:
-        summary_lines.append("Die Zuverlässigkeit ist okay, aber es bleiben noch zu viele Decks liegen.")
+        summary_lines.append(t("Die Zuverlässigkeit ist okay, aber es bleiben noch zu viele Decks liegen.", "Reliability is okay, but too many decks are still left unplayed."))
     else:
-        summary_lines.append("Beim Ausspielen der Decks verlieren wir aktuell zu viel Boden.")
+        summary_lines.append(t("Beim Ausspielen der Decks verlieren wir aktuell zu viel Boden.", "We are losing too much ground on deck usage right now."))
 
     # 2. Kampfqualität + Trend
     if clan_avg_points_per_deck >= APP_CONFIG["BADGE_STARK_FAME"]:
@@ -2373,14 +2433,14 @@ def generate_html_report(
 
     # 3. Teamplay
     if teamplay_state == "kritisch":
-        summary_lines.append("Beim Spenden und Unterstützen im Clan ist gerade noch Luft nach oben.")
+        summary_lines.append(t("Beim Spenden und Unterstützen im Clan ist gerade noch Luft nach oben.", "There is still room to improve donations and clan support."))
     elif teamplay_state == "okay":
-        summary_lines.append("Beim Teamplay ist schon was da, aber noch nicht jeder zieht mit.")
+        summary_lines.append(t("Beim Teamplay ist schon was da, aber noch nicht jeder zieht mit.", "Some teamplay is there, but not everyone is pulling their weight yet."))
     else:
-        summary_lines.append("Auch beim Teamplay wirkt der Clan im Moment sehr geschlossen.")
+        summary_lines.append(t("Auch beim Teamplay wirkt der Clan im Moment sehr geschlossen.", "Teamplay-wise the clan currently looks very tight-knit."))
 
     # 4. Tier-Verteilung (wf_gruen/gelb/rot aus dem Aggregations-Loop oben)
-    summary_lines.append(f"📊 Tier-Verteilung: 🟢 {wf_gruen} stark &nbsp; 🟡 {wf_gelb} solide &nbsp; 🔴 {wf_rot} auffällig.")
+    summary_lines.append(f"📊 {t('Tier-Verteilung:', 'Tier distribution:')} 🟢 {wf_gruen} {t('stark', 'strong')} &nbsp; 🟡 {wf_gelb} {t('solide', 'solid')} &nbsp; 🔴 {wf_rot} {t('auffällig', 'notable')}.")
 
     # 5. Deutschland-Ranking
     if clan_overview:
@@ -2390,18 +2450,18 @@ def generate_html_report(
             if prev_rank and prev_rank > 0:
                 rank_delta = prev_rank - current_rank  # positiv = aufgestiegen
                 if rank_delta > 0:
-                    summary_lines.append(f"🏅 Deutschland-Ranking: <b>Platz #{current_rank}</b> — <span style='color:#10b981;'>↑ {rank_delta} Plätze besser als letzte Woche!</span>")
+                    summary_lines.append(f"🏅 {t('Deutschland-Ranking:', 'Germany ranking:')} <b>{t('Platz', 'Rank')} #{current_rank}</b> — <span style='color:#10b981;'>↑ {rank_delta} {t('Plätze besser als letzte Woche!', 'places better than last week!')}</span>")
                 elif rank_delta < 0:
-                    summary_lines.append(f"🏅 Deutschland-Ranking: <b>Platz #{current_rank}</b> — <span style='color:#ef4444;'>↓ {abs(rank_delta)} Plätze schlechter als letzte Woche.</span>")
+                    summary_lines.append(f"🏅 {t('Deutschland-Ranking:', 'Germany ranking:')} <b>{t('Platz', 'Rank')} #{current_rank}</b> — <span style='color:#ef4444;'>↓ {abs(rank_delta)} {t('Plätze schlechter als letzte Woche.', 'places worse than last week.')}</span>")
                 else:
-                    summary_lines.append(f"🏅 Deutschland-Ranking: <b>Platz #{current_rank}</b> — unverändert zur Vorwoche.")
+                    summary_lines.append(f"🏅 {t('Deutschland-Ranking:', 'Germany ranking:')} <b>{t('Platz', 'Rank')} #{current_rank}</b> — {t('unverändert zur Vorwoche.', 'unchanged from last week.')}")
             else:
-                summary_lines.append(f"🏅 Deutschland-Ranking: <b>Platz #{current_rank}</b>")
+                summary_lines.append(f"🏅 {t('Deutschland-Ranking:', 'Germany ranking:')} <b>{t('Platz', 'Rank')} #{current_rank}</b>")
 
     # 6. Aufsteiger (top 3 mit delta > 0)
     if top_aufsteiger_list:
         names_str = ", ".join(f"<b>{p['name']}</b> <span style='color:#10b981;'>(+{p['delta']}%)</span>" for p in top_aufsteiger_list)
-        summary_lines.append(f"🚀 Stärkste Verbesserung: {names_str}")
+        summary_lines.append(f"🚀 {t('Stärkste Verbesserung:', 'Biggest improvement:')} {names_str}")
 
     # 6. Absteiger (top 3 mit delta < 0, keine Neulinge)
     top_absteiger_list = sorted(
@@ -2410,7 +2470,7 @@ def generate_html_report(
     )[:3]
     if top_absteiger_list:
         names_str = ", ".join(f"<b>{p['name']}</b> <span style='color:#ef4444;'>({p['delta']}%)</span>" for p in top_absteiger_list)
-        summary_lines.append(f"⚠️ Stärkster Rückgang: {names_str}")
+        summary_lines.append(f"⚠️ {t('Stärkster Rückgang:', 'Biggest decline:')} {names_str}")
 
     # 7+8. Nur an Kampftagen (nicht Trainingstag, da dort bereits in Coach-Ecke)
     if race_state_de in ("Clankrieg", "Colosseum"):
@@ -2420,7 +2480,7 @@ def generate_html_report(
         )[:3]
         if streak_players:
             names_str = ", ".join(f"<b>{p['name']}</b>" for p in streak_players)
-            summary_lines.append(f"🔥 Konstant stark: {names_str}")
+            summary_lines.append(f"🔥 {t('Konstant stark:', 'Consistently strong:')} {names_str}")
 
         kurz_vor_aufstieg = sorted(
             [p for p in aktive_spieler
@@ -2431,9 +2491,9 @@ def generate_html_report(
         )
         if kurz_vor_aufstieg:
             names_str = ", ".join(f"<b>{p['name']}</b> ({p['score']}%)" for p in kurz_vor_aufstieg)
-            summary_lines.append(f"⚡ Fast im grünen Bereich: {names_str} – noch ein paar Kämpfe!")
+            summary_lines.append(f"⚡ {t('Fast im grünen Bereich:', 'Almost in the green zone:')} {names_str} – {t('noch ein paar Kämpfe!', 'a few more battles!')}")
 
-    weekly_summary_html = "<div class='info-box' style='border-left-color: #fbbf24;'><h3 style='margin-top:0; color:#fbbf24;'>🧭 Wochenfazit</h3><ul style='margin:0;'>" + "".join([f"<li>{line}</li>" for line in summary_lines]) + "</ul></div>"
+    weekly_summary_html = f"<div class='info-box' style='border-left-color: #fbbf24;'><h3 style='margin-top:0; color:#fbbf24;'>🧭 {t('Wochenfazit', 'Weekly Summary')}</h3><ul style='margin:0;'>" + "".join([f"<li>{line}</li>" for line in summary_lines]) + "</ul></div>"
 
     aktive_namen_set = set(df_active["player_name"].tolist())
     preliminary_open_decks = sum(
@@ -2523,8 +2583,8 @@ def generate_html_report(
 
         coach_html = (
             "<div class='info-box' style='border-left-color: #a78bfa;'>"
-            "<h3 style='margin-top:0; color:#a78bfa;'>🧠 Coach-Ecke</h3>"
-            "<p style='margin-top:0;'>Trainingstag — Zeit zum Durchatmen, Ausprobieren und Vorbereiten:</p>"
+            f"<h3 style='margin-top:0; color:#a78bfa;'>🧠 {t('Coach-Ecke', 'Coach Corner')}</h3>"
+            f"<p style='margin-top:0;'>{t('Trainingstag — Zeit zum Durchatmen, Ausprobieren und Vorbereiten:', 'Training day — time to breathe, experiment and prepare:')}</p>"
             "<ul style='margin-bottom:0;'>" + "".join(training_items[:6]) + "</ul>"
             "</div>"
         )
@@ -2608,17 +2668,26 @@ def generate_html_report(
                 coach_items.append(prognose_item)
 
         if preliminary_open_decks > 0:
-            coach_items.append(f"<li><b>Offene Decks zuerst dicht machen:</b> Heute sind noch <b>{preliminary_open_decks}</b> Decks offen. Konstanz bringt uns im Moment am schnellsten nach vorne.</li>")
+            open_de = f"Heute sind noch <b>{preliminary_open_decks}</b> Decks offen. Konstanz bringt uns im Moment am schnellsten nach vorne."
+            open_en = f"<b>{preliminary_open_decks}</b> decks still open today. Consistency moves us forward fastest right now."
+            coach_items.append(f"<li><b>{t('Offene Decks zuerst dicht machen:', 'Close out open decks first:')}</b> {t(open_de, open_en)}</li>")
         if low_quality_count > 0:
-            coach_items.append(f"<li><b>Kämpfe sauber ausspielen:</b> Bei <b>{low_quality_count}</b> Spielern liegt der Ø-Wert unter {APP_CONFIG['DROPPER_THRESHOLD']}. Lieber normale Kämpfe als Bootsangriffe verschwenden.</li>")
+            dropper = APP_CONFIG["DROPPER_THRESHOLD"]
+            quality_de = f"Bei <b>{low_quality_count}</b> Spielern liegt der Ø-Wert unter {dropper}. Lieber normale Kämpfe als Bootsangriffe verschwenden."
+            quality_en = f"<b>{low_quality_count}</b> players have an average below {dropper}. Prefer normal battles over wasting boat attacks."
+            coach_items.append(f"<li><b>{t('Kämpfe sauber ausspielen:', 'Play battles cleanly:')}</b> {t(quality_de, quality_en)}</li>")
         if teamplay_details["leecher"] > 0 or teamplay_details["sleeper"] > 0:
-            coach_items.append(f"<li><b>Mehr Teamplay hilft sofort:</b> Aktuell haben wir <b>{teamplay_details['leecher']}</b> Spieler mit auffaelligem Spendenverhalten und <b>{teamplay_details['sleeper']}</b> spendeninaktive Spieler. Ein paar Spenden mehr machen den Clan direkt runder.</li>")
+            leecher_n = teamplay_details["leecher"]
+            sleeper_n = teamplay_details["sleeper"]
+            team_de = f"Aktuell haben wir <b>{leecher_n}</b> Spieler mit auffaelligem Spendenverhalten und <b>{sleeper_n}</b> spendeninaktive Spieler. Ein paar Spenden mehr machen den Clan direkt runder."
+            team_en = f"We currently have <b>{leecher_n}</b> players with notable donation behavior and <b>{sleeper_n}</b> donation-inactive players. A few more donations make the clan instantly more rounded."
+            coach_items.append(f"<li><b>{t('Mehr Teamplay hilft sofort:', 'More teamplay helps immediately:')}</b> {t(team_de, team_en)}</li>")
         if newbie_count > 0 or low_score_count > 0:
-            coach_items.append("<li><b>Sauber statt kompliziert:</b> Auch mit Erfahrung bringen im Krieg oft klar aufgebaute, verlaesslich spielbare Decks mehr Konstanz als sehr spezielle Listen. Erst sauber ausspielen, dann experimentieren.</li>")
+            coach_items.append(f"<li><b>{t('Sauber statt kompliziert:', 'Clean instead of complicated:')}</b> {t('Auch mit Erfahrung bringen im Krieg oft klar aufgebaute, verlaesslich spielbare Decks mehr Konstanz als sehr spezielle Listen. Erst sauber ausspielen, dann experimentieren.', 'Even with experience, clearly built, reliably playable decks often bring more consistency in war than very special lists. Play cleanly first, then experiment.')}</li>")
 
         coach_html = ""
         if coach_items:
-            coach_html = "<div class='info-box' style='border-left-color: #10b981;'><h3 style='margin-top:0; color:#10b981;'>🧠 Coach-Ecke</h3><p style='margin-top:0;'>Hinweise und Prognose für den aktuellen Stand:</p><ul style='margin-bottom:0;'>" + "".join(coach_items[:6]) + "</ul></div>"
+            coach_html = f"<div class='info-box' style='border-left-color: #10b981;'><h3 style='margin-top:0; color:#10b981;'>🧠 {t('Coach-Ecke', 'Coach Corner')}</h3><p style='margin-top:0;'>{t('Hinweise und Prognose für den aktuellen Stand:', 'Notes and forecast for the current state:')}</p><ul style='margin-bottom:0;'>" + "".join(coach_items[:6]) + "</ul></div>"
 
     kandidaten_demote = strikes_data.get("demoted_this_week", [])
     kandidaten_kick = strikes_data.get("kicked_this_week", [])
@@ -2642,10 +2711,10 @@ def generate_html_report(
     radar_html = ""
     if radar_clans:
         radar_hint = f" <span style='font-size:0.8em; opacity:0.8; font-weight:normal;'>(Status: {race_state_de})</span>"
-        radar_html = f"<div class='info-box' style='border-left-color: #f43f5e; background: rgba(159, 18, 57, 0.15); margin-bottom: 25px;'><h3 style='margin-top: 0; color: #f43f5e; margin-bottom: 12px; font-size: 1.2em;'>📡 Live Kriegs-Radar{radar_hint}</h3>"
+        radar_html = f"<div class='info-box' style='border-left-color: #f43f5e; background: rgba(159, 18, 57, 0.15); margin-bottom: 25px;'><h3 style='margin-top: 0; color: #f43f5e; margin-bottom: 12px; font-size: 1.2em;'>📡 {t('Live Kriegs-Radar', 'Live War Radar')}{radar_hint}</h3>"
         radar_html += "<div style='overflow-x: auto;'><table class='radar-table' style='width: 100%; border-collapse: collapse; font-size: 0.95em; table-layout: fixed;'>"
         radar_html += "<colgroup><col style='width:30%'><col style='width:14%'><col style='width:18%'><col style='width:18%'><col style='width:20%'></colgroup>"
-        radar_html += "<tr style='border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; font-weight: 600; text-align: left;'><td style='padding-bottom: 8px; border: none; text-align: left;'>Clan</td><td style='padding-bottom: 8px; border: none; text-align: center;'>⛵ Boot</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🥇 Medaille</td><td style='padding-bottom: 8px; border: none; text-align: center;'>⚡ Effizienz</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🏆 Trophäe</td></tr>"
+        radar_html += f"<tr style='border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; font-weight: 600; text-align: left;'><td style='padding-bottom: 8px; border: none; text-align: left;'>{t('Clan', 'Clan')}</td><td style='padding-bottom: 8px; border: none; text-align: center;'>⛵ {t('Boot', 'Boat')}</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🥇 {t('Medaille', 'Medal')}</td><td style='padding-bottom: 8px; border: none; text-align: center;'>⚡ {t('Effizienz', 'Efficiency')}</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🏆 {t('Trophäe', 'Trophy')}</td></tr>"
 
         for idx, c in enumerate(radar_clans):
             bold_name = f"<b style='color:#fff;'>{c['name']} (WIR)</b>" if c["is_us"] else c["name"]
@@ -2684,29 +2753,30 @@ def generate_html_report(
         for m in raw_mahnwache:
             if m["name"].lower() not in urlauber_liste_lower and m["name"] in aktive_namen_list:
                 name_color = mahnwache_colors[mahnwache_idx % len(mahnwache_colors)]
+                offen_label = t(f"({m['offen']} offen)", f"({m['offen']} open)")
                 gefilterte_mahnwache.append(
                     f"<span style='color:{name_color}; font-weight:800;'>{m['name']}</span> "
-                    f"<span style='color:#ffffff;'>({m['offen']} offen)</span>"
+                    f"<span style='color:#ffffff;'>{offen_label}</span>"
                 )
                 mahnwache_idx += 1
                 total_open_decks += m["offen"]
 
         if gefilterte_mahnwache:
-            mahnwache_html = f"<div class='info-box' style='border-left-color: #ef4444; background: rgba(239, 68, 68, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #ef4444; margin-bottom: 8px;'>⏰ Mahnwache (Noch offene Decks heute):</h4><p style='margin: 0; font-size: 0.95em;'>{', '.join(gefilterte_mahnwache)}</p></div>"
+            mahnwache_html = f"<div class='info-box' style='border-left-color: #ef4444; background: rgba(239, 68, 68, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #ef4444; margin-bottom: 8px;'>⏰ {t('Mahnwache (Noch offene Decks heute):', 'Vigil (Decks still open today):')}</h4><p style='margin: 0; font-size: 0.95em;'>{', '.join(gefilterte_mahnwache)}</p></div>"
         else:
-            mahnwache_html = "<div class='info-box' style='border-left-color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #10b981; margin-bottom: 0;'>✅ Alle aktiven Spieler haben ihre Decks für heute gespielt!</h4></div>"
+            mahnwache_html = f"<div class='info-box' style='border-left-color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 15px 25px; margin-bottom: 40px;'><h4 style='margin-top: 0; color: #10b981; margin-bottom: 0;'>✅ {t('Alle aktiven Spieler haben ihre Decks für heute gespielt!', 'All active players have played their decks for today!')}</h4></div>"
 
         played_decks_today = total_decks_today - total_open_decks
         hype_percentage = int((played_decks_today / total_decks_today) * 100) if total_decks_today > 0 else 0
         hype_color = "#ef4444" if hype_percentage < 50 else "#fbbf24" if hype_percentage < 90 else "#10b981"
 
-        tagesziel_titel = "🎯 Tagesziel: Trainings-Kämpfe" if "Training" in race_state_de else "🎯 Tagesziel: Clan-Kriegs Kämpfe"
+        tagesziel_titel = ("🎯 " + t("Tagesziel: Trainings-Kämpfe", "Daily Goal: Training Battles")) if "Training" in race_state_de else ("🎯 " + t("Tagesziel: Clan-Kriegs Kämpfe", "Daily Goal: Clan War Battles"))
 
         hype_balken_html = f"""
         <div style='background: rgba(30, 41, 59, 0.8); border-radius: 12px; padding: 20px; margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 15px rgba(0,0,0,0.2);'>
             <div style='display: flex; justify-content: space-between; margin-bottom: 10px; align-items: baseline;'>
                 <h3 style='margin: 0; color: #f8fafc; font-size: 1.1em;'>{tagesziel_titel}</h3>
-                <span style='font-weight: bold; color: {hype_color}; font-size: 1.1em;'>{played_decks_today} / {total_decks_today} Decks ({hype_percentage}%)</span>
+                <span style='font-weight: bold; color: {hype_color}; font-size: 1.1em;'>{played_decks_today} / {total_decks_today} {t('Decks', 'decks')} ({hype_percentage}%)</span>
             </div>
             <div style='background: rgba(0,0,0,0.5); border-radius: 8px; height: 14px; width: 100%; overflow: hidden;'>
                 <div style='background: {hype_color}; width: {hype_percentage}%; height: 100%; border-radius: 8px; transition: width 1s ease-in-out;'></div>
@@ -2868,9 +2938,9 @@ def generate_html_report(
                     <div class="deck-images">
                         {images_html}
                     </div>
-                    <p style="font-size: 0.85em; color: #94a3b8; margin: 10px 0;">{d['wins']} Siege / {d['losses']} Niederlagen in {d['total_matches']} Spielen<br><span style="color:#e2e8f0; font-weight:bold;">Oft gewonnen von: {players_str}</span></p>
+                    <p style="font-size: 0.85em; color: #94a3b8; margin: 10px 0;">{d['wins']} {t('Siege', 'wins')} / {d['losses']} {t('Niederlagen', 'losses')} {t('in', 'in')} {d['total_matches']} {t('Spielen', 'games')}<br><span style="color:#e2e8f0; font-weight:bold;">{t('Oft gewonnen von:', 'Often won by:')} {players_str}</span></p>
                     <div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px;">
-                        <a href="{royaleapi_link}" class="copy-btn" style="background: #38bdf8; color: #0f172a;" target="_blank">🔗 Auf RoyaleAPI öffnen & kopieren</a>
+                        <a href="{royaleapi_link}" class="copy-btn" style="background: #38bdf8; color: #0f172a;" target="_blank">🔗 {t('Auf RoyaleAPI öffnen & kopieren', 'Open & copy on RoyaleAPI')}</a>
                     </div>
                 </div>
                 """
@@ -2887,35 +2957,35 @@ def generate_html_report(
 
 
     tiers = [
-        "Sehr stark",
-        "Solide Basis",
-        "Mehr drin",
-        "Ausbaufaehig",
-        "🏖️ Abgemeldet / Im Urlaub (Pausiert)"
+        t("Sehr stark", "Very Strong"),
+        t("Solide Basis", "Solid Base"),
+        t("Mehr drin", "Underperforming"),
+        t("Ausbaufaehig", "Room to Grow"),
+        "🏖️ " + t("Abgemeldet / Im Urlaub (Pausiert)", "Logged Off / On Vacation (Paused)")
     ]
 
     table_html = ""
-    for t in tiers:
+    for tier_name in tiers:
         players_in_tier = sorted(
-            [p for p in player_stats if p["tier"] == t],
+            [p for p in player_stats if p["tier"] == tier_name],
             key=lambda x: (x["teilnahme_int"], x["fame_per_deck"], x["war_points_total"]),
             reverse=True
         )
         if players_in_tier:
             table_html += "<div class='tier-section'>"
-            table_html += f"<div class='tier-title'>{t}</div>"
+            table_html += f"<div class='tier-title'>{tier_name}</div>"
             table_html += """<table>
                 <thead>
                 <tr>
-                    <th>Spieler</th>
-                    <th>Check</th>
-                    <th>Status</th>
-                    <th>Dabei</th>
-                    <th>Deck-Nutzung</th>
-                    <th>Ø Fame/Deck</th>
-                    <th>Fame gesamt</th>
-                    <th>Trend</th>
-                    <th>🃏 Spenden</th>
+                    <th><span class="i18n-de">Spieler</span><span class="i18n-en">Player</span></th>
+                    <th><span class="i18n-de">Check</span><span class="i18n-en">Check</span></th>
+                    <th><span class="i18n-de">Status</span><span class="i18n-en">Status</span></th>
+                    <th><span class="i18n-de">Dabei</span><span class="i18n-en">Present</span></th>
+                    <th><span class="i18n-de">Deck-Nutzung</span><span class="i18n-en">Deck Usage</span></th>
+                    <th><span class="i18n-de">Ø Fame/Deck</span><span class="i18n-en">Avg Fame/Deck</span></th>
+                    <th><span class="i18n-de">Fame gesamt</span><span class="i18n-en">Total Fame</span></th>
+                    <th><span class="i18n-de">Trend</span><span class="i18n-en">Trend</span></th>
+                    <th>🃏 <span class="i18n-de">Spenden</span><span class="i18n-en">Donations</span></th>
                 </tr>
                 </thead>
                 <tbody>"""
@@ -2987,19 +3057,19 @@ def generate_html_report(
                     f"<td>{p['status']}</td>"
                     f"<td style='white-space:nowrap;'>"
                     f"<span style='font-weight:800; color:{dabei_color};'>{dabei_wars}/{dabei_total}</span>"
-                    f"<br><span style='font-size:0.75em; color:#64748b;'>Kriege aktiv</span>"
+                    f"<br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Kriege aktiv</span><span class='i18n-en'>Wars active</span></span>"
                     f"</td>"
                     f"<td style='white-space:nowrap;'>"
                     f"<span style='font-weight:800; color:{deck_color};'>{total_decks_played}/{max_decks}</span>"
-                    f"<br><span style='font-size:0.75em; color:#64748b;'>Decks gespielt</span>"
+                    f"<br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span>"
                     f"</td>"
                     f"<td style='white-space:nowrap;'>"
                     f"<span style='font-weight:800; color:{fpd_color};'>{fpd}</span>{p['leecher_warnung']}"
-                    f"<br><span style='font-size:0.75em; color:#64748b;'>Ø pro Deck</span>"
+                    f"<br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span>"
                     f"</td>"
                     f"<td style='white-space:nowrap;'>"
                     f"<span style='font-weight:700; color:#c4b5fd;'>{fame_total_str}</span>"
-                    f"<br><span style='font-size:0.75em; color:#64748b;'>30 Tage</span>"
+                    f"<br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span>"
                     f"</td>"
                     f"<td class='trend-cell'>{p['trend_str']}</td>"
                     f"<td style='color:#38bdf8; font-weight:bold;'>{spenden_block}</td>"
@@ -3060,30 +3130,30 @@ def generate_html_report(
 
         clan_overview_html = f"""
         <div class="info-box" style="border-left-color: #c084fc; background: rgba(192, 132, 252, 0.08); margin-bottom: 25px; padding: 20px 25px;">
-            <h3 style="margin-top: 0; color: #c084fc; margin-bottom: 15px; font-size: 1.2em;">🏰 Clan-Steckbrief</h3>
+            <h3 style="margin-top: 0; color: #c084fc; margin-bottom: 15px; font-size: 1.2em;">🏰 {t('Clan-Steckbrief', 'Clan Profile')}</h3>
             <div style="display: grid; grid-template-columns: repeat({'4' if local_rank else '3'}, 1fr); gap: 12px;">
                 <div style="text-align: center;">
                     <div style="font-size: 1.6em; font-weight: 800; color: #f97316;">{co.get('clan_war_trophies', 0)}</div>
-                    <div style="color: #94a3b8; font-size: 0.85em;">Kriegstrophäen</div>
+                    <div style="color: #94a3b8; font-size: 0.85em;">{t('Kriegstrophäen', 'War Trophies')}</div>
                 </div>
                 <div style="text-align: center;">
                     <div style="font-size: 1.6em; font-weight: 800; color: #38bdf8;">{co.get('donations_per_week', 0)}</div>
-                    <div style="color: #94a3b8; font-size: 0.85em;">Spenden/Woche</div>
+                    <div style="color: #94a3b8; font-size: 0.85em;">{t('Spenden/Woche', 'Donations/week')}</div>
                 </div>
                 <div style="text-align: center;">
                     <div style="font-size: 1.6em; font-weight: 800; color: #10b981;">{co.get('member_count', 0)}/50</div>
-                    <div style="color: #94a3b8; font-size: 0.85em;">Mitglieder</div>
+                    <div style="color: #94a3b8; font-size: 0.85em;">{t('Mitglieder', 'Members')}</div>
                 </div>
                 {rank_html}
             </div>
             <div style="margin-top: 12px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
                 <div style="text-align: center;">
                     <div style="font-size: 1.2em; font-weight: 700; color: #e2e8f0;">{co.get('clan_score', 0)}</div>
-                    <div style="color: #94a3b8; font-size: 0.85em;">Clan-Score</div>
+                    <div style="color: #94a3b8; font-size: 0.85em;">{t('Clan-Score', 'Clan Score')}</div>
                 </div>
                 <div style="text-align: center;">
                     <div style="font-size: 1.2em; font-weight: 700; color: #e2e8f0;">{co.get('required_trophies', 0)} 🏆</div>
-                    <div style="color: #94a3b8; font-size: 0.85em;">Min. Trophäen</div>
+                    <div style="color: #94a3b8; font-size: 0.85em;">{t('Min. Trophäen', 'Min. Trophies')}</div>
                 </div>
                 {league_html}
             </div>
@@ -3106,18 +3176,18 @@ def generate_html_report(
             royaleapi_link = f"https://royaleapi.com/decks/stats/{','.join(api_names)}"
             opp_decks_html += f"""
             <div style="margin-bottom: 30px; border-left: 3px solid #ef4444; padding-left: 16px;">
-                <h4 style="color: #fca5a5; margin: 0 0 4px 0; font-size: 1.1em;">{medal} Platz {opp['rank']} <span style="color:#64748b; font-weight:400; font-size:0.9em;">— {opp['losses']} Niederlagen / {opp['seen']} Kämpfe ({opp['loss_rate']}% Verlustrate)</span></h4>
+                <h4 style="color: #fca5a5; margin: 0 0 4px 0; font-size: 1.1em;">{medal} {t('Platz', 'Rank')} {opp['rank']} <span style="color:#64748b; font-weight:400; font-size:0.9em;">— {opp['losses']} {t('Niederlagen', 'losses')} / {opp['seen']} {t('Kämpfe', 'battles')} ({opp['loss_rate']}% {t('Verlustrate', 'loss rate')})</span></h4>
                 <div class="deck-slider">
                     <div class="deck-card">
                         <div class="archetype-badge">{opp['archetype']}</div>
                         <div class="deck-header">
-                            <h3 style="margin: 0; color: #ef4444; font-size: 1.1em; font-weight: 800;">Gegner-Deck #{opp['rank']}</h3>
+                            <h3 style="margin: 0; color: #ef4444; font-size: 1.1em; font-weight: 800;">{t('Gegner-Deck', 'Opponent Deck')} #{opp['rank']}</h3>
                             <span class="winrate" style="background: rgba(239,68,68,0.15); color: #fca5a5;">💀 {opp['loss_rate']}% Loss</span>
                         </div>
                         <div class="deck-images">{images_html}</div>
-                        <p style="font-size: 0.85em; color: #94a3b8; margin: 10px 0;">{opp['losses']} Niederlagen / {opp['seen']} Kämpfe gegen dieses Deck</p>
+                        <p style="font-size: 0.85em; color: #94a3b8; margin: 10px 0;">{opp['losses']} {t('Niederlagen', 'losses')} / {opp['seen']} {t('Kämpfe gegen dieses Deck', 'battles vs this deck')}</p>
                         <div style="margin-top: auto;">
-                            <a href="{royaleapi_link}" class="copy-btn" style="background: #ef4444; color: #fff;" target="_blank">🔗 Auf RoyaleAPI öffnen</a>
+                            <a href="{royaleapi_link}" class="copy-btn" style="background: #ef4444; color: #fff;" target="_blank">🔗 {t('Auf RoyaleAPI öffnen', 'Open on RoyaleAPI')}</a>
                         </div>
                     </div>
                 </div>
@@ -3125,9 +3195,9 @@ def generate_html_report(
             """
         opponent_meta_html = f"""
         <div style="margin-bottom: 30px;">
-            <h3 style="color: #fca5a5; margin-bottom: 8px; font-size: 1.3em;">🛡️ Top 10 Gegner-Decks</h3>
+            <h3 style="color: #fca5a5; margin-bottom: 8px; font-size: 1.3em;">🛡️ {t('Top 10 Gegner-Decks', 'Top 10 Opponent Decks')}</h3>
             <p style="color: #94a3b8; margin-top: 0; margin-bottom: 18px; font-size: 0.95em;">
-                Gegner-Decks gegen die unser Clan im Krieg am häufigsten verliert. Nutzt das als Hinweis, um eure Decks gezielt anzupassen.
+                {t('Gegner-Decks gegen die unser Clan im Krieg am häufigsten verliert. Nutzt das als Hinweis, um eure Decks gezielt anzupassen.', 'Opponent decks our clan loses to most often in war. Use as a hint to adjust your decks accordingly.')}
             </p>
             {opp_decks_html}
         </div>
