@@ -1225,7 +1225,7 @@ def render_html_template(
     clan_overview_html="",
     opponent_meta_html=""
 ):
-    return f"""
+    return f"""<!DOCTYPE html>
     <html lang="de">
     <head>
         <meta charset='utf-8'>
