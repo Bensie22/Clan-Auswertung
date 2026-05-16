@@ -7,7 +7,7 @@
     },
     {
       "name": "lori",
-      "scenario": "KEINE_TEILNAHME",
+      "scenario": "STRIKE",
       "priority": 4
     },
     {
@@ -214,7 +214,7 @@
     },
     {
       "name": "Johan",
-      "score": 89.2,
+      "score": 89.47,
       "status": "STARK"
     },
     {
@@ -333,13 +333,13 @@
       "status": "STARK"
     },
     {
-      "name": "DST",
-      "score": 81.3,
+      "name": "Nati",
+      "score": 81.2,
       "status": "STARK"
     },
     {
-      "name": "Nati",
-      "score": 81.2,
+      "name": "DST",
+      "score": 81.17,
       "status": "STARK"
     },
     {
@@ -399,7 +399,7 @@
     },
     {
       "name": "lori",
-      "score": 0.0,
+      "score": 1.73,
       "status": "RISIKO"
     },
     {
@@ -466,7 +466,7 @@
     },
     {
       "name": "Johan",
-      "score": 89.2,
+      "score": 89.47,
       "tip": "Weiter so"
     },
     {
@@ -585,13 +585,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "DST",
-      "score": 81.3,
+      "name": "Nati",
+      "score": 81.2,
       "tip": "Weiter so"
     },
     {
-      "name": "Nati",
-      "score": 81.2,
+      "name": "DST",
+      "score": 81.17,
       "tip": "Weiter so"
     },
     {
@@ -651,7 +651,7 @@
     },
     {
       "name": "lori",
-      "score": 0.0,
+      "score": 1.73,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
@@ -664,24 +664,24 @@
     "generated_from": "_prefetch.json",
     "remove": [
       {
-        "name": "lori",
-        "player_tag": "#GC2VQJVQR",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 223,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
         "name": "Devin",
         "player_tag": "#UP0G0P09L",
         "role": "member",
         "score": 0.0,
         "strikes": 0,
         "donations": 140,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "lori",
+        "player_tag": "#GC2VQJVQR",
+        "role": "member",
+        "score": 1.73,
+        "strikes": 0,
+        "donations": 259,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -705,7 +705,7 @@
         "role": "member",
         "score": 4.93,
         "strikes": 0,
-        "donations": 332,
+        "donations": 348,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -731,7 +731,7 @@
         "role": "member",
         "score": 93.73,
         "strikes": 0,
-        "donations": 410,
+        "donations": 418,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -779,7 +779,7 @@
         "role": "member",
         "score": 91.07,
         "strikes": 0,
-        "donations": 1424,
+        "donations": 1460,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -803,7 +803,7 @@
         "role": "member",
         "score": 90.26,
         "strikes": 0,
-        "donations": 122,
+        "donations": 132,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -815,7 +815,7 @@
         "role": "member",
         "score": 90.12,
         "strikes": 0,
-        "donations": 271,
+        "donations": 281,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -849,9 +849,9 @@
         "name": "Johan",
         "player_tag": "#UQVCVVVJL",
         "role": "member",
-        "score": 89.2,
+        "score": 89.47,
         "strikes": 0,
-        "donations": 153,
+        "donations": 163,
         "participation_count": 1,
         "trend": "",
         "reason": "Score über 85",
@@ -863,7 +863,7 @@
         "role": "member",
         "score": 88.9,
         "strikes": 0,
-        "donations": 302,
+        "donations": 320,
         "participation_count": 3,
         "trend": "",
         "reason": "Score über 85",
