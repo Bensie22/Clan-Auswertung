@@ -1059,16 +1059,16 @@ def calculate_teamplay_score(active_players: list[dict]) -> tuple[int, dict]:
 
 def get_player_focus(score: float, fame_per_deck: int, donations: int, is_welpenschutz: bool, current_decks: int) -> tuple[str, str]:
     if is_welpenschutz:
-        return "neu dabei", "#38bdf8"
+        return "<span class='i18n-de'>neu dabei</span><span class='i18n-en'>newcomer</span>", "#38bdf8"
     if score >= APP_CONFIG["BADGE_STARK_SCORE"] and fame_per_deck >= APP_CONFIG["BADGE_STARK_FAME"]:
-        return "⭐ stark", "#10b981"
+        return "<span class='i18n-de'>⭐ stark</span><span class='i18n-en'>⭐ strong</span>", "#10b981"
     if score >= APP_CONFIG["BADGE_STABIL_SCORE"] and fame_per_deck >= APP_CONFIG["BADGE_STABIL_FAME"]:
-        return "🛡️ stabil", "#38bdf8"
+        return "<span class='i18n-de'>🛡️ stabil</span><span class='i18n-en'>🛡️ stable</span>", "#38bdf8"
     if score < APP_CONFIG["STRIKE_THRESHOLD"]:
-        return "⚠️ ausbaufähig", "#f97316"
+        return "<span class='i18n-de'>⚠️ ausbaufähig</span><span class='i18n-en'>⚠️ room to grow</span>", "#f97316"
     if current_decks > 0 and fame_per_deck < APP_CONFIG["DROPPER_THRESHOLD"]:
-        return "👀 auffällig", "#ef4444"
-    return "🙂 solide", "#94a3b8"
+        return "<span class='i18n-de'>👀 auffällig</span><span class='i18n-en'>👀 watch</span>", "#ef4444"
+    return "<span class='i18n-de'>🙂 solide</span><span class='i18n-en'>🙂 solid</span>", "#94a3b8"
 
 
 def get_deck_archetype(cards: list) -> str:
@@ -1574,7 +1574,7 @@ def render_html_template(
 
                 <button class="accordion-btn">⚖️ {t('Regeln bei Inaktivität (❌)', 'Rules on Inactivity (❌)')}</button>
                 <div class="accordion-content">
-                    <p>Wer sich nicht abmeldet und im Clankrieg zu wenig beiträgt (zu wenig Kriege dabei oder Decks nicht gespielt), erhält sofort einen internen Hinweis (❌). Bereits ein einzelner Hinweis löst Konsequenzen aus — kein langer Vorlauf, klare Ansage.</p>
+                    <p><span class="i18n-de">Wer sich nicht abmeldet und im Clankrieg zu wenig beiträgt (zu wenig Kriege dabei oder Decks nicht gespielt), erhält sofort einen internen Hinweis (❌). Bereits ein einzelner Hinweis löst Konsequenzen aus — kein langer Vorlauf, klare Ansage.</span><span class="i18n-en">Anyone who doesn't register absence and contributes too little in the Clan War (too few wars attended or decks not played) immediately receives an internal flag (❌). Even a single flag triggers consequences — no long run-up, clear message.</span></p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th><span class="i18n-de">Spieler</span><span class="i18n-en">Player</span></th><th><span class="i18n-de">Check</span><span class="i18n-en">Check</span></th><th><span class="i18n-de">Status</span><span class="i18n-en">Status</span></th><th><span class="i18n-de">Dabei</span><span class="i18n-en">Present</span></th><th><span class="i18n-de">Deck-Nutzung</span><span class="i18n-en">Deck Usage</span></th><th><span class="i18n-de">Ø Fame/Deck</span><span class="i18n-en">Avg Fame/Deck</span></th><th><span class="i18n-de">Fame gesamt</span><span class="i18n-en">Total Fame</span></th><th><span class="i18n-de">Trend</span><span class="i18n-en">Trend</span></th><th>🃏 <span class="i18n-de">Spenden</span><span class="i18n-en">Donations</span></th></tr>
@@ -1583,21 +1583,21 @@ def render_html_template(
                         </table>
                     </div>
                     <ul>
-                        <li><b>Die zweite Chance (Degradierung):</b> Wer als <i>Anführer</i>, <i>Vize</i> oder <i>Ältester</i> einen internen Hinweis ansammelt, wird nicht sofort entfernt, sondern genau <b>eine Rang-Stufe tiefer</b> gesetzt und bekommt so eine Bewährungschance.</li>
-                        <li><b>Die letzte Stufe:</b> Wenn ein normales <i>Mitglied</i> (wie <b>Spieler B</b> oben) einen internen Hinweis erhält, trennen wir uns. So bleibt Platz für verlässliche, aktive Spieler.</li>
-                        <li><b>Wieder ins Gleichgewicht kommen:</b> Wer nach einem internen Hinweis wieder anzieht und in der Folgewoche aktiv teilnimmt und Decks spielt, baut diesen Eintrag automatisch wieder ab.</li>
+                        <li><span class="i18n-de"><b>Die zweite Chance (Degradierung):</b> Wer als <i>Anführer</i>, <i>Vize</i> oder <i>Ältester</i> einen internen Hinweis ansammelt, wird nicht sofort entfernt, sondern genau <b>eine Rang-Stufe tiefer</b> gesetzt und bekommt so eine Bewährungschance.</span><span class="i18n-en"><b>The second chance (demotion):</b> Anyone with a <i>Leader</i>, <i>Co-leader</i> or <i>Elder</i> role who accumulates an internal flag is not immediately removed, but is demoted exactly <b>one rank</b> as a probation chance.</span></li>
+                        <li><span class="i18n-de"><b>Die letzte Stufe:</b> Wenn ein normales <i>Mitglied</i> (wie <b>Spieler B</b> oben) einen internen Hinweis erhält, trennen wir uns. So bleibt Platz für verlässliche, aktive Spieler.</span><span class="i18n-en"><b>The final step:</b> If a regular <i>Member</i> (like <b>Player B</b> above) receives an internal flag, we part ways. This keeps room for reliable, active players.</span></li>
+                        <li><span class="i18n-de"><b>Wieder ins Gleichgewicht kommen:</b> Wer nach einem internen Hinweis wieder anzieht und in der Folgewoche aktiv teilnimmt und Decks spielt, baut diesen Eintrag automatisch wieder ab.</span><span class="i18n-en"><b>Getting back on track:</b> Anyone who picks up again after an internal flag and actively participates and plays their decks the following week automatically clears the flag.</span></li>
                     </ul>
                 </div>
 
                 <button class="accordion-btn">🎯 {t('Dabei & Welpenschutz (Zuverlässigkeit)', 'Attendance & Pup Protection (Reliability)')}</button>
                 <div class="accordion-content">
-                    <p>Die <b>Dabei</b>-Spalte zeigt auf einen Blick, wie zuverlässig du bist — in wie vielen der verfügbaren Kriege du aktiv dabei warst.</p>
-                    <p>Die Zahl <b>X/Y</b> bedeutet: Du warst in X von Y Kriegen aktiv dabei.</p>
+                    <p><span class="i18n-de">Die <b>Dabei</b>-Spalte zeigt auf einen Blick, wie zuverlässig du bist — in wie vielen der verfügbaren Kriege du aktiv dabei warst.</span><span class="i18n-en">The <b>Present</b> column shows at a glance how reliable you are — in how many of the available wars you were actively participating.</span></p>
+                    <p><span class="i18n-de">Die Zahl <b>X/Y</b> bedeutet: Du warst in X von Y Kriegen aktiv dabei.</span><span class="i18n-en">The number <b>X/Y</b> means: You were actively present in X out of Y wars.</span></p>
                     <ul>
-                        <li><b>Anwesenheit:</b> In wie vielen Kriegen seit deinem Beitritt warst du aktiv dabei? <br><span style="color:#94a3b8; font-size:0.9em;">Beispiel: 8/10 bedeutet du hast 8 von 10 möglichen Kriegen mitgespielt. Die Kriege vor deinem Beitritt zählen nie gegen dich.</span></li>
-                        <li><b>Farben:</b> 🟢 ≥ 80% Anwesenheit, 🟡 ≥ 50%, 🔴 unter 50%, 🔵 Welpenschutz (nur erster Clankrieg)</li>
+                        <li><span class="i18n-de"><b>Anwesenheit:</b> In wie vielen Kriegen seit deinem Beitritt warst du aktiv dabei? <br><span style="color:#94a3b8; font-size:0.9em;">Beispiel: 8/10 bedeutet du hast 8 von 10 möglichen Kriegen mitgespielt. Die Kriege vor deinem Beitritt zählen nie gegen dich.</span></span><span class="i18n-en"><b>Attendance:</b> In how many wars since you joined were you actively present? <br><span style="color:#94a3b8; font-size:0.9em;">Example: 8/10 means you participated in 8 out of 10 possible wars. Wars before you joined never count against you.</span></span></li>
+                        <li><span class="i18n-de"><b>Farben:</b> 🟢 ≥ 80% Anwesenheit, 🟡 ≥ 50%, 🔴 unter 50%, 🔵 Welpenschutz (nur erster Clankrieg)</span><span class="i18n-en"><b>Colors:</b> 🟢 ≥ 80% attendance, 🟡 ≥ 50%, 🔴 below 50%, 🔵 Pup protection (first clan war only)</span></li>
                     </ul>
-                    <p style="color:#94a3b8; font-size:0.9em;">Im Hintergrund läuft ein gewichtetes Bewertungs-System aus drei Faktoren: <b>50% Deck-Nutzung</b> (hast du alle Decks gespielt?), <b>30% Dabei-Quote</b> (warst du in den Kriegen dabei?) und <b>20% Qualität</b> (wie viele Punkte pro Deck?). Dieser Score ist die Grundlage für Strikes und Beförderungen.</p>
+                    <p style="color:#94a3b8; font-size:0.9em;"><span class="i18n-de">Im Hintergrund läuft ein gewichtetes Bewertungs-System aus drei Faktoren: <b>50% Deck-Nutzung</b> (hast du alle Decks gespielt?), <b>30% Dabei-Quote</b> (warst du in den Kriegen dabei?) und <b>20% Qualität</b> (wie viele Punkte pro Deck?). Dieser Score ist die Grundlage für Strikes und Beförderungen.</span><span class="i18n-en">Behind the scenes, a weighted scoring system runs on three factors: <b>50% Deck Usage</b> (did you play all your decks?), <b>30% Attendance Rate</b> (were you present in the wars?) and <b>20% Quality</b> (how many points per deck?). This score is the basis for strikes and promotions.</span></p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th><span class="i18n-de">Spieler</span><span class="i18n-en">Player</span></th><th><span class="i18n-de">Check</span><span class="i18n-en">Check</span></th><th><span class="i18n-de">Status</span><span class="i18n-en">Status</span></th><th><span class="i18n-de">Dabei</span><span class="i18n-en">Present</span></th><th><span class="i18n-de">Deck-Nutzung</span><span class="i18n-en">Deck Usage</span></th><th><span class="i18n-de">Ø Fame/Deck</span><span class="i18n-en">Avg Fame/Deck</span></th><th><span class="i18n-de">Fame gesamt</span><span class="i18n-en">Total Fame</span></th><th><span class="i18n-de">Trend</span><span class="i18n-en">Trend</span></th><th>🃏 <span class="i18n-de">Spenden</span><span class="i18n-en">Donations</span></th></tr>
@@ -1606,22 +1606,22 @@ def render_html_template(
                         </table>
                     </div>
                     <ul>
-                        <li><b>10/10 + Streak 🔥:</b> Perfekt dabei und alle Decks gespielt. Wer das mehrere Wochen in Folge schafft, bekommt das Flammen-Symbol (wie <b>Spieler C</b> oben mit 4 Wochen am Stück!).</li>
-                        <li><b>8/10 🟢:</b> Zwei Kriege verpasst – trotzdem guter Wert, solange die Ø Fame/Deck stimmt.</li>
-                        <li><b>5/10 🟡:</b> Genau die Hälfte dabei – mittelmäßige Anwesenheit, hier ist Luft nach oben.</li>
-                        <li><b>Welpenschutz (🌱):</b> Dein erster Clankrieg (wie <b>Spieler D</b> oben) ist geschützt — keine Strafen, keine Bewertung. Ab dem zweiten Krieg bist du vollwertiges Mitglied und wirst wie alle anderen bewertet.</li>
+                        <li><span class="i18n-de"><b>10/10 + Streak 🔥:</b> Perfekt dabei und alle Decks gespielt. Wer das mehrere Wochen in Folge schafft, bekommt das Flammen-Symbol (wie <b>Spieler C</b> oben mit 4 Wochen am Stück!).</span><span class="i18n-en"><b>10/10 + Streak 🔥:</b> Perfectly present and all decks played. Anyone who manages this for several weeks in a row gets the flame symbol (like <b>Player C</b> above with 4 weeks in a row!).</span></li>
+                        <li><span class="i18n-de"><b>8/10 🟢:</b> Zwei Kriege verpasst – trotzdem guter Wert, solange die Ø Fame/Deck stimmt.</span><span class="i18n-en"><b>8/10 🟢:</b> Two wars missed — still a good value as long as the Avg Fame/Deck is decent.</span></li>
+                        <li><span class="i18n-de"><b>5/10 🟡:</b> Genau die Hälfte dabei – mittelmäßige Anwesenheit, hier ist Luft nach oben.</span><span class="i18n-en"><b>5/10 🟡:</b> Exactly half present — mediocre attendance, room for improvement here.</span></li>
+                        <li><span class="i18n-de"><b>Welpenschutz (🌱):</b> Dein erster Clankrieg (wie <b>Spieler D</b> oben) ist geschützt — keine Strafen, keine Bewertung. Ab dem zweiten Krieg bist du vollwertiges Mitglied und wirst wie alle anderen bewertet.</span><span class="i18n-en"><b>Pup protection (🌱):</b> Your first clan war (like <b>Player D</b> above) is protected — no penalties, no scoring. From the second war onwards you are a full member and rated like everyone else.</span></li>
                     </ul>
                 </div>
 
                 <button class="accordion-btn">🃏 {t('Deck-Nutzung (Dein größter Hebel)', 'Deck Usage (Your Biggest Lever)')}</button>
                 <div class="accordion-content">
-                    <p>Die <b>Deck-Nutzung</b>-Spalte zeigt, wie viele deiner möglichen Kriegs-Decks du tatsächlich gespielt hast — das ist der <b>wichtigste Einzelfaktor</b> im Bewertungs-System (50% des Scores).</p>
-                    <p>Die Zahl <b>X/Y</b> bedeutet: Du hast X von maximal Y Decks gespielt. <br><span style="color:#94a3b8; font-size:0.9em;">Y = Anzahl der Kriege, in denen du dabei warst × 16 (= 4 Decks pro Tag × 4 Kriegstage).</span></p>
+                    <p><span class="i18n-de">Die <b>Deck-Nutzung</b>-Spalte zeigt, wie viele deiner möglichen Kriegs-Decks du tatsächlich gespielt hast — das ist der <b>wichtigste Einzelfaktor</b> im Bewertungs-System (50% des Scores).</span><span class="i18n-en">The <b>Deck Usage</b> column shows how many of your available war decks you actually played — this is the <b>most important single factor</b> in the scoring system (50% of the score).</span></p>
+                    <p><span class="i18n-de">Die Zahl <b>X/Y</b> bedeutet: Du hast X von maximal Y Decks gespielt. <br><span style="color:#94a3b8; font-size:0.9em;">Y = Anzahl der Kriege, in denen du dabei warst × 16 (= 4 Decks pro Tag × 4 Kriegstage).</span></span><span class="i18n-en">The number <b>X/Y</b> means: You played X out of a maximum of Y decks. <br><span style="color:#94a3b8; font-size:0.9em;">Y = number of wars you participated in × 16 (= 4 decks per day × 4 war days).</span></span></p>
                     <ul>
-                        <li><b>Farben:</b> 🟢 ≥ 90% gespielt, 🟡 ≥ 70%, 🔴 unter 70%</li>
-                        <li><b>Warum so wichtig?</b> Jedes nicht gespielte Deck kostet den Clan direkt Medaillen. Wer zuverlässig alle Decks einsetzt, ist für das Team wertvoller als jemand, der zwar hervorragende Einzelkämpfe liefert, aber oft Decks stehen lässt.</li>
-                        <li><b>Beispiel:</b> 160/160 🟢 = Alle Decks in allen Kriegen gespielt. Perfekt!</li>
-                        <li><b>Beispiel:</b> 95/160 🔴 = Trotz voller Anwesenheit wurden viele Decks nicht gespielt — hier liegt der größte Verbesserungshebel.</li>
+                        <li><span class="i18n-de"><b>Farben:</b> 🟢 ≥ 90% gespielt, 🟡 ≥ 70%, 🔴 unter 70%</span><span class="i18n-en"><b>Colors:</b> 🟢 ≥ 90% played, 🟡 ≥ 70%, 🔴 below 70%</span></li>
+                        <li><span class="i18n-de"><b>Warum so wichtig?</b> Jedes nicht gespielte Deck kostet den Clan direkt Medaillen. Wer zuverlässig alle Decks einsetzt, ist für das Team wertvoller als jemand, der zwar hervorragende Einzelkämpfe liefert, aber oft Decks stehen lässt.</span><span class="i18n-en"><b>Why so important?</b> Every unplayed deck directly costs the clan medals. Anyone who reliably plays all decks is more valuable to the team than someone who delivers outstanding battles but often leaves decks unused.</span></li>
+                        <li><span class="i18n-de"><b>Beispiel:</b> 160/160 🟢 = Alle Decks in allen Kriegen gespielt. Perfekt!</span><span class="i18n-en"><b>Example:</b> 160/160 🟢 = All decks played in all wars. Perfect!</span></li>
+                        <li><span class="i18n-de"><b>Beispiel:</b> 95/160 🔴 = Trotz voller Anwesenheit wurden viele Decks nicht gespielt — hier liegt der größte Verbesserungshebel.</span><span class="i18n-en"><b>Example:</b> 95/160 🔴 = Despite full attendance many decks were not played — this is where the biggest room for improvement lies.</span></li>
                     </ul>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
@@ -1631,15 +1631,15 @@ def render_html_template(
                         </table>
                     </div>
                     <ul>
-                        <li><i>Spieler X</i>: Alle 160 Decks gespielt — das ist der Idealfall. Trotz nicht außergewöhnlichem Ø Fame/Deck ist dieser Spieler ein echter Rückhalt für den Clan.</li>
-                        <li><i>Spieler Y</i>: Immer dabei, aber 65 Decks liegen gelassen. Trotz guter Kampfqualität (175 Punkte/Deck) kostet das den Score deutlich — weil jedes ungespielte Deck dem Clan fehlt.</li>
+                        <li><span class="i18n-de"><i>Spieler X</i>: Alle 160 Decks gespielt — das ist der Idealfall. Trotz nicht außergewöhnlichem Ø Fame/Deck ist dieser Spieler ein echter Rückhalt für den Clan.</span><span class="i18n-en"><i>Player X</i>: All 160 decks played — that is the ideal case. Despite a not exceptional Avg Fame/Deck, this player is a real backbone for the clan.</span></li>
+                        <li><span class="i18n-de"><i>Spieler Y</i>: Immer dabei, aber 65 Decks liegen gelassen. Trotz guter Kampfqualität (175 Punkte/Deck) kostet das den Score deutlich — weil jedes ungespielte Deck dem Clan fehlt.</span><span class="i18n-en"><i>Player Y</i>: Always present, but 65 decks left unplayed. Despite good battle quality (175 points/deck) this significantly costs the score — because every unplayed deck is missing for the clan.</span></li>
                     </ul>
                 </div>
 
                 <button class="accordion-btn">🟢🟡🔴 {t('Der Trend (Deine Konstanz)', 'The Trend (Your Consistency)')}</button>
                 <div class="accordion-content">
-                    <p>Die Ampel-Punkte zeigen deine Zuverlässigkeit der letzten <b>6 Wochen</b> auf einen Blick. Jeder Punkt steht für eine Woche, wobei der <b>Punkt ganz rechts die aktuellste Auswertung</b> ist.</p>
-                    <p style="color:#94a3b8; font-size:0.9em;">6 Wochen sind bewusst gewählt: Das Strike-System arbeitet über mehrere Wochen – der Trend soll den vollen Kontext zeigen, über den Strikes entstehen oder sich abbauen.</p>
+                    <p><span class="i18n-de">Die Ampel-Punkte zeigen deine Zuverlässigkeit der letzten <b>6 Wochen</b> auf einen Blick. Jeder Punkt steht für eine Woche, wobei der <b>Punkt ganz rechts die aktuellste Auswertung</b> ist.</span><span class="i18n-en">The traffic light dots show your reliability over the last <b>6 weeks</b> at a glance. Each dot represents a week, with the <b>rightmost dot being the most recent evaluation</b>.</span></p>
+                    <p style="color:#94a3b8; font-size:0.9em;"><span class="i18n-de">6 Wochen sind bewusst gewählt: Das Strike-System arbeitet über mehrere Wochen – der Trend soll den vollen Kontext zeigen, über den Strikes entstehen oder sich abbauen.</span><span class="i18n-en">6 weeks is a deliberate choice: the strike system works over several weeks — the trend is meant to show the full context over which strikes develop or clear up.</span></p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th><span class="i18n-de">Spieler</span><span class="i18n-en">Player</span></th><th><span class="i18n-de">Check</span><span class="i18n-en">Check</span></th><th><span class="i18n-de">Status</span><span class="i18n-en">Status</span></th><th><span class="i18n-de">Dabei</span><span class="i18n-en">Present</span></th><th><span class="i18n-de">Deck-Nutzung</span><span class="i18n-en">Deck Usage</span></th><th><span class="i18n-de">Ø Fame/Deck</span><span class="i18n-en">Avg Fame/Deck</span></th><th><span class="i18n-de">Fame gesamt</span><span class="i18n-en">Total Fame</span></th><th><span class="i18n-de">Trend</span><span class="i18n-en">Trend</span></th><th>🃏 <span class="i18n-de">Spenden</span><span class="i18n-en">Donations</span></th></tr>
@@ -1648,17 +1648,17 @@ def render_html_template(
                         </table>
                     </div>
                     <ul>
-                        <li><b>🟢 Grün (Zuverlässig):</b> Hohe Anwesenheit und Decks gut ausgespielt.</li>
-                        <li><b>🟡 Gelb (Mittelfeld):</b> Akzeptable Teilnahme, aber noch Luft nach oben.</li>
-                        <li><b>🔴 Rot (Kritisch):</b> Zu wenig Anwesenheit oder zu viele liegen gelassene Decks.</li>
-                        <li><i>Beispiel Spieler E:</i> War früher stark, aber die letzten vier Wochen gehen zunehmend nach unten – das ist genau der Kontext, den das Strike-System benötigt.</li>
-                        <li><i>Beispiel Spieler F:</i> Hat sich nach einem schwachen Start klar erholt. Drei grüne Wochen in Folge rechts zeigen, dass der Trend stimmt.</li>
+                        <li><span class="i18n-de"><b>🟢 Grün (Zuverlässig):</b> Hohe Anwesenheit und Decks gut ausgespielt.</span><span class="i18n-en"><b>🟢 Green (Reliable):</b> High attendance and decks well played.</span></li>
+                        <li><span class="i18n-de"><b>🟡 Gelb (Mittelfeld):</b> Akzeptable Teilnahme, aber noch Luft nach oben.</span><span class="i18n-en"><b>🟡 Yellow (Mid-range):</b> Acceptable participation, but still room to grow.</span></li>
+                        <li><span class="i18n-de"><b>🔴 Rot (Kritisch):</b> Zu wenig Anwesenheit oder zu viele liegen gelassene Decks.</span><span class="i18n-en"><b>🔴 Red (Critical):</b> Too little attendance or too many unplayed decks.</span></li>
+                        <li><span class="i18n-de"><i>Beispiel Spieler E:</i> War früher stark, aber die letzten vier Wochen gehen zunehmend nach unten – das ist genau der Kontext, den das Strike-System benötigt.</span><span class="i18n-en"><i>Example Player E:</i> Was strong before, but the last four weeks are increasingly going downwards — this is exactly the context the strike system needs.</span></li>
+                        <li><span class="i18n-de"><i>Beispiel Spieler F:</i> Hat sich nach einem schwachen Start klar erholt. Drei grüne Wochen in Folge rechts zeigen, dass der Trend stimmt.</span><span class="i18n-en"><i>Example Player F:</i> Has clearly recovered after a weak start. Three consecutive green weeks on the right show that the trend is correct.</span></li>
                     </ul>
                 </div>
 
                 <button class="accordion-btn">🏷️ {t('Check-Spalte (Orientierung)', 'Check Column (Orientation)')}</button>
                 <div class="accordion-content">
-                    <p>Die <b>Check</b>-Spalte ist eine kurze, leicht lesbare Orientierung auf einen Blick. Sie ersetzt keine Zahlen, sondern hilft nur dabei, Spieler schneller einzuordnen.</p>
+                    <p><span class="i18n-de">Die <b>Check</b>-Spalte ist eine kurze, leicht lesbare Orientierung auf einen Blick. Sie ersetzt keine Zahlen, sondern hilft nur dabei, Spieler schneller einzuordnen.</span><span class="i18n-en">The <b>Check</b> column is a short, easily readable orientation at a glance. It doesn't replace numbers, but only helps to classify players more quickly.</span></p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th><span class="i18n-de">Spieler</span><span class="i18n-en">Player</span></th><th><span class="i18n-de">Check</span><span class="i18n-en">Check</span></th><th><span class="i18n-de">Status</span><span class="i18n-en">Status</span></th><th><span class="i18n-de">Dabei</span><span class="i18n-en">Present</span></th><th><span class="i18n-de">Deck-Nutzung</span><span class="i18n-en">Deck Usage</span></th><th><span class="i18n-de">Ø Fame/Deck</span><span class="i18n-en">Avg Fame/Deck</span></th><th><span class="i18n-de">Fame gesamt</span><span class="i18n-en">Total Fame</span></th><th><span class="i18n-de">Trend</span><span class="i18n-en">Trend</span></th><th>🃏 <span class="i18n-de">Spenden</span><span class="i18n-en">Donations</span></th></tr>
@@ -1671,19 +1671,19 @@ def render_html_template(
                         </table>
                     </div>
                     <ul>
-                        <li><b>⭐ stark:</b> Sehr verlässlich und gleichzeitig stark bei den Punkten pro Deck.</li>
-                        <li><b>🛡️ stabil:</b> Gute, solide Leistung ohne große Schwächen. Genau solche Spieler tragen einen Clan langfristig.</li>
-                        <li><b>🙂 solide:</b> Nicht auffällig schlecht, aber auch noch nicht ganz oben. Hier ist noch Luft nach oben.</li>
-                        <li><b>👀 auffällig:</b> Die Teilnahme kann okay sein, aber die Punkte pro Deck fallen gerade eher schwach aus. Hier lohnt ein genauerer Blick.</li>
-                        <li><b>⚠️ ausbaufähig:</b> Die Teilnahme ist im Moment klar verbesserungswürdig. Diese Spieler liegen beim Score schon im unteren Bereich.</li>
-                        <li><b>neu dabei:</b> Spieler befindet sich im ersten Clankrieg (Welpenschutz). Ab dem zweiten Krieg gilt die volle Bewertung.</li>
+                        <li><span class="i18n-de"><b>⭐ stark:</b> Sehr verlässlich und gleichzeitig stark bei den Punkten pro Deck.</span><span class="i18n-en"><b>⭐ strong:</b> Very reliable and at the same time strong in points per deck.</span></li>
+                        <li><span class="i18n-de"><b>🛡️ stabil:</b> Gute, solide Leistung ohne große Schwächen. Genau solche Spieler tragen einen Clan langfristig.</span><span class="i18n-en"><b>🛡️ stable:</b> Good, solid performance without major weaknesses. Exactly these players carry a clan in the long run.</span></li>
+                        <li><span class="i18n-de"><b>🙂 solide:</b> Nicht auffällig schlecht, aber auch noch nicht ganz oben. Hier ist noch Luft nach oben.</span><span class="i18n-en"><b>🙂 solid:</b> Not noticeably bad, but not quite at the top either. There is still room for improvement.</span></li>
+                        <li><span class="i18n-de"><b>👀 auffällig:</b> Die Teilnahme kann okay sein, aber die Punkte pro Deck fallen gerade eher schwach aus. Hier lohnt ein genauerer Blick.</span><span class="i18n-en"><b>👀 watch:</b> Participation may be okay, but the points per deck are currently rather weak. A closer look is worthwhile here.</span></li>
+                        <li><span class="i18n-de"><b>⚠️ ausbaufähig:</b> Die Teilnahme ist im Moment klar verbesserungswürdig. Diese Spieler liegen beim Score schon im unteren Bereich.</span><span class="i18n-en"><b>⚠️ room to grow:</b> Participation is clearly in need of improvement at the moment. These players are already in the lower range of the score.</span></li>
+                        <li><span class="i18n-de"><b>neu dabei:</b> Spieler befindet sich im ersten Clankrieg (Welpenschutz). Ab dem zweiten Krieg gilt die volle Bewertung.</span><span class="i18n-en"><b>newcomer:</b> Player is in their first clan war (pup protection). From the second war onwards the full scoring applies.</span></li>
                     </ul>
                 </div>
 
                 <button class="accordion-btn">⚔️ {t('Ø Punkte (Der Qualitäts-Check)', 'Avg Points (The Quality Check)')}</button>
                 <div class="accordion-content">
-                    <p>Hier schauen wir, wie effektiv du deine Decks einsetzt. Das System teilt deine gesammelten Kriegspunkte durch die Anzahl deiner gespielten Decks – und das als <b>rollierender Schnitt über die letzten 3–4 Kriege</b>.</p>
-                    <p style="color:#94a3b8; font-size:0.9em;">Warum mehrere Kriege? Ein einzelner Krieg kann durch starke oder schwache Gegner verzerrt sein. Der Schnitt über 3–4 Wochen gibt ein faireres, stabileres Bild deiner tatsächlichen Kampfqualität.</p>
+                    <p><span class="i18n-de">Hier schauen wir, wie effektiv du deine Decks einsetzt. Das System teilt deine gesammelten Kriegspunkte durch die Anzahl deiner gespielten Decks – und das als <b>rollierender Schnitt über die letzten 3–4 Kriege</b>.</span><span class="i18n-en">Here we look at how effectively you use your decks. The system divides your total war points by the number of decks you played — as a <b>rolling average over the last 3–4 wars</b>.</span></p>
+                    <p style="color:#94a3b8; font-size:0.9em;"><span class="i18n-de">Warum mehrere Kriege? Ein einzelner Krieg kann durch starke oder schwache Gegner verzerrt sein. Der Schnitt über 3–4 Wochen gibt ein faireres, stabileres Bild deiner tatsächlichen Kampfqualität.</span><span class="i18n-en">Why multiple wars? A single war can be skewed by strong or weak opponents. The average over 3–4 weeks gives a fairer, more stable picture of your actual battle quality.</span></p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th><span class="i18n-de">Spieler</span><span class="i18n-en">Player</span></th><th><span class="i18n-de">Check</span><span class="i18n-en">Check</span></th><th><span class="i18n-de">Status</span><span class="i18n-en">Status</span></th><th><span class="i18n-de">Dabei</span><span class="i18n-en">Present</span></th><th><span class="i18n-de">Deck-Nutzung</span><span class="i18n-en">Deck Usage</span></th><th><span class="i18n-de">Ø Fame/Deck</span><span class="i18n-en">Avg Fame/Deck</span></th><th><span class="i18n-de">Fame gesamt</span><span class="i18n-en">Total Fame</span></th><th><span class="i18n-de">Trend</span><span class="i18n-en">Trend</span></th><th>🃏 <span class="i18n-de">Spenden</span><span class="i18n-en">Donations</span></th></tr>
@@ -1691,30 +1691,28 @@ def render_html_template(
                         </table>
                     </div>
                     <ul>
-                        <li><b>Orientierungswerte:</b> Ein normaler Spieler mit einem Mix aus Siegen und Niederlagen landet bei etwa <b>162 Punkten pro Deck</b>. Wer fast alle Kämpfe gewinnt kommt auf bis zu <b>225</b>. Wer fast alles verliert landet bei etwa <b>112</b>.</li>
-                        <li><b>⚠️ Auffälliger Bereich (&lt; 130 Punkte):</b> Wer dauerhaft unter 130 liegt, kämpft deutlich schlechter als ein normaler Spieler. Häufige Ursachen: Bootsangriffe statt normaler Kämpfe, oder konsequent schlechte Decks. Duelle sind besonders lukrativ – ein 2-0 Duellsieg bringt ~250 Punkte pro Spiel.</li>
-                        <li><b>Ein einzelner schwacher Krieg reicht nicht für eine Warnung:</b> Der Schnitt läuft über die letzten 3–4 Kriege. Ausreißer durch Pech beim Matchmaking werden so herausgefiltert.</li>
+                        <li><span class="i18n-de"><b>Orientierungswerte:</b> Ein normaler Spieler mit einem Mix aus Siegen und Niederlagen landet bei etwa <b>162 Punkten pro Deck</b>. Wer fast alle Kämpfe gewinnt kommt auf bis zu <b>225</b>. Wer fast alles verliert landet bei etwa <b>112</b>.</span><span class="i18n-en"><b>Reference values:</b> A normal player with a mix of wins and losses lands at around <b>162 points per deck</b>. Those who win almost all battles reach up to <b>225</b>. Those who lose almost everything land at around <b>112</b>.</span></li>
+                        <li><span class="i18n-de"><b>⚠️ Auffälliger Bereich (&lt; 130 Punkte):</b> Wer dauerhaft unter 130 liegt, kämpft deutlich schlechter als ein normaler Spieler. Häufige Ursachen: Bootsangriffe statt normaler Kämpfe, oder konsequent schlechte Decks. Duelle sind besonders lukrativ – ein 2-0 Duellsieg bringt ~250 Punkte pro Spiel.</span><span class="i18n-en"><b>⚠️ Notable range (&lt; 130 points):</b> Anyone consistently below 130 fights significantly worse than a normal player. Common causes: boat attacks instead of regular battles, or consistently poor decks. Duels are particularly lucrative — a 2-0 duel win gives ~250 points per game.</span></li>
+                        <li><span class="i18n-de"><b>Ein einzelner schwacher Krieg reicht nicht für eine Warnung:</b> Der Schnitt läuft über die letzten 3–4 Kriege. Ausreißer durch Pech beim Matchmaking werden so herausgefiltert.</span><span class="i18n-en"><b>A single weak war is not enough for a warning:</b> The average runs over the last 3–4 wars. Outliers due to bad matchmaking luck are filtered out this way.</span></li>
                     </ul>
                 </div>
 
                 <button class="accordion-btn">📊 {t('Clan-Durchschnitt & ⚔️ Clan-Ø Punkte', 'Clan Average & ⚔️ Clan Avg Points')}</button>
                 <div class="accordion-content">
-                    <p>In der Übersicht seht ihr zwei Clan-Werte, die absichtlich zwei verschiedene Fragen beantworten: <b>Wie zuverlässig spielen wir unsere Decks aus?</b> und <b>wie stark kämpfen wir pro Deck?</b></p>
+                    <p><span class="i18n-de">In der Übersicht seht ihr zwei Clan-Werte, die absichtlich zwei verschiedene Fragen beantworten: <b>Wie zuverlässig spielen wir unsere Decks aus?</b> und <b>wie stark kämpfen wir pro Deck?</b></span><span class="i18n-en">In the overview you see two clan values that intentionally answer two different questions: <b>How reliably do we play our decks?</b> and <b>how strongly do we fight per deck?</b></span></p>
                     <ul>
-                        <li><b>📈 Clan-Durchschnitt:</b> Zeigt den Durchschnitt des gewichteten Scores aller aktiven Mitglieder (50% Deck-Nutzung, 30% Anwesenheit, 20% Kampfqualität).
-                        Beispiel: <b>90%+</b> ist stark, weil fast alle ihre Decks sauber spielen. Ein Wert um <b>60%</b> oder darunter zeigt, dass dem Clan viele Decks fehlen.</li>
-                        <li><b>⚔️ Clan-Ø Punkte:</b> Dieser Wert teilt die <b>gesamten aktuellen Kriegspunkte</b> des Clans durch die <b>gesamt gespielten Decks</b> der aktiven Mitglieder. Er zeigt also, wie stark der Clan pro eingesetztem Deck kämpft.
-                        Beispiel: Ein Wert von <b>185+</b> ist stark (viele Siege). <b>162</b> ist ein solider Durchschnitt. Werte unter <b>130</b> sind auffällig schwach und deuten auf Bootsangriffe oder viele Niederlagen hin.</li>
-                        <li><b>Verteilungsampel (🟢 🟡 🔴):</b> Direkt unter dem Clan-Ø Punkte-Wert seht ihr wie viele aktive Spieler in welchem Bereich liegen: 🟢 stark (≥ 162 Punkte/Deck), 🟡 solide (130–161), 🔴 auffällig (&lt; 130). So sieht man auf einen Blick, ob ein niedriger Clan-Wert an wenigen Ausreißern oder am gesamten Clan liegt.</li>
-                        <li><b>Trend-Pfeil (▲ / ▼):</b> Zeigt die Veränderung des Clan-Ø Punkte-Werts gegenüber der Vorwoche. Erscheint ab dem zweiten Weekly Run nach einem Update.</li>
-                        <li><b>Unterschied:</b> Ein hoher Clan-Durchschnitt heißt, dass viele Leute ihre Decks spielen. Ein hoher Clan-Ø Punkte heißt, dass diese Decks auch qualitativ gute Punkte holen. Beides zusammen ist ideal.</li>
-                        <li><b>Die Urlaubs-Regel:</b> Wenn jemand offiziell im Urlaub (🏖️) ist und pausiert, wird er aus beiden Clan-Werten komplett herausgenommen.</li>
+                        <li><span class="i18n-de"><b>📈 Clan-Durchschnitt:</b> Zeigt den Durchschnitt des gewichteten Scores aller aktiven Mitglieder (50% Deck-Nutzung, 30% Anwesenheit, 20% Kampfqualität). Beispiel: <b>90%+</b> ist stark, weil fast alle ihre Decks sauber spielen. Ein Wert um <b>60%</b> oder darunter zeigt, dass dem Clan viele Decks fehlen.</span><span class="i18n-en"><b>📈 Clan Average:</b> Shows the average of the weighted score of all active members (50% deck usage, 30% attendance, 20% battle quality). Example: <b>90%+</b> is strong because almost everyone plays their decks cleanly. A value around <b>60%</b> or below shows that the clan is missing many decks.</span></li>
+                        <li><span class="i18n-de"><b>⚔️ Clan-Ø Punkte:</b> Dieser Wert teilt die <b>gesamten aktuellen Kriegspunkte</b> des Clans durch die <b>gesamt gespielten Decks</b> der aktiven Mitglieder. Er zeigt also, wie stark der Clan pro eingesetztem Deck kämpft. Beispiel: Ein Wert von <b>185+</b> ist stark (viele Siege). <b>162</b> ist ein solider Durchschnitt. Werte unter <b>130</b> sind auffällig schwach und deuten auf Bootsangriffe oder viele Niederlagen hin.</span><span class="i18n-en"><b>⚔️ Clan Avg Points:</b> This value divides the <b>total current war points</b> of the clan by the <b>total decks played</b> by active members. It shows how strongly the clan fights per deployed deck. Example: A value of <b>185+</b> is strong (many wins). <b>162</b> is a solid average. Values below <b>130</b> are notably weak and indicate boat attacks or many losses.</span></li>
+                        <li><span class="i18n-de"><b>Verteilungsampel (🟢 🟡 🔴):</b> Direkt unter dem Clan-Ø Punkte-Wert seht ihr wie viele aktive Spieler in welchem Bereich liegen: 🟢 stark (≥ 162 Punkte/Deck), 🟡 solide (130–161), 🔴 auffällig (&lt; 130). So sieht man auf einen Blick, ob ein niedriger Clan-Wert an wenigen Ausreißern oder am gesamten Clan liegt.</span><span class="i18n-en"><b>Distribution traffic light (🟢 🟡 🔴):</b> Directly below the Clan Avg Points value you can see how many active players are in which range: 🟢 strong (≥ 162 points/deck), 🟡 solid (130–161), 🔴 notable (&lt; 130). This shows at a glance whether a low clan value is due to a few outliers or the entire clan.</span></li>
+                        <li><span class="i18n-de"><b>Trend-Pfeil (▲ / ▼):</b> Zeigt die Veränderung des Clan-Ø Punkte-Werts gegenüber der Vorwoche. Erscheint ab dem zweiten Weekly Run nach einem Update.</span><span class="i18n-en"><b>Trend arrow (▲ / ▼):</b> Shows the change of the Clan Avg Points value compared to the previous week. Appears from the second weekly run after an update.</span></li>
+                        <li><span class="i18n-de"><b>Unterschied:</b> Ein hoher Clan-Durchschnitt heißt, dass viele Leute ihre Decks spielen. Ein hoher Clan-Ø Punkte heißt, dass diese Decks auch qualitativ gute Punkte holen. Beides zusammen ist ideal.</span><span class="i18n-en"><b>Difference:</b> A high Clan Average means that many people play their decks. A high Clan Avg Points means that these decks also score good quality points. Both together is ideal.</span></li>
+                        <li><span class="i18n-de"><b>Die Urlaubs-Regel:</b> Wenn jemand offiziell im Urlaub (🏖️) ist und pausiert, wird er aus beiden Clan-Werten komplett herausgenommen.</span><span class="i18n-en"><b>The vacation rule:</b> When someone is officially on vacation (🏖️) and pausing, they are completely removed from both clan values.</span></li>
                     </ul>
                 </div>
 
                 <button class="accordion-btn">🃏 {t('Spenden-Verhalten (Teamplay)', 'Donation Behavior (Teamplay)')}</button>
                 <div class="accordion-content">
-                    <p>Ein starker Clan hilft sich gegenseitig beim Leveln der Karten. Deshalb schauen wir auch auf das Spendenverhalten im Clan.</p>
+                    <p><span class="i18n-de">Ein starker Clan hilft sich gegenseitig beim Leveln der Karten. Deshalb schauen wir auch auf das Spendenverhalten im Clan.</span><span class="i18n-en">A strong clan helps each other leveling up cards. That is why we also look at donation behavior in the clan.</span></p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th><span class="i18n-de">Spieler</span><span class="i18n-en">Player</span></th><th><span class="i18n-de">Check</span><span class="i18n-en">Check</span></th><th><span class="i18n-de">Status</span><span class="i18n-en">Status</span></th><th><span class="i18n-de">Dabei</span><span class="i18n-en">Present</span></th><th><span class="i18n-de">Deck-Nutzung</span><span class="i18n-en">Deck Usage</span></th><th><span class="i18n-de">Ø Fame/Deck</span><span class="i18n-en">Avg Fame/Deck</span></th><th><span class="i18n-de">Fame gesamt</span><span class="i18n-en">Total Fame</span></th><th><span class="i18n-de">Trend</span><span class="i18n-en">Trend</span></th><th>🃏 <span class="i18n-de">Spenden</span><span class="i18n-en">Donations</span></th></tr>
@@ -1723,70 +1721,70 @@ def render_html_template(
                         </table>
                     </div>
                     <ul>
-                        <li><b>📦 Spenden auffällig:</b> Jemand fordert regelmäßig Karten an, spendet aber selbst nichts zurück.</li>
-                        <li><b>💤 Spenden inaktiv:</b> Jemand spendet nicht und fordert auch nichts an.</li>
-                        <li><b>Wichtig:</b> Diese Hinweise sollen nicht bloßstellen, sondern zeigen, wo im Clan noch etwas mehr Mitziehen helfen würde.</li>
+                        <li><span class="i18n-de"><b>📦 Spenden auffällig:</b> Jemand fordert regelmäßig Karten an, spendet aber selbst nichts zurück.</span><span class="i18n-en"><b>📦 Notable donations:</b> Someone regularly requests cards but donates nothing back.</span></li>
+                        <li><span class="i18n-de"><b>💤 Spenden inaktiv:</b> Jemand spendet nicht und fordert auch nichts an.</span><span class="i18n-en"><b>💤 Donations inactive:</b> Someone does not donate and does not request anything either.</span></li>
+                        <li><span class="i18n-de"><b>Wichtig:</b> Diese Hinweise sollen nicht bloßstellen, sondern zeigen, wo im Clan noch etwas mehr Mitziehen helfen würde.</span><span class="i18n-en"><b>Important:</b> These notes are not meant to expose anyone, but to show where a little more participation in the clan would help.</span></li>
                     </ul>
                 </div>
 
                 <button class="accordion-btn">🔧 {t('Tools', 'Tools')}</button>
                 <div class="accordion-content">
                     <ul>
-                        <li><b><a href="https://deckai.app/" target="_blank" style="color: #38bdf8;">DeckAI</a></b> — Analyse- und Deckbau-Tool für Clash Royale. Hilft beim Bewerten von Decks, zeigt Matchups, schlägt Kartenwechsel vor, erstelle einen optimierten Satz Clan-War-Decks mit deinen besten Karten und Vorlieben (Beatdown, Cycle, Control, Bridge Spam, Siege, Bait) und gibt Hinweise zu sinnvollen Upgrades. Nützlich für Spieler, die ihre Decks verbessern und gezielter für Ladder, Duelle und Clan-Krieg bauen wollen.</li>
-                        <li><b><a href="https://www.noff.gg/clash-royale/" target="_blank" style="color: #38bdf8;">NOFF</a></b> — In der Art wie DeckAI, nur in Englisch.</li>
+                        <li><b><a href="https://deckai.app/" target="_blank" style="color: #38bdf8;">DeckAI</a></b> — <span class="i18n-de">Analyse- und Deckbau-Tool für Clash Royale. Hilft beim Bewerten von Decks, zeigt Matchups, schlägt Kartenwechsel vor, erstelle einen optimierten Satz Clan-War-Decks mit deinen besten Karten und Vorlieben (Beatdown, Cycle, Control, Bridge Spam, Siege, Bait) und gibt Hinweise zu sinnvollen Upgrades. Nützlich für Spieler, die ihre Decks verbessern und gezielter für Ladder, Duelle und Clan-Krieg bauen wollen.</span><span class="i18n-en">Analysis and deck-building tool for Clash Royale. Helps evaluate decks, shows matchups, suggests card swaps, creates an optimized set of Clan War decks with your best cards and preferences (Beatdown, Cycle, Control, Bridge Spam, Siege, Bait) and gives hints for useful upgrades. Useful for players who want to improve their decks and build more purposefully for Ladder, Duels and Clan War.</span></li>
+                        <li><b><a href="https://www.noff.gg/clash-royale/" target="_blank" style="color: #38bdf8;">NOFF</a></b> — <span class="i18n-de">In der Art wie DeckAI, nur in Englisch.</span><span class="i18n-en">Similar to DeckAI, but in English.</span></li>
                     </ul>
                 </div>
 
                 <button class="accordion-btn">⚔️ {t('Clash Royale Angriffsarten', 'Clash Royale Attack Types')}</button>
                 <div class="accordion-content">
-                    <p>Diese Decks repräsentieren die Kerntaktiken der jeweiligen Angriffsarten. Je nach aktueller „Meta" können einzelne Karten variieren, aber das strategische Prinzip bleibt gleich.</p>
+                    <p><span class="i18n-de">Diese Decks repräsentieren die Kerntaktiken der jeweiligen Angriffsarten. Je nach aktueller „Meta" können einzelne Karten variieren, aber das strategische Prinzip bleibt gleich.</span><span class="i18n-en">These decks represent the core tactics of the respective attack types. Depending on the current "meta", individual cards may vary, but the strategic principle remains the same.</span></p>
 
-                    <h4 style="color: #f97316; margin-top: 18px;">1. Beatdown (Der Dampfwalzen-Angriff)</h4>
-                    <p>Das Ziel ist ein massiver Angriff mit einem Tank an der Spitze, der kaum aufzuhalten ist.</p>
+                    <h4 style="color: #f97316; margin-top: 18px;"><span class="i18n-de">1. Beatdown (Der Dampfwalzen-Angriff)</span><span class="i18n-en">1. Beatdown (The Steamroller Push)</span></h4>
+                    <p><span class="i18n-de">Das Ziel ist ein massiver Angriff mit einem Tank an der Spitze, der kaum aufzuhalten ist.</span><span class="i18n-en">The goal is a massive attack with a tank at the front that is nearly unstoppable.</span></p>
                     <ul>
-                        <li><b>Vorgehensweise:</b> Ein Tank mit hohen Trefferpunkten wird hinten platziert, um Elixier für Unterstützungstruppen zu sammeln.</li>
-                        <li><b>Beispiel-Deck (Golem Night Witch):</b> Golem, Nachthexe, Baby-Drache, Blitzeinschlag, Der Stamm (Log), Tornado, Holzfäller, Megaminion.
-                        <br><a href="https://royaleapi.com/decks/stats/golem,night-witch,baby-dragon,lightning,the-log,tornado,lumberjack,mega-minion" target="_blank" style="color: #38bdf8;">🔗 Auf RoyaleAPI öffnen</a></li>
+                        <li><span class="i18n-de"><b>Vorgehensweise:</b> Ein Tank mit hohen Trefferpunkten wird hinten platziert, um Elixier für Unterstützungstruppen zu sammeln.</span><span class="i18n-en"><b>Approach:</b> A tank with high hit points is placed at the back to collect elixir for support troops.</span></li>
+                        <li><span class="i18n-de"><b>Beispiel-Deck (Golem Night Witch):</b> Golem, Nachthexe, Baby-Drache, Blitzeinschlag, Der Stamm (Log), Tornado, Holzfäller, Megaminion.</span><span class="i18n-en"><b>Example deck (Golem Night Witch):</b> Golem, Night Witch, Baby Dragon, Lightning, The Log, Tornado, Lumberjack, Mega Minion.</span>
+                        <br><a href="https://royaleapi.com/decks/stats/golem,night-witch,baby-dragon,lightning,the-log,tornado,lumberjack,mega-minion" target="_blank" style="color: #38bdf8;">🔗 <span class="i18n-de">Auf RoyaleAPI öffnen</span><span class="i18n-en">Open on RoyaleAPI</span></a></li>
                     </ul>
 
-                    <h4 style="color: #f97316; margin-top: 18px;">2. Cycle / Chip Damage (Die Nadelstiche)</h4>
-                    <p>Man versucht, den gegnerischen Turm durch viele schnelle, kostengünstige Angriffe langsam zu zermürben.</p>
+                    <h4 style="color: #f97316; margin-top: 18px;"><span class="i18n-de">2. Cycle / Chip Damage (Die Nadelstiche)</span><span class="i18n-en">2. Cycle / Chip Damage (The Pinpricks)</span></h4>
+                    <p><span class="i18n-de">Man versucht, den gegnerischen Turm durch viele schnelle, kostengünstige Angriffe langsam zu zermürben.</span><span class="i18n-en">The goal is to slowly wear down the opponent's tower through many quick, cheap attacks.</span></p>
                     <ul>
-                        <li><b>Vorgehensweise:</b> Schnelle Kartenrotation, um die eigene Win-Condition öfter auszuspielen, als der Gegner kontern kann.</li>
-                        <li><b>Beispiel-Deck (2.6 Hog Cycle):</b> Hog Rider, Eisgeist, Skelette, Eis-Golem, Kanone, Feuerball, Der Stamm (Log), Musketierin.
-                        <br><a href="https://royaleapi.com/decks/stats/hog-rider,ice-spirit,skeletons,ice-golem,cannon,fireball,the-log,musketeer" target="_blank" style="color: #38bdf8;">🔗 Auf RoyaleAPI öffnen</a></li>
+                        <li><span class="i18n-de"><b>Vorgehensweise:</b> Schnelle Kartenrotation, um die eigene Win-Condition öfter auszuspielen, als der Gegner kontern kann.</span><span class="i18n-en"><b>Approach:</b> Fast card rotation to play your win condition more often than the opponent can counter.</span></li>
+                        <li><span class="i18n-de"><b>Beispiel-Deck (2.6 Hog Cycle):</b> Hog Rider, Eisgeist, Skelette, Eis-Golem, Kanone, Feuerball, Der Stamm (Log), Musketierin.</span><span class="i18n-en"><b>Example deck (2.6 Hog Cycle):</b> Hog Rider, Ice Spirit, Skeletons, Ice Golem, Cannon, Fireball, The Log, Musketeer.</span>
+                        <br><a href="https://royaleapi.com/decks/stats/hog-rider,ice-spirit,skeletons,ice-golem,cannon,fireball,the-log,musketeer" target="_blank" style="color: #38bdf8;">🔗 <span class="i18n-de">Auf RoyaleAPI öffnen</span><span class="i18n-en">Open on RoyaleAPI</span></a></li>
                     </ul>
 
-                    <h4 style="color: #f97316; margin-top: 18px;">3. Control / Counter-Push (Aus der Defensive glänzen)</h4>
-                    <p>Ein reaktiver Stil, bei dem die überlebenden Verteidigungstruppen sofort zum Gegenangriff genutzt werden.</p>
+                    <h4 style="color: #f97316; margin-top: 18px;"><span class="i18n-de">3. Control / Counter-Push (Aus der Defensive glänzen)</span><span class="i18n-en">3. Control / Counter-Push (Shine From Defense)</span></h4>
+                    <p><span class="i18n-de">Ein reaktiver Stil, bei dem die überlebenden Verteidigungstruppen sofort zum Gegenangriff genutzt werden.</span><span class="i18n-en">A reactive style where surviving defensive troops are immediately used for a counter-attack.</span></p>
                     <ul>
-                        <li><b>Vorgehensweise:</b> Den Gegner effizient abwehren und den daraus resultierenden Elixier-Vorteil bestrafen.</li>
-                        <li><b>Beispiel-Deck (P.E.K.K.A. Bridge Spam):</b> P.E.K.K.A., Kampfholzfäller, Königsgeist, Magieschütze, Kampframme, Gift, Zap, Elektromagier.
-                        <br><a href="https://royaleapi.com/decks/stats/pekka,lumberjack,royal-ghost,magic-archer,battle-ram,poison,zap,electro-wizard" target="_blank" style="color: #38bdf8;">🔗 Auf RoyaleAPI öffnen</a></li>
+                        <li><span class="i18n-de"><b>Vorgehensweise:</b> Den Gegner effizient abwehren und den daraus resultierenden Elixier-Vorteil bestrafen.</span><span class="i18n-en"><b>Approach:</b> Defend against the opponent efficiently and punish the resulting elixir advantage.</span></li>
+                        <li><span class="i18n-de"><b>Beispiel-Deck (P.E.K.K.A. Bridge Spam):</b> P.E.K.K.A., Kampfholzfäller, Königsgeist, Magieschütze, Kampframme, Gift, Zap, Elektromagier.</span><span class="i18n-en"><b>Example deck (P.E.K.K.A. Bridge Spam):</b> P.E.K.K.A., Lumberjack, Royal Ghost, Magic Archer, Battle Ram, Poison, Zap, Electro Wizard.</span>
+                        <br><a href="https://royaleapi.com/decks/stats/pekka,lumberjack,royal-ghost,magic-archer,battle-ram,poison,zap,electro-wizard" target="_blank" style="color: #38bdf8;">🔗 <span class="i18n-de">Auf RoyaleAPI öffnen</span><span class="i18n-en">Open on RoyaleAPI</span></a></li>
                     </ul>
 
-                    <h4 style="color: #f97316; margin-top: 18px;">4. Bridge Spam (Tempo-Druck)</h4>
-                    <p>Truppen werden direkt an der Brücke platziert, um den Gegner zu sofortigen und oft hektischen Reaktionen zu zwingen.</p>
+                    <h4 style="color: #f97316; margin-top: 18px;"><span class="i18n-de">4. Bridge Spam (Tempo-Druck)</span><span class="i18n-en">4. Bridge Spam (Tempo Pressure)</span></h4>
+                    <p><span class="i18n-de">Truppen werden direkt an der Brücke platziert, um den Gegner zu sofortigen und oft hektischen Reaktionen zu zwingen.</span><span class="i18n-en">Troops are placed directly at the bridge to force the opponent into immediate and often hectic reactions.</span></p>
                     <ul>
-                        <li><b>Vorgehensweise:</b> Karten mit hoher Geschwindigkeit nutzen, sobald der Gegner wenig Elixier hat oder eine teure Karte hinten spielt.</li>
-                        <li><b>Beispiel-Deck (Ram Rider Spam):</b> Ram Rider, Dunkler Prinz, Banditin, Infernodrache, Elektro-Geist, Barbarenfass, Riesenschneeball, Blitz.
-                        <br><a href="https://royaleapi.com/decks/stats/ram-rider,dark-prince,bandit,inferno-dragon,electro-spirit,barbarian-barrel,giant-snowball,lightning" target="_blank" style="color: #38bdf8;">🔗 Auf RoyaleAPI öffnen</a></li>
+                        <li><span class="i18n-de"><b>Vorgehensweise:</b> Karten mit hoher Geschwindigkeit nutzen, sobald der Gegner wenig Elixier hat oder eine teure Karte hinten spielt.</span><span class="i18n-en"><b>Approach:</b> Use high-speed cards as soon as the opponent has little elixir or plays an expensive card at the back.</span></li>
+                        <li><span class="i18n-de"><b>Beispiel-Deck (Ram Rider Spam):</b> Ram Rider, Dunkler Prinz, Banditin, Infernodrache, Elektro-Geist, Barbarenfass, Riesenschneeball, Blitz.</span><span class="i18n-en"><b>Example deck (Ram Rider Spam):</b> Ram Rider, Dark Prince, Bandit, Inferno Dragon, Electro Spirit, Barbarian Barrel, Giant Snowball, Lightning.</span>
+                        <br><a href="https://royaleapi.com/decks/stats/ram-rider,dark-prince,bandit,inferno-dragon,electro-spirit,barbarian-barrel,giant-snowball,lightning" target="_blank" style="color: #38bdf8;">🔗 <span class="i18n-de">Auf RoyaleAPI öffnen</span><span class="i18n-en">Open on RoyaleAPI</span></a></li>
                     </ul>
 
-                    <h4 style="color: #f97316; margin-top: 18px;">5. Siege (Belagerung)</h4>
-                    <p>Angriffe erfolgen von der eigenen Spielfeldhälfte aus, ohne die Brücke zu überqueren.</p>
+                    <h4 style="color: #f97316; margin-top: 18px;"><span class="i18n-de">5. Siege (Belagerung)</span><span class="i18n-en">5. Siege</span></h4>
+                    <p><span class="i18n-de">Angriffe erfolgen von der eigenen Spielfeldhälfte aus, ohne die Brücke zu überqueren.</span><span class="i18n-en">Attacks are launched from your own side of the field without crossing the bridge.</span></p>
                     <ul>
-                        <li><b>Vorgehensweise:</b> Gebäude wie den X-Bogen an der Brücke platzieren und diese mit allen Mitteln verteidigen.</li>
-                        <li><b>Beispiel-Deck (X-Bow 3.0):</b> X-Bogen, Tesla, Ritter, Bogenschützen, Eisgeist, Skelette, Feuerball, Der Stamm (Log).
-                        <br><a href="https://royaleapi.com/decks/stats/x-bow,tesla,knight,archers,ice-spirit,skeletons,fireball,the-log" target="_blank" style="color: #38bdf8;">🔗 Auf RoyaleAPI öffnen</a></li>
+                        <li><span class="i18n-de"><b>Vorgehensweise:</b> Gebäude wie den X-Bogen an der Brücke platzieren und diese mit allen Mitteln verteidigen.</span><span class="i18n-en"><b>Approach:</b> Place buildings like the X-Bow at the bridge and defend them by any means.</span></li>
+                        <li><span class="i18n-de"><b>Beispiel-Deck (X-Bow 3.0):</b> X-Bogen, Tesla, Ritter, Bogenschützen, Eisgeist, Skelette, Feuerball, Der Stamm (Log).</span><span class="i18n-en"><b>Example deck (X-Bow 3.0):</b> X-Bow, Tesla, Knight, Archers, Ice Spirit, Skeletons, Fireball, The Log.</span>
+                        <br><a href="https://royaleapi.com/decks/stats/x-bow,tesla,knight,archers,ice-spirit,skeletons,fireball,the-log" target="_blank" style="color: #38bdf8;">🔗 <span class="i18n-de">Auf RoyaleAPI öffnen</span><span class="i18n-en">Open on RoyaleAPI</span></a></li>
                     </ul>
 
-                    <h4 style="color: #f97316; margin-top: 18px;">6. Bait (Die Köder-Taktik)</h4>
-                    <p>Den Gegner dazu verleiten, seine Zauber für weniger wichtige Karten zu verschwenden, um dann mit der eigentlichen Gefahr zuzuschlagen.</p>
+                    <h4 style="color: #f97316; margin-top: 18px;"><span class="i18n-de">6. Bait (Die Köder-Taktik)</span><span class="i18n-en">6. Bait (The Bait Tactic)</span></h4>
+                    <p><span class="i18n-de">Den Gegner dazu verleiten, seine Zauber für weniger wichtige Karten zu verschwenden, um dann mit der eigentlichen Gefahr zuzuschlagen.</span><span class="i18n-en">Lure the opponent into wasting their spells on less important cards, then strike with the actual threat.</span></p>
                     <ul>
-                        <li><b>Vorgehensweise:</b> Karten wie die Prinzessin nutzen, um „Log" oder „Arrows" zu erzwingen, und dann das Koboldfass werfen.</li>
-                        <li><b>Beispiel-Deck (Classic Log Bait):</b> Koboldfass, Prinzessin, Koboldgang, Infernoturm, Ritter, Eisgeist, Rakete, Der Stamm (Log).
-                        <br><a href="https://royaleapi.com/decks/stats/goblin-barrel,princess,goblin-gang,inferno-tower,knight,ice-spirit,rocket,the-log" target="_blank" style="color: #38bdf8;">🔗 Auf RoyaleAPI öffnen</a></li>
+                        <li><span class="i18n-de"><b>Vorgehensweise:</b> Karten wie die Prinzessin nutzen, um „Log" oder „Arrows" zu erzwingen, und dann das Koboldfass werfen.</span><span class="i18n-en"><b>Approach:</b> Use cards like Princess to force out "Log" or "Arrows", then throw the Goblin Barrel.</span></li>
+                        <li><span class="i18n-de"><b>Beispiel-Deck (Classic Log Bait):</b> Koboldfass, Prinzessin, Koboldgang, Infernoturm, Ritter, Eisgeist, Rakete, Der Stamm (Log).</span><span class="i18n-en"><b>Example deck (Classic Log Bait):</b> Goblin Barrel, Princess, Goblin Gang, Inferno Tower, Knight, Ice Spirit, Rocket, The Log.</span>
+                        <br><a href="https://royaleapi.com/decks/stats/goblin-barrel,princess,goblin-gang,inferno-tower,knight,ice-spirit,rocket,the-log" target="_blank" style="color: #38bdf8;">🔗 <span class="i18n-de">Auf RoyaleAPI öffnen</span><span class="i18n-en">Open on RoyaleAPI</span></a></li>
                     </ul>
                 </div>
 
@@ -2021,11 +2019,11 @@ def generate_html_report(
     urlauber_liste_lower = [u.lower() for u in urlauber_liste]
 
     role_map = {
-        "member": "Mitglied",
-        "elder": "Ältester",
-        "coleader": "Vize",
-        "leader": "Anführer",
-        "unknown": "Ehemalig"
+        "member":   ("<span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span>",   "Member"),
+        "elder":    ("<span class='i18n-de'>Ältester</span><span class='i18n-en'>Elder</span>",     "Elder"),
+        "coleader": ("<span class='i18n-de'>Vize</span><span class='i18n-en'>Co-leader</span>",     "Co-leader"),
+        "leader":   ("<span class='i18n-de'>Anführer</span><span class='i18n-en'>Leader</span>",    "Leader"),
+        "unknown":  ("<span class='i18n-de'>Ehemalig</span><span class='i18n-en'>Former</span>",    "Former"),
     }
 
     strikes = strikes_data.get("players", {})
@@ -2062,7 +2060,7 @@ def generate_html_report(
             continue
 
         name = getattr(row, "player_name", "Unbekannt") or "Unbekannt"
-        role_de = role_map.get(raw_role, raw_role.capitalize())
+        role_de = role_map.get(raw_role, (raw_role.capitalize(), raw_role.capitalize()))[0]
         is_urlaub = name.lower() in urlauber_liste_lower
 
         wars_with_participation = int(getattr(row, "player_contribution_count", 0) or 0)
@@ -2367,20 +2365,24 @@ def generate_html_report(
     top_performers_html = "".join([f"<li><b>{p['name']}</b> ({p['score']}%)</li>" for p in top_performers_list])
     top_aufsteiger_html = "".join([f"<li><b>{p['name']}</b> (+{p['delta']}%)</li>" for p in top_aufsteiger_list]) if top_aufsteiger_list else "<li>Keine Verbesserungen</li>"
     top_spender_html = "".join([f"<li><b>{p['name']}</b> ({p['donations']})</li>" for p in top_spender_list]) if top_spender_list else "<li>Keine Spenden</li>"
-    top_leecher_html = "".join([f"<li><b>{p['name']}</b> ({p['donations']} gesp. / {p['donations_received']} empf.)</li>" for p in top_leecher_list]) if top_leecher_list else "<li>Keine Auffälligkeiten 🎉</li>"
+    top_leecher_html = "".join([f"<li><b>{p['name']}</b> ({p['donations']} gesp. / {p['donations_received']} empf.)</li>" for p in top_leecher_list]) if top_leecher_list else f"<li>{t('Keine Auffälligkeiten', 'No issues')} 🎉</li>"
 
     reliability_state, reliability_color = get_signal_state(clan_avg, APP_CONFIG["CLAN_RELIABLE_GREEN"], APP_CONFIG["CLAN_RELIABLE_YELLOW"])
     quality_state, quality_color = get_signal_state(clan_avg_points_per_deck, APP_CONFIG["BADGE_STARK_FAME"], APP_CONFIG["BADGE_STABIL_FAME"])
     teamplay_state, teamplay_color = get_signal_state(clan_teamplay, 60, 35)
 
+    _signal_label = {"stark": t("STARK", "STRONG"), "okay": "OKAY", "kritisch": t("KRITISCH", "CRITICAL")}
+    reliability_label = _signal_label.get(reliability_state, reliability_state.upper())
+    teamplay_label    = _signal_label.get(teamplay_state,    teamplay_state.upper())
+
     if quality_delta is None:
         quality_trend_html = ""
     elif quality_delta > 0:
-        quality_trend_html = f"<div style='color:#10b981; font-size:0.88em; margin-top:2px;'>▲ +{quality_delta} zur Vorwoche</div>"
+        quality_trend_html = f"<div style='color:#10b981; font-size:0.88em; margin-top:2px;'>▲ +{quality_delta} {t('zur Vorwoche', 'vs last week')}</div>"
     elif quality_delta < 0:
-        quality_trend_html = f"<div style='color:#ef4444; font-size:0.88em; margin-top:2px;'>▼ {quality_delta} zur Vorwoche</div>"
+        quality_trend_html = f"<div style='color:#ef4444; font-size:0.88em; margin-top:2px;'>▼ {quality_delta} {t('zur Vorwoche', 'vs last week')}</div>"
     else:
-        quality_trend_html = "<div style='color:#94a3b8; font-size:0.88em; margin-top:2px;'>→ unverändert</div>"
+        quality_trend_html = f"<div style='color:#94a3b8; font-size:0.88em; margin-top:2px;'>→ {t('unverändert', 'unchanged')}</div>"
 
     quality_dist_html = f"<div style='font-size:0.88em; margin-top:6px; letter-spacing:1px;'>🟢 {quality_green}&nbsp;&nbsp;🟡 {quality_yellow}&nbsp;&nbsp;🔴 {quality_red}</div>"
 
@@ -2388,7 +2390,7 @@ def generate_html_report(
     <div class='signal-board'>
         <div class='signal-card'>
             <h4>📈 {t('Zuverlässigkeit', 'Reliability')}</h4>
-            <div class='signal-value' style='color:{reliability_color};'>{reliability_state.upper()}</div>
+            <div class='signal-value' style='color:{reliability_color};'>{reliability_label}</div>
             <div style='color:#94a3b8; font-size:0.92em;'>{t('Bewertung des Clan-Durchschnitts', 'Assessment of clan average')}</div>
             <div class='signal-state' style='color:{reliability_color};'>{reliability_state.upper()}</div>
         </div>
@@ -2401,9 +2403,9 @@ def generate_html_report(
         </div>
         <div class='signal-card'>
             <h4>🤝 {t('Teamplay', 'Teamplay')}</h4>
-            <div class='signal-value' style='color:{teamplay_color};'>{teamplay_state.upper()}</div>
+            <div class='signal-value' style='color:{teamplay_color};'>{teamplay_label}</div>
             <div style='color:#94a3b8; font-size:0.92em;'>{teamplay_details['donors']} {t('von', 'of')} {len(aktive_spieler)} {t('Aktiven spenden mit', 'active members donate')}</div>
-            <div class='signal-state' style='color:{teamplay_color};'>{teamplay_state.upper()}</div>
+            <div class='signal-state' style='color:{teamplay_color};'>{teamplay_label}</div>
         </div>
     </div>
     """
@@ -2420,15 +2422,15 @@ def generate_html_report(
 
     # 2. Kampfqualität + Trend
     if clan_avg_points_per_deck >= APP_CONFIG["BADGE_STARK_FAME"]:
-        quality_text = "Die Kampfqualität ist stark – der Clan gewinnt deutlich mehr als er verliert."
+        quality_text = t("Die Kampfqualität ist stark – der Clan gewinnt deutlich mehr als er verliert.", "Battle quality is strong – the clan wins significantly more than it loses.")
     elif clan_avg_points_per_deck >= APP_CONFIG["BADGE_STABIL_FAME"]:
-        quality_text = "Die Kampfqualität ist solide, hat aber noch Luft nach oben."
+        quality_text = t("Die Kampfqualität ist solide, hat aber noch Luft nach oben.", "Battle quality is solid but still has room to grow.")
     else:
-        quality_text = "Die Kämpfe bringen aktuell zu wenig Ertrag pro Deck – mehr normale Kämpfe und Duelle helfen."
+        quality_text = t("Die Kämpfe bringen aktuell zu wenig Ertrag pro Deck – mehr normale Kämpfe und Duelle helfen.", "Battles currently yield too little per deck – more normal battles and duels help.")
     if quality_delta is not None and quality_delta > 0:
-        quality_text += f" <span style='color:#10b981;'>▲ +{quality_delta} zur Vorwoche.</span>"
+        quality_text += f" <span style='color:#10b981;'>▲ +{quality_delta} {t('zur Vorwoche', 'vs last week')}.</span>"
     elif quality_delta is not None and quality_delta < 0:
-        quality_text += f" <span style='color:#ef4444;'>▼ {quality_delta} zur Vorwoche.</span>"
+        quality_text += f" <span style='color:#ef4444;'>▼ {quality_delta} {t('zur Vorwoche', 'vs last week')}.</span>"
     summary_lines.append(quality_text)
 
     # 3. Teamplay
@@ -2639,28 +2641,46 @@ def generate_html_report(
                 rank_best,  medals_best  = project_rank_asymmetric(radar_clans, 200)
                 medals_real = our_real["projected"]
 
-                def rank_badge(r):
+                def rank_badge_de(r):
                     return {1: "🥇 Platz 1", 2: "🥈 Platz 2", 3: "🥉 Platz 3"}.get(r, f"Platz {r}")
 
-                row_worst = f"🔴 Worst Case <i>(wir 75/Deck, Gegner ihr Schnitt)</i>: <b>{rank_badge(rank_worst)}</b> — ~{medals_worst:,} Punkte"
-                row_real  = f"🟡 Realistisch <i>(alle auf aktuellem Schnitt, wir ~{our_real['eff']}/Deck)</i>: <b>{rank_badge(rank_real)}</b> — ~{medals_real:,} Punkte"
-                row_best  = f"🟢 Best Case <i>(wir 200/Deck, Gegner ihr Schnitt)</i>: <b>{rank_badge(rank_best)}</b> — ~{medals_best:,} Punkte"
+                def rank_badge_en(r):
+                    return {1: "🥇 Place 1", 2: "🥈 Place 2", 3: "🥉 Place 3"}.get(r, f"Place {r}")
+
+                row_worst = t(
+                    f"🔴 Worst Case <i>(wir 75/Deck, Gegner ihr Schnitt)</i>: <b>{rank_badge_de(rank_worst)}</b> — ~{medals_worst:,} Punkte",
+                    f"🔴 Worst Case <i>(us 75/deck, opponents their avg)</i>: <b>{rank_badge_en(rank_worst)}</b> — ~{medals_worst:,} pts"
+                )
+                row_real = t(
+                    f"🟡 Realistisch <i>(alle auf aktuellem Schnitt, wir ~{our_real['eff']}/Deck)</i>: <b>{rank_badge_de(rank_real)}</b> — ~{medals_real:,} Punkte",
+                    f"🟡 Realistic <i>(all at current avg, us ~{our_real['eff']}/deck)</i>: <b>{rank_badge_en(rank_real)}</b> — ~{medals_real:,} pts"
+                )
+                row_best = t(
+                    f"🟢 Best Case <i>(wir 200/Deck, Gegner ihr Schnitt)</i>: <b>{rank_badge_de(rank_best)}</b> — ~{medals_best:,} Punkte",
+                    f"🟢 Best Case <i>(us 200/deck, opponents their avg)</i>: <b>{rank_badge_en(rank_best)}</b> — ~{medals_best:,} pts"
+                )
 
                 if rank_worst == 1:
-                    fazit = "Selbst wenn wir alle Decks verlieren, halten wir <b>Platz 1</b>. Einfach alle Decks spielen!"
+                    fazit = t("Selbst wenn wir alle Decks verlieren, halten wir <b>Platz 1</b>. Einfach alle Decks spielen!",
+                              "Even if we lose all decks, we hold <b>Place 1</b>. Just play all decks!")
                 elif rank_best == 1 and rank_worst <= 2:
-                    fazit = f"Zwischen <b>Platz {rank_worst}</b> und <b>Platz 1</b> – unsere Kampfqualität entscheidet!"
+                    fazit = t(f"Zwischen <b>Platz {rank_worst}</b> und <b>Platz 1</b> – unsere Kampfqualität entscheidet!",
+                              f"Between <b>Place {rank_worst}</b> and <b>Place 1</b> – our battle quality decides!")
                 elif rank_best == 1:
-                    fazit = "Platz 1 ist möglich – aber nur wenn wir deutlich besser kämpfen als aktuell. Alle Siege zählen!"
+                    fazit = t("Platz 1 ist möglich – aber nur wenn wir deutlich besser kämpfen als aktuell. Alle Siege zählen!",
+                              "Place 1 is possible – but only if we fight significantly better than now. Every win counts!")
                 elif rank_real == 1 and rank_worst >= 2:
-                    fazit = f"Realistisch <b>Platz 1</b>, aber bei schlechten Kämpfen droht <b>Platz {rank_worst}</b>. Qualität halten!"
+                    fazit = t(f"Realistisch <b>Platz 1</b>, aber bei schlechten Kämpfen droht <b>Platz {rank_worst}</b>. Qualität halten!",
+                              f"Realistically <b>Place 1</b>, but poor battles risk <b>Place {rank_worst}</b>. Keep up the quality!")
                 elif rank_best <= 2:
-                    fazit = f"<b>Platz {rank_best}</b> ist das beste erreichbare Ergebnis heute. Alle Decks spielen!"
+                    fazit = t(f"<b>Platz {rank_best}</b> ist das beste erreichbare Ergebnis heute. Alle Decks spielen!",
+                              f"<b>Place {rank_best}</b> is the best achievable result today. Play all decks!")
                 else:
-                    fazit = "Platz 1 oder 2 ist heute nicht mehr erreichbar. Alle Decks spielen für maximale Trophäen."
+                    fazit = t("Platz 1 oder 2 ist heute nicht mehr erreichbar. Alle Decks spielen für maximale Trophäen.",
+                              "Place 1 or 2 is no longer reachable today. Play all decks for maximum trophies.")
 
                 prognose_item = (
-                    f"<li><b>📊 Sieg-Prognose – 3 Szenarien</b> ({us['decks_used']}/{us['max_decks']} Decks gespielt heute):"
+                    f"<li><b>📊 {t('Sieg-Prognose – 3 Szenarien', 'Victory Forecast – 3 Scenarios')}</b> ({us['decks_used']}/{us['max_decks']} {t('Decks gespielt heute', 'decks played today')}):"
                     f"<ul style='margin: 6px 0 4px 0; padding-left: 18px; font-size: 0.95em;'>"
                     f"<li>{row_worst}</li><li>{row_real}</li><li>{row_best}</li>"
                     f"</ul><span style='color:#94a3b8; font-size:0.9em;'>→ {fazit}</span></li>"
@@ -2710,7 +2730,12 @@ def generate_html_report(
 
     radar_html = ""
     if radar_clans:
-        radar_hint = f" <span style='font-size:0.8em; opacity:0.8; font-weight:normal;'>(Status: {race_state_de})</span>"
+        _state_i18n = {
+            "Clankrieg":   t("Clankrieg",   "Clan War"),
+            "Colosseum":   "Colosseum",
+            "Trainingstag": t("Trainingstag", "Training Day"),
+        }
+        radar_hint = f" <span style='font-size:0.8em; opacity:0.8; font-weight:normal;'>(Status: {_state_i18n.get(race_state_de, race_state_de)})</span>"
         radar_html = f"<div class='info-box' style='border-left-color: #f43f5e; background: rgba(159, 18, 57, 0.15); margin-bottom: 25px;'><h3 style='margin-top: 0; color: #f43f5e; margin-bottom: 12px; font-size: 1.2em;'>📡 {t('Live Kriegs-Radar', 'Live War Radar')}{radar_hint}</h3>"
         radar_html += "<div style='overflow-x: auto;'><table class='radar-table' style='width: 100%; border-collapse: collapse; font-size: 0.95em; table-layout: fixed;'>"
         radar_html += "<colgroup><col style='width:30%'><col style='width:14%'><col style='width:18%'><col style='width:18%'><col style='width:20%'></colgroup>"
@@ -3102,15 +3127,15 @@ def generate_html_report(
             if prev_rank and prev_rank > 0:
                 rank_delta = prev_rank - local_rank  # positiv = aufgestiegen
                 if rank_delta > 0:
-                    rank_trend = f"<div style='color: #10b981; font-size: 0.8em;'>↑ +{rank_delta} Plätze</div>"
+                    rank_trend = f"<div style='color: #10b981; font-size: 0.8em;'>↑ +{rank_delta} {t('Plätze', 'places')}</div>"
                 elif rank_delta < 0:
-                    rank_trend = f"<div style='color: #ef4444; font-size: 0.8em;'>↓ {rank_delta} Plätze</div>"
+                    rank_trend = f"<div style='color: #ef4444; font-size: 0.8em;'>↓ {rank_delta} {t('Plätze', 'places')}</div>"
                 else:
-                    rank_trend = "<div style='color: #94a3b8; font-size: 0.8em;'>→ unverändert</div>"
+                    rank_trend = f"<div style='color: #94a3b8; font-size: 0.8em;'>→ {t('unverändert', 'unchanged')}</div>"
             rank_html = f"""
                 <div style="text-align: center;">
                     <div style="font-size: 1.6em; font-weight: 800; color: #c084fc;">#{local_rank}</div>
-                    <div style="color: #94a3b8; font-size: 0.85em;">🏅 Rang (DE)</div>
+                    <div style="color: #94a3b8; font-size: 0.85em;">🏅 {t('Rang (DE)', 'Rank (DE)')}</div>
                     {rank_trend}
                 </div>"""
 
@@ -3766,3 +3791,4 @@ if __name__ == "__main__":
         print("\n❌ EIN KRITISCHER FEHLER IST AUFGETRETEN:")
         traceback.print_exc()
         sys.exit(1) 
+ 
