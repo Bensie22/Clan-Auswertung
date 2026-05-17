@@ -2,7 +2,7 @@
   "full_auto": [
     {
       "name": "Devin",
-      "scenario": "KEINE_TEILNAHME",
+      "scenario": "STRIKE",
       "priority": 4
     },
     {
@@ -174,7 +174,7 @@
     },
     {
       "name": "OneAndOnly",
-      "score": 91.2,
+      "score": 91.33,
       "status": "STARK"
     },
     {
@@ -194,7 +194,7 @@
     },
     {
       "name": "AaleDieter",
-      "score": 90.08,
+      "score": 90.35,
       "status": "STARK"
     },
     {
@@ -234,7 +234,7 @@
     },
     {
       "name": "Wario",
-      "score": 88.17,
+      "score": 87.9,
       "status": "STARK"
     },
     {
@@ -269,7 +269,7 @@
     },
     {
       "name": "Citykingalex",
-      "score": 85.56,
+      "score": 85.69,
       "status": "STARK"
     },
     {
@@ -314,7 +314,7 @@
     },
     {
       "name": "seroo",
-      "score": 82.55,
+      "score": 82.68,
       "status": "STARK"
     },
     {
@@ -359,12 +359,12 @@
     },
     {
       "name": "king rado",
-      "score": 73.83,
+      "score": 73.29,
       "status": "OK"
     },
     {
       "name": "Suren 187",
-      "score": 71.38,
+      "score": 72.18,
       "status": "OK"
     },
     {
@@ -394,12 +394,12 @@
     },
     {
       "name": "lori",
-      "score": 1.73,
+      "score": 3.33,
       "status": "RISIKO"
     },
     {
       "name": "Devin",
-      "score": 0.0,
+      "score": 2.27,
       "status": "RISIKO"
     }
   ],
@@ -426,7 +426,7 @@
     },
     {
       "name": "OneAndOnly",
-      "score": 91.2,
+      "score": 91.33,
       "tip": "Weiter so"
     },
     {
@@ -446,7 +446,7 @@
     },
     {
       "name": "AaleDieter",
-      "score": 90.08,
+      "score": 90.35,
       "tip": "Weiter so"
     },
     {
@@ -486,7 +486,7 @@
     },
     {
       "name": "Wario",
-      "score": 88.17,
+      "score": 87.9,
       "tip": "Weiter so"
     },
     {
@@ -521,7 +521,7 @@
     },
     {
       "name": "Citykingalex",
-      "score": 85.56,
+      "score": 85.69,
       "tip": "Weiter so"
     },
     {
@@ -566,7 +566,7 @@
     },
     {
       "name": "seroo",
-      "score": 82.55,
+      "score": 82.68,
       "tip": "Weiter so"
     },
     {
@@ -611,12 +611,12 @@
     },
     {
       "name": "king rado",
-      "score": 73.83,
+      "score": 73.29,
       "tip": "Weiter so"
     },
     {
       "name": "Suren 187",
-      "score": 71.38,
+      "score": 72.18,
       "tip": "Weiter so"
     },
     {
@@ -646,12 +646,12 @@
     },
     {
       "name": "lori",
-      "score": 1.73,
+      "score": 3.33,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
       "name": "Devin",
-      "score": 0.0,
+      "score": 2.27,
       "tip": "Mehr Teilnahme notwendig"
     }
   ],
@@ -662,21 +662,9 @@
         "name": "Devin",
         "player_tag": "#UP0G0P09L",
         "role": "member",
-        "score": 0.0,
+        "score": 2.27,
         "strikes": 0,
-        "donations": 140,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
-        "name": "lori",
-        "player_tag": "#GC2VQJVQR",
-        "role": "member",
-        "score": 1.73,
-        "strikes": 0,
-        "donations": 259,
+        "donations": 160,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -695,12 +683,24 @@
         "recommended_action": "kick_review"
       },
       {
+        "name": "lori",
+        "player_tag": "#GC2VQJVQR",
+        "role": "member",
+        "score": 3.33,
+        "strikes": 0,
+        "donations": 269,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
         "name": "mannomatiko",
         "player_tag": "#RULG988Y",
         "role": "member",
         "score": 4.4,
         "strikes": 0,
-        "donations": 364,
+        "donations": 394,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -760,9 +760,9 @@
         "name": "OneAndOnly",
         "player_tag": "#8P0J8P0L",
         "role": "member",
-        "score": 91.2,
+        "score": 91.33,
         "strikes": 0,
-        "donations": 515,
+        "donations": 555,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -774,7 +774,7 @@
         "role": "member",
         "score": 91.07,
         "strikes": 0,
-        "donations": 1546,
+        "donations": 1556,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -808,9 +808,9 @@
         "name": "AaleDieter",
         "player_tag": "#CUJ9PJ2UV",
         "role": "member",
-        "score": 90.08,
+        "score": 90.35,
         "strikes": 0,
-        "donations": 172,
+        "donations": 182,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -904,7 +904,7 @@
         "name": "Wario",
         "player_tag": "#2PUQYJC02",
         "role": "member",
-        "score": 88.17,
+        "score": 87.9,
         "strikes": 0,
         "donations": 104,
         "participation_count": 10,
@@ -966,7 +966,7 @@
         "role": "member",
         "score": 85.89,
         "strikes": 0,
-        "donations": 955,
+        "donations": 975,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -988,9 +988,9 @@
         "name": "Citykingalex",
         "player_tag": "#QULCQGGG",
         "role": "member",
-        "score": 85.56,
+        "score": 85.69,
         "strikes": 0,
-        "donations": 445,
+        "donations": 455,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
@@ -1002,7 +1002,7 @@
         "role": "member",
         "score": 85.2,
         "strikes": 0,
-        "donations": 74,
+        "donations": 94,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟡🟢",
         "reason": "Score über 85",
