@@ -1,21 +1,6 @@
 {
   "full_auto": [
     {
-      "name": "Q1-Pakoo",
-      "scenario": "STRIKE",
-      "priority": 4
-    },
-    {
-      "name": "krümelmonster",
-      "scenario": "STRIKE",
-      "priority": 4
-    },
-    {
-      "name": "Devin",
-      "scenario": "STRIKE",
-      "priority": 4
-    },
-    {
       "name": "OmniOni",
       "scenario": "TOP",
       "priority": 2
@@ -376,31 +361,6 @@
       "name": "Suren 187",
       "score": 70.62,
       "status": "OK"
-    },
-    {
-      "name": "SPURS",
-      "score": 59.77,
-      "status": "RISIKO"
-    },
-    {
-      "name": "lori",
-      "score": 52.08,
-      "status": "RISIKO"
-    },
-    {
-      "name": "Devin",
-      "score": 41.64,
-      "status": "RISIKO"
-    },
-    {
-      "name": "krümelmonster",
-      "score": 40.9,
-      "status": "RISIKO"
-    },
-    {
-      "name": "Q1-Pakoo",
-      "score": 30.83,
-      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -628,49 +588,11 @@
       "name": "Suren 187",
       "score": 70.62,
       "tip": "Weiter so"
-    },
-    {
-      "name": "SPURS",
-      "score": 59.77,
-      "tip": "Konstanz verbessern"
-    },
-    {
-      "name": "lori",
-      "score": 52.08,
-      "tip": "Konstanz verbessern"
-    },
-    {
-      "name": "Devin",
-      "score": 41.64,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "krümelmonster",
-      "score": 40.9,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "Q1-Pakoo",
-      "score": 30.83,
-      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
-    "remove": [
-      {
-        "name": "Q1-Pakoo",
-        "player_tag": "#VL989Y20J",
-        "role": "member",
-        "score": 30.83,
-        "strikes": 0,
-        "donations": 347,
-        "participation_count": 1,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      }
-    ],
+    "remove": [],
     "core": [
       {
         "name": "OmniOni",
