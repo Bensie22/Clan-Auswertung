@@ -6,6 +6,11 @@
       "priority": 4
     },
     {
+      "name": "April#",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "OmniOni",
       "scenario": "TOP",
       "priority": 2
@@ -371,6 +376,11 @@
       "name": "Whitebeard",
       "score": 0.0,
       "status": "RISIKO"
+    },
+    {
+      "name": "April#",
+      "score": 0.0,
+      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -603,6 +613,11 @@
       "name": "Whitebeard",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "April#",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
@@ -611,6 +626,18 @@
       {
         "name": "Whitebeard",
         "player_tag": "#YPURGGJQ",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "April#",
+        "player_tag": "#YUQVVVLQ",
         "role": "member",
         "score": 0.0,
         "strikes": 0,
