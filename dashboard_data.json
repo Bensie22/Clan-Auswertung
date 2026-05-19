@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "Whitebeard",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "OmniOni",
       "scenario": "TOP",
       "priority": 2
@@ -361,6 +366,11 @@
       "name": "Suren 187",
       "score": 70.62,
       "status": "OK"
+    },
+    {
+      "name": "Whitebeard",
+      "score": 0.0,
+      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -588,11 +598,29 @@
       "name": "Suren 187",
       "score": 70.62,
       "tip": "Weiter so"
+    },
+    {
+      "name": "Whitebeard",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
-    "remove": [],
+    "remove": [
+      {
+        "name": "Whitebeard",
+        "player_tag": "#YPURGGJQ",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      }
+    ],
     "core": [
       {
         "name": "OmniOni",
