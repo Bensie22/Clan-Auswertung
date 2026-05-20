@@ -1,17 +1,22 @@
 {
   "full_auto": [
     {
+      "name": "mad 3ad y gawad",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "Whitebeard",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
     },
     {
-      "name": "April#",
+      "name": "gamemaster",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
     },
     {
-      "name": "gamemaster",
+      "name": "April#",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
     },
@@ -388,6 +393,11 @@
       "status": "RISIKO"
     },
     {
+      "name": "mad 3ad y gawad",
+      "score": 0.0,
+      "status": "RISIKO"
+    },
+    {
       "name": "gamemaster",
       "score": 0.0,
       "status": "RISIKO"
@@ -630,6 +640,11 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
+      "name": "mad 3ad y gawad",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "gamemaster",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
@@ -656,7 +671,19 @@
         "role": "member",
         "score": 0.0,
         "strikes": 0,
-        "donations": 32,
+        "donations": 52,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "mad 3ad y gawad",
+        "player_tag": "#VP82QGC8Y",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -958,7 +985,7 @@
         "role": "member",
         "score": 86.51,
         "strikes": 0,
-        "donations": 152,
+        "donations": 176,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
