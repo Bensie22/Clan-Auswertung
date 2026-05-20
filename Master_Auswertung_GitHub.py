@@ -2516,15 +2516,15 @@ def generate_html_report(
         # Clan-Gesamtstärke
         if clan_avg >= APP_CONFIG["CLAN_RELIABLE_GREEN"]:
             training_items.append(
-                f"<li><b>💪 Starke Clan-Performance!</b> Unser Clan-Durchschnitt liegt bei <b>{clan_avg}%</b> — das ist ein richtig solides Fundament. Weiter so!</li>"
+                f"<li><b>💪 {t('Starke Clan-Performance!', 'Strong clan performance!')}</b> {t('Unser Clan-Durchschnitt liegt bei', 'Our clan average is')} <b>{clan_avg}%</b> {t('— das ist ein richtig solides Fundament. Weiter so!', '— that is a really solid foundation. Keep it up!')}</li>"
             )
         elif clan_avg >= APP_CONFIG["CLAN_RELIABLE_YELLOW"]:
             training_items.append(
-                f"<li><b>📈 Auf gutem Kurs!</b> Clan-Schnitt: <b>{clan_avg}%</b>. Noch ein Schritt und wir sind auf Top-Niveau — der nächste Krieg ist unsere Chance.</li>"
+                f"<li><b>📈 {t('Auf gutem Kurs!', 'On track!')}</b> {t('Clan-Schnitt:', 'Clan average:')} <b>{clan_avg}%</b>. {t('Noch ein Schritt und wir sind auf Top-Niveau — der nächste Krieg ist unsere Chance.', 'One more step and we are at top level — the next war is our chance.')}</li>"
             )
         else:
             training_items.append(
-                f"<li><b>🔥 Jetzt angreifen!</b> Clan-Schnitt liegt bei <b>{clan_avg}%</b>. Der Trainingstag ist die perfekte Zeit, neue Decks zu testen und sich für den nächsten Krieg bereit zu machen.</li>"
+                f"<li><b>🔥 {t('Jetzt angreifen!', 'Time to push!')}</b> {t('Clan-Schnitt liegt bei', 'Clan average is')} <b>{clan_avg}%</b>. {t('Der Trainingstag ist die perfekte Zeit, neue Decks zu testen und sich für den nächsten Krieg bereit zu machen.', 'Training day is the perfect time to test new decks and get ready for the next war.')}</li>"
             )
 
         # Aufsteiger shoutout
@@ -2538,7 +2538,7 @@ def generate_html_report(
                 for p in aufsteiger
             )
             training_items.append(
-                f"<li><b>🚀 Shoutout an unsere Aufsteiger!</b> {names_str} — diese Spieler haben sich zuletzt besonders verbessert. Top!</li>"
+                f"<li><b>🚀 {t('Shoutout an unsere Aufsteiger!', 'Shoutout to our top risers!')}</b> {names_str} {t('— diese Spieler haben sich zuletzt besonders verbessert. Top!', '— these players improved the most recently. Top!')}</li>"
             )
 
         # Streak-Highlights (3+ grüne Kriege)
@@ -2549,7 +2549,7 @@ def generate_html_report(
         if streak_players:
             names_str = ", ".join(f"<b>{p['name']}</b>" for p in streak_players)
             training_items.append(
-                f"<li><b>🔥 Konstanz zahlt sich aus!</b> {names_str} liefern Krieg für Krieg ab — genau das trägt den Clan nach vorne.</li>"
+                f"<li><b>🔥 {t('Konstanz zahlt sich aus!', 'Consistency pays off!')}</b> {names_str} {t('liefern Krieg für Krieg ab — genau das trägt den Clan nach vorne.', 'deliver war after war — that is exactly what moves the clan forward.')}</li>"
             )
 
         # Spieler kurz vor Tier-Aufstieg
@@ -2567,7 +2567,7 @@ def generate_html_report(
             )
             grenze = APP_CONFIG["TIER_SOLIDE"]
             training_items.append(
-                f"<li><b>⚡ Fast da!</b> {names_str} stehen kurz vor dem Sprung in die <i>Solide Basis</i> (ab {grenze}%). Noch ein guter Krieg reicht!</li>"
+                f"<li><b>⚡ {t('Fast da!', 'Almost there!')}</b> {names_str} {t('stehen kurz vor dem Sprung in die', 'are close to reaching')} <i>{t('Solide Basis', 'Solid Base')}</i> ({t('ab', 'from')} {grenze}%). {t('Noch ein guter Krieg reicht!', 'One more good war is all it takes!')}</li>"
             )
 
         # Neulinge willkommen
@@ -2575,12 +2575,12 @@ def generate_html_report(
         if neulinge:
             namen = ", ".join(f"<b>{p['name']}</b>" for p in neulinge[:4])
             training_items.append(
-                f"<li><b>👋 Willkommen im Team!</b> {namen} — schön, euch dabei zu haben. Einfach Decks spielen, ausprobieren, Spaß haben. Der Rest kommt von alleine.</li>"
+                f"<li><b>👋 {t('Willkommen im Team!', 'Welcome to the team!')}</b> {namen} {t('— schön, euch dabei zu haben. Einfach Decks spielen, ausprobieren, Spaß haben. Der Rest kommt von alleine.', '— great to have you here. Just play your decks, experiment and have fun. The rest will follow.')}</li>"
             )
 
         # Allgemeiner Motivations-Abschluss
         training_items.append(
-            "<li><b>🎯 Trainingstag-Tipp:</b> Jetzt ist der beste Moment, neue Deck-Ideen auszuprobieren — ohne Druck, ohne Konsequenzen. Wer den nächsten Krieg stark starten will, nutzt diese Zeit zum Testen.</li>"
+            f"<li><b>🎯 {t('Trainingstag-Tipp:', 'Training Day Tip:')}</b> {t('Jetzt ist der beste Moment, neue Deck-Ideen auszuprobieren — ohne Druck, ohne Konsequenzen. Wer den nächsten Krieg stark starten will, nutzt diese Zeit zum Testen.', 'Now is the best time to try out new deck ideas — no pressure, no consequences. If you want to start the next war strong, use this time to experiment.')}</li>"
         )
 
         coach_html = (
@@ -3791,4 +3791,5 @@ if __name__ == "__main__":
         print("\n❌ EIN KRITISCHER FEHLER IST AUFGETRETEN:")
         traceback.print_exc()
         sys.exit(1) 
+ 
  
