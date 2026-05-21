@@ -22,7 +22,7 @@
     },
     {
       "name": "April#",
-      "scenario": "KEINE_TEILNAHME",
+      "scenario": "STRIKE",
       "priority": 4
     },
     {
@@ -199,7 +199,7 @@
     },
     {
       "name": "chris",
-      "score": 89.41,
+      "score": 89.67,
       "status": "STARK"
     },
     {
@@ -308,6 +308,11 @@
       "status": "STARK"
     },
     {
+      "name": "rote sonne",
+      "score": 82.05,
+      "status": "STARK"
+    },
+    {
       "name": "Fxry",
       "score": 81.9,
       "status": "STARK"
@@ -320,11 +325,6 @@
     {
       "name": "Nati",
       "score": 81.51,
-      "status": "STARK"
-    },
-    {
-      "name": "rote sonne",
-      "score": 81.38,
       "status": "STARK"
     },
     {
@@ -359,7 +359,7 @@
     },
     {
       "name": "SankKiI9",
-      "score": 73.37,
+      "score": 73.63,
       "status": "OK"
     },
     {
@@ -373,12 +373,12 @@
       "status": "OK"
     },
     {
-      "name": "Whitebeard",
-      "score": 0.0,
+      "name": "April#",
+      "score": 16.67,
       "status": "RISIKO"
     },
     {
-      "name": "April#",
+      "name": "Whitebeard",
       "score": 0.0,
       "status": "RISIKO"
     },
@@ -451,7 +451,7 @@
     },
     {
       "name": "chris",
-      "score": 89.41,
+      "score": 89.67,
       "tip": "Weiter so"
     },
     {
@@ -560,6 +560,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "rote sonne",
+      "score": 82.05,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Fxry",
       "score": 81.9,
       "tip": "Weiter so"
@@ -572,11 +577,6 @@
     {
       "name": "Nati",
       "score": 81.51,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "rote sonne",
-      "score": 81.38,
       "tip": "Weiter so"
     },
     {
@@ -611,7 +611,7 @@
     },
     {
       "name": "SankKiI9",
-      "score": 73.37,
+      "score": 73.63,
       "tip": "Weiter so"
     },
     {
@@ -625,12 +625,12 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Whitebeard",
-      "score": 0.0,
+      "name": "April#",
+      "score": 16.67,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
-      "name": "April#",
+      "name": "Whitebeard",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
     },
@@ -660,18 +660,6 @@
         "score": 0.0,
         "strikes": 0,
         "donations": 36,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
-        "name": "April#",
-        "player_tag": "#YUQVVVLQ",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 88,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -712,6 +700,18 @@
         "trend": "",
         "reason": "Score unter 40",
         "recommended_action": "kick_review"
+      },
+      {
+        "name": "April#",
+        "player_tag": "#YUQVVVLQ",
+        "role": "member",
+        "score": 16.67,
+        "strikes": 0,
+        "donations": 96,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
       }
     ],
     "core": [
@@ -721,7 +721,7 @@
         "role": "member",
         "score": 94.53,
         "strikes": 0,
-        "donations": 473,
+        "donations": 497,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -733,7 +733,7 @@
         "role": "member",
         "score": 93.33,
         "strikes": 0,
-        "donations": 262,
+        "donations": 270,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -805,7 +805,7 @@
         "role": "member",
         "score": 90.67,
         "strikes": 0,
-        "donations": 893,
+        "donations": 935,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -839,9 +839,9 @@
         "name": "chris",
         "player_tag": "#YQ82VR9JQ",
         "role": "member",
-        "score": 89.41,
+        "score": 89.67,
         "strikes": 0,
-        "donations": 100,
+        "donations": 108,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -997,7 +997,7 @@
         "role": "member",
         "score": 86.51,
         "strikes": 0,
-        "donations": 194,
+        "donations": 202,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
