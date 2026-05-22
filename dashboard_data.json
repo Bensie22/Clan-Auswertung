@@ -76,6 +76,11 @@
       "priority": 2
     },
     {
+      "name": "Swordfish",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Flauschos",
       "scenario": "TOP",
       "priority": 2
@@ -87,11 +92,6 @@
     },
     {
       "name": "honigmelone",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
@@ -173,11 +173,6 @@
       "status": "STARK"
     },
     {
-      "name": "AaleDieter",
-      "score": 91.1,
-      "status": "STARK"
-    },
-    {
       "name": "Jackhammer",
       "score": 90.7,
       "status": "STARK"
@@ -185,6 +180,11 @@
     {
       "name": "Bensie",
       "score": 90.67,
+      "status": "STARK"
+    },
+    {
+      "name": "AaleDieter",
+      "score": 90.57,
       "status": "STARK"
     },
     {
@@ -208,6 +208,11 @@
       "status": "STARK"
     },
     {
+      "name": "Swordfish",
+      "score": 89.18,
+      "status": "STARK"
+    },
+    {
       "name": "Flauschos",
       "score": 89.01,
       "status": "STARK"
@@ -220,11 +225,6 @@
     {
       "name": "honigmelone",
       "score": 88.8,
-      "status": "STARK"
-    },
-    {
-      "name": "Swordfish",
-      "score": 88.65,
       "status": "STARK"
     },
     {
@@ -425,11 +425,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "AaleDieter",
-      "score": 91.1,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Jackhammer",
       "score": 90.7,
       "tip": "Weiter so"
@@ -437,6 +432,11 @@
     {
       "name": "Bensie",
       "score": 90.67,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "AaleDieter",
+      "score": 90.57,
       "tip": "Weiter so"
     },
     {
@@ -460,6 +460,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Swordfish",
+      "score": 89.18,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Flauschos",
       "score": 89.01,
       "tip": "Weiter so"
@@ -472,11 +477,6 @@
     {
       "name": "honigmelone",
       "score": 88.8,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Swordfish",
-      "score": 88.65,
       "tip": "Weiter so"
     },
     {
@@ -707,7 +707,7 @@
         "role": "member",
         "score": 16.67,
         "strikes": 0,
-        "donations": 96,
+        "donations": 114,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -721,7 +721,7 @@
         "role": "member",
         "score": 94.53,
         "strikes": 0,
-        "donations": 497,
+        "donations": 515,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -776,18 +776,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "AaleDieter",
-        "player_tag": "#CUJ9PJ2UV",
-        "role": "member",
-        "score": 91.1,
-        "strikes": 0,
-        "donations": 32,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Jackhammer",
         "player_tag": "#2CJYG9UG",
         "role": "member",
@@ -805,7 +793,19 @@
         "role": "member",
         "score": 90.67,
         "strikes": 0,
-        "donations": 935,
+        "donations": 961,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "AaleDieter",
+        "player_tag": "#CUJ9PJ2UV",
+        "role": "member",
+        "score": 90.57,
+        "strikes": 0,
+        "donations": 32,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -860,6 +860,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Swordfish",
+        "player_tag": "#2CPRGY8G",
+        "role": "member",
+        "score": 89.18,
+        "strikes": 0,
+        "donations": 222,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Flauschos",
         "player_tag": "#PPR2QQC0U",
         "role": "member",
@@ -890,18 +902,6 @@
         "score": 88.8,
         "strikes": 0,
         "donations": 128,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Swordfish",
-        "player_tag": "#2CPRGY8G",
-        "role": "member",
-        "score": 88.65,
-        "strikes": 0,
-        "donations": 214,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1021,7 +1021,7 @@
         "role": "member",
         "score": 85.4,
         "strikes": 0,
-        "donations": 58,
+        "donations": 92,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
