@@ -1,11 +1,6 @@
 {
   "full_auto": [
     {
-      "name": "mad 3ad y gawad",
-      "scenario": "KEINE_TEILNAHME",
-      "priority": 4
-    },
-    {
       "name": "AreYouBadBro?",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -18,6 +13,11 @@
     {
       "name": "gamemaster",
       "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
+      "name": "mad 3ad y gawad",
+      "scenario": "STRIKE",
       "priority": 4
     },
     {
@@ -298,13 +298,13 @@
       "status": "STARK"
     },
     {
-      "name": "hi2oka",
-      "score": 84.01,
+      "name": "bes",
+      "score": 83.51,
       "status": "STARK"
     },
     {
-      "name": "bes",
-      "score": 83.51,
+      "name": "hi2oka",
+      "score": 83.47,
       "status": "STARK"
     },
     {
@@ -369,7 +369,7 @@
     },
     {
       "name": "SankKiI9",
-      "score": 73.63,
+      "score": 73.77,
       "status": "OK"
     },
     {
@@ -388,12 +388,12 @@
       "status": "RISIKO"
     },
     {
-      "name": "Whitebeard",
-      "score": 0.0,
+      "name": "mad 3ad y gawad",
+      "score": 10.0,
       "status": "RISIKO"
     },
     {
-      "name": "mad 3ad y gawad",
+      "name": "Whitebeard",
       "score": 0.0,
       "status": "RISIKO"
     },
@@ -550,13 +550,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "hi2oka",
-      "score": 84.01,
+      "name": "bes",
+      "score": 83.51,
       "tip": "Weiter so"
     },
     {
-      "name": "bes",
-      "score": 83.51,
+      "name": "hi2oka",
+      "score": 83.47,
       "tip": "Weiter so"
     },
     {
@@ -621,7 +621,7 @@
     },
     {
       "name": "SankKiI9",
-      "score": 73.63,
+      "score": 73.77,
       "tip": "Weiter so"
     },
     {
@@ -640,12 +640,12 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
-      "name": "Whitebeard",
-      "score": 0.0,
+      "name": "mad 3ad y gawad",
+      "score": 10.0,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
-      "name": "mad 3ad y gawad",
+      "name": "Whitebeard",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
     },
@@ -676,18 +676,6 @@
         "recommended_action": "kick_review"
       },
       {
-        "name": "mad 3ad y gawad",
-        "player_tag": "#VP82QGC8Y",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 0,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
         "name": "gamemaster",
         "player_tag": "#JVRRPYQ9Q",
         "role": "member",
@@ -712,12 +700,24 @@
         "recommended_action": "kick_review"
       },
       {
+        "name": "mad 3ad y gawad",
+        "player_tag": "#VP82QGC8Y",
+        "role": "member",
+        "score": 10.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
         "name": "April#",
         "player_tag": "#YUQVVVLQ",
         "role": "member",
         "score": 15.07,
         "strikes": 0,
-        "donations": 114,
+        "donations": 132,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -1031,7 +1031,7 @@
         "role": "member",
         "score": 85.4,
         "strikes": 0,
-        "donations": 92,
+        "donations": 118,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
