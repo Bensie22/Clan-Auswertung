@@ -1,11 +1,6 @@
 {
   "full_auto": [
     {
-      "name": "AreYouBadBro?",
-      "scenario": "KEINE_TEILNAHME",
-      "priority": 4
-    },
-    {
       "name": "gamemaster",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -17,6 +12,11 @@
     },
     {
       "name": "mad 3ad y gawad",
+      "scenario": "STRIKE",
+      "priority": 4
+    },
+    {
+      "name": "AreYouBadBro?",
       "scenario": "STRIKE",
       "priority": 4
     },
@@ -283,13 +283,13 @@
       "status": "STARK"
     },
     {
-      "name": "lukasl 5",
-      "score": 84.8,
+      "name": "kl.kranker Affe",
+      "score": 84.6,
       "status": "STARK"
     },
     {
-      "name": "kl.kranker Affe",
-      "score": 84.6,
+      "name": "lukasl 5",
+      "score": 84.27,
       "status": "STARK"
     },
     {
@@ -338,13 +338,13 @@
       "status": "STARK"
     },
     {
-      "name": "Nati",
-      "score": 80.85,
+      "name": "DST",
+      "score": 80.47,
       "status": "STARK"
     },
     {
-      "name": "DST",
-      "score": 80.47,
+      "name": "Nati",
+      "score": 80.45,
       "status": "STARK"
     },
     {
@@ -388,17 +388,17 @@
       "status": "RISIKO"
     },
     {
+      "name": "AreYouBadBro?",
+      "score": 10.0,
+      "status": "RISIKO"
+    },
+    {
       "name": "Whitebeard",
       "score": 0.0,
       "status": "RISIKO"
     },
     {
       "name": "gamemaster",
-      "score": 0.0,
-      "status": "RISIKO"
-    },
-    {
-      "name": "AreYouBadBro?",
       "score": 0.0,
       "status": "RISIKO"
     }
@@ -535,13 +535,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "lukasl 5",
-      "score": 84.8,
+      "name": "kl.kranker Affe",
+      "score": 84.6,
       "tip": "Weiter so"
     },
     {
-      "name": "kl.kranker Affe",
-      "score": 84.6,
+      "name": "lukasl 5",
+      "score": 84.27,
       "tip": "Weiter so"
     },
     {
@@ -590,13 +590,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Nati",
-      "score": 80.85,
+      "name": "DST",
+      "score": 80.47,
       "tip": "Weiter so"
     },
     {
-      "name": "DST",
-      "score": 80.47,
+      "name": "Nati",
+      "score": 80.45,
       "tip": "Weiter so"
     },
     {
@@ -640,17 +640,17 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
+      "name": "AreYouBadBro?",
+      "score": 10.0,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "Whitebeard",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
       "name": "gamemaster",
-      "score": 0.0,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "AreYouBadBro?",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
     }
@@ -683,24 +683,24 @@
         "recommended_action": "kick_review"
       },
       {
-        "name": "AreYouBadBro?",
-        "player_tag": "#GLGY98U08",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 28,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
         "name": "mad 3ad y gawad",
         "player_tag": "#VP82QGC8Y",
         "role": "member",
         "score": 10.0,
         "strikes": 0,
         "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "AreYouBadBro?",
+        "player_tag": "#GLGY98U08",
+        "role": "member",
+        "score": 10.0,
+        "strikes": 0,
+        "donations": 38,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -834,7 +834,7 @@
         "role": "member",
         "score": 90.13,
         "strikes": 0,
-        "donations": 1423,
+        "donations": 1433,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
