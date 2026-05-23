@@ -61,17 +61,17 @@
       "priority": 2
     },
     {
-      "name": "Bensie",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Theezy",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Johan",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Bensie",
       "scenario": "TOP",
       "priority": 2
     },
@@ -154,17 +154,17 @@
   "smart": [
     {
       "name": "OmniOni",
-      "score": 94.93,
+      "score": 95.2,
+      "status": "STARK"
+    },
+    {
+      "name": "Erastus",
+      "score": 93.07,
       "status": "STARK"
     },
     {
       "name": "maghrebi",
       "score": 93.07,
-      "status": "STARK"
-    },
-    {
-      "name": "Erastus",
-      "score": 92.8,
       "status": "STARK"
     },
     {
@@ -193,13 +193,13 @@
       "status": "STARK"
     },
     {
-      "name": "Bensie",
-      "score": 90.53,
+      "name": "Johan",
+      "score": 90.27,
       "status": "STARK"
     },
     {
-      "name": "Johan",
-      "score": 90.27,
+      "name": "Bensie",
+      "score": 90.13,
       "status": "STARK"
     },
     {
@@ -338,18 +338,18 @@
       "status": "STARK"
     },
     {
+      "name": "DST",
+      "score": 80.87,
+      "status": "STARK"
+    },
+    {
       "name": "Nati",
       "score": 80.85,
       "status": "STARK"
     },
     {
-      "name": "DST",
-      "score": 80.6,
-      "status": "STARK"
-    },
-    {
       "name": "elazeto",
-      "score": 79.81,
+      "score": 79.41,
       "status": "OK"
     },
     {
@@ -406,17 +406,17 @@
   "coaching": [
     {
       "name": "OmniOni",
-      "score": 94.93,
+      "score": 95.2,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Erastus",
+      "score": 93.07,
       "tip": "Weiter so"
     },
     {
       "name": "maghrebi",
       "score": 93.07,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Erastus",
-      "score": 92.8,
       "tip": "Weiter so"
     },
     {
@@ -445,13 +445,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Bensie",
-      "score": 90.53,
+      "name": "Johan",
+      "score": 90.27,
       "tip": "Weiter so"
     },
     {
-      "name": "Johan",
-      "score": 90.27,
+      "name": "Bensie",
+      "score": 90.13,
       "tip": "Weiter so"
     },
     {
@@ -590,18 +590,18 @@
       "tip": "Weiter so"
     },
     {
+      "name": "DST",
+      "score": 80.87,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Nati",
       "score": 80.85,
       "tip": "Weiter so"
     },
     {
-      "name": "DST",
-      "score": 80.6,
-      "tip": "Weiter so"
-    },
-    {
       "name": "elazeto",
-      "score": 79.81,
+      "score": 79.41,
       "tip": "Weiter so"
     },
     {
@@ -724,9 +724,9 @@
         "name": "OmniOni",
         "player_tag": "#UUPCULU9V",
         "role": "member",
-        "score": 94.93,
+        "score": 95.2,
         "strikes": 0,
-        "donations": 645,
+        "donations": 653,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -748,7 +748,7 @@
         "name": "Erastus",
         "player_tag": "#Q8L0RJ8Y8",
         "role": "member",
-        "score": 92.8,
+        "score": 93.07,
         "strikes": 0,
         "donations": 320,
         "participation_count": 10,
@@ -805,18 +805,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Bensie",
-        "player_tag": "#2QRVR9L8",
-        "role": "member",
-        "score": 90.53,
-        "strikes": 0,
-        "donations": 1353,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Theezy",
         "player_tag": "#JUUR8UGL8",
         "role": "member",
@@ -837,6 +825,18 @@
         "donations": 110,
         "participation_count": 2,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Bensie",
+        "player_tag": "#2QRVR9L8",
+        "role": "member",
+        "score": 90.13,
+        "strikes": 0,
+        "donations": 1369,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -906,7 +906,7 @@
         "role": "member",
         "score": 88.3,
         "strikes": 0,
-        "donations": 276,
+        "donations": 292,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1014,7 +1014,7 @@
         "role": "member",
         "score": 85.41,
         "strikes": 0,
-        "donations": 272,
+        "donations": 280,
         "participation_count": 9,
         "trend": "🔴🔴🔴🟡🟢",
         "reason": "Score über 85",
@@ -1026,7 +1026,7 @@
         "role": "member",
         "score": 85.4,
         "strikes": 0,
-        "donations": 126,
+        "donations": 134,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
