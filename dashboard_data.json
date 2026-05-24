@@ -71,17 +71,17 @@
       "priority": 2
     },
     {
+      "name": "Swordfish",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Bensie",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Vortex Babe",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
@@ -111,17 +111,17 @@
       "priority": 2
     },
     {
-      "name": "Wario",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Flauschos",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "eco",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Wario",
       "scenario": "TOP",
       "priority": 2
     },
@@ -198,6 +198,11 @@
       "status": "STARK"
     },
     {
+      "name": "Swordfish",
+      "score": 89.98,
+      "status": "STARK"
+    },
+    {
       "name": "Bensie",
       "score": 89.87,
       "status": "STARK"
@@ -205,11 +210,6 @@
     {
       "name": "Vortex Babe",
       "score": 89.69,
-      "status": "STARK"
-    },
-    {
-      "name": "Swordfish",
-      "score": 89.58,
       "status": "STARK"
     },
     {
@@ -233,11 +233,6 @@
       "status": "STARK"
     },
     {
-      "name": "Wario",
-      "score": 87.95,
-      "status": "STARK"
-    },
-    {
       "name": "Dolphin",
       "score": 87.95,
       "status": "STARK"
@@ -253,6 +248,11 @@
       "status": "STARK"
     },
     {
+      "name": "Wario",
+      "score": 87.81,
+      "status": "STARK"
+    },
+    {
       "name": "Knitte",
       "score": 87.58,
       "status": "STARK"
@@ -264,7 +264,7 @@
     },
     {
       "name": "andiquariat",
-      "score": 87.31,
+      "score": 87.45,
       "status": "STARK"
     },
     {
@@ -450,6 +450,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Swordfish",
+      "score": 89.98,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Bensie",
       "score": 89.87,
       "tip": "Weiter so"
@@ -457,11 +462,6 @@
     {
       "name": "Vortex Babe",
       "score": 89.69,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Swordfish",
-      "score": 89.58,
       "tip": "Weiter so"
     },
     {
@@ -485,11 +485,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Wario",
-      "score": 87.95,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Dolphin",
       "score": 87.95,
       "tip": "Weiter so"
@@ -505,6 +500,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Wario",
+      "score": 87.81,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Knitte",
       "score": 87.58,
       "tip": "Weiter so"
@@ -516,7 +516,7 @@
     },
     {
       "name": "andiquariat",
-      "score": 87.31,
+      "score": 87.45,
       "tip": "Weiter so"
     },
     {
@@ -762,7 +762,7 @@
         "role": "member",
         "score": 92.62,
         "strikes": 0,
-        "donations": 1075,
+        "donations": 1104,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -774,7 +774,7 @@
         "role": "member",
         "score": 91.33,
         "strikes": 0,
-        "donations": 556,
+        "donations": 574,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -829,12 +829,24 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Swordfish",
+        "player_tag": "#2CPRGY8G",
+        "role": "member",
+        "score": 89.98,
+        "strikes": 0,
+        "donations": 332,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Bensie",
         "player_tag": "#2QRVR9L8",
         "role": "member",
         "score": 89.87,
         "strikes": 0,
-        "donations": 1595,
+        "donations": 1623,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -846,21 +858,9 @@
         "role": "member",
         "score": 89.69,
         "strikes": 0,
-        "donations": 224,
+        "donations": 231,
         "participation_count": 4,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Swordfish",
-        "player_tag": "#2CPRGY8G",
-        "role": "member",
-        "score": 89.58,
-        "strikes": 0,
-        "donations": 306,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -918,19 +918,7 @@
         "role": "member",
         "score": 87.95,
         "strikes": 0,
-        "donations": 148,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Wario",
-        "player_tag": "#2PUQYJC02",
-        "role": "member",
-        "score": 87.95,
-        "strikes": 0,
-        "donations": 106,
+        "donations": 156,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -954,7 +942,19 @@
         "role": "member",
         "score": 87.9,
         "strikes": 0,
-        "donations": 690,
+        "donations": 701,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Wario",
+        "player_tag": "#2PUQYJC02",
+        "role": "member",
+        "score": 87.81,
+        "strikes": 0,
+        "donations": 106,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -988,7 +988,7 @@
         "name": "andiquariat",
         "player_tag": "#2UQUPYQCJ",
         "role": "member",
-        "score": 87.31,
+        "score": 87.45,
         "strikes": 0,
         "donations": 0,
         "participation_count": 10,
