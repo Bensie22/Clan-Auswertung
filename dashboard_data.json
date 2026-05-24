@@ -111,12 +111,12 @@
       "priority": 2
     },
     {
-      "name": "Flauschos",
+      "name": "eco",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "eco",
+      "name": "Flauschos",
       "scenario": "TOP",
       "priority": 2
     },
@@ -238,13 +238,13 @@
       "status": "STARK"
     },
     {
-      "name": "Flauschos",
-      "score": 87.94,
+      "name": "eco",
+      "score": 87.9,
       "status": "STARK"
     },
     {
-      "name": "eco",
-      "score": 87.9,
+      "name": "Flauschos",
+      "score": 87.81,
       "status": "STARK"
     },
     {
@@ -318,6 +318,11 @@
       "status": "STARK"
     },
     {
+      "name": "Denis",
+      "score": 81.96,
+      "status": "STARK"
+    },
+    {
       "name": "Chico",
       "score": 81.96,
       "status": "STARK"
@@ -325,11 +330,6 @@
     {
       "name": "Fxry",
       "score": 81.77,
-      "status": "STARK"
-    },
-    {
-      "name": "Denis",
-      "score": 81.56,
       "status": "STARK"
     },
     {
@@ -344,7 +344,7 @@
     },
     {
       "name": "Nati",
-      "score": 80.45,
+      "score": 80.18,
       "status": "STARK"
     },
     {
@@ -379,7 +379,7 @@
     },
     {
       "name": "April#",
-      "score": 14.4,
+      "score": 12.27,
       "status": "RISIKO"
     },
     {
@@ -490,13 +490,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Flauschos",
-      "score": 87.94,
+      "name": "eco",
+      "score": 87.9,
       "tip": "Weiter so"
     },
     {
-      "name": "eco",
-      "score": 87.9,
+      "name": "Flauschos",
+      "score": 87.81,
       "tip": "Weiter so"
     },
     {
@@ -570,6 +570,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Denis",
+      "score": 81.96,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Chico",
       "score": 81.96,
       "tip": "Weiter so"
@@ -577,11 +582,6 @@
     {
       "name": "Fxry",
       "score": 81.77,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Denis",
-      "score": 81.56,
       "tip": "Weiter so"
     },
     {
@@ -596,7 +596,7 @@
     },
     {
       "name": "Nati",
-      "score": 80.45,
+      "score": 80.18,
       "tip": "Weiter so"
     },
     {
@@ -631,7 +631,7 @@
     },
     {
       "name": "April#",
-      "score": 14.4,
+      "score": 12.27,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
@@ -688,7 +688,7 @@
         "role": "member",
         "score": 10.0,
         "strikes": 0,
-        "donations": 0,
+        "donations": 10,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -710,9 +710,9 @@
         "name": "April#",
         "player_tag": "#YUQVVVLQ",
         "role": "member",
-        "score": 14.4,
+        "score": 12.27,
         "strikes": 0,
-        "donations": 178,
+        "donations": 188,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -846,7 +846,7 @@
         "role": "member",
         "score": 89.87,
         "strikes": 0,
-        "donations": 1631,
+        "donations": 1679,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -925,24 +925,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Flauschos",
-        "player_tag": "#PPR2QQC0U",
-        "role": "member",
-        "score": 87.94,
-        "strikes": 0,
-        "donations": 124,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "eco",
         "player_tag": "#202VP2QL9P",
         "role": "member",
         "score": 87.9,
         "strikes": 0,
         "donations": 701,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Flauschos",
+        "player_tag": "#PPR2QQC0U",
+        "role": "member",
+        "score": 87.81,
+        "strikes": 0,
+        "donations": 134,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
