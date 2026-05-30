@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "HardcoreSoldier",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "OmniOni",
       "scenario": "TOP",
       "priority": 2
@@ -144,7 +149,7 @@
     },
     {
       "name": "maghrebi",
-      "score": 92.67,
+      "score": 92.4,
       "status": "STARK"
     },
     {
@@ -228,6 +233,11 @@
       "status": "STARK"
     },
     {
+      "name": "Swordfish",
+      "score": 88.25,
+      "status": "STARK"
+    },
+    {
       "name": "andiquariat",
       "score": 88.25,
       "status": "STARK"
@@ -235,11 +245,6 @@
     {
       "name": "Flauschos",
       "score": 88.21,
-      "status": "STARK"
-    },
-    {
-      "name": "Swordfish",
-      "score": 88.11,
       "status": "STARK"
     },
     {
@@ -313,13 +318,13 @@
       "status": "STARK"
     },
     {
-      "name": "Merlin1659",
-      "score": 80.15,
+      "name": "DST",
+      "score": 80.14,
       "status": "STARK"
     },
     {
-      "name": "DST",
-      "score": 80.14,
+      "name": "Merlin1659",
+      "score": 80.02,
       "status": "STARK"
     },
     {
@@ -366,6 +371,11 @@
       "name": "AreYouBadBro?",
       "score": 51.43,
       "status": "RISIKO"
+    },
+    {
+      "name": "HardcoreSoldier",
+      "score": 0.0,
+      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -386,7 +396,7 @@
     },
     {
       "name": "maghrebi",
-      "score": 92.67,
+      "score": 92.4,
       "tip": "Weiter so"
     },
     {
@@ -470,6 +480,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Swordfish",
+      "score": 88.25,
+      "tip": "Weiter so"
+    },
+    {
       "name": "andiquariat",
       "score": 88.25,
       "tip": "Weiter so"
@@ -477,11 +492,6 @@
     {
       "name": "Flauschos",
       "score": 88.21,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Swordfish",
-      "score": 88.11,
       "tip": "Weiter so"
     },
     {
@@ -555,13 +565,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Merlin1659",
-      "score": 80.15,
+      "name": "DST",
+      "score": 80.14,
       "tip": "Weiter so"
     },
     {
-      "name": "DST",
-      "score": 80.14,
+      "name": "Merlin1659",
+      "score": 80.02,
       "tip": "Weiter so"
     },
     {
@@ -608,11 +618,29 @@
       "name": "AreYouBadBro?",
       "score": 51.43,
       "tip": "Konstanz verbessern"
+    },
+    {
+      "name": "HardcoreSoldier",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
-    "remove": [],
+    "remove": [
+      {
+        "name": "HardcoreSoldier",
+        "player_tag": "#GRGCY0R8",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      }
+    ],
     "core": [
       {
         "name": "OmniOni",
@@ -654,9 +682,9 @@
         "name": "maghrebi",
         "player_tag": "#20QGJVPG8Q",
         "role": "member",
-        "score": 92.67,
+        "score": 92.4,
         "strikes": 0,
-        "donations": 414,
+        "donations": 450,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -692,7 +720,7 @@
         "role": "member",
         "score": 91.1,
         "strikes": 0,
-        "donations": 130,
+        "donations": 158,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -764,7 +792,7 @@
         "role": "member",
         "score": 89.63,
         "strikes": 0,
-        "donations": 407,
+        "donations": 445,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -812,7 +840,7 @@
         "role": "member",
         "score": 88.7,
         "strikes": 0,
-        "donations": 524,
+        "donations": 562,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -855,6 +883,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Swordfish",
+        "player_tag": "#2CPRGY8G",
+        "role": "member",
+        "score": 88.25,
+        "strikes": 0,
+        "donations": 221,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "andiquariat",
         "player_tag": "#2UQUPYQCJ",
         "role": "member",
@@ -873,18 +913,6 @@
         "score": 88.21,
         "strikes": 0,
         "donations": 30,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Swordfish",
-        "player_tag": "#2CPRGY8G",
-        "role": "member",
-        "score": 88.11,
-        "strikes": 0,
-        "donations": 203,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
