@@ -46,11 +46,6 @@
       "priority": 2
     },
     {
-      "name": "Johan",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
@@ -62,6 +57,11 @@
     },
     {
       "name": "April#",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
@@ -144,12 +144,12 @@
     },
     {
       "name": "LazyFrog",
-      "score": 94.09,
+      "score": 93.82,
       "status": "STARK"
     },
     {
       "name": "Erastus",
-      "score": 93.2,
+      "score": 93.47,
       "status": "STARK"
     },
     {
@@ -173,11 +173,6 @@
       "status": "STARK"
     },
     {
-      "name": "Johan",
-      "score": 90.8,
-      "status": "STARK"
-    },
-    {
       "name": "OneAndOnly",
       "score": 90.67,
       "status": "STARK"
@@ -194,6 +189,11 @@
     },
     {
       "name": "April#",
+      "score": 90.53,
+      "status": "STARK"
+    },
+    {
+      "name": "Johan",
       "score": 90.53,
       "status": "STARK"
     },
@@ -269,7 +269,7 @@
     },
     {
       "name": "Ted",
-      "score": 85.62,
+      "score": 85.36,
       "status": "STARK"
     },
     {
@@ -324,7 +324,7 @@
     },
     {
       "name": "Merlin1659",
-      "score": 80.15,
+      "score": 80.68,
       "status": "STARK"
     },
     {
@@ -379,7 +379,7 @@
     },
     {
       "name": "HardcoreSoldier",
-      "score": 14.0,
+      "score": 11.6,
       "status": "RISIKO"
     },
     {
@@ -396,12 +396,12 @@
     },
     {
       "name": "LazyFrog",
-      "score": 94.09,
+      "score": 93.82,
       "tip": "Weiter so"
     },
     {
       "name": "Erastus",
-      "score": 93.2,
+      "score": 93.47,
       "tip": "Weiter so"
     },
     {
@@ -425,11 +425,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Johan",
-      "score": 90.8,
-      "tip": "Weiter so"
-    },
-    {
       "name": "OneAndOnly",
       "score": 90.67,
       "tip": "Weiter so"
@@ -446,6 +441,11 @@
     },
     {
       "name": "April#",
+      "score": 90.53,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Johan",
       "score": 90.53,
       "tip": "Weiter so"
     },
@@ -521,7 +521,7 @@
     },
     {
       "name": "Ted",
-      "score": 85.62,
+      "score": 85.36,
       "tip": "Weiter so"
     },
     {
@@ -576,7 +576,7 @@
     },
     {
       "name": "Merlin1659",
-      "score": 80.15,
+      "score": 80.68,
       "tip": "Weiter so"
     },
     {
@@ -631,7 +631,7 @@
     },
     {
       "name": "HardcoreSoldier",
-      "score": 14.0,
+      "score": 11.6,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
@@ -649,7 +649,7 @@
         "role": "member",
         "score": 10.0,
         "strikes": 0,
-        "donations": 60,
+        "donations": 98,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -659,9 +659,9 @@
         "name": "HardcoreSoldier",
         "player_tag": "#GRGCY0R8",
         "role": "member",
-        "score": 14.0,
+        "score": 11.6,
         "strikes": 0,
-        "donations": 32,
+        "donations": 58,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -685,9 +685,9 @@
         "name": "LazyFrog",
         "player_tag": "#22Q920RLR",
         "role": "member",
-        "score": 94.09,
+        "score": 93.82,
         "strikes": 0,
-        "donations": 856,
+        "donations": 876,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -697,9 +697,9 @@
         "name": "Erastus",
         "player_tag": "#Q8L0RJ8Y8",
         "role": "member",
-        "score": 93.2,
+        "score": 93.47,
         "strikes": 0,
-        "donations": 563,
+        "donations": 589,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -723,7 +723,7 @@
         "role": "member",
         "score": 91.95,
         "strikes": 0,
-        "donations": 84,
+        "donations": 94,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -750,18 +750,6 @@
         "donations": 248,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Johan",
-        "player_tag": "#UQVCVVVJL",
-        "role": "member",
-        "score": 90.8,
-        "strikes": 0,
-        "donations": 156,
-        "participation_count": 3,
-        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -795,8 +783,20 @@
         "role": "member",
         "score": 90.53,
         "strikes": 0,
-        "donations": 292,
+        "donations": 302,
         "participation_count": 1,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Johan",
+        "player_tag": "#UQVCVVVJL",
+        "role": "member",
+        "score": 90.53,
+        "strikes": 0,
+        "donations": 166,
+        "participation_count": 3,
         "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
@@ -819,7 +819,7 @@
         "role": "member",
         "score": 90.0,
         "strikes": 0,
-        "donations": 824,
+        "donations": 852,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -985,7 +985,7 @@
         "name": "Ted",
         "player_tag": "#J9RQPGLVP",
         "role": "member",
-        "score": 85.62,
+        "score": 85.36,
         "strikes": 0,
         "donations": 291,
         "participation_count": 10,
