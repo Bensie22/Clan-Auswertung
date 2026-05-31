@@ -51,17 +51,17 @@
       "priority": 2
     },
     {
+      "name": "Johan",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "April#",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
@@ -149,7 +149,7 @@
     },
     {
       "name": "Erastus",
-      "score": 93.47,
+      "score": 93.6,
       "status": "STARK"
     },
     {
@@ -178,17 +178,17 @@
       "status": "STARK"
     },
     {
+      "name": "Johan",
+      "score": 90.67,
+      "status": "STARK"
+    },
+    {
       "name": "Theezy",
       "score": 90.53,
       "status": "STARK"
     },
     {
       "name": "April#",
-      "score": 90.53,
-      "status": "STARK"
-    },
-    {
-      "name": "Johan",
       "score": 90.53,
       "status": "STARK"
     },
@@ -329,7 +329,7 @@
     },
     {
       "name": "DST",
-      "score": 80.14,
+      "score": 80.54,
       "status": "STARK"
     },
     {
@@ -379,7 +379,7 @@
     },
     {
       "name": "HardcoreSoldier",
-      "score": 11.6,
+      "score": 11.87,
       "status": "RISIKO"
     },
     {
@@ -401,7 +401,7 @@
     },
     {
       "name": "Erastus",
-      "score": 93.47,
+      "score": 93.6,
       "tip": "Weiter so"
     },
     {
@@ -430,17 +430,17 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Johan",
+      "score": 90.67,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Theezy",
       "score": 90.53,
       "tip": "Weiter so"
     },
     {
       "name": "April#",
-      "score": 90.53,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Johan",
       "score": 90.53,
       "tip": "Weiter so"
     },
@@ -581,7 +581,7 @@
     },
     {
       "name": "DST",
-      "score": 80.14,
+      "score": 80.54,
       "tip": "Weiter so"
     },
     {
@@ -631,7 +631,7 @@
     },
     {
       "name": "HardcoreSoldier",
-      "score": 11.6,
+      "score": 11.87,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
@@ -649,7 +649,7 @@
         "role": "member",
         "score": 10.0,
         "strikes": 0,
-        "donations": 272,
+        "donations": 302,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -659,9 +659,9 @@
         "name": "HardcoreSoldier",
         "player_tag": "#GRGCY0R8",
         "role": "member",
-        "score": 11.6,
+        "score": 11.87,
         "strikes": 0,
-        "donations": 168,
+        "donations": 196,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -687,7 +687,7 @@
         "role": "member",
         "score": 93.95,
         "strikes": 0,
-        "donations": 1072,
+        "donations": 1092,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -697,9 +697,9 @@
         "name": "Erastus",
         "player_tag": "#Q8L0RJ8Y8",
         "role": "member",
-        "score": 93.47,
+        "score": 93.6,
         "strikes": 0,
-        "donations": 709,
+        "donations": 739,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -766,6 +766,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Johan",
+        "player_tag": "#UQVCVVVJL",
+        "role": "member",
+        "score": 90.67,
+        "strikes": 0,
+        "donations": 214,
+        "participation_count": 3,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "OneAndOnly",
         "player_tag": "#8P0J8P0L",
         "role": "member",
@@ -785,18 +797,6 @@
         "strikes": 0,
         "donations": 385,
         "participation_count": 1,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Johan",
-        "player_tag": "#UQVCVVVJL",
-        "role": "member",
-        "score": 90.53,
-        "strikes": 0,
-        "donations": 194,
-        "participation_count": 3,
         "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
@@ -987,7 +987,7 @@
         "role": "member",
         "score": 85.36,
         "strikes": 0,
-        "donations": 329,
+        "donations": 347,
         "participation_count": 10,
         "trend": "🔴🔴🔴🟡🟢",
         "reason": "Score über 85",
