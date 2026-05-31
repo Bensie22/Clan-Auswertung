@@ -86,22 +86,22 @@
       "priority": 2
     },
     {
-      "name": "_spc07",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "eco",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Dolphin",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "_spc07",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "eco",
       "scenario": "TOP",
       "priority": 2
     },
@@ -139,12 +139,12 @@
   "smart": [
     {
       "name": "OmniOni",
-      "score": 94.93,
+      "score": 94.53,
       "status": "STARK"
     },
     {
       "name": "LazyFrog",
-      "score": 93.82,
+      "score": 93.95,
       "status": "STARK"
     },
     {
@@ -213,23 +213,23 @@
       "status": "STARK"
     },
     {
+      "name": "Swordfish",
+      "score": 89.05,
+      "status": "STARK"
+    },
+    {
+      "name": "Dolphin",
+      "score": 88.88,
+      "status": "STARK"
+    },
+    {
       "name": "_spc07",
-      "score": 89.02,
+      "score": 88.75,
       "status": "STARK"
     },
     {
       "name": "eco",
       "score": 88.7,
-      "status": "STARK"
-    },
-    {
-      "name": "Swordfish",
-      "score": 88.65,
-      "status": "STARK"
-    },
-    {
-      "name": "Dolphin",
-      "score": 88.48,
       "status": "STARK"
     },
     {
@@ -364,7 +364,7 @@
     },
     {
       "name": "Suren 187",
-      "score": 71.34,
+      "score": 71.08,
       "status": "OK"
     },
     {
@@ -391,12 +391,12 @@
   "coaching": [
     {
       "name": "OmniOni",
-      "score": 94.93,
+      "score": 94.53,
       "tip": "Weiter so"
     },
     {
       "name": "LazyFrog",
-      "score": 93.82,
+      "score": 93.95,
       "tip": "Weiter so"
     },
     {
@@ -465,23 +465,23 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Swordfish",
+      "score": 89.05,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Dolphin",
+      "score": 88.88,
+      "tip": "Weiter so"
+    },
+    {
       "name": "_spc07",
-      "score": 89.02,
+      "score": 88.75,
       "tip": "Weiter so"
     },
     {
       "name": "eco",
       "score": 88.7,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Swordfish",
-      "score": 88.65,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Dolphin",
-      "score": 88.48,
       "tip": "Weiter so"
     },
     {
@@ -616,7 +616,7 @@
     },
     {
       "name": "Suren 187",
-      "score": 71.34,
+      "score": 71.08,
       "tip": "Weiter so"
     },
     {
@@ -673,9 +673,9 @@
         "name": "OmniOni",
         "player_tag": "#UUPCULU9V",
         "role": "member",
-        "score": 94.93,
+        "score": 94.53,
         "strikes": 0,
-        "donations": 584,
+        "donations": 594,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -685,9 +685,9 @@
         "name": "LazyFrog",
         "player_tag": "#22Q920RLR",
         "role": "member",
-        "score": 93.82,
+        "score": 93.95,
         "strikes": 0,
-        "donations": 966,
+        "donations": 994,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -771,7 +771,7 @@
         "role": "member",
         "score": 90.53,
         "strikes": 0,
-        "donations": 616,
+        "donations": 626,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -850,10 +850,34 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Swordfish",
+        "player_tag": "#2CPRGY8G",
+        "role": "member",
+        "score": 89.05,
+        "strikes": 0,
+        "donations": 291,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Dolphin",
+        "player_tag": "#2U09UULRR",
+        "role": "member",
+        "score": 88.88,
+        "strikes": 0,
+        "donations": 206,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "_spc07",
         "player_tag": "#2U8288CVY",
         "role": "member",
-        "score": 89.02,
+        "score": 88.75,
         "strikes": 0,
         "donations": 311,
         "participation_count": 10,
@@ -868,30 +892,6 @@
         "score": 88.7,
         "strikes": 0,
         "donations": 666,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Swordfish",
-        "player_tag": "#2CPRGY8G",
-        "role": "member",
-        "score": 88.65,
-        "strikes": 0,
-        "donations": 273,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Dolphin",
-        "player_tag": "#2U09UULRR",
-        "role": "member",
-        "score": 88.48,
-        "strikes": 0,
-        "donations": 206,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -999,7 +999,7 @@
         "role": "member",
         "score": 85.36,
         "strikes": 0,
-        "donations": 309,
+        "donations": 319,
         "participation_count": 10,
         "trend": "🔴🔴🔴🟡🟢",
         "reason": "Score über 85",
