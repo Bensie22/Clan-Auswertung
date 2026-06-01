@@ -41,12 +41,12 @@
       "priority": 2
     },
     {
-      "name": "Jackhammer",
+      "name": "honigmelone",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "honigmelone",
+      "name": "Jackhammer",
       "scenario": "TOP",
       "priority": 2
     },
@@ -173,13 +173,13 @@
       "status": "STARK"
     },
     {
-      "name": "Jackhammer",
-      "score": 91.23,
+      "name": "honigmelone",
+      "score": 90.93,
       "status": "STARK"
     },
     {
-      "name": "honigmelone",
-      "score": 90.93,
+      "name": "Jackhammer",
+      "score": 90.7,
       "status": "STARK"
     },
     {
@@ -209,7 +209,7 @@
     },
     {
       "name": "Knitte",
-      "score": 89.37,
+      "score": 89.1,
       "status": "STARK"
     },
     {
@@ -283,11 +283,6 @@
       "status": "STARK"
     },
     {
-      "name": "bes",
-      "score": 84.77,
-      "status": "STARK"
-    },
-    {
       "name": "kl.kranker Affe",
       "score": 84.74,
       "status": "STARK"
@@ -295,6 +290,11 @@
     {
       "name": "seroo",
       "score": 84.68,
+      "status": "STARK"
+    },
+    {
+      "name": "bes",
+      "score": 84.64,
       "status": "STARK"
     },
     {
@@ -425,13 +425,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Jackhammer",
-      "score": 91.23,
+      "name": "honigmelone",
+      "score": 90.93,
       "tip": "Weiter so"
     },
     {
-      "name": "honigmelone",
-      "score": 90.93,
+      "name": "Jackhammer",
+      "score": 90.7,
       "tip": "Weiter so"
     },
     {
@@ -461,7 +461,7 @@
     },
     {
       "name": "Knitte",
-      "score": 89.37,
+      "score": 89.1,
       "tip": "Weiter so"
     },
     {
@@ -535,11 +535,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "bes",
-      "score": 84.77,
-      "tip": "Weiter so"
-    },
-    {
       "name": "kl.kranker Affe",
       "score": 84.74,
       "tip": "Weiter so"
@@ -547,6 +542,11 @@
     {
       "name": "seroo",
       "score": 84.68,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "bes",
+      "score": 84.64,
       "tip": "Weiter so"
     },
     {
@@ -747,24 +747,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Jackhammer",
-        "player_tag": "#2CJYG9UG",
-        "role": "member",
-        "score": 91.23,
-        "strikes": 0,
-        "donations": 196,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "honigmelone",
         "player_tag": "#Q2GRGLQR",
         "role": "member",
         "score": 90.93,
         "strikes": 0,
         "donations": 156,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Jackhammer",
+        "player_tag": "#2CJYG9UG",
+        "role": "member",
+        "score": 90.7,
+        "strikes": 0,
+        "donations": 196,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -834,7 +834,7 @@
         "name": "Knitte",
         "player_tag": "#ULYJ2CQP",
         "role": "member",
-        "score": 89.37,
+        "score": 89.1,
         "strikes": 0,
         "donations": 611,
         "participation_count": 10,
