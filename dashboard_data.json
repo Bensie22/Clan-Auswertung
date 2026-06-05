@@ -76,17 +76,17 @@
       "priority": 2
     },
     {
-      "name": "SirHenry87",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "honigmelone",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Ted",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "SirHenry87",
       "scenario": "TOP",
       "priority": 2
     },
@@ -183,11 +183,6 @@
       "status": "STARK"
     },
     {
-      "name": "SirHenry87",
-      "score": 89.42,
-      "status": "STARK"
-    },
-    {
       "name": "honigmelone",
       "score": 89.2,
       "status": "STARK"
@@ -195,6 +190,11 @@
     {
       "name": "Ted",
       "score": 89.11,
+      "status": "STARK"
+    },
+    {
+      "name": "SirHenry87",
+      "score": 89.02,
       "status": "STARK"
     },
     {
@@ -435,11 +435,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "SirHenry87",
-      "score": 89.42,
-      "tip": "Weiter so"
-    },
-    {
       "name": "honigmelone",
       "score": 89.2,
       "tip": "Weiter so"
@@ -447,6 +442,11 @@
     {
       "name": "Ted",
       "score": 89.11,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "SirHenry87",
+      "score": 89.02,
       "tip": "Weiter so"
     },
     {
@@ -788,18 +788,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "SirHenry87",
-        "player_tag": "#8QYYL8LCQ",
-        "role": "member",
-        "score": 89.42,
-        "strikes": 0,
-        "donations": 100,
-        "participation_count": 10,
-        "trend": "🟡🟡🟡🟡🟡",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "honigmelone",
         "player_tag": "#Q2GRGLQR",
         "role": "member",
@@ -820,6 +808,18 @@
         "donations": 260,
         "participation_count": 10,
         "trend": "🔴🔴🔴🟡🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "SirHenry87",
+        "player_tag": "#8QYYL8LCQ",
+        "role": "member",
+        "score": 89.02,
+        "strikes": 0,
+        "donations": 130,
+        "participation_count": 10,
+        "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
