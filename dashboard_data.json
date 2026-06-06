@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "★Elite Player★",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "elazeto",
       "scenario": "TOP",
       "priority": 2
@@ -86,12 +91,12 @@
       "priority": 2
     },
     {
-      "name": "SirHenry87",
+      "name": "Bensie",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Bensie",
+      "name": "SirHenry87",
       "scenario": "TOP",
       "priority": 2
     },
@@ -134,12 +139,12 @@
     },
     {
       "name": "OmniOni",
-      "score": 94.4,
+      "score": 94.27,
       "status": "STARK"
     },
     {
       "name": "Citykingalex",
-      "score": 93.81,
+      "score": 93.41,
       "status": "STARK"
     },
     {
@@ -179,7 +184,7 @@
     },
     {
       "name": "Swordfish",
-      "score": 90.43,
+      "score": 90.3,
       "status": "STARK"
     },
     {
@@ -208,13 +213,13 @@
       "status": "STARK"
     },
     {
-      "name": "SirHenry87",
-      "score": 89.02,
+      "name": "Bensie",
+      "score": 89.07,
       "status": "STARK"
     },
     {
-      "name": "Bensie",
-      "score": 88.8,
+      "name": "SirHenry87",
+      "score": 89.02,
       "status": "STARK"
     },
     {
@@ -224,12 +229,12 @@
     },
     {
       "name": "eco",
-      "score": 88.52,
+      "score": 88.39,
       "status": "STARK"
     },
     {
       "name": "Flauschos",
-      "score": 88.17,
+      "score": 88.3,
       "status": "STARK"
     },
     {
@@ -249,12 +254,12 @@
     },
     {
       "name": "Desteoyer",
-      "score": 87.31,
+      "score": 87.58,
       "status": "STARK"
     },
     {
       "name": "seroo",
-      "score": 87.22,
+      "score": 87.09,
       "status": "STARK"
     },
     {
@@ -368,14 +373,14 @@
       "status": "OK"
     },
     {
-      "name": "Suren 187",
-      "score": 66.67,
-      "status": "OK"
-    },
-    {
       "name": "AreYouBadBro?",
       "score": 63.67,
       "status": "OK"
+    },
+    {
+      "name": "★Elite Player★",
+      "score": 0.0,
+      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -386,12 +391,12 @@
     },
     {
       "name": "OmniOni",
-      "score": 94.4,
+      "score": 94.27,
       "tip": "Weiter so"
     },
     {
       "name": "Citykingalex",
-      "score": 93.81,
+      "score": 93.41,
       "tip": "Weiter so"
     },
     {
@@ -431,7 +436,7 @@
     },
     {
       "name": "Swordfish",
-      "score": 90.43,
+      "score": 90.3,
       "tip": "Weiter so"
     },
     {
@@ -460,13 +465,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "SirHenry87",
-      "score": 89.02,
+      "name": "Bensie",
+      "score": 89.07,
       "tip": "Weiter so"
     },
     {
-      "name": "Bensie",
-      "score": 88.8,
+      "name": "SirHenry87",
+      "score": 89.02,
       "tip": "Weiter so"
     },
     {
@@ -476,12 +481,12 @@
     },
     {
       "name": "eco",
-      "score": 88.52,
+      "score": 88.39,
       "tip": "Weiter so"
     },
     {
       "name": "Flauschos",
-      "score": 88.17,
+      "score": 88.3,
       "tip": "Weiter so"
     },
     {
@@ -501,12 +506,12 @@
     },
     {
       "name": "Desteoyer",
-      "score": 87.31,
+      "score": 87.58,
       "tip": "Weiter so"
     },
     {
       "name": "seroo",
-      "score": 87.22,
+      "score": 87.09,
       "tip": "Weiter so"
     },
     {
@@ -620,19 +625,32 @@
       "tip": "Konstanz verbessern"
     },
     {
-      "name": "Suren 187",
-      "score": 66.67,
-      "tip": "Konstanz verbessern"
-    },
-    {
       "name": "AreYouBadBro?",
       "score": 63.67,
       "tip": "Konstanz verbessern"
+    },
+    {
+      "name": "★Elite Player★",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
-    "remove": [],
+    "remove": [
+      {
+        "name": "★Elite Player★",
+        "player_tag": "#JG8Q0GPU9",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      }
+    ],
     "core": [
       {
         "name": "Erastus",
@@ -650,7 +668,7 @@
         "name": "OmniOni",
         "player_tag": "#UUPCULU9V",
         "role": "member",
-        "score": 94.4,
+        "score": 94.27,
         "strikes": 0,
         "donations": 666,
         "participation_count": 10,
@@ -662,9 +680,9 @@
         "name": "Citykingalex",
         "player_tag": "#QULCQGGG",
         "role": "member",
-        "score": 93.81,
+        "score": 93.41,
         "strikes": 0,
-        "donations": 306,
+        "donations": 324,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
@@ -758,7 +776,7 @@
         "name": "Swordfish",
         "player_tag": "#2CPRGY8G",
         "role": "member",
-        "score": 90.43,
+        "score": 90.3,
         "strikes": 0,
         "donations": 358,
         "participation_count": 10,
@@ -827,6 +845,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Bensie",
+        "player_tag": "#2QRVR9L8",
+        "role": "member",
+        "score": 89.07,
+        "strikes": 0,
+        "donations": 1103,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "SirHenry87",
         "player_tag": "#8QYYL8LCQ",
         "role": "member",
@@ -835,18 +865,6 @@
         "donations": 210,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Bensie",
-        "player_tag": "#2QRVR9L8",
-        "role": "member",
-        "score": 88.8,
-        "strikes": 0,
-        "donations": 1103,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -866,9 +884,9 @@
         "name": "eco",
         "player_tag": "#202VP2QL9P",
         "role": "member",
-        "score": 88.52,
+        "score": 88.39,
         "strikes": 0,
-        "donations": 92,
+        "donations": 100,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -878,7 +896,7 @@
         "name": "Flauschos",
         "player_tag": "#PPR2QQC0U",
         "role": "member",
-        "score": 88.17,
+        "score": 88.3,
         "strikes": 0,
         "donations": 26,
         "participation_count": 10,
@@ -926,7 +944,7 @@
         "name": "Desteoyer",
         "player_tag": "#2V800VCQ0",
         "role": "member",
-        "score": 87.31,
+        "score": 87.58,
         "strikes": 0,
         "donations": 20,
         "participation_count": 10,
@@ -938,7 +956,7 @@
         "name": "seroo",
         "player_tag": "#JRGC9RRQG",
         "role": "member",
-        "score": 87.22,
+        "score": 87.09,
         "strikes": 0,
         "donations": 32,
         "participation_count": 10,
