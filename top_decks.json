@@ -9,7 +9,7 @@
             "#UJ2P9UYUV": "20260608T181420.000Z",
             "#P0JYR9YUY": "20260608T184103.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
-            "#YQ82VR9JQ": "20260608T192717.000Z",
+            "#YQ82VR9JQ": "20260608T212501.000Z",
             "#G02LC9C8": "20260608T205144.000Z",
             "#2U8288CVY": "20260608T101558.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
@@ -17,12 +17,12 @@
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260608T055023.000Z",
             "#QULCQGGG": "20260608T065803.000Z",
-            "#JRGC9RRQG": "20260608T094735.000Z",
+            "#JRGC9RRQG": "20260608T215047.000Z",
             "#QVQGCV8Y9": "20260608T160328.000Z",
             "#Q8L0RJ8Y8": "20260607T180729.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260608T193643.000Z",
-            "#LLQQJCLC": "20260607T185049.000Z",
+            "#LLQQJCLC": "20260608T214801.000Z",
             "#2VJR80RL": "20260607T212919.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
@@ -46,7 +46,7 @@
             "#UUPCULU9V": "20260608T140812.000Z",
             "#202VP2QL9P": "20260608T190755.000Z",
             "#LVUGLUCP9": "20260607T182216.000Z",
-            "#20QGJVPG8Q": "20260608T182649.000Z",
+            "#20QGJVPG8Q": "20260608T222444.000Z",
             "#V9GYJQ0J9": "",
             "#URJ0LUYPV": "20260608T121241.000Z",
             "#Q2GRGLQR": "20260608T201705.000Z",
@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20260608T121350.000Z",
+            "#YUQVVVLQ": "20260608T222211.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260607T223747.000Z",
             "#GLGY98U08": "20260608T195702.000Z",
@@ -5252,7 +5252,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
                 }
             ],
-            "wins": 2,
+            "wins": 3,
             "losses": 0,
             "players": [
                 "April#"
@@ -5261,6 +5261,12 @@
                 "YUQVVVLQ"
             ],
             "recent_matches": [
+                {
+                    "time": "20260608T211613.000Z",
+                    "result": "win",
+                    "player": "April#",
+                    "tag": "YUQVVVLQ"
+                },
                 {
                     "time": "20260607T212019.000Z",
                     "result": "win",
@@ -182472,6 +182478,98 @@
                     "id": 28000009,
                     "name": "Poison",
                     "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000011-26000016-26000021-26000041-26000052-26000064-27000010-28000007": {
+            "cards": [
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000052,
+                    "name": "Zappies",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QZfHRpLRmutZbCr5fpLnTpIp89vLI6NrAwzGZ8tHEc4.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 28000007,
+                    "name": "Lightning",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fpnESbYqe5GyZmaVVYe-SEu7tE0Kxh_HZyVigzvLjks.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000012-26000016-26000040-26000045-26000057-27000012-28000004-28000008": {
+            "cards": [
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 27000012,
+                    "name": "Goblin Cage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vD24bBgK4rSq7wx5QEbuqChtPMRFviL_ep76GwQw1yA.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 26000057,
+                    "name": "Flying Machine",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/hzKNE3QwFcrSrDDRuVW3QY_OnrDPijSiIp-PsWgFevE.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
                 }
             ],
             "seen": 1,
