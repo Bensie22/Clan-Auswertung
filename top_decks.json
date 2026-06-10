@@ -4,9 +4,9 @@
             "#22Q920RLR": "20260609T181425.000Z",
             "#L8PV090J": "20260607T183524.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
-            "#2QRVR9L8": "20260609T202149.000Z",
+            "#2QRVR9L8": "20260610T034257.000Z",
             "#ULYJ2CQP": "20260608T010226.000Z",
-            "#UJ2P9UYUV": "20260609T185035.000Z",
+            "#UJ2P9UYUV": "20260610T044149.000Z",
             "#P0JYR9YUY": "20260609T153537.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260609T203618.000Z",
@@ -19,11 +19,11 @@
             "#QULCQGGG": "20260609T121141.000Z",
             "#JRGC9RRQG": "20260609T101908.000Z",
             "#QVQGCV8Y9": "20260609T172741.000Z",
-            "#Q8L0RJ8Y8": "20260609T061829.000Z",
+            "#Q8L0RJ8Y8": "20260610T033349.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260609T195216.000Z",
             "#LLQQJCLC": "20260609T063021.000Z",
-            "#2VJR80RL": "20260607T212919.000Z",
+            "#2VJR80RL": "20260610T024529.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
             "#2CJYG9UG": "20260607T154534.000Z",
@@ -32,7 +32,7 @@
             "#2V800VCQ0": "20260609T190805.000Z",
             "#2UQUPYQCJ": "20260609T114509.000Z",
             "#JUUR8UGL8": "20260607T201603.000Z",
-            "#2U09UULRR": "20260609T025747.000Z",
+            "#2U09UULRR": "20260610T034056.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20260609T065142.000Z",
             "#8P0J8P0L": "20260609T130543.000Z",
@@ -44,12 +44,12 @@
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
             "#UUPCULU9V": "20260609T165453.000Z",
-            "#202VP2QL9P": "20260609T183516.000Z",
+            "#202VP2QL9P": "20260610T033925.000Z",
             "#LVUGLUCP9": "20260607T182216.000Z",
             "#20QGJVPG8Q": "20260609T212825.000Z",
             "#V9GYJQ0J9": "",
             "#URJ0LUYPV": "20260609T115854.000Z",
-            "#Q2GRGLQR": "20260609T053506.000Z",
+            "#Q2GRGLQR": "20260610T042527.000Z",
             "#J9RQPGLVP": "20260607T113128.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
             "#9VLRQ9GR9": "20260609T100902.000Z",
@@ -83,7 +83,7 @@
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260609T223746.000Z",
             "#GLGY98U08": "20260609T105022.000Z",
-            "#GRGCY0R8": "20260609T142335.000Z",
+            "#GRGCY0R8": "20260610T041810.000Z",
             "#P2YQ2QQUV": "20260609T195545.000Z",
             "#JG8Q0GPU9": "20260609T125041.000Z",
             "#9QV99QVCV": "20260609T204437.000Z",
@@ -4778,7 +4778,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
                 }
             ],
-            "wins": 2,
+            "wins": 3,
             "losses": 0,
             "players": [
                 "eco"
@@ -4787,6 +4787,12 @@
                 "202VP2QL9P"
             ],
             "recent_matches": [
+                {
+                    "time": "20260610T025551.000Z",
+                    "result": "win",
+                    "player": "eco",
+                    "tag": "202VP2QL9P"
+                },
                 {
                     "time": "20260607T161922.000Z",
                     "result": "win",
@@ -6063,7 +6069,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "eco"
             ],
@@ -6071,6 +6077,12 @@
                 "202VP2QL9P"
             ],
             "recent_matches": [
+                {
+                    "time": "20260610T030106.000Z",
+                    "result": "loss",
+                    "player": "eco",
+                    "tag": "202VP2QL9P"
+                },
                 {
                     "time": "20260607T162418.000Z",
                     "result": "win",
@@ -155380,7 +155392,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
                 }
             ],
-            "seen": 1,
+            "seen": 2,
             "losses": 1
         },
         "26000006-26000025-26000029-26000037-26000080-27000012-28000007-28000017": {
@@ -183626,6 +183638,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000005-26000012-26000022-26000041-26000042-26000043-26000064-28000013": {
+            "cards": [
+                {
+                    "id": 26000043,
+                    "name": "Elite Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/C88C5JH_F3lLZj6K-tLcMo5DPjrFmvzIb1R2M6xCfTE.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                },
+                {
+                    "id": 26000022,
+                    "name": "Minion Horde",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Wyjq5l0IXHTkX9Rmpap6HaH08MvjbxFp1xBO9a47YSI.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 28000013,
+                    "name": "Clone",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mHVCet-1TkwWq-pxVIU2ZWY9_2z7Z7wtP25ArEUsP_g.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
