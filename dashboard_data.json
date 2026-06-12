@@ -46,12 +46,12 @@
       "priority": 2
     },
     {
-      "name": "AaleDieter",
+      "name": "LazyFrog",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "LazyFrog",
+      "name": "AaleDieter",
       "scenario": "TOP",
       "priority": 2
     },
@@ -106,12 +106,12 @@
       "priority": 2
     },
     {
-      "name": "Knitte",
+      "name": "Theezy",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Theezy",
+      "name": "Knitte",
       "scenario": "TOP",
       "priority": 2
     },
@@ -149,7 +149,7 @@
   "smart": [
     {
       "name": "Erastus",
-      "score": 94.53,
+      "score": 94.4,
       "status": "STARK"
     },
     {
@@ -164,17 +164,17 @@
     },
     {
       "name": "maghrebi",
-      "score": 92.27,
+      "score": 92.8,
+      "status": "STARK"
+    },
+    {
+      "name": "LazyFrog",
+      "score": 92.09,
       "status": "STARK"
     },
     {
       "name": "AaleDieter",
       "score": 92.09,
-      "status": "STARK"
-    },
-    {
-      "name": "LazyFrog",
-      "score": 91.82,
       "status": "STARK"
     },
     {
@@ -238,13 +238,13 @@
       "status": "STARK"
     },
     {
-      "name": "Knitte",
-      "score": 88.12,
+      "name": "Theezy",
+      "score": 88.35,
       "status": "STARK"
     },
     {
-      "name": "Theezy",
-      "score": 88.08,
+      "name": "Knitte",
+      "score": 88.12,
       "status": "STARK"
     },
     {
@@ -254,7 +254,7 @@
     },
     {
       "name": "eco",
-      "score": 87.72,
+      "score": 87.58,
       "status": "STARK"
     },
     {
@@ -391,7 +391,7 @@
   "coaching": [
     {
       "name": "Erastus",
-      "score": 94.53,
+      "score": 94.4,
       "tip": "Weiter so"
     },
     {
@@ -406,17 +406,17 @@
     },
     {
       "name": "maghrebi",
-      "score": 92.27,
+      "score": 92.8,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "LazyFrog",
+      "score": 92.09,
       "tip": "Weiter so"
     },
     {
       "name": "AaleDieter",
       "score": 92.09,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "LazyFrog",
-      "score": 91.82,
       "tip": "Weiter so"
     },
     {
@@ -480,13 +480,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Knitte",
-      "score": 88.12,
+      "name": "Theezy",
+      "score": 88.35,
       "tip": "Weiter so"
     },
     {
-      "name": "Theezy",
-      "score": 88.08,
+      "name": "Knitte",
+      "score": 88.12,
       "tip": "Weiter so"
     },
     {
@@ -496,7 +496,7 @@
     },
     {
       "name": "eco",
-      "score": 87.72,
+      "score": 87.58,
       "tip": "Weiter so"
     },
     {
@@ -675,9 +675,9 @@
         "name": "Erastus",
         "player_tag": "#Q8L0RJ8Y8",
         "role": "member",
-        "score": 94.53,
+        "score": 94.4,
         "strikes": 0,
-        "donations": 524,
+        "donations": 534,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -689,7 +689,7 @@
         "role": "member",
         "score": 94.0,
         "strikes": 0,
-        "donations": 409,
+        "donations": 419,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -711,9 +711,21 @@
         "name": "maghrebi",
         "player_tag": "#20QGJVPG8Q",
         "role": "member",
-        "score": 92.27,
+        "score": 92.8,
         "strikes": 0,
         "donations": 288,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "LazyFrog",
+        "player_tag": "#22Q920RLR",
+        "role": "member",
+        "score": 92.09,
+        "strikes": 0,
+        "donations": 800,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -726,18 +738,6 @@
         "score": 92.09,
         "strikes": 0,
         "donations": 82,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "LazyFrog",
-        "player_tag": "#22Q920RLR",
-        "role": "member",
-        "score": 91.82,
-        "strikes": 0,
-        "donations": 800,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -761,7 +761,7 @@
         "role": "member",
         "score": 90.8,
         "strikes": 0,
-        "donations": 262,
+        "donations": 272,
         "participation_count": 3,
         "trend": "",
         "reason": "Score über 85",
@@ -785,7 +785,7 @@
         "role": "member",
         "score": 90.53,
         "strikes": 0,
-        "donations": 494,
+        "donations": 512,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -881,7 +881,19 @@
         "role": "member",
         "score": 88.4,
         "strikes": 0,
-        "donations": 1208,
+        "donations": 1232,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Theezy",
+        "player_tag": "#JUUR8UGL8",
+        "role": "member",
+        "score": 88.35,
+        "strikes": 0,
+        "donations": 68,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -893,19 +905,7 @@
         "role": "member",
         "score": 88.12,
         "strikes": 0,
-        "donations": 460,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Theezy",
-        "player_tag": "#JUUR8UGL8",
-        "role": "member",
-        "score": 88.08,
-        "strikes": 0,
-        "donations": 58,
+        "donations": 468,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -927,9 +927,9 @@
         "name": "eco",
         "player_tag": "#202VP2QL9P",
         "role": "member",
-        "score": 87.72,
+        "score": 87.58,
         "strikes": 0,
-        "donations": 270,
+        "donations": 296,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1001,7 +1001,7 @@
         "role": "member",
         "score": 85.83,
         "strikes": 0,
-        "donations": 879,
+        "donations": 913,
         "participation_count": 5,
         "trend": "",
         "reason": "Score über 85",
