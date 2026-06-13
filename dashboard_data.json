@@ -71,12 +71,12 @@
       "priority": 2
     },
     {
-      "name": "April#",
+      "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Jackhammer",
+      "name": "April#",
       "scenario": "TOP",
       "priority": 2
     },
@@ -91,7 +91,7 @@
       "priority": 2
     },
     {
-      "name": "Swordfish",
+      "name": "Jackhammer",
       "scenario": "TOP",
       "priority": 2
     },
@@ -194,17 +194,17 @@
     },
     {
       "name": "mauza",
-      "score": 91.54,
+      "score": 91.67,
+      "status": "STARK"
+    },
+    {
+      "name": "Swordfish",
+      "score": 90.56,
       "status": "STARK"
     },
     {
       "name": "April#",
       "score": 90.53,
-      "status": "STARK"
-    },
-    {
-      "name": "Jackhammer",
-      "score": 90.48,
       "status": "STARK"
     },
     {
@@ -218,8 +218,8 @@
       "status": "STARK"
     },
     {
-      "name": "Swordfish",
-      "score": 90.16,
+      "name": "Jackhammer",
+      "score": 90.08,
       "status": "STARK"
     },
     {
@@ -349,7 +349,7 @@
     },
     {
       "name": "DST",
-      "score": 82.01,
+      "score": 82.15,
       "status": "STARK"
     },
     {
@@ -364,7 +364,7 @@
     },
     {
       "name": "agostini",
-      "score": 78.3,
+      "score": 77.9,
       "status": "OK"
     },
     {
@@ -446,17 +446,17 @@
     },
     {
       "name": "mauza",
-      "score": 91.54,
+      "score": 91.67,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Swordfish",
+      "score": 90.56,
       "tip": "Weiter so"
     },
     {
       "name": "April#",
       "score": 90.53,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Jackhammer",
-      "score": 90.48,
       "tip": "Weiter so"
     },
     {
@@ -470,8 +470,8 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Swordfish",
-      "score": 90.16,
+      "name": "Jackhammer",
+      "score": 90.08,
       "tip": "Weiter so"
     },
     {
@@ -601,7 +601,7 @@
     },
     {
       "name": "DST",
-      "score": 82.01,
+      "score": 82.15,
       "tip": "Weiter so"
     },
     {
@@ -616,7 +616,7 @@
     },
     {
       "name": "agostini",
-      "score": 78.3,
+      "score": 77.9,
       "tip": "Weiter so"
     },
     {
@@ -736,7 +736,7 @@
         "role": "member",
         "score": 94.4,
         "strikes": 0,
-        "donations": 634,
+        "donations": 676,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -748,7 +748,7 @@
         "role": "member",
         "score": 94.0,
         "strikes": 0,
-        "donations": 447,
+        "donations": 463,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -772,7 +772,7 @@
         "role": "member",
         "score": 92.4,
         "strikes": 0,
-        "donations": 312,
+        "donations": 336,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -806,9 +806,21 @@
         "name": "mauza",
         "player_tag": "#2P0U2RLGY",
         "role": "member",
-        "score": 91.54,
+        "score": 91.67,
         "strikes": 0,
-        "donations": 243,
+        "donations": 277,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Swordfish",
+        "player_tag": "#2CPRGY8G",
+        "role": "member",
+        "score": 90.56,
+        "strikes": 0,
+        "donations": 224,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -823,18 +835,6 @@
         "donations": 290,
         "participation_count": 3,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Jackhammer",
-        "player_tag": "#2CJYG9UG",
-        "role": "member",
-        "score": 90.48,
-        "strikes": 0,
-        "donations": 140,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -863,12 +863,12 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Swordfish",
-        "player_tag": "#2CPRGY8G",
+        "name": "Jackhammer",
+        "player_tag": "#2CJYG9UG",
         "role": "member",
-        "score": 90.16,
+        "score": 90.08,
         "strikes": 0,
-        "donations": 184,
+        "donations": 148,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
