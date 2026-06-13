@@ -34,13 +34,14 @@ def player_history(player_tag: str):
     entries = history.get(normalize_name(player_name), [])
     scores = [e["score"] for e in entries]
 
+    streak = compute_streak(scores)
     return {
         "tag": tag,
         "name": player_name,
         "entries": list(reversed(entries)),
         "trend": compute_trend(scores) if scores else "",
-        "streak": compute_streak(scores),
-        "streak_badge": f"🔥 {compute_streak(scores)}x perfekt" if compute_streak(scores) >= 3 else None,
+        "streak": streak,
+        "streak_badge": f"🔥 {streak}x perfekt" if streak >= 3 else None,
         "avg_score": round(sum(scores) / len(scores), 2) if scores else 0,
         "best_score": max(scores) if scores else 0,
         "worst_score": min(scores) if scores else 0,

@@ -1,5 +1,6 @@
 import re
-from typing import Any
+from datetime import datetime, timezone
+from typing import Any, Optional, Tuple
 
 from fastapi import HTTPException
 
@@ -44,20 +45,13 @@ def parse_int(value: Any, default: int = 0) -> int:
         return default
 
 
-def compute_trend(scores: list, tier_solide: float, strike_threshold: float) -> str:
-    return "".join([
-        "🟢" if s >= tier_solide else
-        "🟡" if s >= strike_threshold else
-        "🔴"
-        for s in scores[-6:]
-    ])
-
-
-def compute_streak(scores: list) -> int:
-    streak = 0
-    for s in reversed(scores):
-        if s >= 100.0:
-            streak += 1
-        else:
-            break
-    return streak
+def parse_battle_date(raw: Optional[str]) -> Tuple[Optional[str], Optional[int]]:
+    """Parst ein RoyaleAPI-Datumsformat und gibt (iso_string, tage_seit) zurück."""
+    if not raw:
+        return None, None
+    try:
+        dt = datetime.strptime(raw, "%Y%m%dT%H%M%S.%fZ").replace(tzinfo=timezone.utc)
+        days_since = (datetime.now(timezone.utc) - dt).days
+        return dt.isoformat(), days_since
+    except Exception:
+        return None, None

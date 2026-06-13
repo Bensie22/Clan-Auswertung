@@ -52,6 +52,11 @@ output/archiv/
 # --- Laufzeit-Artefakte ---
 action_log.json.migrated
 
+# --- Hinweis: Spielerdaten (member_memory.json, strikes.json etc.) ---
+# Diese Dateien werden absichtlich committet – der GitHub-Actions-Cron
+# schreibt sie direkt ins Repo. Sie enthalten Spielernamen und -tags,
+# die dadurch öffentlich auf GitHub sichtbar sind.
+
 # --- Debug / Temp ---
 *.log
 *.tmp

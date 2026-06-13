@@ -1,3 +1,4 @@
+import time
 from typing import Any, Dict, List
 
 from app.utils import normalize_name
@@ -14,6 +15,10 @@ from config import (
 )
 
 PROMOTION_DONATIONS_MIN = 50
+
+_players_cache: Dict[str, Any] = {}
+_players_cache_ts: float = 0.0
+_CACHE_TTL = 30.0
 
 
 def compute_trend(scores: List[float]) -> str:
@@ -150,6 +155,10 @@ def calculate_teamplay_score_from_stats(players: List[Dict[str, Any]]) -> Dict[s
 
 
 def build_players_enriched() -> Dict[str, Dict[str, Any]]:
+    global _players_cache, _players_cache_ts
+    if _players_cache and (time.monotonic() - _players_cache_ts) < _CACHE_TTL:
+        return _players_cache
+
     members = load_current_players()
     donations = load_donations_map()
     scores = latest_score_map()
@@ -175,6 +184,8 @@ def build_players_enriched() -> Dict[str, Dict[str, Any]]:
             "total_decks": stat_entry.get("total_decks", 0),
             "wars_in_window": stat_entry.get("wars_in_window", 0),
         }
+    _players_cache = enriched
+    _players_cache_ts = time.monotonic()
     return enriched
 
 

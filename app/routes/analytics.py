@@ -1,8 +1,6 @@
-from datetime import datetime, timezone
-
 from fastapi import APIRouter, HTTPException, Query
 
-from app.utils import normalize_tag, normalize_name, parse_float, parse_int
+from app.utils import normalize_tag, normalize_name, parse_float, parse_int, parse_battle_date
 from app.data import load_top_decks, load_records, score_history_by_player
 from app.services import (
     build_players_enriched, get_focus_badge, compute_trend, compute_streak,
@@ -162,19 +160,9 @@ def players_activity():
     all_players = build_players_enriched()
     top_decks_data = load_top_decks()
     last_battles = top_decks_data.get("_metadata", {}).get("last_battles", {})
-    now = datetime.now(timezone.utc)
     result = []
     for tag, p in all_players.items():
-        last_battle_raw = last_battles.get(tag)
-        last_battle = None
-        days_since_battle = None
-        if last_battle_raw:
-            try:
-                dt = datetime.strptime(last_battle_raw, "%Y%m%dT%H%M%S.%fZ").replace(tzinfo=timezone.utc)
-                last_battle = dt.isoformat()
-                days_since_battle = (now - dt).days
-            except Exception:
-                pass
+        last_battle, days_since_battle = parse_battle_date(last_battles.get(tag))
         result.append({
             "name": p["name"],
             "tag": tag,
@@ -223,19 +211,9 @@ def players_inaktiv(days: int = Query(default=3, ge=1, le=30, description="Inakt
     all_players = build_players_enriched()
     top_decks_data = load_top_decks()
     last_battles = top_decks_data.get("_metadata", {}).get("last_battles", {})
-    now = datetime.now(timezone.utc)
     inaktiv = []
     for tag, p in all_players.items():
-        last_battle_raw = last_battles.get(tag)
-        days_since = None
-        last_battle = None
-        if last_battle_raw:
-            try:
-                dt = datetime.strptime(last_battle_raw, "%Y%m%dT%H%M%S.%fZ").replace(tzinfo=timezone.utc)
-                days_since = (now - dt).days
-                last_battle = dt.isoformat()
-            except Exception:
-                pass
+        last_battle, days_since = parse_battle_date(last_battles.get(tag))
         if days_since is None or days_since >= days:
             inaktiv.append({
                 "name": p["name"],
