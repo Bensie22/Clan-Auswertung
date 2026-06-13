@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "Eugen32",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "mösel",
       "scenario": "STRIKE",
       "priority": 4
@@ -283,13 +288,13 @@
       "status": "STARK"
     },
     {
-      "name": "Flauschos",
-      "score": 86.92,
+      "name": "seroo",
+      "score": 86.87,
       "status": "STARK"
     },
     {
-      "name": "seroo",
-      "score": 86.87,
+      "name": "Flauschos",
+      "score": 86.79,
       "status": "STARK"
     },
     {
@@ -323,6 +328,11 @@
       "status": "STARK"
     },
     {
+      "name": "Chico",
+      "score": 82.71,
+      "status": "STARK"
+    },
+    {
       "name": "rote sonne",
       "score": 82.58,
       "status": "STARK"
@@ -330,11 +340,6 @@
     {
       "name": "hi2oka",
       "score": 82.5,
-      "status": "STARK"
-    },
-    {
-      "name": "Chico",
-      "score": 82.18,
       "status": "STARK"
     },
     {
@@ -374,7 +379,7 @@
     },
     {
       "name": "★Elite Player★",
-      "score": 48.1,
+      "score": 48.23,
       "status": "RISIKO"
     },
     {
@@ -390,6 +395,11 @@
     {
       "name": "mösel",
       "score": 6.67,
+      "status": "RISIKO"
+    },
+    {
+      "name": "Eugen32",
+      "score": 0.0,
       "status": "RISIKO"
     }
   ],
@@ -525,13 +535,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Flauschos",
-      "score": 86.92,
+      "name": "seroo",
+      "score": 86.87,
       "tip": "Weiter so"
     },
     {
-      "name": "seroo",
-      "score": 86.87,
+      "name": "Flauschos",
+      "score": 86.79,
       "tip": "Weiter so"
     },
     {
@@ -565,6 +575,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Chico",
+      "score": 82.71,
+      "tip": "Weiter so"
+    },
+    {
       "name": "rote sonne",
       "score": 82.58,
       "tip": "Weiter so"
@@ -572,11 +587,6 @@
     {
       "name": "hi2oka",
       "score": 82.5,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Chico",
-      "score": 82.18,
       "tip": "Weiter so"
     },
     {
@@ -616,7 +626,7 @@
     },
     {
       "name": "★Elite Player★",
-      "score": 48.1,
+      "score": 48.23,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
@@ -633,11 +643,28 @@
       "name": "mösel",
       "score": 6.67,
       "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "Eugen32",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
+      {
+        "name": "Eugen32",
+        "player_tag": "#99JJLC02L",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 8,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
       {
         "name": "mösel",
         "player_tag": "#JQ08UR882",
@@ -682,7 +709,7 @@
         "role": "member",
         "score": 94.4,
         "strikes": 0,
-        "donations": 534,
+        "donations": 596,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -754,7 +781,7 @@
         "role": "member",
         "score": 91.54,
         "strikes": 0,
-        "donations": 235,
+        "donations": 243,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -766,7 +793,7 @@
         "role": "member",
         "score": 90.67,
         "strikes": 0,
-        "donations": 174,
+        "donations": 182,
         "participation_count": 5,
         "trend": "",
         "reason": "Score über 85",
@@ -778,7 +805,7 @@
         "role": "member",
         "score": 90.53,
         "strikes": 0,
-        "donations": 564,
+        "donations": 598,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -874,7 +901,7 @@
         "role": "member",
         "score": 88.65,
         "strikes": 0,
-        "donations": 564,
+        "donations": 606,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -886,7 +913,7 @@
         "role": "member",
         "score": 88.4,
         "strikes": 0,
-        "donations": 1302,
+        "donations": 1382,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -898,7 +925,7 @@
         "role": "member",
         "score": 88.35,
         "strikes": 0,
-        "donations": 68,
+        "donations": 96,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -910,7 +937,7 @@
         "role": "member",
         "score": 88.17,
         "strikes": 0,
-        "donations": 24,
+        "donations": 32,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -970,21 +997,9 @@
         "role": "member",
         "score": 87.18,
         "strikes": 0,
-        "donations": 56,
+        "donations": 64,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟡🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Flauschos",
-        "player_tag": "#PPR2QQC0U",
-        "role": "member",
-        "score": 86.92,
-        "strikes": 0,
-        "donations": 8,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -1001,12 +1016,24 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Flauschos",
+        "player_tag": "#PPR2QQC0U",
+        "role": "member",
+        "score": 86.79,
+        "strikes": 0,
+        "donations": 8,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "SankKiI9",
         "player_tag": "#89CJRRV8",
         "role": "member",
         "score": 86.1,
         "strikes": 0,
-        "donations": 971,
+        "donations": 1013,
         "participation_count": 5,
         "trend": "",
         "reason": "Score über 85",
