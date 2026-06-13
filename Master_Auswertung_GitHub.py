@@ -3335,7 +3335,7 @@ def write_static_legal_pages(impressumhtml: str, datenschutzhtml: str) -> None:
     {body_html}
   </main>
 <script>
-  setTimeout(function() {{ location.href = location.pathname + '?v=' + Date.now(); }}, 10 * 60 * 1000);
+  setTimeout(function() {{ location.reload(true); }}, 10 * 60 * 1000);
 </script>
 </body>
 </html>"""
