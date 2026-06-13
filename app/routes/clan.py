@@ -1,5 +1,4 @@
-from fastapi import APIRouter
-import requests as http_requests
+from fastapi import APIRouter, HTTPException
 
 from app.services import build_players_enriched, build_warning_candidates, build_promotion_candidates
 from app.data import load_records, load_strikes_raw, load_kicked_players
@@ -12,14 +11,6 @@ router = APIRouter()
 def health():
     return {"status": "ok", "mode": "json-first"}
 
-
-@router.get("/debug/ip")
-def debug_ip():
-    try:
-        resp = http_requests.get("https://api.ipify.org?format=json", timeout=5)
-        return {"outbound_ip": resp.json().get("ip"), "hinweis": "Diese IP muss im Supercell Developer Key whitelisted sein."}
-    except Exception as e:
-        return {"error": str(e)}
 
 
 @router.get("/summary")
@@ -74,7 +65,6 @@ def kicked():
 @router.get("/clan/live")
 def clan_live():
     """Live Clan-Profil: Mitglieder, Trophäen, Liga, Spenden-Woche. (Benötigt CR_API_KEY)"""
-    from fastapi import HTTPException
     data = cr_api_get(f"/clans/{CLAN_TAG_ENCODED}")
     if data is None:
         raise HTTPException(status_code=503, detail="CR-API nicht verfügbar.")

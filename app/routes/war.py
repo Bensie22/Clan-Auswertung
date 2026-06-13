@@ -1,6 +1,6 @@
 import time
 from datetime import datetime, timezone
-from typing import Any, Dict
+from typing import Any, Dict, List
 
 from fastapi import APIRouter, HTTPException
 
@@ -14,6 +14,42 @@ router = APIRouter()
 _radar_cache: Dict[str, Any] = {}
 _radar_cache_ts: float = 0.0
 _RADAR_TTL = 120  # Sekunden
+
+
+def _build_open_decks(participants: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    current_members = load_player_stats()
+    open_decks = []
+    for p in participants:
+        if normalize_tag(p.get("tag", "")) not in current_members:
+            continue
+        decks_used_today = p.get("decksUsedToday", 0)
+        open_today = max(0, 4 - decks_used_today)
+        if open_today > 0:
+            open_decks.append({
+                "name": p.get("name"),
+                "tag": p.get("tag"),
+                "decks_open_today": open_today,
+                "decks_used_today": decks_used_today,
+                "fame": p.get("fame", 0),
+                "boat_attacks": p.get("boatAttacks", 0),
+            })
+    open_decks.sort(key=lambda x: -x["decks_open_today"])
+    return open_decks
+
+
+def _build_standings(clans_data: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    standings = []
+    for clan in clans_data:
+        standings.append({
+            "name": clan.get("name"),
+            "tag": clan.get("tag"),
+            "fame": clan.get("fame", 0),
+            "repair_points": clan.get("repairPoints", 0),
+        })
+    standings.sort(key=lambda x: -x["fame"])
+    for i, s in enumerate(standings):
+        s["rank"] = i + 1
+    return standings
 
 
 @router.get("/warlog")
@@ -129,23 +165,7 @@ def war_mahnwache():
     if state not in ("warDay", "war", "full"):
         return {"state": state, "message": "Aktuell kein aktiver Kriegstag.", "open_decks": []}
 
-    current_members = load_player_stats()
-    open_decks = []
-    for p in participants:
-        if normalize_tag(p.get("tag", "")) not in current_members:
-            continue
-        decks_used_today = p.get("decksUsedToday", 0)
-        open_today = max(0, 4 - decks_used_today)
-        if open_today > 0:
-            open_decks.append({
-                "name": p.get("name"),
-                "tag": p.get("tag"),
-                "decks_open_today": open_today,
-                "decks_used_today": decks_used_today,
-                "fame": p.get("fame", 0),
-                "boat_attacks": p.get("boatAttacks", 0),
-            })
-    open_decks.sort(key=lambda x: -x["decks_open_today"])
+    open_decks = _build_open_decks(participants)
     return {
         "state": state,
         "open_decks_count": len(open_decks),
@@ -158,7 +178,7 @@ def war_mahnwache():
 def war_radar():
     """Live-Standings aller Clans im aktuellen River Race. (Benötigt CR_API_KEY) — 2 Min. gecacht."""
     global _radar_cache, _radar_cache_ts
-    now = time.time()
+    now = time.monotonic()
     if _radar_cache and (now - _radar_cache_ts) < _RADAR_TTL:
         return {**_radar_cache, "cached": True, "cache_age_seconds": int(now - _radar_cache_ts)}
 
@@ -168,17 +188,7 @@ def war_radar():
 
     clans_data = data.get("clans", [])
     state = data.get("state", "unknown")
-    standings = []
-    for clan in clans_data:
-        standings.append({
-            "name": clan.get("name"),
-            "tag": clan.get("tag"),
-            "fame": clan.get("fame", 0),
-            "repair_points": clan.get("repairPoints", 0),
-        })
-    standings.sort(key=lambda x: -x["fame"])
-    for i, s in enumerate(standings):
-        s["rank"] = i + 1
+    standings = _build_standings(clans_data)
 
     our_entry = next((s for s in standings if s["tag"] == CLAN_TAG_RAW), None)
     our_rank = our_entry["rank"] if our_entry else None
@@ -312,32 +322,9 @@ def war_status():
     clan = data.get("clan", {})
     clans_data = data.get("clans", [])
     participants = clan.get("participants", [])
-    current_members = load_player_stats()
 
-    open_decks = []
-    if state in ("warDay", "war", "full"):
-        for p in participants:
-            if normalize_tag(p.get("tag", "")) not in current_members:
-                continue
-            decks_used_today = p.get("decksUsedToday", 0)
-            open_today = max(0, 4 - decks_used_today)
-            if open_today > 0:
-                open_decks.append({
-                    "name": p.get("name"),
-                    "tag": p.get("tag"),
-                    "decks_open_today": open_today,
-                    "decks_used_today": decks_used_today,
-                    "fame": p.get("fame", 0),
-                    "boat_attacks": p.get("boatAttacks", 0),
-                })
-        open_decks.sort(key=lambda x: -x["decks_open_today"])
-
-    standings = []
-    for c in clans_data:
-        standings.append({"name": c.get("name"), "tag": c.get("tag"), "fame": c.get("fame", 0), "repair_points": c.get("repairPoints", 0)})
-    standings.sort(key=lambda x: -x["fame"])
-    for i, s in enumerate(standings):
-        s["rank"] = i + 1
+    open_decks = _build_open_decks(participants) if state in ("warDay", "war", "full") else []
+    standings = _build_standings(clans_data)
 
     our_entry = next((s for s in standings if s["tag"] == CLAN_TAG_RAW), None)
     our_rank = our_entry["rank"] if our_entry else None
