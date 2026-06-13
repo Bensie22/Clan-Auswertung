@@ -11,6 +11,7 @@ import time
 import traceback
 import html
 import copy
+import unicodedata
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 from typing import List, Tuple
@@ -737,7 +738,7 @@ def update_top_decks(current_members: dict, top_decks_data: dict, player_war_dec
                 elif "rounds" in battle:
                     # Duell-Battle: jede Runde einzeln auswerten (Bo3)
                     for rnd in battle.get("rounds", []):
-                        if "team" in rnd and "opponent" in rnd:
+                        if "team" in rnd and rnd["team"] and "opponent" in rnd and rnd["opponent"]:
                             round_list.append((rnd["team"][0], rnd["opponent"][0]))
 
                 for team, opponent in round_list:
@@ -834,7 +835,7 @@ def update_top_decks(current_members: dict, top_decks_data: dict, player_war_dec
 
         count += 1
         if count % 10 == 0:
-            print(f"  ... {count}/50 Spieler gescannt")
+            print(f"  ... {count}/{len(current_members)} Spieler gescannt")
         time.sleep(0.1)
 
     for deck_hash in list(decks.keys()):
@@ -915,7 +916,7 @@ def is_beginner_friendly_deck(cards: list) -> bool:
         return False
 
     archetype = get_deck_archetype(cards)
-    return archetype in {"🛡️ Schwerer Angriff (Beatdown)", "⚡ Schneller Angriff (Rush/Spam)", "⚔️ Hybrid / Allrounder"}
+    return any(kw in archetype for kw in ["Beatdown", "Rush", "Spam", "Hybrid", "Allrounder"])
 
 
 def build_deck_sections(top_decks_data: dict) -> list:
@@ -2946,7 +2947,10 @@ def generate_html_report(
             section_cards_html = ""
             for idx, d in enumerate(section["decks"], start=1):
                 players_str = ", ".join(d["players"][:3]) + ("..." if len(d["players"]) > 3 else "")
-                api_names = [c["name"].lower().replace(".", "").replace(" ", "-") for c in d["cards"]]
+                api_names = sorted([
+                    unicodedata.normalize("NFKD", c["name"]).encode("ascii", "ignore").decode().lower().replace(".", "").replace("'", "").replace(" ", "-")
+                    for c in d["cards"]
+                ])
                 royaleapi_link = f"https://royaleapi.com/decks/stats/{','.join(api_names)}"
 
                 images_html = "".join([
