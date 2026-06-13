@@ -1462,7 +1462,7 @@ def render_html_template(
                 <h1 class="header-title"><span onclick="toggleChat()" style="cursor: pointer;" title="Chat-Hilfe ein-/ausblenden">📊</span> {t('Clan-Auswertung', 'Clan Report')}: {clan_name} <br>
                 <span class="header-date">{t('Stand', 'As of')}: {heute_datum}</span>
                 <span class="header-mobile-tip">{t('📱 Tipp: Für die beste Übersicht am Handy bitte quer halten 🔄', '📱 Tip: For the best view on mobile, hold the device sideways 🔄')}</span>
-                <span class="header-mobile-tip" style="margin-top: 2px;">{t('🔄 Diese Seite aktualisiert sich alle 10 Minuten automatisch.', '🔄 This page refreshes automatically every 10 minutes.')}</span></h1>
+                <span class="header-mobile-tip" style="margin-top: 2px;">{t('🔄 An Kriegstagen wird alle 10 Minuten eine neue Version erstellt – zum Anzeigen der neuesten Daten bitte die Seite manuell neu laden (F5).', '🔄 On war days a new version is generated every 10 minutes – to see the latest data please reload the page manually (F5).')}</span></h1>
             </div>
 
             <div class="tab-container">
@@ -3334,9 +3334,6 @@ def write_static_legal_pages(impressumhtml: str, datenschutzhtml: str) -> None:
   <main class="container">
     {body_html}
   </main>
-<script>
-  setTimeout(function() {{ location.reload(true); }}, 10 * 60 * 1000);
-</script>
 </body>
 </html>"""
 
