@@ -4,7 +4,7 @@
             "#22Q920RLR": "20260613T165038.000Z",
             "#L8PV090J": "20260613T192314.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
-            "#2QRVR9L8": "20260613T200142.000Z",
+            "#2QRVR9L8": "20260613T200755.000Z",
             "#ULYJ2CQP": "20260613T073034.000Z",
             "#UJ2P9UYUV": "20260613T104817.000Z",
             "#P0JYR9YUY": "20260613T190859.000Z",
@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20260613T200521.000Z",
+            "#YUQVVVLQ": "20260613T200843.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260609T223746.000Z",
             "#GLGY98U08": "20260613T143240.000Z",
@@ -88,7 +88,7 @@
             "#JG8Q0GPU9": "20260613T144820.000Z",
             "#9QV99QVCV": "20260612T145257.000Z",
             "#JQ08UR882": "20260613T110722.000Z",
-            "#PQ2JYPC09": "20260613T200238.000Z",
+            "#PQ2JYPC09": "20260613T200656.000Z",
             "#99JJLC02L": "20260613T114045.000Z",
             "#P00PQ9CUQ": "20260613T120503.000Z"
         }
@@ -4566,7 +4566,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "l_Bozo"
             ],
@@ -4574,6 +4574,12 @@
                 "PQ2JYPC09"
             ],
             "recent_matches": [
+                {
+                    "time": "20260613T200656.000Z",
+                    "result": "loss",
+                    "player": "l_Bozo",
+                    "tag": "PQ2JYPC09"
+                },
                 {
                     "time": "20260612T125845.000Z",
                     "result": "win",
@@ -196693,6 +196699,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000012-26000018-26000034-26000051-26000064-27000003-28000004-28000014": {
+            "cards": [
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000051,
+                    "name": "Ram Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 28000014,
+                    "name": "Earthquake",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/XeQXcrUu59C52DslyZVwCnbi4yamID-WxfVZLShgZmE.png"
+                },
+                {
+                    "id": 27000003,
+                    "name": "Inferno Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
