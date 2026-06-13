@@ -1,9 +1,7 @@
 name: Clan Auswertung Automatisierung
 
 on:
-  schedule:
-    - cron: '*/10 * * * *'  # 🔥 alle 10 Minuten, jeden Tag
-  workflow_dispatch:
+  workflow_dispatch: # Wird von cron-job.org alle 10 Minuten ausgelöst
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
