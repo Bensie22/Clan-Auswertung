@@ -9,7 +9,7 @@
             "#UJ2P9UYUV": "20260613T104817.000Z",
             "#P0JYR9YUY": "20260613T190859.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
-            "#YQ82VR9JQ": "20260613T055956.000Z",
+            "#YQ82VR9JQ": "20260613T213043.000Z",
             "#G02LC9C8": "20260613T154952.000Z",
             "#2U8288CVY": "20260612T214304.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
@@ -79,12 +79,12 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20260613T212004.000Z",
+            "#YUQVVVLQ": "20260613T212816.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260609T223746.000Z",
             "#GLGY98U08": "20260613T143240.000Z",
             "#GRGCY0R8": "20260613T205014.000Z",
-            "#P2YQ2QQUV": "20260613T211844.000Z",
+            "#P2YQ2QQUV": "20260613T212341.000Z",
             "#JG8Q0GPU9": "20260613T144820.000Z",
             "#9QV99QVCV": "20260613T202153.000Z",
             "#JQ08UR882": "20260613T110722.000Z",
@@ -6018,7 +6018,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "chris"
             ],
@@ -6026,6 +6026,12 @@
                 "YQ82VR9JQ"
             ],
             "recent_matches": [
+                {
+                    "time": "20260613T213043.000Z",
+                    "result": "loss",
+                    "player": "chris",
+                    "tag": "YQ82VR9JQ"
+                },
                 {
                     "time": "20260612T200315.000Z",
                     "result": "win",
@@ -196779,6 +196785,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000000-26000001-26000018-26000058-27000006-27000008-28000000-28000011": {
+            "cards": [
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 27000008,
+                    "name": "X-Bow",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/zVQ9Hme1hlj9Dc6e1ORl9xWwglcSrP7ejow5mAhLUJc.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 26000058,
+                    "name": "Wall Breakers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_xPphEfC8eEwFNrfU3cMQG9-f5JaLQ31ARCA7l3XtW4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
