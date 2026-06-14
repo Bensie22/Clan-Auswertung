@@ -10,7 +10,7 @@
             "#P0JYR9YUY": "20260614T082618.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260614T121406.000Z",
-            "#G02LC9C8": "20260614T192653.000Z",
+            "#G02LC9C8": "20260614T194004.000Z",
             "#2U8288CVY": "20260614T181808.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
@@ -26,7 +26,7 @@
             "#2VJR80RL": "20260614T112802.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
-            "#2CJYG9UG": "20260614T192914.000Z",
+            "#2CJYG9UG": "20260614T193245.000Z",
             "#2PUQYJC02": "20260614T185254.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
             "#2V800VCQ0": "20260614T135543.000Z",
@@ -48,7 +48,7 @@
             "#LVUGLUCP9": "20260614T192806.000Z",
             "#20QGJVPG8Q": "20260614T130610.000Z",
             "#V9GYJQ0J9": "",
-            "#URJ0LUYPV": "20260614T120634.000Z",
+            "#URJ0LUYPV": "20260614T193802.000Z",
             "#Q2GRGLQR": "20260614T074153.000Z",
             "#J9RQPGLVP": "20260614T130951.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
@@ -4631,7 +4631,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "Jackhammer"
@@ -4640,6 +4640,12 @@
                 "2CJYG9UG"
             ],
             "recent_matches": [
+                {
+                    "time": "20260614T193245.000Z",
+                    "result": "win",
+                    "player": "Jackhammer",
+                    "tag": "2CJYG9UG"
+                },
                 {
                     "time": "20260613T171344.000Z",
                     "result": "win",
@@ -201535,6 +201541,52 @@
                     "id": 28000001,
                     "name": "Arrows",
                     "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000001-26000010-26000020-26000041-26000044-27000002-27000010-28000011": {
+            "cards": [
+                {
+                    "id": 27000002,
+                    "name": "Mortar",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lPOSw6H7YOHq2miSCrf7ZDL3ANjhJdPPDYOTujdNrVE.png"
+                },
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000010,
+                    "name": "Skeletons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/oO7iKMU5m0cdxhYPZA3nWQiAUh2yoGgdThLWB1rVSec.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000020,
+                    "name": "Giant Skeleton",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0p0gd0XaVRu1Hb1iSG1hTYbz2AN6aEiZnhaAib5O8Z8.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 26000044,
+                    "name": "Hunter",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/VNabB1WKnYtYRSG7X_FZfnZjQDHTBs9A96OGMFmecrA.png"
                 }
             ],
             "seen": 1,
