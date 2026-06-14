@@ -131,12 +131,12 @@
       "priority": 2
     },
     {
-      "name": "_spc07",
+      "name": "eco",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "eco",
+      "name": "_spc07",
       "scenario": "TOP",
       "priority": 2
     },
@@ -263,11 +263,6 @@
       "status": "STARK"
     },
     {
-      "name": "_spc07",
-      "score": 87.68,
-      "status": "STARK"
-    },
-    {
       "name": "Wario",
       "score": 87.63,
       "status": "STARK"
@@ -275,6 +270,11 @@
     {
       "name": "eco",
       "score": 87.58,
+      "status": "STARK"
+    },
+    {
+      "name": "_spc07",
+      "score": 87.55,
       "status": "STARK"
     },
     {
@@ -515,11 +515,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "_spc07",
-      "score": 87.68,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Wario",
       "score": 87.63,
       "tip": "Weiter so"
@@ -527,6 +522,11 @@
     {
       "name": "eco",
       "score": 87.58,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "_spc07",
+      "score": 87.55,
       "tip": "Weiter so"
     },
     {
@@ -832,7 +832,7 @@
         "role": "member",
         "score": 90.4,
         "strikes": 0,
-        "donations": 682,
+        "donations": 712,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -959,18 +959,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "_spc07",
-        "player_tag": "#2U8288CVY",
-        "role": "member",
-        "score": 87.68,
-        "strikes": 0,
-        "donations": 72,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Wario",
         "player_tag": "#2PUQYJC02",
         "role": "member",
@@ -989,6 +977,18 @@
         "score": 87.58,
         "strikes": 0,
         "donations": 462,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "_spc07",
+        "player_tag": "#2U8288CVY",
+        "role": "member",
+        "score": 87.55,
+        "strikes": 0,
+        "donations": 72,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
