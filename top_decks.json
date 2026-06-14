@@ -21,7 +21,7 @@
             "#QVQGCV8Y9": "20260614T122758.000Z",
             "#Q8L0RJ8Y8": "20260614T194649.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
-            "#2CPRGY8G": "20260614T192650.000Z",
+            "#2CPRGY8G": "20260614T211838.000Z",
             "#LLQQJCLC": "20260614T203646.000Z",
             "#2VJR80RL": "20260614T112802.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
@@ -48,7 +48,7 @@
             "#LVUGLUCP9": "20260614T194307.000Z",
             "#20QGJVPG8Q": "20260614T130610.000Z",
             "#V9GYJQ0J9": "",
-            "#URJ0LUYPV": "20260614T211057.000Z",
+            "#URJ0LUYPV": "20260614T212032.000Z",
             "#Q2GRGLQR": "20260614T194806.000Z",
             "#J9RQPGLVP": "20260614T130951.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
@@ -4469,7 +4469,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/Axr4ox5_b7edmLsoHxBX3vmgijAIibuF6RImTbqLlXE.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "Swordfish"
@@ -4478,6 +4478,12 @@
                 "2CPRGY8G"
             ],
             "recent_matches": [
+                {
+                    "time": "20260614T211838.000Z",
+                    "result": "win",
+                    "player": "Swordfish",
+                    "tag": "2CPRGY8G"
+                },
                 {
                     "time": "20260613T180631.000Z",
                     "result": "win",
@@ -202133,6 +202139,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000000-26000001-26000010-27000006-27000007-27000008-28000000-28000011": {
+            "cards": [
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000010,
+                    "name": "Skeletons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/oO7iKMU5m0cdxhYPZA3nWQiAUh2yoGgdThLWB1rVSec.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 27000008,
+                    "name": "X-Bow",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/zVQ9Hme1hlj9Dc6e1ORl9xWwglcSrP7ejow5mAhLUJc.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 27000007,
+                    "name": "Elixir Collector",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BGLo3Grsp81c72EpxLLk-Sofk3VY56zahnUNOv3JcT0.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
