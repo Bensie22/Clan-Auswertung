@@ -76,12 +76,12 @@
       "priority": 2
     },
     {
-      "name": "Swordfish",
+      "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "OneAndOnly",
+      "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
@@ -208,13 +208,13 @@
       "status": "STARK"
     },
     {
-      "name": "Swordfish",
-      "score": 90.56,
+      "name": "OneAndOnly",
+      "score": 90.27,
       "status": "STARK"
     },
     {
-      "name": "OneAndOnly",
-      "score": 90.27,
+      "name": "Swordfish",
+      "score": 90.16,
       "status": "STARK"
     },
     {
@@ -229,7 +229,7 @@
     },
     {
       "name": "Ted",
-      "score": 89.19,
+      "score": 89.06,
       "status": "STARK"
     },
     {
@@ -450,13 +450,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Swordfish",
-      "score": 90.56,
+      "name": "OneAndOnly",
+      "score": 90.27,
       "tip": "Weiter so"
     },
     {
-      "name": "OneAndOnly",
-      "score": 90.27,
+      "name": "Swordfish",
+      "score": 90.16,
       "tip": "Weiter so"
     },
     {
@@ -471,7 +471,7 @@
     },
     {
       "name": "Ted",
-      "score": 89.19,
+      "score": 89.06,
       "tip": "Weiter so"
     },
     {
@@ -795,24 +795,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Swordfish",
-        "player_tag": "#2CPRGY8G",
-        "role": "member",
-        "score": 90.56,
-        "strikes": 0,
-        "donations": 278,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "OneAndOnly",
         "player_tag": "#8P0J8P0L",
         "role": "member",
         "score": 90.27,
         "strikes": 0,
         "donations": 722,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Swordfish",
+        "player_tag": "#2CPRGY8G",
+        "role": "member",
+        "score": 90.16,
+        "strikes": 0,
+        "donations": 278,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -846,9 +846,9 @@
         "name": "Ted",
         "player_tag": "#J9RQPGLVP",
         "role": "member",
-        "score": 89.19,
+        "score": 89.06,
         "strikes": 0,
-        "donations": 248,
+        "donations": 249,
         "participation_count": 10,
         "trend": "🔴🔴🔴🟡🟢",
         "reason": "Score über 85",
