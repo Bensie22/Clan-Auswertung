@@ -121,17 +121,17 @@
       "priority": 2
     },
     {
-      "name": "eco",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "_spc07",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "chris",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "eco",
       "scenario": "TOP",
       "priority": 2
     },
@@ -263,11 +263,6 @@
       "status": "STARK"
     },
     {
-      "name": "eco",
-      "score": 87.58,
-      "status": "STARK"
-    },
-    {
       "name": "_spc07",
       "score": 87.55,
       "status": "STARK"
@@ -275,6 +270,11 @@
     {
       "name": "chris",
       "score": 87.54,
+      "status": "STARK"
+    },
+    {
+      "name": "eco",
+      "score": 87.45,
       "status": "STARK"
     },
     {
@@ -505,11 +505,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "eco",
-      "score": 87.58,
-      "tip": "Weiter so"
-    },
-    {
       "name": "_spc07",
       "score": 87.55,
       "tip": "Weiter so"
@@ -517,6 +512,11 @@
     {
       "name": "chris",
       "score": 87.54,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "eco",
+      "score": 87.45,
       "tip": "Weiter so"
     },
     {
@@ -711,7 +711,7 @@
         "role": "member",
         "score": 93.28,
         "strikes": 0,
-        "donations": 228,
+        "donations": 236,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
@@ -934,18 +934,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "eco",
-        "player_tag": "#202VP2QL9P",
-        "role": "member",
-        "score": 87.58,
-        "strikes": 0,
-        "donations": 488,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "_spc07",
         "player_tag": "#2U8288CVY",
         "role": "member",
@@ -964,6 +952,18 @@
         "score": 87.54,
         "strikes": 0,
         "donations": 314,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "eco",
+        "player_tag": "#202VP2QL9P",
+        "role": "member",
+        "score": 87.45,
+        "strikes": 0,
+        "donations": 488,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
