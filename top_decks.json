@@ -34,7 +34,7 @@
             "#JUUR8UGL8": "20260614T122434.000Z",
             "#2U09UULRR": "20260614T124840.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
-            "#8QYYL8LCQ": "20260614T213847.000Z",
+            "#8QYYL8LCQ": "20260614T230747.000Z",
             "#8P0J8P0L": "20260614T125332.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260614T143809.000Z",
@@ -48,7 +48,7 @@
             "#LVUGLUCP9": "20260614T194307.000Z",
             "#20QGJVPG8Q": "20260614T130610.000Z",
             "#V9GYJQ0J9": "",
-            "#URJ0LUYPV": "20260614T213609.000Z",
+            "#URJ0LUYPV": "20260614T230713.000Z",
             "#Q2GRGLQR": "20260614T194806.000Z",
             "#J9RQPGLVP": "20260614T130951.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
@@ -4865,7 +4865,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "SirHenry87"
@@ -4874,6 +4874,12 @@
                 "8QYYL8LCQ"
             ],
             "recent_matches": [
+                {
+                    "time": "20260614T230747.000Z",
+                    "result": "win",
+                    "player": "SirHenry87",
+                    "tag": "8QYYL8LCQ"
+                },
                 {
                     "time": "20260613T222344.000Z",
                     "result": "win",
@@ -202181,6 +202187,52 @@
                     "id": 28000011,
                     "name": "The Log",
                     "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000011-26000016-26000034-26000049-26000093-27000000-28000005-28000017": {
+            "cards": [
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 26000093,
+                    "name": "Little Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dY-gSseki6KBpkIG17safHH5YlB8SErFZO9OXbJxf9w.png"
+                },
+                {
+                    "id": 28000017,
+                    "name": "Giant Snowball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                },
+                {
+                    "id": 27000000,
+                    "name": "Cannon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nZK1y-beLxO5vnlyUhK6-2zH2NzXJwqykcosqQ1cmZ8.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 28000005,
+                    "name": "Freeze",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
                 }
             ],
             "seen": 1,
