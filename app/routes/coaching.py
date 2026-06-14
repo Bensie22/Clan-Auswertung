@@ -9,11 +9,10 @@ from app.services import (
 from config import (
     STRIKE_THRESHOLD, BADGE_STARK_SCORE, BADGE_STARK_FAME,
     BADGE_STABIL_FAME, DROPPER_THRESHOLD, MIN_PARTICIPATION,
-    PROMOTION_SCORE_MIN,
+    PROMOTION_SCORE_MIN, PROMOTION_DONATIONS_MIN,
 )
 
 router = APIRouter()
-PROMOTION_DONATIONS_MIN = 50
 
 
 @router.get("/coaching/tips")

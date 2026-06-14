@@ -1,7 +1,10 @@
 import csv
 import json
+import logging
 from pathlib import Path
 from typing import Any, Dict, List
+
+logger = logging.getLogger(__name__)
 
 from app.utils import normalize_tag, normalize_name, parse_float, parse_int
 
@@ -23,7 +26,8 @@ def load_json(path: Path, default: Any) -> Any:
     try:
         with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
-    except Exception:
+    except (json.JSONDecodeError, OSError) as exc:
+        logger.warning("Fehler beim Laden von %s: %s — nutze Standard", path, exc)
         return default
 
 
@@ -117,7 +121,8 @@ def score_history_rows() -> List[Dict[str, Any]]:
         with open(SCORE_HISTORY_PATH, "r", encoding="utf-8") as f:
             reader = csv.DictReader(f)
             return list(reader)
-    except Exception:
+    except (OSError, csv.Error) as exc:
+        logger.warning("Fehler beim Lesen von score_history.csv: %s", exc)
         return []
 
 

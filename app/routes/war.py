@@ -1,3 +1,4 @@
+import threading
 import time
 from datetime import datetime, timezone
 from typing import Any, Dict, List
@@ -14,6 +15,7 @@ router = APIRouter()
 _radar_cache: Dict[str, Any] = {}
 _radar_cache_ts: float = 0.0
 _RADAR_TTL = 120  # Sekunden
+_radar_cache_lock = threading.Lock()
 
 
 def _build_open_decks(participants: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
@@ -179,33 +181,34 @@ def war_radar():
     """Live-Standings aller Clans im aktuellen River Race. (Benötigt CR_API_KEY) — 2 Min. gecacht."""
     global _radar_cache, _radar_cache_ts
     now = time.monotonic()
-    if _radar_cache and (now - _radar_cache_ts) < _RADAR_TTL:
-        return {**_radar_cache, "cached": True, "cache_age_seconds": int(now - _radar_cache_ts)}
+    with _radar_cache_lock:
+        if _radar_cache and (now - _radar_cache_ts) < _RADAR_TTL:
+            return {**_radar_cache, "cached": True, "cache_age_seconds": int(now - _radar_cache_ts)}
 
-    data = cr_api_get(f"/clans/{CLAN_TAG_ENCODED}/currentriverrace")
-    if data is None:
-        raise HTTPException(status_code=503, detail="CR-API nicht verfügbar.")
+        data = cr_api_get(f"/clans/{CLAN_TAG_ENCODED}/currentriverrace")
+        if data is None:
+            raise HTTPException(status_code=503, detail="CR-API nicht verfügbar.")
 
-    clans_data = data.get("clans", [])
-    state = data.get("state", "unknown")
-    standings = _build_standings(clans_data)
+        clans_data = data.get("clans", [])
+        state = data.get("state", "unknown")
+        standings = _build_standings(clans_data)
 
-    our_entry = next((s for s in standings if s["tag"] == CLAN_TAG_RAW), None)
-    our_rank = our_entry["rank"] if our_entry else None
-    leader_fame = standings[0]["fame"] if standings else 0
-    fame_gap = (leader_fame - our_entry["fame"]) if our_entry and our_rank and our_rank > 1 else 0
+        our_entry = next((s for s in standings if s["tag"] == CLAN_TAG_RAW), None)
+        our_rank = our_entry["rank"] if our_entry else None
+        leader_fame = standings[0]["fame"] if standings else 0
+        fame_gap = (leader_fame - our_entry["fame"]) if our_entry and our_rank and our_rank > 1 else 0
 
-    result = {
-        "state": state,
-        "our_rank": our_rank,
-        "our_fame": our_entry["fame"] if our_entry else 0,
-        "fame_gap_to_leader": fame_gap,
-        "standings": standings,
-        "cached": False,
-    }
-    _radar_cache = result
-    _radar_cache_ts = now
-    return result
+        result = {
+            "state": state,
+            "our_rank": our_rank,
+            "our_fame": our_entry["fame"] if our_entry else 0,
+            "fame_gap_to_leader": fame_gap,
+            "standings": standings,
+            "cached": False,
+        }
+        _radar_cache = result
+        _radar_cache_ts = now
+        return result
 
 
 @router.get("/war/prognose")

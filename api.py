@@ -1,4 +1,6 @@
-from fastapi import FastAPI
+import os
+
+from fastapi import FastAPI, Header, HTTPException
 from fastapi.openapi.utils import get_openapi
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -32,6 +34,16 @@ def custom_openapi():
 
 
 app.openapi = custom_openapi
+
+_API_KEY = os.environ.get("CLAN_API_KEY", "")
+
+
+def require_api_key(x_api_key: str = Header(default="")) -> None:
+    if not _API_KEY:
+        return
+    if x_api_key != _API_KEY:
+        raise HTTPException(status_code=401, detail="Ungültiger oder fehlender API-Key.")
+
 
 APP_CONFIG = {
     "STRIKE_THRESHOLD":        STRIKE_THRESHOLD,
@@ -72,14 +84,16 @@ def get_config():
     return APP_CONFIG
 
 
+from fastapi import Depends
 from app.routes.clan import router as clan_router
 from app.routes.player import router as player_router
 from app.routes.war import router as war_router
 from app.routes.analytics import router as analytics_router
 from app.routes.coaching import router as coaching_router
 
-app.include_router(clan_router)
-app.include_router(player_router)
-app.include_router(war_router)
-app.include_router(analytics_router)
-app.include_router(coaching_router)
+_auth = Depends(require_api_key)
+app.include_router(clan_router, dependencies=[_auth])
+app.include_router(player_router, dependencies=[_auth])
+app.include_router(war_router, dependencies=[_auth])
+app.include_router(analytics_router, dependencies=[_auth])
+app.include_router(coaching_router, dependencies=[_auth])

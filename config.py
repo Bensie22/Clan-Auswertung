@@ -34,3 +34,6 @@ TIER_SOLIDE        = 75    # Tier: Solide Basis
 # --- Clan-Ampel ---
 CLAN_RELIABLE_GREEN  = 85  # Zuverlässigkeit: Grün ab
 CLAN_RELIABLE_YELLOW = 70  # Zuverlässigkeit: Gelb ab
+
+# --- Beförderung ---
+PROMOTION_DONATIONS_MIN = 50  # Mindest-Spenden für Beförderung

@@ -1,3 +1,4 @@
+import threading
 import time
 from typing import Any, Dict, List
 
@@ -11,14 +12,13 @@ from config import (
     DROPPER_THRESHOLD, MIN_PARTICIPATION,
     BADGE_STARK_SCORE, BADGE_STARK_FAME,
     BADGE_STABIL_SCORE, BADGE_STABIL_FAME,
-    TIER_SOLIDE,
+    TIER_SOLIDE, PROMOTION_DONATIONS_MIN,
 )
-
-PROMOTION_DONATIONS_MIN = 50
 
 _players_cache: Dict[str, Any] = {}
 _players_cache_ts: float = 0.0
 _CACHE_TTL = 30.0
+_players_cache_lock = threading.Lock()
 
 
 def compute_trend(scores: List[float]) -> str:
@@ -156,37 +156,38 @@ def calculate_teamplay_score_from_stats(players: List[Dict[str, Any]]) -> Dict[s
 
 def build_players_enriched() -> Dict[str, Dict[str, Any]]:
     global _players_cache, _players_cache_ts
-    if _players_cache and (time.monotonic() - _players_cache_ts) < _CACHE_TTL:
-        return _players_cache
+    with _players_cache_lock:
+        if _players_cache and (time.monotonic() - _players_cache_ts) < _CACHE_TTL:
+            return _players_cache
 
-    members = load_current_players()
-    donations = load_donations_map()
-    scores = latest_score_map()
-    stats = load_player_stats()
-    enriched: Dict[str, Dict[str, Any]] = {}
-    for tag, base in members.items():
-        score_entry = scores.get(normalize_name(base.get("name"))) or {}
-        donation_entry = donations.get(tag, {"donations": 0, "received": 0})
-        stat_entry = stats.get(tag, {})
-        enriched[tag] = {
-            **base,
-            "donations": stat_entry.get("donations", donation_entry.get("donations", 0)),
-            "donations_received": stat_entry.get("donations_received", donation_entry.get("received", 0)),
-            "score": stat_entry.get("score", score_entry.get("score", 0.0)),
-            "trophies": stat_entry.get("trophies", score_entry.get("trophies", 0)),
-            "score_date": score_entry.get("date"),
-            "strikes": strikes_for_player(tag, base.get("name", "")),
-            "fame_per_deck": stat_entry.get("fame_per_deck", 0),
-            "war_points_total": stat_entry.get("war_points_total", 0),
-            "wars_with_participation": stat_entry.get("participation_count", 0),
-            "wars_in_history_window": stat_entry.get("wars_in_window", 0),
-            "participation_count": stat_entry.get("participation_count", 0),
-            "total_decks": stat_entry.get("total_decks", 0),
-            "wars_in_window": stat_entry.get("wars_in_window", 0),
-        }
-    _players_cache = enriched
-    _players_cache_ts = time.monotonic()
-    return enriched
+        members = load_current_players()
+        donations = load_donations_map()
+        scores = latest_score_map()
+        stats = load_player_stats()
+        enriched: Dict[str, Dict[str, Any]] = {}
+        for tag, base in members.items():
+            score_entry = scores.get(normalize_name(base.get("name"))) or {}
+            donation_entry = donations.get(tag, {"donations": 0, "received": 0})
+            stat_entry = stats.get(tag, {})
+            enriched[tag] = {
+                **base,
+                "donations": stat_entry.get("donations", donation_entry.get("donations", 0)),
+                "donations_received": stat_entry.get("donations_received", donation_entry.get("received", 0)),
+                "score": stat_entry.get("score", score_entry.get("score", 0.0)),
+                "trophies": stat_entry.get("trophies", score_entry.get("trophies", 0)),
+                "score_date": score_entry.get("date"),
+                "strikes": strikes_for_player(tag, base.get("name", "")),
+                "fame_per_deck": stat_entry.get("fame_per_deck", 0),
+                "war_points_total": stat_entry.get("war_points_total", 0),
+                "wars_with_participation": stat_entry.get("participation_count", 0),
+                "wars_in_history_window": stat_entry.get("wars_in_window", 0),
+                "participation_count": stat_entry.get("participation_count", 0),
+                "total_decks": stat_entry.get("total_decks", 0),
+                "wars_in_window": stat_entry.get("wars_in_window", 0),
+            }
+        _players_cache = enriched
+        _players_cache_ts = time.monotonic()
+        return enriched
 
 
 def build_warning_candidates() -> List[Dict[str, Any]]:

@@ -1,8 +1,11 @@
+import logging
 import re
 from datetime import datetime, timezone
 from typing import Any, Optional, Tuple
 
 from fastapi import HTTPException
+
+logger = logging.getLogger(__name__)
 
 
 def normalize_tag(tag: str) -> str:
@@ -34,14 +37,16 @@ def normalize_name(name: str) -> str:
 def parse_float(value: Any, default: float = 0.0) -> float:
     try:
         return float(str(value).strip())
-    except Exception:
+    except (ValueError, TypeError):
+        logger.debug("parse_float: konnte %r nicht konvertieren, nutze Standard %s", value, default)
         return default
 
 
 def parse_int(value: Any, default: int = 0) -> int:
     try:
         return int(float(str(value).strip()))
-    except Exception:
+    except (ValueError, TypeError):
+        logger.debug("parse_int: konnte %r nicht konvertieren, nutze Standard %s", value, default)
         return default
 
 
