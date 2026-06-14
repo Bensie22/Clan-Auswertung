@@ -154,6 +154,11 @@
       "name": "bes",
       "scenario": "TOP",
       "priority": 2
+    },
+    {
+      "name": "kl.kranker Affe",
+      "scenario": "TOP",
+      "priority": 2
     }
   ],
   "smart": [
@@ -179,7 +184,7 @@
     },
     {
       "name": "AaleDieter",
-      "score": 92.22,
+      "score": 92.35,
       "status": "STARK"
     },
     {
@@ -309,12 +314,12 @@
     },
     {
       "name": "kl.kranker Affe",
-      "score": 84.87,
+      "score": 85.4,
       "status": "STARK"
     },
     {
       "name": "Denis",
-      "score": 83.82,
+      "score": 83.95,
       "status": "STARK"
     },
     {
@@ -421,7 +426,7 @@
     },
     {
       "name": "AaleDieter",
-      "score": 92.22,
+      "score": 92.35,
       "tip": "Weiter so"
     },
     {
@@ -551,12 +556,12 @@
     },
     {
       "name": "kl.kranker Affe",
-      "score": 84.87,
+      "score": 85.4,
       "tip": "Weiter so"
     },
     {
       "name": "Denis",
-      "score": 83.82,
+      "score": 83.95,
       "tip": "Weiter so"
     },
     {
@@ -733,9 +738,9 @@
         "name": "AaleDieter",
         "player_tag": "#CUJ9PJ2UV",
         "role": "member",
-        "score": 92.22,
+        "score": 92.35,
         "strikes": 0,
-        "donations": 82,
+        "donations": 102,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -867,7 +872,7 @@
         "role": "member",
         "score": 88.79,
         "strikes": 0,
-        "donations": 692,
+        "donations": 712,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1026,6 +1031,18 @@
         "donations": 232,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "kl.kranker Affe",
+        "player_tag": "#RLJPJL8C2",
+        "role": "member",
+        "score": 85.4,
+        "strikes": 0,
+        "donations": 82,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       }
