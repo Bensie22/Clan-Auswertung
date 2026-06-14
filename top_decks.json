@@ -5,7 +5,7 @@
             "#L8PV090J": "20260613T192314.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260614T091943.000Z",
-            "#ULYJ2CQP": "20260613T073034.000Z",
+            "#ULYJ2CQP": "20260614T093010.000Z",
             "#UJ2P9UYUV": "20260614T090439.000Z",
             "#P0JYR9YUY": "20260614T082618.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
@@ -29,7 +29,7 @@
             "#2CJYG9UG": "20260613T171344.000Z",
             "#2PUQYJC02": "20260613T100119.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20260614T085938.000Z",
+            "#2V800VCQ0": "20260614T092747.000Z",
             "#2UQUPYQCJ": "20260613T193057.000Z",
             "#JUUR8UGL8": "20260614T085757.000Z",
             "#2U09UULRR": "20260614T072817.000Z",
@@ -5928,7 +5928,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Knitte"
             ],
@@ -5936,6 +5936,12 @@
                 "ULYJ2CQP"
             ],
             "recent_matches": [
+                {
+                    "time": "20260614T093010.000Z",
+                    "result": "loss",
+                    "player": "Knitte",
+                    "tag": "ULYJ2CQP"
+                },
                 {
                     "time": "20260613T045518.000Z",
                     "result": "win",
@@ -198099,6 +198105,52 @@
                     "id": 26000038,
                     "name": "Ice Golem",
                     "icon": "https://api-assets.clashroyale.com/cards/300/r05cmpwV1o7i7FHodtZwW3fmjbXCW34IJCsDEV5cZC4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000002-26000005-26000053-26000054-26000056-27000002-28000000-28000011": {
+            "cards": [
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 26000002,
+                    "name": "Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X_DQUye_OaS3QN6VC9CPw05Fit7wvSm3XegXIXKP--0.png"
+                },
+                {
+                    "id": 27000002,
+                    "name": "Mortar",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lPOSw6H7YOHq2miSCrf7ZDL3ANjhJdPPDYOTujdNrVE.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000053,
+                    "name": "Rascals",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/KV48DfwVHKx9XCjzBdk3daT_Eb52Me4VgjVO7WctRc4.png"
+                },
+                {
+                    "id": 26000054,
+                    "name": "Cannon Cart",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/aqwxRz8HXzqlMCO4WMXNA1txynjXTsLinknqsgZLbok.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
                 }
             ],
             "seen": 1,
