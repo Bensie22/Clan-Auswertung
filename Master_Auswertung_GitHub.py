@@ -2012,8 +2012,9 @@ def render_html_template(
   function fameColor(f) {{ return f>=3600?'#10b981':f>=2800?'#fbbf24':f>=1600?'#f97316':'#ef4444'; }}
   function deckColor(d) {{ return d>=14?'#10b981':d>=8?'#fbbf24':'#ef4444'; }}
   function fmtDate(s) {{ if(!s||s.length<8) return '-'; return s.slice(6,8)+'.'+s.slice(4,6)+'.'+s.slice(0,4); }}
+  function lang(de,en){{ return document.documentElement.lang==='en'?en:de; }}
   function buildTable(wars) {{
-    if(!wars||!wars.length) return '<p class="war-loading">Keine Kriegsdaten vorhanden.</p>';
+    if(!wars||!wars.length) return '<p class="war-loading">'+lang('Keine Kriegsdaten vorhanden.','No war data available.')+'</p>';
     var maxF=Math.max.apply(null,wars.map(function(w){{return w.fame||0;}}));
     var rows=wars.slice(0,12).map(function(w){{
       var f=w.fame||0,d=w.decks_used||0,pct=maxF>0?Math.round(f/maxF*100):0;
@@ -2025,7 +2026,10 @@ def render_html_template(
         +'<td>'+(w.our_rank?'#'+w.our_rank:'-')+'</td>'
         +'</tr>';
     }}).join('');
-    return '<table class="war-hist-table"><thead><tr><th>Datum</th><th>Fame</th><th>Decks</th><th>Boot</th><th>Platz</th></tr></thead><tbody>'+rows+'</tbody></table>';
+    return '<table class="war-hist-table"><thead><tr>'
+      +'<th>'+lang('Datum','Date')+'</th><th>Fame</th><th>Decks</th>'
+      +'<th>'+lang('Boot','Boat')+'</th><th>'+lang('Platz','Rank')+'</th>'
+      +'</tr></thead><tbody>'+rows+'</tbody></table>';
   }}
   function toggleRow(playerRow) {{
     var tag=playerRow.getAttribute('data-tag');
@@ -2038,18 +2042,18 @@ def render_html_template(
       td.colSpan=playerRow.cells.length;
       var inner=document.createElement('div');
       inner.className='war-history-inner';
-      inner.innerHTML='<h4>Kriegsverlauf</h4><p class="war-loading">Lade Daten...</p>';
+      inner.innerHTML='<h4>'+lang('Kriegsverlauf','War History')+'</h4><p class="war-loading">'+lang('Lade Daten...','Loading...')+'</p>';
       td.appendChild(inner);tr.appendChild(td);
       playerRow.parentNode.insertBefore(tr,playerRow.nextSibling);
       next=tr;
       var enc=tag.replace('#','%23');
       if(cache[tag]!==undefined) {{
-        inner.innerHTML='<h4>Kriegsverlauf</h4>'+buildTable(cache[tag]);
+        inner.innerHTML='<h4>'+lang('Kriegsverlauf','War History')+'</h4>'+buildTable(cache[tag]);
       }} else {{
         fetch(API+'/player/'+enc+'/warlog')
           .then(function(r){{return r.json();}})
-          .then(function(data){{cache[tag]=data.wars||[];inner.innerHTML='<h4>Kriegsverlauf</h4>'+buildTable(cache[tag]);}})
-          .catch(function(err){{inner.innerHTML='<p class="war-loading">Fehler: '+err.message+'</p>';}});
+          .then(function(data){{cache[tag]=data.wars||[];inner.innerHTML='<h4>'+lang('Kriegsverlauf','War History')+'</h4>'+buildTable(cache[tag]);}})
+          .catch(function(err){{inner.innerHTML='<p class="war-loading">'+lang('Fehler: ','Error: ')+err.message+'</p>';}});
       }}
     }}
     var open=next.classList.toggle('open');
