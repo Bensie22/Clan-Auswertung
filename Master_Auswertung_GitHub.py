@@ -2294,9 +2294,7 @@ def generate_html_report(
                 " <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱"
                 "<span class='tooltip-text'>Erster Clankrieg – Welpenschutz aktiv. Ab dem 2. Krieg volle Bewertung.</span></span>"
             )
-            # Trend bei Welpenschutz leeren - alte History-Einträge aus früheren
-            # Aufenthalten würden sonst ein irreführendes Bild erzeugen.
-            trend_str = "🟢" * wars_with_participation if score >= APP_CONFIG["TIER_SOLIDE"] else "🟡" * wars_with_participation if score >= APP_CONFIG["STRIKE_THRESHOLD"] else "🔴" * wars_with_participation
+            # trend_str wurde bereits oben aus echten Kriegsdaten berechnet – kein Override nötig
 
         focus_label, focus_color = get_player_focus(
             score=score,
