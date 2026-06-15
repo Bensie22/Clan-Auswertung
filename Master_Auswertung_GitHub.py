@@ -2214,10 +2214,26 @@ def generate_html_report(
         if aktueller_trophy > records.setdefault("trophies", {"name": "-", "val": 0})["val"]:
             records["trophies"] = {"name": name, "val": aktueller_trophy}
 
+        # Trend basiert auf echten Kriegsdaten (Decks gespielt pro Krieg)
+        # Spalten: s_DATUM_fame / s_DATUM_decks_used, sortiert absteigend (neueste zuerst)
+        trend_dots = []
+        for fame_col in fame_columns_all[:6]:
+            decks_col = fame_col.replace("_fame", "_decks_used")
+            w_decks = int(getattr(row, decks_col, 0) or 0)
+            w_fame  = int(getattr(row, fame_col,  0) or 0)
+            if w_decks == 0 and w_fame == 0:
+                continue  # Krieg existiert, Spieler war nicht dabei → überspringen (kein Punkt)
+            ratio = w_decks / 16
+            if ratio >= 0.90:
+                trend_dots.append("🟢")
+            elif ratio >= 0.50:
+                trend_dots.append("🟡")
+            else:
+                trend_dots.append("🔴")
+        trend_dots.reverse()  # ältester links, neuester rechts
+        trend_str = "".join(trend_dots) if trend_dots else "🔴"
+
         trend_scores = vergangene_scores + [score]
-        trend_str = "".join(
-            ["🟢" if s >= APP_CONFIG["TIER_SOLIDE"] else "🟡" if s >= APP_CONFIG["STRIKE_THRESHOLD"] else "🔴" for s in trend_scores[-6:]]
-        )
 
         # Streak-Logik: alle Decks in allen Kriegen seit Clan-Beitritt gespielt
         # Bedingung: kein Krieg verpasst UND immer alle 16 Decks gespielt, mind. 3 Kriege
