@@ -91,6 +91,11 @@
       "priority": 2
     },
     {
+      "name": "Knitte",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "honigmelone",
       "scenario": "TOP",
       "priority": 2
@@ -102,11 +107,6 @@
     },
     {
       "name": "Ted",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Knitte",
       "scenario": "TOP",
       "priority": 2
     },
@@ -223,6 +223,11 @@
       "status": "STARK"
     },
     {
+      "name": "Knitte",
+      "score": 89.32,
+      "status": "STARK"
+    },
+    {
       "name": "honigmelone",
       "score": 89.2,
       "status": "STARK"
@@ -235,11 +240,6 @@
     {
       "name": "Ted",
       "score": 89.06,
-      "status": "STARK"
-    },
-    {
-      "name": "Knitte",
-      "score": 88.79,
       "status": "STARK"
     },
     {
@@ -333,13 +333,13 @@
       "status": "STARK"
     },
     {
-      "name": "hi2oka",
-      "score": 82.76,
+      "name": "Chico",
+      "score": 82.85,
       "status": "STARK"
     },
     {
-      "name": "Chico",
-      "score": 82.71,
+      "name": "hi2oka",
+      "score": 82.76,
       "status": "STARK"
     },
     {
@@ -470,6 +470,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Knitte",
+      "score": 89.32,
+      "tip": "Weiter so"
+    },
+    {
       "name": "honigmelone",
       "score": 89.2,
       "tip": "Weiter so"
@@ -482,11 +487,6 @@
     {
       "name": "Ted",
       "score": 89.06,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Knitte",
-      "score": 88.79,
       "tip": "Weiter so"
     },
     {
@@ -580,13 +580,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "hi2oka",
-      "score": 82.76,
+      "name": "Chico",
+      "score": 82.85,
       "tip": "Weiter so"
     },
     {
-      "name": "Chico",
-      "score": 82.71,
+      "name": "hi2oka",
+      "score": 82.76,
       "tip": "Weiter so"
     },
     {
@@ -853,6 +853,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Knitte",
+        "player_tag": "#ULYJ2CQP",
+        "role": "member",
+        "score": 89.32,
+        "strikes": 0,
+        "donations": 758,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "honigmelone",
         "player_tag": "#Q2GRGLQR",
         "role": "member",
@@ -885,18 +897,6 @@
         "donations": 331,
         "participation_count": 10,
         "trend": "🔴🔴🔴🟡🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Knitte",
-        "player_tag": "#ULYJ2CQP",
-        "role": "member",
-        "score": 88.79,
-        "strikes": 0,
-        "donations": 758,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
