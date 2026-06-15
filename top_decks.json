@@ -7,16 +7,16 @@
             "#2QRVR9L8": "20260615T054953.000Z",
             "#ULYJ2CQP": "20260615T072357.000Z",
             "#UJ2P9UYUV": "20260615T072646.000Z",
-            "#P0JYR9YUY": "20260615T072824.000Z",
+            "#P0JYR9YUY": "20260615T073729.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260614T121406.000Z",
-            "#G02LC9C8": "20260615T061434.000Z",
+            "#G02LC9C8": "20260615T073844.000Z",
             "#2U8288CVY": "20260614T181808.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260615T053631.000Z",
-            "#QULCQGGG": "20260614T142235.000Z",
+            "#QULCQGGG": "20260615T073701.000Z",
             "#JRGC9RRQG": "20260615T022606.000Z",
             "#QVQGCV8Y9": "20260615T070515.000Z",
             "#Q8L0RJ8Y8": "20260614T194649.000Z",
@@ -2557,7 +2557,7 @@
                 }
             ],
             "wins": 4,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Chico"
             ],
@@ -2565,6 +2565,12 @@
                 "P0JYR9YUY"
             ],
             "recent_matches": [
+                {
+                    "time": "20260615T073148.000Z",
+                    "result": "loss",
+                    "player": "Chico",
+                    "tag": "P0JYR9YUY"
+                },
                 {
                     "time": "20260613T063124.000Z",
                     "result": "win",
@@ -203034,6 +203040,52 @@
                     "id": 26000010,
                     "name": "Skeletons",
                     "icon": "https://api-assets.clashroyale.com/cards/300/oO7iKMU5m0cdxhYPZA3nWQiAUh2yoGgdThLWB1rVSec.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000009-26000010-26000015-26000018-26000042-27000007-28000007-28000011": {
+            "cards": [
+                {
+                    "id": 26000010,
+                    "name": "Skeletons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/oO7iKMU5m0cdxhYPZA3nWQiAUh2yoGgdThLWB1rVSec.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 27000007,
+                    "name": "Elixir Collector",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BGLo3Grsp81c72EpxLLk-Sofk3VY56zahnUNOv3JcT0.png"
+                },
+                {
+                    "id": 26000009,
+                    "name": "Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/npdmCnET7jmVjJvjJQkFnNSNnDxYHDBigbvIAloFMds.png"
+                },
+                {
+                    "id": 28000007,
+                    "name": "Lightning",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fpnESbYqe5GyZmaVVYe-SEu7tE0Kxh_HZyVigzvLjks.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
                 }
             ],
             "seen": 1,
