@@ -6,6 +6,11 @@
       "priority": 4
     },
     {
+      "name": "Cyr3x_076",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "Eugen32",
       "scenario": "STRIKE",
       "priority": 4
@@ -169,7 +174,7 @@
     },
     {
       "name": "OmniOni",
-      "score": 94.0,
+      "score": 93.87,
       "status": "STARK"
     },
     {
@@ -406,6 +411,11 @@
       "name": "martini",
       "score": 0.0,
       "status": "RISIKO"
+    },
+    {
+      "name": "Cyr3x_076",
+      "score": 0.0,
+      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -416,7 +426,7 @@
     },
     {
       "name": "OmniOni",
-      "score": 94.0,
+      "score": 93.87,
       "tip": "Weiter so"
     },
     {
@@ -651,6 +661,11 @@
     },
     {
       "name": "martini",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "Cyr3x_076",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
     }
@@ -665,6 +680,18 @@
         "score": 0.0,
         "strikes": 0,
         "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "Cyr3x_076",
+        "player_tag": "#RP9RVGQJU",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 16,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -724,7 +751,7 @@
         "name": "OmniOni",
         "player_tag": "#UUPCULU9V",
         "role": "member",
-        "score": 94.0,
+        "score": 93.87,
         "strikes": 0,
         "donations": 501,
         "participation_count": 10,
