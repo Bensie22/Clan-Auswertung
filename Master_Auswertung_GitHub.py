@@ -1641,7 +1641,7 @@ def render_html_template(
                 <button class="accordion-btn">🟢🟡🔴 {t('Der Trend (Deine Konstanz)', 'The Trend (Your Consistency)')}</button>
                 <div class="accordion-content">
                     <p><span class="i18n-de">Die Ampel-Punkte zeigen deine Zuverlässigkeit der letzten <b>6 Wochen</b> auf einen Blick. Jeder Punkt steht für eine Woche, wobei der <b>Punkt ganz rechts die aktuellste Auswertung</b> ist.</span><span class="i18n-en">The traffic light dots show your reliability over the last <b>6 weeks</b> at a glance. Each dot represents a week, with the <b>rightmost dot being the most recent evaluation</b>.</span></p>
-                    <p style="color:#94a3b8; font-size:0.9em;"><span class="i18n-de">6 Wochen sind bewusst gewählt: Das Strike-System arbeitet über mehrere Wochen – der Trend soll den vollen Kontext zeigen, über den Strikes entstehen oder sich abbauen.</span><span class="i18n-en">6 weeks is a deliberate choice: the strike system works over several weeks — the trend is meant to show the full context over which strikes develop or clear up.</span></p>
+                    <p style="color:#94a3b8; font-size:0.9em;"><span class="i18n-de">6 Wochen sind bewusst gewählt: Der Trend soll den vollen Kontext der Teilnahme über mehrere Wochen zeigen – ob jemand konstant dabei ist oder schwankt.</span><span class="i18n-en">6 weeks is a deliberate choice: the trend is meant to show the full context of participation over several weeks — whether someone is consistently active or inconsistent.</span></p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th><span class="i18n-de">Spieler</span><span class="i18n-en">Player</span></th><th><span class="i18n-de">Check</span><span class="i18n-en">Check</span></th><th><span class="i18n-de">Status</span><span class="i18n-en">Status</span></th><th><span class="i18n-de">Dabei</span><span class="i18n-en">Present</span></th><th><span class="i18n-de">Deck-Nutzung</span><span class="i18n-en">Deck Usage</span></th><th><span class="i18n-de">Ø Fame/Deck</span><span class="i18n-en">Avg Fame/Deck</span></th><th><span class="i18n-de">Fame gesamt</span><span class="i18n-en">Total Fame</span></th><th><span class="i18n-de">Trend</span><span class="i18n-en">Trend</span></th><th>🃏 <span class="i18n-de">Spenden</span><span class="i18n-en">Donations</span></th></tr>
@@ -1653,7 +1653,7 @@ def render_html_template(
                         <li><span class="i18n-de"><b>🟢 Grün (Zuverlässig):</b> Hohe Anwesenheit und Decks gut ausgespielt.</span><span class="i18n-en"><b>🟢 Green (Reliable):</b> High attendance and decks well played.</span></li>
                         <li><span class="i18n-de"><b>🟡 Gelb (Mittelfeld):</b> Akzeptable Teilnahme, aber noch Luft nach oben.</span><span class="i18n-en"><b>🟡 Yellow (Mid-range):</b> Acceptable participation, but still room to grow.</span></li>
                         <li><span class="i18n-de"><b>🔴 Rot (Kritisch):</b> Zu wenig Anwesenheit oder zu viele liegen gelassene Decks.</span><span class="i18n-en"><b>🔴 Red (Critical):</b> Too little attendance or too many unplayed decks.</span></li>
-                        <li><span class="i18n-de"><i>Beispiel Spieler E:</i> War früher stark, aber die letzten vier Wochen gehen zunehmend nach unten – das ist genau der Kontext, den das Strike-System benötigt.</span><span class="i18n-en"><i>Example Player E:</i> Was strong before, but the last four weeks are increasingly going downwards — this is exactly the context the strike system needs.</span></li>
+                        <li><span class="i18n-de"><i>Beispiel Spieler E:</i> War früher stark, aber die letzten vier Wochen gehen zunehmend nach unten – der Trend zeigt klar, dass die Teilnahme nachlässt.</span><span class="i18n-en"><i>Example Player E:</i> Was strong before, but the last four weeks are increasingly going downwards — the trend clearly shows declining participation.</span></li>
                         <li><span class="i18n-de"><i>Beispiel Spieler F:</i> Hat sich nach einem schwachen Start klar erholt. Drei grüne Wochen in Folge rechts zeigen, dass der Trend stimmt.</span><span class="i18n-en"><i>Example Player F:</i> Has clearly recovered after a weak start. Three consecutive green weeks on the right show that the trend is correct.</span></li>
                     </ul>
                 </div>
@@ -3136,7 +3136,7 @@ def generate_html_report(
                     if tt_parts:
                         profile_tooltip = f" <span class='custom-tooltip' style='font-size: 0.85em; cursor: help;'>ℹ️<span class='tooltip-text'>{'<br>'.join(tt_parts)}</span></span>"
 
-                name_cell = f"{p['name']}{p['welpenschutz_badge']}{p['streak_badge']}{p['strike_badge']}{boat_badge}{profile_tooltip}"
+                name_cell = f"{p['name']}{p['welpenschutz_badge']}{p['streak_badge']}{boat_badge}{profile_tooltip}"
 
                 # Dabei-Farbe: grün wenn volle Teilnahme, gelb wenn ok, rot wenn wenig
                 dabei_wars  = p["teilnahme_int"]
