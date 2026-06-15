@@ -1,6 +1,7 @@
 import os
 
 from fastapi import FastAPI, Header, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.utils import get_openapi
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -17,6 +18,20 @@ from config import (
 )
 
 app = FastAPI(title="Clash Royale Clan Management API", version="3.0.0")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://clan-hamburg.de",
+        "https://www.clan-hamburg.de",
+        "http://localhost:3333",
+        "http://127.0.0.1:3333",
+        "http://localhost:8080",
+        "http://127.0.0.1:8080",
+    ],
+    allow_methods=["GET"],
+    allow_headers=["X-Api-Key"],
+)
 
 
 def custom_openapi():
@@ -93,7 +108,18 @@ from app.routes.coaching import router as coaching_router
 
 _auth = Depends(require_api_key)
 app.include_router(clan_router, dependencies=[_auth])
-app.include_router(player_router, dependencies=[_auth])
 app.include_router(war_router, dependencies=[_auth])
 app.include_router(analytics_router, dependencies=[_auth])
 app.include_router(coaching_router, dependencies=[_auth])
+
+# Warlog öffentlich – enthält nur Spielstatistiken (Fame/Decks), keine sensiblen Daten
+from app.routes.player import player_warlog as _warlog_handler
+app.add_api_route(
+    "/player/{player_tag}/warlog",
+    _warlog_handler,
+    methods=["GET"],
+    tags=["player"],
+)
+
+# Restliche Player-Endpoints mit Auth
+app.include_router(player_router, dependencies=[_auth])
