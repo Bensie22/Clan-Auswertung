@@ -41,6 +41,9 @@ desktop.ini
 # _prefetch.json wird in jedem Cron-Lauf neu erzeugt und sollte nicht committet werden
 _prefetch.json
 
+# --- Lokaler Kriegsverlauf-Cache (nur für Vorschau, nicht für GitHub Actions) ---
+warlog_cache.json
+
 # --- Automatisch generierte CSV-Exporte ---
 uploads/*.csv
 uploads/archiv/
