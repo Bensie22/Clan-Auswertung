@@ -12182,6 +12182,54 @@
         "name": "Desteoyer",
         "battles": [
             {
+                "time": "20260616T100908.000Z",
+                "result": "win",
+                "type": "riverRacePvP",
+                "deck_hash": "26000000-26000003-26000007-26000021-26000049-27000003-28000000-28000011",
+                "cards": [
+                    {
+                        "id": 26000000,
+                        "name": "Knight",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                    },
+                    {
+                        "id": 26000049,
+                        "name": "Bats",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                    },
+                    {
+                        "id": 26000003,
+                        "name": "Giant",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/Axr4ox5_b7edmLsoHxBX3vmgijAIibuF6RImTbqLlXE.png"
+                    },
+                    {
+                        "id": 28000011,
+                        "name": "The Log",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                    },
+                    {
+                        "id": 27000003,
+                        "name": "Inferno Tower",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
+                    },
+                    {
+                        "id": 28000000,
+                        "name": "Fireball",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                    },
+                    {
+                        "id": 26000007,
+                        "name": "Witch",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                    },
+                    {
+                        "id": 26000021,
+                        "name": "Hog Rider",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                    }
+                ]
+            },
+            {
                 "time": "20260614T104700.000Z",
                 "result": "loss",
                 "type": "riverRacePvP",
@@ -26464,54 +26512,6 @@
                         "id": 26000041,
                         "name": "Goblin Gang",
                         "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
-                    }
-                ]
-            },
-            {
-                "time": "20260517T100750.000Z",
-                "result": "win",
-                "type": "riverRacePvP",
-                "deck_hash": "26000003-26000007-26000012-26000018-26000019-26000069-27000004-27000008",
-                "cards": [
-                    {
-                        "id": 26000007,
-                        "name": "Witch",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
-                    },
-                    {
-                        "id": 26000018,
-                        "name": "Mini P.E.K.K.A",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
-                    },
-                    {
-                        "id": 26000069,
-                        "name": "Skeleton King",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/dCd69_wN9f8DxwuqOGtR4QgWhHIPIaTNxZ1e23RzAAc.png"
-                    },
-                    {
-                        "id": 26000003,
-                        "name": "Giant",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/Axr4ox5_b7edmLsoHxBX3vmgijAIibuF6RImTbqLlXE.png"
-                    },
-                    {
-                        "id": 27000004,
-                        "name": "Bomb Tower",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/rirYRyHPc97emRjoH-c1O8uZCBzPVnToaGuNGusF3TQ.png"
-                    },
-                    {
-                        "id": 27000008,
-                        "name": "X-Bow",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/zVQ9Hme1hlj9Dc6e1ORl9xWwglcSrP7ejow5mAhLUJc.png"
-                    },
-                    {
-                        "id": 26000012,
-                        "name": "Skeleton Army",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
-                    },
-                    {
-                        "id": 26000019,
-                        "name": "Spear Goblins",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/FSDFotjaXidI4ku_WFpVCTWS1hKGnFh1sxX0lxM43_E.png"
                     }
                 ]
             }
