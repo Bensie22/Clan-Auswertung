@@ -29,7 +29,7 @@
             "#2CJYG9UG": "20260614T193245.000Z",
             "#2PUQYJC02": "20260617T192219.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20260617T101246.000Z",
+            "#2V800VCQ0": "20260618T052650.000Z",
             "#2UQUPYQCJ": "20260615T184503.000Z",
             "#JUUR8UGL8": "20260615T074524.000Z",
             "#2U09UULRR": "20260618T025157.000Z",
@@ -6598,7 +6598,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Desteoyer"
             ],
@@ -6606,6 +6606,12 @@
                 "2V800VCQ0"
             ],
             "recent_matches": [
+                {
+                    "time": "20260618T052650.000Z",
+                    "result": "loss",
+                    "player": "Desteoyer",
+                    "tag": "2V800VCQ0"
+                },
                 {
                     "time": "20260616T100908.000Z",
                     "result": "win",
@@ -206281,6 +206287,52 @@
                     "id": 26000015,
                     "name": "Baby Dragon",
                     "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000002-26000005-26000021-26000026-26000043-26000050-28000002-28000008": {
+            "cards": [
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 26000002,
+                    "name": "Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X_DQUye_OaS3QN6VC9CPw05Fit7wvSm3XegXIXKP--0.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                },
+                {
+                    "id": 26000050,
+                    "name": "Royal Ghost",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3En2cz0ISQAaMTHY3hj3rTveFN2kJYq-H4VxvdJNvCM.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 26000043,
+                    "name": "Elite Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/C88C5JH_F3lLZj6K-tLcMo5DPjrFmvzIb1R2M6xCfTE.png"
+                },
+                {
+                    "id": 28000002,
+                    "name": "Rage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
                 }
             ],
             "seen": 1,
