@@ -15,7 +15,7 @@
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
-            "#PPR2QQC0U": "20260618T163351.000Z",
+            "#PPR2QQC0U": "20260618T194006.000Z",
             "#QULCQGGG": "20260618T191316.000Z",
             "#JRGC9RRQG": "20260618T103748.000Z",
             "#QVQGCV8Y9": "20260618T111727.000Z",
@@ -60,7 +60,7 @@
             "#9UJ9GUL9Q": "20260421T171612.000Z",
             "#CLC8JVPRG": "20260424T234312.000Z",
             "#G8RVJJ2R": "20260611T145142.000Z",
-            "#P8GRG0UCY": "20260618T102403.000Z",
+            "#P8GRG0UCY": "20260618T193248.000Z",
             "#CQ0JQ0PC": "20260424T155243.000Z",
             "#VRCVPQU2Y": "20260424T064627.000Z",
             "#88GPYVR8P": "20260610T155319.000Z",
@@ -86,7 +86,7 @@
             "#GRGCY0R8": "20260618T044819.000Z",
             "#P2YQ2QQUV": "20260618T174904.000Z",
             "#JG8Q0GPU9": "20260617T090503.000Z",
-            "#9QV99QVCV": "20260618T183721.000Z",
+            "#9QV99QVCV": "20260618T193950.000Z",
             "#JQ08UR882": "20260617T103230.000Z",
             "#PQ2JYPC09": "20260618T133148.000Z",
             "#99JJLC02L": "20260618T095218.000Z",
@@ -5494,7 +5494,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Flauschos"
             ],
@@ -5502,6 +5502,12 @@
                 "PPR2QQC0U"
             ],
             "recent_matches": [
+                {
+                    "time": "20260618T194006.000Z",
+                    "result": "loss",
+                    "player": "Flauschos",
+                    "tag": "PPR2QQC0U"
+                },
                 {
                     "time": "20260615T053059.000Z",
                     "result": "win",
@@ -208859,6 +208865,52 @@
                     "id": 26000025,
                     "name": "Guards",
                     "icon": "https://api-assets.clashroyale.com/cards/300/1ArKfLJxYo6_NU_S9cAeIrfbXqWH0oULVJXedxBXQlU.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000014-26000030-26000034-26000040-26000041-26000059-27000012-28000018": {
+            "cards": [
+                {
+                    "id": 27000012,
+                    "name": "Goblin Cage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vD24bBgK4rSq7wx5QEbuqChtPMRFviL_ep76GwQw1yA.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 28000018,
+                    "name": "Royal Delivery",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LPg7AGjGI3_xmi7gLLgGC50yKM1jJ2teWkZfoHJcIZo.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 26000030,
+                    "name": "Ice Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lv1budiafU9XmSdrDkk0NYyqASAFYyZ06CPysXKZXlA.png"
                 }
             ],
             "seen": 1,
