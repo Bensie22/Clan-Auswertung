@@ -10,20 +10,20 @@
             "#P0JYR9YUY": "20260618T192107.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260618T074042.000Z",
-            "#G02LC9C8": "20260618T155537.000Z",
+            "#G02LC9C8": "20260618T195936.000Z",
             "#2U8288CVY": "20260618T142825.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260618T194759.000Z",
-            "#QULCQGGG": "20260618T195010.000Z",
+            "#QULCQGGG": "20260618T195936.000Z",
             "#JRGC9RRQG": "20260618T103748.000Z",
             "#QVQGCV8Y9": "20260618T111727.000Z",
             "#Q8L0RJ8Y8": "20260618T173044.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260618T164051.000Z",
             "#LLQQJCLC": "20260616T161554.000Z",
-            "#2VJR80RL": "20260618T153929.000Z",
+            "#2VJR80RL": "20260618T195909.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
             "#2CJYG9UG": "20260618T175111.000Z",
@@ -40,7 +40,7 @@
             "#CUJ9PJ2UV": "20260618T123242.000Z",
             "#2P0U2RLGY": "20260618T154023.000Z",
             "#8P89UPQ0": "",
-            "#RLJPJL8C2": "20260614T174041.000Z",
+            "#RLJPJL8C2": "20260618T195733.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
             "#UUPCULU9V": "20260617T153028.000Z",
@@ -60,7 +60,7 @@
             "#9UJ9GUL9Q": "20260421T171612.000Z",
             "#CLC8JVPRG": "20260424T234312.000Z",
             "#G8RVJJ2R": "20260611T145142.000Z",
-            "#P8GRG0UCY": "20260618T193248.000Z",
+            "#P8GRG0UCY": "20260618T195829.000Z",
             "#CQ0JQ0PC": "20260424T155243.000Z",
             "#VRCVPQU2Y": "20260424T064627.000Z",
             "#88GPYVR8P": "20260610T155319.000Z",
@@ -4804,7 +4804,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "kl.kranker Affe"
             ],
@@ -4812,6 +4812,12 @@
                 "RLJPJL8C2"
             ],
             "recent_matches": [
+                {
+                    "time": "20260618T195733.000Z",
+                    "result": "loss",
+                    "player": "kl.kranker Affe",
+                    "tag": "RLJPJL8C2"
+                },
                 {
                     "time": "20260614T174041.000Z",
                     "result": "win",
@@ -209007,6 +209013,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000000-26000001-26000017-26000025-26000085-27000003-28000004-28000009": {
+            "cards": [
+                {
+                    "id": 26000085,
+                    "name": "Electro Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_uChZkNHAMq6tPb3v6A49xinOe3CnhjstOhG6OZbPYc.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                },
+                {
+                    "id": 26000025,
+                    "name": "Guards",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/1ArKfLJxYo6_NU_S9cAeIrfbXqWH0oULVJXedxBXQlU.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 27000003,
+                    "name": "Inferno Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
