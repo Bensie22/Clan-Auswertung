@@ -44,7 +44,7 @@
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
             "#UUPCULU9V": "20260617T153028.000Z",
-            "#202VP2QL9P": "20260618T200727.000Z",
+            "#202VP2QL9P": "20260618T204321.000Z",
             "#LVUGLUCP9": "20260614T194307.000Z",
             "#20QGJVPG8Q": "20260618T173152.000Z",
             "#V9GYJQ0J9": "",
@@ -60,7 +60,7 @@
             "#9UJ9GUL9Q": "20260421T171612.000Z",
             "#CLC8JVPRG": "20260424T234312.000Z",
             "#G8RVJJ2R": "20260611T145142.000Z",
-            "#P8GRG0UCY": "20260618T195829.000Z",
+            "#P8GRG0UCY": "20260618T204934.000Z",
             "#CQ0JQ0PC": "20260424T155243.000Z",
             "#VRCVPQU2Y": "20260424T064627.000Z",
             "#88GPYVR8P": "20260610T155319.000Z",
@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20260618T203112.000Z",
+            "#YUQVVVLQ": "20260618T204430.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260609T223746.000Z",
             "#GLGY98U08": "20260616T052143.000Z",
@@ -3136,7 +3136,7 @@
                 }
             ],
             "wins": 4,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Merlin1659"
             ],
@@ -3144,6 +3144,12 @@
                 "P8GRG0UCY"
             ],
             "recent_matches": [
+                {
+                    "time": "20260618T204934.000Z",
+                    "result": "loss",
+                    "player": "Merlin1659",
+                    "tag": "P8GRG0UCY"
+                },
                 {
                     "time": "20260615T064706.000Z",
                     "result": "win",
@@ -209295,6 +209301,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000011-26000017-26000019-26000024-26000036-26000041-26000049-26000064": {
+            "cards": [
+                {
+                    "id": 26000024,
+                    "name": "Royal Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mnlRaNtmfpQx2e6mp70sLd0ND-pKPF70Cf87_agEKg4.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000036,
+                    "name": "Battle Ram",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dyc50V2cplKi4H7pq1B3I36pl_sEH5DQrNHboS_dbbM.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 26000019,
+                    "name": "Spear Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/FSDFotjaXidI4ku_WFpVCTWS1hKGnFh1sxX0lxM43_E.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
