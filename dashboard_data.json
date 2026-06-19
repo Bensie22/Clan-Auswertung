@@ -66,12 +66,12 @@
       "priority": 2
     },
     {
-      "name": "LazyFrog",
+      "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Johan",
+      "name": "LazyFrog",
       "scenario": "TOP",
       "priority": 2
     },
@@ -121,12 +121,12 @@
       "priority": 2
     },
     {
-      "name": "SankKiI9",
+      "name": "_spc07",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "_spc07",
+      "name": "SankKiI9",
       "scenario": "TOP",
       "priority": 2
     },
@@ -193,13 +193,13 @@
       "status": "STARK"
     },
     {
-      "name": "LazyFrog",
-      "score": 90.09,
+      "name": "Johan",
+      "score": 90.13,
       "status": "STARK"
     },
     {
-      "name": "Johan",
-      "score": 90.0,
+      "name": "LazyFrog",
+      "score": 90.09,
       "status": "STARK"
     },
     {
@@ -263,13 +263,13 @@
       "status": "STARK"
     },
     {
-      "name": "SankKiI9",
-      "score": 87.88,
+      "name": "_spc07",
+      "score": 87.86,
       "status": "STARK"
     },
     {
-      "name": "_spc07",
-      "score": 87.86,
+      "name": "SankKiI9",
+      "score": 87.62,
       "status": "STARK"
     },
     {
@@ -299,7 +299,7 @@
     },
     {
       "name": "Theezy",
-      "score": 86.12,
+      "score": 86.39,
       "status": "STARK"
     },
     {
@@ -445,13 +445,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "LazyFrog",
-      "score": 90.09,
+      "name": "Johan",
+      "score": 90.13,
       "tip": "Weiter so"
     },
     {
-      "name": "Johan",
-      "score": 90.0,
+      "name": "LazyFrog",
+      "score": 90.09,
       "tip": "Weiter so"
     },
     {
@@ -515,13 +515,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "SankKiI9",
-      "score": 87.88,
+      "name": "_spc07",
+      "score": 87.86,
       "tip": "Weiter so"
     },
     {
-      "name": "_spc07",
-      "score": 87.86,
+      "name": "SankKiI9",
+      "score": 87.62,
       "tip": "Weiter so"
     },
     {
@@ -551,7 +551,7 @@
     },
     {
       "name": "Theezy",
-      "score": 86.12,
+      "score": 86.39,
       "tip": "Weiter so"
     },
     {
@@ -793,6 +793,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Johan",
+        "player_tag": "#UQVCVVVJL",
+        "role": "member",
+        "score": 90.13,
+        "strikes": 0,
+        "donations": 126,
+        "participation_count": 6,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "LazyFrog",
         "player_tag": "#22Q920RLR",
         "role": "member",
@@ -801,18 +813,6 @@
         "donations": 434,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Johan",
-        "player_tag": "#UQVCVVVJL",
-        "role": "member",
-        "score": 90.0,
-        "strikes": 0,
-        "donations": 126,
-        "participation_count": 6,
-        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -961,18 +961,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "SankKiI9",
-        "player_tag": "#89CJRRV8",
-        "role": "member",
-        "score": 87.88,
-        "strikes": 0,
-        "donations": 801,
-        "participation_count": 6,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "_spc07",
         "player_tag": "#2U8288CVY",
         "role": "member",
@@ -981,6 +969,18 @@
         "donations": 66,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "SankKiI9",
+        "player_tag": "#89CJRRV8",
+        "role": "member",
+        "score": 87.62,
+        "strikes": 0,
+        "donations": 809,
+        "participation_count": 6,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -1036,9 +1036,9 @@
         "name": "Theezy",
         "player_tag": "#JUUR8UGL8",
         "role": "member",
-        "score": 86.12,
+        "score": 86.39,
         "strikes": 0,
-        "donations": 56,
+        "donations": 64,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
