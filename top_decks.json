@@ -17,7 +17,7 @@
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260618T194759.000Z",
             "#QULCQGGG": "20260619T105456.000Z",
-            "#JRGC9RRQG": "20260618T224438.000Z",
+            "#JRGC9RRQG": "20260619T154331.000Z",
             "#QVQGCV8Y9": "20260619T151616.000Z",
             "#Q8L0RJ8Y8": "20260619T071147.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
@@ -37,7 +37,7 @@
             "#8QYYL8LCQ": "20260618T232956.000Z",
             "#8P0J8P0L": "20260619T125318.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20260619T145501.000Z",
+            "#CUJ9PJ2UV": "20260619T154916.000Z",
             "#2P0U2RLGY": "20260619T145340.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260618T195733.000Z",
@@ -5665,7 +5665,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "seroo"
@@ -5674,6 +5674,12 @@
                 "JRGC9RRQG"
             ],
             "recent_matches": [
+                {
+                    "time": "20260619T154331.000Z",
+                    "result": "win",
+                    "player": "seroo",
+                    "tag": "JRGC9RRQG"
+                },
                 {
                     "time": "20260618T214452.000Z",
                     "result": "win",
@@ -212271,6 +212277,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000005-26000006-26000010-26000018-26000044-26000055-27000000-28000018": {
+            "cards": [
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000044,
+                    "name": "Hunter",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/VNabB1WKnYtYRSG7X_FZfnZjQDHTBs9A96OGMFmecrA.png"
+                },
+                {
+                    "id": 27000000,
+                    "name": "Cannon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nZK1y-beLxO5vnlyUhK6-2zH2NzXJwqykcosqQ1cmZ8.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                },
+                {
+                    "id": 28000018,
+                    "name": "Royal Delivery",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LPg7AGjGI3_xmi7gLLgGC50yKM1jJ2teWkZfoHJcIZo.png"
+                },
+                {
+                    "id": 26000010,
+                    "name": "Skeletons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/oO7iKMU5m0cdxhYPZA3nWQiAUh2yoGgdThLWB1rVSec.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
