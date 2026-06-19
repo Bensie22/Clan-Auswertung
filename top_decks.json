@@ -9,8 +9,8 @@
             "#UJ2P9UYUV": "20260618T190242.000Z",
             "#P0JYR9YUY": "20260618T192107.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
-            "#YQ82VR9JQ": "20260618T211607.000Z",
-            "#G02LC9C8": "20260619T042458.000Z",
+            "#YQ82VR9JQ": "20260619T043954.000Z",
+            "#G02LC9C8": "20260619T043752.000Z",
             "#2U8288CVY": "20260618T142825.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
@@ -32,7 +32,7 @@
             "#2V800VCQ0": "20260618T141519.000Z",
             "#2UQUPYQCJ": "20260615T184503.000Z",
             "#JUUR8UGL8": "20260618T191144.000Z",
-            "#2U09UULRR": "20260618T122012.000Z",
+            "#2U09UULRR": "20260619T043610.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20260618T232956.000Z",
             "#8P0J8P0L": "20260618T143314.000Z",
@@ -44,7 +44,7 @@
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
             "#UUPCULU9V": "20260617T153028.000Z",
-            "#202VP2QL9P": "20260619T042337.000Z",
+            "#202VP2QL9P": "20260619T043809.000Z",
             "#LVUGLUCP9": "20260618T212802.000Z",
             "#20QGJVPG8Q": "20260618T173152.000Z",
             "#V9GYJQ0J9": "",
@@ -2218,7 +2218,7 @@
                 }
             ],
             "wins": 4,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "lukasl 5"
             ],
@@ -2226,6 +2226,12 @@
                 "G02LC9C8"
             ],
             "recent_matches": [
+                {
+                    "time": "20260619T043752.000Z",
+                    "result": "loss",
+                    "player": "lukasl 5",
+                    "tag": "G02LC9C8"
+                },
                 {
                     "time": "20260614T101816.000Z",
                     "result": "win",
@@ -210147,6 +210153,52 @@
                     "id": 26000050,
                     "name": "Royal Ghost",
                     "icon": "https://api-assets.clashroyale.com/cards/300/3En2cz0ISQAaMTHY3hj3rTveFN2kJYq-H4VxvdJNvCM.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000005-26000011-26000034-26000047-26000060-26000099-28000004-28000007": {
+            "cards": [
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 26000099,
+                    "name": "Goblinstein",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mQ20B49dXdk7Nv0lMdLw175M3YvkSpN6KNnho8UKBd8.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 26000047,
+                    "name": "Royal Recruits",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jcNyYGUiXXNz3kuz8NBkHNKNREQKraXlb_Ts7rhCIdM.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                },
+                {
+                    "id": 28000007,
+                    "name": "Lightning",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fpnESbYqe5GyZmaVVYe-SEu7tE0Kxh_HZyVigzvLjks.png"
+                },
+                {
+                    "id": 26000060,
+                    "name": "Goblin Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SoW16cY3jXBwaTDvb39DkqiVsoFVaDWbzf5QBYphJrY.png"
                 }
             ],
             "seen": 1,
