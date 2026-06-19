@@ -208,11 +208,6 @@
       "status": "STARK"
     },
     {
-      "name": "l_Bozo",
-      "score": 89.47,
-      "status": "STARK"
-    },
-    {
       "name": "Ted",
       "score": 89.46,
       "status": "STARK"
@@ -220,6 +215,11 @@
     {
       "name": "Jackhammer",
       "score": 89.41,
+      "status": "STARK"
+    },
+    {
+      "name": "l_Bozo",
+      "score": 89.33,
       "status": "STARK"
     },
     {
@@ -460,11 +460,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "l_Bozo",
-      "score": 89.47,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Ted",
       "score": 89.46,
       "tip": "Weiter so"
@@ -472,6 +467,11 @@
     {
       "name": "Jackhammer",
       "score": 89.41,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "l_Bozo",
+      "score": 89.33,
       "tip": "Weiter so"
     },
     {
@@ -810,7 +810,7 @@
         "role": "member",
         "score": 90.09,
         "strikes": 0,
-        "donations": 506,
+        "donations": 514,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -825,18 +825,6 @@
         "donations": 360,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "l_Bozo",
-        "player_tag": "#PQ2JYPC09",
-        "role": "member",
-        "score": 89.47,
-        "strikes": 0,
-        "donations": 0,
-        "participation_count": 1,
-        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -861,6 +849,18 @@
         "donations": 190,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "l_Bozo",
+        "player_tag": "#PQ2JYPC09",
+        "role": "member",
+        "score": 89.33,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 1,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -990,7 +990,7 @@
         "role": "member",
         "score": 87.48,
         "strikes": 0,
-        "donations": 837,
+        "donations": 845,
         "participation_count": 6,
         "trend": "",
         "reason": "Score über 85",
