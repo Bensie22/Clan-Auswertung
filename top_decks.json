@@ -18,7 +18,7 @@
             "#PPR2QQC0U": "20260618T194759.000Z",
             "#QULCQGGG": "20260619T105456.000Z",
             "#JRGC9RRQG": "20260618T224438.000Z",
-            "#QVQGCV8Y9": "20260619T125920.000Z",
+            "#QVQGCV8Y9": "20260619T130920.000Z",
             "#Q8L0RJ8Y8": "20260619T071147.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260619T083419.000Z",
@@ -2089,7 +2089,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/2GKMkBrArZXgQxf2ygFjDs4VvGYPbx8F6Lj_68iVhIM.png"
                 }
             ],
-            "wins": 3,
+            "wins": 4,
             "losses": 0,
             "players": [
                 "Rainer"
@@ -2098,6 +2098,12 @@
                 "QVQGCV8Y9"
             ],
             "recent_matches": [
+                {
+                    "time": "20260619T130547.000Z",
+                    "result": "win",
+                    "player": "Rainer",
+                    "tag": "QVQGCV8Y9"
+                },
                 {
                     "time": "20260613T113725.000Z",
                     "result": "win",
@@ -2162,7 +2168,7 @@
                 }
             ],
             "wins": 6,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Rainer"
             ],
@@ -2170,6 +2176,12 @@
                 "QVQGCV8Y9"
             ],
             "recent_matches": [
+                {
+                    "time": "20260619T130236.000Z",
+                    "result": "loss",
+                    "player": "Rainer",
+                    "tag": "QVQGCV8Y9"
+                },
                 {
                     "time": "20260618T102927.000Z",
                     "result": "win",
@@ -155055,8 +155067,8 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
                 }
             ],
-            "seen": 2,
-            "losses": 1
+            "seen": 3,
+            "losses": 2
         },
         "26000006-26000025-26000029-26000037-26000080-27000012-28000007-28000017": {
             "cards": [
@@ -211913,6 +211925,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000004-26000036-26000045-26000062-26000074-26000084-27000000-28000002": {
+            "cards": [
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 26000074,
+                    "name": "Golden Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WJd207D0O1sN-l1FTb8P9KhYL2oF5jY26vRUfTUW3FQ.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000036,
+                    "name": "Battle Ram",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dyc50V2cplKi4H7pq1B3I36pl_sEH5DQrNHboS_dbbM.png"
+                },
+                {
+                    "id": 26000084,
+                    "name": "Electro Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WKd4-IAFsgPpMo7dDi9sujmYjRhOMEWiE07OUJpvD9g.png"
+                },
+                {
+                    "id": 28000002,
+                    "name": "Rage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
+                },
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 27000000,
+                    "name": "Cannon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nZK1y-beLxO5vnlyUhK6-2zH2NzXJwqykcosqQ1cmZ8.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
