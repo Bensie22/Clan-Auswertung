@@ -41,17 +41,17 @@
       "priority": 2
     },
     {
+      "name": "maghrebi",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Citykingalex",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "AaleDieter",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "maghrebi",
       "scenario": "TOP",
       "priority": 2
     },
@@ -163,6 +163,11 @@
       "status": "STARK"
     },
     {
+      "name": "maghrebi",
+      "score": 92.67,
+      "status": "STARK"
+    },
+    {
       "name": "OmniOni",
       "score": 92.67,
       "status": "STARK"
@@ -175,11 +180,6 @@
     {
       "name": "AaleDieter",
       "score": 92.49,
-      "status": "STARK"
-    },
-    {
-      "name": "maghrebi",
-      "score": 92.27,
       "status": "STARK"
     },
     {
@@ -415,6 +415,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "maghrebi",
+      "score": 92.67,
+      "tip": "Weiter so"
+    },
+    {
       "name": "OmniOni",
       "score": 92.67,
       "tip": "Weiter so"
@@ -427,11 +432,6 @@
     {
       "name": "AaleDieter",
       "score": 92.49,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "maghrebi",
-      "score": 92.27,
       "tip": "Weiter so"
     },
     {
@@ -733,6 +733,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "maghrebi",
+        "player_tag": "#20QGJVPG8Q",
+        "role": "member",
+        "score": 92.67,
+        "strikes": 0,
+        "donations": 204,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Citykingalex",
         "player_tag": "#QULCQGGG",
         "role": "member",
@@ -751,18 +763,6 @@
         "score": 92.49,
         "strikes": 0,
         "donations": 84,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "maghrebi",
-        "player_tag": "#20QGJVPG8Q",
-        "role": "member",
-        "score": 92.27,
-        "strikes": 0,
-        "donations": 188,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -810,7 +810,7 @@
         "role": "member",
         "score": 90.09,
         "strikes": 0,
-        "donations": 478,
+        "donations": 496,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -882,7 +882,7 @@
         "role": "member",
         "score": 89.0,
         "strikes": 0,
-        "donations": 500,
+        "donations": 510,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
