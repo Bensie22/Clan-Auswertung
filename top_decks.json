@@ -7,7 +7,7 @@
             "#2QRVR9L8": "20260619T035450.000Z",
             "#ULYJ2CQP": "20260617T121527.000Z",
             "#UJ2P9UYUV": "20260618T190242.000Z",
-            "#P0JYR9YUY": "20260618T192107.000Z",
+            "#P0JYR9YUY": "20260619T071927.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260619T044509.000Z",
             "#G02LC9C8": "20260619T055358.000Z",
@@ -19,7 +19,7 @@
             "#QULCQGGG": "20260619T060341.000Z",
             "#JRGC9RRQG": "20260618T224438.000Z",
             "#QVQGCV8Y9": "20260618T111727.000Z",
-            "#Q8L0RJ8Y8": "20260619T070907.000Z",
+            "#Q8L0RJ8Y8": "20260619T071147.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260619T063149.000Z",
             "#LLQQJCLC": "20260616T161554.000Z",
@@ -43,7 +43,7 @@
             "#RLJPJL8C2": "20260618T195733.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20260619T070403.000Z",
+            "#UUPCULU9V": "20260619T071610.000Z",
             "#202VP2QL9P": "20260619T044316.000Z",
             "#LVUGLUCP9": "20260618T212802.000Z",
             "#20QGJVPG8Q": "20260618T173152.000Z",
@@ -60,7 +60,7 @@
             "#9UJ9GUL9Q": "20260421T171612.000Z",
             "#CLC8JVPRG": "20260424T234312.000Z",
             "#G8RVJJ2R": "20260611T145142.000Z",
-            "#P8GRG0UCY": "20260619T000914.000Z",
+            "#P8GRG0UCY": "20260619T071651.000Z",
             "#CQ0JQ0PC": "20260424T155243.000Z",
             "#VRCVPQU2Y": "20260424T064627.000Z",
             "#88GPYVR8P": "20260610T155319.000Z",
@@ -2302,7 +2302,7 @@
                 }
             ],
             "wins": 5,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Chico"
             ],
@@ -2310,6 +2310,12 @@
                 "P0JYR9YUY"
             ],
             "recent_matches": [
+                {
+                    "time": "20260619T071927.000Z",
+                    "result": "loss",
+                    "player": "Chico",
+                    "tag": "P0JYR9YUY"
+                },
                 {
                     "time": "20260615T072006.000Z",
                     "result": "win",
@@ -210679,6 +210685,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000000-26000015-26000033-26000045-26000048-26000055-26000069-28000009": {
+            "cards": [
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000069,
+                    "name": "Skeleton King",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dCd69_wN9f8DxwuqOGtR4QgWhHIPIaTNxZ1e23RzAAc.png"
+                },
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 26000048,
+                    "name": "Night Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NpCrXDEDBBJgNv9QrBAcJmmMFbS7pe3KCY8xJ5VB18A.png"
+                },
+                {
+                    "id": 26000033,
+                    "name": "Sparky",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/2GKMkBrArZXgQxf2ygFjDs4VvGYPbx8F6Lj_68iVhIM.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
