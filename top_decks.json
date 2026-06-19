@@ -19,9 +19,9 @@
             "#QULCQGGG": "20260619T060341.000Z",
             "#JRGC9RRQG": "20260618T224438.000Z",
             "#QVQGCV8Y9": "20260618T111727.000Z",
-            "#Q8L0RJ8Y8": "20260618T173044.000Z",
+            "#Q8L0RJ8Y8": "20260619T062714.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
-            "#2CPRGY8G": "20260619T061140.000Z",
+            "#2CPRGY8G": "20260619T062832.000Z",
             "#LLQQJCLC": "20260616T161554.000Z",
             "#2VJR80RL": "20260618T200609.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
@@ -29,7 +29,7 @@
             "#2CJYG9UG": "20260618T175111.000Z",
             "#2PUQYJC02": "20260618T174440.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20260619T055820.000Z",
+            "#2V800VCQ0": "20260619T062547.000Z",
             "#2UQUPYQCJ": "20260615T184503.000Z",
             "#JUUR8UGL8": "20260618T191144.000Z",
             "#2U09UULRR": "20260619T043610.000Z",
@@ -5236,7 +5236,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Desteoyer"
             ],
@@ -5244,6 +5244,12 @@
                 "2V800VCQ0"
             ],
             "recent_matches": [
+                {
+                    "time": "20260619T062547.000Z",
+                    "result": "loss",
+                    "player": "Desteoyer",
+                    "tag": "2V800VCQ0"
+                },
                 {
                     "time": "20260616T110831.000Z",
                     "result": "win",
@@ -210587,6 +210593,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000010-26000030-26000040-26000065-27000006-27000008-28000000-28000017": {
+            "cards": [
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000065,
+                    "name": "Mighty Miner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Cd9R56yraxTvJiD8xJ2qT2OdsHyh94FqOAarXpbyelo.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 27000008,
+                    "name": "X-Bow",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/zVQ9Hme1hlj9Dc6e1ORl9xWwglcSrP7ejow5mAhLUJc.png"
+                },
+                {
+                    "id": 28000017,
+                    "name": "Giant Snowball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
+                },
+                {
+                    "id": 26000010,
+                    "name": "Skeletons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/oO7iKMU5m0cdxhYPZA3nWQiAUh2yoGgdThLWB1rVSec.png"
+                },
+                {
+                    "id": 26000030,
+                    "name": "Ice Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lv1budiafU9XmSdrDkk0NYyqASAFYyZ06CPysXKZXlA.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
