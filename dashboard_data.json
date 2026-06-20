@@ -1,21 +1,6 @@
 {
   "full_auto": [
     {
-      "name": "martini",
-      "scenario": "KEINE_TEILNAHME",
-      "priority": 4
-    },
-    {
-      "name": "Cyr3x_076",
-      "scenario": "KEINE_TEILNAHME",
-      "priority": 4
-    },
-    {
-      "name": "mösel",
-      "scenario": "STRIKE",
-      "priority": 4
-    },
-    {
       "name": "Joker",
       "scenario": "STRIKE",
       "priority": 4
@@ -253,17 +238,17 @@
       "status": "STARK"
     },
     {
-      "name": "Desteoyer",
-      "score": 87.98,
-      "status": "STARK"
-    },
-    {
       "name": "Dolphin",
       "score": 87.95,
       "status": "STARK"
     },
     {
       "name": "seroo",
+      "score": 87.85,
+      "status": "STARK"
+    },
+    {
+      "name": "Desteoyer",
       "score": 87.85,
       "status": "STARK"
     },
@@ -385,21 +370,6 @@
     {
       "name": "Joker",
       "score": 48.67,
-      "status": "RISIKO"
-    },
-    {
-      "name": "mösel",
-      "score": 34.17,
-      "status": "RISIKO"
-    },
-    {
-      "name": "martini",
-      "score": 0.0,
-      "status": "RISIKO"
-    },
-    {
-      "name": "Cyr3x_076",
-      "score": 0.0,
       "status": "RISIKO"
     }
   ],
@@ -505,17 +475,17 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Desteoyer",
-      "score": 87.98,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Dolphin",
       "score": 87.95,
       "tip": "Weiter so"
     },
     {
       "name": "seroo",
+      "score": 87.85,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Desteoyer",
       "score": 87.85,
       "tip": "Weiter so"
     },
@@ -638,63 +608,11 @@
       "name": "Joker",
       "score": 48.67,
       "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "mösel",
-      "score": 34.17,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "martini",
-      "score": 0.0,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "Cyr3x_076",
-      "score": 0.0,
-      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
-    "remove": [
-      {
-        "name": "martini",
-        "player_tag": "#PVYJ80YCL",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 10,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
-        "name": "Cyr3x_076",
-        "player_tag": "#RP9RVGQJU",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 26,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
-        "name": "mösel",
-        "player_tag": "#JQ08UR882",
-        "role": "member",
-        "score": 34.17,
-        "strikes": 0,
-        "donations": 0,
-        "participation_count": 1,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      }
-    ],
+    "remove": [],
     "core": [
       {
         "name": "Erastus",
@@ -822,7 +740,7 @@
         "role": "member",
         "score": 89.6,
         "strikes": 0,
-        "donations": 456,
+        "donations": 474,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -882,7 +800,7 @@
         "role": "member",
         "score": 88.93,
         "strikes": 0,
-        "donations": 858,
+        "donations": 902,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -937,18 +855,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Desteoyer",
-        "player_tag": "#2V800VCQ0",
-        "role": "member",
-        "score": 87.98,
-        "strikes": 0,
-        "donations": 20,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Dolphin",
         "player_tag": "#2U09UULRR",
         "role": "member",
@@ -967,6 +873,18 @@
         "score": 87.85,
         "strikes": 0,
         "donations": 112,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Desteoyer",
+        "player_tag": "#2V800VCQ0",
+        "role": "member",
+        "score": 87.85,
+        "strikes": 0,
+        "donations": 20,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
