@@ -61,12 +61,12 @@
       "priority": 2
     },
     {
-      "name": "OneAndOnly",
+      "name": "Ted",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Ted",
+      "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
     },
@@ -193,13 +193,13 @@
       "status": "STARK"
     },
     {
-      "name": "OneAndOnly",
-      "score": 89.6,
+      "name": "Ted",
+      "score": 89.72,
       "status": "STARK"
     },
     {
-      "name": "Ted",
-      "score": 89.59,
+      "name": "OneAndOnly",
+      "score": 89.6,
       "status": "STARK"
     },
     {
@@ -224,7 +224,7 @@
     },
     {
       "name": "Knitte",
-      "score": 88.74,
+      "score": 88.87,
       "status": "STARK"
     },
     {
@@ -430,13 +430,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "OneAndOnly",
-      "score": 89.6,
+      "name": "Ted",
+      "score": 89.72,
       "tip": "Weiter so"
     },
     {
-      "name": "Ted",
-      "score": 89.59,
+      "name": "OneAndOnly",
+      "score": 89.6,
       "tip": "Weiter so"
     },
     {
@@ -461,7 +461,7 @@
     },
     {
       "name": "Knitte",
-      "score": 88.74,
+      "score": 88.87,
       "tip": "Weiter so"
     },
     {
@@ -740,6 +740,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Ted",
+        "player_tag": "#J9RQPGLVP",
+        "role": "member",
+        "score": 89.72,
+        "strikes": 0,
+        "donations": 477,
+        "participation_count": 10,
+        "trend": "🔴🔴🔴🟡🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "OneAndOnly",
         "player_tag": "#8P0J8P0L",
         "role": "member",
@@ -748,18 +760,6 @@
         "donations": 482,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Ted",
-        "player_tag": "#J9RQPGLVP",
-        "role": "member",
-        "score": 89.59,
-        "strikes": 0,
-        "donations": 477,
-        "participation_count": 10,
-        "trend": "🔴🔴🔴🟡🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -815,9 +815,9 @@
         "name": "Knitte",
         "player_tag": "#ULYJ2CQP",
         "role": "member",
-        "score": 88.74,
+        "score": 88.87,
         "strikes": 0,
-        "donations": 536,
+        "donations": 562,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
