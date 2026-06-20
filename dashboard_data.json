@@ -61,17 +61,17 @@
       "priority": 2
     },
     {
+      "name": "Jackhammer",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Ted",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Jackhammer",
       "scenario": "TOP",
       "priority": 2
     },
@@ -198,6 +198,11 @@
       "status": "STARK"
     },
     {
+      "name": "Jackhammer",
+      "score": 89.95,
+      "status": "STARK"
+    },
+    {
       "name": "OneAndOnly",
       "score": 89.73,
       "status": "STARK"
@@ -205,11 +210,6 @@
     {
       "name": "Ted",
       "score": 89.59,
-      "status": "STARK"
-    },
-    {
-      "name": "Jackhammer",
-      "score": 89.41,
       "status": "STARK"
     },
     {
@@ -435,6 +435,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Jackhammer",
+      "score": 89.95,
+      "tip": "Weiter so"
+    },
+    {
       "name": "OneAndOnly",
       "score": 89.73,
       "tip": "Weiter so"
@@ -442,11 +447,6 @@
     {
       "name": "Ted",
       "score": 89.59,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Jackhammer",
-      "score": 89.41,
       "tip": "Weiter so"
     },
     {
@@ -630,7 +630,7 @@
         "role": "member",
         "score": 95.15,
         "strikes": 0,
-        "donations": 624,
+        "donations": 634,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -745,6 +745,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Jackhammer",
+        "player_tag": "#2CJYG9UG",
+        "role": "member",
+        "score": 89.95,
+        "strikes": 0,
+        "donations": 198,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "OneAndOnly",
         "player_tag": "#8P0J8P0L",
         "role": "member",
@@ -765,18 +777,6 @@
         "donations": 485,
         "participation_count": 10,
         "trend": "🔴🔴🔴🟡🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Jackhammer",
-        "player_tag": "#2CJYG9UG",
-        "role": "member",
-        "score": 89.41,
-        "strikes": 0,
-        "donations": 198,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
