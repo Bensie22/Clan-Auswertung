@@ -19,14 +19,14 @@
             "#QULCQGGG": "20260620T175345.000Z",
             "#JRGC9RRQG": "20260620T191155.000Z",
             "#QVQGCV8Y9": "20260619T214622.000Z",
-            "#Q8L0RJ8Y8": "20260620T194911.000Z",
+            "#Q8L0RJ8Y8": "20260620T195839.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260620T191849.000Z",
             "#LLQQJCLC": "20260620T052353.000Z",
             "#2VJR80RL": "20260620T142519.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
-            "#2CJYG9UG": "20260620T194812.000Z",
+            "#2CJYG9UG": "20260620T195637.000Z",
             "#2PUQYJC02": "20260619T233126.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
             "#2V800VCQ0": "20260620T150049.000Z",
@@ -52,7 +52,7 @@
             "#Q2GRGLQR": "20260620T055512.000Z",
             "#J9RQPGLVP": "20260620T133650.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
-            "#9VLRQ9GR9": "20260620T194848.000Z",
+            "#9VLRQ9GR9": "20260620T195941.000Z",
             "#29RLRYLQL": "20260420T155237.000Z",
             "#QGGU22L9": "20260420T144732.000Z",
             "#2RQU00RLR": "20260421T120601.000Z",
@@ -2390,7 +2390,7 @@
                 }
             ],
             "wins": 4,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Jackhammer"
             ],
@@ -2398,6 +2398,12 @@
                 "2CJYG9UG"
             ],
             "recent_matches": [
+                {
+                    "time": "20260620T195637.000Z",
+                    "result": "loss",
+                    "player": "Jackhammer",
+                    "tag": "2CJYG9UG"
+                },
                 {
                     "time": "20260619T123437.000Z",
                     "result": "win",
@@ -218571,6 +218577,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000009-26000012-26000018-26000023-26000062-26000064-28000007-28000017": {
+            "cards": [
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 28000017,
+                    "name": "Giant Snowball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 26000023,
+                    "name": "Ice Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W3dkw0HTw9n1jB-zbknY2w3wHuyuLxSRIAV5fUT1SEY.png"
+                },
+                {
+                    "id": 28000007,
+                    "name": "Lightning",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fpnESbYqe5GyZmaVVYe-SEu7tE0Kxh_HZyVigzvLjks.png"
+                },
+                {
+                    "id": 26000009,
+                    "name": "Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/npdmCnET7jmVjJvjJQkFnNSNnDxYHDBigbvIAloFMds.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
