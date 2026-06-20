@@ -116,12 +116,12 @@
       "priority": 2
     },
     {
-      "name": "bes",
+      "name": "eco",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "eco",
+      "name": "bes",
       "scenario": "TOP",
       "priority": 2
     },
@@ -274,7 +274,7 @@
     },
     {
       "name": "bes",
-      "score": 87.18,
+      "score": 87.05,
       "status": "STARK"
     },
     {
@@ -511,7 +511,7 @@
     },
     {
       "name": "bes",
-      "score": 87.18,
+      "score": 87.05,
       "tip": "Weiter so"
     },
     {
@@ -740,7 +740,7 @@
         "role": "member",
         "score": 89.6,
         "strikes": 0,
-        "donations": 474,
+        "donations": 482,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -927,18 +927,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "bes",
-        "player_tag": "#LLQQJCLC",
-        "role": "member",
-        "score": 87.18,
-        "strikes": 0,
-        "donations": 94,
-        "participation_count": 10,
-        "trend": "🟡🟡🟡🟡🟡",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "eco",
         "player_tag": "#202VP2QL9P",
         "role": "member",
@@ -947,6 +935,18 @@
         "donations": 647,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "bes",
+        "player_tag": "#LLQQJCLC",
+        "role": "member",
+        "score": 87.05,
+        "strikes": 0,
+        "donations": 126,
+        "participation_count": 10,
+        "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
