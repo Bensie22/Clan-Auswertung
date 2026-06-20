@@ -4,7 +4,7 @@
             "#22Q920RLR": "20260620T192613.000Z",
             "#L8PV090J": "20260620T193446.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
-            "#2QRVR9L8": "20260620T173945.000Z",
+            "#2QRVR9L8": "20260620T205546.000Z",
             "#ULYJ2CQP": "20260620T071600.000Z",
             "#UJ2P9UYUV": "20260620T185718.000Z",
             "#P0JYR9YUY": "20260620T141832.000Z",
@@ -45,7 +45,7 @@
             "#29L2P9YJ": "20260331T230948.000Z",
             "#UUPCULU9V": "20260620T163506.000Z",
             "#202VP2QL9P": "20260620T204530.000Z",
-            "#LVUGLUCP9": "20260620T202348.000Z",
+            "#LVUGLUCP9": "20260620T205536.000Z",
             "#20QGJVPG8Q": "20260620T183459.000Z",
             "#V9GYJQ0J9": "",
             "#URJ0LUYPV": "20260620T203741.000Z",
@@ -83,8 +83,8 @@
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260609T223746.000Z",
             "#GLGY98U08": "20260620T154040.000Z",
-            "#GRGCY0R8": "20260620T193943.000Z",
-            "#P2YQ2QQUV": "20260620T204908.000Z",
+            "#GRGCY0R8": "20260620T205201.000Z",
+            "#P2YQ2QQUV": "20260620T205207.000Z",
             "#JG8Q0GPU9": "20260617T090503.000Z",
             "#9QV99QVCV": "20260619T163315.000Z",
             "#JQ08UR882": "20260619T100820.000Z",
@@ -3061,7 +3061,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "Nati"
@@ -3070,6 +3070,12 @@
                 "LVUGLUCP9"
             ],
             "recent_matches": [
+                {
+                    "time": "20260620T205218.000Z",
+                    "result": "win",
+                    "player": "Nati",
+                    "tag": "LVUGLUCP9"
+                },
                 {
                     "time": "20260614T191959.000Z",
                     "result": "win",
@@ -218675,6 +218681,98 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000010-26000011-26000017-26000049-26000055-26000064-28000008-28000009": {
+            "cards": [
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000010,
+                    "name": "Skeletons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/oO7iKMU5m0cdxhYPZA3nWQiAUh2yoGgdThLWB1rVSec.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000000-26000008-26000015-26000040-26000041-26000049-26000063-28000013": {
+            "cards": [
+                {
+                    "id": 26000008,
+                    "name": "Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/TvJsuu2S4yhyk1jVYUAQwdKOnW4U77KuWWOTPOWnwfI.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 28000013,
+                    "name": "Clone",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mHVCet-1TkwWq-pxVIU2ZWY9_2z7Z7wtP25ArEUsP_g.png"
+                },
+                {
+                    "id": 26000063,
+                    "name": "Electro Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/tN9h6lnMNPCNsx0LMFmvpHgznbDZ1fBRkx-C7UfNmfY.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
