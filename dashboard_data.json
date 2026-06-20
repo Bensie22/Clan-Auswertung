@@ -46,17 +46,17 @@
       "priority": 2
     },
     {
+      "name": "LazyFrog",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "April#",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Johan",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "LazyFrog",
       "scenario": "TOP",
       "priority": 2
     },
@@ -183,6 +183,11 @@
       "status": "STARK"
     },
     {
+      "name": "LazyFrog",
+      "score": 90.49,
+      "status": "STARK"
+    },
+    {
       "name": "April#",
       "score": 90.4,
       "status": "STARK"
@@ -190,11 +195,6 @@
     {
       "name": "Johan",
       "score": 90.27,
-      "status": "STARK"
-    },
-    {
-      "name": "LazyFrog",
-      "score": 90.22,
       "status": "STARK"
     },
     {
@@ -420,6 +420,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "LazyFrog",
+      "score": 90.49,
+      "tip": "Weiter so"
+    },
+    {
       "name": "April#",
       "score": 90.4,
       "tip": "Weiter so"
@@ -427,11 +432,6 @@
     {
       "name": "Johan",
       "score": 90.27,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "LazyFrog",
-      "score": 90.22,
       "tip": "Weiter so"
     },
     {
@@ -709,6 +709,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "LazyFrog",
+        "player_tag": "#22Q920RLR",
+        "role": "member",
+        "score": 90.49,
+        "strikes": 0,
+        "donations": 564,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "April#",
         "player_tag": "#YUQVVVLQ",
         "role": "member",
@@ -729,18 +741,6 @@
         "donations": 126,
         "participation_count": 6,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "LazyFrog",
-        "player_tag": "#22Q920RLR",
-        "role": "member",
-        "score": 90.22,
-        "strikes": 0,
-        "donations": 564,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
