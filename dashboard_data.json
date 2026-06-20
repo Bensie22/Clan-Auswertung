@@ -31,17 +31,17 @@
       "priority": 2
     },
     {
+      "name": "AaleDieter",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "maghrebi",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Swordfish",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "AaleDieter",
       "scenario": "TOP",
       "priority": 2
     },
@@ -168,6 +168,11 @@
       "status": "STARK"
     },
     {
+      "name": "AaleDieter",
+      "score": 92.62,
+      "status": "STARK"
+    },
+    {
       "name": "maghrebi",
       "score": 92.4,
       "status": "STARK"
@@ -175,11 +180,6 @@
     {
       "name": "Swordfish",
       "score": 92.26,
-      "status": "STARK"
-    },
-    {
-      "name": "AaleDieter",
-      "score": 92.09,
       "status": "STARK"
     },
     {
@@ -405,6 +405,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "AaleDieter",
+      "score": 92.62,
+      "tip": "Weiter so"
+    },
+    {
       "name": "maghrebi",
       "score": 92.4,
       "tip": "Weiter so"
@@ -412,11 +417,6 @@
     {
       "name": "Swordfish",
       "score": 92.26,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "AaleDieter",
-      "score": 92.09,
       "tip": "Weiter so"
     },
     {
@@ -673,6 +673,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "AaleDieter",
+        "player_tag": "#CUJ9PJ2UV",
+        "role": "member",
+        "score": 92.62,
+        "strikes": 0,
+        "donations": 110,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "maghrebi",
         "player_tag": "#20QGJVPG8Q",
         "role": "member",
@@ -697,24 +709,12 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "AaleDieter",
-        "player_tag": "#CUJ9PJ2UV",
-        "role": "member",
-        "score": 92.09,
-        "strikes": 0,
-        "donations": 100,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "LazyFrog",
         "player_tag": "#22Q920RLR",
         "role": "member",
         "score": 90.49,
         "strikes": 0,
-        "donations": 530,
+        "donations": 540,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
