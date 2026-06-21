@@ -21,7 +21,7 @@
             "#QVQGCV8Y9": "20260619T214622.000Z",
             "#Q8L0RJ8Y8": "20260621T113446.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
-            "#2CPRGY8G": "20260621T061047.000Z",
+            "#2CPRGY8G": "20260621T114159.000Z",
             "#LLQQJCLC": "20260621T081642.000Z",
             "#2VJR80RL": "20260620T142519.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
@@ -46,7 +46,7 @@
             "#UUPCULU9V": "20260620T163506.000Z",
             "#202VP2QL9P": "20260621T113516.000Z",
             "#LVUGLUCP9": "20260620T205536.000Z",
-            "#20QGJVPG8Q": "20260621T113321.000Z",
+            "#20QGJVPG8Q": "20260621T114227.000Z",
             "#V9GYJQ0J9": "",
             "#URJ0LUYPV": "20260620T203741.000Z",
             "#Q2GRGLQR": "20260621T072416.000Z",
@@ -5719,7 +5719,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "maghrebi"
@@ -5728,6 +5728,12 @@
                 "20QGJVPG8Q"
             ],
             "recent_matches": [
+                {
+                    "time": "20260621T114227.000Z",
+                    "result": "win",
+                    "player": "maghrebi",
+                    "tag": "20QGJVPG8Q"
+                },
                 {
                     "time": "20260620T124122.000Z",
                     "result": "win",
@@ -220807,6 +220813,52 @@
                     "id": 26000032,
                     "name": "Miner",
                     "icon": "https://api-assets.clashroyale.com/cards/300/Y4yWvdwBCg2FpAZgs8T09Gy34WOwpLZW-ttL52Ae8NE.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000003-26000004-26000021-26000074-26000083-27000006-28000000-28000015": {
+            "cards": [
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000003,
+                    "name": "Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Axr4ox5_b7edmLsoHxBX3vmgijAIibuF6RImTbqLlXE.png"
+                },
+                {
+                    "id": 26000074,
+                    "name": "Golden Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WJd207D0O1sN-l1FTb8P9KhYL2oF5jY26vRUfTUW3FQ.png"
+                },
+                {
+                    "id": 28000015,
+                    "name": "Barbarian Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Gb0G1yNy0i5cIGUHin8uoFWxqntNtRPhY_jeMXg7HnA.png"
+                },
+                {
+                    "id": 26000083,
+                    "name": "Mother Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fO-Xah8XZkYKaSK9SCp3wnzwxtvIhun9NVY-zzte1Ng.png"
+                },
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
                 }
             ],
             "seen": 1,
