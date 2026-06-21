@@ -26,17 +26,17 @@
       "priority": 2
     },
     {
+      "name": "AaleDieter",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "OmniOni",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "maghrebi",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "AaleDieter",
       "scenario": "TOP",
       "priority": 2
     },
@@ -163,6 +163,11 @@
       "status": "STARK"
     },
     {
+      "name": "AaleDieter",
+      "score": 92.62,
+      "status": "STARK"
+    },
+    {
       "name": "maghrebi",
       "score": 92.4,
       "status": "STARK"
@@ -170,11 +175,6 @@
     {
       "name": "OmniOni",
       "score": 92.4,
-      "status": "STARK"
-    },
-    {
-      "name": "AaleDieter",
-      "score": 92.35,
       "status": "STARK"
     },
     {
@@ -400,6 +400,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "AaleDieter",
+      "score": 92.62,
+      "tip": "Weiter so"
+    },
+    {
       "name": "maghrebi",
       "score": 92.4,
       "tip": "Weiter so"
@@ -407,11 +412,6 @@
     {
       "name": "OmniOni",
       "score": 92.4,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "AaleDieter",
-      "score": 92.35,
       "tip": "Weiter so"
     },
     {
@@ -661,6 +661,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "AaleDieter",
+        "player_tag": "#CUJ9PJ2UV",
+        "role": "member",
+        "score": 92.62,
+        "strikes": 0,
+        "donations": 110,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "OmniOni",
         "player_tag": "#UUPCULU9V",
         "role": "member",
@@ -679,18 +691,6 @@
         "score": 92.4,
         "strikes": 0,
         "donations": 276,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "AaleDieter",
-        "player_tag": "#CUJ9PJ2UV",
-        "role": "member",
-        "score": 92.35,
-        "strikes": 0,
-        "donations": 110,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
