@@ -106,17 +106,17 @@
       "priority": 2
     },
     {
-      "name": "chris",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "_spc07",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "seroo",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
@@ -253,11 +253,6 @@
       "status": "STARK"
     },
     {
-      "name": "chris",
-      "score": 87.94,
-      "status": "STARK"
-    },
-    {
       "name": "_spc07",
       "score": 87.86,
       "status": "STARK"
@@ -265,6 +260,11 @@
     {
       "name": "seroo",
       "score": 87.85,
+      "status": "STARK"
+    },
+    {
+      "name": "chris",
+      "score": 87.8,
       "status": "STARK"
     },
     {
@@ -324,7 +324,7 @@
     },
     {
       "name": "Rainer",
-      "score": 83.71,
+      "score": 83.58,
       "status": "STARK"
     },
     {
@@ -490,11 +490,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "chris",
-      "score": 87.94,
-      "tip": "Weiter so"
-    },
-    {
       "name": "_spc07",
       "score": 87.86,
       "tip": "Weiter so"
@@ -502,6 +497,11 @@
     {
       "name": "seroo",
       "score": 87.85,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "chris",
+      "score": 87.8,
       "tip": "Weiter so"
     },
     {
@@ -561,7 +561,7 @@
     },
     {
       "name": "Rainer",
-      "score": 83.71,
+      "score": 83.58,
       "tip": "Weiter so"
     },
     {
@@ -870,18 +870,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "chris",
-        "player_tag": "#YQ82VR9JQ",
-        "role": "member",
-        "score": 87.94,
-        "strikes": 0,
-        "donations": 334,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "_spc07",
         "player_tag": "#2U8288CVY",
         "role": "member",
@@ -900,6 +888,18 @@
         "score": 87.85,
         "strikes": 0,
         "donations": 146,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "chris",
+        "player_tag": "#YQ82VR9JQ",
+        "role": "member",
+        "score": 87.8,
+        "strikes": 0,
+        "donations": 344,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
