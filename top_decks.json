@@ -19,7 +19,7 @@
             "#QULCQGGG": "20260620T175345.000Z",
             "#JRGC9RRQG": "20260621T004831.000Z",
             "#QVQGCV8Y9": "20260619T214622.000Z",
-            "#Q8L0RJ8Y8": "20260620T204030.000Z",
+            "#Q8L0RJ8Y8": "20260621T103000.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260621T061047.000Z",
             "#LLQQJCLC": "20260621T081642.000Z",
@@ -50,7 +50,7 @@
             "#V9GYJQ0J9": "",
             "#URJ0LUYPV": "20260620T203741.000Z",
             "#Q2GRGLQR": "20260621T072416.000Z",
-            "#J9RQPGLVP": "20260620T133650.000Z",
+            "#J9RQPGLVP": "20260621T102913.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
             "#9VLRQ9GR9": "20260621T095148.000Z",
             "#29RLRYLQL": "20260420T155237.000Z",
@@ -1399,7 +1399,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
                 }
             ],
-            "wins": 9,
+            "wins": 10,
             "losses": 0,
             "players": [
                 "Ted"
@@ -1408,6 +1408,12 @@
                 "J9RQPGLVP"
             ],
             "recent_matches": [
+                {
+                    "time": "20260621T102913.000Z",
+                    "result": "win",
+                    "player": "Ted",
+                    "tag": "J9RQPGLVP"
+                },
                 {
                     "time": "20260620T132710.000Z",
                     "result": "win",
@@ -220057,6 +220063,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000007-26000009-26000015-26000017-26000019-26000035-26000064-28000011": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000035,
+                    "name": "Lumberjack",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
+                },
+                {
+                    "id": 26000019,
+                    "name": "Spear Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/FSDFotjaXidI4ku_WFpVCTWS1hKGnFh1sxX0lxM43_E.png"
+                },
+                {
+                    "id": 26000009,
+                    "name": "Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/npdmCnET7jmVjJvjJQkFnNSNnDxYHDBigbvIAloFMds.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
