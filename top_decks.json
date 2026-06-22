@@ -10,7 +10,7 @@
             "#P0JYR9YUY": "20260621T151629.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260621T201528.000Z",
-            "#G02LC9C8": "20260622T060942.000Z",
+            "#G02LC9C8": "20260622T061303.000Z",
             "#2U8288CVY": "20260621T113818.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
@@ -29,7 +29,7 @@
             "#2CJYG9UG": "20260621T205553.000Z",
             "#2PUQYJC02": "20260621T165159.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20260622T051227.000Z",
+            "#2V800VCQ0": "20260622T062036.000Z",
             "#2UQUPYQCJ": "20260621T203252.000Z",
             "#JUUR8UGL8": "20260621T123649.000Z",
             "#2U09UULRR": "20260622T033607.000Z",
@@ -83,7 +83,7 @@
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260609T223746.000Z",
             "#GLGY98U08": "20260621T105850.000Z",
-            "#GRGCY0R8": "20260622T060805.000Z",
+            "#GRGCY0R8": "20260622T061546.000Z",
             "#P2YQ2QQUV": "20260621T200900.000Z",
             "#JG8Q0GPU9": "20260617T090503.000Z",
             "#9QV99QVCV": "20260621T214814.000Z",
@@ -5605,7 +5605,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "Desteoyer"
@@ -5614,6 +5614,12 @@
                 "2V800VCQ0"
             ],
             "recent_matches": [
+                {
+                    "time": "20260622T062036.000Z",
+                    "result": "win",
+                    "player": "Desteoyer",
+                    "tag": "2V800VCQ0"
+                },
                 {
                     "time": "20260620T130119.000Z",
                     "result": "win",
@@ -224115,6 +224121,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000002-26000015-26000034-26000041-26000045-27000012-28000001-28000017": {
+            "cards": [
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 27000012,
+                    "name": "Goblin Cage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vD24bBgK4rSq7wx5QEbuqChtPMRFviL_ep76GwQw1yA.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 26000002,
+                    "name": "Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X_DQUye_OaS3QN6VC9CPw05Fit7wvSm3XegXIXKP--0.png"
+                },
+                {
+                    "id": 28000017,
+                    "name": "Giant Snowball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
