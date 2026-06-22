@@ -1224,8 +1224,10 @@ def render_html_template(
     impressum_html,
     datenschutz_html,
     clan_overview_html="",
-    opponent_meta_html=""
+    opponent_meta_html="",
+    warlog_data=None
 ):
+    warlog_json = json.dumps(warlog_data or {}, ensure_ascii=False)
     return f"""<!DOCTYPE html>
     <html lang="de">
     <head>
@@ -2006,9 +2008,8 @@ def render_html_template(
 .war-loading {{ color: #64748b; font-size: 0.85em; margin: 4px 0 0; }}
 </style>
 <script>
+var WARLOG_DATA = {warlog_json};
 (function(){{
-  var API = 'https://clan-gpt-api.onrender.com';
-  var cache = {{}};
   function fameColor(f) {{ return f>=3600?'#10b981':f>=2800?'#fbbf24':f>=1600?'#f97316':'#ef4444'; }}
   function deckColor(d) {{ return d>=14?'#10b981':d>=8?'#fbbf24':'#ef4444'; }}
   function fmtDate(s) {{ if(!s||s.length<8) return '-'; return s.slice(6,8)+'.'+s.slice(4,6)+'.'+s.slice(0,4); }}
@@ -2033,7 +2034,6 @@ def render_html_template(
       +'</tr></thead><tbody>'+rows+'</tbody></table>';
   }}
   var WAR_TITLE='<span class="i18n-de">Kriegsverlauf</span><span class="i18n-en">War History</span>';
-  var WAR_LOADING='<span class="i18n-de">Lade Daten…</span><span class="i18n-en">Loading…</span>';
   function toggleRow(playerRow) {{
     var tag=playerRow.getAttribute('data-tag');
     if(!tag) return;
@@ -2045,19 +2045,11 @@ def render_html_template(
       td.colSpan=playerRow.cells.length;
       var inner=document.createElement('div');
       inner.className='war-history-inner';
-      inner.innerHTML='<h4>'+WAR_TITLE+'</h4><p class="war-loading">'+WAR_LOADING+'</p>';
+      var wars=WARLOG_DATA[tag]||[];
+      inner.innerHTML='<h4>'+WAR_TITLE+'</h4>'+buildTable(wars);
       td.appendChild(inner);tr.appendChild(td);
       playerRow.parentNode.insertBefore(tr,playerRow.nextSibling);
       next=tr;
-      var enc=tag.replace('#','%23');
-      if(cache[tag]!==undefined) {{
-        inner.innerHTML='<h4>'+WAR_TITLE+'</h4>'+buildTable(cache[tag]);
-      }} else {{
-        fetch(API+'/player/'+enc+'/warlog')
-          .then(function(r){{return r.json();}})
-          .then(function(data){{cache[tag]=data.wars||[];inner.innerHTML='<h4>'+WAR_TITLE+'</h4>'+buildTable(cache[tag]);}})
-          .catch(function(err){{inner.innerHTML='<p class="war-loading"><span class="i18n-de">Fehler: </span><span class="i18n-en">Error: </span>'+err.message+'</p>';}});
-      }}
     }}
     var open=next.classList.toggle('open');
     playerRow.classList.toggle('expanded',open);
@@ -3337,6 +3329,14 @@ def generate_html_report(
 
     anzeige_stand = datetime.now(ZoneInfo("Europe/Berlin")).strftime("%d.%m.%Y, %H:%M Uhr")
 
+    warlog_cache_path = Path(__file__).parent / "warlog_cache.json"
+    if warlog_cache_path.exists():
+        warlog_data = json.loads(warlog_cache_path.read_text(encoding="utf-8"))
+        warlog_data.pop("_meta", None)
+    else:
+        warlog_data = {}
+        print("HINWEIS: warlog_cache.json fehlt – Kriegsverlauf wird im Bericht leer angezeigt, bitte prefetch_warlog.py ausführen.")
+
     html = render_html_template(
         clan_name=CLAN_NAME,
         heute_datum=anzeige_stand,
@@ -3364,7 +3364,8 @@ def generate_html_report(
         impressum_html=impressum_html,
         datenschutz_html=datenschutz_html,
         clan_overview_html=clan_overview_html,
-        opponent_meta_html=opponent_meta_html
+        opponent_meta_html=opponent_meta_html,
+        warlog_data=warlog_data
     )
 
     default_mail_texts = [list(block.values())[0] for block in chat_blocks]

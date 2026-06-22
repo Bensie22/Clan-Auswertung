@@ -13,6 +13,7 @@ name_to_tag = {p['name']: p['tag'] for p in players}
 cache_path = BASE / 'warlog_cache.json'
 if cache_path.exists():
     warlog_by_tag = json.loads(cache_path.read_text(encoding='utf-8'))
+    warlog_by_tag.pop('_meta', None)
     print(f'Kriegsdaten geladen: {len(warlog_by_tag)} Spieler aus warlog_cache.json')
 else:
     warlog_by_tag = {}
