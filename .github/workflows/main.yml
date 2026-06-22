@@ -44,6 +44,9 @@ jobs:
           pip install -r requirements.txt
           pip install python-dotenv
 
+      - name: Warlog Cache aktualisieren (nur wenn seit letztem Montag 12 Uhr nicht erfolgt)
+        run: python prefetch_warlog.py
+
       - name: Auswertung starten
         run: python Master_Auswertung_GitHub.py
 
