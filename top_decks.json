@@ -1,7 +1,7 @@
 {
     "_metadata": {
         "last_battles": {
-            "#22Q920RLR": "20260624T111922.000Z",
+            "#22Q920RLR": "20260624T162043.000Z",
             "#L8PV090J": "20260624T051952.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260624T142330.000Z",
@@ -46,7 +46,7 @@
             "#UUPCULU9V": "20260624T124427.000Z",
             "#202VP2QL9P": "20260624T155919.000Z",
             "#LVUGLUCP9": "20260621T210248.000Z",
-            "#20QGJVPG8Q": "20260624T160901.000Z",
+            "#20QGJVPG8Q": "20260624T161132.000Z",
             "#V9GYJQ0J9": "",
             "#URJ0LUYPV": "20260623T092204.000Z",
             "#Q2GRGLQR": "20260624T051831.000Z",
@@ -4775,7 +4775,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "maghrebi"
             ],
@@ -4783,6 +4783,12 @@
                 "20QGJVPG8Q"
             ],
             "recent_matches": [
+                {
+                    "time": "20260624T161132.000Z",
+                    "result": "loss",
+                    "player": "maghrebi",
+                    "tag": "20QGJVPG8Q"
+                },
                 {
                     "time": "20260621T114227.000Z",
                     "result": "win",
@@ -227418,6 +227424,52 @@
                     "id": 26000055,
                     "name": "Mega Knight",
                     "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000000-26000012-26000026-26000036-26000047-26000056-26000059-27000013": {
+            "cards": [
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000047,
+                    "name": "Royal Recruits",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jcNyYGUiXXNz3kuz8NBkHNKNREQKraXlb_Ts7rhCIdM.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                },
+                {
+                    "id": 26000036,
+                    "name": "Battle Ram",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dyc50V2cplKi4H7pq1B3I36pl_sEH5DQrNHboS_dbbM.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 27000013,
+                    "name": "Goblin Drill",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/eN2TKUYbih-26yBi0xy5LVFOA0zDftgDqxxnVfdIg1o.png"
                 }
             ],
             "seen": 1,
