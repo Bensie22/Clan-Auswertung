@@ -43,7 +43,7 @@
             "#RLJPJL8C2": "20260623T201541.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20260624T124039.000Z",
+            "#UUPCULU9V": "20260624T124427.000Z",
             "#202VP2QL9P": "20260624T121205.000Z",
             "#LVUGLUCP9": "20260621T210248.000Z",
             "#20QGJVPG8Q": "20260623T210742.000Z",
@@ -71,7 +71,7 @@
             "#GJVVGUYJC": "20260518T141110.000Z",
             "#UQVCVVVJL": "20260621T161757.000Z",
             "#22CVYQP8R": "20260509T062429.000Z",
-            "#89CJRRV8": "20260623T235400.000Z",
+            "#89CJRRV8": "20260624T124848.000Z",
             "#VL989Y20J": "20260516T051537.000Z",
             "#RULG988Y": "20260606T102155.000Z",
             "#99909G00": "20260512T084926.000Z",
@@ -88,7 +88,7 @@
             "#JG8Q0GPU9": "20260617T090503.000Z",
             "#9QV99QVCV": "20260624T065655.000Z",
             "#JQ08UR882": "20260619T100820.000Z",
-            "#PQ2JYPC09": "20260623T131000.000Z",
+            "#PQ2JYPC09": "20260624T125057.000Z",
             "#99JJLC02L": "20260622T192628.000Z",
             "#P00PQ9CUQ": "20260613T120503.000Z",
             "#PVYJ80YCL": "20260619T140927.000Z",
@@ -4097,7 +4097,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "OmniOni"
             ],
@@ -4105,6 +4105,12 @@
                 "UUPCULU9V"
             ],
             "recent_matches": [
+                {
+                    "time": "20260624T124427.000Z",
+                    "result": "loss",
+                    "player": "OmniOni",
+                    "tag": "UUPCULU9V"
+                },
                 {
                     "time": "20260620T141932.000Z",
                     "result": "win",
@@ -227072,6 +227078,52 @@
                     "id": 28000011,
                     "name": "The Log",
                     "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000008-26000014-26000027-26000045-26000096-26000103-27000010-28000000": {
+            "cards": [
+                {
+                    "id": 26000008,
+                    "name": "Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/TvJsuu2S4yhyk1jVYUAQwdKOnW4U77KuWWOTPOWnwfI.png"
+                },
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 26000103,
+                    "name": "Boss Bandit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nuceG9o7rAyvyc7D3sp2QSiRYtSOEgraq0NJkDf729s.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000027,
+                    "name": "Dark Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/M7fXlrKXHu2IvpSGpk36kXVstslbR08Bbxcy0jQcln8.png"
+                },
+                {
+                    "id": 26000096,
+                    "name": "Goblin Machine",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/-iLlotr6GCFndL_1BSBqWBb6DnsHBhLerd5EblZDNfU.png"
                 }
             ],
             "seen": 1,
