@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "SunRice",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "Reklaminator",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -421,6 +426,11 @@
       "name": "Giger",
       "score": 0.0,
       "status": "RISIKO"
+    },
+    {
+      "name": "SunRice",
+      "score": 0.0,
+      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -668,6 +678,11 @@
       "name": "Giger",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "SunRice",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
@@ -692,6 +707,18 @@
         "score": 0.0,
         "strikes": 0,
         "donations": 126,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "SunRice",
+        "player_tag": "#YYJR9R0GR",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
