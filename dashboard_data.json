@@ -101,12 +101,12 @@
       "priority": 2
     },
     {
-      "name": "Ted",
+      "name": "honigmelone",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "honigmelone",
+      "name": "Ted",
       "scenario": "TOP",
       "priority": 2
     },
@@ -248,13 +248,13 @@
       "status": "STARK"
     },
     {
-      "name": "Ted",
-      "score": 89.19,
+      "name": "honigmelone",
+      "score": 89.2,
       "status": "STARK"
     },
     {
-      "name": "honigmelone",
-      "score": 89.06,
+      "name": "Ted",
+      "score": 89.19,
       "status": "STARK"
     },
     {
@@ -323,13 +323,13 @@
       "status": "STARK"
     },
     {
-      "name": "Flauschos",
-      "score": 85.67,
+      "name": "seroo",
+      "score": 85.58,
       "status": "STARK"
     },
     {
-      "name": "seroo",
-      "score": 85.58,
+      "name": "Flauschos",
+      "score": 85.53,
       "status": "STARK"
     },
     {
@@ -500,13 +500,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Ted",
-      "score": 89.19,
+      "name": "honigmelone",
+      "score": 89.2,
       "tip": "Weiter so"
     },
     {
-      "name": "honigmelone",
-      "score": 89.06,
+      "name": "Ted",
+      "score": 89.19,
       "tip": "Weiter so"
     },
     {
@@ -575,13 +575,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Flauschos",
-      "score": 85.67,
+      "name": "seroo",
+      "score": 85.58,
       "tip": "Weiter so"
     },
     {
-      "name": "seroo",
-      "score": 85.58,
+      "name": "Flauschos",
+      "score": 85.53,
       "tip": "Weiter so"
     },
     {
@@ -890,7 +890,19 @@
         "role": "member",
         "score": 89.41,
         "strikes": 0,
-        "donations": 74,
+        "donations": 82,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "honigmelone",
+        "player_tag": "#Q2GRGLQR",
+        "role": "member",
+        "score": 89.2,
+        "strikes": 0,
+        "donations": 62,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -905,18 +917,6 @@
         "donations": 379,
         "participation_count": 10,
         "trend": "🔴🔴🔴🟡🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "honigmelone",
-        "player_tag": "#Q2GRGLQR",
-        "role": "member",
-        "score": 89.06,
-        "strikes": 0,
-        "donations": 62,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -1065,24 +1065,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Flauschos",
-        "player_tag": "#PPR2QQC0U",
-        "role": "member",
-        "score": 85.67,
-        "strikes": 0,
-        "donations": 26,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "seroo",
         "player_tag": "#JRGC9RRQG",
         "role": "member",
         "score": 85.58,
         "strikes": 0,
         "donations": 86,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Flauschos",
+        "player_tag": "#PPR2QQC0U",
+        "role": "member",
+        "score": 85.53,
+        "strikes": 0,
+        "donations": 26,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
