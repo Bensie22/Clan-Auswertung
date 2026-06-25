@@ -19,7 +19,7 @@
             "#QULCQGGG": "20260625T124600.000Z",
             "#JRGC9RRQG": "20260625T143328.000Z",
             "#QVQGCV8Y9": "20260625T113224.000Z",
-            "#Q8L0RJ8Y8": "20260624T183903.000Z",
+            "#Q8L0RJ8Y8": "20260625T181513.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260625T162348.000Z",
             "#LLQQJCLC": "20260625T132920.000Z",
@@ -38,7 +38,7 @@
             "#8P0J8P0L": "20260625T130010.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260622T112231.000Z",
-            "#2P0U2RLGY": "20260625T144707.000Z",
+            "#2P0U2RLGY": "20260625T181344.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260625T153027.000Z",
             "#RG02LG88": "20260405T075546.000Z",
@@ -69,7 +69,7 @@
             "#8PJY2GUY9": "20260511T140746.000Z",
             "#Y29LJJCQ2": "20260502T202004.000Z",
             "#GJVVGUYJC": "20260518T141110.000Z",
-            "#UQVCVVVJL": "20260625T095902.000Z",
+            "#UQVCVVVJL": "20260625T181952.000Z",
             "#22CVYQP8R": "20260509T062429.000Z",
             "#89CJRRV8": "20260625T135651.000Z",
             "#VL989Y20J": "20260516T051537.000Z",
@@ -96,7 +96,7 @@
             "#P0G2GYJQ9": "20260625T180035.000Z",
             "#8P2GV8UQY": "20260623T170905.000Z",
             "#VV2JR990": "20260622T193820.000Z",
-            "#YYJR9R0GR": "20260625T180807.000Z"
+            "#YYJR9R0GR": "20260625T181537.000Z"
         }
     },
     "decks": {
@@ -3924,7 +3924,7 @@
                 }
             ],
             "wins": 3,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Johan"
             ],
@@ -3932,6 +3932,12 @@
                 "UQVCVVVJL"
             ],
             "recent_matches": [
+                {
+                    "time": "20260625T181952.000Z",
+                    "result": "loss",
+                    "player": "Johan",
+                    "tag": "UQVCVVVJL"
+                },
                 {
                     "time": "20260621T161048.000Z",
                     "result": "win",
@@ -230827,6 +230833,52 @@
                     "id": 26000005,
                     "name": "Minions",
                     "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000000-26000004-26000015-27000000-27000010-28000001-28000006-28000007": {
+            "cards": [
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 28000006,
+                    "name": "Mirror",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/wC6Cm9rKLEOk72zTsukVwxewKIoO4ZcMJun54zCPWvA.png"
+                },
+                {
+                    "id": 27000000,
+                    "name": "Cannon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nZK1y-beLxO5vnlyUhK6-2zH2NzXJwqykcosqQ1cmZ8.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 28000007,
+                    "name": "Lightning",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fpnESbYqe5GyZmaVVYe-SEu7tE0Kxh_HZyVigzvLjks.png"
                 }
             ],
             "seen": 1,
