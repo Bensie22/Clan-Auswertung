@@ -164,6 +164,11 @@
       "name": "seroo",
       "scenario": "TOP",
       "priority": 2
+    },
+    {
+      "name": "agostini",
+      "scenario": "TOP",
+      "priority": 2
     }
   ],
   "smart": [
@@ -329,7 +334,7 @@
     },
     {
       "name": "agostini",
-      "score": 84.95,
+      "score": 85.08,
       "status": "STARK"
     },
     {
@@ -581,7 +586,7 @@
     },
     {
       "name": "agostini",
-      "score": 84.95,
+      "score": 85.08,
       "tip": "Weiter so"
     },
     {
@@ -1080,6 +1085,18 @@
         "donations": 86,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "agostini",
+        "player_tag": "#P2YQ2QQUV",
+        "role": "member",
+        "score": 85.08,
+        "strikes": 0,
+        "donations": 707,
+        "participation_count": 4,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       }
