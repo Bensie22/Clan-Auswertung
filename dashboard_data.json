@@ -76,17 +76,17 @@
       "priority": 2
     },
     {
+      "name": "OneAndOnly",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Knitte",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "LazyFrog",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
     },
@@ -213,6 +213,11 @@
       "status": "STARK"
     },
     {
+      "name": "OneAndOnly",
+      "score": 90.0,
+      "status": "STARK"
+    },
+    {
       "name": "Knitte",
       "score": 89.98,
       "status": "STARK"
@@ -220,11 +225,6 @@
     {
       "name": "LazyFrog",
       "score": 89.82,
-      "status": "STARK"
-    },
-    {
-      "name": "OneAndOnly",
-      "score": 89.47,
       "status": "STARK"
     },
     {
@@ -465,6 +465,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "OneAndOnly",
+      "score": 90.0,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Knitte",
       "score": 89.98,
       "tip": "Weiter so"
@@ -472,11 +477,6 @@
     {
       "name": "LazyFrog",
       "score": 89.82,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "OneAndOnly",
-      "score": 89.47,
       "tip": "Weiter so"
     },
     {
@@ -827,6 +827,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "OneAndOnly",
+        "player_tag": "#8P0J8P0L",
+        "role": "member",
+        "score": 90.0,
+        "strikes": 0,
+        "donations": 282,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Knitte",
         "player_tag": "#ULYJ2CQP",
         "role": "member",
@@ -845,18 +857,6 @@
         "score": 89.82,
         "strikes": 0,
         "donations": 452,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "OneAndOnly",
-        "player_tag": "#8P0J8P0L",
-        "role": "member",
-        "score": 89.47,
-        "strikes": 0,
-        "donations": 274,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -892,7 +892,7 @@
         "role": "member",
         "score": 89.19,
         "strikes": 0,
-        "donations": 288,
+        "donations": 296,
         "participation_count": 10,
         "trend": "🔴🔴🔴🟡🟢",
         "reason": "Score über 85",
@@ -928,7 +928,7 @@
         "role": "member",
         "score": 88.51,
         "strikes": 0,
-        "donations": 596,
+        "donations": 604,
         "participation_count": 7,
         "trend": "",
         "reason": "Score über 85",
