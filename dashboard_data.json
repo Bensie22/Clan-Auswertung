@@ -76,11 +76,6 @@
       "priority": 2
     },
     {
-      "name": "Ted",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Knitte",
       "scenario": "TOP",
       "priority": 2
@@ -102,6 +97,11 @@
     },
     {
       "name": "Bensie",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Ted",
       "scenario": "TOP",
       "priority": 2
     },
@@ -218,11 +218,6 @@
       "status": "STARK"
     },
     {
-      "name": "Ted",
-      "score": 89.99,
-      "status": "STARK"
-    },
-    {
       "name": "Knitte",
       "score": 89.98,
       "status": "STARK"
@@ -245,6 +240,11 @@
     {
       "name": "Bensie",
       "score": 89.33,
+      "status": "STARK"
+    },
+    {
+      "name": "Ted",
+      "score": 89.19,
       "status": "STARK"
     },
     {
@@ -279,7 +279,7 @@
     },
     {
       "name": "Dolphin",
-      "score": 87.59,
+      "score": 87.46,
       "status": "STARK"
     },
     {
@@ -470,11 +470,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Ted",
-      "score": 89.99,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Knitte",
       "score": 89.98,
       "tip": "Weiter so"
@@ -497,6 +492,11 @@
     {
       "name": "Bensie",
       "score": 89.33,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Ted",
+      "score": 89.19,
       "tip": "Weiter so"
     },
     {
@@ -531,7 +531,7 @@
     },
     {
       "name": "Dolphin",
-      "score": 87.59,
+      "score": 87.46,
       "tip": "Weiter so"
     },
     {
@@ -832,18 +832,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Ted",
-        "player_tag": "#J9RQPGLVP",
-        "role": "member",
-        "score": 89.99,
-        "strikes": 0,
-        "donations": 246,
-        "participation_count": 10,
-        "trend": "🔴🔴🔴🟡🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Knitte",
         "player_tag": "#ULYJ2CQP",
         "role": "member",
@@ -900,6 +888,18 @@
         "donations": 447,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Ted",
+        "player_tag": "#J9RQPGLVP",
+        "role": "member",
+        "score": 89.19,
+        "strikes": 0,
+        "donations": 256,
+        "participation_count": 10,
+        "trend": "🔴🔴🔴🟡🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -979,7 +979,7 @@
         "name": "Dolphin",
         "player_tag": "#2U09UULRR",
         "role": "member",
-        "score": 87.59,
+        "score": 87.46,
         "strikes": 0,
         "donations": 130,
         "participation_count": 10,
