@@ -1,13 +1,13 @@
 {
   "full_auto": [
     {
-      "name": "SunRice",
+      "name": "Giger",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
     },
     {
-      "name": "Giger",
-      "scenario": "KEINE_TEILNAHME",
+      "name": "SunRice",
+      "scenario": "STRIKE",
       "priority": 4
     },
     {
@@ -279,7 +279,7 @@
     },
     {
       "name": "eco",
-      "score": 87.36,
+      "score": 87.23,
       "status": "STARK"
     },
     {
@@ -403,12 +403,12 @@
       "status": "RISIKO"
     },
     {
-      "name": "Giger",
-      "score": 0.0,
+      "name": "SunRice",
+      "score": 3.33,
       "status": "RISIKO"
     },
     {
-      "name": "SunRice",
+      "name": "Giger",
       "score": 0.0,
       "status": "RISIKO"
     }
@@ -531,7 +531,7 @@
     },
     {
       "name": "eco",
-      "score": 87.36,
+      "score": 87.23,
       "tip": "Weiter so"
     },
     {
@@ -655,12 +655,12 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
-      "name": "Giger",
-      "score": 0.0,
+      "name": "SunRice",
+      "score": 3.33,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
-      "name": "SunRice",
+      "name": "Giger",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
     }
@@ -684,7 +684,7 @@
         "name": "SunRice",
         "player_tag": "#YYJR9R0GR",
         "role": "member",
-        "score": 0.0,
+        "score": 3.33,
         "strikes": 0,
         "donations": 18,
         "participation_count": 0,
@@ -986,7 +986,7 @@
         "name": "eco",
         "player_tag": "#202VP2QL9P",
         "role": "member",
-        "score": 87.36,
+        "score": 87.23,
         "strikes": 0,
         "donations": 516,
         "participation_count": 10,
