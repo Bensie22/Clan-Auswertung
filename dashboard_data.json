@@ -66,6 +66,11 @@
       "priority": 2
     },
     {
+      "name": "Johan",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "kl.kranker Affe",
       "scenario": "TOP",
       "priority": 2
@@ -77,11 +82,6 @@
     },
     {
       "name": "Knitte",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
@@ -208,6 +208,11 @@
       "status": "STARK"
     },
     {
+      "name": "Johan",
+      "score": 90.27,
+      "status": "STARK"
+    },
+    {
       "name": "kl.kranker Affe",
       "score": 90.16,
       "status": "STARK"
@@ -220,11 +225,6 @@
     {
       "name": "Knitte",
       "score": 89.98,
-      "status": "STARK"
-    },
-    {
-      "name": "Johan",
-      "score": 89.87,
       "status": "STARK"
     },
     {
@@ -460,6 +460,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Johan",
+      "score": 90.27,
+      "tip": "Weiter so"
+    },
+    {
       "name": "kl.kranker Affe",
       "score": 90.16,
       "tip": "Weiter so"
@@ -472,11 +477,6 @@
     {
       "name": "Knitte",
       "score": 89.98,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Johan",
-      "score": 89.87,
       "tip": "Weiter so"
     },
     {
@@ -808,6 +808,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Johan",
+        "player_tag": "#UQVCVVVJL",
+        "role": "member",
+        "score": 90.27,
+        "strikes": 0,
+        "donations": 106,
+        "participation_count": 7,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "kl.kranker Affe",
         "player_tag": "#RLJPJL8C2",
         "role": "member",
@@ -837,21 +849,9 @@
         "role": "member",
         "score": 89.98,
         "strikes": 0,
-        "donations": 486,
+        "donations": 494,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Johan",
-        "player_tag": "#UQVCVVVJL",
-        "role": "member",
-        "score": 89.87,
-        "strikes": 0,
-        "donations": 106,
-        "participation_count": 7,
-        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
