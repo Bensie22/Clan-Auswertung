@@ -31,12 +31,12 @@
       "priority": 2
     },
     {
-      "name": "Erastus",
+      "name": "mauza",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "mauza",
+      "name": "Erastus",
       "scenario": "TOP",
       "priority": 2
     },
@@ -168,13 +168,13 @@
   ],
   "smart": [
     {
-      "name": "Erastus",
-      "score": 94.62,
+      "name": "mauza",
+      "score": 94.48,
       "status": "STARK"
     },
     {
-      "name": "mauza",
-      "score": 94.48,
+      "name": "Erastus",
+      "score": 94.35,
       "status": "STARK"
     },
     {
@@ -294,7 +294,7 @@
     },
     {
       "name": "_spc07",
-      "score": 86.92,
+      "score": 86.79,
       "status": "STARK"
     },
     {
@@ -420,13 +420,13 @@
   ],
   "coaching": [
     {
-      "name": "Erastus",
-      "score": 94.62,
+      "name": "mauza",
+      "score": 94.48,
       "tip": "Weiter so"
     },
     {
-      "name": "mauza",
-      "score": 94.48,
+      "name": "Erastus",
+      "score": 94.35,
       "tip": "Weiter so"
     },
     {
@@ -546,7 +546,7 @@
     },
     {
       "name": "_spc07",
-      "score": 86.92,
+      "score": 86.79,
       "tip": "Weiter so"
     },
     {
@@ -712,24 +712,24 @@
     ],
     "core": [
       {
-        "name": "Erastus",
-        "player_tag": "#Q8L0RJ8Y8",
-        "role": "member",
-        "score": 94.62,
-        "strikes": 0,
-        "donations": 220,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "mauza",
         "player_tag": "#2P0U2RLGY",
         "role": "member",
         "score": 94.48,
         "strikes": 0,
         "donations": 236,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Erastus",
+        "player_tag": "#Q8L0RJ8Y8",
+        "role": "member",
+        "score": 94.35,
+        "strikes": 0,
+        "donations": 230,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -861,7 +861,7 @@
         "role": "member",
         "score": 89.82,
         "strikes": 0,
-        "donations": 453,
+        "donations": 479,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -897,7 +897,7 @@
         "role": "member",
         "score": 89.19,
         "strikes": 0,
-        "donations": 331,
+        "donations": 341,
         "participation_count": 10,
         "trend": "🔴🔴🔴🟡🟢",
         "reason": "Score über 85",
@@ -993,7 +993,7 @@
         "role": "member",
         "score": 87.23,
         "strikes": 0,
-        "donations": 516,
+        "donations": 542,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1003,7 +1003,7 @@
         "name": "_spc07",
         "player_tag": "#2U8288CVY",
         "role": "member",
-        "score": 86.92,
+        "score": 86.79,
         "strikes": 0,
         "donations": 50,
         "participation_count": 10,
