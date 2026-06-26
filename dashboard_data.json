@@ -71,12 +71,12 @@
       "priority": 2
     },
     {
-      "name": "Johan",
+      "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "OneAndOnly",
+      "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
@@ -218,13 +218,13 @@
       "status": "STARK"
     },
     {
-      "name": "Johan",
-      "score": 90.13,
+      "name": "OneAndOnly",
+      "score": 90.0,
       "status": "STARK"
     },
     {
-      "name": "OneAndOnly",
-      "score": 90.0,
+      "name": "Johan",
+      "score": 89.87,
       "status": "STARK"
     },
     {
@@ -470,13 +470,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Johan",
-      "score": 90.13,
+      "name": "OneAndOnly",
+      "score": 90.0,
       "tip": "Weiter so"
     },
     {
-      "name": "OneAndOnly",
-      "score": 90.0,
+      "name": "Johan",
+      "score": 89.87,
       "tip": "Weiter so"
     },
     {
@@ -825,18 +825,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Johan",
-        "player_tag": "#UQVCVVVJL",
-        "role": "member",
-        "score": 90.13,
-        "strikes": 0,
-        "donations": 146,
-        "participation_count": 7,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "OneAndOnly",
         "player_tag": "#8P0J8P0L",
         "role": "member",
@@ -845,6 +833,18 @@
         "donations": 350,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Johan",
+        "player_tag": "#UQVCVVVJL",
+        "role": "member",
+        "score": 89.87,
+        "strikes": 0,
+        "donations": 146,
+        "participation_count": 7,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
