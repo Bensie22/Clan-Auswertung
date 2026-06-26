@@ -76,11 +76,6 @@
       "priority": 2
     },
     {
-      "name": "Johan",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "LazyFrog",
       "scenario": "TOP",
       "priority": 2
@@ -92,6 +87,11 @@
     },
     {
       "name": "Bensie",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
@@ -228,11 +228,6 @@
       "status": "STARK"
     },
     {
-      "name": "Johan",
-      "score": 89.87,
-      "status": "STARK"
-    },
-    {
       "name": "LazyFrog",
       "score": 89.82,
       "status": "STARK"
@@ -244,6 +239,11 @@
     },
     {
       "name": "Bensie",
+      "score": 89.6,
+      "status": "STARK"
+    },
+    {
+      "name": "Johan",
       "score": 89.6,
       "status": "STARK"
     },
@@ -374,7 +374,7 @@
     },
     {
       "name": "DST",
-      "score": 81.03,
+      "score": 81.3,
       "status": "STARK"
     },
     {
@@ -480,11 +480,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Johan",
-      "score": 89.87,
-      "tip": "Weiter so"
-    },
-    {
       "name": "LazyFrog",
       "score": 89.82,
       "tip": "Weiter so"
@@ -496,6 +491,11 @@
     },
     {
       "name": "Bensie",
+      "score": 89.6,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Johan",
       "score": 89.6,
       "tip": "Weiter so"
     },
@@ -626,7 +626,7 @@
     },
     {
       "name": "DST",
-      "score": 81.03,
+      "score": 81.3,
       "tip": "Weiter so"
     },
     {
@@ -842,18 +842,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Johan",
-        "player_tag": "#UQVCVVVJL",
-        "role": "member",
-        "score": 89.87,
-        "strikes": 0,
-        "donations": 154,
-        "participation_count": 7,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "LazyFrog",
         "player_tag": "#22Q920RLR",
         "role": "member",
@@ -886,6 +874,18 @@
         "donations": 589,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Johan",
+        "player_tag": "#UQVCVVVJL",
+        "role": "member",
+        "score": 89.6,
+        "strikes": 0,
+        "donations": 154,
+        "participation_count": 7,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -1111,7 +1111,7 @@
         "role": "member",
         "score": 85.08,
         "strikes": 0,
-        "donations": 843,
+        "donations": 853,
         "participation_count": 4,
         "trend": "",
         "reason": "Score über 85",
