@@ -51,17 +51,17 @@
       "priority": 2
     },
     {
-      "name": "OmniOni",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "April#",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Swordfish",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "OmniOni",
       "scenario": "TOP",
       "priority": 2
     },
@@ -203,11 +203,6 @@
       "status": "STARK"
     },
     {
-      "name": "OmniOni",
-      "score": 91.15,
-      "status": "STARK"
-    },
-    {
       "name": "April#",
       "score": 90.8,
       "status": "STARK"
@@ -215,6 +210,11 @@
     {
       "name": "Swordfish",
       "score": 90.75,
+      "status": "STARK"
+    },
+    {
+      "name": "OmniOni",
+      "score": 90.62,
       "status": "STARK"
     },
     {
@@ -455,11 +455,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "OmniOni",
-      "score": 91.15,
-      "tip": "Weiter so"
-    },
-    {
       "name": "April#",
       "score": 90.8,
       "tip": "Weiter so"
@@ -467,6 +462,11 @@
     {
       "name": "Swordfish",
       "score": 90.75,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "OmniOni",
+      "score": 90.62,
       "tip": "Weiter so"
     },
     {
@@ -782,18 +782,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "OmniOni",
-        "player_tag": "#UUPCULU9V",
-        "role": "member",
-        "score": 91.15,
-        "strikes": 0,
-        "donations": 331,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "April#",
         "player_tag": "#YUQVVVLQ",
         "role": "member",
@@ -812,6 +800,18 @@
         "score": 90.75,
         "strikes": 0,
         "donations": 162,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "OmniOni",
+        "player_tag": "#UUPCULU9V",
+        "role": "member",
+        "score": 90.62,
+        "strikes": 0,
+        "donations": 339,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
