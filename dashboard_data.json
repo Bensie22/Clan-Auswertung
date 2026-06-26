@@ -31,12 +31,12 @@
       "priority": 2
     },
     {
-      "name": "mauza",
+      "name": "Erastus",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Erastus",
+      "name": "mauza",
       "scenario": "TOP",
       "priority": 2
     },
@@ -61,17 +61,17 @@
       "priority": 2
     },
     {
-      "name": "kl.kranker Affe",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Swordfish",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "kl.kranker Affe",
       "scenario": "TOP",
       "priority": 2
     },
@@ -208,11 +208,6 @@
       "status": "STARK"
     },
     {
-      "name": "kl.kranker Affe",
-      "score": 90.56,
-      "status": "STARK"
-    },
-    {
       "name": "OneAndOnly",
       "score": 90.53,
       "status": "STARK"
@@ -220,6 +215,11 @@
     {
       "name": "Swordfish",
       "score": 90.48,
+      "status": "STARK"
+    },
+    {
+      "name": "kl.kranker Affe",
+      "score": 90.3,
       "status": "STARK"
     },
     {
@@ -460,11 +460,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "kl.kranker Affe",
-      "score": 90.56,
-      "tip": "Weiter so"
-    },
-    {
       "name": "OneAndOnly",
       "score": 90.53,
       "tip": "Weiter so"
@@ -472,6 +467,11 @@
     {
       "name": "Swordfish",
       "score": 90.48,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "kl.kranker Affe",
+      "score": 90.3,
       "tip": "Weiter so"
     },
     {
@@ -717,24 +717,24 @@
     ],
     "core": [
       {
-        "name": "mauza",
-        "player_tag": "#2P0U2RLGY",
+        "name": "Erastus",
+        "player_tag": "#Q8L0RJ8Y8",
         "role": "member",
         "score": 94.35,
         "strikes": 0,
-        "donations": 262,
+        "donations": 272,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
       {
-        "name": "Erastus",
-        "player_tag": "#Q8L0RJ8Y8",
+        "name": "mauza",
+        "player_tag": "#2P0U2RLGY",
         "role": "member",
         "score": 94.35,
         "strikes": 0,
-        "donations": 256,
+        "donations": 262,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -801,18 +801,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "kl.kranker Affe",
-        "player_tag": "#RLJPJL8C2",
-        "role": "member",
-        "score": 90.56,
-        "strikes": 0,
-        "donations": 68,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "OneAndOnly",
         "player_tag": "#8P0J8P0L",
         "role": "member",
@@ -831,6 +819,18 @@
         "score": 90.48,
         "strikes": 0,
         "donations": 162,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "kl.kranker Affe",
+        "player_tag": "#RLJPJL8C2",
+        "role": "member",
+        "score": 90.3,
+        "strikes": 0,
+        "donations": 68,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1034,7 +1034,7 @@
         "role": "member",
         "score": 86.33,
         "strikes": 0,
-        "donations": 216,
+        "donations": 232,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
