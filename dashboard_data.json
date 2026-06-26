@@ -61,17 +61,17 @@
       "priority": 2
     },
     {
+      "name": "kl.kranker Affe",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Swordfish",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "kl.kranker Affe",
       "scenario": "TOP",
       "priority": 2
     },
@@ -91,17 +91,17 @@
       "priority": 2
     },
     {
-      "name": "LazyFrog",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Bensie",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Ted",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "LazyFrog",
       "scenario": "TOP",
       "priority": 2
     },
@@ -208,6 +208,11 @@
       "status": "STARK"
     },
     {
+      "name": "kl.kranker Affe",
+      "score": 90.56,
+      "status": "STARK"
+    },
+    {
       "name": "OneAndOnly",
       "score": 90.53,
       "status": "STARK"
@@ -215,11 +220,6 @@
     {
       "name": "Swordfish",
       "score": 90.48,
-      "status": "STARK"
-    },
-    {
-      "name": "kl.kranker Affe",
-      "score": 90.16,
       "status": "STARK"
     },
     {
@@ -238,11 +238,6 @@
       "status": "STARK"
     },
     {
-      "name": "LazyFrog",
-      "score": 89.55,
-      "status": "STARK"
-    },
-    {
       "name": "Bensie",
       "score": 89.47,
       "status": "STARK"
@@ -250,6 +245,11 @@
     {
       "name": "Ted",
       "score": 89.46,
+      "status": "STARK"
+    },
+    {
+      "name": "LazyFrog",
+      "score": 89.42,
       "status": "STARK"
     },
     {
@@ -414,7 +414,7 @@
     },
     {
       "name": "SunRice",
-      "score": 7.73,
+      "score": 7.2,
       "status": "RISIKO"
     },
     {
@@ -460,6 +460,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "kl.kranker Affe",
+      "score": 90.56,
+      "tip": "Weiter so"
+    },
+    {
       "name": "OneAndOnly",
       "score": 90.53,
       "tip": "Weiter so"
@@ -467,11 +472,6 @@
     {
       "name": "Swordfish",
       "score": 90.48,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "kl.kranker Affe",
-      "score": 90.16,
       "tip": "Weiter so"
     },
     {
@@ -490,11 +490,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "LazyFrog",
-      "score": 89.55,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Bensie",
       "score": 89.47,
       "tip": "Weiter so"
@@ -502,6 +497,11 @@
     {
       "name": "Ted",
       "score": 89.46,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "LazyFrog",
+      "score": 89.42,
       "tip": "Weiter so"
     },
     {
@@ -666,7 +666,7 @@
     },
     {
       "name": "SunRice",
-      "score": 7.73,
+      "score": 7.2,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
@@ -694,7 +694,7 @@
         "name": "SunRice",
         "player_tag": "#YYJR9R0GR",
         "role": "member",
-        "score": 7.73,
+        "score": 7.2,
         "strikes": 0,
         "donations": 41,
         "participation_count": 0,
@@ -801,6 +801,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "kl.kranker Affe",
+        "player_tag": "#RLJPJL8C2",
+        "role": "member",
+        "score": 90.56,
+        "strikes": 0,
+        "donations": 68,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "OneAndOnly",
         "player_tag": "#8P0J8P0L",
         "role": "member",
@@ -819,18 +831,6 @@
         "score": 90.48,
         "strikes": 0,
         "donations": 162,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "kl.kranker Affe",
-        "player_tag": "#RLJPJL8C2",
-        "role": "member",
-        "score": 90.16,
-        "strikes": 0,
-        "donations": 68,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -873,18 +873,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "LazyFrog",
-        "player_tag": "#22Q920RLR",
-        "role": "member",
-        "score": 89.55,
-        "strikes": 0,
-        "donations": 609,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Bensie",
         "player_tag": "#2QRVR9L8",
         "role": "member",
@@ -905,6 +893,18 @@
         "donations": 433,
         "participation_count": 10,
         "trend": "🔴🔴🔴🟡🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "LazyFrog",
+        "player_tag": "#22Q920RLR",
+        "role": "member",
+        "score": 89.42,
+        "strikes": 0,
+        "donations": 609,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
