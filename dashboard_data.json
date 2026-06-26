@@ -86,17 +86,17 @@
       "priority": 2
     },
     {
-      "name": "Bensie",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Knitte",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Bensie",
       "scenario": "TOP",
       "priority": 2
     },
@@ -238,11 +238,6 @@
       "status": "STARK"
     },
     {
-      "name": "Bensie",
-      "score": 89.6,
-      "status": "STARK"
-    },
-    {
       "name": "Johan",
       "score": 89.6,
       "status": "STARK"
@@ -250,6 +245,11 @@
     {
       "name": "Knitte",
       "score": 89.58,
+      "status": "STARK"
+    },
+    {
+      "name": "Bensie",
+      "score": 89.47,
       "status": "STARK"
     },
     {
@@ -419,7 +419,7 @@
     },
     {
       "name": "SunRice",
-      "score": 6.0,
+      "score": 7.73,
       "status": "RISIKO"
     },
     {
@@ -490,11 +490,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Bensie",
-      "score": 89.6,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Johan",
       "score": 89.6,
       "tip": "Weiter so"
@@ -502,6 +497,11 @@
     {
       "name": "Knitte",
       "score": 89.58,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Bensie",
+      "score": 89.47,
       "tip": "Weiter so"
     },
     {
@@ -671,7 +671,7 @@
     },
     {
       "name": "SunRice",
-      "score": 6.0,
+      "score": 7.73,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
@@ -699,7 +699,7 @@
         "name": "SunRice",
         "player_tag": "#YYJR9R0GR",
         "role": "member",
-        "score": 6.0,
+        "score": 7.73,
         "strikes": 0,
         "donations": 41,
         "participation_count": 0,
@@ -866,18 +866,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Bensie",
-        "player_tag": "#2QRVR9L8",
-        "role": "member",
-        "score": 89.6,
-        "strikes": 0,
-        "donations": 617,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Johan",
         "player_tag": "#UQVCVVVJL",
         "role": "member",
@@ -896,6 +884,18 @@
         "score": 89.58,
         "strikes": 0,
         "donations": 698,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Bensie",
+        "player_tag": "#2QRVR9L8",
+        "role": "member",
+        "score": 89.47,
+        "strikes": 0,
+        "donations": 617,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1111,7 +1111,7 @@
         "role": "member",
         "score": 85.08,
         "strikes": 0,
-        "donations": 853,
+        "donations": 871,
         "participation_count": 4,
         "trend": "",
         "reason": "Score über 85",
