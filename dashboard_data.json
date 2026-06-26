@@ -81,17 +81,17 @@
       "priority": 2
     },
     {
-      "name": "Knitte",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "LazyFrog",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Bensie",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Knitte",
       "scenario": "TOP",
       "priority": 2
     },
@@ -228,11 +228,6 @@
       "status": "STARK"
     },
     {
-      "name": "Knitte",
-      "score": 89.98,
-      "status": "STARK"
-    },
-    {
       "name": "LazyFrog",
       "score": 89.82,
       "status": "STARK"
@@ -240,6 +235,11 @@
     {
       "name": "Bensie",
       "score": 89.6,
+      "status": "STARK"
+    },
+    {
+      "name": "Knitte",
+      "score": 89.45,
       "status": "STARK"
     },
     {
@@ -480,11 +480,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Knitte",
-      "score": 89.98,
-      "tip": "Weiter so"
-    },
-    {
       "name": "LazyFrog",
       "score": 89.82,
       "tip": "Weiter so"
@@ -492,6 +487,11 @@
     {
       "name": "Bensie",
       "score": 89.6,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Knitte",
+      "score": 89.45,
       "tip": "Weiter so"
     },
     {
@@ -849,18 +849,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Knitte",
-        "player_tag": "#ULYJ2CQP",
-        "role": "member",
-        "score": 89.98,
-        "strikes": 0,
-        "donations": 620,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "LazyFrog",
         "player_tag": "#22Q920RLR",
         "role": "member",
@@ -879,6 +867,18 @@
         "score": 89.6,
         "strikes": 0,
         "donations": 581,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Knitte",
+        "player_tag": "#ULYJ2CQP",
+        "role": "member",
+        "score": 89.45,
+        "strikes": 0,
+        "donations": 628,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -950,7 +950,7 @@
         "role": "member",
         "score": 88.4,
         "strikes": 0,
-        "donations": 104,
+        "donations": 112,
         "participation_count": 2,
         "trend": "",
         "reason": "Score über 85",
