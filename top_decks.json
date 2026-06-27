@@ -1,13 +1,13 @@
 {
     "_metadata": {
         "last_battles": {
-            "#22Q920RLR": "20260627T064859.000Z",
+            "#22Q920RLR": "20260627T073511.000Z",
             "#L8PV090J": "20260626T171947.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260627T005414.000Z",
             "#ULYJ2CQP": "20260627T072708.000Z",
-            "#UJ2P9UYUV": "20260626T120149.000Z",
-            "#P0JYR9YUY": "20260626T171228.000Z",
+            "#UJ2P9UYUV": "20260627T073304.000Z",
+            "#P0JYR9YUY": "20260627T073745.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260627T054836.000Z",
             "#G02LC9C8": "20260626T215304.000Z",
@@ -1626,7 +1626,7 @@
                 }
             ],
             "wins": 5,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Chico"
             ],
@@ -1634,6 +1634,12 @@
                 "P0JYR9YUY"
             ],
             "recent_matches": [
+                {
+                    "time": "20260627T073745.000Z",
+                    "result": "loss",
+                    "player": "Chico",
+                    "tag": "P0JYR9YUY"
+                },
                 {
                     "time": "20260621T151629.000Z",
                     "result": "win",
@@ -236219,6 +236225,52 @@
                     "id": 28000001,
                     "name": "Arrows",
                     "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000006-26000049-26000052-26000055-26000058-26000059-28000000-28000005": {
+            "cards": [
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                },
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000052,
+                    "name": "Zappies",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QZfHRpLRmutZbCr5fpLnTpIp89vLI6NrAwzGZ8tHEc4.png"
+                },
+                {
+                    "id": 26000058,
+                    "name": "Wall Breakers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_xPphEfC8eEwFNrfU3cMQG9-f5JaLQ31ARCA7l3XtW4.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                },
+                {
+                    "id": 28000005,
+                    "name": "Freeze",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
                 }
             ],
             "seen": 1,
