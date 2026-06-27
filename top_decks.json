@@ -9,7 +9,7 @@
             "#UJ2P9UYUV": "20260627T082014.000Z",
             "#P0JYR9YUY": "20260627T122239.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
-            "#YQ82VR9JQ": "20260627T054836.000Z",
+            "#YQ82VR9JQ": "20260627T141737.000Z",
             "#G02LC9C8": "20260627T140717.000Z",
             "#2U8288CVY": "20260627T085620.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
@@ -29,7 +29,7 @@
             "#2CJYG9UG": "20260626T154912.000Z",
             "#2PUQYJC02": "20260626T204302.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20260627T113344.000Z",
+            "#2V800VCQ0": "20260627T141505.000Z",
             "#2UQUPYQCJ": "20260627T112012.000Z",
             "#JUUR8UGL8": "20260627T115805.000Z",
             "#2U09UULRR": "20260627T103653.000Z",
@@ -79,11 +79,11 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20260627T140412.000Z",
+            "#YUQVVVLQ": "20260627T141819.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260609T223746.000Z",
             "#GLGY98U08": "20260626T182938.000Z",
-            "#GRGCY0R8": "20260627T140845.000Z",
+            "#GRGCY0R8": "20260627T141215.000Z",
             "#P2YQ2QQUV": "20260626T175819.000Z",
             "#JG8Q0GPU9": "20260617T090503.000Z",
             "#9QV99QVCV": "20260626T193518.000Z",
@@ -4062,7 +4062,7 @@
                 }
             ],
             "wins": 4,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "chris"
             ],
@@ -4070,6 +4070,12 @@
                 "YQ82VR9JQ"
             ],
             "recent_matches": [
+                {
+                    "time": "20260627T141737.000Z",
+                    "result": "loss",
+                    "player": "chris",
+                    "tag": "YQ82VR9JQ"
+                },
                 {
                     "time": "20260626T155532.000Z",
                     "result": "win",
@@ -136957,8 +136963,8 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/_uChZkNHAMq6tPb3v6A49xinOe3CnhjstOhG6OZbPYc.png"
                 }
             ],
-            "seen": 1,
-            "losses": 0
+            "seen": 2,
+            "losses": 1
         },
         "26000003-26000005-26000006-26000027-26000062-26000084-28000001-28000008": {
             "cards": [
@@ -237741,6 +237747,52 @@
                     "id": 28000009,
                     "name": "Poison",
                     "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000001-26000034-26000047-26000052-26000059-27000001-28000000-28000011": {
+            "cards": [
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 27000001,
+                    "name": "Goblin Hut",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/l8ZdzzNLcwB4u7ihGgxNFQOjCT_njFuAhZr7D6PRF7E.png"
+                },
+                {
+                    "id": 26000052,
+                    "name": "Zappies",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QZfHRpLRmutZbCr5fpLnTpIp89vLI6NrAwzGZ8tHEc4.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000047,
+                    "name": "Royal Recruits",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jcNyYGUiXXNz3kuz8NBkHNKNREQKraXlb_Ts7rhCIdM.png"
                 }
             ],
             "seen": 1,
