@@ -5,12 +5,12 @@
             "#L8PV090J": "20260627T174128.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260627T150500.000Z",
-            "#ULYJ2CQP": "20260627T172706.000Z",
+            "#ULYJ2CQP": "20260627T183536.000Z",
             "#UJ2P9UYUV": "20260627T175406.000Z",
             "#P0JYR9YUY": "20260627T122239.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260627T142854.000Z",
-            "#G02LC9C8": "20260627T183030.000Z",
+            "#G02LC9C8": "20260627T183841.000Z",
             "#2U8288CVY": "20260627T085620.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
@@ -21,7 +21,7 @@
             "#QVQGCV8Y9": "20260626T132951.000Z",
             "#Q8L0RJ8Y8": "20260626T200443.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
-            "#2CPRGY8G": "20260627T143105.000Z",
+            "#2CPRGY8G": "20260627T183824.000Z",
             "#LLQQJCLC": "20260626T185330.000Z",
             "#2VJR80RL": "20260626T145320.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
@@ -31,10 +31,10 @@
             "#YQVQYUYRV": "20260525T095543.000Z",
             "#2V800VCQ0": "20260627T141505.000Z",
             "#2UQUPYQCJ": "20260627T112012.000Z",
-            "#JUUR8UGL8": "20260627T115805.000Z",
+            "#JUUR8UGL8": "20260627T183954.000Z",
             "#2U09UULRR": "20260627T103653.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
-            "#8QYYL8LCQ": "20260627T183052.000Z",
+            "#8QYYL8LCQ": "20260627T183442.000Z",
             "#8P0J8P0L": "20260627T101213.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260622T112231.000Z",
@@ -1631,7 +1631,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/Axr4ox5_b7edmLsoHxBX3vmgijAIibuF6RImTbqLlXE.png"
                 }
             ],
-            "wins": 5,
+            "wins": 6,
             "losses": 0,
             "players": [
                 "Swordfish"
@@ -1640,6 +1640,12 @@
                 "2CPRGY8G"
             ],
             "recent_matches": [
+                {
+                    "time": "20260627T183824.000Z",
+                    "result": "win",
+                    "player": "Swordfish",
+                    "tag": "2CPRGY8G"
+                },
                 {
                     "time": "20260627T090656.000Z",
                     "result": "win",
@@ -238897,6 +238903,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000007-26000008-26000013-26000025-26000040-26000049-26000085-28000005": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 26000008,
+                    "name": "Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/TvJsuu2S4yhyk1jVYUAQwdKOnW4U77KuWWOTPOWnwfI.png"
+                },
+                {
+                    "id": 26000085,
+                    "name": "Electro Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_uChZkNHAMq6tPb3v6A49xinOe3CnhjstOhG6OZbPYc.png"
+                },
+                {
+                    "id": 26000025,
+                    "name": "Guards",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/1ArKfLJxYo6_NU_S9cAeIrfbXqWH0oULVJXedxBXQlU.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                },
+                {
+                    "id": 28000005,
+                    "name": "Freeze",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
+                },
+                {
+                    "id": 26000013,
+                    "name": "Bomber",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
