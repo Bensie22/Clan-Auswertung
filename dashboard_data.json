@@ -76,17 +76,17 @@
       "priority": 2
     },
     {
+      "name": "Knitte",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Jackhammer",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Johan",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Knitte",
       "scenario": "TOP",
       "priority": 2
     },
@@ -223,6 +223,11 @@
       "status": "STARK"
     },
     {
+      "name": "Knitte",
+      "score": 89.85,
+      "status": "STARK"
+    },
+    {
       "name": "Jackhammer",
       "score": 89.81,
       "status": "STARK"
@@ -230,11 +235,6 @@
     {
       "name": "Johan",
       "score": 89.6,
-      "status": "STARK"
-    },
-    {
-      "name": "Knitte",
-      "score": 89.58,
       "status": "STARK"
     },
     {
@@ -475,6 +475,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Knitte",
+      "score": 89.85,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Jackhammer",
       "score": 89.81,
       "tip": "Weiter so"
@@ -482,11 +487,6 @@
     {
       "name": "Johan",
       "score": 89.6,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Knitte",
-      "score": 89.58,
       "tip": "Weiter so"
     },
     {
@@ -837,6 +837,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Knitte",
+        "player_tag": "#ULYJ2CQP",
+        "role": "member",
+        "score": 89.85,
+        "strikes": 0,
+        "donations": 742,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Jackhammer",
         "player_tag": "#2CJYG9UG",
         "role": "member",
@@ -857,18 +869,6 @@
         "donations": 178,
         "participation_count": 7,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Knitte",
-        "player_tag": "#ULYJ2CQP",
-        "role": "member",
-        "score": 89.58,
-        "strikes": 0,
-        "donations": 742,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -986,7 +986,7 @@
         "role": "member",
         "score": 87.5,
         "strikes": 0,
-        "donations": 690,
+        "donations": 716,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
