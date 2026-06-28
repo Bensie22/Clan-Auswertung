@@ -151,17 +151,17 @@
       "priority": 2
     },
     {
+      "name": "bes",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "hi2oka",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "seroo",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "bes",
       "scenario": "TOP",
       "priority": 2
     },
@@ -313,6 +313,11 @@
       "status": "STARK"
     },
     {
+      "name": "bes",
+      "score": 86.47,
+      "status": "STARK"
+    },
+    {
       "name": "Denis",
       "score": 86.19,
       "status": "STARK"
@@ -329,11 +334,6 @@
     },
     {
       "name": "Flauschos",
-      "score": 85.8,
-      "status": "STARK"
-    },
-    {
-      "name": "bes",
       "score": 85.8,
       "status": "STARK"
     },
@@ -565,6 +565,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "bes",
+      "score": 86.47,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Denis",
       "score": 86.19,
       "tip": "Weiter so"
@@ -581,11 +586,6 @@
     },
     {
       "name": "Flauschos",
-      "score": 85.8,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "bes",
       "score": 85.8,
       "tip": "Weiter so"
     },
@@ -823,7 +823,7 @@
         "role": "member",
         "score": 90.35,
         "strikes": 0,
-        "donations": 525,
+        "donations": 535,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -883,7 +883,7 @@
         "role": "member",
         "score": 89.59,
         "strikes": 0,
-        "donations": 596,
+        "donations": 606,
         "participation_count": 10,
         "trend": "🔴🔴🔴🟡🟢",
         "reason": "Score über 85",
@@ -1034,6 +1034,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "bes",
+        "player_tag": "#LLQQJCLC",
+        "role": "member",
+        "score": 86.47,
+        "strikes": 0,
+        "donations": 257,
+        "participation_count": 10,
+        "trend": "🟡🟡🟡🟡🟡",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Denis",
         "player_tag": "#2VJR80RL",
         "role": "member",
@@ -1066,18 +1078,6 @@
         "donations": 112,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "bes",
-        "player_tag": "#LLQQJCLC",
-        "role": "member",
-        "score": 85.8,
-        "strikes": 0,
-        "donations": 257,
-        "participation_count": 10,
-        "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
