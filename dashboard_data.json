@@ -136,12 +136,12 @@
       "priority": 2
     },
     {
-      "name": "Dolphin",
+      "name": "Wario",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Wario",
+      "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
     },
@@ -288,11 +288,6 @@
       "status": "STARK"
     },
     {
-      "name": "Dolphin",
-      "score": 87.46,
-      "status": "STARK"
-    },
-    {
       "name": "elazeto",
       "score": 87.45,
       "status": "STARK"
@@ -300,6 +295,11 @@
     {
       "name": "Wario",
       "score": 87.37,
+      "status": "STARK"
+    },
+    {
+      "name": "Dolphin",
+      "score": 87.33,
       "status": "STARK"
     },
     {
@@ -419,7 +419,7 @@
     },
     {
       "name": "Giger",
-      "score": 10.0,
+      "score": 8.4,
       "status": "RISIKO"
     },
     {
@@ -540,11 +540,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Dolphin",
-      "score": 87.46,
-      "tip": "Weiter so"
-    },
-    {
       "name": "elazeto",
       "score": 87.45,
       "tip": "Weiter so"
@@ -552,6 +547,11 @@
     {
       "name": "Wario",
       "score": 87.37,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Dolphin",
+      "score": 87.33,
       "tip": "Weiter so"
     },
     {
@@ -671,7 +671,7 @@
     },
     {
       "name": "Giger",
-      "score": 10.0,
+      "score": 8.4,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
@@ -699,9 +699,9 @@
         "name": "Giger",
         "player_tag": "#8P2GV8UQY",
         "role": "member",
-        "score": 10.0,
+        "score": 8.4,
         "strikes": 0,
-        "donations": 146,
+        "donations": 176,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -727,7 +727,7 @@
         "role": "member",
         "score": 94.62,
         "strikes": 0,
-        "donations": 290,
+        "donations": 320,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -883,7 +883,7 @@
         "role": "member",
         "score": 89.33,
         "strikes": 0,
-        "donations": 733,
+        "donations": 763,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -895,7 +895,7 @@
         "role": "member",
         "score": 89.33,
         "strikes": 0,
-        "donations": 634,
+        "donations": 644,
         "participation_count": 10,
         "trend": "🔴🔴🔴🟡🟢",
         "reason": "Score über 85",
@@ -986,24 +986,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Dolphin",
-        "player_tag": "#2U09UULRR",
-        "role": "member",
-        "score": 87.46,
-        "strikes": 0,
-        "donations": 214,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Wario",
         "player_tag": "#2PUQYJC02",
         "role": "member",
         "score": 87.37,
         "strikes": 0,
         "donations": 178,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Dolphin",
+        "player_tag": "#2U09UULRR",
+        "role": "member",
+        "score": 87.33,
+        "strikes": 0,
+        "donations": 224,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
