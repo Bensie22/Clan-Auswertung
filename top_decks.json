@@ -5,7 +5,7 @@
             "#L8PV090J": "20260628T135700.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260628T120602.000Z",
-            "#ULYJ2CQP": "20260628T143523.000Z",
+            "#ULYJ2CQP": "20260628T161415.000Z",
             "#UJ2P9UYUV": "20260627T175406.000Z",
             "#P0JYR9YUY": "20260628T143129.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
@@ -46,7 +46,7 @@
             "#UUPCULU9V": "20260628T130442.000Z",
             "#202VP2QL9P": "20260628T152542.000Z",
             "#LVUGLUCP9": "20260625T205924.000Z",
-            "#20QGJVPG8Q": "20260628T114008.000Z",
+            "#20QGJVPG8Q": "20260628T161702.000Z",
             "#V9GYJQ0J9": "",
             "#URJ0LUYPV": "20260628T101916.000Z",
             "#Q2GRGLQR": "20260628T063854.000Z",
@@ -6071,7 +6071,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/fO-Xah8XZkYKaSK9SCp3wnzwxtvIhun9NVY-zzte1Ng.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "maghrebi"
@@ -6080,6 +6080,12 @@
                 "20QGJVPG8Q"
             ],
             "recent_matches": [
+                {
+                    "time": "20260628T161702.000Z",
+                    "result": "win",
+                    "player": "maghrebi",
+                    "tag": "20QGJVPG8Q"
+                },
                 {
                     "time": "20260628T015112.000Z",
                     "result": "win",
@@ -242943,6 +242949,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000006-26000010-26000012-26000042-26000047-27000002-27000003-28000002": {
+            "cards": [
+                {
+                    "id": 26000010,
+                    "name": "Skeletons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/oO7iKMU5m0cdxhYPZA3nWQiAUh2yoGgdThLWB1rVSec.png"
+                },
+                {
+                    "id": 26000047,
+                    "name": "Royal Recruits",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jcNyYGUiXXNz3kuz8NBkHNKNREQKraXlb_Ts7rhCIdM.png"
+                },
+                {
+                    "id": 28000002,
+                    "name": "Rage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 27000002,
+                    "name": "Mortar",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lPOSw6H7YOHq2miSCrf7ZDL3ANjhJdPPDYOTujdNrVE.png"
+                },
+                {
+                    "id": 27000003,
+                    "name": "Inferno Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
