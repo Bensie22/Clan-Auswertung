@@ -76,11 +76,6 @@
       "priority": 2
     },
     {
-      "name": "LazyFrog",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Johan",
       "scenario": "TOP",
       "priority": 2
@@ -92,6 +87,11 @@
     },
     {
       "name": "Bensie",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "LazyFrog",
       "scenario": "TOP",
       "priority": 2
     },
@@ -228,11 +228,6 @@
       "status": "STARK"
     },
     {
-      "name": "LazyFrog",
-      "score": 89.82,
-      "status": "STARK"
-    },
-    {
       "name": "Johan",
       "score": 89.73,
       "status": "STARK"
@@ -245,6 +240,11 @@
     {
       "name": "Bensie",
       "score": 89.6,
+      "status": "STARK"
+    },
+    {
+      "name": "LazyFrog",
+      "score": 89.55,
       "status": "STARK"
     },
     {
@@ -480,11 +480,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "LazyFrog",
-      "score": 89.82,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Johan",
       "score": 89.73,
       "tip": "Weiter so"
@@ -497,6 +492,11 @@
     {
       "name": "Bensie",
       "score": 89.6,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "LazyFrog",
+      "score": 89.55,
       "tip": "Weiter so"
     },
     {
@@ -842,18 +842,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "LazyFrog",
-        "player_tag": "#22Q920RLR",
-        "role": "member",
-        "score": 89.82,
-        "strikes": 0,
-        "donations": 929,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Johan",
         "player_tag": "#UQVCVVVJL",
         "role": "member",
@@ -884,6 +872,18 @@
         "score": 89.6,
         "strikes": 0,
         "donations": 763,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "LazyFrog",
+        "player_tag": "#22Q920RLR",
+        "role": "member",
+        "score": 89.55,
+        "strikes": 0,
+        "donations": 929,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
