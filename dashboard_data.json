@@ -96,12 +96,12 @@
       "priority": 2
     },
     {
-      "name": "Knitte",
+      "name": "Bensie",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Bensie",
+      "name": "Knitte",
       "scenario": "TOP",
       "priority": 2
     },
@@ -248,13 +248,13 @@
       "status": "STARK"
     },
     {
-      "name": "Knitte",
-      "score": 89.58,
+      "name": "Bensie",
+      "score": 89.33,
       "status": "STARK"
     },
     {
-      "name": "Bensie",
-      "score": 89.33,
+      "name": "Knitte",
+      "score": 89.18,
       "status": "STARK"
     },
     {
@@ -328,6 +328,11 @@
       "status": "STARK"
     },
     {
+      "name": "Flauschos",
+      "score": 85.8,
+      "status": "STARK"
+    },
+    {
       "name": "bes",
       "score": 85.8,
       "status": "STARK"
@@ -335,11 +340,6 @@
     {
       "name": "Theezy",
       "score": 85.8,
-      "status": "STARK"
-    },
-    {
-      "name": "Flauschos",
-      "score": 85.67,
       "status": "STARK"
     },
     {
@@ -500,13 +500,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Knitte",
-      "score": 89.58,
+      "name": "Bensie",
+      "score": 89.33,
       "tip": "Weiter so"
     },
     {
-      "name": "Bensie",
-      "score": 89.33,
+      "name": "Knitte",
+      "score": 89.18,
       "tip": "Weiter so"
     },
     {
@@ -580,6 +580,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Flauschos",
+      "score": 85.8,
+      "tip": "Weiter so"
+    },
+    {
       "name": "bes",
       "score": 85.8,
       "tip": "Weiter so"
@@ -587,11 +592,6 @@
     {
       "name": "Theezy",
       "score": 85.8,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Flauschos",
-      "score": 85.67,
       "tip": "Weiter so"
     },
     {
@@ -883,21 +883,9 @@
         "role": "member",
         "score": 89.59,
         "strikes": 0,
-        "donations": 526,
+        "donations": 576,
         "participation_count": 10,
         "trend": "🔴🔴🔴🟡🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Knitte",
-        "player_tag": "#ULYJ2CQP",
-        "role": "member",
-        "score": 89.58,
-        "strikes": 0,
-        "donations": 943,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -908,6 +896,18 @@
         "score": 89.33,
         "strikes": 0,
         "donations": 713,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Knitte",
+        "player_tag": "#ULYJ2CQP",
+        "role": "member",
+        "score": 89.18,
+        "strikes": 0,
+        "donations": 953,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -979,7 +979,7 @@
         "role": "member",
         "score": 87.46,
         "strikes": 0,
-        "donations": 184,
+        "donations": 204,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1097,7 +1097,7 @@
         "name": "Flauschos",
         "player_tag": "#PPR2QQC0U",
         "role": "member",
-        "score": 85.67,
+        "score": 85.8,
         "strikes": 0,
         "donations": 74,
         "participation_count": 10,
