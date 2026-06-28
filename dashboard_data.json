@@ -1,12 +1,12 @@
 {
   "full_auto": [
     {
-      "name": "Giger",
-      "scenario": "KEINE_TEILNAHME",
+      "name": "SunRice",
+      "scenario": "STRIKE",
       "priority": 4
     },
     {
-      "name": "SunRice",
+      "name": "Giger",
       "scenario": "STRIKE",
       "priority": 4
     },
@@ -194,7 +194,7 @@
     },
     {
       "name": "maghrebi",
-      "score": 93.2,
+      "score": 93.07,
       "status": "STARK"
     },
     {
@@ -418,13 +418,13 @@
       "status": "RISIKO"
     },
     {
-      "name": "SunRice",
-      "score": 6.27,
+      "name": "Giger",
+      "score": 10.0,
       "status": "RISIKO"
     },
     {
-      "name": "Giger",
-      "score": 0.0,
+      "name": "SunRice",
+      "score": 6.27,
       "status": "RISIKO"
     }
   ],
@@ -446,7 +446,7 @@
     },
     {
       "name": "maghrebi",
-      "score": 93.2,
+      "score": 93.07,
       "tip": "Weiter so"
     },
     {
@@ -670,13 +670,13 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
-      "name": "SunRice",
-      "score": 6.27,
+      "name": "Giger",
+      "score": 10.0,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
-      "name": "Giger",
-      "score": 0.0,
+      "name": "SunRice",
+      "score": 6.27,
       "tip": "Mehr Teilnahme notwendig"
     }
   ],
@@ -684,24 +684,24 @@
     "generated_from": "_prefetch.json",
     "remove": [
       {
-        "name": "Giger",
-        "player_tag": "#8P2GV8UQY",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 146,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
         "name": "SunRice",
         "player_tag": "#YYJR9R0GR",
         "role": "member",
         "score": 6.27,
         "strikes": 0,
         "donations": 77,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "Giger",
+        "player_tag": "#8P2GV8UQY",
+        "role": "member",
+        "score": 10.0,
+        "strikes": 0,
+        "donations": 146,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -761,7 +761,7 @@
         "name": "maghrebi",
         "player_tag": "#20QGJVPG8Q",
         "role": "member",
-        "score": 93.2,
+        "score": 93.07,
         "strikes": 0,
         "donations": 218,
         "participation_count": 10,
@@ -895,7 +895,7 @@
         "role": "member",
         "score": 89.33,
         "strikes": 0,
-        "donations": 624,
+        "donations": 634,
         "participation_count": 10,
         "trend": "🔴🔴🔴🟡🟢",
         "reason": "Score über 85",
@@ -907,7 +907,7 @@
         "role": "member",
         "score": 89.18,
         "strikes": 0,
-        "donations": 981,
+        "donations": 1001,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -991,7 +991,7 @@
         "role": "member",
         "score": 87.46,
         "strikes": 0,
-        "donations": 204,
+        "donations": 214,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1015,7 +1015,7 @@
         "role": "member",
         "score": 87.23,
         "strikes": 0,
-        "donations": 934,
+        "donations": 944,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1063,7 +1063,7 @@
         "role": "member",
         "score": 86.06,
         "strikes": 0,
-        "donations": 294,
+        "donations": 304,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
