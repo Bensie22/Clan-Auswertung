@@ -6,11 +6,11 @@
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260628T182106.000Z",
             "#ULYJ2CQP": "20260628T161415.000Z",
-            "#UJ2P9UYUV": "20260628T193931.000Z",
+            "#UJ2P9UYUV": "20260628T194217.000Z",
             "#P0JYR9YUY": "20260628T184608.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
-            "#YQ82VR9JQ": "20260628T194053.000Z",
-            "#G02LC9C8": "20260628T191531.000Z",
+            "#YQ82VR9JQ": "20260628T194632.000Z",
+            "#G02LC9C8": "20260628T194555.000Z",
             "#2U8288CVY": "20260628T190931.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
@@ -48,7 +48,7 @@
             "#LVUGLUCP9": "20260625T205924.000Z",
             "#20QGJVPG8Q": "20260628T183207.000Z",
             "#V9GYJQ0J9": "",
-            "#URJ0LUYPV": "20260628T194108.000Z",
+            "#URJ0LUYPV": "20260628T194802.000Z",
             "#Q2GRGLQR": "20260628T063854.000Z",
             "#J9RQPGLVP": "20260628T100707.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
@@ -5190,7 +5190,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "hi2oka"
             ],
@@ -5198,6 +5198,12 @@
                 "UJ2P9UYUV"
             ],
             "recent_matches": [
+                {
+                    "time": "20260628T194217.000Z",
+                    "result": "loss",
+                    "player": "hi2oka",
+                    "tag": "UJ2P9UYUV"
+                },
                 {
                     "time": "20260627T175046.000Z",
                     "result": "win",
@@ -243819,6 +243825,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000019-26000040-26000054-26000056-26000069-27000002-28000000-28000011": {
+            "cards": [
+                {
+                    "id": 27000002,
+                    "name": "Mortar",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lPOSw6H7YOHq2miSCrf7ZDL3ANjhJdPPDYOTujdNrVE.png"
+                },
+                {
+                    "id": 26000069,
+                    "name": "Skeleton King",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dCd69_wN9f8DxwuqOGtR4QgWhHIPIaTNxZ1e23RzAAc.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 26000019,
+                    "name": "Spear Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/FSDFotjaXidI4ku_WFpVCTWS1hKGnFh1sxX0lxM43_E.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 26000054,
+                    "name": "Cannon Cart",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/aqwxRz8HXzqlMCO4WMXNA1txynjXTsLinknqsgZLbok.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
