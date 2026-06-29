@@ -1,17 +1,17 @@
 {
     "_metadata": {
         "last_battles": {
-            "#22Q920RLR": "20260629T103017.000Z",
+            "#22Q920RLR": "20260629T103545.000Z",
             "#L8PV090J": "20260629T063055.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260629T060400.000Z",
             "#ULYJ2CQP": "20260629T061435.000Z",
-            "#UJ2P9UYUV": "20260628T194217.000Z",
+            "#UJ2P9UYUV": "20260629T103629.000Z",
             "#P0JYR9YUY": "20260629T093152.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260628T201715.000Z",
             "#G02LC9C8": "20260628T200540.000Z",
-            "#2U8288CVY": "20260629T102647.000Z",
+            "#2U8288CVY": "20260629T103431.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
@@ -21,7 +21,7 @@
             "#QVQGCV8Y9": "20260626T132951.000Z",
             "#Q8L0RJ8Y8": "20260628T185727.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
-            "#2CPRGY8G": "20260629T091341.000Z",
+            "#2CPRGY8G": "20260629T103436.000Z",
             "#LLQQJCLC": "20260628T090616.000Z",
             "#2VJR80RL": "20260629T080242.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20260629T101924.000Z",
+            "#YUQVVVLQ": "20260629T103728.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260609T223746.000Z",
             "#GLGY98U08": "20260628T164124.000Z",
@@ -6605,7 +6605,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "April#"
@@ -6614,6 +6614,12 @@
                 "YUQVVVLQ"
             ],
             "recent_matches": [
+                {
+                    "time": "20260629T103728.000Z",
+                    "result": "win",
+                    "player": "April#",
+                    "tag": "YUQVVVLQ"
+                },
                 {
                     "time": "20260628T214040.000Z",
                     "result": "win",
@@ -245177,6 +245183,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000011-26000025-26000032-26000034-26000037-26000049-26000055-28000008": {
+            "cards": [
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000032,
+                    "name": "Miner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Y4yWvdwBCg2FpAZgs8T09Gy34WOwpLZW-ttL52Ae8NE.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                },
+                {
+                    "id": 26000037,
+                    "name": "Inferno Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
+                },
+                {
+                    "id": 26000025,
+                    "name": "Guards",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/1ArKfLJxYo6_NU_S9cAeIrfbXqWH0oULVJXedxBXQlU.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
