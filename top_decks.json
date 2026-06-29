@@ -7,7 +7,7 @@
             "#2QRVR9L8": "20260629T060400.000Z",
             "#ULYJ2CQP": "20260629T132136.000Z",
             "#UJ2P9UYUV": "20260629T103629.000Z",
-            "#P0JYR9YUY": "20260629T133922.000Z",
+            "#P0JYR9YUY": "20260629T134638.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260628T201715.000Z",
             "#G02LC9C8": "20260628T200540.000Z",
@@ -37,13 +37,13 @@
             "#8QYYL8LCQ": "20260628T233331.000Z",
             "#8P0J8P0L": "20260628T103633.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20260622T112231.000Z",
+            "#CUJ9PJ2UV": "20260629T134825.000Z",
             "#2P0U2RLGY": "20260628T193116.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260628T192207.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20260628T130442.000Z",
+            "#UUPCULU9V": "20260629T134925.000Z",
             "#202VP2QL9P": "20260629T125031.000Z",
             "#LVUGLUCP9": "20260625T205924.000Z",
             "#20QGJVPG8Q": "20260628T212935.000Z",
@@ -5700,7 +5700,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "OmniOni"
             ],
@@ -5708,6 +5708,12 @@
                 "UUPCULU9V"
             ],
             "recent_matches": [
+                {
+                    "time": "20260629T134925.000Z",
+                    "result": "loss",
+                    "player": "OmniOni",
+                    "tag": "UUPCULU9V"
+                },
                 {
                     "time": "20260628T125159.000Z",
                     "result": "win",
@@ -245413,6 +245419,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000002-26000007-26000011-26000021-26000030-27000000-28000011-28000012": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000002,
+                    "name": "Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X_DQUye_OaS3QN6VC9CPw05Fit7wvSm3XegXIXKP--0.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 27000000,
+                    "name": "Cannon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nZK1y-beLxO5vnlyUhK6-2zH2NzXJwqykcosqQ1cmZ8.png"
+                },
+                {
+                    "id": 28000012,
+                    "name": "Tornado",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QJB-QK1QJHdw4hjpAwVSyZBozc2ZWAR9pQ-SMUyKaT0.png"
+                },
+                {
+                    "id": 26000030,
+                    "name": "Ice Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lv1budiafU9XmSdrDkk0NYyqASAFYyZ06CPysXKZXlA.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
