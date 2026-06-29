@@ -156,6 +156,11 @@
       "priority": 2
     },
     {
+      "name": "Flauschos",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "seroo",
       "scenario": "TOP",
       "priority": 2
@@ -167,11 +172,6 @@
     },
     {
       "name": "Denis",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Flauschos",
       "scenario": "TOP",
       "priority": 2
     },
@@ -323,6 +323,11 @@
       "status": "STARK"
     },
     {
+      "name": "Flauschos",
+      "score": 86.07,
+      "status": "STARK"
+    },
+    {
       "name": "seroo",
       "score": 85.98,
       "status": "STARK"
@@ -335,11 +340,6 @@
     {
       "name": "Denis",
       "score": 85.92,
-      "status": "STARK"
-    },
-    {
-      "name": "Flauschos",
-      "score": 85.8,
       "status": "STARK"
     },
     {
@@ -575,6 +575,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Flauschos",
+      "score": 86.07,
+      "tip": "Weiter so"
+    },
+    {
       "name": "seroo",
       "score": 85.98,
       "tip": "Weiter so"
@@ -587,11 +592,6 @@
     {
       "name": "Denis",
       "score": 85.92,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Flauschos",
-      "score": 85.8,
       "tip": "Weiter so"
     },
     {
@@ -1051,6 +1051,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Flauschos",
+        "player_tag": "#PPR2QQC0U",
+        "role": "member",
+        "score": 86.07,
+        "strikes": 0,
+        "donations": 74,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "seroo",
         "player_tag": "#JRGC9RRQG",
         "role": "member",
@@ -1083,18 +1095,6 @@
         "donations": 87,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Flauschos",
-        "player_tag": "#PPR2QQC0U",
-        "role": "member",
-        "score": 85.8,
-        "strikes": 0,
-        "donations": 74,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
