@@ -156,17 +156,17 @@
       "priority": 2
     },
     {
-      "name": "Flauschos",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "seroo",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Theezy",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Flauschos",
       "scenario": "TOP",
       "priority": 2
     },
@@ -323,11 +323,6 @@
       "status": "STARK"
     },
     {
-      "name": "Flauschos",
-      "score": 86.07,
-      "status": "STARK"
-    },
-    {
       "name": "seroo",
       "score": 85.98,
       "status": "STARK"
@@ -335,6 +330,11 @@
     {
       "name": "Theezy",
       "score": 85.94,
+      "status": "STARK"
+    },
+    {
+      "name": "Flauschos",
+      "score": 85.93,
       "status": "STARK"
     },
     {
@@ -575,11 +575,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Flauschos",
-      "score": 86.07,
-      "tip": "Weiter so"
-    },
-    {
       "name": "seroo",
       "score": 85.98,
       "tip": "Weiter so"
@@ -587,6 +582,11 @@
     {
       "name": "Theezy",
       "score": 85.94,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Flauschos",
+      "score": 85.93,
       "tip": "Weiter so"
     },
     {
@@ -1032,7 +1032,7 @@
         "role": "member",
         "score": 86.52,
         "strikes": 0,
-        "donations": 38,
+        "donations": 48,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1047,18 +1047,6 @@
         "donations": 257,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Flauschos",
-        "player_tag": "#PPR2QQC0U",
-        "role": "member",
-        "score": 86.07,
-        "strikes": 0,
-        "donations": 74,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -1081,6 +1069,18 @@
         "score": 85.94,
         "strikes": 0,
         "donations": 192,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Flauschos",
+        "player_tag": "#PPR2QQC0U",
+        "role": "member",
+        "score": 85.93,
+        "strikes": 0,
+        "donations": 74,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
