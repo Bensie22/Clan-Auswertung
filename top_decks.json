@@ -10,7 +10,7 @@
             "#P0JYR9YUY": "20260629T164416.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260629T185748.000Z",
-            "#G02LC9C8": "20260630T045841.000Z",
+            "#G02LC9C8": "20260630T050711.000Z",
             "#2U8288CVY": "20260629T192157.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
@@ -29,7 +29,7 @@
             "#2CJYG9UG": "20260629T001826.000Z",
             "#2PUQYJC02": "20260629T161011.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20260629T123843.000Z",
+            "#2V800VCQ0": "20260630T050324.000Z",
             "#2UQUPYQCJ": "20260629T193039.000Z",
             "#JUUR8UGL8": "20260629T192358.000Z",
             "#2U09UULRR": "20260630T032627.000Z",
@@ -44,7 +44,7 @@
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
             "#UUPCULU9V": "20260629T135948.000Z",
-            "#202VP2QL9P": "20260629T172316.000Z",
+            "#202VP2QL9P": "20260630T050542.000Z",
             "#LVUGLUCP9": "20260625T205924.000Z",
             "#20QGJVPG8Q": "20260630T032438.000Z",
             "#V9GYJQ0J9": "",
@@ -96,7 +96,7 @@
             "#P0G2GYJQ9": "20260629T194627.000Z",
             "#8P2GV8UQY": "20260629T143924.000Z",
             "#VV2JR990": "20260622T193820.000Z",
-            "#YYJR9R0GR": "20260629T113518.000Z"
+            "#YYJR9R0GR": "20260630T051034.000Z"
         }
     },
     "decks": {
@@ -383,7 +383,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
                 }
             ],
-            "wins": 2,
+            "wins": 1,
             "losses": 0,
             "players": [
                 "SirHenry87"
@@ -394,12 +394,6 @@
             "recent_matches": [
                 {
                     "time": "20260601T044735.000Z",
-                    "result": "win",
-                    "player": "SirHenry87",
-                    "tag": "8QYYL8LCQ"
-                },
-                {
-                    "time": "20260531T050528.000Z",
                     "result": "win",
                     "player": "SirHenry87",
                     "tag": "8QYYL8LCQ"
@@ -246039,6 +246033,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000007-26000018-26000041-26000042-26000048-26000055-26000068-28000008": {
+            "cards": [
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 26000068,
+                    "name": "Battle Healer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/KdwXcoigS2Kg-cgA7BJJIANbUJG6SNgjetRQ-MegZ08.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 26000048,
+                    "name": "Night Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NpCrXDEDBBJgNv9QrBAcJmmMFbS7pe3KCY8xJ5VB18A.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
