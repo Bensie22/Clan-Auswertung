@@ -4,7 +4,7 @@
             "#22Q920RLR": "20260630T122456.000Z",
             "#L8PV090J": "20260630T092906.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
-            "#2QRVR9L8": "20260630T055914.000Z",
+            "#2QRVR9L8": "20260630T123114.000Z",
             "#ULYJ2CQP": "20260630T114852.000Z",
             "#UJ2P9UYUV": "20260630T091720.000Z",
             "#P0JYR9YUY": "20260630T073526.000Z",
@@ -29,7 +29,7 @@
             "#2CJYG9UG": "20260629T001826.000Z",
             "#2PUQYJC02": "20260629T161011.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20260630T122219.000Z",
+            "#2V800VCQ0": "20260630T123811.000Z",
             "#2UQUPYQCJ": "20260629T193039.000Z",
             "#JUUR8UGL8": "20260630T114804.000Z",
             "#2U09UULRR": "20260630T090954.000Z",
@@ -86,7 +86,7 @@
             "#GRGCY0R8": "20260629T125232.000Z",
             "#P2YQ2QQUV": "20260629T203144.000Z",
             "#JG8Q0GPU9": "20260617T090503.000Z",
-            "#9QV99QVCV": "20260628T161054.000Z",
+            "#9QV99QVCV": "20260630T123411.000Z",
             "#JQ08UR882": "20260619T100820.000Z",
             "#PQ2JYPC09": "20260629T173445.000Z",
             "#99JJLC02L": "20260630T100451.000Z",
@@ -3005,7 +3005,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
                 }
             ],
-            "wins": 2,
+            "wins": 3,
             "losses": 0,
             "players": [
                 "Joker"
@@ -3014,6 +3014,12 @@
                 "9QV99QVCV"
             ],
             "recent_matches": [
+                {
+                    "time": "20260630T123411.000Z",
+                    "result": "win",
+                    "player": "Joker",
+                    "tag": "9QV99QVCV"
+                },
                 {
                     "time": "20260622T120159.000Z",
                     "result": "win",
@@ -246315,6 +246321,52 @@
                     "id": 26000041,
                     "name": "Goblin Gang",
                     "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000001-26000034-26000041-26000058-26000097-27000005-27000008-28000006": {
+            "cards": [
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 26000058,
+                    "name": "Wall Breakers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_xPphEfC8eEwFNrfU3cMQG9-f5JaLQ31ARCA7l3XtW4.png"
+                },
+                {
+                    "id": 27000008,
+                    "name": "X-Bow",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/zVQ9Hme1hlj9Dc6e1ORl9xWwglcSrP7ejow5mAhLUJc.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 26000097,
+                    "name": "Suspicious Bush",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vqTzGAjseQv9F5rf4tsFWeocvg0dyPw1j_nB1cmDZfI.png"
+                },
+                {
+                    "id": 28000006,
+                    "name": "Mirror",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/wC6Cm9rKLEOk72zTsukVwxewKIoO4ZcMJun54zCPWvA.png"
+                },
+                {
+                    "id": 27000005,
+                    "name": "Barbarian Hut",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ho0nOG2y3Ch86elHHcocQs8Fv_QNe0cFJ2CijsxABZA.png"
                 }
             ],
             "seen": 1,
