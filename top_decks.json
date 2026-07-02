@@ -10,23 +10,23 @@
             "#P0JYR9YUY": "20260702T155509.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260702T160112.000Z",
-            "#G02LC9C8": "20260702T202036.000Z",
+            "#G02LC9C8": "20260702T202720.000Z",
             "#2U8288CVY": "20260702T191003.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260629T065421.000Z",
-            "#QULCQGGG": "20260702T201949.000Z",
-            "#JRGC9RRQG": "20260702T165518.000Z",
+            "#QULCQGGG": "20260702T202742.000Z",
+            "#JRGC9RRQG": "20260702T202243.000Z",
             "#QVQGCV8Y9": "20260702T200704.000Z",
             "#Q8L0RJ8Y8": "20260702T174459.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
-            "#2CPRGY8G": "20260702T201100.000Z",
+            "#2CPRGY8G": "20260702T202633.000Z",
             "#LLQQJCLC": "20260702T133420.000Z",
             "#2VJR80RL": "20260701T210919.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
-            "#2CJYG9UG": "20260629T001826.000Z",
+            "#2CJYG9UG": "20260702T202920.000Z",
             "#2PUQYJC02": "20260702T192557.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
             "#2V800VCQ0": "20260702T093443.000Z",
@@ -96,7 +96,7 @@
             "#P0G2GYJQ9": "20260702T111041.000Z",
             "#8P2GV8UQY": "20260702T175515.000Z",
             "#VV2JR990": "20260622T193820.000Z",
-            "#YYJR9R0GR": "20260702T200731.000Z",
+            "#YYJR9R0GR": "20260702T202916.000Z",
             "#9U0GLQPRC": "20260702T132518.000Z"
         }
     },
@@ -1494,7 +1494,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
                 }
             ],
-            "wins": 8,
+            "wins": 9,
             "losses": 0,
             "players": [
                 "Jackhammer"
@@ -1503,6 +1503,12 @@
                 "2CJYG9UG"
             ],
             "recent_matches": [
+                {
+                    "time": "20260702T202920.000Z",
+                    "result": "win",
+                    "player": "Jackhammer",
+                    "tag": "2CJYG9UG"
+                },
                 {
                     "time": "20260629T001334.000Z",
                     "result": "win",
@@ -251802,6 +251808,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000010-26000011-26000014-26000032-26000043-28000001-28000003-28000009": {
+            "cards": [
+                {
+                    "id": 28000003,
+                    "name": "Rocket",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ie07nQNK9CjhKOa4-arFAewi4EroqaA-86Xo7r5tx94.png"
+                },
+                {
+                    "id": 26000043,
+                    "name": "Elite Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/C88C5JH_F3lLZj6K-tLcMo5DPjrFmvzIb1R2M6xCfTE.png"
+                },
+                {
+                    "id": 26000032,
+                    "name": "Miner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Y4yWvdwBCg2FpAZgs8T09Gy34WOwpLZW-ttL52Ae8NE.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000010,
+                    "name": "Skeletons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/oO7iKMU5m0cdxhYPZA3nWQiAUh2yoGgdThLWB1rVSec.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
