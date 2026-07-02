@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "Itachi Uchiha",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "★Elite Player★",
       "scenario": "STRIKE",
       "priority": 4
@@ -46,12 +51,12 @@
       "priority": 2
     },
     {
-      "name": "Johan",
+      "name": "OmniOni",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "OmniOni",
+      "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
@@ -66,12 +71,12 @@
       "priority": 2
     },
     {
-      "name": "Ted",
+      "name": "Knitte",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Knitte",
+      "name": "Ted",
       "scenario": "TOP",
       "priority": 2
     },
@@ -178,6 +183,11 @@
       "status": "STARK"
     },
     {
+      "name": "OmniOni",
+      "score": 90.22,
+      "status": "STARK"
+    },
+    {
       "name": "LazyFrog",
       "score": 90.22,
       "status": "STARK"
@@ -193,13 +203,13 @@
       "status": "STARK"
     },
     {
-      "name": "OmniOni",
-      "score": 90.08,
+      "name": "OneAndOnly",
+      "score": 89.73,
       "status": "STARK"
     },
     {
-      "name": "OneAndOnly",
-      "score": 89.73,
+      "name": "Knitte",
+      "score": 89.67,
       "status": "STARK"
     },
     {
@@ -208,13 +218,8 @@
       "status": "STARK"
     },
     {
-      "name": "Knitte",
-      "score": 89.54,
-      "status": "STARK"
-    },
-    {
       "name": "elazeto",
-      "score": 89.33,
+      "score": 89.46,
       "status": "STARK"
     },
     {
@@ -386,6 +391,11 @@
       "name": "★Elite Player★",
       "score": 41.65,
       "status": "RISIKO"
+    },
+    {
+      "name": "Itachi Uchiha",
+      "score": 0.0,
+      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -425,6 +435,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "OmniOni",
+      "score": 90.22,
+      "tip": "Weiter so"
+    },
+    {
       "name": "LazyFrog",
       "score": 90.22,
       "tip": "Weiter so"
@@ -440,13 +455,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "OmniOni",
-      "score": 90.08,
+      "name": "OneAndOnly",
+      "score": 89.73,
       "tip": "Weiter so"
     },
     {
-      "name": "OneAndOnly",
-      "score": 89.73,
+      "name": "Knitte",
+      "score": 89.67,
       "tip": "Weiter so"
     },
     {
@@ -455,13 +470,8 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Knitte",
-      "score": 89.54,
-      "tip": "Weiter so"
-    },
-    {
       "name": "elazeto",
-      "score": 89.33,
+      "score": 89.46,
       "tip": "Weiter so"
     },
     {
@@ -633,11 +643,29 @@
       "name": "★Elite Player★",
       "score": 41.65,
       "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "Itachi Uchiha",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
-    "remove": [],
+    "remove": [
+      {
+        "name": "Itachi Uchiha",
+        "player_tag": "#9U0GLQPRC",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      }
+    ],
     "core": [
       {
         "name": "mauza",
@@ -736,6 +764,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "OmniOni",
+        "player_tag": "#UUPCULU9V",
+        "role": "member",
+        "score": 90.22,
+        "strikes": 0,
+        "donations": 326,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Johan",
         "player_tag": "#UQVCVVVJL",
         "role": "member",
@@ -744,18 +784,6 @@
         "donations": 117,
         "participation_count": 8,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "OmniOni",
-        "player_tag": "#UUPCULU9V",
-        "role": "member",
-        "score": 90.08,
-        "strikes": 0,
-        "donations": 326,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -784,6 +812,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Knitte",
+        "player_tag": "#ULYJ2CQP",
+        "role": "member",
+        "score": 89.67,
+        "strikes": 0,
+        "donations": 677,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Ted",
         "player_tag": "#J9RQPGLVP",
         "role": "member",
@@ -792,18 +832,6 @@
         "donations": 348,
         "participation_count": 10,
         "trend": "🔴🔴🔴🟡🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Knitte",
-        "player_tag": "#ULYJ2CQP",
-        "role": "member",
-        "score": 89.54,
-        "strikes": 0,
-        "donations": 677,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
