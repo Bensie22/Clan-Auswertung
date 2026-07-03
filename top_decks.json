@@ -18,7 +18,7 @@
             "#PPR2QQC0U": "20260703T080506.000Z",
             "#QULCQGGG": "20260703T121515.000Z",
             "#JRGC9RRQG": "20260703T104420.000Z",
-            "#QVQGCV8Y9": "20260703T133908.000Z",
+            "#QVQGCV8Y9": "20260703T134825.000Z",
             "#Q8L0RJ8Y8": "20260702T174459.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260703T054156.000Z",
@@ -43,7 +43,7 @@
             "#RLJPJL8C2": "20260703T102617.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20260703T125635.000Z",
+            "#UUPCULU9V": "20260703T135022.000Z",
             "#202VP2QL9P": "20260703T033644.000Z",
             "#LVUGLUCP9": "20260702T192056.000Z",
             "#20QGJVPG8Q": "20260703T134104.000Z",
@@ -3433,7 +3433,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "OmniOni"
             ],
@@ -3441,6 +3441,12 @@
                 "UUPCULU9V"
             ],
             "recent_matches": [
+                {
+                    "time": "20260703T135022.000Z",
+                    "result": "loss",
+                    "player": "OmniOni",
+                    "tag": "UUPCULU9V"
+                },
                 {
                     "time": "20260630T141624.000Z",
                     "result": "win",
@@ -254966,6 +254972,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000000-26000010-26000018-26000021-26000030-26000056-27000006-28000011": {
+            "cards": [
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 26000010,
+                    "name": "Skeletons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/oO7iKMU5m0cdxhYPZA3nWQiAUh2yoGgdThLWB1rVSec.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 26000030,
+                    "name": "Ice Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lv1budiafU9XmSdrDkk0NYyqASAFYyZ06CPysXKZXlA.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
