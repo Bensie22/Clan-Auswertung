@@ -121,17 +121,17 @@
       "priority": 2
     },
     {
+      "name": "seroo",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Wario",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "eco",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "seroo",
       "scenario": "TOP",
       "priority": 2
     },
@@ -274,7 +274,12 @@
     },
     {
       "name": "SirHenry87",
-      "score": 87.0,
+      "score": 87.14,
+      "status": "STARK"
+    },
+    {
+      "name": "seroo",
+      "score": 86.92,
       "status": "STARK"
     },
     {
@@ -285,11 +290,6 @@
     {
       "name": "eco",
       "score": 86.83,
-      "status": "STARK"
-    },
-    {
-      "name": "seroo",
-      "score": 86.52,
       "status": "STARK"
     },
     {
@@ -526,7 +526,12 @@
     },
     {
       "name": "SirHenry87",
-      "score": 87.0,
+      "score": 87.14,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "seroo",
+      "score": 86.92,
       "tip": "Weiter so"
     },
     {
@@ -537,11 +542,6 @@
     {
       "name": "eco",
       "score": 86.83,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "seroo",
-      "score": 86.52,
       "tip": "Weiter so"
     },
     {
@@ -791,7 +791,7 @@
         "role": "member",
         "score": 90.13,
         "strikes": 0,
-        "donations": 443,
+        "donations": 459,
         "participation_count": 6,
         "trend": "",
         "reason": "Score über 85",
@@ -887,7 +887,7 @@
         "role": "member",
         "score": 89.01,
         "strikes": 0,
-        "donations": 177,
+        "donations": 201,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -945,11 +945,23 @@
         "name": "SirHenry87",
         "player_tag": "#8QYYL8LCQ",
         "role": "member",
-        "score": 87.0,
+        "score": 87.14,
         "strikes": 0,
-        "donations": 178,
+        "donations": 212,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "seroo",
+        "player_tag": "#JRGC9RRQG",
+        "role": "member",
+        "score": 86.92,
+        "strikes": 0,
+        "donations": 122,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -972,18 +984,6 @@
         "score": 86.83,
         "strikes": 0,
         "donations": 610,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "seroo",
-        "player_tag": "#JRGC9RRQG",
-        "role": "member",
-        "score": 86.52,
-        "strikes": 0,
-        "donations": 122,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
