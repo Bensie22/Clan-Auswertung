@@ -61,11 +61,6 @@
       "priority": 2
     },
     {
-      "name": "Johan",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
@@ -77,6 +72,11 @@
     },
     {
       "name": "Ted",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
@@ -203,11 +203,6 @@
       "status": "STARK"
     },
     {
-      "name": "Johan",
-      "score": 89.73,
-      "status": "STARK"
-    },
-    {
       "name": "OneAndOnly",
       "score": 89.73,
       "status": "STARK"
@@ -220,6 +215,11 @@
     {
       "name": "Ted",
       "score": 89.59,
+      "status": "STARK"
+    },
+    {
+      "name": "Johan",
+      "score": 89.47,
       "status": "STARK"
     },
     {
@@ -455,11 +455,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Johan",
-      "score": 89.73,
-      "tip": "Weiter so"
-    },
-    {
       "name": "OneAndOnly",
       "score": 89.73,
       "tip": "Weiter so"
@@ -472,6 +467,11 @@
     {
       "name": "Ted",
       "score": 89.59,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Johan",
+      "score": 89.47,
       "tip": "Weiter so"
     },
     {
@@ -793,18 +793,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Johan",
-        "player_tag": "#UQVCVVVJL",
-        "role": "member",
-        "score": 89.73,
-        "strikes": 0,
-        "donations": 187,
-        "participation_count": 8,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "OneAndOnly",
         "player_tag": "#8P0J8P0L",
         "role": "member",
@@ -837,6 +825,18 @@
         "donations": 414,
         "participation_count": 10,
         "trend": "🔴🔴🔴🟡🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Johan",
+        "player_tag": "#UQVCVVVJL",
+        "role": "member",
+        "score": 89.47,
+        "strikes": 0,
+        "donations": 187,
+        "participation_count": 8,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
