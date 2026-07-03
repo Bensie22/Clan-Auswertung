@@ -56,17 +56,17 @@
       "priority": 2
     },
     {
+      "name": "Ted",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Bensie",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "OneAndOnly",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Ted",
       "scenario": "TOP",
       "priority": 2
     },
@@ -203,6 +203,11 @@
       "status": "STARK"
     },
     {
+      "name": "Ted",
+      "score": 89.99,
+      "status": "STARK"
+    },
+    {
       "name": "Bensie",
       "score": 89.87,
       "status": "STARK"
@@ -210,11 +215,6 @@
     {
       "name": "OneAndOnly",
       "score": 89.87,
-      "status": "STARK"
-    },
-    {
-      "name": "Ted",
-      "score": 89.72,
       "status": "STARK"
     },
     {
@@ -455,6 +455,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Ted",
+      "score": 89.99,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Bensie",
       "score": 89.87,
       "tip": "Weiter so"
@@ -462,11 +467,6 @@
     {
       "name": "OneAndOnly",
       "score": 89.87,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Ted",
-      "score": 89.72,
       "tip": "Weiter so"
     },
     {
@@ -786,6 +786,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Ted",
+        "player_tag": "#J9RQPGLVP",
+        "role": "member",
+        "score": 89.99,
+        "strikes": 0,
+        "donations": 484,
+        "participation_count": 10,
+        "trend": "🔴🔴🔴🟡🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Bensie",
         "player_tag": "#2QRVR9L8",
         "role": "member",
@@ -806,18 +818,6 @@
         "donations": 164,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Ted",
-        "player_tag": "#J9RQPGLVP",
-        "role": "member",
-        "score": 89.72,
-        "strikes": 0,
-        "donations": 484,
-        "participation_count": 10,
-        "trend": "🔴🔴🔴🟡🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
