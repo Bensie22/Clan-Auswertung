@@ -81,12 +81,12 @@
       "priority": 2
     },
     {
-      "name": "Jackhammer",
+      "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Dolphin",
+      "name": "Jackhammer",
       "scenario": "TOP",
       "priority": 2
     },
@@ -223,11 +223,6 @@
       "status": "STARK"
     },
     {
-      "name": "Jackhammer",
-      "score": 89.55,
-      "status": "STARK"
-    },
-    {
       "name": "Dolphin",
       "score": 89.38,
       "status": "STARK"
@@ -235,6 +230,11 @@
     {
       "name": "elazeto",
       "score": 89.33,
+      "status": "STARK"
+    },
+    {
+      "name": "Jackhammer",
+      "score": 89.28,
       "status": "STARK"
     },
     {
@@ -399,7 +399,7 @@
     },
     {
       "name": "Itachi Uchiha",
-      "score": 5.2,
+      "score": 4.93,
       "status": "RISIKO"
     }
   ],
@@ -475,11 +475,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Jackhammer",
-      "score": 89.55,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Dolphin",
       "score": 89.38,
       "tip": "Weiter so"
@@ -487,6 +482,11 @@
     {
       "name": "elazeto",
       "score": 89.33,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Jackhammer",
+      "score": 89.28,
       "tip": "Weiter so"
     },
     {
@@ -651,7 +651,7 @@
     },
     {
       "name": "Itachi Uchiha",
-      "score": 5.2,
+      "score": 4.93,
       "tip": "Mehr Teilnahme notwendig"
     }
   ],
@@ -662,9 +662,9 @@
         "name": "Itachi Uchiha",
         "player_tag": "#9U0GLQPRC",
         "role": "member",
-        "score": 5.2,
+        "score": 4.93,
         "strikes": 0,
-        "donations": 164,
+        "donations": 174,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -774,7 +774,7 @@
         "role": "member",
         "score": 90.27,
         "strikes": 0,
-        "donations": 373,
+        "donations": 381,
         "participation_count": 6,
         "trend": "",
         "reason": "Score über 85",
@@ -841,24 +841,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Jackhammer",
-        "player_tag": "#2CJYG9UG",
-        "role": "member",
-        "score": 89.55,
-        "strikes": 0,
-        "donations": 153,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Dolphin",
         "player_tag": "#2U09UULRR",
         "role": "member",
         "score": 89.38,
         "strikes": 0,
         "donations": 191,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Jackhammer",
+        "player_tag": "#2CJYG9UG",
+        "role": "member",
+        "score": 89.28,
+        "strikes": 0,
+        "donations": 169,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -906,7 +906,7 @@
         "role": "member",
         "score": 88.21,
         "strikes": 0,
-        "donations": 136,
+        "donations": 154,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -918,7 +918,7 @@
         "role": "member",
         "score": 88.16,
         "strikes": 0,
-        "donations": 86,
+        "donations": 122,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
