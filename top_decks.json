@@ -10,7 +10,7 @@
             "#P0JYR9YUY": "20260703T080004.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260702T160112.000Z",
-            "#G02LC9C8": "20260703T141706.000Z",
+            "#G02LC9C8": "20260703T143005.000Z",
             "#2U8288CVY": "20260703T104719.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
@@ -37,14 +37,14 @@
             "#8QYYL8LCQ": "20260702T234324.000Z",
             "#8P0J8P0L": "20260703T121049.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20260702T200634.000Z",
+            "#CUJ9PJ2UV": "20260703T143050.000Z",
             "#2P0U2RLGY": "20260703T074056.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260703T102617.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
             "#UUPCULU9V": "20260703T135022.000Z",
-            "#202VP2QL9P": "20260703T033644.000Z",
+            "#202VP2QL9P": "20260703T142830.000Z",
             "#LVUGLUCP9": "20260702T192056.000Z",
             "#20QGJVPG8Q": "20260703T140409.000Z",
             "#V9GYJQ0J9": "",
@@ -5145,7 +5145,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "AaleDieter"
             ],
@@ -5153,6 +5153,12 @@
                 "CUJ9PJ2UV"
             ],
             "recent_matches": [
+                {
+                    "time": "20260703T143050.000Z",
+                    "result": "loss",
+                    "player": "AaleDieter",
+                    "tag": "CUJ9PJ2UV"
+                },
                 {
                     "time": "20260702T120824.000Z",
                     "result": "win",
@@ -255014,6 +255020,98 @@
                     "id": 26000018,
                     "name": "Mini P.E.K.K.A",
                     "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000012-26000017-26000018-26000021-26000049-26000055-27000006-28000008": {
+            "cards": [
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000002-26000010-26000015-26000041-26000047-26000052-27000010-28000011": {
+            "cards": [
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000002,
+                    "name": "Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X_DQUye_OaS3QN6VC9CPw05Fit7wvSm3XegXIXKP--0.png"
+                },
+                {
+                    "id": 26000047,
+                    "name": "Royal Recruits",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jcNyYGUiXXNz3kuz8NBkHNKNREQKraXlb_Ts7rhCIdM.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000052,
+                    "name": "Zappies",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QZfHRpLRmutZbCr5fpLnTpIp89vLI6NrAwzGZ8tHEc4.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 26000010,
+                    "name": "Skeletons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/oO7iKMU5m0cdxhYPZA3nWQiAUh2yoGgdThLWB1rVSec.png"
                 }
             ],
             "seen": 1,
