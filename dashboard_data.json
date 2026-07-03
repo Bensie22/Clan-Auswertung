@@ -111,17 +111,17 @@
       "priority": 2
     },
     {
-      "name": "Wario",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "SankKiI9",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "SirHenry87",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Wario",
       "scenario": "TOP",
       "priority": 2
     },
@@ -268,11 +268,6 @@
       "status": "STARK"
     },
     {
-      "name": "Wario",
-      "score": 87.37,
-      "status": "STARK"
-    },
-    {
       "name": "SankKiI9",
       "score": 87.35,
       "status": "STARK"
@@ -280,6 +275,11 @@
     {
       "name": "SirHenry87",
       "score": 87.0,
+      "status": "STARK"
+    },
+    {
+      "name": "Wario",
+      "score": 86.97,
       "status": "STARK"
     },
     {
@@ -520,11 +520,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Wario",
-      "score": 87.37,
-      "tip": "Weiter so"
-    },
-    {
       "name": "SankKiI9",
       "score": 87.35,
       "tip": "Weiter so"
@@ -532,6 +527,11 @@
     {
       "name": "SirHenry87",
       "score": 87.0,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Wario",
+      "score": 86.97,
       "tip": "Weiter so"
     },
     {
@@ -827,7 +827,7 @@
         "role": "member",
         "score": 89.67,
         "strikes": 0,
-        "donations": 817,
+        "donations": 825,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -930,18 +930,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Wario",
-        "player_tag": "#2PUQYJC02",
-        "role": "member",
-        "score": 87.37,
-        "strikes": 0,
-        "donations": 88,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "SankKiI9",
         "player_tag": "#89CJRRV8",
         "role": "member",
@@ -966,12 +954,24 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Wario",
+        "player_tag": "#2PUQYJC02",
+        "role": "member",
+        "score": 86.97,
+        "strikes": 0,
+        "donations": 88,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "eco",
         "player_tag": "#202VP2QL9P",
         "role": "member",
         "score": 86.56,
         "strikes": 0,
-        "donations": 592,
+        "donations": 600,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
