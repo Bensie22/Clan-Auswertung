@@ -149,6 +149,11 @@
       "name": "agostini",
       "scenario": "TOP",
       "priority": 2
+    },
+    {
+      "name": "Desteoyer",
+      "scenario": "TOP",
+      "priority": 2
     }
   ],
   "smart": [
@@ -303,18 +308,18 @@
       "status": "STARK"
     },
     {
+      "name": "Desteoyer",
+      "score": 85.4,
+      "status": "STARK"
+    },
+    {
       "name": "Flauschos",
       "score": 85.0,
       "status": "STARK"
     },
     {
-      "name": "Desteoyer",
-      "score": 84.87,
-      "status": "STARK"
-    },
-    {
       "name": "l_Bozo",
-      "score": 84.5,
+      "score": 84.23,
       "status": "STARK"
     },
     {
@@ -555,18 +560,18 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Desteoyer",
+      "score": 85.4,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Flauschos",
       "score": 85.0,
       "tip": "Weiter so"
     },
     {
-      "name": "Desteoyer",
-      "score": 84.87,
-      "tip": "Weiter so"
-    },
-    {
       "name": "l_Bozo",
-      "score": 84.5,
+      "score": 84.23,
       "tip": "Weiter so"
     },
     {
@@ -750,7 +755,7 @@
         "role": "member",
         "score": 90.62,
         "strikes": 0,
-        "donations": 442,
+        "donations": 462,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -822,7 +827,7 @@
         "role": "member",
         "score": 89.59,
         "strikes": 0,
-        "donations": 414,
+        "donations": 434,
         "participation_count": 10,
         "trend": "🔴🔴🔴🟡🟢",
         "reason": "Score über 85",
@@ -1017,6 +1022,18 @@
         "donations": 402,
         "participation_count": 5,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Desteoyer",
+        "player_tag": "#2V800VCQ0",
+        "role": "member",
+        "score": 85.4,
+        "strikes": 0,
+        "donations": 226,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       }
