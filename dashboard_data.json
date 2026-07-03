@@ -126,12 +126,12 @@
       "priority": 2
     },
     {
-      "name": "seroo",
+      "name": "eco",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "eco",
+      "name": "seroo",
       "scenario": "TOP",
       "priority": 2
     },
@@ -283,13 +283,13 @@
       "status": "STARK"
     },
     {
-      "name": "seroo",
-      "score": 86.52,
+      "name": "eco",
+      "score": 86.7,
       "status": "STARK"
     },
     {
-      "name": "eco",
-      "score": 86.43,
+      "name": "seroo",
+      "score": 86.52,
       "status": "STARK"
     },
     {
@@ -364,7 +364,7 @@
     },
     {
       "name": "Chico",
-      "score": 79.5,
+      "score": 79.23,
       "status": "OK"
     },
     {
@@ -535,13 +535,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "seroo",
-      "score": 86.52,
+      "name": "eco",
+      "score": 86.7,
       "tip": "Weiter so"
     },
     {
-      "name": "eco",
-      "score": 86.43,
+      "name": "seroo",
+      "score": 86.52,
       "tip": "Weiter so"
     },
     {
@@ -616,7 +616,7 @@
     },
     {
       "name": "Chico",
-      "score": 79.5,
+      "score": 79.23,
       "tip": "Weiter so"
     },
     {
@@ -966,24 +966,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "seroo",
-        "player_tag": "#JRGC9RRQG",
+        "name": "eco",
+        "player_tag": "#202VP2QL9P",
         "role": "member",
-        "score": 86.52,
+        "score": 86.7,
         "strikes": 0,
-        "donations": 122,
+        "donations": 610,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
       {
-        "name": "eco",
-        "player_tag": "#202VP2QL9P",
+        "name": "seroo",
+        "player_tag": "#JRGC9RRQG",
         "role": "member",
-        "score": 86.43,
+        "score": 86.52,
         "strikes": 0,
-        "donations": 600,
+        "donations": 122,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
