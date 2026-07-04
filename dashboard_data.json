@@ -66,12 +66,12 @@
       "priority": 2
     },
     {
-      "name": "OneAndOnly",
+      "name": "Knitte",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Knitte",
+      "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
     },
@@ -213,13 +213,13 @@
       "status": "STARK"
     },
     {
-      "name": "OneAndOnly",
-      "score": 89.87,
+      "name": "Knitte",
+      "score": 89.94,
       "status": "STARK"
     },
     {
-      "name": "Knitte",
-      "score": 89.67,
+      "name": "OneAndOnly",
+      "score": 89.87,
       "status": "STARK"
     },
     {
@@ -465,13 +465,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "OneAndOnly",
-      "score": 89.87,
+      "name": "Knitte",
+      "score": 89.94,
       "tip": "Weiter so"
     },
     {
-      "name": "Knitte",
-      "score": 89.67,
+      "name": "OneAndOnly",
+      "score": 89.87,
       "tip": "Weiter so"
     },
     {
@@ -803,9 +803,21 @@
         "role": "member",
         "score": 89.99,
         "strikes": 0,
-        "donations": 510,
+        "donations": 528,
         "participation_count": 10,
         "trend": "🔴🔴🔴🟡🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Knitte",
+        "player_tag": "#ULYJ2CQP",
+        "role": "member",
+        "score": 89.94,
+        "strikes": 0,
+        "donations": 889,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -816,18 +828,6 @@
         "score": 89.87,
         "strikes": 0,
         "donations": 164,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Knitte",
-        "player_tag": "#ULYJ2CQP",
-        "role": "member",
-        "score": 89.67,
-        "strikes": 0,
-        "donations": 879,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
