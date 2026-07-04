@@ -91,6 +91,11 @@
       "priority": 2
     },
     {
+      "name": "AaleDieter",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "honigmelone",
       "scenario": "TOP",
       "priority": 2
@@ -121,17 +126,17 @@
       "priority": 2
     },
     {
-      "name": "eco",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "SankKiI9",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "seroo",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "eco",
       "scenario": "TOP",
       "priority": 2
     },
@@ -278,11 +283,6 @@
       "status": "STARK"
     },
     {
-      "name": "eco",
-      "score": 86.83,
-      "status": "STARK"
-    },
-    {
       "name": "SankKiI9",
       "score": 86.82,
       "status": "STARK"
@@ -290,6 +290,11 @@
     {
       "name": "seroo",
       "score": 86.78,
+      "status": "STARK"
+    },
+    {
+      "name": "eco",
+      "score": 86.7,
       "status": "STARK"
     },
     {
@@ -530,11 +535,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "eco",
-      "score": 86.83,
-      "tip": "Weiter so"
-    },
-    {
       "name": "SankKiI9",
       "score": 86.82,
       "tip": "Weiter so"
@@ -542,6 +542,11 @@
     {
       "name": "seroo",
       "score": 86.78,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "eco",
+      "score": 86.7,
       "tip": "Weiter so"
     },
     {
@@ -875,7 +880,7 @@
         "role": "member",
         "score": 89.19,
         "strikes": 0,
-        "donations": 32,
+        "donations": 50,
         "participation_count": 9,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -954,18 +959,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "eco",
-        "player_tag": "#202VP2QL9P",
-        "role": "member",
-        "score": 86.83,
-        "strikes": 0,
-        "donations": 654,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "SankKiI9",
         "player_tag": "#89CJRRV8",
         "role": "member",
@@ -984,6 +977,18 @@
         "score": 86.78,
         "strikes": 0,
         "donations": 184,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "eco",
+        "player_tag": "#202VP2QL9P",
+        "role": "member",
+        "score": 86.7,
+        "strikes": 0,
+        "donations": 674,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
