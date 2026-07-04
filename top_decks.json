@@ -5,7 +5,7 @@
             "#L8PV090J": "20260704T130048.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260704T065624.000Z",
-            "#ULYJ2CQP": "20260704T133055.000Z",
+            "#ULYJ2CQP": "20260704T133403.000Z",
             "#UJ2P9UYUV": "20260704T090719.000Z",
             "#P0JYR9YUY": "20260704T115700.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
@@ -21,7 +21,7 @@
             "#QVQGCV8Y9": "20260703T134825.000Z",
             "#Q8L0RJ8Y8": "20260703T160310.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
-            "#2CPRGY8G": "20260704T132813.000Z",
+            "#2CPRGY8G": "20260704T133536.000Z",
             "#LLQQJCLC": "20260704T132827.000Z",
             "#2VJR80RL": "20260703T202720.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
@@ -29,7 +29,7 @@
             "#2CJYG9UG": "20260703T112326.000Z",
             "#2PUQYJC02": "20260703T191320.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20260704T132259.000Z",
+            "#2V800VCQ0": "20260704T133835.000Z",
             "#2UQUPYQCJ": "20260630T130220.000Z",
             "#JUUR8UGL8": "20260704T100700.000Z",
             "#2U09UULRR": "20260704T055806.000Z",
@@ -5991,7 +5991,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Desteoyer"
             ],
@@ -5999,6 +5999,12 @@
                 "2V800VCQ0"
             ],
             "recent_matches": [
+                {
+                    "time": "20260704T133243.000Z",
+                    "result": "loss",
+                    "player": "Desteoyer",
+                    "tag": "2V800VCQ0"
+                },
                 {
                     "time": "20260703T130943.000Z",
                     "result": "win",
@@ -259512,6 +259518,52 @@
                     "id": 26000049,
                     "name": "Bats",
                     "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000001-26000002-26000007-26000012-26000018-26000055-26000056-28000018": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 26000002,
+                    "name": "Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X_DQUye_OaS3QN6VC9CPw05Fit7wvSm3XegXIXKP--0.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 28000018,
+                    "name": "Royal Delivery",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LPg7AGjGI3_xmi7gLLgGC50yKM1jJ2teWkZfoHJcIZo.png"
                 }
             ],
             "seen": 1,
