@@ -121,11 +121,6 @@
       "priority": 2
     },
     {
-      "name": "Wario",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "SankKiI9",
       "scenario": "TOP",
       "priority": 2
@@ -137,6 +132,11 @@
     },
     {
       "name": "eco",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Wario",
       "scenario": "TOP",
       "priority": 2
     },
@@ -278,11 +278,6 @@
       "status": "STARK"
     },
     {
-      "name": "Wario",
-      "score": 86.84,
-      "status": "STARK"
-    },
-    {
       "name": "SankKiI9",
       "score": 86.82,
       "status": "STARK"
@@ -298,6 +293,11 @@
       "status": "STARK"
     },
     {
+      "name": "Wario",
+      "score": 86.7,
+      "status": "STARK"
+    },
+    {
       "name": "Theezy",
       "score": 86.2,
       "status": "STARK"
@@ -309,7 +309,7 @@
     },
     {
       "name": "bes",
-      "score": 85.67,
+      "score": 85.8,
       "status": "STARK"
     },
     {
@@ -349,7 +349,7 @@
     },
     {
       "name": "Rainer",
-      "score": 82.63,
+      "score": 82.37,
       "status": "STARK"
     },
     {
@@ -530,11 +530,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Wario",
-      "score": 86.84,
-      "tip": "Weiter so"
-    },
-    {
       "name": "SankKiI9",
       "score": 86.82,
       "tip": "Weiter so"
@@ -550,6 +545,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Wario",
+      "score": 86.7,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Theezy",
       "score": 86.2,
       "tip": "Weiter so"
@@ -561,7 +561,7 @@
     },
     {
       "name": "bes",
-      "score": 85.67,
+      "score": 85.8,
       "tip": "Weiter so"
     },
     {
@@ -601,7 +601,7 @@
     },
     {
       "name": "Rainer",
-      "score": 82.63,
+      "score": 82.37,
       "tip": "Weiter so"
     },
     {
@@ -748,7 +748,7 @@
         "role": "member",
         "score": 90.89,
         "strikes": 0,
-        "donations": 655,
+        "donations": 675,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -947,24 +947,12 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Wario",
-        "player_tag": "#2PUQYJC02",
-        "role": "member",
-        "score": 86.84,
-        "strikes": 0,
-        "donations": 98,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "SankKiI9",
         "player_tag": "#89CJRRV8",
         "role": "member",
         "score": 86.82,
         "strikes": 0,
-        "donations": 876,
+        "donations": 896,
         "participation_count": 8,
         "trend": "",
         "reason": "Score über 85",
@@ -995,6 +983,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Wario",
+        "player_tag": "#2PUQYJC02",
+        "role": "member",
+        "score": 86.7,
+        "strikes": 0,
+        "donations": 98,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Theezy",
         "player_tag": "#JUUR8UGL8",
         "role": "member",
@@ -1012,7 +1012,7 @@
         "role": "member",
         "score": 85.93,
         "strikes": 0,
-        "donations": 516,
+        "donations": 536,
         "participation_count": 5,
         "trend": "",
         "reason": "Score über 85",
@@ -1022,9 +1022,9 @@
         "name": "bes",
         "player_tag": "#LLQQJCLC",
         "role": "member",
-        "score": 85.67,
+        "score": 85.8,
         "strikes": 0,
-        "donations": 62,
+        "donations": 72,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
