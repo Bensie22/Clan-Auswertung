@@ -5,7 +5,7 @@
             "#L8PV090J": "20260704T130048.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260704T065624.000Z",
-            "#ULYJ2CQP": "20260704T143832.000Z",
+            "#ULYJ2CQP": "20260704T144649.000Z",
             "#UJ2P9UYUV": "20260704T090719.000Z",
             "#P0JYR9YUY": "20260704T141603.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
@@ -46,11 +46,11 @@
             "#UUPCULU9V": "20260704T121644.000Z",
             "#202VP2QL9P": "20260704T131938.000Z",
             "#LVUGLUCP9": "20260704T053804.000Z",
-            "#20QGJVPG8Q": "20260704T090829.000Z",
+            "#20QGJVPG8Q": "20260704T144723.000Z",
             "#V9GYJQ0J9": "",
             "#URJ0LUYPV": "20260704T142710.000Z",
             "#Q2GRGLQR": "20260704T080025.000Z",
-            "#J9RQPGLVP": "20260704T104611.000Z",
+            "#J9RQPGLVP": "20260704T144818.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
             "#9VLRQ9GR9": "20260703T211227.000Z",
             "#29RLRYLQL": "20260420T155237.000Z",
@@ -60,7 +60,7 @@
             "#9UJ9GUL9Q": "20260421T171612.000Z",
             "#CLC8JVPRG": "20260424T234312.000Z",
             "#G8RVJJ2R": "20260611T145142.000Z",
-            "#P8GRG0UCY": "20260704T101042.000Z",
+            "#P8GRG0UCY": "20260704T145052.000Z",
             "#CQ0JQ0PC": "20260424T155243.000Z",
             "#VRCVPQU2Y": "20260424T064627.000Z",
             "#88GPYVR8P": "20260610T155319.000Z",
@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20260704T143512.000Z",
+            "#YUQVVVLQ": "20260704T144647.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260609T223746.000Z",
             "#GLGY98U08": "20260703T212826.000Z",
@@ -4509,7 +4509,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 1,
+            "losses": 2,
             "players": [
                 "maghrebi"
             ],
@@ -4517,6 +4517,12 @@
                 "20QGJVPG8Q"
             ],
             "recent_matches": [
+                {
+                    "time": "20260704T144723.000Z",
+                    "result": "loss",
+                    "player": "maghrebi",
+                    "tag": "20QGJVPG8Q"
+                },
                 {
                     "time": "20260703T134104.000Z",
                     "result": "loss",
@@ -259872,6 +259878,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000018-26000035-26000045-26000055-26000074-26000080-28000000-28000002": {
+            "cards": [
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000074,
+                    "name": "Golden Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WJd207D0O1sN-l1FTb8P9KhYL2oF5jY26vRUfTUW3FQ.png"
+                },
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000035,
+                    "name": "Lumberjack",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
+                },
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 26000080,
+                    "name": "Skeleton Dragons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qPOtg9uONh47_NLxGhhFc_ww9PlZ6z3Ry507q1NZUXs.png"
+                },
+                {
+                    "id": 28000002,
+                    "name": "Rage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
