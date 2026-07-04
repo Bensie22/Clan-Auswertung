@@ -1,13 +1,13 @@
 {
     "_metadata": {
         "last_battles": {
-            "#22Q920RLR": "20260704T181603.000Z",
+            "#22Q920RLR": "20260704T183419.000Z",
             "#L8PV090J": "20260704T130048.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260704T065624.000Z",
             "#ULYJ2CQP": "20260704T152649.000Z",
             "#UJ2P9UYUV": "20260704T090719.000Z",
-            "#P0JYR9YUY": "20260704T141603.000Z",
+            "#P0JYR9YUY": "20260704T183832.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260704T073004.000Z",
             "#G02LC9C8": "20260704T164625.000Z",
@@ -94,7 +94,7 @@
             "#PVYJ80YCL": "20260619T140927.000Z",
             "#RP9RVGQJU": "20260615T092432.000Z",
             "#P0G2GYJQ9": "20260704T161703.000Z",
-            "#8P2GV8UQY": "20260704T170522.000Z",
+            "#8P2GV8UQY": "20260704T183548.000Z",
             "#VV2JR990": "20260622T193820.000Z",
             "#YYJR9R0GR": "20260703T055035.000Z",
             "#9U0GLQPRC": "20260704T135006.000Z"
@@ -5787,7 +5787,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Chico"
             ],
@@ -5795,6 +5795,12 @@
                 "P0JYR9YUY"
             ],
             "recent_matches": [
+                {
+                    "time": "20260704T183832.000Z",
+                    "result": "loss",
+                    "player": "Chico",
+                    "tag": "P0JYR9YUY"
+                },
                 {
                     "time": "20260703T160853.000Z",
                     "result": "win",
@@ -260664,6 +260670,52 @@
                     "id": 28000005,
                     "name": "Freeze",
                     "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000007-26000009-26000033-26000045-26000062-27000012-28000007-28000009": {
+            "cards": [
+                {
+                    "id": 27000012,
+                    "name": "Goblin Cage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vD24bBgK4rSq7wx5QEbuqChtPMRFviL_ep76GwQw1yA.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 28000007,
+                    "name": "Lightning",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fpnESbYqe5GyZmaVVYe-SEu7tE0Kxh_HZyVigzvLjks.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                },
+                {
+                    "id": 26000033,
+                    "name": "Sparky",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/2GKMkBrArZXgQxf2ygFjDs4VvGYPbx8F6Lj_68iVhIM.png"
+                },
+                {
+                    "id": 26000009,
+                    "name": "Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/npdmCnET7jmVjJvjJQkFnNSNnDxYHDBigbvIAloFMds.png"
                 }
             ],
             "seen": 1,
