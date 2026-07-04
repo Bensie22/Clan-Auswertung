@@ -121,17 +121,17 @@
       "priority": 2
     },
     {
-      "name": "seroo",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Wario",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "eco",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "seroo",
       "scenario": "TOP",
       "priority": 2
     },
@@ -278,11 +278,6 @@
       "status": "STARK"
     },
     {
-      "name": "seroo",
-      "score": 86.92,
-      "status": "STARK"
-    },
-    {
       "name": "Wario",
       "score": 86.84,
       "status": "STARK"
@@ -290,6 +285,11 @@
     {
       "name": "eco",
       "score": 86.83,
+      "status": "STARK"
+    },
+    {
+      "name": "seroo",
+      "score": 86.78,
       "status": "STARK"
     },
     {
@@ -363,13 +363,13 @@
       "status": "STARK"
     },
     {
-      "name": "Chico",
-      "score": 79.23,
+      "name": "rote sonne",
+      "score": 79.34,
       "status": "OK"
     },
     {
-      "name": "rote sonne",
-      "score": 79.2,
+      "name": "Chico",
+      "score": 79.23,
       "status": "OK"
     },
     {
@@ -530,11 +530,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "seroo",
-      "score": 86.92,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Wario",
       "score": 86.84,
       "tip": "Weiter so"
@@ -542,6 +537,11 @@
     {
       "name": "eco",
       "score": 86.83,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "seroo",
+      "score": 86.78,
       "tip": "Weiter so"
     },
     {
@@ -615,13 +615,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Chico",
-      "score": 79.23,
+      "name": "rote sonne",
+      "score": 79.34,
       "tip": "Weiter so"
     },
     {
-      "name": "rote sonne",
-      "score": 79.2,
+      "name": "Chico",
+      "score": 79.23,
       "tip": "Weiter so"
     },
     {
@@ -827,7 +827,7 @@
         "role": "member",
         "score": 89.87,
         "strikes": 0,
-        "donations": 184,
+        "donations": 192,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -954,18 +954,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "seroo",
-        "player_tag": "#JRGC9RRQG",
-        "role": "member",
-        "score": 86.92,
-        "strikes": 0,
-        "donations": 184,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Wario",
         "player_tag": "#2PUQYJC02",
         "role": "member",
@@ -983,7 +971,19 @@
         "role": "member",
         "score": 86.83,
         "strikes": 0,
-        "donations": 620,
+        "donations": 628,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "seroo",
+        "player_tag": "#JRGC9RRQG",
+        "role": "member",
+        "score": 86.78,
+        "strikes": 0,
+        "donations": 184,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
