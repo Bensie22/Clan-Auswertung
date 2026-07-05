@@ -29,7 +29,7 @@
             "#2CJYG9UG": "20260704T173838.000Z",
             "#2PUQYJC02": "20260704T172556.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20260705T093848.000Z",
+            "#2V800VCQ0": "20260705T100115.000Z",
             "#2UQUPYQCJ": "20260704T210315.000Z",
             "#JUUR8UGL8": "20260705T053220.000Z",
             "#2U09UULRR": "20260705T095745.000Z",
@@ -37,7 +37,7 @@
             "#8QYYL8LCQ": "20260705T020250.000Z",
             "#8P0J8P0L": "20260704T202117.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20260704T214236.000Z",
+            "#CUJ9PJ2UV": "20260705T100719.000Z",
             "#2P0U2RLGY": "20260704T191209.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260704T074550.000Z",
@@ -94,7 +94,7 @@
             "#PVYJ80YCL": "20260619T140927.000Z",
             "#RP9RVGQJU": "20260615T092432.000Z",
             "#P0G2GYJQ9": "20260704T225941.000Z",
-            "#8P2GV8UQY": "20260705T094618.000Z",
+            "#8P2GV8UQY": "20260705T100427.000Z",
             "#VV2JR990": "20260622T193820.000Z",
             "#YYJR9R0GR": "20260704T194903.000Z",
             "#9U0GLQPRC": "20260704T214819.000Z"
@@ -5430,7 +5430,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "Giger"
@@ -5439,6 +5439,12 @@
                 "8P2GV8UQY"
             ],
             "recent_matches": [
+                {
+                    "time": "20260705T100427.000Z",
+                    "result": "win",
+                    "player": "Giger",
+                    "tag": "8P2GV8UQY"
+                },
                 {
                     "time": "20260704T111019.000Z",
                     "result": "win",
@@ -263296,6 +263302,52 @@
                     "id": 26000043,
                     "name": "Elite Barbarians",
                     "icon": "https://api-assets.clashroyale.com/cards/300/C88C5JH_F3lLZj6K-tLcMo5DPjrFmvzIb1R2M6xCfTE.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000004-26000006-26000014-26000033-26000051-27000005-28000003-28000007": {
+            "cards": [
+                {
+                    "id": 26000051,
+                    "name": "Ram Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
+                },
+                {
+                    "id": 28000003,
+                    "name": "Rocket",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ie07nQNK9CjhKOa4-arFAewi4EroqaA-86Xo7r5tx94.png"
+                },
+                {
+                    "id": 27000005,
+                    "name": "Barbarian Hut",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ho0nOG2y3Ch86elHHcocQs8Fv_QNe0cFJ2CijsxABZA.png"
+                },
+                {
+                    "id": 26000033,
+                    "name": "Sparky",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/2GKMkBrArZXgQxf2ygFjDs4VvGYPbx8F6Lj_68iVhIM.png"
+                },
+                {
+                    "id": 28000007,
+                    "name": "Lightning",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fpnESbYqe5GyZmaVVYe-SEu7tE0Kxh_HZyVigzvLjks.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
                 }
             ],
             "seen": 1,
