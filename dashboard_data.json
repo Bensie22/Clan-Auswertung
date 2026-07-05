@@ -76,17 +76,17 @@
       "priority": 2
     },
     {
-      "name": "Ted",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "AaleDieter",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Johan",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Ted",
       "scenario": "TOP",
       "priority": 2
     },
@@ -228,11 +228,6 @@
       "status": "STARK"
     },
     {
-      "name": "Ted",
-      "score": 89.59,
-      "status": "STARK"
-    },
-    {
       "name": "AaleDieter",
       "score": 89.45,
       "status": "STARK"
@@ -240,6 +235,11 @@
     {
       "name": "Johan",
       "score": 89.33,
+      "status": "STARK"
+    },
+    {
+      "name": "Ted",
+      "score": 89.19,
       "status": "STARK"
     },
     {
@@ -480,11 +480,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Ted",
-      "score": 89.59,
-      "tip": "Weiter so"
-    },
-    {
       "name": "AaleDieter",
       "score": 89.45,
       "tip": "Weiter so"
@@ -492,6 +487,11 @@
     {
       "name": "Johan",
       "score": 89.33,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Ted",
+      "score": 89.19,
       "tip": "Weiter so"
     },
     {
@@ -839,18 +839,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Ted",
-        "player_tag": "#J9RQPGLVP",
-        "role": "member",
-        "score": 89.59,
-        "strikes": 0,
-        "donations": 740,
-        "participation_count": 10,
-        "trend": "🔴🔴🔴🟡🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "AaleDieter",
         "player_tag": "#CUJ9PJ2UV",
         "role": "member",
@@ -871,6 +859,18 @@
         "donations": 223,
         "participation_count": 8,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Ted",
+        "player_tag": "#J9RQPGLVP",
+        "role": "member",
+        "score": 89.19,
+        "strikes": 0,
+        "donations": 740,
+        "participation_count": 10,
+        "trend": "🔴🔴🔴🟡🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
