@@ -7,7 +7,7 @@
             "#2QRVR9L8": "20260705T052505.000Z",
             "#ULYJ2CQP": "20260705T072704.000Z",
             "#UJ2P9UYUV": "20260704T090719.000Z",
-            "#P0JYR9YUY": "20260704T184144.000Z",
+            "#P0JYR9YUY": "20260705T085850.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260705T052959.000Z",
             "#G02LC9C8": "20260705T084621.000Z",
@@ -19,7 +19,7 @@
             "#QULCQGGG": "20260704T191112.000Z",
             "#JRGC9RRQG": "20260704T194947.000Z",
             "#QVQGCV8Y9": "20260705T083931.000Z",
-            "#Q8L0RJ8Y8": "20260705T084846.000Z",
+            "#Q8L0RJ8Y8": "20260705T085327.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260705T000623.000Z",
             "#LLQQJCLC": "20260705T074736.000Z",
@@ -94,7 +94,7 @@
             "#PVYJ80YCL": "20260619T140927.000Z",
             "#RP9RVGQJU": "20260615T092432.000Z",
             "#P0G2GYJQ9": "20260704T225941.000Z",
-            "#8P2GV8UQY": "20260705T082606.000Z",
+            "#8P2GV8UQY": "20260705T090048.000Z",
             "#VV2JR990": "20260622T193820.000Z",
             "#YYJR9R0GR": "20260704T194903.000Z",
             "#9U0GLQPRC": "20260704T214819.000Z"
@@ -3150,7 +3150,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
                 }
             ],
-            "wins": 5,
+            "wins": 6,
             "losses": 0,
             "players": [
                 "Erastus"
@@ -3159,6 +3159,12 @@
                 "Q8L0RJ8Y8"
             ],
             "recent_matches": [
+                {
+                    "time": "20260705T085327.000Z",
+                    "result": "win",
+                    "player": "Erastus",
+                    "tag": "Q8L0RJ8Y8"
+                },
                 {
                     "time": "20260703T160310.000Z",
                     "result": "win",
@@ -262680,6 +262686,52 @@
                     "id": 26000030,
                     "name": "Ice Spirit",
                     "icon": "https://api-assets.clashroyale.com/cards/300/lv1budiafU9XmSdrDkk0NYyqASAFYyZ06CPysXKZXlA.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000005-26000013-26000014-26000023-26000041-26000063-26000067-28000006": {
+            "cards": [
+                {
+                    "id": 26000063,
+                    "name": "Electro Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/tN9h6lnMNPCNsx0LMFmvpHgznbDZ1fBRkx-C7UfNmfY.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000013,
+                    "name": "Bomber",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
+                },
+                {
+                    "id": 26000067,
+                    "name": "Elixir Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/puhMsZjCIqy21HW3hYxjrk_xt8NIPyFqjRy-BeLKZwo.png"
+                },
+                {
+                    "id": 26000023,
+                    "name": "Ice Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W3dkw0HTw9n1jB-zbknY2w3wHuyuLxSRIAV5fUT1SEY.png"
+                },
+                {
+                    "id": 28000006,
+                    "name": "Mirror",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/wC6Cm9rKLEOk72zTsukVwxewKIoO4ZcMJun54zCPWvA.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
                 }
             ],
             "seen": 1,
