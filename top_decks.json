@@ -34,7 +34,7 @@
             "#JUUR8UGL8": "20260704T163823.000Z",
             "#2U09UULRR": "20260704T055806.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
-            "#8QYYL8LCQ": "20260704T234051.000Z",
+            "#8QYYL8LCQ": "20260704T235256.000Z",
             "#8P0J8P0L": "20260704T202117.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260704T214236.000Z",
@@ -5797,7 +5797,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "SirHenry87"
             ],
@@ -5805,6 +5805,12 @@
                 "8QYYL8LCQ"
             ],
             "recent_matches": [
+                {
+                    "time": "20260704T235256.000Z",
+                    "result": "loss",
+                    "player": "SirHenry87",
+                    "tag": "8QYYL8LCQ"
+                },
                 {
                     "time": "20260703T233448.000Z",
                     "result": "win",
@@ -261692,6 +261698,52 @@
                     "id": 28000001,
                     "name": "Arrows",
                     "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000007-26000015-26000020-26000022-26000045-26000055-28000003-28000010": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 26000022,
+                    "name": "Minion Horde",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Wyjq5l0IXHTkX9Rmpap6HaH08MvjbxFp1xBO9a47YSI.png"
+                },
+                {
+                    "id": 26000020,
+                    "name": "Giant Skeleton",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0p0gd0XaVRu1Hb1iSG1hTYbz2AN6aEiZnhaAib5O8Z8.png"
+                },
+                {
+                    "id": 28000003,
+                    "name": "Rocket",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ie07nQNK9CjhKOa4-arFAewi4EroqaA-86Xo7r5tx94.png"
+                },
+                {
+                    "id": 28000010,
+                    "name": "Graveyard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Icp8BIyyfBTj1ncCJS7mb82SY7TPV-MAE-J2L2R48DI.png"
                 }
             ],
             "seen": 1,
