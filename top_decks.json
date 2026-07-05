@@ -5,7 +5,7 @@
             "#L8PV090J": "20260704T130048.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260705T052505.000Z",
-            "#ULYJ2CQP": "20260704T233328.000Z",
+            "#ULYJ2CQP": "20260705T070754.000Z",
             "#UJ2P9UYUV": "20260704T090719.000Z",
             "#P0JYR9YUY": "20260704T184144.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
@@ -29,7 +29,7 @@
             "#2CJYG9UG": "20260704T173838.000Z",
             "#2PUQYJC02": "20260704T172556.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20260704T150630.000Z",
+            "#2V800VCQ0": "20260705T070829.000Z",
             "#2UQUPYQCJ": "20260704T210315.000Z",
             "#JUUR8UGL8": "20260705T053220.000Z",
             "#2U09UULRR": "20260704T055806.000Z",
@@ -2239,7 +2239,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Desteoyer"
             ],
@@ -2247,6 +2247,12 @@
                 "2V800VCQ0"
             ],
             "recent_matches": [
+                {
+                    "time": "20260705T070829.000Z",
+                    "result": "loss",
+                    "player": "Desteoyer",
+                    "tag": "2V800VCQ0"
+                },
                 {
                     "time": "20260626T112606.000Z",
                     "result": "win",
@@ -261982,6 +261988,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000007-26000013-26000018-26000021-26000024-26000048-26000067-28000002": {
+            "cards": [
+                {
+                    "id": 26000067,
+                    "name": "Elixir Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/puhMsZjCIqy21HW3hYxjrk_xt8NIPyFqjRy-BeLKZwo.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 26000048,
+                    "name": "Night Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NpCrXDEDBBJgNv9QrBAcJmmMFbS7pe3KCY8xJ5VB18A.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000024,
+                    "name": "Royal Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mnlRaNtmfpQx2e6mp70sLd0ND-pKPF70Cf87_agEKg4.png"
+                },
+                {
+                    "id": 28000002,
+                    "name": "Rage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
+                },
+                {
+                    "id": 26000013,
+                    "name": "Bomber",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
