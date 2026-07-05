@@ -141,12 +141,12 @@
       "priority": 2
     },
     {
-      "name": "eco",
+      "name": "agostini",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "agostini",
+      "name": "eco",
       "scenario": "TOP",
       "priority": 2
     },
@@ -298,13 +298,13 @@
       "status": "STARK"
     },
     {
-      "name": "eco",
-      "score": 86.43,
+      "name": "agostini",
+      "score": 86.33,
       "status": "STARK"
     },
     {
-      "name": "agostini",
-      "score": 86.33,
+      "name": "eco",
+      "score": 86.3,
       "status": "STARK"
     },
     {
@@ -550,13 +550,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "eco",
-      "score": 86.43,
+      "name": "agostini",
+      "score": 86.33,
       "tip": "Weiter so"
     },
     {
-      "name": "agostini",
-      "score": 86.33,
+      "name": "eco",
+      "score": 86.3,
       "tip": "Weiter so"
     },
     {
@@ -995,18 +995,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "eco",
-        "player_tag": "#202VP2QL9P",
-        "role": "member",
-        "score": 86.43,
-        "strikes": 0,
-        "donations": 826,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "agostini",
         "player_tag": "#P2YQ2QQUV",
         "role": "member",
@@ -1015,6 +1003,18 @@
         "donations": 636,
         "participation_count": 5,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "eco",
+        "player_tag": "#202VP2QL9P",
+        "role": "member",
+        "score": 86.3,
+        "strikes": 0,
+        "donations": 826,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
