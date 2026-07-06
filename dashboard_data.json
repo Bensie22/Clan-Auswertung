@@ -126,17 +126,17 @@
       "priority": 2
     },
     {
-      "name": "SankKiI9",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Theezy",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "eco",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "SankKiI9",
       "scenario": "TOP",
       "priority": 2
     },
@@ -283,11 +283,6 @@
       "status": "STARK"
     },
     {
-      "name": "SankKiI9",
-      "score": 86.82,
-      "status": "STARK"
-    },
-    {
       "name": "Theezy",
       "score": 86.6,
       "status": "STARK"
@@ -295,6 +290,11 @@
     {
       "name": "eco",
       "score": 86.56,
+      "status": "STARK"
+    },
+    {
+      "name": "SankKiI9",
+      "score": 86.42,
       "status": "STARK"
     },
     {
@@ -535,11 +535,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "SankKiI9",
-      "score": 86.82,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Theezy",
       "score": 86.6,
       "tip": "Weiter so"
@@ -547,6 +542,11 @@
     {
       "name": "eco",
       "score": 86.56,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "SankKiI9",
+      "score": 86.42,
       "tip": "Weiter so"
     },
     {
@@ -959,18 +959,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "SankKiI9",
-        "player_tag": "#89CJRRV8",
-        "role": "member",
-        "score": 86.82,
-        "strikes": 0,
-        "donations": 1002,
-        "participation_count": 8,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Theezy",
         "player_tag": "#JUUR8UGL8",
         "role": "member",
@@ -991,6 +979,18 @@
         "donations": 870,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "SankKiI9",
+        "player_tag": "#89CJRRV8",
+        "role": "member",
+        "score": 86.42,
+        "strikes": 0,
+        "donations": 1002,
+        "participation_count": 8,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
