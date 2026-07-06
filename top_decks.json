@@ -18,7 +18,7 @@
             "#PPR2QQC0U": "20260705T193050.000Z",
             "#QULCQGGG": "20260705T110543.000Z",
             "#JRGC9RRQG": "20260706T134641.000Z",
-            "#QVQGCV8Y9": "20260706T181214.000Z",
+            "#QVQGCV8Y9": "20260706T195729.000Z",
             "#Q8L0RJ8Y8": "20260706T181055.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260706T192156.000Z",
@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20260706T194921.000Z",
+            "#YUQVVVLQ": "20260706T200002.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260609T223746.000Z",
             "#GLGY98U08": "20260705T191917.000Z",
@@ -96,7 +96,7 @@
             "#P0G2GYJQ9": "20260706T185120.000Z",
             "#8P2GV8UQY": "20260706T171928.000Z",
             "#VV2JR990": "20260622T193820.000Z",
-            "#YYJR9R0GR": "20260706T061632.000Z",
+            "#YYJR9R0GR": "20260706T200108.000Z",
             "#9U0GLQPRC": "20260706T090231.000Z"
         }
     },
@@ -3391,7 +3391,7 @@
                 }
             ],
             "wins": 3,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "SunRice"
             ],
@@ -3399,6 +3399,12 @@
                 "YYJR9R0GR"
             ],
             "recent_matches": [
+                {
+                    "time": "20260706T200108.000Z",
+                    "result": "loss",
+                    "player": "SunRice",
+                    "tag": "YYJR9R0GR"
+                },
                 {
                     "time": "20260705T101131.000Z",
                     "result": "win",
@@ -268092,6 +268098,52 @@
                     "id": 26000040,
                     "name": "Dart Goblin",
                     "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000017-26000018-26000021-26000026-26000055-28000003-28000004-28000026": {
+            "cards": [
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 28000003,
+                    "name": "Rocket",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ie07nQNK9CjhKOa4-arFAewi4EroqaA-86Xo7r5tx94.png"
+                },
+                {
+                    "id": 28000026,
+                    "name": "Vines",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/V5sJlPuo2WBRtirJ1lGEPJA4NvQ0KPwFeMrpxLX5z_8.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
                 }
             ],
             "seen": 1,
