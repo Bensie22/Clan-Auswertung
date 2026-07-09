@@ -243,11 +243,6 @@
       "status": "STARK"
     },
     {
-      "name": "Theezy",
-      "score": 87.27,
-      "status": "STARK"
-    },
-    {
       "name": "Wario",
       "score": 87.1,
       "status": "STARK"
@@ -260,6 +255,11 @@
     {
       "name": "Ted",
       "score": 87.01,
+      "status": "STARK"
+    },
+    {
+      "name": "Theezy",
+      "score": 87.0,
       "status": "STARK"
     },
     {
@@ -495,11 +495,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Theezy",
-      "score": 87.27,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Wario",
       "score": 87.1,
       "tip": "Weiter so"
@@ -512,6 +507,11 @@
     {
       "name": "Ted",
       "score": 87.01,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Theezy",
+      "score": 87.0,
       "tip": "Weiter so"
     },
     {
@@ -899,18 +899,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Theezy",
-        "player_tag": "#JUUR8UGL8",
-        "role": "member",
-        "score": 87.27,
-        "strikes": 0,
-        "donations": 38,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Wario",
         "player_tag": "#2PUQYJC02",
         "role": "member",
@@ -943,6 +931,18 @@
         "donations": 363,
         "participation_count": 10,
         "trend": "🔴🔴🔴🟡🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Theezy",
+        "player_tag": "#JUUR8UGL8",
+        "role": "member",
+        "score": 87.0,
+        "strikes": 0,
+        "donations": 38,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
