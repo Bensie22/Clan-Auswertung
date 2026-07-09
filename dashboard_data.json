@@ -51,6 +51,11 @@
       "priority": 2
     },
     {
+      "name": "AaleDieter",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
@@ -101,12 +106,12 @@
       "priority": 2
     },
     {
-      "name": "Ted",
+      "name": "eco",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "eco",
+      "name": "Ted",
       "scenario": "TOP",
       "priority": 2
     },
@@ -248,13 +253,13 @@
       "status": "STARK"
     },
     {
-      "name": "Ted",
-      "score": 87.01,
+      "name": "eco",
+      "score": 86.97,
       "status": "STARK"
     },
     {
-      "name": "eco",
-      "score": 86.97,
+      "name": "Ted",
+      "score": 86.88,
       "status": "STARK"
     },
     {
@@ -500,13 +505,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Ted",
-      "score": 87.01,
+      "name": "eco",
+      "score": 86.97,
       "tip": "Weiter so"
     },
     {
-      "name": "eco",
-      "score": 86.97,
+      "name": "Ted",
+      "score": 86.88,
       "tip": "Weiter so"
     },
     {
@@ -767,7 +772,7 @@
         "role": "member",
         "score": 90.12,
         "strikes": 0,
-        "donations": 18,
+        "donations": 50,
         "participation_count": 9,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -918,18 +923,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Ted",
-        "player_tag": "#J9RQPGLVP",
-        "role": "member",
-        "score": 87.01,
-        "strikes": 0,
-        "donations": 317,
-        "participation_count": 10,
-        "trend": "🔴🔴🔴🟡🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "eco",
         "player_tag": "#202VP2QL9P",
         "role": "member",
@@ -938,6 +931,18 @@
         "donations": 372,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Ted",
+        "player_tag": "#J9RQPGLVP",
+        "role": "member",
+        "score": 86.88,
+        "strikes": 0,
+        "donations": 317,
+        "participation_count": 10,
+        "trend": "🔴🔴🔴🟡🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
