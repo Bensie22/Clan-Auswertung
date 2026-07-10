@@ -15,7 +15,7 @@
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
-            "#PPR2QQC0U": "20260710T200820.000Z",
+            "#PPR2QQC0U": "20260710T201124.000Z",
             "#QULCQGGG": "20260710T185610.000Z",
             "#JRGC9RRQG": "20260710T143901.000Z",
             "#QVQGCV8Y9": "20260707T105314.000Z",
@@ -34,7 +34,7 @@
             "#JUUR8UGL8": "20260710T183926.000Z",
             "#2U09UULRR": "20260710T170738.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
-            "#8QYYL8LCQ": "20260710T194522.000Z",
+            "#8QYYL8LCQ": "20260710T201612.000Z",
             "#8P0J8P0L": "20260710T154349.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260710T185659.000Z",
@@ -2022,7 +2022,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
                 }
             ],
-            "wins": 3,
+            "wins": 4,
             "losses": 0,
             "players": [
                 "Flauschos"
@@ -2031,6 +2031,12 @@
                 "PPR2QQC0U"
             ],
             "recent_matches": [
+                {
+                    "time": "20260710T201124.000Z",
+                    "result": "win",
+                    "player": "Flauschos",
+                    "tag": "PPR2QQC0U"
+                },
                 {
                     "time": "20260710T053303.000Z",
                     "result": "win",
@@ -278736,6 +278742,52 @@
                     "id": 26000064,
                     "name": "Firecracker",
                     "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000014-26000016-26000024-26000040-26000056-26000064-27000003-28000004": {
+            "cards": [
+                {
+                    "id": 26000024,
+                    "name": "Royal Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mnlRaNtmfpQx2e6mp70sLd0ND-pKPF70Cf87_agEKg4.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 27000003,
+                    "name": "Inferno Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
                 }
             ],
             "seen": 1,
