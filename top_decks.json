@@ -4,13 +4,13 @@
             "#22Q920RLR": "20260710T145139.000Z",
             "#L8PV090J": "20260709T163202.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
-            "#2QRVR9L8": "20260710T165816.000Z",
+            "#2QRVR9L8": "20260710T171023.000Z",
             "#ULYJ2CQP": "20260710T105510.000Z",
             "#UJ2P9UYUV": "20260710T124324.000Z",
             "#P0JYR9YUY": "20260710T154836.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260709T180537.000Z",
-            "#G02LC9C8": "20260710T164841.000Z",
+            "#G02LC9C8": "20260710T170508.000Z",
             "#2U8288CVY": "20260710T145611.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
@@ -32,7 +32,7 @@
             "#2V800VCQ0": "20260710T110451.000Z",
             "#2UQUPYQCJ": "20260709T121008.000Z",
             "#JUUR8UGL8": "20260710T151224.000Z",
-            "#2U09UULRR": "20260710T165741.000Z",
+            "#2U09UULRR": "20260710T170738.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20260710T014409.000Z",
             "#8P0J8P0L": "20260710T154349.000Z",
@@ -40,7 +40,7 @@
             "#CUJ9PJ2UV": "20260710T094816.000Z",
             "#2P0U2RLGY": "20260710T074628.000Z",
             "#8P89UPQ0": "",
-            "#RLJPJL8C2": "20260709T121820.000Z",
+            "#RLJPJL8C2": "20260710T171023.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
             "#UUPCULU9V": "20260710T142142.000Z",
@@ -1921,7 +1921,7 @@
                 }
             ],
             "wins": 4,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Dolphin"
             ],
@@ -1929,6 +1929,12 @@
                 "2U09UULRR"
             ],
             "recent_matches": [
+                {
+                    "time": "20260710T170305.000Z",
+                    "result": "loss",
+                    "player": "Dolphin",
+                    "tag": "2U09UULRR"
+                },
                 {
                     "time": "20260709T181611.000Z",
                     "result": "win",
@@ -277140,6 +277146,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000007-26000010-26000024-26000031-26000040-26000062-27000000-28000011": {
+            "cards": [
+                {
+                    "id": 26000024,
+                    "name": "Royal Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mnlRaNtmfpQx2e6mp70sLd0ND-pKPF70Cf87_agEKg4.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 27000000,
+                    "name": "Cannon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nZK1y-beLxO5vnlyUhK6-2zH2NzXJwqykcosqQ1cmZ8.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 26000031,
+                    "name": "Fire Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/16-BqusVvynIgYI8_Jci3LDC-r8AI_xaIYLgXqtlmS8.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000010,
+                    "name": "Skeletons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/oO7iKMU5m0cdxhYPZA3nWQiAUh2yoGgdThLWB1rVSec.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
