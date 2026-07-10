@@ -31,12 +31,12 @@
       "priority": 2
     },
     {
-      "name": "Bensie",
+      "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "OneAndOnly",
+      "name": "Bensie",
       "scenario": "TOP",
       "priority": 2
     },
@@ -81,12 +81,12 @@
       "priority": 2
     },
     {
-      "name": "Dolphin",
+      "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Johan",
+      "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
     },
@@ -116,12 +116,12 @@
       "priority": 2
     },
     {
-      "name": "Wario",
+      "name": "Ted",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Ted",
+      "name": "Wario",
       "scenario": "TOP",
       "priority": 2
     },
@@ -163,13 +163,13 @@
       "status": "STARK"
     },
     {
-      "name": "Bensie",
+      "name": "OneAndOnly",
       "score": 91.87,
       "status": "STARK"
     },
     {
-      "name": "OneAndOnly",
-      "score": 91.87,
+      "name": "Bensie",
+      "score": 91.73,
       "status": "STARK"
     },
     {
@@ -218,13 +218,13 @@
       "status": "STARK"
     },
     {
-      "name": "Dolphin",
-      "score": 89.55,
+      "name": "Johan",
+      "score": 89.47,
       "status": "STARK"
     },
     {
-      "name": "Johan",
-      "score": 89.47,
+      "name": "Dolphin",
+      "score": 89.42,
       "status": "STARK"
     },
     {
@@ -258,11 +258,6 @@
       "status": "STARK"
     },
     {
-      "name": "Wario",
-      "score": 87.1,
-      "status": "STARK"
-    },
-    {
       "name": "Ted",
       "score": 87.01,
       "status": "STARK"
@@ -270,6 +265,11 @@
     {
       "name": "Theezy",
       "score": 87.0,
+      "status": "STARK"
+    },
+    {
+      "name": "Wario",
+      "score": 86.84,
       "status": "STARK"
     },
     {
@@ -415,13 +415,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Bensie",
+      "name": "OneAndOnly",
       "score": 91.87,
       "tip": "Weiter so"
     },
     {
-      "name": "OneAndOnly",
-      "score": 91.87,
+      "name": "Bensie",
+      "score": 91.73,
       "tip": "Weiter so"
     },
     {
@@ -470,13 +470,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Dolphin",
-      "score": 89.55,
+      "name": "Johan",
+      "score": 89.47,
       "tip": "Weiter so"
     },
     {
-      "name": "Johan",
-      "score": 89.47,
+      "name": "Dolphin",
+      "score": 89.42,
       "tip": "Weiter so"
     },
     {
@@ -510,11 +510,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Wario",
-      "score": 87.1,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Ted",
       "score": 87.01,
       "tip": "Weiter so"
@@ -522,6 +517,11 @@
     {
       "name": "Theezy",
       "score": 87.0,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Wario",
+      "score": 86.84,
       "tip": "Weiter so"
     },
     {
@@ -705,24 +705,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Bensie",
-        "player_tag": "#2QRVR9L8",
-        "role": "member",
-        "score": 91.87,
-        "strikes": 0,
-        "donations": 712,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "OneAndOnly",
         "player_tag": "#8P0J8P0L",
         "role": "member",
         "score": 91.87,
         "strikes": 0,
         "donations": 242,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Bensie",
+        "player_tag": "#2QRVR9L8",
+        "role": "member",
+        "score": 91.73,
+        "strikes": 0,
+        "donations": 754,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -825,18 +825,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Dolphin",
-        "player_tag": "#2U09UULRR",
-        "role": "member",
-        "score": 89.55,
-        "strikes": 0,
-        "donations": 112,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Johan",
         "player_tag": "#UQVCVVVJL",
         "role": "member",
@@ -845,6 +833,18 @@
         "donations": 166,
         "participation_count": 9,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Dolphin",
+        "player_tag": "#2U09UULRR",
+        "role": "member",
+        "score": 89.42,
+        "strikes": 0,
+        "donations": 130,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -921,18 +921,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Wario",
-        "player_tag": "#2PUQYJC02",
-        "role": "member",
-        "score": 87.1,
-        "strikes": 0,
-        "donations": 88,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Ted",
         "player_tag": "#J9RQPGLVP",
         "role": "member",
@@ -951,6 +939,18 @@
         "score": 87.0,
         "strikes": 0,
         "donations": 38,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Wario",
+        "player_tag": "#2PUQYJC02",
+        "role": "member",
+        "score": 86.84,
+        "strikes": 0,
+        "donations": 88,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
