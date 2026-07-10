@@ -22,8 +22,8 @@
             "#Q8L0RJ8Y8": "20260710T191022.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260710T190428.000Z",
-            "#LLQQJCLC": "20260710T211856.000Z",
-            "#2VJR80RL": "20260709T101339.000Z",
+            "#LLQQJCLC": "20260710T212249.000Z",
+            "#2VJR80RL": "20260710T212317.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
             "#2CJYG9UG": "20260710T172838.000Z",
@@ -2358,7 +2358,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
                 }
             ],
-            "wins": 3,
+            "wins": 4,
             "losses": 0,
             "players": [
                 "Denis"
@@ -2367,6 +2367,12 @@
                 "2VJR80RL"
             ],
             "recent_matches": [
+                {
+                    "time": "20260710T212317.000Z",
+                    "result": "win",
+                    "player": "Denis",
+                    "tag": "2VJR80RL"
+                },
                 {
                     "time": "20260709T101339.000Z",
                     "result": "win",
@@ -278788,6 +278794,52 @@
                     "id": 28000004,
                     "name": "Goblin Barrel",
                     "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000000-26000004-26000026-26000042-26000043-26000103-28000001-28000004": {
+            "cards": [
+                {
+                    "id": 26000043,
+                    "name": "Elite Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/C88C5JH_F3lLZj6K-tLcMo5DPjrFmvzIb1R2M6xCfTE.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000103,
+                    "name": "Boss Bandit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nuceG9o7rAyvyc7D3sp2QSiRYtSOEgraq0NJkDf729s.png"
+                },
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
                 }
             ],
             "seen": 1,
