@@ -89,7 +89,7 @@
             "#9QV99QVCV": "20260701T045607.000Z",
             "#JQ08UR882": "20260619T100820.000Z",
             "#PQ2JYPC09": "20260709T192229.000Z",
-            "#99JJLC02L": "20260711T145450.000Z",
+            "#99JJLC02L": "20260711T170102.000Z",
             "#P00PQ9CUQ": "20260613T120503.000Z",
             "#PVYJ80YCL": "20260619T140927.000Z",
             "#RP9RVGQJU": "20260615T092432.000Z",
@@ -3211,7 +3211,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Eugen32"
             ],
@@ -3219,6 +3219,12 @@
                 "99JJLC02L"
             ],
             "recent_matches": [
+                {
+                    "time": "20260711T165555.000Z",
+                    "result": "loss",
+                    "player": "Eugen32",
+                    "tag": "99JJLC02L"
+                },
                 {
                     "time": "20260705T122245.000Z",
                     "result": "win",
@@ -281214,6 +281220,98 @@
                     "id": 26000025,
                     "name": "Guards",
                     "icon": "https://api-assets.clashroyale.com/cards/300/1ArKfLJxYo6_NU_S9cAeIrfbXqWH0oULVJXedxBXQlU.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000027-26000037-26000041-26000042-26000093-27000000-27000013-28000009": {
+            "cards": [
+                {
+                    "id": 26000037,
+                    "name": "Inferno Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
+                },
+                {
+                    "id": 26000027,
+                    "name": "Dark Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/M7fXlrKXHu2IvpSGpk36kXVstslbR08Bbxcy0jQcln8.png"
+                },
+                {
+                    "id": 26000093,
+                    "name": "Little Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dY-gSseki6KBpkIG17safHH5YlB8SErFZO9OXbJxf9w.png"
+                },
+                {
+                    "id": 27000000,
+                    "name": "Cannon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nZK1y-beLxO5vnlyUhK6-2zH2NzXJwqykcosqQ1cmZ8.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 27000013,
+                    "name": "Goblin Drill",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/eN2TKUYbih-26yBi0xy5LVFOA0zDftgDqxxnVfdIg1o.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000001-26000002-26000027-26000034-26000040-26000077-27000012-28000015": {
+            "cards": [
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 26000077,
+                    "name": "Monk",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/2onG4t4-CxqwFVZAn6zpWxFz3_mG2ksSj4Q7zldo1SM.png"
+                },
+                {
+                    "id": 27000012,
+                    "name": "Goblin Cage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vD24bBgK4rSq7wx5QEbuqChtPMRFviL_ep76GwQw1yA.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 28000015,
+                    "name": "Barbarian Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Gb0G1yNy0i5cIGUHin8uoFWxqntNtRPhY_jeMXg7HnA.png"
+                },
+                {
+                    "id": 26000027,
+                    "name": "Dark Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/M7fXlrKXHu2IvpSGpk36kXVstslbR08Bbxcy0jQcln8.png"
+                },
+                {
+                    "id": 26000002,
+                    "name": "Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X_DQUye_OaS3QN6VC9CPw05Fit7wvSm3XegXIXKP--0.png"
                 }
             ],
             "seen": 1,
