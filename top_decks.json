@@ -37,20 +37,20 @@
             "#8QYYL8LCQ": "20260711T003548.000Z",
             "#8P0J8P0L": "20260710T154349.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20260711T100711.000Z",
+            "#CUJ9PJ2UV": "20260711T111948.000Z",
             "#2P0U2RLGY": "20260710T192409.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260710T225752.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20260711T110059.000Z",
+            "#UUPCULU9V": "20260711T111916.000Z",
             "#202VP2QL9P": "20260711T080236.000Z",
             "#LVUGLUCP9": "20260710T193225.000Z",
             "#20QGJVPG8Q": "20260711T001025.000Z",
             "#V9GYJQ0J9": "",
             "#URJ0LUYPV": "20260711T103813.000Z",
             "#Q2GRGLQR": "20260711T072332.000Z",
-            "#J9RQPGLVP": "20260710T151058.000Z",
+            "#J9RQPGLVP": "20260711T112008.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
             "#9VLRQ9GR9": "20260710T194639.000Z",
             "#29RLRYLQL": "20260420T155237.000Z",
@@ -4554,7 +4554,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "Ted"
@@ -4563,6 +4563,12 @@
                 "J9RQPGLVP"
             ],
             "recent_matches": [
+                {
+                    "time": "20260711T112008.000Z",
+                    "result": "win",
+                    "player": "Ted",
+                    "tag": "J9RQPGLVP"
+                },
                 {
                     "time": "20260709T110353.000Z",
                     "result": "win",
@@ -280504,6 +280510,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000000-26000017-26000019-26000040-26000055-26000069-27000012-28000011": {
+            "cards": [
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000069,
+                    "name": "Skeleton King",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dCd69_wN9f8DxwuqOGtR4QgWhHIPIaTNxZ1e23RzAAc.png"
+                },
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000019,
+                    "name": "Spear Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/FSDFotjaXidI4ku_WFpVCTWS1hKGnFh1sxX0lxM43_E.png"
+                },
+                {
+                    "id": 27000012,
+                    "name": "Goblin Cage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vD24bBgK4rSq7wx5QEbuqChtPMRFviL_ep76GwQw1yA.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
