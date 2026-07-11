@@ -1,7 +1,7 @@
 {
     "_metadata": {
         "last_battles": {
-            "#22Q920RLR": "20260711T145744.000Z",
+            "#22Q920RLR": "20260711T152027.000Z",
             "#L8PV090J": "20260711T143902.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260711T071745.000Z",
@@ -37,7 +37,7 @@
             "#8QYYL8LCQ": "20260711T003548.000Z",
             "#8P0J8P0L": "20260710T154349.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20260711T144907.000Z",
+            "#CUJ9PJ2UV": "20260711T152020.000Z",
             "#2P0U2RLGY": "20260710T192409.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260711T123716.000Z",
@@ -96,7 +96,7 @@
             "#P0G2GYJQ9": "20260711T095457.000Z",
             "#8P2GV8UQY": "20260711T090519.000Z",
             "#VV2JR990": "20260622T193820.000Z",
-            "#YYJR9R0GR": "20260711T150949.000Z",
+            "#YYJR9R0GR": "20260711T151527.000Z",
             "#9U0GLQPRC": "20260710T045740.000Z"
         }
     },
@@ -5347,7 +5347,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "SunRice"
             ],
@@ -5355,6 +5355,12 @@
                 "YYJR9R0GR"
             ],
             "recent_matches": [
+                {
+                    "time": "20260711T151527.000Z",
+                    "result": "loss",
+                    "player": "SunRice",
+                    "tag": "YYJR9R0GR"
+                },
                 {
                     "time": "20260710T045157.000Z",
                     "result": "win",
@@ -280982,6 +280988,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000001-26000016-26000017-26000018-26000021-26000042-28000000-28000004": {
+            "cards": [
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
