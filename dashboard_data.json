@@ -76,17 +76,17 @@
       "priority": 2
     },
     {
-      "name": "Johan",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "honigmelone",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "AaleDieter",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
@@ -223,11 +223,6 @@
       "status": "STARK"
     },
     {
-      "name": "Johan",
-      "score": 89.47,
-      "status": "STARK"
-    },
-    {
       "name": "honigmelone",
       "score": 89.42,
       "status": "STARK"
@@ -235,6 +230,11 @@
     {
       "name": "AaleDieter",
       "score": 89.32,
+      "status": "STARK"
+    },
+    {
+      "name": "Johan",
+      "score": 89.2,
       "status": "STARK"
     },
     {
@@ -475,11 +475,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Johan",
-      "score": 89.47,
-      "tip": "Weiter so"
-    },
-    {
       "name": "honigmelone",
       "score": 89.42,
       "tip": "Weiter so"
@@ -487,6 +482,11 @@
     {
       "name": "AaleDieter",
       "score": 89.32,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Johan",
+      "score": 89.2,
       "tip": "Weiter so"
     },
     {
@@ -823,18 +823,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Johan",
-        "player_tag": "#UQVCVVVJL",
-        "role": "member",
-        "score": 89.47,
-        "strikes": 0,
-        "donations": 166,
-        "participation_count": 9,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "honigmelone",
         "player_tag": "#Q2GRGLQR",
         "role": "member",
@@ -855,6 +843,18 @@
         "donations": 86,
         "participation_count": 9,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Johan",
+        "player_tag": "#UQVCVVVJL",
+        "role": "member",
+        "score": 89.2,
+        "strikes": 0,
+        "donations": 166,
+        "participation_count": 9,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
