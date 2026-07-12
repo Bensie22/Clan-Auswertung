@@ -159,6 +159,11 @@
       "name": "Desteoyer",
       "scenario": "TOP",
       "priority": 2
+    },
+    {
+      "name": "SankKiI9",
+      "scenario": "TOP",
+      "priority": 2
     }
   ],
   "smart": [
@@ -328,13 +333,13 @@
       "status": "STARK"
     },
     {
-      "name": "Denis",
-      "score": 84.94,
+      "name": "SankKiI9",
+      "score": 85.16,
       "status": "STARK"
     },
     {
-      "name": "SankKiI9",
-      "score": 84.76,
+      "name": "Denis",
+      "score": 84.94,
       "status": "STARK"
     },
     {
@@ -580,13 +585,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Denis",
-      "score": 84.94,
+      "name": "SankKiI9",
+      "score": 85.16,
       "tip": "Weiter so"
     },
     {
-      "name": "SankKiI9",
-      "score": 84.76,
+      "name": "Denis",
+      "score": 84.94,
       "tip": "Weiter so"
     },
     {
@@ -759,7 +764,7 @@
         "role": "member",
         "score": 91.07,
         "strikes": 0,
-        "donations": 932,
+        "donations": 940,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1050,6 +1055,18 @@
         "donations": 8,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "SankKiI9",
+        "player_tag": "#89CJRRV8",
+        "role": "member",
+        "score": 85.16,
+        "strikes": 0,
+        "donations": 808,
+        "participation_count": 9,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       }
