@@ -106,11 +106,6 @@
       "priority": 2
     },
     {
-      "name": "kl.kranker Affe",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Theezy",
       "scenario": "TOP",
       "priority": 2
@@ -127,6 +122,11 @@
     },
     {
       "name": "Wario",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "kl.kranker Affe",
       "scenario": "TOP",
       "priority": 2
     },
@@ -268,11 +268,6 @@
       "status": "STARK"
     },
     {
-      "name": "kl.kranker Affe",
-      "score": 87.62,
-      "status": "STARK"
-    },
-    {
       "name": "Theezy",
       "score": 87.54,
       "status": "STARK"
@@ -290,6 +285,11 @@
     {
       "name": "Wario",
       "score": 87.24,
+      "status": "STARK"
+    },
+    {
+      "name": "kl.kranker Affe",
+      "score": 87.22,
       "status": "STARK"
     },
     {
@@ -520,11 +520,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "kl.kranker Affe",
-      "score": 87.62,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Theezy",
       "score": 87.54,
       "tip": "Weiter so"
@@ -542,6 +537,11 @@
     {
       "name": "Wario",
       "score": 87.24,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "kl.kranker Affe",
+      "score": 87.22,
       "tip": "Weiter so"
     },
     {
@@ -910,18 +910,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "kl.kranker Affe",
-        "player_tag": "#RLJPJL8C2",
-        "role": "member",
-        "score": 87.62,
-        "strikes": 0,
-        "donations": 60,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Theezy",
         "player_tag": "#JUUR8UGL8",
         "role": "member",
@@ -970,12 +958,24 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "kl.kranker Affe",
+        "player_tag": "#RLJPJL8C2",
+        "role": "member",
+        "score": 87.22,
+        "strikes": 0,
+        "donations": 60,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "eco",
         "player_tag": "#202VP2QL9P",
         "role": "member",
         "score": 87.1,
         "strikes": 0,
-        "donations": 637,
+        "donations": 645,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
