@@ -17,12 +17,12 @@
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260712T135839.000Z",
             "#QULCQGGG": "20260712T102206.000Z",
-            "#JRGC9RRQG": "20260712T174154.000Z",
+            "#JRGC9RRQG": "20260712T180434.000Z",
             "#QVQGCV8Y9": "20260712T171646.000Z",
             "#Q8L0RJ8Y8": "20260712T132640.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
-            "#2CPRGY8G": "20260712T174654.000Z",
-            "#LLQQJCLC": "20260712T180018.000Z",
+            "#2CPRGY8G": "20260712T180136.000Z",
+            "#LLQQJCLC": "20260712T180413.000Z",
             "#2VJR80RL": "20260711T232858.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
@@ -30,14 +30,14 @@
             "#2PUQYJC02": "20260712T130915.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
             "#2V800VCQ0": "20260712T174430.000Z",
-            "#2UQUPYQCJ": "20260711T211417.000Z",
+            "#2UQUPYQCJ": "20260712T181034.000Z",
             "#JUUR8UGL8": "20260712T132132.000Z",
             "#2U09UULRR": "20260712T164731.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20260712T032137.000Z",
             "#8P0J8P0L": "20260712T110103.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20260712T172354.000Z",
+            "#CUJ9PJ2UV": "20260712T180135.000Z",
             "#2P0U2RLGY": "20260710T192409.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260712T160051.000Z",
@@ -94,9 +94,9 @@
             "#PVYJ80YCL": "20260619T140927.000Z",
             "#RP9RVGQJU": "20260615T092432.000Z",
             "#P0G2GYJQ9": "20260712T154239.000Z",
-            "#8P2GV8UQY": "20260712T180016.000Z",
+            "#8P2GV8UQY": "20260712T180529.000Z",
             "#VV2JR990": "20260622T193820.000Z",
-            "#YYJR9R0GR": "20260712T180121.000Z",
+            "#YYJR9R0GR": "20260712T180509.000Z",
             "#9U0GLQPRC": "20260710T045740.000Z"
         }
     },
@@ -475,7 +475,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "bes"
             ],
@@ -483,6 +483,12 @@
                 "LLQQJCLC"
             ],
             "recent_matches": [
+                {
+                    "time": "20260712T180413.000Z",
+                    "result": "loss",
+                    "player": "bes",
+                    "tag": "LLQQJCLC"
+                },
                 {
                     "time": "20260629T140304.000Z",
                     "result": "win",
@@ -288220,6 +288226,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000002-26000004-26000017-26000022-26000026-26000030-27000009-28000004": {
+            "cards": [
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 27000009,
+                    "name": "Tombstone",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LjSfSbwQfkZuRJY4pVxKspZ-a0iM5KAhU8w-a_N5Z7Y.png"
+                },
+                {
+                    "id": 26000022,
+                    "name": "Minion Horde",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Wyjq5l0IXHTkX9Rmpap6HaH08MvjbxFp1xBO9a47YSI.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                },
+                {
+                    "id": 26000030,
+                    "name": "Ice Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lv1budiafU9XmSdrDkk0NYyqASAFYyZ06CPysXKZXlA.png"
+                },
+                {
+                    "id": 26000002,
+                    "name": "Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X_DQUye_OaS3QN6VC9CPw05Fit7wvSm3XegXIXKP--0.png"
+                },
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
