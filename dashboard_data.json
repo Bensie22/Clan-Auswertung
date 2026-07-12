@@ -51,12 +51,12 @@
       "priority": 2
     },
     {
-      "name": "Swordfish",
+      "name": "Jackhammer",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Jackhammer",
+      "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
@@ -208,13 +208,13 @@
       "status": "STARK"
     },
     {
-      "name": "Swordfish",
-      "score": 90.62,
+      "name": "Jackhammer",
+      "score": 90.35,
       "status": "STARK"
     },
     {
-      "name": "Jackhammer",
-      "score": 90.35,
+      "name": "Swordfish",
+      "score": 90.22,
       "status": "STARK"
     },
     {
@@ -460,13 +460,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Swordfish",
-      "score": 90.62,
+      "name": "Jackhammer",
+      "score": 90.35,
       "tip": "Weiter so"
     },
     {
-      "name": "Jackhammer",
-      "score": 90.35,
+      "name": "Swordfish",
+      "score": 90.22,
       "tip": "Weiter so"
     },
     {
@@ -778,24 +778,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Swordfish",
-        "player_tag": "#2CPRGY8G",
-        "role": "member",
-        "score": 90.62,
-        "strikes": 0,
-        "donations": 184,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Jackhammer",
         "player_tag": "#2CJYG9UG",
         "role": "member",
         "score": 90.35,
         "strikes": 0,
         "donations": 279,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Swordfish",
+        "player_tag": "#2CPRGY8G",
+        "role": "member",
+        "score": 90.22,
+        "strikes": 0,
+        "donations": 184,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
