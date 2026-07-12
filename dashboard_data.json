@@ -111,12 +111,17 @@
       "priority": 2
     },
     {
-      "name": "bes",
+      "name": "Ted",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Ted",
+      "name": "Theezy",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "bes",
       "scenario": "TOP",
       "priority": 2
     },
@@ -132,11 +137,6 @@
     },
     {
       "name": "agostini",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Theezy",
       "scenario": "TOP",
       "priority": 2
     },
@@ -273,13 +273,18 @@
       "status": "STARK"
     },
     {
-      "name": "bes",
-      "score": 87.32,
+      "name": "Ted",
+      "score": 87.41,
       "status": "STARK"
     },
     {
-      "name": "Ted",
-      "score": 87.28,
+      "name": "Theezy",
+      "score": 87.4,
+      "status": "STARK"
+    },
+    {
+      "name": "bes",
+      "score": 87.32,
       "status": "STARK"
     },
     {
@@ -295,11 +300,6 @@
     {
       "name": "agostini",
       "score": 87.03,
-      "status": "STARK"
-    },
-    {
-      "name": "Theezy",
-      "score": 86.87,
       "status": "STARK"
     },
     {
@@ -525,13 +525,18 @@
       "tip": "Weiter so"
     },
     {
-      "name": "bes",
-      "score": 87.32,
+      "name": "Ted",
+      "score": 87.41,
       "tip": "Weiter so"
     },
     {
-      "name": "Ted",
-      "score": 87.28,
+      "name": "Theezy",
+      "score": 87.4,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "bes",
+      "score": 87.32,
       "tip": "Weiter so"
     },
     {
@@ -547,11 +552,6 @@
     {
       "name": "agostini",
       "score": 87.03,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Theezy",
-      "score": 86.87,
       "tip": "Weiter so"
     },
     {
@@ -922,6 +922,30 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Ted",
+        "player_tag": "#J9RQPGLVP",
+        "role": "member",
+        "score": 87.41,
+        "strikes": 0,
+        "donations": 435,
+        "participation_count": 10,
+        "trend": "🔴🔴🔴🟡🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Theezy",
+        "player_tag": "#JUUR8UGL8",
+        "role": "member",
+        "score": 87.4,
+        "strikes": 0,
+        "donations": 102,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "bes",
         "player_tag": "#LLQQJCLC",
         "role": "member",
@@ -930,18 +954,6 @@
         "donations": 196,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Ted",
-        "player_tag": "#J9RQPGLVP",
-        "role": "member",
-        "score": 87.28,
-        "strikes": 0,
-        "donations": 427,
-        "participation_count": 10,
-        "trend": "🔴🔴🔴🟡🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -978,18 +990,6 @@
         "donations": 662,
         "participation_count": 6,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Theezy",
-        "player_tag": "#JUUR8UGL8",
-        "role": "member",
-        "score": 86.87,
-        "strikes": 0,
-        "donations": 102,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
