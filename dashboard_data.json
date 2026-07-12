@@ -116,6 +116,11 @@
       "priority": 2
     },
     {
+      "name": "Ted",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Wario",
       "scenario": "TOP",
       "priority": 2
@@ -127,11 +132,6 @@
     },
     {
       "name": "eco",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Ted",
       "scenario": "TOP",
       "priority": 2
     },
@@ -214,7 +214,7 @@
     },
     {
       "name": "Swordfish",
-      "score": 90.22,
+      "score": 90.35,
       "status": "STARK"
     },
     {
@@ -278,6 +278,11 @@
       "status": "STARK"
     },
     {
+      "name": "Ted",
+      "score": 87.28,
+      "status": "STARK"
+    },
+    {
       "name": "Wario",
       "score": 87.24,
       "status": "STARK"
@@ -290,11 +295,6 @@
     {
       "name": "eco",
       "score": 87.1,
-      "status": "STARK"
-    },
-    {
-      "name": "Ted",
-      "score": 87.01,
       "status": "STARK"
     },
     {
@@ -466,7 +466,7 @@
     },
     {
       "name": "Swordfish",
-      "score": 90.22,
+      "score": 90.35,
       "tip": "Weiter so"
     },
     {
@@ -530,6 +530,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Ted",
+      "score": 87.28,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Wario",
       "score": 87.24,
       "tip": "Weiter so"
@@ -542,11 +547,6 @@
     {
       "name": "eco",
       "score": 87.1,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Ted",
-      "score": 87.01,
       "tip": "Weiter so"
     },
     {
@@ -793,7 +793,7 @@
         "name": "Swordfish",
         "player_tag": "#2CPRGY8G",
         "role": "member",
-        "score": 90.22,
+        "score": 90.35,
         "strikes": 0,
         "donations": 184,
         "participation_count": 10,
@@ -934,6 +934,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Ted",
+        "player_tag": "#J9RQPGLVP",
+        "role": "member",
+        "score": 87.28,
+        "strikes": 0,
+        "donations": 427,
+        "participation_count": 10,
+        "trend": "🔴🔴🔴🟡🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Wario",
         "player_tag": "#2PUQYJC02",
         "role": "member",
@@ -966,18 +978,6 @@
         "donations": 637,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Ted",
-        "player_tag": "#J9RQPGLVP",
-        "role": "member",
-        "score": 87.01,
-        "strikes": 0,
-        "donations": 427,
-        "participation_count": 10,
-        "trend": "🔴🔴🔴🟡🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
