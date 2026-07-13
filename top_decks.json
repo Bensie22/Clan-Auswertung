@@ -29,7 +29,7 @@
             "#2CJYG9UG": "20260712T212432.000Z",
             "#2PUQYJC02": "20260713T063202.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20260713T073048.000Z",
+            "#2V800VCQ0": "20260713T081015.000Z",
             "#2UQUPYQCJ": "20260712T181034.000Z",
             "#JUUR8UGL8": "20260712T132132.000Z",
             "#2U09UULRR": "20260713T062830.000Z",
@@ -38,7 +38,7 @@
             "#8P0J8P0L": "20260713T070452.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260712T223457.000Z",
-            "#2P0U2RLGY": "20260713T075622.000Z",
+            "#2P0U2RLGY": "20260713T080949.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260712T160051.000Z",
             "#RG02LG88": "20260405T075546.000Z",
@@ -1200,7 +1200,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/QJB-QK1QJHdw4hjpAwVSyZBozc2ZWAR9pQ-SMUyKaT0.png"
                 }
             ],
-            "wins": 8,
+            "wins": 9,
             "losses": 0,
             "players": [
                 "mauza"
@@ -1209,6 +1209,12 @@
                 "2P0U2RLGY"
             ],
             "recent_matches": [
+                {
+                    "time": "20260713T080219.000Z",
+                    "result": "win",
+                    "player": "mauza",
+                    "tag": "2P0U2RLGY"
+                },
                 {
                     "time": "20260710T191600.000Z",
                     "result": "win",
@@ -289764,6 +289770,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000034-26000062-26000064-26000067-26000068-28000005-28000009-28000012": {
+            "cards": [
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                },
+                {
+                    "id": 28000012,
+                    "name": "Tornado",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QJB-QK1QJHdw4hjpAwVSyZBozc2ZWAR9pQ-SMUyKaT0.png"
+                },
+                {
+                    "id": 28000005,
+                    "name": "Freeze",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000067,
+                    "name": "Elixir Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/puhMsZjCIqy21HW3hYxjrk_xt8NIPyFqjRy-BeLKZwo.png"
+                },
+                {
+                    "id": 26000068,
+                    "name": "Battle Healer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/KdwXcoigS2Kg-cgA7BJJIANbUJG6SNgjetRQ-MegZ08.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
