@@ -10,7 +10,7 @@
             "#P0JYR9YUY": "20260713T171727.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260713T181921.000Z",
-            "#G02LC9C8": "20260713T182855.000Z",
+            "#G02LC9C8": "20260713T183754.000Z",
             "#2U8288CVY": "20260712T195850.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
@@ -30,7 +30,7 @@
             "#2PUQYJC02": "20260713T155647.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
             "#2V800VCQ0": "20260713T162545.000Z",
-            "#2UQUPYQCJ": "20260712T181034.000Z",
+            "#2UQUPYQCJ": "20260713T183758.000Z",
             "#JUUR8UGL8": "20260712T132132.000Z",
             "#2U09UULRR": "20260713T180726.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
@@ -4339,7 +4339,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "andiquariat"
             ],
@@ -4347,6 +4347,12 @@
                 "2UQUPYQCJ"
             ],
             "recent_matches": [
+                {
+                    "time": "20260713T183758.000Z",
+                    "result": "loss",
+                    "player": "andiquariat",
+                    "tag": "2UQUPYQCJ"
+                },
                 {
                     "time": "20260711T210951.000Z",
                     "result": "win",
@@ -290438,6 +290444,52 @@
                     "id": 26000018,
                     "name": "Mini P.E.K.K.A",
                     "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000012-26000015-26000050-26000051-26000052-26000056-26000064-27000006": {
+            "cards": [
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000052,
+                    "name": "Zappies",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QZfHRpLRmutZbCr5fpLnTpIp89vLI6NrAwzGZ8tHEc4.png"
+                },
+                {
+                    "id": 26000051,
+                    "name": "Ram Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
+                },
+                {
+                    "id": 26000050,
+                    "name": "Royal Ghost",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3En2cz0ISQAaMTHY3hj3rTveFN2kJYq-H4VxvdJNvCM.png"
+                },
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
                 }
             ],
             "seen": 1,
