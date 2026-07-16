@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "marco",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "elazeto",
       "scenario": "TOP",
       "priority": 2
@@ -356,6 +361,11 @@
       "name": "l_Bozo",
       "score": 76.3,
       "status": "OK"
+    },
+    {
+      "name": "marco",
+      "score": 0.0,
+      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -573,11 +583,29 @@
       "name": "l_Bozo",
       "score": 76.3,
       "tip": "Weiter so"
+    },
+    {
+      "name": "marco",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
-    "remove": [],
+    "remove": [
+      {
+        "name": "marco",
+        "player_tag": "#PQPGPCPQ8",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      }
+    ],
     "core": [
       {
         "name": "mauza",
