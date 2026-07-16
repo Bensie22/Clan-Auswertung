@@ -6,11 +6,11 @@
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260716T154700.000Z",
             "#ULYJ2CQP": "20260716T152909.000Z",
-            "#UJ2P9UYUV": "20260716T162827.000Z",
+            "#UJ2P9UYUV": "20260716T194852.000Z",
             "#P0JYR9YUY": "20260716T111648.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260716T105233.000Z",
-            "#G02LC9C8": "20260716T191220.000Z",
+            "#G02LC9C8": "20260716T194920.000Z",
             "#2U8288CVY": "20260716T163947.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
@@ -27,7 +27,7 @@
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
             "#2CJYG9UG": "20260716T181055.000Z",
-            "#2PUQYJC02": "20260716T193819.000Z",
+            "#2PUQYJC02": "20260716T194128.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
             "#2V800VCQ0": "20260716T080119.000Z",
             "#2UQUPYQCJ": "20260716T085934.000Z",
@@ -60,7 +60,7 @@
             "#9UJ9GUL9Q": "20260421T171612.000Z",
             "#CLC8JVPRG": "20260424T234312.000Z",
             "#G8RVJJ2R": "20260611T145142.000Z",
-            "#P8GRG0UCY": "20260716T193518.000Z",
+            "#P8GRG0UCY": "20260716T194228.000Z",
             "#CQ0JQ0PC": "20260424T155243.000Z",
             "#VRCVPQU2Y": "20260424T064627.000Z",
             "#88GPYVR8P": "20260610T155319.000Z",
@@ -4104,7 +4104,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/Wyjq5l0IXHTkX9Rmpap6HaH08MvjbxFp1xBO9a47YSI.png"
                 }
             ],
-            "wins": 2,
+            "wins": 3,
             "losses": 0,
             "players": [
                 "Wario"
@@ -4113,6 +4113,12 @@
                 "2PUQYJC02"
             ],
             "recent_matches": [
+                {
+                    "time": "20260716T194128.000Z",
+                    "result": "win",
+                    "player": "Wario",
+                    "tag": "2PUQYJC02"
+                },
                 {
                     "time": "20260712T202635.000Z",
                     "result": "win",
@@ -295824,6 +295830,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000000-26000013-26000016-26000034-26000040-26000045-26000106-28000008": {
+            "cards": [
+                {
+                    "id": 26000013,
+                    "name": "Bomber",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 26000106,
+                    "name": "Ronin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X0dTFs7OGUavreDEzOtYd_YNZ8Zly6qgAE-dd-bNfWU.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
