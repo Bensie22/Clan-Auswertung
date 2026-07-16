@@ -17,7 +17,7 @@
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260714T210602.000Z",
             "#QULCQGGG": "20260716T090449.000Z",
-            "#JRGC9RRQG": "20260716T120032.000Z",
+            "#JRGC9RRQG": "20260716T125641.000Z",
             "#QVQGCV8Y9": "20260712T171646.000Z",
             "#Q8L0RJ8Y8": "20260715T182449.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
@@ -37,7 +37,7 @@
             "#8QYYL8LCQ": "20260716T061110.000Z",
             "#8P0J8P0L": "20260716T123320.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20260715T152110.000Z",
+            "#CUJ9PJ2UV": "20260716T125853.000Z",
             "#2P0U2RLGY": "20260716T120551.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260712T160051.000Z",
@@ -4842,7 +4842,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/SoW16cY3jXBwaTDvb39DkqiVsoFVaDWbzf5QBYphJrY.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "AaleDieter"
@@ -4851,6 +4851,12 @@
                 "CUJ9PJ2UV"
             ],
             "recent_matches": [
+                {
+                    "time": "20260716T125853.000Z",
+                    "result": "win",
+                    "player": "AaleDieter",
+                    "tag": "CUJ9PJ2UV"
+                },
                 {
                     "time": "20260712T100029.000Z",
                     "result": "win",
@@ -293600,6 +293606,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000003-26000005-26000007-26000011-26000018-26000042-26000062-28000001": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000003,
+                    "name": "Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Axr4ox5_b7edmLsoHxBX3vmgijAIibuF6RImTbqLlXE.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
