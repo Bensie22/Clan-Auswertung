@@ -4,7 +4,7 @@
             "#22Q920RLR": "20260716T152718.000Z",
             "#L8PV090J": "20260715T145718.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
-            "#2QRVR9L8": "20260716T153613.000Z",
+            "#2QRVR9L8": "20260716T154700.000Z",
             "#ULYJ2CQP": "20260716T152909.000Z",
             "#UJ2P9UYUV": "20260716T121303.000Z",
             "#P0JYR9YUY": "20260716T111648.000Z",
@@ -38,7 +38,7 @@
             "#8P0J8P0L": "20260716T133123.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260716T125853.000Z",
-            "#2P0U2RLGY": "20260716T120551.000Z",
+            "#2P0U2RLGY": "20260716T154604.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260712T160051.000Z",
             "#RG02LG88": "20260405T075546.000Z",
@@ -48,7 +48,7 @@
             "#LVUGLUCP9": "20260712T192625.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
             "#V9GYJQ0J9": "",
-            "#URJ0LUYPV": "20260716T154010.000Z",
+            "#URJ0LUYPV": "20260716T154325.000Z",
             "#Q2GRGLQR": "20260716T053224.000Z",
             "#J9RQPGLVP": "20260713T204019.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
@@ -84,7 +84,7 @@
             "#VP82QGC8Y": "20260609T223746.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
             "#GRGCY0R8": "20260716T055957.000Z",
-            "#P2YQ2QQUV": "20260715T215515.000Z",
+            "#P2YQ2QQUV": "20260716T154313.000Z",
             "#JG8Q0GPU9": "20260713T010600.000Z",
             "#9QV99QVCV": "20260701T045607.000Z",
             "#JQ08UR882": "20260619T100820.000Z",
@@ -5227,7 +5227,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "elazeto"
             ],
@@ -5235,6 +5235,12 @@
                 "URJ0LUYPV"
             ],
             "recent_matches": [
+                {
+                    "time": "20260716T154325.000Z",
+                    "result": "loss",
+                    "player": "elazeto",
+                    "tag": "URJ0LUYPV"
+                },
                 {
                     "time": "20260712T112235.000Z",
                     "result": "win",
@@ -294292,6 +294298,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000006-26000037-26000046-26000056-26000061-26000083-27000003-28000011": {
+            "cards": [
+                {
+                    "id": 26000037,
+                    "name": "Inferno Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                },
+                {
+                    "id": 26000083,
+                    "name": "Mother Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fO-Xah8XZkYKaSK9SCp3wnzwxtvIhun9NVY-zzte1Ng.png"
+                },
+                {
+                    "id": 27000003,
+                    "name": "Inferno Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
+                },
+                {
+                    "id": 26000061,
+                    "name": "Fisherman",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/U2KZ3g0wyufcuA5P2Xrn3Z3lr1WiJmc5S0IWOZHgizQ.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000046,
+                    "name": "Bandit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QWDdXMKJNpv0go-HYaWQWP6p8uIOHjqn-zX7G0p3DyM.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
