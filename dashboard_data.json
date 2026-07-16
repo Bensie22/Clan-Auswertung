@@ -46,12 +46,12 @@
       "priority": 2
     },
     {
-      "name": "LazyFrog",
+      "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Swordfish",
+      "name": "LazyFrog",
       "scenario": "TOP",
       "priority": 2
     },
@@ -126,6 +126,11 @@
       "priority": 2
     },
     {
+      "name": "seroo",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "HardcoreSoldier",
       "scenario": "TOP",
       "priority": 2
@@ -173,13 +178,13 @@
       "status": "STARK"
     },
     {
-      "name": "LazyFrog",
-      "score": 90.62,
+      "name": "Swordfish",
+      "score": 90.57,
       "status": "STARK"
     },
     {
-      "name": "Swordfish",
-      "score": 90.57,
+      "name": "LazyFrog",
+      "score": 90.49,
       "status": "STARK"
     },
     {
@@ -390,13 +395,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "LazyFrog",
-      "score": 90.62,
+      "name": "Swordfish",
+      "score": 90.57,
       "tip": "Weiter so"
     },
     {
-      "name": "Swordfish",
-      "score": 90.57,
+      "name": "LazyFrog",
+      "score": 90.49,
       "tip": "Weiter so"
     },
     {
@@ -666,24 +671,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "LazyFrog",
-        "player_tag": "#22Q920RLR",
-        "role": "member",
-        "score": 90.62,
-        "strikes": 0,
-        "donations": 638,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Swordfish",
         "player_tag": "#2CPRGY8G",
         "role": "member",
         "score": 90.57,
         "strikes": 0,
         "donations": 130,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "LazyFrog",
+        "player_tag": "#22Q920RLR",
+        "role": "member",
+        "score": 90.49,
+        "strikes": 0,
+        "donations": 648,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -947,7 +952,7 @@
         "role": "member",
         "score": 85.09,
         "strikes": 0,
-        "donations": 42,
+        "donations": 52,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
