@@ -17,7 +17,7 @@
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260714T210602.000Z",
             "#QULCQGGG": "20260716T135044.000Z",
-            "#JRGC9RRQG": "20260716T172742.000Z",
+            "#JRGC9RRQG": "20260716T181931.000Z",
             "#QVQGCV8Y9": "20260712T171646.000Z",
             "#Q8L0RJ8Y8": "20260715T182449.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
@@ -45,10 +45,10 @@
             "#29L2P9YJ": "20260331T230948.000Z",
             "#UUPCULU9V": "20260716T165308.000Z",
             "#202VP2QL9P": "20260716T171948.000Z",
-            "#LVUGLUCP9": "20260716T180909.000Z",
+            "#LVUGLUCP9": "20260716T181241.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
             "#V9GYJQ0J9": "",
-            "#URJ0LUYPV": "20260716T181035.000Z",
+            "#URJ0LUYPV": "20260716T181339.000Z",
             "#Q2GRGLQR": "20260716T053224.000Z",
             "#J9RQPGLVP": "20260713T204019.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
@@ -6007,7 +6007,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Nati"
             ],
@@ -6015,6 +6015,12 @@
                 "LVUGLUCP9"
             ],
             "recent_matches": [
+                {
+                    "time": "20260716T181241.000Z",
+                    "result": "loss",
+                    "player": "Nati",
+                    "tag": "LVUGLUCP9"
+                },
                 {
                     "time": "20260712T192306.000Z",
                     "result": "win",
@@ -295122,6 +295128,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000013-26000040-26000053-26000056-26000069-26000103-28000001-28000013": {
+            "cards": [
+                {
+                    "id": 26000013,
+                    "name": "Bomber",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
+                },
+                {
+                    "id": 26000069,
+                    "name": "Skeleton King",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dCd69_wN9f8DxwuqOGtR4QgWhHIPIaTNxZ1e23RzAAc.png"
+                },
+                {
+                    "id": 26000103,
+                    "name": "Boss Bandit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nuceG9o7rAyvyc7D3sp2QSiRYtSOEgraq0NJkDf729s.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000053,
+                    "name": "Rascals",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/KV48DfwVHKx9XCjzBdk3daT_Eb52Me4VgjVO7WctRc4.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 28000013,
+                    "name": "Clone",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mHVCet-1TkwWq-pxVIU2ZWY9_2z7Z7wtP25ArEUsP_g.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
