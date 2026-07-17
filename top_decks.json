@@ -9,7 +9,7 @@
             "#UJ2P9UYUV": "20260717T043854.000Z",
             "#P0JYR9YUY": "20260717T093933.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
-            "#YQ82VR9JQ": "20260716T203613.000Z",
+            "#YQ82VR9JQ": "20260717T133804.000Z",
             "#G02LC9C8": "20260717T063727.000Z",
             "#2U8288CVY": "20260716T163947.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
@@ -30,7 +30,7 @@
             "#2PUQYJC02": "20260716T194128.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
             "#2V800VCQ0": "20260717T122404.000Z",
-            "#2UQUPYQCJ": "20260717T090933.000Z",
+            "#2UQUPYQCJ": "20260717T134008.000Z",
             "#JUUR8UGL8": "20260716T172434.000Z",
             "#2U09UULRR": "20260717T114446.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
@@ -7130,7 +7130,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "andiquariat"
             ],
@@ -7138,6 +7138,12 @@
                 "2UQUPYQCJ"
             ],
             "recent_matches": [
+                {
+                    "time": "20260717T134008.000Z",
+                    "result": "loss",
+                    "player": "andiquariat",
+                    "tag": "2UQUPYQCJ"
+                },
                 {
                     "time": "20260717T090546.000Z",
                     "result": "win",
@@ -298035,6 +298041,52 @@
                     "id": 26000043,
                     "name": "Elite Barbarians",
                     "icon": "https://api-assets.clashroyale.com/cards/300/C88C5JH_F3lLZj6K-tLcMo5DPjrFmvzIb1R2M6xCfTE.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000001-26000012-26000026-26000027-26000087-26000106-27000006-28000009": {
+            "cards": [
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 26000027,
+                    "name": "Dark Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/M7fXlrKXHu2IvpSGpk36kXVstslbR08Bbxcy0jQcln8.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000087,
+                    "name": "Phoenix",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/i0RoY1fs6ay7VAxyFEfZGIPnD002nAKcne9FtJsWBHM.png"
+                },
+                {
+                    "id": 26000106,
+                    "name": "Ronin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X0dTFs7OGUavreDEzOtYd_YNZ8Zly6qgAE-dd-bNfWU.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
                 }
             ],
             "seen": 1,
