@@ -6,8 +6,8 @@
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260717T183636.000Z",
             "#ULYJ2CQP": "20260717T095610.000Z",
-            "#UJ2P9UYUV": "20260717T043854.000Z",
-            "#P0JYR9YUY": "20260717T185752.000Z",
+            "#UJ2P9UYUV": "20260717T190808.000Z",
+            "#P0JYR9YUY": "20260717T190107.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260717T185622.000Z",
             "#G02LC9C8": "20260717T161112.000Z",
@@ -38,7 +38,7 @@
             "#8P0J8P0L": "20260717T123630.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260717T171806.000Z",
-            "#2P0U2RLGY": "20260717T053554.000Z",
+            "#2P0U2RLGY": "20260717T190747.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260717T085738.000Z",
             "#RG02LG88": "20260405T075546.000Z",
@@ -1195,7 +1195,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/QJB-QK1QJHdw4hjpAwVSyZBozc2ZWAR9pQ-SMUyKaT0.png"
                 }
             ],
-            "wins": 10,
+            "wins": 11,
             "losses": 0,
             "players": [
                 "mauza"
@@ -1204,6 +1204,12 @@
                 "2P0U2RLGY"
             ],
             "recent_matches": [
+                {
+                    "time": "20260717T190747.000Z",
+                    "result": "win",
+                    "player": "mauza",
+                    "tag": "2P0U2RLGY"
+                },
                 {
                     "time": "20260716T113649.000Z",
                     "result": "win",
@@ -299585,6 +299591,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000001-26000005-26000006-26000027-26000034-26000039-27000006-28000005": {
+            "cards": [
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 26000027,
+                    "name": "Dark Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/M7fXlrKXHu2IvpSGpk36kXVstslbR08Bbxcy0jQcln8.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                },
+                {
+                    "id": 26000039,
+                    "name": "Mega Minion",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/-T_e4YLbuhPBKbYnBwQfXgynNpp5eOIN_0RracYwL9c.png"
+                },
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 28000005,
+                    "name": "Freeze",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
