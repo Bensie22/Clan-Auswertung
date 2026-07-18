@@ -46,6 +46,11 @@
       "priority": 2
     },
     {
+      "name": "AaleDieter",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "LazyFrog",
       "scenario": "TOP",
       "priority": 2
@@ -57,11 +62,6 @@
     },
     {
       "name": "chris",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "AaleDieter",
       "scenario": "TOP",
       "priority": 2
     },
@@ -198,6 +198,11 @@
       "status": "STARK"
     },
     {
+      "name": "AaleDieter",
+      "score": 91.24,
+      "status": "STARK"
+    },
+    {
       "name": "LazyFrog",
       "score": 91.02,
       "status": "STARK"
@@ -210,11 +215,6 @@
     {
       "name": "chris",
       "score": 90.84,
-      "status": "STARK"
-    },
-    {
-      "name": "AaleDieter",
-      "score": 90.71,
       "status": "STARK"
     },
     {
@@ -318,13 +318,13 @@
       "status": "STARK"
     },
     {
-      "name": "Reklaminator",
-      "score": 85.3,
+      "name": "kl.kranker Affe",
+      "score": 85.22,
       "status": "STARK"
     },
     {
-      "name": "kl.kranker Affe",
-      "score": 85.22,
+      "name": "Reklaminator",
+      "score": 85.17,
       "status": "STARK"
     },
     {
@@ -420,6 +420,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "AaleDieter",
+      "score": 91.24,
+      "tip": "Weiter so"
+    },
+    {
       "name": "LazyFrog",
       "score": 91.02,
       "tip": "Weiter so"
@@ -432,11 +437,6 @@
     {
       "name": "chris",
       "score": 90.84,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "AaleDieter",
-      "score": 90.71,
       "tip": "Weiter so"
     },
     {
@@ -540,13 +540,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Reklaminator",
-      "score": 85.3,
+      "name": "kl.kranker Affe",
+      "score": 85.22,
       "tip": "Weiter so"
     },
     {
-      "name": "kl.kranker Affe",
-      "score": 85.22,
+      "name": "Reklaminator",
+      "score": 85.17,
       "tip": "Weiter so"
     },
     {
@@ -707,6 +707,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "AaleDieter",
+        "player_tag": "#CUJ9PJ2UV",
+        "role": "member",
+        "score": 91.24,
+        "strikes": 0,
+        "donations": 102,
+        "participation_count": 9,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "LazyFrog",
         "player_tag": "#22Q920RLR",
         "role": "member",
@@ -738,18 +750,6 @@
         "strikes": 0,
         "donations": 212,
         "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "AaleDieter",
-        "player_tag": "#CUJ9PJ2UV",
-        "role": "member",
-        "score": 90.71,
-        "strikes": 0,
-        "donations": 102,
-        "participation_count": 9,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
@@ -832,7 +832,7 @@
         "role": "member",
         "score": 87.89,
         "strikes": 0,
-        "donations": 811,
+        "donations": 819,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -983,18 +983,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Reklaminator",
-        "player_tag": "#P0G2GYJQ9",
-        "role": "member",
-        "score": 85.3,
-        "strikes": 0,
-        "donations": 208,
-        "participation_count": 3,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "kl.kranker Affe",
         "player_tag": "#RLJPJL8C2",
         "role": "member",
@@ -1003,6 +991,18 @@
         "donations": 0,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Reklaminator",
+        "player_tag": "#P0G2GYJQ9",
+        "role": "member",
+        "score": 85.17,
+        "strikes": 0,
+        "donations": 216,
+        "participation_count": 3,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
