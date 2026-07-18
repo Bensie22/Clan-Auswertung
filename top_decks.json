@@ -5,7 +5,7 @@
             "#L8PV090J": "20260718T144518.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260718T060938.000Z",
-            "#ULYJ2CQP": "20260718T141556.000Z",
+            "#ULYJ2CQP": "20260718T150012.000Z",
             "#UJ2P9UYUV": "20260718T141015.000Z",
             "#P0JYR9YUY": "20260718T133747.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
@@ -16,18 +16,18 @@
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260718T072051.000Z",
-            "#QULCQGGG": "20260718T144807.000Z",
+            "#QULCQGGG": "20260718T150004.000Z",
             "#JRGC9RRQG": "20260718T141544.000Z",
             "#QVQGCV8Y9": "20260718T075119.000Z",
             "#Q8L0RJ8Y8": "20260718T070708.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
-            "#2CPRGY8G": "20260718T144629.000Z",
+            "#2CPRGY8G": "20260718T145258.000Z",
             "#LLQQJCLC": "20260718T105249.000Z",
             "#2VJR80RL": "20260718T081447.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
             "#2CJYG9UG": "20260717T163654.000Z",
-            "#2PUQYJC02": "20260717T193255.000Z",
+            "#2PUQYJC02": "20260718T145943.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
             "#2V800VCQ0": "20260718T141211.000Z",
             "#2UQUPYQCJ": "20260717T134008.000Z",
@@ -83,7 +83,7 @@
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260609T223746.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
-            "#GRGCY0R8": "20260718T111519.000Z",
+            "#GRGCY0R8": "20260718T145856.000Z",
             "#P2YQ2QQUV": "20260718T100334.000Z",
             "#JG8Q0GPU9": "20260713T010600.000Z",
             "#9QV99QVCV": "20260701T045607.000Z",
@@ -5054,7 +5054,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Wario"
             ],
@@ -5062,6 +5062,12 @@
                 "2PUQYJC02"
             ],
             "recent_matches": [
+                {
+                    "time": "20260718T145943.000Z",
+                    "result": "loss",
+                    "player": "Wario",
+                    "tag": "2PUQYJC02"
+                },
                 {
                     "time": "20260717T191926.000Z",
                     "result": "win",
@@ -302307,6 +302313,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000003-26000008-26000017-26000018-26000022-26000033-27000006-28000002": {
+            "cards": [
+                {
+                    "id": 26000008,
+                    "name": "Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/TvJsuu2S4yhyk1jVYUAQwdKOnW4U77KuWWOTPOWnwfI.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000022,
+                    "name": "Minion Horde",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Wyjq5l0IXHTkX9Rmpap6HaH08MvjbxFp1xBO9a47YSI.png"
+                },
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000033,
+                    "name": "Sparky",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/2GKMkBrArZXgQxf2ygFjDs4VvGYPbx8F6Lj_68iVhIM.png"
+                },
+                {
+                    "id": 28000002,
+                    "name": "Rage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000003,
+                    "name": "Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Axr4ox5_b7edmLsoHxBX3vmgijAIibuF6RImTbqLlXE.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
