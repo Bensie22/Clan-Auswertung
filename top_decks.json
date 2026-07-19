@@ -6,8 +6,8 @@
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260719T103315.000Z",
             "#ULYJ2CQP": "20260719T115117.000Z",
-            "#UJ2P9UYUV": "20260718T193557.000Z",
-            "#P0JYR9YUY": "20260719T105605.000Z",
+            "#UJ2P9UYUV": "20260719T132935.000Z",
+            "#P0JYR9YUY": "20260719T132713.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260719T060341.000Z",
             "#G02LC9C8": "20260719T103424.000Z",
@@ -16,7 +16,7 @@
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260719T075731.000Z",
-            "#QULCQGGG": "20260719T131945.000Z",
+            "#QULCQGGG": "20260719T132238.000Z",
             "#JRGC9RRQG": "20260719T115635.000Z",
             "#QVQGCV8Y9": "20260719T093142.000Z",
             "#Q8L0RJ8Y8": "20260719T113540.000Z",
@@ -5048,7 +5048,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "hi2oka"
             ],
@@ -5056,6 +5056,12 @@
                 "UJ2P9UYUV"
             ],
             "recent_matches": [
+                {
+                    "time": "20260719T132935.000Z",
+                    "result": "loss",
+                    "player": "hi2oka",
+                    "tag": "UJ2P9UYUV"
+                },
                 {
                     "time": "20260718T193415.000Z",
                     "result": "win",
@@ -306343,6 +306349,52 @@
                     "id": 26000053,
                     "name": "Rascals",
                     "icon": "https://api-assets.clashroyale.com/cards/300/KV48DfwVHKx9XCjzBdk3daT_Eb52Me4VgjVO7WctRc4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000011-26000063-26000067-26000083-26000106-28000006-28000007-28000012": {
+            "cards": [
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000106,
+                    "name": "Ronin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X0dTFs7OGUavreDEzOtYd_YNZ8Zly6qgAE-dd-bNfWU.png"
+                },
+                {
+                    "id": 26000063,
+                    "name": "Electro Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/tN9h6lnMNPCNsx0LMFmvpHgznbDZ1fBRkx-C7UfNmfY.png"
+                },
+                {
+                    "id": 26000067,
+                    "name": "Elixir Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/puhMsZjCIqy21HW3hYxjrk_xt8NIPyFqjRy-BeLKZwo.png"
+                },
+                {
+                    "id": 28000006,
+                    "name": "Mirror",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/wC6Cm9rKLEOk72zTsukVwxewKIoO4ZcMJun54zCPWvA.png"
+                },
+                {
+                    "id": 26000083,
+                    "name": "Mother Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fO-Xah8XZkYKaSK9SCp3wnzwxtvIhun9NVY-zzte1Ng.png"
+                },
+                {
+                    "id": 28000012,
+                    "name": "Tornado",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QJB-QK1QJHdw4hjpAwVSyZBozc2ZWAR9pQ-SMUyKaT0.png"
+                },
+                {
+                    "id": 28000007,
+                    "name": "Lightning",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fpnESbYqe5GyZmaVVYe-SEu7tE0Kxh_HZyVigzvLjks.png"
                 }
             ],
             "seen": 1,
