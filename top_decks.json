@@ -11,7 +11,7 @@
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260719T060341.000Z",
             "#G02LC9C8": "20260719T182649.000Z",
-            "#2U8288CVY": "20260719T191720.000Z",
+            "#2U8288CVY": "20260719T192431.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
@@ -45,7 +45,7 @@
             "#29L2P9YJ": "20260331T230948.000Z",
             "#UUPCULU9V": "20260719T144034.000Z",
             "#202VP2QL9P": "20260719T165030.000Z",
-            "#LVUGLUCP9": "20260719T185342.000Z",
+            "#LVUGLUCP9": "20260719T192821.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
             "#V9GYJQ0J9": "",
             "#URJ0LUYPV": "20260719T153950.000Z",
@@ -451,7 +451,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
                 }
             ],
-            "wins": 3,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "elazeto"
@@ -468,12 +468,6 @@
                 },
                 {
                     "time": "20260620T185123.000Z",
-                    "result": "win",
-                    "player": "elazeto",
-                    "tag": "URJ0LUYPV"
-                },
-                {
-                    "time": "20260619T192106.000Z",
                     "result": "win",
                     "player": "elazeto",
                     "tag": "URJ0LUYPV"
@@ -308281,6 +308275,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000006-26000035-26000041-26000045-26000056-26000064-26000106-28000000": {
+            "cards": [
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                },
+                {
+                    "id": 26000035,
+                    "name": "Lumberjack",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
+                },
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 26000106,
+                    "name": "Ronin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X0dTFs7OGUavreDEzOtYd_YNZ8Zly6qgAE-dd-bNfWU.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
