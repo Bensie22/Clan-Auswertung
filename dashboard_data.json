@@ -46,17 +46,17 @@
       "priority": 2
     },
     {
+      "name": "Bensie",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "LazyFrog",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "AaleDieter",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Bensie",
       "scenario": "TOP",
       "priority": 2
     },
@@ -188,6 +188,11 @@
       "status": "STARK"
     },
     {
+      "name": "Bensie",
+      "score": 91.07,
+      "status": "STARK"
+    },
+    {
       "name": "LazyFrog",
       "score": 91.02,
       "status": "STARK"
@@ -195,11 +200,6 @@
     {
       "name": "AaleDieter",
       "score": 90.97,
-      "status": "STARK"
-    },
-    {
-      "name": "Bensie",
-      "score": 90.93,
       "status": "STARK"
     },
     {
@@ -405,6 +405,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Bensie",
+      "score": 91.07,
+      "tip": "Weiter so"
+    },
+    {
       "name": "LazyFrog",
       "score": 91.02,
       "tip": "Weiter so"
@@ -412,11 +417,6 @@
     {
       "name": "AaleDieter",
       "score": 90.97,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Bensie",
-      "score": 90.93,
       "tip": "Weiter so"
     },
     {
@@ -687,6 +687,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Bensie",
+        "player_tag": "#2QRVR9L8",
+        "role": "member",
+        "score": 91.07,
+        "strikes": 0,
+        "donations": 908,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "LazyFrog",
         "player_tag": "#22Q920RLR",
         "role": "member",
@@ -706,18 +718,6 @@
         "strikes": 0,
         "donations": 110,
         "participation_count": 9,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Bensie",
-        "player_tag": "#2QRVR9L8",
-        "role": "member",
-        "score": 90.93,
-        "strikes": 0,
-        "donations": 908,
-        "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
