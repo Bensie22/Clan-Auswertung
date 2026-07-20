@@ -1,11 +1,6 @@
 {
   "full_auto": [
     {
-      "name": "kuzzzzzz",
-      "scenario": "KEINE_TEILNAHME",
-      "priority": 4
-    },
-    {
       "name": "marco",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -368,11 +363,6 @@
       "status": "OK"
     },
     {
-      "name": "kuzzzzzz",
-      "score": 0.0,
-      "status": "RISIKO"
-    },
-    {
       "name": "marco",
       "score": 0.0,
       "status": "RISIKO"
@@ -590,11 +580,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "kuzzzzzz",
-      "score": 0.0,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
       "name": "marco",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
@@ -603,18 +588,6 @@
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
-      {
-        "name": "kuzzzzzz",
-        "player_tag": "#RRP2LCVRY",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 0,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
       {
         "name": "marco",
         "player_tag": "#PQPGPCPQ8",
