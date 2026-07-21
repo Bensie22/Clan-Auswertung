@@ -10,7 +10,7 @@
             "#P0JYR9YUY": "20260721T103345.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260721T125317.000Z",
-            "#G02LC9C8": "20260721T144453.000Z",
+            "#G02LC9C8": "20260721T162656.000Z",
             "#2U8288CVY": "20260720T201658.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
@@ -43,12 +43,12 @@
             "#RLJPJL8C2": "20260721T114544.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20260721T161446.000Z",
+            "#UUPCULU9V": "20260721T162805.000Z",
             "#202VP2QL9P": "20260721T160243.000Z",
             "#LVUGLUCP9": "20260719T192821.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
             "#V9GYJQ0J9": "",
-            "#URJ0LUYPV": "20260721T161911.000Z",
+            "#URJ0LUYPV": "20260721T162755.000Z",
             "#Q2GRGLQR": "20260721T153304.000Z",
             "#J9RQPGLVP": "20260713T204019.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
@@ -5258,7 +5258,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
                 }
             ],
-            "wins": 2,
+            "wins": 3,
             "losses": 0,
             "players": [
                 "OmniOni"
@@ -5267,6 +5267,12 @@
                 "UUPCULU9V"
             ],
             "recent_matches": [
+                {
+                    "time": "20260721T162805.000Z",
+                    "result": "win",
+                    "player": "OmniOni",
+                    "tag": "UUPCULU9V"
+                },
                 {
                     "time": "20260720T140603.000Z",
                     "result": "win",
@@ -311046,6 +311052,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000007-26000011-26000018-26000021-26000024-26000042-28000002-28000008": {
+            "cards": [
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000024,
+                    "name": "Royal Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mnlRaNtmfpQx2e6mp70sLd0ND-pKPF70Cf87_agEKg4.png"
+                },
+                {
+                    "id": 28000002,
+                    "name": "Rage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
