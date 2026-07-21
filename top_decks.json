@@ -17,7 +17,7 @@
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260720T052632.000Z",
             "#QULCQGGG": "20260721T122918.000Z",
-            "#JRGC9RRQG": "20260721T120743.000Z",
+            "#JRGC9RRQG": "20260721T124829.000Z",
             "#QVQGCV8Y9": "20260721T120627.000Z",
             "#Q8L0RJ8Y8": "20260719T174136.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
@@ -29,9 +29,9 @@
             "#2CJYG9UG": "20260721T024131.000Z",
             "#2PUQYJC02": "20260721T102811.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20260721T043313.000Z",
+            "#2V800VCQ0": "20260721T124103.000Z",
             "#2UQUPYQCJ": "20260721T121127.000Z",
-            "#JUUR8UGL8": "20260721T121945.000Z",
+            "#JUUR8UGL8": "20260721T124645.000Z",
             "#2U09UULRR": "20260721T102507.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20260721T001033.000Z",
@@ -3398,7 +3398,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/-iLlotr6GCFndL_1BSBqWBb6DnsHBhLerd5EblZDNfU.png"
                 }
             ],
-            "wins": 4,
+            "wins": 5,
             "losses": 0,
             "players": [
                 "Theezy"
@@ -3407,6 +3407,12 @@
                 "JUUR8UGL8"
             ],
             "recent_matches": [
+                {
+                    "time": "20260721T124645.000Z",
+                    "result": "win",
+                    "player": "Theezy",
+                    "tag": "JUUR8UGL8"
+                },
                 {
                     "time": "20260719T104946.000Z",
                     "result": "win",
@@ -310552,6 +310558,52 @@
                     "id": 26000106,
                     "name": "Ronin",
                     "icon": "https://api-assets.clashroyale.com/cards/300/X0dTFs7OGUavreDEzOtYd_YNZ8Zly6qgAE-dd-bNfWU.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000000-26000004-26000005-26000017-26000067-26000074-28000004-28000008": {
+            "cards": [
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 26000074,
+                    "name": "Golden Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WJd207D0O1sN-l1FTb8P9KhYL2oF5jY26vRUfTUW3FQ.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 26000067,
+                    "name": "Elixir Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/puhMsZjCIqy21HW3hYxjrk_xt8NIPyFqjRy-BeLKZwo.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
                 }
             ],
             "seen": 1,
