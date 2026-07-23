@@ -10,8 +10,8 @@
             "#P0JYR9YUY": "20260723T074522.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260723T173936.000Z",
-            "#G02LC9C8": "20260723T183815.000Z",
-            "#2U8288CVY": "20260723T183836.000Z",
+            "#G02LC9C8": "20260723T184800.000Z",
+            "#2U8288CVY": "20260723T184928.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
@@ -19,7 +19,7 @@
             "#QULCQGGG": "20260723T170429.000Z",
             "#JRGC9RRQG": "20260723T125541.000Z",
             "#QVQGCV8Y9": "20260723T121530.000Z",
-            "#Q8L0RJ8Y8": "20260722T203040.000Z",
+            "#Q8L0RJ8Y8": "20260723T184756.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260723T161349.000Z",
             "#LLQQJCLC": "20260720T060207.000Z",
@@ -35,16 +35,16 @@
             "#2U09UULRR": "20260723T150054.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20260723T012543.000Z",
-            "#8P0J8P0L": "20260723T152551.000Z",
+            "#8P0J8P0L": "20260723T184741.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260723T175945.000Z",
-            "#2P0U2RLGY": "20260723T183136.000Z",
+            "#2P0U2RLGY": "20260723T184127.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260723T183413.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
             "#UUPCULU9V": "20260723T174249.000Z",
-            "#202VP2QL9P": "20260723T184024.000Z",
+            "#202VP2QL9P": "20260723T184921.000Z",
             "#LVUGLUCP9": "20260723T182401.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
             "#V9GYJQ0J9": "",
@@ -4233,7 +4233,7 @@
                 }
             ],
             "wins": 4,
-            "losses": 1,
+            "losses": 2,
             "players": [
                 "eco"
             ],
@@ -4241,6 +4241,12 @@
                 "202VP2QL9P"
             ],
             "recent_matches": [
+                {
+                    "time": "20260723T184921.000Z",
+                    "result": "loss",
+                    "player": "eco",
+                    "tag": "202VP2QL9P"
+                },
                 {
                     "time": "20260721T160243.000Z",
                     "result": "win",
@@ -314852,6 +314858,52 @@
                     "id": 26000025,
                     "name": "Guards",
                     "icon": "https://api-assets.clashroyale.com/cards/300/1ArKfLJxYo6_NU_S9cAeIrfbXqWH0oULVJXedxBXQlU.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000011-26000018-26000021-26000049-26000055-26000080-28000009-28000011": {
+            "cards": [
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000080,
+                    "name": "Skeleton Dragons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qPOtg9uONh47_NLxGhhFc_ww9PlZ6z3Ry507q1NZUXs.png"
+                },
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
                 }
             ],
             "seen": 1,
