@@ -37,7 +37,7 @@
             "#8QYYL8LCQ": "20260723T012543.000Z",
             "#8P0J8P0L": "20260723T185615.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20260723T203834.000Z",
+            "#CUJ9PJ2UV": "20260723T204839.000Z",
             "#2P0U2RLGY": "20260723T184127.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260723T191240.000Z",
@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20260723T195404.000Z",
+            "#YUQVVVLQ": "20260723T204804.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260609T223746.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
@@ -6825,7 +6825,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 1,
+            "losses": 2,
             "players": [
                 "April#"
             ],
@@ -6833,6 +6833,12 @@
                 "YUQVVVLQ"
             ],
             "recent_matches": [
+                {
+                    "time": "20260723T204804.000Z",
+                    "result": "loss",
+                    "player": "April#",
+                    "tag": "YUQVVVLQ"
+                },
                 {
                     "time": "20260722T210725.000Z",
                     "result": "loss",
@@ -315406,6 +315412,52 @@
                     "id": 26000097,
                     "name": "Suspicious Bush",
                     "icon": "https://api-assets.clashroyale.com/cards/300/vqTzGAjseQv9F5rf4tsFWeocvg0dyPw1j_nB1cmDZfI.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000006-26000014-26000025-26000034-26000035-26000037-28000000-28000008": {
+            "cards": [
+                {
+                    "id": 26000035,
+                    "name": "Lumberjack",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000037,
+                    "name": "Inferno Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 26000025,
+                    "name": "Guards",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/1ArKfLJxYo6_NU_S9cAeIrfbXqWH0oULVJXedxBXQlU.png"
                 }
             ],
             "seen": 1,
