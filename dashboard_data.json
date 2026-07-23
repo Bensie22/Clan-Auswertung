@@ -41,12 +41,12 @@
       "priority": 2
     },
     {
-      "name": "Dolphin",
+      "name": "Jackhammer",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Jackhammer",
+      "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
     },
@@ -116,17 +116,17 @@
       "priority": 2
     },
     {
-      "name": "HardcoreSoldier",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "SirHenry87",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Denis",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "HardcoreSoldier",
       "scenario": "TOP",
       "priority": 2
     },
@@ -173,13 +173,13 @@
       "status": "STARK"
     },
     {
-      "name": "Dolphin",
-      "score": 91.42,
+      "name": "Jackhammer",
+      "score": 91.6,
       "status": "STARK"
     },
     {
-      "name": "Jackhammer",
-      "score": 91.2,
+      "name": "Dolphin",
+      "score": 91.42,
       "status": "STARK"
     },
     {
@@ -224,7 +224,7 @@
     },
     {
       "name": "Johan",
-      "score": 89.6,
+      "score": 89.73,
       "status": "STARK"
     },
     {
@@ -273,11 +273,6 @@
       "status": "STARK"
     },
     {
-      "name": "HardcoreSoldier",
-      "score": 86.36,
-      "status": "STARK"
-    },
-    {
       "name": "SirHenry87",
       "score": 86.33,
       "status": "STARK"
@@ -285,6 +280,11 @@
     {
       "name": "Denis",
       "score": 86.27,
+      "status": "STARK"
+    },
+    {
+      "name": "HardcoreSoldier",
+      "score": 86.23,
       "status": "STARK"
     },
     {
@@ -390,13 +390,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Dolphin",
-      "score": 91.42,
+      "name": "Jackhammer",
+      "score": 91.6,
       "tip": "Weiter so"
     },
     {
-      "name": "Jackhammer",
-      "score": 91.2,
+      "name": "Dolphin",
+      "score": 91.42,
       "tip": "Weiter so"
     },
     {
@@ -441,7 +441,7 @@
     },
     {
       "name": "Johan",
-      "score": 89.6,
+      "score": 89.73,
       "tip": "Weiter so"
     },
     {
@@ -490,11 +490,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "HardcoreSoldier",
-      "score": 86.36,
-      "tip": "Weiter so"
-    },
-    {
       "name": "SirHenry87",
       "score": 86.33,
       "tip": "Weiter so"
@@ -502,6 +497,11 @@
     {
       "name": "Denis",
       "score": 86.27,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "HardcoreSoldier",
+      "score": 86.23,
       "tip": "Weiter so"
     },
     {
@@ -665,24 +665,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Dolphin",
-        "player_tag": "#2U09UULRR",
+        "name": "Jackhammer",
+        "player_tag": "#2CJYG9UG",
         "role": "member",
-        "score": 91.42,
+        "score": 91.6,
         "strikes": 0,
-        "donations": 74,
+        "donations": 98,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
       {
-        "name": "Jackhammer",
-        "player_tag": "#2CJYG9UG",
+        "name": "Dolphin",
+        "player_tag": "#2U09UULRR",
         "role": "member",
-        "score": 91.2,
+        "score": 91.42,
         "strikes": 0,
-        "donations": 98,
+        "donations": 74,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -718,7 +718,7 @@
         "role": "member",
         "score": 90.84,
         "strikes": 0,
-        "donations": 302,
+        "donations": 310,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -776,9 +776,9 @@
         "name": "Johan",
         "player_tag": "#UQVCVVVJL",
         "role": "member",
-        "score": 89.6,
+        "score": 89.73,
         "strikes": 0,
-        "donations": 102,
+        "donations": 112,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
@@ -893,18 +893,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "HardcoreSoldier",
-        "player_tag": "#GRGCY0R8",
-        "role": "member",
-        "score": 86.36,
-        "strikes": 0,
-        "donations": 328,
-        "participation_count": 8,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "SirHenry87",
         "player_tag": "#8QYYL8LCQ",
         "role": "member",
@@ -925,6 +913,18 @@
         "donations": 50,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "HardcoreSoldier",
+        "player_tag": "#GRGCY0R8",
+        "role": "member",
+        "score": 86.23,
+        "strikes": 0,
+        "donations": 328,
+        "participation_count": 8,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
