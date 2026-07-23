@@ -56,17 +56,17 @@
       "priority": 2
     },
     {
-      "name": "chris",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "LazyFrog",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "honigmelone",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
@@ -193,11 +193,6 @@
       "status": "STARK"
     },
     {
-      "name": "chris",
-      "score": 90.84,
-      "status": "STARK"
-    },
-    {
       "name": "honigmelone",
       "score": 90.62,
       "status": "STARK"
@@ -205,6 +200,11 @@
     {
       "name": "LazyFrog",
       "score": 90.62,
+      "status": "STARK"
+    },
+    {
+      "name": "chris",
+      "score": 90.44,
       "status": "STARK"
     },
     {
@@ -410,11 +410,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "chris",
-      "score": 90.84,
-      "tip": "Weiter so"
-    },
-    {
       "name": "honigmelone",
       "score": 90.62,
       "tip": "Weiter so"
@@ -422,6 +417,11 @@
     {
       "name": "LazyFrog",
       "score": 90.62,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "chris",
+      "score": 90.44,
       "tip": "Weiter so"
     },
     {
@@ -706,18 +706,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "chris",
-        "player_tag": "#YQ82VR9JQ",
-        "role": "member",
-        "score": 90.84,
-        "strikes": 0,
-        "donations": 370,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "LazyFrog",
         "player_tag": "#22Q920RLR",
         "role": "member",
@@ -736,6 +724,18 @@
         "score": 90.62,
         "strikes": 0,
         "donations": 88,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "chris",
+        "player_tag": "#YQ82VR9JQ",
+        "role": "member",
+        "score": 90.44,
+        "strikes": 0,
+        "donations": 370,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
