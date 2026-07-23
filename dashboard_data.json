@@ -21,12 +21,12 @@
       "priority": 2
     },
     {
-      "name": "OmniOni",
+      "name": "Erastus",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Erastus",
+      "name": "OmniOni",
       "scenario": "TOP",
       "priority": 2
     },
@@ -111,11 +111,6 @@
       "priority": 2
     },
     {
-      "name": "agostini",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "SirHenry87",
       "scenario": "TOP",
       "priority": 2
@@ -127,6 +122,11 @@
     },
     {
       "name": "HardcoreSoldier",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "agostini",
       "scenario": "TOP",
       "priority": 2
     },
@@ -153,13 +153,13 @@
       "status": "STARK"
     },
     {
-      "name": "OmniOni",
-      "score": 93.82,
+      "name": "Erastus",
+      "score": 93.55,
       "status": "STARK"
     },
     {
-      "name": "Erastus",
-      "score": 93.55,
+      "name": "OmniOni",
+      "score": 93.28,
       "status": "STARK"
     },
     {
@@ -193,12 +193,12 @@
       "status": "STARK"
     },
     {
-      "name": "LazyFrog",
-      "score": 90.75,
+      "name": "honigmelone",
+      "score": 90.62,
       "status": "STARK"
     },
     {
-      "name": "honigmelone",
+      "name": "LazyFrog",
       "score": 90.62,
       "status": "STARK"
     },
@@ -268,11 +268,6 @@
       "status": "STARK"
     },
     {
-      "name": "agostini",
-      "score": 86.61,
-      "status": "STARK"
-    },
-    {
       "name": "SirHenry87",
       "score": 86.33,
       "status": "STARK"
@@ -285,6 +280,11 @@
     {
       "name": "HardcoreSoldier",
       "score": 86.23,
+      "status": "STARK"
+    },
+    {
+      "name": "agostini",
+      "score": 86.21,
       "status": "STARK"
     },
     {
@@ -370,13 +370,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "OmniOni",
-      "score": 93.82,
+      "name": "Erastus",
+      "score": 93.55,
       "tip": "Weiter so"
     },
     {
-      "name": "Erastus",
-      "score": 93.55,
+      "name": "OmniOni",
+      "score": 93.28,
       "tip": "Weiter so"
     },
     {
@@ -410,12 +410,12 @@
       "tip": "Weiter so"
     },
     {
-      "name": "LazyFrog",
-      "score": 90.75,
+      "name": "honigmelone",
+      "score": 90.62,
       "tip": "Weiter so"
     },
     {
-      "name": "honigmelone",
+      "name": "LazyFrog",
       "score": 90.62,
       "tip": "Weiter so"
     },
@@ -485,11 +485,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "agostini",
-      "score": 86.61,
-      "tip": "Weiter so"
-    },
-    {
       "name": "SirHenry87",
       "score": 86.33,
       "tip": "Weiter so"
@@ -502,6 +497,11 @@
     {
       "name": "HardcoreSoldier",
       "score": 86.23,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "agostini",
+      "score": 86.21,
       "tip": "Weiter so"
     },
     {
@@ -617,24 +617,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "OmniOni",
-        "player_tag": "#UUPCULU9V",
-        "role": "member",
-        "score": 93.82,
-        "strikes": 0,
-        "donations": 264,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Erastus",
         "player_tag": "#Q8L0RJ8Y8",
         "role": "member",
         "score": 93.55,
         "strikes": 0,
         "donations": 140,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "OmniOni",
+        "player_tag": "#UUPCULU9V",
+        "role": "member",
+        "score": 93.28,
+        "strikes": 0,
+        "donations": 282,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -658,7 +658,7 @@
         "role": "member",
         "score": 92.4,
         "strikes": 0,
-        "donations": 130,
+        "donations": 138,
         "participation_count": 9,
         "trend": "",
         "reason": "Score über 85",
@@ -706,7 +706,7 @@
         "role": "member",
         "score": 90.84,
         "strikes": 0,
-        "donations": 328,
+        "donations": 354,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -716,9 +716,9 @@
         "name": "LazyFrog",
         "player_tag": "#22Q920RLR",
         "role": "member",
-        "score": 90.75,
+        "score": 90.62,
         "strikes": 0,
-        "donations": 428,
+        "donations": 438,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -881,18 +881,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "agostini",
-        "player_tag": "#P2YQ2QQUV",
-        "role": "member",
-        "score": 86.61,
-        "strikes": 0,
-        "donations": 560,
-        "participation_count": 8,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "SirHenry87",
         "player_tag": "#8QYYL8LCQ",
         "role": "member",
@@ -929,12 +917,24 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "agostini",
+        "player_tag": "#P2YQ2QQUV",
+        "role": "member",
+        "score": 86.21,
+        "strikes": 0,
+        "donations": 576,
+        "participation_count": 8,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "eco",
         "player_tag": "#202VP2QL9P",
         "role": "member",
         "score": 85.94,
         "strikes": 0,
-        "donations": 234,
+        "donations": 250,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
