@@ -46,17 +46,17 @@
       "priority": 2
     },
     {
-      "name": "Dolphin",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Bensie",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "LazyFrog",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
     },
@@ -178,11 +178,6 @@
       "status": "STARK"
     },
     {
-      "name": "Dolphin",
-      "score": 91.42,
-      "status": "STARK"
-    },
-    {
       "name": "Bensie",
       "score": 91.07,
       "status": "STARK"
@@ -190,6 +185,11 @@
     {
       "name": "LazyFrog",
       "score": 91.02,
+      "status": "STARK"
+    },
+    {
+      "name": "Dolphin",
+      "score": 90.88,
       "status": "STARK"
     },
     {
@@ -244,7 +244,7 @@
     },
     {
       "name": "hi2oka",
-      "score": 87.54,
+      "score": 87.4,
       "status": "STARK"
     },
     {
@@ -395,11 +395,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Dolphin",
-      "score": 91.42,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Bensie",
       "score": 91.07,
       "tip": "Weiter so"
@@ -407,6 +402,11 @@
     {
       "name": "LazyFrog",
       "score": 91.02,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Dolphin",
+      "score": 90.88,
       "tip": "Weiter so"
     },
     {
@@ -461,7 +461,7 @@
     },
     {
       "name": "hi2oka",
-      "score": 87.54,
+      "score": 87.4,
       "tip": "Weiter so"
     },
     {
@@ -646,7 +646,7 @@
         "role": "member",
         "score": 93.2,
         "strikes": 0,
-        "donations": 248,
+        "donations": 282,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -677,18 +677,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Dolphin",
-        "player_tag": "#2U09UULRR",
-        "role": "member",
-        "score": 91.42,
-        "strikes": 0,
-        "donations": 74,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Bensie",
         "player_tag": "#2QRVR9L8",
         "role": "member",
@@ -707,6 +695,18 @@
         "score": 91.02,
         "strikes": 0,
         "donations": 420,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Dolphin",
+        "player_tag": "#2U09UULRR",
+        "role": "member",
+        "score": 90.88,
+        "strikes": 0,
+        "donations": 74,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -824,9 +824,9 @@
         "name": "hi2oka",
         "player_tag": "#UJ2P9UYUV",
         "role": "member",
-        "score": 87.54,
+        "score": 87.4,
         "strikes": 0,
-        "donations": 355,
+        "donations": 387,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
