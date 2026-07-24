@@ -96,17 +96,17 @@
       "priority": 2
     },
     {
-      "name": "Desteoyer",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Wario",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Knitte",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Desteoyer",
       "scenario": "TOP",
       "priority": 2
     },
@@ -248,11 +248,6 @@
       "status": "STARK"
     },
     {
-      "name": "Desteoyer",
-      "score": 87.75,
-      "status": "STARK"
-    },
-    {
       "name": "Wario",
       "score": 87.64,
       "status": "STARK"
@@ -260,6 +255,11 @@
     {
       "name": "Knitte",
       "score": 87.58,
+      "status": "STARK"
+    },
+    {
+      "name": "Desteoyer",
+      "score": 87.49,
       "status": "STARK"
     },
     {
@@ -465,11 +465,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Desteoyer",
-      "score": 87.75,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Wario",
       "score": 87.64,
       "tip": "Weiter so"
@@ -477,6 +472,11 @@
     {
       "name": "Knitte",
       "score": 87.58,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Desteoyer",
+      "score": 87.49,
       "tip": "Weiter so"
     },
     {
@@ -812,18 +812,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Desteoyer",
-        "player_tag": "#2V800VCQ0",
-        "role": "member",
-        "score": 87.75,
-        "strikes": 0,
-        "donations": 54,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Wario",
         "player_tag": "#2PUQYJC02",
         "role": "member",
@@ -841,7 +829,19 @@
         "role": "member",
         "score": 87.58,
         "strikes": 0,
-        "donations": 592,
+        "donations": 616,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Desteoyer",
+        "player_tag": "#2V800VCQ0",
+        "role": "member",
+        "score": 87.49,
+        "strikes": 0,
+        "donations": 54,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
