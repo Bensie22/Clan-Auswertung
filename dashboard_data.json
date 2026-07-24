@@ -66,12 +66,12 @@
       "priority": 2
     },
     {
-      "name": "chris",
+      "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Johan",
+      "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
@@ -218,17 +218,17 @@
       "status": "STARK"
     },
     {
-      "name": "chris",
-      "score": 90.3,
-      "status": "STARK"
-    },
-    {
       "name": "Johan",
       "score": 90.13,
       "status": "STARK"
     },
     {
       "name": "AaleDieter",
+      "score": 90.04,
+      "status": "STARK"
+    },
+    {
+      "name": "chris",
       "score": 90.04,
       "status": "STARK"
     },
@@ -435,17 +435,17 @@
       "tip": "Weiter so"
     },
     {
-      "name": "chris",
-      "score": 90.3,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Johan",
       "score": 90.13,
       "tip": "Weiter so"
     },
     {
       "name": "AaleDieter",
+      "score": 90.04,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "chris",
       "score": 90.04,
       "tip": "Weiter so"
     },
@@ -745,18 +745,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "chris",
-        "player_tag": "#YQ82VR9JQ",
-        "role": "member",
-        "score": 90.3,
-        "strikes": 0,
-        "donations": 442,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Johan",
         "player_tag": "#UQVCVVVJL",
         "role": "member",
@@ -765,6 +753,18 @@
         "donations": 120,
         "participation_count": 10,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "chris",
+        "player_tag": "#YQ82VR9JQ",
+        "role": "member",
+        "score": 90.04,
+        "strikes": 0,
+        "donations": 442,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
