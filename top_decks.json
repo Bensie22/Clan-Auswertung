@@ -52,7 +52,7 @@
             "#Q2GRGLQR": "20260723T044148.000Z",
             "#J9RQPGLVP": "20260713T204019.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
-            "#9VLRQ9GR9": "20260723T181358.000Z",
+            "#9VLRQ9GR9": "20260724T054928.000Z",
             "#29RLRYLQL": "20260420T155237.000Z",
             "#QGGU22L9": "20260420T144732.000Z",
             "#2RQU00RLR": "20260421T120601.000Z",
@@ -2727,7 +2727,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
                 }
             ],
-            "wins": 4,
+            "wins": 5,
             "losses": 1,
             "players": [
                 "DST"
@@ -2736,6 +2736,12 @@
                 "9VLRQ9GR9"
             ],
             "recent_matches": [
+                {
+                    "time": "20260724T054928.000Z",
+                    "result": "win",
+                    "player": "DST",
+                    "tag": "9VLRQ9GR9"
+                },
                 {
                     "time": "20260719T184931.000Z",
                     "result": "loss",
@@ -316335,6 +316341,52 @@
                     "id": 26000067,
                     "name": "Elixir Golem",
                     "icon": "https://api-assets.clashroyale.com/cards/300/puhMsZjCIqy21HW3hYxjrk_xt8NIPyFqjRy-BeLKZwo.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000007-26000027-26000040-26000063-27000000-27000003-28000005-28000011": {
+            "cards": [
+                {
+                    "id": 26000063,
+                    "name": "Electro Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/tN9h6lnMNPCNsx0LMFmvpHgznbDZ1fBRkx-C7UfNmfY.png"
+                },
+                {
+                    "id": 26000027,
+                    "name": "Dark Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/M7fXlrKXHu2IvpSGpk36kXVstslbR08Bbxcy0jQcln8.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 27000000,
+                    "name": "Cannon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nZK1y-beLxO5vnlyUhK6-2zH2NzXJwqykcosqQ1cmZ8.png"
+                },
+                {
+                    "id": 28000005,
+                    "name": "Freeze",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
+                },
+                {
+                    "id": 27000003,
+                    "name": "Inferno Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
                 }
             ],
             "seen": 1,
