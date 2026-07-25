@@ -17,7 +17,7 @@
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260725T152449.000Z",
             "#QULCQGGG": "20260725T163847.000Z",
-            "#JRGC9RRQG": "20260725T114824.000Z",
+            "#JRGC9RRQG": "20260725T164816.000Z",
             "#QVQGCV8Y9": "20260725T153605.000Z",
             "#Q8L0RJ8Y8": "20260725T102844.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
@@ -2991,7 +2991,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
                 }
             ],
-            "wins": 4,
+            "wins": 5,
             "losses": 0,
             "players": [
                 "seroo"
@@ -3000,6 +3000,12 @@
                 "JRGC9RRQG"
             ],
             "recent_matches": [
+                {
+                    "time": "20260725T164816.000Z",
+                    "result": "win",
+                    "player": "seroo",
+                    "tag": "JRGC9RRQG"
+                },
                 {
                     "time": "20260724T103044.000Z",
                     "result": "win",
@@ -321761,6 +321767,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000017-26000023-26000040-26000041-26000055-26000058-26000095-28000001": {
+            "cards": [
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000023,
+                    "name": "Ice Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W3dkw0HTw9n1jB-zbknY2w3wHuyuLxSRIAV5fUT1SEY.png"
+                },
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000095,
+                    "name": "Goblin Demolisher",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/KVVOgdn40xasFLYuQv8Go_U_LCV7wSG9q9eE1H7f3Qk.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 26000058,
+                    "name": "Wall Breakers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_xPphEfC8eEwFNrfU3cMQG9-f5JaLQ31ARCA7l3XtW4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
