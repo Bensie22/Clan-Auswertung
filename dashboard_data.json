@@ -76,17 +76,17 @@
       "priority": 2
     },
     {
-      "name": "_spc07",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "honigmelone",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "_spc07",
       "scenario": "TOP",
       "priority": 2
     },
@@ -228,11 +228,6 @@
       "status": "STARK"
     },
     {
-      "name": "_spc07",
-      "score": 90.53,
-      "status": "STARK"
-    },
-    {
       "name": "Johan",
       "score": 90.53,
       "status": "STARK"
@@ -240,6 +235,11 @@
     {
       "name": "honigmelone",
       "score": 90.48,
+      "status": "STARK"
+    },
+    {
+      "name": "_spc07",
+      "score": 90.26,
       "status": "STARK"
     },
     {
@@ -460,11 +460,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "_spc07",
-      "score": 90.53,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Johan",
       "score": 90.53,
       "tip": "Weiter so"
@@ -472,6 +467,11 @@
     {
       "name": "honigmelone",
       "score": 90.48,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "_spc07",
+      "score": 90.26,
       "tip": "Weiter so"
     },
     {
@@ -819,18 +819,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "_spc07",
-        "player_tag": "#2U8288CVY",
-        "role": "member",
-        "score": 90.53,
-        "strikes": 0,
-        "donations": 168,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Johan",
         "player_tag": "#UQVCVVVJL",
         "role": "member",
@@ -849,6 +837,18 @@
         "score": 90.48,
         "strikes": 0,
         "donations": 152,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "_spc07",
+        "player_tag": "#2U8288CVY",
+        "role": "member",
+        "score": 90.26,
+        "strikes": 0,
+        "donations": 168,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
