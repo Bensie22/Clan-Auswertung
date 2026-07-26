@@ -17,7 +17,7 @@
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260726T094250.000Z",
             "#QULCQGGG": "20260726T085721.000Z",
-            "#JRGC9RRQG": "20260726T105013.000Z",
+            "#JRGC9RRQG": "20260726T105844.000Z",
             "#QVQGCV8Y9": "20260725T153605.000Z",
             "#Q8L0RJ8Y8": "20260726T084903.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
@@ -100,7 +100,8 @@
             "#9U0GLQPRC": "20260710T045740.000Z",
             "#PQPGPCPQ8": "20260716T222420.000Z",
             "#RRP2LCVRY": "20260720T030817.000Z",
-            "#CRC8PQJ2P": "20260723T214847.000Z"
+            "#CRC8PQJ2P": "20260723T214847.000Z",
+            "#U8VYULLVU": "20260726T105911.000Z"
         }
     },
     "decks": {
@@ -3015,7 +3016,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
                 }
             ],
-            "wins": 5,
+            "wins": 6,
             "losses": 0,
             "players": [
                 "seroo"
@@ -3024,6 +3025,12 @@
                 "JRGC9RRQG"
             ],
             "recent_matches": [
+                {
+                    "time": "20260726T105844.000Z",
+                    "result": "win",
+                    "player": "seroo",
+                    "tag": "JRGC9RRQG"
+                },
                 {
                     "time": "20260725T164816.000Z",
                     "result": "win",
@@ -324685,6 +324692,52 @@
                     "id": 26000039,
                     "name": "Mega Minion",
                     "icon": "https://api-assets.clashroyale.com/cards/300/-T_e4YLbuhPBKbYnBwQfXgynNpp5eOIN_0RracYwL9c.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000006-26000014-26000049-26000055-26000056-26000064-26000084-28000011": {
+            "cards": [
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000084,
+                    "name": "Electro Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WKd4-IAFsgPpMo7dDi9sujmYjRhOMEWiE07OUJpvD9g.png"
                 }
             ],
             "seen": 1,

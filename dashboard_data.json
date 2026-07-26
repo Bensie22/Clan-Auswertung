@@ -6,6 +6,11 @@
       "priority": 4
     },
     {
+      "name": "Rex¥_JB",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "elazeto",
       "scenario": "TOP",
       "priority": 2
@@ -366,6 +371,11 @@
       "name": "marco",
       "score": 0.0,
       "status": "RISIKO"
+    },
+    {
+      "name": "Rex¥_JB",
+      "score": 0.0,
+      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -578,6 +588,11 @@
       "name": "marco",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "Rex¥_JB",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
@@ -586,6 +601,18 @@
       {
         "name": "marco",
         "player_tag": "#PQPGPCPQ8",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "Rex¥_JB",
+        "player_tag": "#U8VYULLVU",
         "role": "member",
         "score": 0.0,
         "strikes": 0,
