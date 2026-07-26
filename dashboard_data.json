@@ -36,17 +36,17 @@
       "priority": 2
     },
     {
+      "name": "Bensie",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "April#",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Jackhammer",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Bensie",
       "scenario": "TOP",
       "priority": 2
     },
@@ -71,12 +71,12 @@
       "priority": 2
     },
     {
-      "name": "AaleDieter",
+      "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Johan",
+      "name": "AaleDieter",
       "scenario": "TOP",
       "priority": 2
     },
@@ -188,13 +188,13 @@
       "status": "STARK"
     },
     {
-      "name": "Jackhammer",
-      "score": 91.33,
+      "name": "Bensie",
+      "score": 91.47,
       "status": "STARK"
     },
     {
-      "name": "Bensie",
-      "score": 91.2,
+      "name": "Jackhammer",
+      "score": 91.33,
       "status": "STARK"
     },
     {
@@ -218,13 +218,13 @@
       "status": "STARK"
     },
     {
-      "name": "AaleDieter",
-      "score": 90.31,
+      "name": "Johan",
+      "score": 90.4,
       "status": "STARK"
     },
     {
-      "name": "Johan",
-      "score": 90.13,
+      "name": "AaleDieter",
+      "score": 90.31,
       "status": "STARK"
     },
     {
@@ -349,7 +349,7 @@
     },
     {
       "name": "Chico",
-      "score": 77.28,
+      "score": 77.15,
       "status": "OK"
     },
     {
@@ -400,13 +400,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Jackhammer",
-      "score": 91.33,
+      "name": "Bensie",
+      "score": 91.47,
       "tip": "Weiter so"
     },
     {
-      "name": "Bensie",
-      "score": 91.2,
+      "name": "Jackhammer",
+      "score": 91.33,
       "tip": "Weiter so"
     },
     {
@@ -430,13 +430,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "AaleDieter",
-      "score": 90.31,
+      "name": "Johan",
+      "score": 90.4,
       "tip": "Weiter so"
     },
     {
-      "name": "Johan",
-      "score": 90.13,
+      "name": "AaleDieter",
+      "score": 90.31,
       "tip": "Weiter so"
     },
     {
@@ -561,7 +561,7 @@
     },
     {
       "name": "Chico",
-      "score": 77.28,
+      "score": 77.15,
       "tip": "Weiter so"
     },
     {
@@ -658,6 +658,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Bensie",
+        "player_tag": "#2QRVR9L8",
+        "role": "member",
+        "score": 91.47,
+        "strikes": 0,
+        "donations": 680,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "April#",
         "player_tag": "#YUQVVVLQ",
         "role": "member",
@@ -676,18 +688,6 @@
         "score": 91.33,
         "strikes": 0,
         "donations": 160,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Bensie",
-        "player_tag": "#2QRVR9L8",
-        "role": "member",
-        "score": 91.2,
-        "strikes": 0,
-        "donations": 680,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -742,6 +742,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Johan",
+        "player_tag": "#UQVCVVVJL",
+        "role": "member",
+        "score": 90.4,
+        "strikes": 0,
+        "donations": 128,
+        "participation_count": 10,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "AaleDieter",
         "player_tag": "#CUJ9PJ2UV",
         "role": "member",
@@ -750,18 +762,6 @@
         "donations": 130,
         "participation_count": 9,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Johan",
-        "player_tag": "#UQVCVVVJL",
-        "role": "member",
-        "score": 90.13,
-        "strikes": 0,
-        "donations": 128,
-        "participation_count": 10,
-        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
