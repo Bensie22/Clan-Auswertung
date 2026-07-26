@@ -16,6 +16,11 @@
       "priority": 4
     },
     {
+      "name": "nihay",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "Dodolinchen",
       "scenario": "STRIKE",
       "priority": 4
@@ -393,6 +398,11 @@
       "status": "RISIKO"
     },
     {
+      "name": "nihay",
+      "score": 0.0,
+      "status": "RISIKO"
+    },
+    {
       "name": "Rex¥_JB",
       "score": 0.0,
       "status": "RISIKO"
@@ -620,6 +630,11 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
+      "name": "nihay",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "Rex¥_JB",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
@@ -640,6 +655,18 @@
         "score": 0.0,
         "strikes": 0,
         "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "nihay",
+        "player_tag": "#202QYVY8CC",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 16,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
