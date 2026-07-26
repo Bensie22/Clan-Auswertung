@@ -10,7 +10,7 @@
             "#P0JYR9YUY": "20260725T092045.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260726T053035.000Z",
-            "#G02LC9C8": "20260725T205646.000Z",
+            "#G02LC9C8": "20260726T062032.000Z",
             "#2U8288CVY": "20260725T175736.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
@@ -34,7 +34,7 @@
             "#JUUR8UGL8": "20260725T160457.000Z",
             "#2U09UULRR": "20260726T055228.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
-            "#8QYYL8LCQ": "20260726T053216.000Z",
+            "#8QYYL8LCQ": "20260726T061103.000Z",
             "#8P0J8P0L": "20260725T160814.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260725T234857.000Z",
@@ -519,7 +519,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
                 }
             ],
-            "wins": 4,
+            "wins": 3,
             "losses": 0,
             "players": [
                 "hi2oka"
@@ -542,12 +542,6 @@
                 },
                 {
                     "time": "20260628T193931.000Z",
-                    "result": "win",
-                    "player": "hi2oka",
-                    "tag": "UJ2P9UYUV"
-                },
-                {
-                    "time": "20260626T061532.000Z",
                     "result": "win",
                     "player": "hi2oka",
                     "tag": "UJ2P9UYUV"
@@ -323803,6 +323797,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000007-26000011-26000035-26000047-26000052-26000057-26000059-26000103": {
+            "cards": [
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 26000103,
+                    "name": "Boss Bandit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nuceG9o7rAyvyc7D3sp2QSiRYtSOEgraq0NJkDf729s.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000047,
+                    "name": "Royal Recruits",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jcNyYGUiXXNz3kuz8NBkHNKNREQKraXlb_Ts7rhCIdM.png"
+                },
+                {
+                    "id": 26000057,
+                    "name": "Flying Machine",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/hzKNE3QwFcrSrDDRuVW3QY_OnrDPijSiIp-PsWgFevE.png"
+                },
+                {
+                    "id": 26000052,
+                    "name": "Zappies",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QZfHRpLRmutZbCr5fpLnTpIp89vLI6NrAwzGZ8tHEc4.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000035,
+                    "name": "Lumberjack",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
