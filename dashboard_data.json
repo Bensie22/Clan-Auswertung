@@ -136,17 +136,17 @@
       "priority": 2
     },
     {
+      "name": "Denis",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "bes",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "SirHenry87",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Denis",
       "scenario": "TOP",
       "priority": 2
     },
@@ -298,6 +298,11 @@
       "status": "STARK"
     },
     {
+      "name": "Denis",
+      "score": 86.8,
+      "status": "STARK"
+    },
+    {
       "name": "bes",
       "score": 86.78,
       "status": "STARK"
@@ -308,18 +313,13 @@
       "status": "STARK"
     },
     {
-      "name": "Denis",
-      "score": 86.4,
-      "status": "STARK"
-    },
-    {
       "name": "Knitte",
       "score": 86.24,
       "status": "STARK"
     },
     {
       "name": "agostini",
-      "score": 86.08,
+      "score": 86.21,
       "status": "STARK"
     },
     {
@@ -530,6 +530,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Denis",
+      "score": 86.8,
+      "tip": "Weiter so"
+    },
+    {
       "name": "bes",
       "score": 86.78,
       "tip": "Weiter so"
@@ -540,18 +545,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Denis",
-      "score": 86.4,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Knitte",
       "score": 86.24,
       "tip": "Weiter so"
     },
     {
       "name": "agostini",
-      "score": 86.08,
+      "score": 86.21,
       "tip": "Weiter so"
     },
     {
@@ -956,7 +956,7 @@
         "role": "member",
         "score": 87.27,
         "strikes": 0,
-        "donations": 579,
+        "donations": 597,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -971,6 +971,18 @@
         "donations": 0,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Denis",
+        "player_tag": "#2VJR80RL",
+        "role": "member",
+        "score": 86.8,
+        "strikes": 0,
+        "donations": 84,
+        "participation_count": 10,
+        "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -999,18 +1011,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Denis",
-        "player_tag": "#2VJR80RL",
-        "role": "member",
-        "score": 86.4,
-        "strikes": 0,
-        "donations": 76,
-        "participation_count": 10,
-        "trend": "🟡🟡🟡🟡🟡",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Knitte",
         "player_tag": "#ULYJ2CQP",
         "role": "member",
@@ -1026,9 +1026,9 @@
         "name": "agostini",
         "player_tag": "#P2YQ2QQUV",
         "role": "member",
-        "score": 86.08,
+        "score": 86.21,
         "strikes": 0,
-        "donations": 932,
+        "donations": 940,
         "participation_count": 8,
         "trend": "",
         "reason": "Score über 85",
