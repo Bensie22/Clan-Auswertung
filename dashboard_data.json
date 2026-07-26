@@ -1,18 +1,18 @@
 {
   "full_auto": [
     {
-      "name": "Rex¥_JB",
-      "scenario": "KEINE_TEILNAHME",
-      "priority": 4
-    },
-    {
       "name": "marco",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
     },
     {
-      "name": "Dodolinchen",
+      "name": "Rex¥_JB",
       "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
+      "name": "Dodolinchen",
+      "scenario": "STRIKE",
       "priority": 4
     },
     {
@@ -314,12 +314,12 @@
     },
     {
       "name": "kl.kranker Affe",
-      "score": 85.89,
+      "score": 85.75,
       "status": "STARK"
     },
     {
       "name": "Reklaminator",
-      "score": 85.54,
+      "score": 85.41,
       "status": "STARK"
     },
     {
@@ -359,7 +359,7 @@
     },
     {
       "name": "Chico",
-      "score": 77.15,
+      "score": 77.28,
       "status": "OK"
     },
     {
@@ -373,17 +373,17 @@
       "status": "OK"
     },
     {
+      "name": "Dodolinchen",
+      "score": 3.33,
+      "status": "RISIKO"
+    },
+    {
       "name": "Rex¥_JB",
       "score": 0.0,
       "status": "RISIKO"
     },
     {
       "name": "marco",
-      "score": 0.0,
-      "status": "RISIKO"
-    },
-    {
-      "name": "Dodolinchen",
       "score": 0.0,
       "status": "RISIKO"
     }
@@ -536,12 +536,12 @@
     },
     {
       "name": "kl.kranker Affe",
-      "score": 85.89,
+      "score": 85.75,
       "tip": "Weiter so"
     },
     {
       "name": "Reklaminator",
-      "score": 85.54,
+      "score": 85.41,
       "tip": "Weiter so"
     },
     {
@@ -581,7 +581,7 @@
     },
     {
       "name": "Chico",
-      "score": 77.15,
+      "score": 77.28,
       "tip": "Weiter so"
     },
     {
@@ -595,17 +595,17 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Dodolinchen",
+      "score": 3.33,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "Rex¥_JB",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
       "name": "marco",
-      "score": 0.0,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "Dodolinchen",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
     }
@@ -619,7 +619,7 @@
         "role": "member",
         "score": 0.0,
         "strikes": 0,
-        "donations": 0,
+        "donations": 10,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -641,7 +641,7 @@
         "name": "Dodolinchen",
         "player_tag": "#VCYQ9L9QV",
         "role": "member",
-        "score": 0.0,
+        "score": 3.33,
         "strikes": 0,
         "donations": 0,
         "participation_count": 0,
@@ -991,7 +991,7 @@
         "name": "kl.kranker Affe",
         "player_tag": "#RLJPJL8C2",
         "role": "member",
-        "score": 85.89,
+        "score": 85.75,
         "strikes": 0,
         "donations": 76,
         "participation_count": 10,
@@ -1003,7 +1003,7 @@
         "name": "Reklaminator",
         "player_tag": "#P0G2GYJQ9",
         "role": "member",
-        "score": 85.54,
+        "score": 85.41,
         "strikes": 0,
         "donations": 175,
         "participation_count": 4,
