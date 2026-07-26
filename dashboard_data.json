@@ -71,11 +71,6 @@
       "priority": 2
     },
     {
-      "name": "LazyFrog",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Johan",
       "scenario": "TOP",
       "priority": 2
@@ -86,12 +81,17 @@
       "priority": 2
     },
     {
-      "name": "_spc07",
+      "name": "LazyFrog",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Dolphin",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "_spc07",
       "scenario": "TOP",
       "priority": 2
     },
@@ -223,11 +223,6 @@
       "status": "STARK"
     },
     {
-      "name": "LazyFrog",
-      "score": 90.62,
-      "status": "STARK"
-    },
-    {
       "name": "Johan",
       "score": 90.53,
       "status": "STARK"
@@ -238,8 +233,8 @@
       "status": "STARK"
     },
     {
-      "name": "_spc07",
-      "score": 90.26,
+      "name": "LazyFrog",
+      "score": 90.35,
       "status": "STARK"
     },
     {
@@ -250,6 +245,11 @@
     {
       "name": "elazeto",
       "score": 90.13,
+      "status": "STARK"
+    },
+    {
+      "name": "_spc07",
+      "score": 90.12,
       "status": "STARK"
     },
     {
@@ -455,11 +455,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "LazyFrog",
-      "score": 90.62,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Johan",
       "score": 90.53,
       "tip": "Weiter so"
@@ -470,8 +465,8 @@
       "tip": "Weiter so"
     },
     {
-      "name": "_spc07",
-      "score": 90.26,
+      "name": "LazyFrog",
+      "score": 90.35,
       "tip": "Weiter so"
     },
     {
@@ -482,6 +477,11 @@
     {
       "name": "elazeto",
       "score": 90.13,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "_spc07",
+      "score": 90.12,
       "tip": "Weiter so"
     },
     {
@@ -807,18 +807,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "LazyFrog",
-        "player_tag": "#22Q920RLR",
-        "role": "member",
-        "score": 90.62,
-        "strikes": 0,
-        "donations": 844,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Johan",
         "player_tag": "#UQVCVVVJL",
         "role": "member",
@@ -843,12 +831,12 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "_spc07",
-        "player_tag": "#2U8288CVY",
+        "name": "LazyFrog",
+        "player_tag": "#22Q920RLR",
         "role": "member",
-        "score": 90.26,
+        "score": 90.35,
         "strikes": 0,
-        "donations": 168,
+        "donations": 880,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -861,6 +849,18 @@
         "score": 90.22,
         "strikes": 0,
         "donations": 164,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "_spc07",
+        "player_tag": "#2U8288CVY",
+        "role": "member",
+        "score": 90.12,
+        "strikes": 0,
+        "donations": 168,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
