@@ -15,8 +15,8 @@
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
-            "#PPR2QQC0U": "20260726T135231.000Z",
-            "#QULCQGGG": "20260726T144009.000Z",
+            "#PPR2QQC0U": "20260726T144823.000Z",
+            "#QULCQGGG": "20260726T144949.000Z",
             "#JRGC9RRQG": "20260726T114450.000Z",
             "#QVQGCV8Y9": "20260725T153605.000Z",
             "#Q8L0RJ8Y8": "20260726T084903.000Z",
@@ -32,7 +32,7 @@
             "#2V800VCQ0": "20260726T143415.000Z",
             "#2UQUPYQCJ": "20260724T114008.000Z",
             "#JUUR8UGL8": "20260725T160457.000Z",
-            "#2U09UULRR": "20260726T115507.000Z",
+            "#2U09UULRR": "20260726T144522.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20260726T065453.000Z",
             "#8P0J8P0L": "20260725T160814.000Z",
@@ -103,7 +103,7 @@
             "#CRC8PQJ2P": "20260723T214847.000Z",
             "#U8VYULLVU": "20260726T113237.000Z",
             "#VCYQ9L9QV": "20260726T112530.000Z",
-            "#GRR999Q29": "20260726T131707.000Z"
+            "#GRR999Q29": "20260726T145013.000Z"
         }
     },
     "decks": {
@@ -444,7 +444,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
                 }
             ],
-            "wins": 3,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "elazeto"
@@ -461,12 +461,6 @@
                 },
                 {
                     "time": "20260627T163347.000Z",
-                    "result": "win",
-                    "player": "elazeto",
-                    "tag": "URJ0LUYPV"
-                },
-                {
-                    "time": "20260626T144359.000Z",
                     "result": "win",
                     "player": "elazeto",
                     "tag": "URJ0LUYPV"
@@ -6145,7 +6139,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Dolphin"
             ],
@@ -6153,6 +6147,12 @@
                 "2U09UULRR"
             ],
             "recent_matches": [
+                {
+                    "time": "20260726T144522.000Z",
+                    "result": "loss",
+                    "player": "Dolphin",
+                    "tag": "2U09UULRR"
+                },
                 {
                     "time": "20260725T171108.000Z",
                     "result": "win",
@@ -325866,6 +325866,52 @@
                     "id": 26000010,
                     "name": "Skeletons",
                     "icon": "https://api-assets.clashroyale.com/cards/300/oO7iKMU5m0cdxhYPZA3nWQiAUh2yoGgdThLWB1rVSec.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000014-26000015-26000018-26000022-26000042-26000054-26000058-27000002": {
+            "cards": [
+                {
+                    "id": 27000002,
+                    "name": "Mortar",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lPOSw6H7YOHq2miSCrf7ZDL3ANjhJdPPDYOTujdNrVE.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000022,
+                    "name": "Minion Horde",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Wyjq5l0IXHTkX9Rmpap6HaH08MvjbxFp1xBO9a47YSI.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 26000054,
+                    "name": "Cannon Cart",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/aqwxRz8HXzqlMCO4WMXNA1txynjXTsLinknqsgZLbok.png"
+                },
+                {
+                    "id": 26000058,
+                    "name": "Wall Breakers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_xPphEfC8eEwFNrfU3cMQG9-f5JaLQ31ARCA7l3XtW4.png"
                 }
             ],
             "seen": 1,
