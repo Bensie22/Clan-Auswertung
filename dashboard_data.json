@@ -91,12 +91,12 @@
       "priority": 2
     },
     {
-      "name": "AaleDieter",
+      "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Swordfish",
+      "name": "AaleDieter",
       "scenario": "TOP",
       "priority": 2
     },
@@ -238,11 +238,6 @@
       "status": "STARK"
     },
     {
-      "name": "AaleDieter",
-      "score": 90.31,
-      "status": "STARK"
-    },
-    {
       "name": "elazeto",
       "score": 90.13,
       "status": "STARK"
@@ -250,6 +245,11 @@
     {
       "name": "Swordfish",
       "score": 90.04,
+      "status": "STARK"
+    },
+    {
+      "name": "AaleDieter",
+      "score": 89.91,
       "status": "STARK"
     },
     {
@@ -465,11 +465,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "AaleDieter",
-      "score": 90.31,
-      "tip": "Weiter so"
-    },
-    {
       "name": "elazeto",
       "score": 90.13,
       "tip": "Weiter so"
@@ -477,6 +472,11 @@
     {
       "name": "Swordfish",
       "score": 90.04,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "AaleDieter",
+      "score": 89.91,
       "tip": "Weiter so"
     },
     {
@@ -835,18 +835,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "AaleDieter",
-        "player_tag": "#CUJ9PJ2UV",
-        "role": "member",
-        "score": 90.31,
-        "strikes": 0,
-        "donations": 130,
-        "participation_count": 9,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Swordfish",
         "player_tag": "#2CPRGY8G",
         "role": "member",
@@ -854,6 +842,18 @@
         "strikes": 0,
         "donations": 239,
         "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "AaleDieter",
+        "player_tag": "#CUJ9PJ2UV",
+        "role": "member",
+        "score": 89.91,
+        "strikes": 0,
+        "donations": 130,
+        "participation_count": 9,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
