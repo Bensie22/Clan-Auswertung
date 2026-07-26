@@ -66,11 +66,6 @@
       "priority": 2
     },
     {
-      "name": "Dolphin",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "_spc07",
       "scenario": "TOP",
       "priority": 2
@@ -82,6 +77,11 @@
     },
     {
       "name": "honigmelone",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
     },
@@ -213,11 +213,6 @@
       "status": "STARK"
     },
     {
-      "name": "Dolphin",
-      "score": 90.62,
-      "status": "STARK"
-    },
-    {
       "name": "_spc07",
       "score": 90.53,
       "status": "STARK"
@@ -230,6 +225,11 @@
     {
       "name": "honigmelone",
       "score": 90.48,
+      "status": "STARK"
+    },
+    {
+      "name": "Dolphin",
+      "score": 90.35,
       "status": "STARK"
     },
     {
@@ -435,11 +435,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Dolphin",
-      "score": 90.62,
-      "tip": "Weiter so"
-    },
-    {
       "name": "_spc07",
       "score": 90.53,
       "tip": "Weiter so"
@@ -452,6 +447,11 @@
     {
       "name": "honigmelone",
       "score": 90.48,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Dolphin",
+      "score": 90.35,
       "tip": "Weiter so"
     },
     {
@@ -760,18 +760,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Dolphin",
-        "player_tag": "#2U09UULRR",
-        "role": "member",
-        "score": 90.62,
-        "strikes": 0,
-        "donations": 146,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "_spc07",
         "player_tag": "#2U8288CVY",
         "role": "member",
@@ -808,6 +796,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Dolphin",
+        "player_tag": "#2U09UULRR",
+        "role": "member",
+        "score": 90.35,
+        "strikes": 0,
+        "donations": 146,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "AaleDieter",
         "player_tag": "#CUJ9PJ2UV",
         "role": "member",
@@ -825,7 +825,7 @@
         "role": "member",
         "score": 89.77,
         "strikes": 0,
-        "donations": 708,
+        "donations": 728,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
