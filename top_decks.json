@@ -9,7 +9,7 @@
             "#UJ2P9UYUV": "20260726T201032.000Z",
             "#P0JYR9YUY": "20260726T111241.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
-            "#YQ82VR9JQ": "20260726T151113.000Z",
+            "#YQ82VR9JQ": "20260727T060909.000Z",
             "#G02LC9C8": "20260726T203142.000Z",
             "#2U8288CVY": "20260726T185424.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
@@ -29,12 +29,12 @@
             "#2CJYG9UG": "20260726T222408.000Z",
             "#2PUQYJC02": "20260726T134114.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20260726T143415.000Z",
+            "#2V800VCQ0": "20260727T060552.000Z",
             "#2UQUPYQCJ": "20260724T114008.000Z",
             "#JUUR8UGL8": "20260726T191730.000Z",
             "#2U09UULRR": "20260727T025154.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
-            "#8QYYL8LCQ": "20260727T060016.000Z",
+            "#8QYYL8LCQ": "20260727T060319.000Z",
             "#8P0J8P0L": "20260727T050414.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260726T221605.000Z",
@@ -5085,7 +5085,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "Desteoyer"
@@ -5094,6 +5094,12 @@
                 "2V800VCQ0"
             ],
             "recent_matches": [
+                {
+                    "time": "20260727T060552.000Z",
+                    "result": "win",
+                    "player": "Desteoyer",
+                    "tag": "2V800VCQ0"
+                },
                 {
                     "time": "20260724T132517.000Z",
                     "result": "win",
@@ -328317,6 +328323,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000003-26000007-26000012-26000013-26000041-26000064-27000003-28000000": {
+            "cards": [
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000013,
+                    "name": "Bomber",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000003,
+                    "name": "Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Axr4ox5_b7edmLsoHxBX3vmgijAIibuF6RImTbqLlXE.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 27000003,
+                    "name": "Inferno Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
