@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "Ben Siebolf",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "Yunus",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -388,6 +393,11 @@
       "status": "RISIKO"
     },
     {
+      "name": "Ben Siebolf",
+      "score": 0.0,
+      "status": "RISIKO"
+    },
+    {
       "name": "Yunus",
       "score": 0.0,
       "status": "RISIKO"
@@ -620,6 +630,11 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
+      "name": "Ben Siebolf",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "Yunus",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
@@ -638,6 +653,18 @@
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
+      {
+        "name": "Ben Siebolf",
+        "player_tag": "#PLG90C0C",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
       {
         "name": "Yunus",
         "player_tag": "#GRR999Q29",
