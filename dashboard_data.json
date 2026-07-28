@@ -11,6 +11,11 @@
       "priority": 4
     },
     {
+      "name": "Hemelm",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "marco",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -413,6 +418,11 @@
       "status": "RISIKO"
     },
     {
+      "name": "Hemelm",
+      "score": 0.0,
+      "status": "RISIKO"
+    },
+    {
       "name": "shorttrack alex",
       "score": 0.0,
       "status": "RISIKO"
@@ -660,6 +670,11 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
+      "name": "Hemelm",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "shorttrack alex",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
@@ -698,6 +713,18 @@
       {
         "name": "Yunus",
         "player_tag": "#GRR999Q29",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "Hemelm",
+        "player_tag": "#PVGU89PUL",
         "role": "member",
         "score": 0.0,
         "strikes": 0,
