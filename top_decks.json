@@ -21,7 +21,7 @@
             "#QVQGCV8Y9": "20260727T194924.000Z",
             "#Q8L0RJ8Y8": "20260727T053625.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
-            "#2CPRGY8G": "20260728T094207.000Z",
+            "#2CPRGY8G": "20260728T103537.000Z",
             "#LLQQJCLC": "20260726T213612.000Z",
             "#2VJR80RL": "20260726T200345.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
@@ -37,7 +37,7 @@
             "#8QYYL8LCQ": "20260728T010044.000Z",
             "#8P0J8P0L": "20260727T050414.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20260728T103051.000Z",
+            "#CUJ9PJ2UV": "20260728T103412.000Z",
             "#2P0U2RLGY": "20260727T065452.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260726T145149.000Z",
@@ -107,7 +107,7 @@
             "#202QYVY8CC": "20260728T101251.000Z",
             "#PLG90C0C": "20260727T224910.000Z",
             "#LGUGQ0PRG": "20260728T060539.000Z",
-            "#UVGRVC8LU": "20260727T160716.000Z",
+            "#UVGRVC8LU": "20260728T103834.000Z",
             "#PVGU89PUL": "20260728T093154.000Z"
         }
     },
@@ -7052,7 +7052,7 @@
                 }
             ],
             "wins": 3,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Lasse1887"
             ],
@@ -7060,6 +7060,12 @@
                 "UVGRVC8LU"
             ],
             "recent_matches": [
+                {
+                    "time": "20260728T103834.000Z",
+                    "result": "loss",
+                    "player": "Lasse1887",
+                    "tag": "UVGRVC8LU"
+                },
                 {
                     "time": "20260727T104409.000Z",
                     "result": "win",
@@ -329929,6 +329935,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000006-26000011-26000034-26000041-26000049-26000050-26000055-26000056": {
+            "cards": [
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 26000050,
+                    "name": "Royal Ghost",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3En2cz0ISQAaMTHY3hj3rTveFN2kJYq-H4VxvdJNvCM.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
