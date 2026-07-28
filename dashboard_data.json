@@ -16,6 +16,11 @@
       "priority": 4
     },
     {
+      "name": "Lasse1887",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "Rex¥_JB",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -421,6 +426,11 @@
       "name": "marco",
       "score": 0.0,
       "status": "RISIKO"
+    },
+    {
+      "name": "Lasse1887",
+      "score": 0.0,
+      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -663,6 +673,11 @@
       "name": "marco",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "Lasse1887",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
@@ -729,12 +744,24 @@
         "recommended_action": "kick_review"
       },
       {
+        "name": "Lasse1887",
+        "player_tag": "#UVGRVC8LU",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
         "name": "nihay",
         "player_tag": "#202QYVY8CC",
         "role": "member",
         "score": 39.58,
         "strikes": 0,
-        "donations": 16,
+        "donations": 36,
         "participation_count": 1,
         "trend": "",
         "reason": "Score unter 40",
