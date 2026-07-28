@@ -21,6 +21,11 @@
       "priority": 4
     },
     {
+      "name": "shorttrack alex",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "nihay",
       "scenario": "STRIKE",
       "priority": 4
@@ -403,6 +408,11 @@
       "status": "RISIKO"
     },
     {
+      "name": "shorttrack alex",
+      "score": 0.0,
+      "status": "RISIKO"
+    },
+    {
       "name": "Rex¥_JB",
       "score": 0.0,
       "status": "RISIKO"
@@ -640,6 +650,11 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
+      "name": "shorttrack alex",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "Rex¥_JB",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
@@ -672,6 +687,18 @@
         "score": 0.0,
         "strikes": 0,
         "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "shorttrack alex",
+        "player_tag": "#LGUGQ0PRG",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 34,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
