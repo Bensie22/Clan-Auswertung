@@ -2,7 +2,7 @@
     "_metadata": {
         "last_battles": {
             "#22Q920RLR": "20260729T175853.000Z",
-            "#L8PV090J": "20260729T181209.000Z",
+            "#L8PV090J": "20260729T182743.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260729T160221.000Z",
             "#ULYJ2CQP": "20260729T124317.000Z",
@@ -105,7 +105,7 @@
             "#VCYQ9L9QV": "20260729T140933.000Z",
             "#GRR999Q29": "20260727T175039.000Z",
             "#202QYVY8CC": "20260728T223451.000Z",
-            "#PLG90C0C": "20260729T181244.000Z",
+            "#PLG90C0C": "20260729T182946.000Z",
             "#LGUGQ0PRG": "20260729T113711.000Z",
             "#UVGRVC8LU": "20260729T105219.000Z",
             "#PVGU89PUL": "20260728T143326.000Z"
@@ -4004,7 +4004,7 @@
                 }
             ],
             "wins": 4,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "rote sonne"
             ],
@@ -4012,6 +4012,12 @@
                 "L8PV090J"
             ],
             "recent_matches": [
+                {
+                    "time": "20260729T182743.000Z",
+                    "result": "loss",
+                    "player": "rote sonne",
+                    "tag": "L8PV090J"
+                },
                 {
                     "time": "20260727T172838.000Z",
                     "result": "win",
@@ -331471,6 +331477,52 @@
                     "id": 26000057,
                     "name": "Flying Machine",
                     "icon": "https://api-assets.clashroyale.com/cards/300/hzKNE3QwFcrSrDDRuVW3QY_OnrDPijSiIp-PsWgFevE.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000000-26000007-26000033-26000067-26000068-27000010-28000006-28000009": {
+            "cards": [
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 28000006,
+                    "name": "Mirror",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/wC6Cm9rKLEOk72zTsukVwxewKIoO4ZcMJun54zCPWvA.png"
+                },
+                {
+                    "id": 26000067,
+                    "name": "Elixir Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/puhMsZjCIqy21HW3hYxjrk_xt8NIPyFqjRy-BeLKZwo.png"
+                },
+                {
+                    "id": 26000033,
+                    "name": "Sparky",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/2GKMkBrArZXgQxf2ygFjDs4VvGYPbx8F6Lj_68iVhIM.png"
+                },
+                {
+                    "id": 26000068,
+                    "name": "Battle Healer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/KdwXcoigS2Kg-cgA7BJJIANbUJG6SNgjetRQ-MegZ08.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
                 }
             ],
             "seen": 1,
