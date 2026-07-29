@@ -43,7 +43,7 @@
             "#RLJPJL8C2": "20260729T105548.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20260728T141710.000Z",
+            "#UUPCULU9V": "20260729T150226.000Z",
             "#202VP2QL9P": "20260724T185949.000Z",
             "#LVUGLUCP9": "20260726T184242.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
@@ -71,7 +71,7 @@
             "#GJVVGUYJC": "20260518T141110.000Z",
             "#UQVCVVVJL": "20260726T103152.000Z",
             "#22CVYQP8R": "20260509T062429.000Z",
-            "#89CJRRV8": "20260729T145939.000Z",
+            "#89CJRRV8": "20260729T150717.000Z",
             "#VL989Y20J": "20260516T051537.000Z",
             "#RULG988Y": "20260606T102155.000Z",
             "#99909G00": "20260512T084926.000Z",
@@ -4219,7 +4219,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
                 }
             ],
-            "wins": 5,
+            "wins": 6,
             "losses": 0,
             "players": [
                 "OmniOni"
@@ -4228,6 +4228,12 @@
                 "UUPCULU9V"
             ],
             "recent_matches": [
+                {
+                    "time": "20260729T150226.000Z",
+                    "result": "win",
+                    "player": "OmniOni",
+                    "tag": "UUPCULU9V"
+                },
                 {
                     "time": "20260728T140306.000Z",
                     "result": "win",
@@ -331325,6 +331331,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000001-26000004-26000026-26000042-26000093-28000001-28000015-28000017": {
+            "cards": [
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 26000093,
+                    "name": "Little Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dY-gSseki6KBpkIG17safHH5YlB8SErFZO9OXbJxf9w.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 28000017,
+                    "name": "Giant Snowball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 28000015,
+                    "name": "Barbarian Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Gb0G1yNy0i5cIGUHin8uoFWxqntNtRPhY_jeMXg7HnA.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
