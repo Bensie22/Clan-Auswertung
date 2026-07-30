@@ -51,12 +51,12 @@
       "priority": 2
     },
     {
-      "name": "mauza",
+      "name": "OmniOni",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "OmniOni",
+      "name": "mauza",
       "scenario": "TOP",
       "priority": 2
     },
@@ -174,17 +174,17 @@
   "smart": [
     {
       "name": "Citykingalex",
-      "score": 93.82,
-      "status": "STARK"
-    },
-    {
-      "name": "mauza",
-      "score": 93.55,
+      "score": 94.08,
       "status": "STARK"
     },
     {
       "name": "OmniOni",
       "score": 93.28,
+      "status": "STARK"
+    },
+    {
+      "name": "mauza",
+      "score": 93.15,
       "status": "STARK"
     },
     {
@@ -324,7 +324,7 @@
     },
     {
       "name": "Reklaminator",
-      "score": 85.14,
+      "score": 85.41,
       "status": "STARK"
     },
     {
@@ -421,17 +421,17 @@
   "coaching": [
     {
       "name": "Citykingalex",
-      "score": 93.82,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "mauza",
-      "score": 93.55,
+      "score": 94.08,
       "tip": "Weiter so"
     },
     {
       "name": "OmniOni",
       "score": 93.28,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "mauza",
+      "score": 93.15,
       "tip": "Weiter so"
     },
     {
@@ -571,7 +571,7 @@
     },
     {
       "name": "Reklaminator",
-      "score": 85.14,
+      "score": 85.41,
       "tip": "Weiter so"
     },
     {
@@ -770,23 +770,11 @@
         "name": "Citykingalex",
         "player_tag": "#QULCQGGG",
         "role": "member",
-        "score": 93.82,
+        "score": 94.08,
         "strikes": 0,
-        "donations": 190,
+        "donations": 198,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "mauza",
-        "player_tag": "#2P0U2RLGY",
-        "role": "member",
-        "score": 93.55,
-        "strikes": 0,
-        "donations": 148,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -797,6 +785,18 @@
         "score": 93.28,
         "strikes": 0,
         "donations": 234,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "mauza",
+        "player_tag": "#2P0U2RLGY",
+        "role": "member",
+        "score": 93.15,
+        "strikes": 0,
+        "donations": 156,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1108,7 +1108,7 @@
         "role": "member",
         "score": 85.49,
         "strikes": 0,
-        "donations": 56,
+        "donations": 64,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1118,9 +1118,9 @@
         "name": "Reklaminator",
         "player_tag": "#P0G2GYJQ9",
         "role": "member",
-        "score": 85.14,
+        "score": 85.41,
         "strikes": 0,
-        "donations": 52,
+        "donations": 68,
         "participation_count": 5,
         "trend": "",
         "reason": "Score über 85",
