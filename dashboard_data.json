@@ -76,11 +76,6 @@
       "priority": 2
     },
     {
-      "name": "April#",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Johan",
       "scenario": "TOP",
       "priority": 2
@@ -91,17 +86,22 @@
       "priority": 2
     },
     {
+      "name": "April#",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Swordfish",
+      "name": "_spc07",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "_spc07",
+      "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
@@ -218,11 +218,6 @@
       "status": "STARK"
     },
     {
-      "name": "April#",
-      "score": 92.13,
-      "status": "STARK"
-    },
-    {
       "name": "Johan",
       "score": 92.0,
       "status": "STARK"
@@ -233,18 +228,23 @@
       "status": "STARK"
     },
     {
+      "name": "April#",
+      "score": 91.73,
+      "status": "STARK"
+    },
+    {
       "name": "chris",
       "score": 90.97,
       "status": "STARK"
     },
     {
-      "name": "Swordfish",
-      "score": 90.7,
+      "name": "_spc07",
+      "score": 90.39,
       "status": "STARK"
     },
     {
-      "name": "_spc07",
-      "score": 90.39,
+      "name": "Swordfish",
+      "score": 90.3,
       "status": "STARK"
     },
     {
@@ -470,11 +470,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "April#",
-      "score": 92.13,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Johan",
       "score": 92.0,
       "tip": "Weiter so"
@@ -485,18 +480,23 @@
       "tip": "Weiter so"
     },
     {
+      "name": "April#",
+      "score": 91.73,
+      "tip": "Weiter so"
+    },
+    {
       "name": "chris",
       "score": 90.97,
       "tip": "Weiter so"
     },
     {
-      "name": "Swordfish",
-      "score": 90.7,
+      "name": "_spc07",
+      "score": 90.39,
       "tip": "Weiter so"
     },
     {
-      "name": "_spc07",
-      "score": 90.39,
+      "name": "Swordfish",
+      "score": 90.3,
       "tip": "Weiter so"
     },
     {
@@ -869,18 +869,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "April#",
-        "player_tag": "#YUQVVVLQ",
-        "role": "member",
-        "score": 92.13,
-        "strikes": 0,
-        "donations": 132,
-        "participation_count": 10,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Johan",
         "player_tag": "#UQVCVVVJL",
         "role": "member",
@@ -905,6 +893,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "April#",
+        "player_tag": "#YUQVVVLQ",
+        "role": "member",
+        "score": 91.73,
+        "strikes": 0,
+        "donations": 132,
+        "participation_count": 10,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "chris",
         "player_tag": "#YQ82VR9JQ",
         "role": "member",
@@ -917,24 +917,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Swordfish",
-        "player_tag": "#2CPRGY8G",
-        "role": "member",
-        "score": 90.7,
-        "strikes": 0,
-        "donations": 172,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "_spc07",
         "player_tag": "#2U8288CVY",
         "role": "member",
         "score": 90.39,
         "strikes": 0,
         "donations": 67,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Swordfish",
+        "player_tag": "#2CPRGY8G",
+        "role": "member",
+        "score": 90.3,
+        "strikes": 0,
+        "donations": 172,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1030,7 +1030,7 @@
         "role": "member",
         "score": 87.99,
         "strikes": 0,
-        "donations": 698,
+        "donations": 706,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
@@ -1102,7 +1102,7 @@
         "role": "member",
         "score": 86.07,
         "strikes": 0,
-        "donations": 140,
+        "donations": 148,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
@@ -1126,7 +1126,7 @@
         "role": "member",
         "score": 85.89,
         "strikes": 0,
-        "donations": 464,
+        "donations": 472,
         "participation_count": 9,
         "trend": "",
         "reason": "Score über 85",
