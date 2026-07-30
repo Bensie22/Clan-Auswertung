@@ -151,6 +151,11 @@
       "priority": 2
     },
     {
+      "name": "Reklaminator",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "agostini",
       "scenario": "TOP",
       "priority": 2
@@ -162,11 +167,6 @@
     },
     {
       "name": "kl.kranker Affe",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Reklaminator",
       "scenario": "TOP",
       "priority": 2
     }
@@ -303,6 +303,11 @@
       "status": "STARK"
     },
     {
+      "name": "Reklaminator",
+      "score": 85.94,
+      "status": "STARK"
+    },
+    {
       "name": "Denis",
       "score": 85.73,
       "status": "STARK"
@@ -320,11 +325,6 @@
     {
       "name": "kl.kranker Affe",
       "score": 85.49,
-      "status": "STARK"
-    },
-    {
-      "name": "Reklaminator",
-      "score": 85.41,
       "status": "STARK"
     },
     {
@@ -550,6 +550,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Reklaminator",
+      "score": 85.94,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Denis",
       "score": 85.73,
       "tip": "Weiter so"
@@ -567,11 +572,6 @@
     {
       "name": "kl.kranker Affe",
       "score": 85.49,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Reklaminator",
-      "score": 85.41,
       "tip": "Weiter so"
     },
     {
@@ -832,7 +832,7 @@
         "role": "member",
         "score": 92.13,
         "strikes": 0,
-        "donations": 100,
+        "donations": 124,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
@@ -1067,6 +1067,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Reklaminator",
+        "player_tag": "#P0G2GYJQ9",
+        "role": "member",
+        "score": 85.94,
+        "strikes": 0,
+        "donations": 68,
+        "participation_count": 5,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Denis",
         "player_tag": "#2VJR80RL",
         "role": "member",
@@ -1111,18 +1123,6 @@
         "donations": 64,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Reklaminator",
-        "player_tag": "#P0G2GYJQ9",
-        "role": "member",
-        "score": 85.41,
-        "strikes": 0,
-        "donations": 68,
-        "participation_count": 5,
-        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       }
