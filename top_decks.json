@@ -5,7 +5,7 @@
             "#L8PV090J": "20260730T111656.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260730T121212.000Z",
-            "#ULYJ2CQP": "20260730T123730.000Z",
+            "#ULYJ2CQP": "20260730T124352.000Z",
             "#UJ2P9UYUV": "20260729T211211.000Z",
             "#P0JYR9YUY": "20260730T092438.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
@@ -35,9 +35,9 @@
             "#2U09UULRR": "20260730T121741.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20260730T004924.000Z",
-            "#8P0J8P0L": "20260729T065422.000Z",
+            "#8P0J8P0L": "20260730T124749.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20260730T104707.000Z",
+            "#CUJ9PJ2UV": "20260730T124811.000Z",
             "#2P0U2RLGY": "20260730T103115.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260729T105548.000Z",
@@ -744,7 +744,7 @@
                 }
             ],
             "wins": 6,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "OneAndOnly"
             ],
@@ -752,6 +752,12 @@
                 "8P0J8P0L"
             ],
             "recent_matches": [
+                {
+                    "time": "20260730T124749.000Z",
+                    "result": "loss",
+                    "player": "OneAndOnly",
+                    "tag": "8P0J8P0L"
+                },
                 {
                     "time": "20260727T050021.000Z",
                     "result": "win",
@@ -332495,6 +332501,52 @@
                     "id": 26000085,
                     "name": "Electro Giant",
                     "icon": "https://api-assets.clashroyale.com/cards/300/_uChZkNHAMq6tPb3v6A49xinOe3CnhjstOhG6OZbPYc.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000001-26000034-26000037-26000042-26000102-28000000-28000004-28000015": {
+            "cards": [
+                {
+                    "id": 26000037,
+                    "name": "Inferno Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 28000015,
+                    "name": "Barbarian Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Gb0G1yNy0i5cIGUHin8uoFWxqntNtRPhY_jeMXg7HnA.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 26000102,
+                    "name": "Berserker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NA6W8S1JBYBlOPwD3dNvJLFvVDKq-UuBs_J3i3ewLFI.png"
                 }
             ],
             "seen": 1,
