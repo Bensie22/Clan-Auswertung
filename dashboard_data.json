@@ -32,7 +32,7 @@
     },
     {
       "name": "Ben Siebolf",
-      "scenario": "KEINE_TEILNAHME",
+      "scenario": "STRIKE",
       "priority": 4
     },
     {
@@ -126,12 +126,12 @@
       "priority": 2
     },
     {
-      "name": "Desteoyer",
+      "name": "SankKiI9",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "SankKiI9",
+      "name": "Desteoyer",
       "scenario": "TOP",
       "priority": 2
     },
@@ -249,7 +249,7 @@
     },
     {
       "name": "Dolphin",
-      "score": 89.02,
+      "score": 88.88,
       "status": "STARK"
     },
     {
@@ -268,13 +268,13 @@
       "status": "STARK"
     },
     {
-      "name": "Desteoyer",
-      "score": 88.07,
+      "name": "SankKiI9",
+      "score": 87.99,
       "status": "STARK"
     },
     {
-      "name": "SankKiI9",
-      "score": 87.99,
+      "name": "Desteoyer",
+      "score": 87.67,
       "status": "STARK"
     },
     {
@@ -389,7 +389,7 @@
     },
     {
       "name": "Ben Siebolf",
-      "score": 0.0,
+      "score": 3.33,
       "status": "RISIKO"
     },
     {
@@ -501,7 +501,7 @@
     },
     {
       "name": "Dolphin",
-      "score": 89.02,
+      "score": 88.88,
       "tip": "Weiter so"
     },
     {
@@ -520,13 +520,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Desteoyer",
-      "score": 88.07,
+      "name": "SankKiI9",
+      "score": 87.99,
       "tip": "Weiter so"
     },
     {
-      "name": "SankKiI9",
-      "score": 87.99,
+      "name": "Desteoyer",
+      "score": 87.67,
       "tip": "Weiter so"
     },
     {
@@ -641,7 +641,7 @@
     },
     {
       "name": "Ben Siebolf",
-      "score": 0.0,
+      "score": 3.33,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
@@ -678,18 +678,6 @@
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
-      {
-        "name": "Ben Siebolf",
-        "player_tag": "#PLG90C0C",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 52,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
       {
         "name": "Yunus",
         "player_tag": "#GRR999Q29",
@@ -757,6 +745,18 @@
         "score": 0.0,
         "strikes": 0,
         "donations": 50,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "Ben Siebolf",
+        "player_tag": "#PLG90C0C",
+        "role": "member",
+        "score": 3.33,
+        "strikes": 0,
+        "donations": 52,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -948,7 +948,7 @@
         "name": "Dolphin",
         "player_tag": "#2U09UULRR",
         "role": "member",
-        "score": 89.02,
+        "score": 88.88,
         "strikes": 0,
         "donations": 92,
         "participation_count": 10,
@@ -993,18 +993,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Desteoyer",
-        "player_tag": "#2V800VCQ0",
-        "role": "member",
-        "score": 88.07,
-        "strikes": 0,
-        "donations": 103,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "SankKiI9",
         "player_tag": "#89CJRRV8",
         "role": "member",
@@ -1013,6 +1001,18 @@
         "donations": 596,
         "participation_count": 10,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Desteoyer",
+        "player_tag": "#2V800VCQ0",
+        "role": "member",
+        "score": 87.67,
+        "strikes": 0,
+        "donations": 103,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
