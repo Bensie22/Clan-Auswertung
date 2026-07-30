@@ -16,11 +16,6 @@
       "priority": 4
     },
     {
-      "name": "Hemelm",
-      "scenario": "KEINE_TEILNAHME",
-      "priority": 4
-    },
-    {
       "name": "Rex¥_JB",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -32,6 +27,11 @@
     },
     {
       "name": "Lasse1887",
+      "scenario": "STRIKE",
+      "priority": 4
+    },
+    {
+      "name": "Hemelm",
       "scenario": "STRIKE",
       "priority": 4
     },
@@ -229,7 +229,7 @@
     },
     {
       "name": "April#",
-      "score": 91.73,
+      "score": 91.6,
       "status": "STARK"
     },
     {
@@ -408,6 +408,11 @@
       "status": "RISIKO"
     },
     {
+      "name": "Hemelm",
+      "score": 16.67,
+      "status": "RISIKO"
+    },
+    {
       "name": "Ben Siebolf",
       "score": 3.33,
       "status": "RISIKO"
@@ -419,11 +424,6 @@
     },
     {
       "name": "Yunus",
-      "score": 0.0,
-      "status": "RISIKO"
-    },
-    {
-      "name": "Hemelm",
       "score": 0.0,
       "status": "RISIKO"
     },
@@ -481,7 +481,7 @@
     },
     {
       "name": "April#",
-      "score": 91.73,
+      "score": 91.6,
       "tip": "Weiter so"
     },
     {
@@ -660,6 +660,11 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
+      "name": "Hemelm",
+      "score": 16.67,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "Ben Siebolf",
       "score": 3.33,
       "tip": "Mehr Teilnahme notwendig"
@@ -671,11 +676,6 @@
     },
     {
       "name": "Yunus",
-      "score": 0.0,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "Hemelm",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
     },
@@ -705,18 +705,6 @@
         "score": 0.0,
         "strikes": 0,
         "donations": 0,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
-        "name": "Hemelm",
-        "player_tag": "#PVGU89PUL",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 16,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -777,6 +765,18 @@
         "score": 3.33,
         "strikes": 0,
         "donations": 84,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "Hemelm",
+        "player_tag": "#PVGU89PUL",
+        "role": "member",
+        "score": 16.67,
+        "strikes": 0,
+        "donations": 16,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -896,7 +896,7 @@
         "name": "April#",
         "player_tag": "#YUQVVVLQ",
         "role": "member",
-        "score": 91.73,
+        "score": 91.6,
         "strikes": 0,
         "donations": 132,
         "participation_count": 10,
