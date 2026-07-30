@@ -6,6 +6,11 @@
       "priority": 4
     },
     {
+      "name": "Elvi",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "marco",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -81,12 +86,12 @@
       "priority": 2
     },
     {
-      "name": "Swordfish",
+      "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "chris",
+      "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
@@ -107,6 +112,11 @@
     },
     {
       "name": "Dolphin",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Theezy",
       "scenario": "TOP",
       "priority": 2
     },
@@ -213,13 +223,13 @@
       "status": "STARK"
     },
     {
-      "name": "Swordfish",
-      "score": 90.7,
+      "name": "chris",
+      "score": 90.97,
       "status": "STARK"
     },
     {
-      "name": "chris",
-      "score": 90.44,
+      "name": "Swordfish",
+      "score": 90.7,
       "status": "STARK"
     },
     {
@@ -254,7 +264,7 @@
     },
     {
       "name": "Theezy",
-      "score": 88.88,
+      "score": 88.61,
       "status": "STARK"
     },
     {
@@ -399,6 +409,11 @@
     },
     {
       "name": "Hemelm",
+      "score": 0.0,
+      "status": "RISIKO"
+    },
+    {
+      "name": "Elvi",
       "score": 0.0,
       "status": "RISIKO"
     },
@@ -460,13 +475,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Swordfish",
-      "score": 90.7,
+      "name": "chris",
+      "score": 90.97,
       "tip": "Weiter so"
     },
     {
-      "name": "chris",
-      "score": 90.44,
+      "name": "Swordfish",
+      "score": 90.7,
       "tip": "Weiter so"
     },
     {
@@ -501,7 +516,7 @@
     },
     {
       "name": "Theezy",
-      "score": 88.88,
+      "score": 88.61,
       "tip": "Weiter so"
     },
     {
@@ -650,6 +665,11 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
+      "name": "Elvi",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "Rex¥_JB",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
@@ -687,6 +707,18 @@
         "score": 0.0,
         "strikes": 0,
         "donations": 16,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "Elvi",
+        "player_tag": "#V9JP2PGGP",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -856,9 +888,21 @@
         "role": "member",
         "score": 91.6,
         "strikes": 0,
-        "donations": 20,
+        "donations": 36,
         "participation_count": 10,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "chris",
+        "player_tag": "#YQ82VR9JQ",
+        "role": "member",
+        "score": 90.97,
+        "strikes": 0,
+        "donations": 396,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -869,18 +913,6 @@
         "score": 90.7,
         "strikes": 0,
         "donations": 172,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "chris",
-        "player_tag": "#YQ82VR9JQ",
-        "role": "member",
-        "score": 90.44,
-        "strikes": 0,
-        "donations": 388,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -950,9 +982,9 @@
         "name": "Theezy",
         "player_tag": "#JUUR8UGL8",
         "role": "member",
-        "score": 88.88,
+        "score": 88.61,
         "strikes": 0,
-        "donations": 46,
+        "donations": 56,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
