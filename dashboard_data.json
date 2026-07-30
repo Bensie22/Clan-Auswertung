@@ -176,12 +176,12 @@
       "priority": 2
     },
     {
-      "name": "agostini",
+      "name": "bes",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "bes",
+      "name": "agostini",
       "scenario": "TOP",
       "priority": 2
     },
@@ -333,17 +333,17 @@
       "status": "STARK"
     },
     {
-      "name": "agostini",
-      "score": 85.62,
-      "status": "STARK"
-    },
-    {
       "name": "bes",
       "score": 85.61,
       "status": "STARK"
     },
     {
       "name": "kl.kranker Affe",
+      "score": 85.49,
+      "status": "STARK"
+    },
+    {
+      "name": "agostini",
       "score": 85.49,
       "status": "STARK"
     },
@@ -585,17 +585,17 @@
       "tip": "Weiter so"
     },
     {
-      "name": "agostini",
-      "score": 85.62,
-      "tip": "Weiter so"
-    },
-    {
       "name": "bes",
       "score": 85.61,
       "tip": "Weiter so"
     },
     {
       "name": "kl.kranker Affe",
+      "score": 85.49,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "agostini",
       "score": 85.49,
       "tip": "Weiter so"
     },
@@ -898,7 +898,7 @@
         "role": "member",
         "score": 92.0,
         "strikes": 0,
-        "donations": 62,
+        "donations": 72,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
@@ -1133,18 +1133,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "agostini",
-        "player_tag": "#P2YQ2QQUV",
-        "role": "member",
-        "score": 85.62,
-        "strikes": 0,
-        "donations": 464,
-        "participation_count": 9,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "bes",
         "player_tag": "#LLQQJCLC",
         "role": "member",
@@ -1153,6 +1141,18 @@
         "donations": 136,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "agostini",
+        "player_tag": "#P2YQ2QQUV",
+        "role": "member",
+        "score": 85.49,
+        "strikes": 0,
+        "donations": 464,
+        "participation_count": 9,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
