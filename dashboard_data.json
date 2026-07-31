@@ -111,12 +111,12 @@
       "priority": 2
     },
     {
-      "name": "AaleDieter",
+      "name": "honigmelone",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "honigmelone",
+      "name": "AaleDieter",
       "scenario": "TOP",
       "priority": 2
     },
@@ -258,11 +258,6 @@
       "status": "STARK"
     },
     {
-      "name": "AaleDieter",
-      "score": 89.91,
-      "status": "STARK"
-    },
-    {
       "name": "honigmelone",
       "score": 89.82,
       "status": "STARK"
@@ -270,6 +265,11 @@
     {
       "name": "elazeto",
       "score": 89.82,
+      "status": "STARK"
+    },
+    {
+      "name": "AaleDieter",
+      "score": 89.64,
       "status": "STARK"
     },
     {
@@ -510,11 +510,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "AaleDieter",
-      "score": 89.91,
-      "tip": "Weiter so"
-    },
-    {
       "name": "honigmelone",
       "score": 89.82,
       "tip": "Weiter so"
@@ -522,6 +517,11 @@
     {
       "name": "elazeto",
       "score": 89.82,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "AaleDieter",
+      "score": 89.64,
       "tip": "Weiter so"
     },
     {
@@ -958,18 +958,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "AaleDieter",
-        "player_tag": "#CUJ9PJ2UV",
-        "role": "member",
-        "score": 89.91,
-        "strikes": 0,
-        "donations": 90,
-        "participation_count": 9,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "honigmelone",
         "player_tag": "#Q2GRGLQR",
         "role": "member",
@@ -977,6 +965,18 @@
         "strikes": 0,
         "donations": 134,
         "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "AaleDieter",
+        "player_tag": "#CUJ9PJ2UV",
+        "role": "member",
+        "score": 89.64,
+        "strikes": 0,
+        "donations": 90,
+        "participation_count": 9,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
@@ -1179,7 +1179,7 @@
         "role": "member",
         "score": 85.31,
         "strikes": 0,
-        "donations": 614,
+        "donations": 642,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
