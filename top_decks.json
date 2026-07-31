@@ -4,7 +4,7 @@
             "#22Q920RLR": "20260731T095508.000Z",
             "#L8PV090J": "20260730T111656.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
-            "#2QRVR9L8": "20260731T133655.000Z",
+            "#2QRVR9L8": "20260731T151258.000Z",
             "#ULYJ2CQP": "20260731T112718.000Z",
             "#UJ2P9UYUV": "20260731T090854.000Z",
             "#P0JYR9YUY": "20260731T135606.000Z",
@@ -19,7 +19,7 @@
             "#QULCQGGG": "20260731T132526.000Z",
             "#JRGC9RRQG": "20260731T083523.000Z",
             "#QVQGCV8Y9": "20260730T153734.000Z",
-            "#Q8L0RJ8Y8": "20260730T160355.000Z",
+            "#Q8L0RJ8Y8": "20260731T151905.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260731T092014.000Z",
             "#LLQQJCLC": "20260731T130249.000Z",
@@ -43,7 +43,7 @@
             "#RLJPJL8C2": "20260731T120825.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20260731T151014.000Z",
+            "#UUPCULU9V": "20260731T151816.000Z",
             "#202VP2QL9P": "20260724T185949.000Z",
             "#LVUGLUCP9": "20260731T090713.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
@@ -1494,7 +1494,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/BGLo3Grsp81c72EpxLLk-Sofk3VY56zahnUNOv3JcT0.png"
                 }
             ],
-            "wins": 6,
+            "wins": 7,
             "losses": 0,
             "players": [
                 "Erastus"
@@ -1503,6 +1503,12 @@
                 "Q8L0RJ8Y8"
             ],
             "recent_matches": [
+                {
+                    "time": "20260731T151905.000Z",
+                    "result": "win",
+                    "player": "Erastus",
+                    "tag": "Q8L0RJ8Y8"
+                },
                 {
                     "time": "20260722T202659.000Z",
                     "result": "win",
@@ -337162,6 +337168,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000004-26000008-26000035-26000041-26000042-26000049-26000050-28000015": {
+            "cards": [
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 26000008,
+                    "name": "Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/TvJsuu2S4yhyk1jVYUAQwdKOnW4U77KuWWOTPOWnwfI.png"
+                },
+                {
+                    "id": 26000035,
+                    "name": "Lumberjack",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
+                },
+                {
+                    "id": 26000050,
+                    "name": "Royal Ghost",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3En2cz0ISQAaMTHY3hj3rTveFN2kJYq-H4VxvdJNvCM.png"
+                },
+                {
+                    "id": 28000015,
+                    "name": "Barbarian Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Gb0G1yNy0i5cIGUHin8uoFWxqntNtRPhY_jeMXg7HnA.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
