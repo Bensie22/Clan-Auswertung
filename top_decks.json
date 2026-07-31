@@ -16,7 +16,7 @@
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260731T083157.000Z",
-            "#QULCQGGG": "20260731T115816.000Z",
+            "#QULCQGGG": "20260731T132526.000Z",
             "#JRGC9RRQG": "20260731T083523.000Z",
             "#QVQGCV8Y9": "20260730T153734.000Z",
             "#Q8L0RJ8Y8": "20260730T160355.000Z",
@@ -29,7 +29,7 @@
             "#2CJYG9UG": "20260730T210439.000Z",
             "#2PUQYJC02": "20260731T111841.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20260731T132014.000Z",
+            "#2V800VCQ0": "20260731T132741.000Z",
             "#2UQUPYQCJ": "20260731T105546.000Z",
             "#JUUR8UGL8": "20260730T190345.000Z",
             "#2U09UULRR": "20260731T110051.000Z",
@@ -37,8 +37,8 @@
             "#8QYYL8LCQ": "20260730T233558.000Z",
             "#8P0J8P0L": "20260730T125109.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20260731T122102.000Z",
-            "#2P0U2RLGY": "20260730T162204.000Z",
+            "#CUJ9PJ2UV": "20260731T132856.000Z",
+            "#2P0U2RLGY": "20260731T132601.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260731T120825.000Z",
             "#RG02LG88": "20260405T075546.000Z",
@@ -367,7 +367,7 @@
                 }
             ],
             "wins": 16,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "mauza"
             ],
@@ -375,6 +375,12 @@
                 "2P0U2RLGY"
             ],
             "recent_matches": [
+                {
+                    "time": "20260731T132601.000Z",
+                    "result": "loss",
+                    "player": "mauza",
+                    "tag": "2P0U2RLGY"
+                },
                 {
                     "time": "20260730T103115.000Z",
                     "result": "win",
@@ -336784,6 +336790,52 @@
                     "id": 28000026,
                     "name": "Vines",
                     "icon": "https://api-assets.clashroyale.com/cards/300/V5sJlPuo2WBRtirJ1lGEPJA4NvQ0KPwFeMrpxLX5z_8.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000017-26000018-26000019-26000041-26000069-26000085-27000013-28000012": {
+            "cards": [
+                {
+                    "id": 26000085,
+                    "name": "Electro Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_uChZkNHAMq6tPb3v6A49xinOe3CnhjstOhG6OZbPYc.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000069,
+                    "name": "Skeleton King",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dCd69_wN9f8DxwuqOGtR4QgWhHIPIaTNxZ1e23RzAAc.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 26000019,
+                    "name": "Spear Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/FSDFotjaXidI4ku_WFpVCTWS1hKGnFh1sxX0lxM43_E.png"
+                },
+                {
+                    "id": 28000012,
+                    "name": "Tornado",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QJB-QK1QJHdw4hjpAwVSyZBozc2ZWAR9pQ-SMUyKaT0.png"
+                },
+                {
+                    "id": 27000013,
+                    "name": "Goblin Drill",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/eN2TKUYbih-26yBi0xy5LVFOA0zDftgDqxxnVfdIg1o.png"
                 }
             ],
             "seen": 1,
