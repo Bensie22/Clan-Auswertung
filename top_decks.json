@@ -37,7 +37,7 @@
             "#8QYYL8LCQ": "20260801T205451.000Z",
             "#8P0J8P0L": "20260801T173148.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20260801T210012.000Z",
+            "#CUJ9PJ2UV": "20260801T211007.000Z",
             "#2P0U2RLGY": "20260731T213609.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260801T190543.000Z",
@@ -83,12 +83,12 @@
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260609T223746.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
-            "#GRGCY0R8": "20260801T210029.000Z",
-            "#P2YQ2QQUV": "20260801T192600.000Z",
+            "#GRGCY0R8": "20260801T210718.000Z",
+            "#P2YQ2QQUV": "20260801T210255.000Z",
             "#JG8Q0GPU9": "20260713T010600.000Z",
             "#9QV99QVCV": "20260701T045607.000Z",
             "#JQ08UR882": "20260619T100820.000Z",
-            "#PQ2JYPC09": "20260801T192030.000Z",
+            "#PQ2JYPC09": "20260801T210856.000Z",
             "#99JJLC02L": "20260713T165301.000Z",
             "#P00PQ9CUQ": "20260613T120503.000Z",
             "#PVYJ80YCL": "20260619T140927.000Z",
@@ -101,7 +101,7 @@
             "#PQPGPCPQ8": "20260716T222420.000Z",
             "#RRP2LCVRY": "20260720T030817.000Z",
             "#CRC8PQJ2P": "20260723T214847.000Z",
-            "#U8VYULLVU": "20260801T210020.000Z",
+            "#U8VYULLVU": "20260801T210946.000Z",
             "#VCYQ9L9QV": "20260729T140933.000Z",
             "#GRR999Q29": "20260801T003732.000Z",
             "#202QYVY8CC": "20260801T205240.000Z",
@@ -4856,7 +4856,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/LjSfSbwQfkZuRJY4pVxKspZ-a0iM5KAhU8w-a_N5Z7Y.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "l_Bozo"
@@ -4865,6 +4865,12 @@
                 "PQ2JYPC09"
             ],
             "recent_matches": [
+                {
+                    "time": "20260801T210856.000Z",
+                    "result": "win",
+                    "player": "l_Bozo",
+                    "tag": "PQ2JYPC09"
+                },
                 {
                     "time": "20260731T163324.000Z",
                     "result": "win",
@@ -342022,6 +342028,52 @@
                     "id": 26000015,
                     "name": "Baby Dragon",
                     "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000000-26000008-26000015-26000045-26000054-26000106-27000010-28000000": {
+            "cards": [
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000008,
+                    "name": "Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/TvJsuu2S4yhyk1jVYUAQwdKOnW4U77KuWWOTPOWnwfI.png"
+                },
+                {
+                    "id": 26000054,
+                    "name": "Cannon Cart",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/aqwxRz8HXzqlMCO4WMXNA1txynjXTsLinknqsgZLbok.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 26000106,
+                    "name": "Ronin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X0dTFs7OGUavreDEzOtYd_YNZ8Zly6qgAE-dd-bNfWU.png"
                 }
             ],
             "seen": 1,
