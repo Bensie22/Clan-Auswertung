@@ -166,17 +166,17 @@
       "priority": 2
     },
     {
+      "name": "Reklaminator",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "agostini",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "seroo",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Reklaminator",
       "scenario": "TOP",
       "priority": 2
     },
@@ -313,6 +313,11 @@
       "status": "STARK"
     },
     {
+      "name": "Reklaminator",
+      "score": 86.61,
+      "status": "STARK"
+    },
+    {
       "name": "agostini",
       "score": 86.56,
       "status": "STARK"
@@ -320,11 +325,6 @@
     {
       "name": "seroo",
       "score": 86.48,
-      "status": "STARK"
-    },
-    {
-      "name": "Reklaminator",
-      "score": 86.47,
       "status": "STARK"
     },
     {
@@ -354,7 +354,7 @@
     },
     {
       "name": "Flauschos",
-      "score": 84.38,
+      "score": 84.64,
       "status": "STARK"
     },
     {
@@ -374,7 +374,7 @@
     },
     {
       "name": "Rainer",
-      "score": 79.06,
+      "score": 79.2,
       "status": "OK"
     },
     {
@@ -404,7 +404,7 @@
     },
     {
       "name": "shorttrack alex",
-      "score": 16.67,
+      "score": 14.4,
       "status": "RISIKO"
     },
     {
@@ -565,6 +565,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Reklaminator",
+      "score": 86.61,
+      "tip": "Weiter so"
+    },
+    {
       "name": "agostini",
       "score": 86.56,
       "tip": "Weiter so"
@@ -572,11 +577,6 @@
     {
       "name": "seroo",
       "score": 86.48,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Reklaminator",
-      "score": 86.47,
       "tip": "Weiter so"
     },
     {
@@ -606,7 +606,7 @@
     },
     {
       "name": "Flauschos",
-      "score": 84.38,
+      "score": 84.64,
       "tip": "Weiter so"
     },
     {
@@ -626,7 +626,7 @@
     },
     {
       "name": "Rainer",
-      "score": 79.06,
+      "score": 79.2,
       "tip": "Weiter so"
     },
     {
@@ -656,7 +656,7 @@
     },
     {
       "name": "shorttrack alex",
-      "score": 16.67,
+      "score": 14.4,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
@@ -786,7 +786,7 @@
         "name": "shorttrack alex",
         "player_tag": "#LGUGQ0PRG",
         "role": "member",
-        "score": 16.67,
+        "score": 14.4,
         "strikes": 0,
         "donations": 90,
         "participation_count": 0,
@@ -1085,6 +1085,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Reklaminator",
+        "player_tag": "#P0G2GYJQ9",
+        "role": "member",
+        "score": 86.61,
+        "strikes": 0,
+        "donations": 162,
+        "participation_count": 5,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "agostini",
         "player_tag": "#P2YQ2QQUV",
         "role": "member",
@@ -1105,18 +1117,6 @@
         "donations": 139,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Reklaminator",
-        "player_tag": "#P0G2GYJQ9",
-        "role": "member",
-        "score": 86.47,
-        "strikes": 0,
-        "donations": 152,
-        "participation_count": 5,
-        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -1150,7 +1150,7 @@
         "role": "member",
         "score": 85.58,
         "strikes": 0,
-        "donations": 774,
+        "donations": 782,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
