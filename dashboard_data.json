@@ -189,6 +189,11 @@
       "name": "Knitte",
       "scenario": "TOP",
       "priority": 2
+    },
+    {
+      "name": "kl.kranker Affe",
+      "scenario": "TOP",
+      "priority": 2
     }
   ],
   "smart": [
@@ -344,7 +349,7 @@
     },
     {
       "name": "kl.kranker Affe",
-      "score": 84.95,
+      "score": 85.35,
       "status": "STARK"
     },
     {
@@ -596,7 +601,7 @@
     },
     {
       "name": "kl.kranker Affe",
-      "score": 84.95,
+      "score": 85.35,
       "tip": "Weiter so"
     },
     {
@@ -1151,6 +1156,18 @@
         "score": 85.58,
         "strikes": 0,
         "donations": 832,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "kl.kranker Affe",
+        "player_tag": "#RLJPJL8C2",
+        "role": "member",
+        "score": 85.35,
+        "strikes": 0,
+        "donations": 64,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
