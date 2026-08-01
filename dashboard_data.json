@@ -176,12 +176,12 @@
       "priority": 2
     },
     {
-      "name": "bes",
+      "name": "Reklaminator",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Reklaminator",
+      "name": "bes",
       "scenario": "TOP",
       "priority": 2
     },
@@ -323,6 +323,11 @@
       "status": "STARK"
     },
     {
+      "name": "Reklaminator",
+      "score": 86.47,
+      "status": "STARK"
+    },
+    {
       "name": "Nati",
       "score": 86.24,
       "status": "STARK"
@@ -330,11 +335,6 @@
     {
       "name": "bes",
       "score": 85.88,
-      "status": "STARK"
-    },
-    {
-      "name": "Reklaminator",
-      "score": 85.81,
       "status": "STARK"
     },
     {
@@ -374,7 +374,7 @@
     },
     {
       "name": "Rainer",
-      "score": 78.93,
+      "score": 79.06,
       "status": "OK"
     },
     {
@@ -575,6 +575,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Reklaminator",
+      "score": 86.47,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Nati",
       "score": 86.24,
       "tip": "Weiter so"
@@ -582,11 +587,6 @@
     {
       "name": "bes",
       "score": 85.88,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Reklaminator",
-      "score": 85.81,
       "tip": "Weiter so"
     },
     {
@@ -626,7 +626,7 @@
     },
     {
       "name": "Rainer",
-      "score": 78.93,
+      "score": 79.06,
       "tip": "Weiter so"
     },
     {
@@ -788,7 +788,7 @@
         "role": "member",
         "score": 16.67,
         "strikes": 0,
-        "donations": 74,
+        "donations": 90,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -838,7 +838,7 @@
         "role": "member",
         "score": 93.15,
         "strikes": 0,
-        "donations": 268,
+        "donations": 286,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -862,7 +862,7 @@
         "role": "member",
         "score": 92.35,
         "strikes": 0,
-        "donations": 318,
+        "donations": 344,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -970,7 +970,7 @@
         "role": "member",
         "score": 89.55,
         "strikes": 0,
-        "donations": 150,
+        "donations": 158,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -982,7 +982,7 @@
         "role": "member",
         "score": 88.75,
         "strikes": 0,
-        "donations": 126,
+        "donations": 142,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1109,6 +1109,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Reklaminator",
+        "player_tag": "#P0G2GYJQ9",
+        "role": "member",
+        "score": 86.47,
+        "strikes": 0,
+        "donations": 152,
+        "participation_count": 5,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Nati",
         "player_tag": "#LVUGLUCP9",
         "role": "member",
@@ -1133,24 +1145,12 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Reklaminator",
-        "player_tag": "#P0G2GYJQ9",
-        "role": "member",
-        "score": 85.81,
-        "strikes": 0,
-        "donations": 118,
-        "participation_count": 5,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Knitte",
         "player_tag": "#ULYJ2CQP",
         "role": "member",
         "score": 85.58,
         "strikes": 0,
-        "donations": 756,
+        "donations": 774,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
