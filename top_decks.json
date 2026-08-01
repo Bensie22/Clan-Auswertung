@@ -2,7 +2,7 @@
     "_metadata": {
         "last_battles": {
             "#22Q920RLR": "20260801T161436.000Z",
-            "#L8PV090J": "20260801T070349.000Z",
+            "#L8PV090J": "20260801T174732.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260801T133700.000Z",
             "#ULYJ2CQP": "20260801T151506.000Z",
@@ -10,7 +10,7 @@
             "#P0JYR9YUY": "20260801T092712.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260801T104723.000Z",
-            "#G02LC9C8": "20260801T171116.000Z",
+            "#G02LC9C8": "20260801T175024.000Z",
             "#2U8288CVY": "20260731T135747.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
@@ -5306,7 +5306,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/KdwXcoigS2Kg-cgA7BJJIANbUJG6SNgjetRQ-MegZ08.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "rote sonne"
@@ -5315,6 +5315,12 @@
                 "L8PV090J"
             ],
             "recent_matches": [
+                {
+                    "time": "20260801T174732.000Z",
+                    "result": "win",
+                    "player": "rote sonne",
+                    "tag": "L8PV090J"
+                },
                 {
                     "time": "20260731T175749.000Z",
                     "result": "win",
@@ -340816,6 +340822,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000004-26000007-26000016-26000041-26000046-26000062-28000000-28000002": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 28000002,
+                    "name": "Rage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000046,
+                    "name": "Bandit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QWDdXMKJNpv0go-HYaWQWP6p8uIOHjqn-zX7G0p3DyM.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
