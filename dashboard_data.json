@@ -71,12 +71,12 @@
       "priority": 2
     },
     {
-      "name": "Erastus",
+      "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Johan",
+      "name": "Erastus",
       "scenario": "TOP",
       "priority": 2
     },
@@ -208,6 +208,11 @@
       "status": "STARK"
     },
     {
+      "name": "Johan",
+      "score": 92.4,
+      "status": "STARK"
+    },
+    {
       "name": "OneAndOnly",
       "score": 92.4,
       "status": "STARK"
@@ -215,11 +220,6 @@
     {
       "name": "Erastus",
       "score": 92.35,
-      "status": "STARK"
-    },
-    {
-      "name": "Johan",
-      "score": 92.27,
       "status": "STARK"
     },
     {
@@ -460,6 +460,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Johan",
+      "score": 92.4,
+      "tip": "Weiter so"
+    },
+    {
       "name": "OneAndOnly",
       "score": 92.4,
       "tip": "Weiter so"
@@ -467,11 +472,6 @@
     {
       "name": "Erastus",
       "score": 92.35,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Johan",
-      "score": 92.27,
       "tip": "Weiter so"
     },
     {
@@ -826,7 +826,7 @@
         "role": "member",
         "score": 93.15,
         "strikes": 0,
-        "donations": 378,
+        "donations": 396,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -857,6 +857,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Johan",
+        "player_tag": "#UQVCVVVJL",
+        "role": "member",
+        "score": 92.4,
+        "strikes": 0,
+        "donations": 126,
+        "participation_count": 10,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Erastus",
         "player_tag": "#Q8L0RJ8Y8",
         "role": "member",
@@ -865,18 +877,6 @@
         "donations": 362,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Johan",
-        "player_tag": "#UQVCVVVJL",
-        "role": "member",
-        "score": 92.27,
-        "strikes": 0,
-        "donations": 110,
-        "participation_count": 10,
-        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -1042,7 +1042,7 @@
         "role": "member",
         "score": 87.45,
         "strikes": 0,
-        "donations": 956,
+        "donations": 966,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
