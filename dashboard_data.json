@@ -61,12 +61,12 @@
       "priority": 2
     },
     {
-      "name": "mauza",
+      "name": "Erastus",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Erastus",
+      "name": "mauza",
       "scenario": "TOP",
       "priority": 2
     },
@@ -156,17 +156,17 @@
       "priority": 2
     },
     {
+      "name": "Reklaminator",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "hi2oka",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "HardcoreSoldier",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Reklaminator",
       "scenario": "TOP",
       "priority": 2
     },
@@ -203,13 +203,13 @@
       "status": "STARK"
     },
     {
-      "name": "mauza",
+      "name": "OmniOni",
       "score": 92.88,
       "status": "STARK"
     },
     {
-      "name": "OmniOni",
-      "score": 92.88,
+      "name": "mauza",
+      "score": 92.62,
       "status": "STARK"
     },
     {
@@ -229,7 +229,7 @@
     },
     {
       "name": "April#",
-      "score": 91.47,
+      "score": 91.6,
       "status": "STARK"
     },
     {
@@ -308,6 +308,11 @@
       "status": "STARK"
     },
     {
+      "name": "Reklaminator",
+      "score": 87.28,
+      "status": "STARK"
+    },
+    {
       "name": "hi2oka",
       "score": 87.0,
       "status": "STARK"
@@ -315,11 +320,6 @@
     {
       "name": "HardcoreSoldier",
       "score": 86.93,
-      "status": "STARK"
-    },
-    {
-      "name": "Reklaminator",
-      "score": 86.74,
       "status": "STARK"
     },
     {
@@ -455,13 +455,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "mauza",
+      "name": "OmniOni",
       "score": 92.88,
       "tip": "Weiter so"
     },
     {
-      "name": "OmniOni",
-      "score": 92.88,
+      "name": "mauza",
+      "score": 92.62,
       "tip": "Weiter so"
     },
     {
@@ -481,7 +481,7 @@
     },
     {
       "name": "April#",
-      "score": 91.47,
+      "score": 91.6,
       "tip": "Weiter so"
     },
     {
@@ -560,6 +560,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Reklaminator",
+      "score": 87.28,
+      "tip": "Weiter so"
+    },
+    {
       "name": "hi2oka",
       "score": 87.0,
       "tip": "Weiter so"
@@ -567,11 +572,6 @@
     {
       "name": "HardcoreSoldier",
       "score": 86.93,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Reklaminator",
-      "score": 86.74,
       "tip": "Weiter so"
     },
     {
@@ -838,24 +838,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "mauza",
-        "player_tag": "#2P0U2RLGY",
-        "role": "member",
-        "score": 92.88,
-        "strikes": 0,
-        "donations": 296,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Erastus",
         "player_tag": "#Q8L0RJ8Y8",
         "role": "member",
         "score": 92.62,
         "strikes": 0,
         "donations": 378,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "mauza",
+        "player_tag": "#2P0U2RLGY",
+        "role": "member",
+        "score": 92.62,
+        "strikes": 0,
+        "donations": 322,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -889,7 +889,7 @@
         "name": "April#",
         "player_tag": "#YUQVVVLQ",
         "role": "member",
-        "score": 91.47,
+        "score": 91.6,
         "strikes": 0,
         "donations": 174,
         "participation_count": 10,
@@ -1066,6 +1066,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Reklaminator",
+        "player_tag": "#P0G2GYJQ9",
+        "role": "member",
+        "score": 87.28,
+        "strikes": 0,
+        "donations": 196,
+        "participation_count": 5,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "hi2oka",
         "player_tag": "#UJ2P9UYUV",
         "role": "member",
@@ -1085,18 +1097,6 @@
         "strikes": 0,
         "donations": 455,
         "participation_count": 9,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Reklaminator",
-        "player_tag": "#P0G2GYJQ9",
-        "role": "member",
-        "score": 86.74,
-        "strikes": 0,
-        "donations": 170,
-        "participation_count": 5,
         "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
@@ -1143,7 +1143,7 @@
         "role": "member",
         "score": 85.61,
         "strikes": 0,
-        "donations": 210,
+        "donations": 218,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
