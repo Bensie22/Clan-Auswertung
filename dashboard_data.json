@@ -66,17 +66,17 @@
       "priority": 2
     },
     {
+      "name": "Erastus",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Johan",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Erastus",
       "scenario": "TOP",
       "priority": 2
     },
@@ -208,6 +208,11 @@
       "status": "STARK"
     },
     {
+      "name": "Erastus",
+      "score": 92.62,
+      "status": "STARK"
+    },
+    {
       "name": "Johan",
       "score": 92.4,
       "status": "STARK"
@@ -215,11 +220,6 @@
     {
       "name": "OneAndOnly",
       "score": 92.4,
-      "status": "STARK"
-    },
-    {
-      "name": "Erastus",
-      "score": 92.35,
       "status": "STARK"
     },
     {
@@ -460,6 +460,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Erastus",
+      "score": 92.62,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Johan",
       "score": 92.4,
       "tip": "Weiter so"
@@ -467,11 +472,6 @@
     {
       "name": "OneAndOnly",
       "score": 92.4,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Erastus",
-      "score": 92.35,
       "tip": "Weiter so"
     },
     {
@@ -845,12 +845,24 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Erastus",
+        "player_tag": "#Q8L0RJ8Y8",
+        "role": "member",
+        "score": 92.62,
+        "strikes": 0,
+        "donations": 378,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "OneAndOnly",
         "player_tag": "#8P0J8P0L",
         "role": "member",
         "score": 92.4,
         "strikes": 0,
-        "donations": 200,
+        "donations": 208,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -865,18 +877,6 @@
         "donations": 126,
         "participation_count": 10,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Erastus",
-        "player_tag": "#Q8L0RJ8Y8",
-        "role": "member",
-        "score": 92.35,
-        "strikes": 0,
-        "donations": 362,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -1018,7 +1018,7 @@
         "role": "member",
         "score": 88.04,
         "strikes": 0,
-        "donations": 354,
+        "donations": 370,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1078,7 +1078,7 @@
         "role": "member",
         "score": 86.88,
         "strikes": 0,
-        "donations": 139,
+        "donations": 155,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",

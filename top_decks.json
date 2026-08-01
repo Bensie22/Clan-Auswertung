@@ -1,7 +1,7 @@
 {
     "_metadata": {
         "last_battles": {
-            "#22Q920RLR": "20260801T143347.000Z",
+            "#22Q920RLR": "20260801T161436.000Z",
             "#L8PV090J": "20260801T070349.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260801T133700.000Z",
@@ -19,7 +19,7 @@
             "#QULCQGGG": "20260801T142032.000Z",
             "#JRGC9RRQG": "20260801T105453.000Z",
             "#QVQGCV8Y9": "20260801T072104.000Z",
-            "#Q8L0RJ8Y8": "20260731T152405.000Z",
+            "#Q8L0RJ8Y8": "20260801T161920.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260801T151721.000Z",
             "#LLQQJCLC": "20260801T091757.000Z",
@@ -35,7 +35,7 @@
             "#2U09UULRR": "20260801T121122.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20260801T141757.000Z",
-            "#8P0J8P0L": "20260731T153420.000Z",
+            "#8P0J8P0L": "20260801T161942.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260801T152532.000Z",
             "#2P0U2RLGY": "20260731T213609.000Z",
@@ -101,7 +101,7 @@
             "#PQPGPCPQ8": "20260716T222420.000Z",
             "#RRP2LCVRY": "20260720T030817.000Z",
             "#CRC8PQJ2P": "20260723T214847.000Z",
-            "#U8VYULLVU": "20260731T201909.000Z",
+            "#U8VYULLVU": "20260801T161954.000Z",
             "#VCYQ9L9QV": "20260729T140933.000Z",
             "#GRR999Q29": "20260801T003732.000Z",
             "#202QYVY8CC": "20260731T202147.000Z",
@@ -5066,7 +5066,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "OneAndOnly"
@@ -5075,6 +5075,12 @@
                 "8P0J8P0L"
             ],
             "recent_matches": [
+                {
+                    "time": "20260801T161942.000Z",
+                    "result": "win",
+                    "player": "OneAndOnly",
+                    "tag": "8P0J8P0L"
+                },
                 {
                     "time": "20260731T153420.000Z",
                     "result": "win",
@@ -340540,6 +340546,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000007-26000018-26000036-26000043-26000049-26000062-27000006-28000016": {
+            "cards": [
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 28000016,
+                    "name": "Heal Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GITl06sa2nGRLPvboyXbGEv5E3I-wAwn1Eqa5esggbc.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000036,
+                    "name": "Battle Ram",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dyc50V2cplKi4H7pq1B3I36pl_sEH5DQrNHboS_dbbM.png"
+                },
+                {
+                    "id": 26000043,
+                    "name": "Elite Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/C88C5JH_F3lLZj6K-tLcMo5DPjrFmvzIb1R2M6xCfTE.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
