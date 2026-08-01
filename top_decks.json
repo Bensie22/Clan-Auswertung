@@ -10,7 +10,7 @@
             "#P0JYR9YUY": "20260801T195548.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260801T104723.000Z",
-            "#G02LC9C8": "20260801T200750.000Z",
+            "#G02LC9C8": "20260801T210056.000Z",
             "#2U8288CVY": "20260801T201114.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
@@ -34,10 +34,10 @@
             "#JUUR8UGL8": "20260731T150139.000Z",
             "#2U09UULRR": "20260801T121122.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
-            "#8QYYL8LCQ": "20260801T202839.000Z",
+            "#8QYYL8LCQ": "20260801T205451.000Z",
             "#8P0J8P0L": "20260801T173148.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20260801T204643.000Z",
+            "#CUJ9PJ2UV": "20260801T210012.000Z",
             "#2P0U2RLGY": "20260731T213609.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260801T190543.000Z",
@@ -83,7 +83,7 @@
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260609T223746.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
-            "#GRGCY0R8": "20260801T180518.000Z",
+            "#GRGCY0R8": "20260801T210029.000Z",
             "#P2YQ2QQUV": "20260801T192600.000Z",
             "#JG8Q0GPU9": "20260713T010600.000Z",
             "#9QV99QVCV": "20260701T045607.000Z",
@@ -101,14 +101,14 @@
             "#PQPGPCPQ8": "20260716T222420.000Z",
             "#RRP2LCVRY": "20260720T030817.000Z",
             "#CRC8PQJ2P": "20260723T214847.000Z",
-            "#U8VYULLVU": "20260801T204910.000Z",
+            "#U8VYULLVU": "20260801T210020.000Z",
             "#VCYQ9L9QV": "20260729T140933.000Z",
             "#GRR999Q29": "20260801T003732.000Z",
-            "#202QYVY8CC": "20260801T204511.000Z",
+            "#202QYVY8CC": "20260801T205240.000Z",
             "#PLG90C0C": "20260801T201445.000Z",
             "#LGUGQ0PRG": "20260801T114207.000Z",
             "#UVGRVC8LU": "20260731T104833.000Z",
-            "#PVGU89PUL": "20260731T101354.000Z",
+            "#PVGU89PUL": "20260801T205352.000Z",
             "#V9JP2PGGP": "20260801T173447.000Z"
         }
     },
@@ -4160,7 +4160,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/hzKNE3QwFcrSrDDRuVW3QY_OnrDPijSiIp-PsWgFevE.png"
                 }
             ],
-            "wins": 2,
+            "wins": 3,
             "losses": 0,
             "players": [
                 "Hemelm"
@@ -4169,6 +4169,12 @@
                 "PVGU89PUL"
             ],
             "recent_matches": [
+                {
+                    "time": "20260801T205352.000Z",
+                    "result": "win",
+                    "player": "Hemelm",
+                    "tag": "PVGU89PUL"
+                },
                 {
                     "time": "20260731T100923.000Z",
                     "result": "win",
@@ -341974,6 +341980,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000000-26000003-26000015-26000018-26000022-27000013-28000007-28000018": {
+            "cards": [
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 28000007,
+                    "name": "Lightning",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fpnESbYqe5GyZmaVVYe-SEu7tE0Kxh_HZyVigzvLjks.png"
+                },
+                {
+                    "id": 26000022,
+                    "name": "Minion Horde",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Wyjq5l0IXHTkX9Rmpap6HaH08MvjbxFp1xBO9a47YSI.png"
+                },
+                {
+                    "id": 27000013,
+                    "name": "Goblin Drill",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/eN2TKUYbih-26yBi0xy5LVFOA0zDftgDqxxnVfdIg1o.png"
+                },
+                {
+                    "id": 28000018,
+                    "name": "Royal Delivery",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LPg7AGjGI3_xmi7gLLgGC50yKM1jJ2teWkZfoHJcIZo.png"
+                },
+                {
+                    "id": 26000003,
+                    "name": "Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Axr4ox5_b7edmLsoHxBX3vmgijAIibuF6RImTbqLlXE.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
