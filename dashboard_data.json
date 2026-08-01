@@ -161,6 +161,11 @@
       "priority": 2
     },
     {
+      "name": "seroo",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "SirHenry87",
       "scenario": "TOP",
       "priority": 2
@@ -172,11 +177,6 @@
     },
     {
       "name": "agostini",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "seroo",
       "scenario": "TOP",
       "priority": 2
     },
@@ -308,6 +308,11 @@
       "status": "STARK"
     },
     {
+      "name": "seroo",
+      "score": 86.88,
+      "status": "STARK"
+    },
+    {
       "name": "SirHenry87",
       "score": 86.73,
       "status": "STARK"
@@ -320,11 +325,6 @@
     {
       "name": "agostini",
       "score": 86.56,
-      "status": "STARK"
-    },
-    {
-      "name": "seroo",
-      "score": 86.48,
       "status": "STARK"
     },
     {
@@ -560,6 +560,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "seroo",
+      "score": 86.88,
+      "tip": "Weiter so"
+    },
+    {
       "name": "SirHenry87",
       "score": 86.73,
       "tip": "Weiter so"
@@ -572,11 +577,6 @@
     {
       "name": "agostini",
       "score": 86.56,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "seroo",
-      "score": 86.48,
       "tip": "Weiter so"
     },
     {
@@ -1073,6 +1073,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "seroo",
+        "player_tag": "#JRGC9RRQG",
+        "role": "member",
+        "score": 86.88,
+        "strikes": 0,
+        "donations": 139,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "SirHenry87",
         "player_tag": "#8QYYL8LCQ",
         "role": "member",
@@ -1105,18 +1117,6 @@
         "donations": 679,
         "participation_count": 9,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "seroo",
-        "player_tag": "#JRGC9RRQG",
-        "role": "member",
-        "score": 86.48,
-        "strikes": 0,
-        "donations": 139,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
