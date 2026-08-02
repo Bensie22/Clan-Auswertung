@@ -151,17 +151,17 @@
       "priority": 2
     },
     {
+      "name": "agostini",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Reklaminator",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Desteoyer",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "agostini",
       "scenario": "TOP",
       "priority": 2
     },
@@ -303,6 +303,11 @@
       "status": "STARK"
     },
     {
+      "name": "agostini",
+      "score": 87.22,
+      "status": "STARK"
+    },
+    {
       "name": "Reklaminator",
       "score": 87.14,
       "status": "STARK"
@@ -310,11 +315,6 @@
     {
       "name": "Desteoyer",
       "score": 87.13,
-      "status": "STARK"
-    },
-    {
-      "name": "agostini",
-      "score": 86.96,
       "status": "STARK"
     },
     {
@@ -550,6 +550,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "agostini",
+      "score": 87.22,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Reklaminator",
       "score": 87.14,
       "tip": "Weiter so"
@@ -557,11 +562,6 @@
     {
       "name": "Desteoyer",
       "score": 87.13,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "agostini",
-      "score": 86.96,
       "tip": "Weiter so"
     },
     {
@@ -1039,6 +1039,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "agostini",
+        "player_tag": "#P2YQ2QQUV",
+        "role": "member",
+        "score": 87.22,
+        "strikes": 0,
+        "donations": 825,
+        "participation_count": 9,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Reklaminator",
         "player_tag": "#P0G2GYJQ9",
         "role": "member",
@@ -1059,18 +1071,6 @@
         "donations": 143,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "agostini",
-        "player_tag": "#P2YQ2QQUV",
-        "role": "member",
-        "score": 86.96,
-        "strikes": 0,
-        "donations": 825,
-        "participation_count": 9,
-        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
