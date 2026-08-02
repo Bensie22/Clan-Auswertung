@@ -6,17 +6,17 @@
       "priority": 4
     },
     {
-      "name": "Abudi✨たち",
-      "scenario": "KEINE_TEILNAHME",
-      "priority": 4
-    },
-    {
       "name": "Lasse1887",
       "scenario": "STRIKE",
       "priority": 4
     },
     {
       "name": "Ben Siebolf",
+      "scenario": "STRIKE",
+      "priority": 4
+    },
+    {
+      "name": "Abudi✨たち",
       "scenario": "STRIKE",
       "priority": 4
     },
@@ -418,6 +418,11 @@
       "status": "RISIKO"
     },
     {
+      "name": "Abudi✨たち",
+      "score": 8.4,
+      "status": "RISIKO"
+    },
+    {
       "name": "Ben Siebolf",
       "score": 7.47,
       "status": "RISIKO"
@@ -425,11 +430,6 @@
     {
       "name": "Lasse1887",
       "score": 5.2,
-      "status": "RISIKO"
-    },
-    {
-      "name": "Abudi✨たち",
-      "score": 0.0,
       "status": "RISIKO"
     },
     {
@@ -665,6 +665,11 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
+      "name": "Abudi✨たち",
+      "score": 8.4,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "Ben Siebolf",
       "score": 7.47,
       "tip": "Mehr Teilnahme notwendig"
@@ -672,11 +677,6 @@
     {
       "name": "Lasse1887",
       "score": 5.2,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "Abudi✨たち",
-      "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
@@ -688,18 +688,6 @@
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
-      {
-        "name": "Abudi✨たち",
-        "player_tag": "#R2VYJUUCP",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 56,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
       {
         "name": "Games✨たち",
         "player_tag": "#RL9LQYCCY",
@@ -731,6 +719,18 @@
         "score": 7.47,
         "strikes": 0,
         "donations": 140,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "Abudi✨たち",
+        "player_tag": "#R2VYJUUCP",
+        "role": "member",
+        "score": 8.4,
+        "strikes": 0,
+        "donations": 66,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
