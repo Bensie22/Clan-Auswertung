@@ -1,21 +1,6 @@
 {
   "full_auto": [
     {
-      "name": "Yunus",
-      "scenario": "KEINE_TEILNAHME",
-      "priority": 4
-    },
-    {
-      "name": "marco",
-      "scenario": "KEINE_TEILNAHME",
-      "priority": 4
-    },
-    {
-      "name": "Rex¥_JB",
-      "scenario": "KEINE_TEILNAHME",
-      "priority": 4
-    },
-    {
       "name": "Lasse1887",
       "scenario": "STRIKE",
       "priority": 4
@@ -431,21 +416,6 @@
       "name": "Lasse1887",
       "score": 5.2,
       "status": "RISIKO"
-    },
-    {
-      "name": "Yunus",
-      "score": 0.0,
-      "status": "RISIKO"
-    },
-    {
-      "name": "Rex¥_JB",
-      "score": 0.0,
-      "status": "RISIKO"
-    },
-    {
-      "name": "marco",
-      "score": 0.0,
-      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -683,62 +653,11 @@
       "name": "Lasse1887",
       "score": 5.2,
       "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "Yunus",
-      "score": 0.0,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "Rex¥_JB",
-      "score": 0.0,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "marco",
-      "score": 0.0,
-      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
-      {
-        "name": "Yunus",
-        "player_tag": "#GRR999Q29",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 0,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
-        "name": "Rex¥_JB",
-        "player_tag": "#U8VYULLVU",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 98,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
-        "name": "marco",
-        "player_tag": "#PQPGPCPQ8",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 0,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
       {
         "name": "Lasse1887",
         "player_tag": "#UVGRVC8LU",
@@ -927,7 +846,7 @@
         "role": "member",
         "score": 90.8,
         "strikes": 0,
-        "donations": 876,
+        "donations": 892,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -951,7 +870,7 @@
         "role": "member",
         "score": 90.44,
         "strikes": 0,
-        "donations": 188,
+        "donations": 206,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1107,7 +1026,7 @@
         "role": "member",
         "score": 86.79,
         "strikes": 0,
-        "donations": 533,
+        "donations": 541,
         "participation_count": 9,
         "trend": "",
         "reason": "Score über 85",
