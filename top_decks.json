@@ -4,14 +4,14 @@
             "#22Q920RLR": "20260802T130704.000Z",
             "#L8PV090J": "20260802T143436.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
-            "#2QRVR9L8": "20260802T142729.000Z",
+            "#2QRVR9L8": "20260802T144730.000Z",
             "#ULYJ2CQP": "20260802T135337.000Z",
             "#UJ2P9UYUV": "20260802T090821.000Z",
             "#P0JYR9YUY": "20260802T085737.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260802T055245.000Z",
             "#G02LC9C8": "20260802T090448.000Z",
-            "#2U8288CVY": "20260801T201114.000Z",
+            "#2U8288CVY": "20260802T145031.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
@@ -43,7 +43,7 @@
             "#RLJPJL8C2": "20260802T122451.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20260802T143828.000Z",
+            "#UUPCULU9V": "20260802T145047.000Z",
             "#202VP2QL9P": "20260724T185949.000Z",
             "#LVUGLUCP9": "20260801T215057.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
@@ -104,11 +104,11 @@
             "#U8VYULLVU": "20260802T073809.000Z",
             "#VCYQ9L9QV": "20260729T140933.000Z",
             "#GRR999Q29": "20260801T003732.000Z",
-            "#202QYVY8CC": "20260802T143912.000Z",
-            "#PLG90C0C": "20260801T201445.000Z",
+            "#202QYVY8CC": "20260802T145019.000Z",
+            "#PLG90C0C": "20260802T144915.000Z",
             "#LGUGQ0PRG": "20260802T104202.000Z",
             "#UVGRVC8LU": "20260731T104833.000Z",
-            "#PVGU89PUL": "20260802T091554.000Z",
+            "#PVGU89PUL": "20260802T145000.000Z",
             "#V9JP2PGGP": "20260801T173447.000Z"
         }
     },
@@ -366,7 +366,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
                 }
             ],
-            "wins": 3,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "elazeto"
@@ -383,12 +383,6 @@
                 },
                 {
                     "time": "20260704T141746.000Z",
-                    "result": "win",
-                    "player": "elazeto",
-                    "tag": "URJ0LUYPV"
-                },
-                {
-                    "time": "20260703T144946.000Z",
                     "result": "win",
                     "player": "elazeto",
                     "tag": "URJ0LUYPV"
@@ -3009,7 +3003,7 @@
                 }
             ],
             "wins": 4,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "_spc07"
             ],
@@ -3017,6 +3011,12 @@
                 "2U8288CVY"
             ],
             "recent_matches": [
+                {
+                    "time": "20260802T145031.000Z",
+                    "result": "loss",
+                    "player": "_spc07",
+                    "tag": "2U8288CVY"
+                },
                 {
                     "time": "20260801T201114.000Z",
                     "result": "win",
@@ -344994,6 +344994,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000041-26000042-26000056-26000102-26000103-27000002-28000000-28000015": {
+            "cards": [
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 26000103,
+                    "name": "Boss Bandit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nuceG9o7rAyvyc7D3sp2QSiRYtSOEgraq0NJkDf729s.png"
+                },
+                {
+                    "id": 27000002,
+                    "name": "Mortar",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lPOSw6H7YOHq2miSCrf7ZDL3ANjhJdPPDYOTujdNrVE.png"
+                },
+                {
+                    "id": 28000015,
+                    "name": "Barbarian Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Gb0G1yNy0i5cIGUHin8uoFWxqntNtRPhY_jeMXg7HnA.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000102,
+                    "name": "Berserker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NA6W8S1JBYBlOPwD3dNvJLFvVDKq-UuBs_J3i3ewLFI.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
