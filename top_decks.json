@@ -6,11 +6,11 @@
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260802T054252.000Z",
             "#ULYJ2CQP": "20260802T073856.000Z",
-            "#UJ2P9UYUV": "20260801T064219.000Z",
+            "#UJ2P9UYUV": "20260802T090821.000Z",
             "#P0JYR9YUY": "20260802T085737.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260802T055245.000Z",
-            "#G02LC9C8": "20260802T082937.000Z",
+            "#G02LC9C8": "20260802T090448.000Z",
             "#2U8288CVY": "20260801T201114.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
@@ -29,7 +29,7 @@
             "#2CJYG9UG": "20260801T150418.000Z",
             "#2PUQYJC02": "20260801T202710.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20260802T062656.000Z",
+            "#2V800VCQ0": "20260802T090711.000Z",
             "#2UQUPYQCJ": "20260801T200235.000Z",
             "#JUUR8UGL8": "20260802T060256.000Z",
             "#2U09UULRR": "20260802T075322.000Z",
@@ -4995,7 +4995,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "hi2oka"
             ],
@@ -5003,6 +5003,12 @@
                 "UJ2P9UYUV"
             ],
             "recent_matches": [
+                {
+                    "time": "20260802T090821.000Z",
+                    "result": "loss",
+                    "player": "hi2oka",
+                    "tag": "UJ2P9UYUV"
+                },
                 {
                     "time": "20260801T064219.000Z",
                     "result": "win",
@@ -343826,6 +343832,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000004-26000006-26000030-26000040-26000047-26000064-28000001-28000004": {
+            "cards": [
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 26000047,
+                    "name": "Royal Recruits",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jcNyYGUiXXNz3kuz8NBkHNKNREQKraXlb_Ts7rhCIdM.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000030,
+                    "name": "Ice Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lv1budiafU9XmSdrDkk0NYyqASAFYyZ06CPysXKZXlA.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
