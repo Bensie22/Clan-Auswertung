@@ -1,6 +1,16 @@
 {
   "full_auto": [
     {
+      "name": "Games✨たち",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
+      "name": "Abudi✨たち",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "Lasse1887",
       "scenario": "STRIKE",
       "priority": 4
@@ -416,6 +426,16 @@
       "name": "Lasse1887",
       "score": 5.2,
       "status": "RISIKO"
+    },
+    {
+      "name": "Abudi✨たち",
+      "score": 0.0,
+      "status": "RISIKO"
+    },
+    {
+      "name": "Games✨たち",
+      "score": 0.0,
+      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -653,11 +673,45 @@
       "name": "Lasse1887",
       "score": 5.2,
       "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "Abudi✨たち",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "Games✨たち",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
+      {
+        "name": "Abudi✨たち",
+        "player_tag": "#R2VYJUUCP",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 16,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "Games✨たち",
+        "player_tag": "#RL9LQYCCY",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
       {
         "name": "Lasse1887",
         "player_tag": "#UVGRVC8LU",
