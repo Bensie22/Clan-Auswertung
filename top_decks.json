@@ -43,7 +43,7 @@
             "#RLJPJL8C2": "20260802T122451.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20260802T145816.000Z",
+            "#UUPCULU9V": "20260802T151007.000Z",
             "#202VP2QL9P": "20260724T185949.000Z",
             "#LVUGLUCP9": "20260801T215057.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
@@ -106,7 +106,7 @@
             "#GRR999Q29": "20260801T003732.000Z",
             "#202QYVY8CC": "20260802T145019.000Z",
             "#PLG90C0C": "20260802T145623.000Z",
-            "#LGUGQ0PRG": "20260802T104202.000Z",
+            "#LGUGQ0PRG": "20260802T151004.000Z",
             "#UVGRVC8LU": "20260731T104833.000Z",
             "#PVGU89PUL": "20260802T145331.000Z",
             "#V9JP2PGGP": "20260801T173447.000Z"
@@ -4833,7 +4833,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "shorttrack alex"
             ],
@@ -4841,6 +4841,12 @@
                 "LGUGQ0PRG"
             ],
             "recent_matches": [
+                {
+                    "time": "20260802T150557.000Z",
+                    "result": "loss",
+                    "player": "shorttrack alex",
+                    "tag": "LGUGQ0PRG"
+                },
                 {
                     "time": "20260801T220300.000Z",
                     "result": "win",
@@ -345134,6 +345140,52 @@
                     "id": 28000011,
                     "name": "The Log",
                     "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000011-26000016-26000040-26000055-26000062-26000072-27000006-28000023": {
+            "cards": [
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000072,
+                    "name": "Archer Queen",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/p7OQmOAFTery7zCzlpDdm-LOD1kINTm42AwIHchZfWk.png"
+                },
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 28000023,
+                    "name": "Void",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BykyeWDqzn4PlHSszu3NbrXT1mHxW2EA8vHbQGR5LDE.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
                 }
             ],
             "seen": 1,
