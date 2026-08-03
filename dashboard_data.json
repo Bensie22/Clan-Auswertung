@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "JACKY BERRY",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "Games✨たち",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -436,6 +441,11 @@
       "name": "Games✨たち",
       "score": 0.0,
       "status": "RISIKO"
+    },
+    {
+      "name": "JACKY BERRY",
+      "score": 0.0,
+      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -683,6 +693,11 @@
       "name": "Games✨たち",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "JACKY BERRY",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
@@ -695,6 +710,18 @@
         "score": 0.0,
         "strikes": 0,
         "donations": 30,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "JACKY BERRY",
+        "player_tag": "#V8VGG0LUG",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
