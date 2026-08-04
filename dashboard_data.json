@@ -1,11 +1,6 @@
 {
   "full_auto": [
     {
-      "name": "KUROSAKI",
-      "scenario": "KEINE_TEILNAHME",
-      "priority": 4
-    },
-    {
       "name": "Games✨たち",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -418,11 +413,6 @@
       "status": "RISIKO"
     },
     {
-      "name": "KUROSAKI",
-      "score": 0.0,
-      "status": "RISIKO"
-    },
-    {
       "name": "Games✨たち",
       "score": 0.0,
       "status": "RISIKO"
@@ -670,11 +660,6 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
-      "name": "KUROSAKI",
-      "score": 0.0,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
       "name": "Games✨たち",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
@@ -684,24 +669,12 @@
     "generated_from": "_prefetch.json",
     "remove": [
       {
-        "name": "KUROSAKI",
-        "player_tag": "#2V2QYJGCG",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 0,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
         "name": "Games✨たち",
         "player_tag": "#RL9LQYCCY",
         "role": "member",
         "score": 0.0,
         "strikes": 0,
-        "donations": 154,
+        "donations": 178,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
