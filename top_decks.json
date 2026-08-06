@@ -37,7 +37,7 @@
             "#8QYYL8LCQ": "20260806T013128.000Z",
             "#8P0J8P0L": "20260805T205535.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20260806T093249.000Z",
+            "#CUJ9PJ2UV": "20260806T133402.000Z",
             "#2P0U2RLGY": "20260806T120843.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260806T113423.000Z",
@@ -105,7 +105,7 @@
             "#VCYQ9L9QV": "20260729T140933.000Z",
             "#GRR999Q29": "20260801T003732.000Z",
             "#202QYVY8CC": "20260806T132719.000Z",
-            "#PLG90C0C": "20260806T132817.000Z",
+            "#PLG90C0C": "20260806T133721.000Z",
             "#LGUGQ0PRG": "20260805T082727.000Z",
             "#UVGRVC8LU": "20260803T144006.000Z",
             "#PVGU89PUL": "20260806T111548.000Z",
@@ -3709,7 +3709,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/SoW16cY3jXBwaTDvb39DkqiVsoFVaDWbzf5QBYphJrY.png"
                 }
             ],
-            "wins": 2,
+            "wins": 3,
             "losses": 0,
             "players": [
                 "AaleDieter"
@@ -3718,6 +3718,12 @@
                 "CUJ9PJ2UV"
             ],
             "recent_matches": [
+                {
+                    "time": "20260806T133402.000Z",
+                    "result": "win",
+                    "player": "AaleDieter",
+                    "tag": "CUJ9PJ2UV"
+                },
                 {
                     "time": "20260802T154359.000Z",
                     "result": "win",
@@ -350493,6 +350499,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000003-26000004-26000017-26000064-26000102-27000010-27000012-28000009": {
+            "cards": [
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000003,
+                    "name": "Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Axr4ox5_b7edmLsoHxBX3vmgijAIibuF6RImTbqLlXE.png"
+                },
+                {
+                    "id": 27000012,
+                    "name": "Goblin Cage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vD24bBgK4rSq7wx5QEbuqChtPMRFviL_ep76GwQw1yA.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                },
+                {
+                    "id": 26000102,
+                    "name": "Berserker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NA6W8S1JBYBlOPwD3dNvJLFvVDKq-UuBs_J3i3ewLFI.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
