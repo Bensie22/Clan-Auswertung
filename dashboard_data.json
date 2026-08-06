@@ -26,17 +26,17 @@
       "priority": 2
     },
     {
+      "name": "mauza",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Bensie",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Johan",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "mauza",
       "scenario": "TOP",
       "priority": 2
     },
@@ -66,6 +66,11 @@
       "priority": 2
     },
     {
+      "name": "Ben Siebolf",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "AaleDieter",
       "scenario": "TOP",
       "priority": 2
@@ -76,17 +81,12 @@
       "priority": 2
     },
     {
-      "name": "Ben Siebolf",
+      "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "LazyFrog",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
     },
@@ -153,6 +153,11 @@
       "status": "STARK"
     },
     {
+      "name": "mauza",
+      "score": 92.88,
+      "status": "STARK"
+    },
+    {
       "name": "Bensie",
       "score": 92.53,
       "status": "STARK"
@@ -160,11 +165,6 @@
     {
       "name": "Johan",
       "score": 92.49,
-      "status": "STARK"
-    },
-    {
-      "name": "mauza",
-      "score": 92.48,
       "status": "STARK"
     },
     {
@@ -208,6 +208,11 @@
       "status": "STARK"
     },
     {
+      "name": "Ben Siebolf",
+      "score": 89.33,
+      "status": "STARK"
+    },
+    {
       "name": "AaleDieter",
       "score": 89.24,
       "status": "STARK"
@@ -218,18 +223,13 @@
       "status": "STARK"
     },
     {
-      "name": "Ben Siebolf",
-      "score": 88.93,
-      "status": "STARK"
-    },
-    {
       "name": "Wario",
       "score": 88.7,
       "status": "STARK"
     },
     {
       "name": "Dolphin",
-      "score": 88.35,
+      "score": 88.62,
       "status": "STARK"
     },
     {
@@ -395,6 +395,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "mauza",
+      "score": 92.88,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Bensie",
       "score": 92.53,
       "tip": "Weiter so"
@@ -402,11 +407,6 @@
     {
       "name": "Johan",
       "score": 92.49,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "mauza",
-      "score": 92.48,
       "tip": "Weiter so"
     },
     {
@@ -450,6 +450,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Ben Siebolf",
+      "score": 89.33,
+      "tip": "Weiter so"
+    },
+    {
       "name": "AaleDieter",
       "score": 89.24,
       "tip": "Weiter so"
@@ -460,18 +465,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Ben Siebolf",
-      "score": 88.93,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Wario",
       "score": 88.7,
       "tip": "Weiter so"
     },
     {
       "name": "Dolphin",
-      "score": 88.35,
+      "score": 88.62,
       "tip": "Weiter so"
     },
     {
@@ -674,6 +674,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "mauza",
+        "player_tag": "#2P0U2RLGY",
+        "role": "member",
+        "score": 92.88,
+        "strikes": 0,
+        "donations": 292,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Bensie",
         "player_tag": "#2QRVR9L8",
         "role": "member",
@@ -694,18 +706,6 @@
         "donations": 54,
         "participation_count": 10,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "mauza",
-        "player_tag": "#2P0U2RLGY",
-        "role": "member",
-        "score": 92.48,
-        "strikes": 0,
-        "donations": 292,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -794,6 +794,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Ben Siebolf",
+        "player_tag": "#PLG90C0C",
+        "role": "member",
+        "score": 89.33,
+        "strikes": 0,
+        "donations": 112,
+        "participation_count": 1,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "AaleDieter",
         "player_tag": "#CUJ9PJ2UV",
         "role": "member",
@@ -818,18 +830,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Ben Siebolf",
-        "player_tag": "#PLG90C0C",
-        "role": "member",
-        "score": 88.93,
-        "strikes": 0,
-        "donations": 104,
-        "participation_count": 1,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Wario",
         "player_tag": "#2PUQYJC02",
         "role": "member",
@@ -842,24 +842,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "LazyFrog",
-        "player_tag": "#22Q920RLR",
+        "name": "Dolphin",
+        "player_tag": "#2U09UULRR",
         "role": "member",
-        "score": 88.35,
+        "score": 88.62,
         "strikes": 0,
-        "donations": 536,
+        "donations": 146,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
       {
-        "name": "Dolphin",
-        "player_tag": "#2U09UULRR",
+        "name": "LazyFrog",
+        "player_tag": "#22Q920RLR",
         "role": "member",
         "score": 88.35,
         "strikes": 0,
-        "donations": 146,
+        "donations": 536,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -943,7 +943,7 @@
         "role": "member",
         "score": 86.88,
         "strikes": 0,
-        "donations": 192,
+        "donations": 200,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
