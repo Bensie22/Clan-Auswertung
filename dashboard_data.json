@@ -51,17 +51,17 @@
       "priority": 2
     },
     {
-      "name": "OneAndOnly",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Jackhammer",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Swordfish",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
     },
@@ -183,11 +183,6 @@
       "status": "STARK"
     },
     {
-      "name": "OneAndOnly",
-      "score": 90.93,
-      "status": "STARK"
-    },
-    {
       "name": "Jackhammer",
       "score": 90.89,
       "status": "STARK"
@@ -195,6 +190,11 @@
     {
       "name": "Swordfish",
       "score": 90.8,
+      "status": "STARK"
+    },
+    {
+      "name": "OneAndOnly",
+      "score": 90.67,
       "status": "STARK"
     },
     {
@@ -279,7 +279,7 @@
     },
     {
       "name": "bes",
-      "score": 86.28,
+      "score": 86.01,
       "status": "STARK"
     },
     {
@@ -349,7 +349,7 @@
     },
     {
       "name": "DST",
-      "score": 75.85,
+      "score": 75.72,
       "status": "OK"
     },
     {
@@ -425,11 +425,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "OneAndOnly",
-      "score": 90.93,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Jackhammer",
       "score": 90.89,
       "tip": "Weiter so"
@@ -437,6 +432,11 @@
     {
       "name": "Swordfish",
       "score": 90.8,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "OneAndOnly",
+      "score": 90.67,
       "tip": "Weiter so"
     },
     {
@@ -521,7 +521,7 @@
     },
     {
       "name": "bes",
-      "score": 86.28,
+      "score": 86.01,
       "tip": "Weiter so"
     },
     {
@@ -591,7 +591,7 @@
     },
     {
       "name": "DST",
-      "score": 75.85,
+      "score": 75.72,
       "tip": "Weiter so"
     },
     {
@@ -691,7 +691,7 @@
         "role": "member",
         "score": 92.53,
         "strikes": 0,
-        "donations": 539,
+        "donations": 547,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -734,18 +734,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "OneAndOnly",
-        "player_tag": "#8P0J8P0L",
-        "role": "member",
-        "score": 90.93,
-        "strikes": 0,
-        "donations": 76,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Jackhammer",
         "player_tag": "#2CJYG9UG",
         "role": "member",
@@ -764,6 +752,18 @@
         "score": 90.8,
         "strikes": 0,
         "donations": 60,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "OneAndOnly",
+        "player_tag": "#8P0J8P0L",
+        "role": "member",
+        "score": 90.67,
+        "strikes": 0,
+        "donations": 100,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -965,9 +965,9 @@
         "name": "bes",
         "player_tag": "#LLQQJCLC",
         "role": "member",
-        "score": 86.28,
+        "score": 86.01,
         "strikes": 0,
-        "donations": 204,
+        "donations": 238,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
