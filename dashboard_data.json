@@ -76,6 +76,11 @@
       "priority": 2
     },
     {
+      "name": "Ben Siebolf",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
@@ -102,11 +107,6 @@
     },
     {
       "name": "SirHenry87",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Ben Siebolf",
       "scenario": "TOP",
       "priority": 2
     },
@@ -138,13 +138,13 @@
   ],
   "smart": [
     {
-      "name": "Hemelm",
-      "score": 94.13,
+      "name": "Citykingalex",
+      "score": 94.08,
       "status": "STARK"
     },
     {
-      "name": "Citykingalex",
-      "score": 94.08,
+      "name": "Hemelm",
+      "score": 93.73,
       "status": "STARK"
     },
     {
@@ -218,6 +218,11 @@
       "status": "STARK"
     },
     {
+      "name": "Ben Siebolf",
+      "score": 88.93,
+      "status": "STARK"
+    },
+    {
       "name": "Wario",
       "score": 88.7,
       "status": "STARK"
@@ -260,11 +265,6 @@
     {
       "name": "SirHenry87",
       "score": 87.75,
-      "status": "STARK"
-    },
-    {
-      "name": "Ben Siebolf",
-      "score": 87.47,
       "status": "STARK"
     },
     {
@@ -380,13 +380,13 @@
   ],
   "coaching": [
     {
-      "name": "Hemelm",
-      "score": 94.13,
+      "name": "Citykingalex",
+      "score": 94.08,
       "tip": "Weiter so"
     },
     {
-      "name": "Citykingalex",
-      "score": 94.08,
+      "name": "Hemelm",
+      "score": 93.73,
       "tip": "Weiter so"
     },
     {
@@ -460,6 +460,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Ben Siebolf",
+      "score": 88.93,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Wario",
       "score": 88.7,
       "tip": "Weiter so"
@@ -502,11 +507,6 @@
     {
       "name": "SirHenry87",
       "score": 87.75,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Ben Siebolf",
-      "score": 87.47,
       "tip": "Weiter so"
     },
     {
@@ -638,18 +638,6 @@
     ],
     "core": [
       {
-        "name": "Hemelm",
-        "player_tag": "#PVGU89PUL",
-        "role": "member",
-        "score": 94.13,
-        "strikes": 0,
-        "donations": 26,
-        "participation_count": 1,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Citykingalex",
         "player_tag": "#QULCQGGG",
         "role": "member",
@@ -658,6 +646,18 @@
         "donations": 100,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Hemelm",
+        "player_tag": "#PVGU89PUL",
+        "role": "member",
+        "score": 93.73,
+        "strikes": 0,
+        "donations": 26,
+        "participation_count": 1,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -818,6 +818,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Ben Siebolf",
+        "player_tag": "#PLG90C0C",
+        "role": "member",
+        "score": 88.93,
+        "strikes": 0,
+        "donations": 104,
+        "participation_count": 1,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Wario",
         "player_tag": "#2PUQYJC02",
         "role": "member",
@@ -922,18 +934,6 @@
         "donations": 181,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Ben Siebolf",
-        "player_tag": "#PLG90C0C",
-        "role": "member",
-        "score": 87.47,
-        "strikes": 0,
-        "donations": 104,
-        "participation_count": 1,
-        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
