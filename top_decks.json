@@ -5,7 +5,7 @@
             "#L8PV090J": "20260806T131910.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260807T082604.000Z",
-            "#ULYJ2CQP": "20260807T101702.000Z",
+            "#ULYJ2CQP": "20260807T105557.000Z",
             "#UJ2P9UYUV": "20260807T082510.000Z",
             "#P0JYR9YUY": "20260807T081850.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
@@ -18,7 +18,7 @@
             "#PPR2QQC0U": "20260804T074055.000Z",
             "#QULCQGGG": "20260806T102850.000Z",
             "#JRGC9RRQG": "20260807T093027.000Z",
-            "#QVQGCV8Y9": "20260807T105027.000Z",
+            "#QVQGCV8Y9": "20260807T105709.000Z",
             "#Q8L0RJ8Y8": "20260807T082023.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260807T080013.000Z",
@@ -105,8 +105,8 @@
             "#VCYQ9L9QV": "20260729T140933.000Z",
             "#GRR999Q29": "20260801T003732.000Z",
             "#202QYVY8CC": "20260807T100205.000Z",
-            "#PLG90C0C": "20260807T104604.000Z",
-            "#LGUGQ0PRG": "20260807T102654.000Z",
+            "#PLG90C0C": "20260807T105917.000Z",
+            "#LGUGQ0PRG": "20260807T105145.000Z",
             "#UVGRVC8LU": "20260803T144006.000Z",
             "#PVGU89PUL": "20260806T111548.000Z",
             "#V9JP2PGGP": "20260807T071014.000Z",
@@ -2522,7 +2522,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/2GKMkBrArZXgQxf2ygFjDs4VvGYPbx8F6Lj_68iVhIM.png"
                 }
             ],
-            "wins": 4,
+            "wins": 5,
             "losses": 0,
             "players": [
                 "Rainer"
@@ -2531,6 +2531,12 @@
                 "QVQGCV8Y9"
             ],
             "recent_matches": [
+                {
+                    "time": "20260807T105340.000Z",
+                    "result": "win",
+                    "player": "Rainer",
+                    "tag": "QVQGCV8Y9"
+                },
                 {
                     "time": "20260806T101829.000Z",
                     "result": "win",
@@ -4983,7 +4989,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Rainer"
             ],
@@ -4991,6 +4997,12 @@
                 "QVQGCV8Y9"
             ],
             "recent_matches": [
+                {
+                    "time": "20260807T105709.000Z",
+                    "result": "loss",
+                    "player": "Rainer",
+                    "tag": "QVQGCV8Y9"
+                },
                 {
                     "time": "20260803T065921.000Z",
                     "result": "win",
@@ -354450,6 +354462,98 @@
                     "id": 28000002,
                     "name": "Rage",
                     "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000011-26000012-26000014-26000034-26000035-26000051-26000103-28000000": {
+            "cards": [
+                {
+                    "id": 26000035,
+                    "name": "Lumberjack",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
+                },
+                {
+                    "id": 26000103,
+                    "name": "Boss Bandit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nuceG9o7rAyvyc7D3sp2QSiRYtSOEgraq0NJkDf729s.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 26000051,
+                    "name": "Ram Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000004-26000011-26000017-26000027-26000041-26000056-27000004-28000017": {
+            "cards": [
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 26000027,
+                    "name": "Dark Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/M7fXlrKXHu2IvpSGpk36kXVstslbR08Bbxcy0jQcln8.png"
+                },
+                {
+                    "id": 28000017,
+                    "name": "Giant Snowball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 27000004,
+                    "name": "Bomb Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/rirYRyHPc97emRjoH-c1O8uZCBzPVnToaGuNGusF3TQ.png"
                 }
             ],
             "seen": 1,
