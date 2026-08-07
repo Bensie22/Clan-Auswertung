@@ -104,7 +104,7 @@
             "#U8VYULLVU": "20260802T073809.000Z",
             "#VCYQ9L9QV": "20260729T140933.000Z",
             "#GRR999Q29": "20260801T003732.000Z",
-            "#202QYVY8CC": "20260807T150507.000Z",
+            "#202QYVY8CC": "20260807T152509.000Z",
             "#PLG90C0C": "20260807T151711.000Z",
             "#LGUGQ0PRG": "20260807T105145.000Z",
             "#UVGRVC8LU": "20260803T144006.000Z",
@@ -115,7 +115,7 @@
             "#V8VGG0LUG": "20260803T085547.000Z",
             "#2V2QYJGCG": "20260804T011752.000Z",
             "#UQV90UP09": "20260805T220209.000Z",
-            "#JV80YYJRJ": "20260807T132703.000Z"
+            "#JV80YYJRJ": "20260807T153029.000Z"
         }
     },
     "decks": {
@@ -6704,7 +6704,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "Deniz"
@@ -6713,6 +6713,12 @@
                 "JV80YYJRJ"
             ],
             "recent_matches": [
+                {
+                    "time": "20260807T153029.000Z",
+                    "result": "win",
+                    "player": "Deniz",
+                    "tag": "JV80YYJRJ"
+                },
                 {
                     "time": "20260807T072416.000Z",
                     "result": "win",
@@ -355584,6 +355590,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000007-26000010-26000016-26000021-26000030-26000042-27000000-28000000": {
+            "cards": [
+                {
+                    "id": 26000010,
+                    "name": "Skeletons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/oO7iKMU5m0cdxhYPZA3nWQiAUh2yoGgdThLWB1rVSec.png"
+                },
+                {
+                    "id": 27000000,
+                    "name": "Cannon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nZK1y-beLxO5vnlyUhK6-2zH2NzXJwqykcosqQ1cmZ8.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 26000030,
+                    "name": "Ice Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lv1budiafU9XmSdrDkk0NYyqASAFYyZ06CPysXKZXlA.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
