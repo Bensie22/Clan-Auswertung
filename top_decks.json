@@ -10,19 +10,19 @@
             "#P0JYR9YUY": "20260807T081850.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260806T205637.000Z",
-            "#G02LC9C8": "20260807T121740.000Z",
+            "#G02LC9C8": "20260807T134441.000Z",
             "#2U8288CVY": "20260806T210756.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260804T074055.000Z",
             "#QULCQGGG": "20260807T113121.000Z",
-            "#JRGC9RRQG": "20260807T093027.000Z",
+            "#JRGC9RRQG": "20260807T134724.000Z",
             "#QVQGCV8Y9": "20260807T113104.000Z",
             "#Q8L0RJ8Y8": "20260807T133303.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260807T130341.000Z",
-            "#LLQQJCLC": "20260807T133926.000Z",
+            "#LLQQJCLC": "20260807T135021.000Z",
             "#2VJR80RL": "20260807T081452.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
@@ -43,7 +43,7 @@
             "#RLJPJL8C2": "20260807T133906.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20260807T133824.000Z",
+            "#UUPCULU9V": "20260807T134943.000Z",
             "#202VP2QL9P": "20260724T185949.000Z",
             "#LVUGLUCP9": "20260807T090717.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
@@ -1452,7 +1452,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
                 }
             ],
-            "wins": 4,
+            "wins": 5,
             "losses": 1,
             "players": [
                 "seroo"
@@ -1461,6 +1461,12 @@
                 "JRGC9RRQG"
             ],
             "recent_matches": [
+                {
+                    "time": "20260807T134724.000Z",
+                    "result": "win",
+                    "player": "seroo",
+                    "tag": "JRGC9RRQG"
+                },
                 {
                     "time": "20260806T183339.000Z",
                     "result": "loss",
@@ -355192,6 +355198,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000002-26000007-26000011-26000019-26000046-27000000-28000001-28000004": {
+            "cards": [
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 26000002,
+                    "name": "Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X_DQUye_OaS3QN6VC9CPw05Fit7wvSm3XegXIXKP--0.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 27000000,
+                    "name": "Cannon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nZK1y-beLxO5vnlyUhK6-2zH2NzXJwqykcosqQ1cmZ8.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000046,
+                    "name": "Bandit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QWDdXMKJNpv0go-HYaWQWP6p8uIOHjqn-zX7G0p3DyM.png"
+                },
+                {
+                    "id": 26000019,
+                    "name": "Spear Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/FSDFotjaXidI4ku_WFpVCTWS1hKGnFh1sxX0lxM43_E.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
