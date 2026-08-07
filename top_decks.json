@@ -18,7 +18,7 @@
             "#PPR2QQC0U": "20260804T074055.000Z",
             "#QULCQGGG": "20260806T102850.000Z",
             "#JRGC9RRQG": "20260806T184022.000Z",
-            "#QVQGCV8Y9": "20260807T085816.000Z",
+            "#QVQGCV8Y9": "20260807T090743.000Z",
             "#Q8L0RJ8Y8": "20260807T082023.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260807T080013.000Z",
@@ -38,14 +38,14 @@
             "#8P0J8P0L": "20260807T060925.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260806T234347.000Z",
-            "#2P0U2RLGY": "20260807T064718.000Z",
+            "#2P0U2RLGY": "20260807T091005.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260807T052612.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
             "#UUPCULU9V": "20260807T042926.000Z",
             "#202VP2QL9P": "20260724T185949.000Z",
-            "#LVUGLUCP9": "20260805T185456.000Z",
+            "#LVUGLUCP9": "20260807T090717.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
             "#V9GYJQ0J9": "",
             "#URJ0LUYPV": "20260807T074641.000Z",
@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20260807T085938.000Z",
+            "#YUQVVVLQ": "20260807T090401.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260609T223746.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
@@ -115,7 +115,7 @@
             "#V8VGG0LUG": "20260803T085547.000Z",
             "#2V2QYJGCG": "20260804T011752.000Z",
             "#UQV90UP09": "20260805T220209.000Z",
-            "#JV80YYJRJ": "20260807T085628.000Z"
+            "#JV80YYJRJ": "20260807T091048.000Z"
         }
     },
     "decks": {
@@ -5529,7 +5529,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Nati"
             ],
@@ -5537,6 +5537,12 @@
                 "LVUGLUCP9"
             ],
             "recent_matches": [
+                {
+                    "time": "20260807T090717.000Z",
+                    "result": "loss",
+                    "player": "Nati",
+                    "tag": "LVUGLUCP9"
+                },
                 {
                     "time": "20260805T184829.000Z",
                     "result": "win",
@@ -354208,6 +354214,52 @@
                     "id": 26000083,
                     "name": "Mother Witch",
                     "icon": "https://api-assets.clashroyale.com/cards/300/fO-Xah8XZkYKaSK9SCp3wnzwxtvIhun9NVY-zzte1Ng.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000009-26000014-26000024-26000040-26000047-26000059-26000064-26000083": {
+            "cards": [
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 26000024,
+                    "name": "Royal Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mnlRaNtmfpQx2e6mp70sLd0ND-pKPF70Cf87_agEKg4.png"
+                },
+                {
+                    "id": 26000009,
+                    "name": "Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/npdmCnET7jmVjJvjJQkFnNSNnDxYHDBigbvIAloFMds.png"
+                },
+                {
+                    "id": 26000047,
+                    "name": "Royal Recruits",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jcNyYGUiXXNz3kuz8NBkHNKNREQKraXlb_Ts7rhCIdM.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000083,
+                    "name": "Mother Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fO-Xah8XZkYKaSK9SCp3wnzwxtvIhun9NVY-zzte1Ng.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
                 }
             ],
             "seen": 1,
