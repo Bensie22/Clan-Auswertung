@@ -6,8 +6,8 @@
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260807T080029.000Z",
             "#ULYJ2CQP": "20260807T080602.000Z",
-            "#UJ2P9UYUV": "20260806T204838.000Z",
-            "#P0JYR9YUY": "20260807T073346.000Z",
+            "#UJ2P9UYUV": "20260807T081710.000Z",
+            "#P0JYR9YUY": "20260807T081850.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260806T205637.000Z",
             "#G02LC9C8": "20260807T061034.000Z",
@@ -19,11 +19,11 @@
             "#QULCQGGG": "20260806T102850.000Z",
             "#JRGC9RRQG": "20260806T184022.000Z",
             "#QVQGCV8Y9": "20260807T072921.000Z",
-            "#Q8L0RJ8Y8": "20260806T202921.000Z",
+            "#Q8L0RJ8Y8": "20260807T082023.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260807T080013.000Z",
             "#LLQQJCLC": "20260806T194749.000Z",
-            "#2VJR80RL": "20260807T081029.000Z",
+            "#2VJR80RL": "20260807T081452.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
             "#2CJYG9UG": "20260806T135124.000Z",
@@ -4904,7 +4904,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "Denis"
@@ -4913,6 +4913,12 @@
                 "2VJR80RL"
             ],
             "recent_matches": [
+                {
+                    "time": "20260807T081452.000Z",
+                    "result": "win",
+                    "player": "Denis",
+                    "tag": "2VJR80RL"
+                },
                 {
                     "time": "20260803T025501.000Z",
                     "result": "win",
@@ -354024,6 +354030,52 @@
                     "id": 28000009,
                     "name": "Poison",
                     "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000005-26000010-26000016-26000034-26000039-26000059-26000069-28000000": {
+            "cards": [
+                {
+                    "id": 26000010,
+                    "name": "Skeletons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/oO7iKMU5m0cdxhYPZA3nWQiAUh2yoGgdThLWB1rVSec.png"
+                },
+                {
+                    "id": 26000069,
+                    "name": "Skeleton King",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dCd69_wN9f8DxwuqOGtR4QgWhHIPIaTNxZ1e23RzAAc.png"
+                },
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 26000039,
+                    "name": "Mega Minion",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/-T_e4YLbuhPBKbYnBwQfXgynNpp5eOIN_0RracYwL9c.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
                 }
             ],
             "seen": 1,
