@@ -18,7 +18,7 @@
             "#PPR2QQC0U": "20260804T074055.000Z",
             "#QULCQGGG": "20260807T113121.000Z",
             "#JRGC9RRQG": "20260807T135751.000Z",
-            "#QVQGCV8Y9": "20260807T113104.000Z",
+            "#QVQGCV8Y9": "20260807T151019.000Z",
             "#Q8L0RJ8Y8": "20260807T133303.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260807T130341.000Z",
@@ -40,7 +40,7 @@
             "#CUJ9PJ2UV": "20260807T145207.000Z",
             "#2P0U2RLGY": "20260807T091005.000Z",
             "#8P89UPQ0": "",
-            "#RLJPJL8C2": "20260807T133906.000Z",
+            "#RLJPJL8C2": "20260807T150554.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
             "#UUPCULU9V": "20260807T134943.000Z",
@@ -104,7 +104,7 @@
             "#U8VYULLVU": "20260802T073809.000Z",
             "#VCYQ9L9QV": "20260729T140933.000Z",
             "#GRR999Q29": "20260801T003732.000Z",
-            "#202QYVY8CC": "20260807T150025.000Z",
+            "#202QYVY8CC": "20260807T150507.000Z",
             "#PLG90C0C": "20260807T133930.000Z",
             "#LGUGQ0PRG": "20260807T105145.000Z",
             "#UVGRVC8LU": "20260803T144006.000Z",
@@ -4467,7 +4467,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "kl.kranker Affe"
             ],
@@ -4475,6 +4475,12 @@
                 "RLJPJL8C2"
             ],
             "recent_matches": [
+                {
+                    "time": "20260807T150554.000Z",
+                    "result": "loss",
+                    "player": "kl.kranker Affe",
+                    "tag": "RLJPJL8C2"
+                },
                 {
                     "time": "20260802T122047.000Z",
                     "result": "win",
@@ -355424,6 +355430,52 @@
                     "id": 26000080,
                     "name": "Skeleton Dragons",
                     "icon": "https://api-assets.clashroyale.com/cards/300/qPOtg9uONh47_NLxGhhFc_ww9PlZ6z3Ry507q1NZUXs.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000003-26000007-26000012-26000018-26000039-26000064-28000002-28000017": {
+            "cards": [
+                {
+                    "id": 26000039,
+                    "name": "Mega Minion",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/-T_e4YLbuhPBKbYnBwQfXgynNpp5eOIN_0RracYwL9c.png"
+                },
+                {
+                    "id": 26000003,
+                    "name": "Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Axr4ox5_b7edmLsoHxBX3vmgijAIibuF6RImTbqLlXE.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 28000017,
+                    "name": "Giant Snowball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
+                },
+                {
+                    "id": 28000002,
+                    "name": "Rage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
                 }
             ],
             "seen": 1,
