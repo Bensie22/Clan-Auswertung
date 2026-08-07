@@ -31,17 +31,17 @@
       "priority": 2
     },
     {
+      "name": "chris",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Bensie",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
@@ -173,6 +173,11 @@
       "status": "STARK"
     },
     {
+      "name": "chris",
+      "score": 92.62,
+      "status": "STARK"
+    },
+    {
       "name": "Johan",
       "score": 92.49,
       "status": "STARK"
@@ -180,11 +185,6 @@
     {
       "name": "Bensie",
       "score": 92.27,
-      "status": "STARK"
-    },
-    {
-      "name": "chris",
-      "score": 92.09,
       "status": "STARK"
     },
     {
@@ -420,6 +420,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "chris",
+      "score": 92.62,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Johan",
       "score": 92.49,
       "tip": "Weiter so"
@@ -427,11 +432,6 @@
     {
       "name": "Bensie",
       "score": 92.27,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "chris",
-      "score": 92.09,
       "tip": "Weiter so"
     },
     {
@@ -716,6 +716,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "chris",
+        "player_tag": "#YQ82VR9JQ",
+        "role": "member",
+        "score": 92.62,
+        "strikes": 0,
+        "donations": 226,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Johan",
         "player_tag": "#UQVCVVVJL",
         "role": "member",
@@ -734,18 +746,6 @@
         "score": 92.27,
         "strikes": 0,
         "donations": 615,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "chris",
-        "player_tag": "#YQ82VR9JQ",
-        "role": "member",
-        "score": 92.09,
-        "strikes": 0,
-        "donations": 226,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
