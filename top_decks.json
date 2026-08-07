@@ -31,13 +31,13 @@
             "#YQVQYUYRV": "20260525T095543.000Z",
             "#2V800VCQ0": "20260807T144443.000Z",
             "#2UQUPYQCJ": "20260807T093643.000Z",
-            "#JUUR8UGL8": "20260806T174317.000Z",
+            "#JUUR8UGL8": "20260807T184643.000Z",
             "#2U09UULRR": "20260807T110744.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20260807T000837.000Z",
             "#8P0J8P0L": "20260807T150122.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20260807T183604.000Z",
+            "#CUJ9PJ2UV": "20260807T184659.000Z",
             "#2P0U2RLGY": "20260807T091005.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260807T150554.000Z",
@@ -84,7 +84,7 @@
             "#VP82QGC8Y": "20260609T223746.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
             "#GRGCY0R8": "20260807T183157.000Z",
-            "#P2YQ2QQUV": "20260807T160309.000Z",
+            "#P2YQ2QQUV": "20260807T184837.000Z",
             "#JG8Q0GPU9": "20260713T010600.000Z",
             "#9QV99QVCV": "20260701T045607.000Z",
             "#JQ08UR882": "20260619T100820.000Z",
@@ -104,7 +104,7 @@
             "#U8VYULLVU": "20260802T073809.000Z",
             "#VCYQ9L9QV": "20260729T140933.000Z",
             "#GRR999Q29": "20260801T003732.000Z",
-            "#202QYVY8CC": "20260807T172806.000Z",
+            "#202QYVY8CC": "20260807T184320.000Z",
             "#PLG90C0C": "20260807T182208.000Z",
             "#LGUGQ0PRG": "20260807T105145.000Z",
             "#UVGRVC8LU": "20260803T144006.000Z",
@@ -5805,7 +5805,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Theezy"
             ],
@@ -5813,6 +5813,12 @@
                 "JUUR8UGL8"
             ],
             "recent_matches": [
+                {
+                    "time": "20260807T184643.000Z",
+                    "result": "loss",
+                    "player": "Theezy",
+                    "tag": "JUUR8UGL8"
+                },
                 {
                     "time": "20260806T173939.000Z",
                     "result": "win",
@@ -356062,6 +356068,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000014-26000017-26000023-26000035-26000041-26000043-26000059-28000005": {
+            "cards": [
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000035,
+                    "name": "Lumberjack",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 26000023,
+                    "name": "Ice Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W3dkw0HTw9n1jB-zbknY2w3wHuyuLxSRIAV5fUT1SEY.png"
+                },
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 26000043,
+                    "name": "Elite Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/C88C5JH_F3lLZj6K-tLcMo5DPjrFmvzIb1R2M6xCfTE.png"
+                },
+                {
+                    "id": 28000005,
+                    "name": "Freeze",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
