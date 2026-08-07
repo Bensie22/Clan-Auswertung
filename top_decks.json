@@ -16,7 +16,7 @@
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260804T074055.000Z",
-            "#QULCQGGG": "20260806T102850.000Z",
+            "#QULCQGGG": "20260807T111958.000Z",
             "#JRGC9RRQG": "20260807T093027.000Z",
             "#QVQGCV8Y9": "20260807T105709.000Z",
             "#Q8L0RJ8Y8": "20260807T082023.000Z",
@@ -3513,7 +3513,7 @@
                 }
             ],
             "wins": 3,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Citykingalex"
             ],
@@ -3521,6 +3521,12 @@
                 "QULCQGGG"
             ],
             "recent_matches": [
+                {
+                    "time": "20260807T111958.000Z",
+                    "result": "loss",
+                    "player": "Citykingalex",
+                    "tag": "QULCQGGG"
+                },
                 {
                     "time": "20260806T102506.000Z",
                     "result": "win",
@@ -354652,6 +354658,52 @@
                     "id": 28000024,
                     "name": "Goblin Curse",
                     "icon": "https://api-assets.clashroyale.com/cards/300/OQPfGgT5mHEUvPuKKt0plZT0PNtIjCqUgQ3Rm86dQ2k.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000003-26000012-26000018-26000025-26000036-26000045-26000074-28000008": {
+            "cards": [
+                {
+                    "id": 26000003,
+                    "name": "Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Axr4ox5_b7edmLsoHxBX3vmgijAIibuF6RImTbqLlXE.png"
+                },
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 26000074,
+                    "name": "Golden Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WJd207D0O1sN-l1FTb8P9KhYL2oF5jY26vRUfTUW3FQ.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000036,
+                    "name": "Battle Ram",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dyc50V2cplKi4H7pq1B3I36pl_sEH5DQrNHboS_dbbM.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 26000025,
+                    "name": "Guards",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/1ArKfLJxYo6_NU_S9cAeIrfbXqWH0oULVJXedxBXQlU.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
                 }
             ],
             "seen": 1,
