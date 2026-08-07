@@ -96,12 +96,12 @@
       "priority": 2
     },
     {
-      "name": "Dolphin",
+      "name": "LazyFrog",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "LazyFrog",
+      "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
     },
@@ -248,11 +248,6 @@
       "status": "STARK"
     },
     {
-      "name": "Dolphin",
-      "score": 88.48,
-      "status": "STARK"
-    },
-    {
       "name": "Wario",
       "score": 88.44,
       "status": "STARK"
@@ -260,6 +255,11 @@
     {
       "name": "LazyFrog",
       "score": 88.35,
+      "status": "STARK"
+    },
+    {
+      "name": "Dolphin",
+      "score": 88.22,
       "status": "STARK"
     },
     {
@@ -495,11 +495,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Dolphin",
-      "score": 88.48,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Wario",
       "score": 88.44,
       "tip": "Weiter so"
@@ -507,6 +502,11 @@
     {
       "name": "LazyFrog",
       "score": 88.35,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Dolphin",
+      "score": 88.22,
       "tip": "Weiter so"
     },
     {
@@ -891,18 +891,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Dolphin",
-        "player_tag": "#2U09UULRR",
-        "role": "member",
-        "score": 88.48,
-        "strikes": 0,
-        "donations": 174,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Wario",
         "player_tag": "#2PUQYJC02",
         "role": "member",
@@ -921,6 +909,18 @@
         "score": 88.35,
         "strikes": 0,
         "donations": 608,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Dolphin",
+        "player_tag": "#2U09UULRR",
+        "role": "member",
+        "score": 88.22,
+        "strikes": 0,
+        "donations": 174,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
