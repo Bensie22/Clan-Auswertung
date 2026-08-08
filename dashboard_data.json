@@ -71,17 +71,17 @@
       "priority": 2
     },
     {
-      "name": "Swordfish",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "_spc07",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "OneAndOnly",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
@@ -213,11 +213,6 @@
       "status": "STARK"
     },
     {
-      "name": "Swordfish",
-      "score": 90.53,
-      "status": "STARK"
-    },
-    {
       "name": "Ben Siebolf",
       "score": 90.53,
       "status": "STARK"
@@ -225,6 +220,11 @@
     {
       "name": "_spc07",
       "score": 90.26,
+      "status": "STARK"
+    },
+    {
+      "name": "Swordfish",
+      "score": 90.13,
       "status": "STARK"
     },
     {
@@ -465,11 +465,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Swordfish",
-      "score": 90.53,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Ben Siebolf",
       "score": 90.53,
       "tip": "Weiter so"
@@ -477,6 +472,11 @@
     {
       "name": "_spc07",
       "score": 90.26,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Swordfish",
+      "score": 90.13,
       "tip": "Weiter so"
     },
     {
@@ -827,18 +827,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Swordfish",
-        "player_tag": "#2CPRGY8G",
-        "role": "member",
-        "score": 90.53,
-        "strikes": 0,
-        "donations": 96,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "_spc07",
         "player_tag": "#2U8288CVY",
         "role": "member",
@@ -857,6 +845,18 @@
         "score": 90.13,
         "strikes": 0,
         "donations": 218,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Swordfish",
+        "player_tag": "#2CPRGY8G",
+        "role": "member",
+        "score": 90.13,
+        "strikes": 0,
+        "donations": 96,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -976,7 +976,7 @@
         "role": "member",
         "score": 87.75,
         "strikes": 0,
-        "donations": 154,
+        "donations": 170,
         "participation_count": 1,
         "trend": "",
         "reason": "Score über 85",
