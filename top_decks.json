@@ -17,7 +17,7 @@
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260808T072727.000Z",
             "#QULCQGGG": "20260807T113121.000Z",
-            "#JRGC9RRQG": "20260808T213607.000Z",
+            "#JRGC9RRQG": "20260808T225044.000Z",
             "#QVQGCV8Y9": "20260808T212608.000Z",
             "#Q8L0RJ8Y8": "20260807T183924.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
@@ -38,7 +38,7 @@
             "#8P0J8P0L": "20260808T130711.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260808T190216.000Z",
-            "#2P0U2RLGY": "20260807T212114.000Z",
+            "#2P0U2RLGY": "20260808T224647.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260808T115617.000Z",
             "#RG02LG88": "20260405T075546.000Z",
@@ -5259,7 +5259,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/QJB-QK1QJHdw4hjpAwVSyZBozc2ZWAR9pQ-SMUyKaT0.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "mauza"
@@ -5268,6 +5268,12 @@
                 "2P0U2RLGY"
             ],
             "recent_matches": [
+                {
+                    "time": "20260808T224647.000Z",
+                    "result": "win",
+                    "player": "mauza",
+                    "tag": "2P0U2RLGY"
+                },
                 {
                     "time": "20260807T211230.000Z",
                     "result": "win",
@@ -361489,6 +361495,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000014-26000016-26000046-26000069-26000085-28000002-28000008-28000013": {
+            "cards": [
+                {
+                    "id": 26000085,
+                    "name": "Electro Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_uChZkNHAMq6tPb3v6A49xinOe3CnhjstOhG6OZbPYc.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 26000069,
+                    "name": "Skeleton King",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dCd69_wN9f8DxwuqOGtR4QgWhHIPIaTNxZ1e23RzAAc.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 28000002,
+                    "name": "Rage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 26000046,
+                    "name": "Bandit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QWDdXMKJNpv0go-HYaWQWP6p8uIOHjqn-zX7G0p3DyM.png"
+                },
+                {
+                    "id": 28000013,
+                    "name": "Clone",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mHVCet-1TkwWq-pxVIU2ZWY9_2z7Z7wtP25ArEUsP_g.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
