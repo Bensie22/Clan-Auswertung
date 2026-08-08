@@ -4,7 +4,7 @@
             "#22Q920RLR": "20260808T133648.000Z",
             "#L8PV090J": "20260808T111516.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
-            "#2QRVR9L8": "20260808T121612.000Z",
+            "#2QRVR9L8": "20260808T151732.000Z",
             "#ULYJ2CQP": "20260808T112745.000Z",
             "#UJ2P9UYUV": "20260808T083435.000Z",
             "#P0JYR9YUY": "20260808T064150.000Z",
@@ -69,7 +69,7 @@
             "#8PJY2GUY9": "20260511T140746.000Z",
             "#Y29LJJCQ2": "20260502T202004.000Z",
             "#GJVVGUYJC": "20260518T141110.000Z",
-            "#UQVCVVVJL": "20260802T103128.000Z",
+            "#UQVCVVVJL": "20260808T151805.000Z",
             "#22CVYQP8R": "20260509T062429.000Z",
             "#89CJRRV8": "20260808T121338.000Z",
             "#VL989Y20J": "20260516T051537.000Z",
@@ -1689,7 +1689,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
                 }
             ],
-            "wins": 3,
+            "wins": 4,
             "losses": 0,
             "players": [
                 "Johan"
@@ -1698,6 +1698,12 @@
                 "UQVCVVVJL"
             ],
             "recent_matches": [
+                {
+                    "time": "20260808T151805.000Z",
+                    "result": "win",
+                    "player": "Johan",
+                    "tag": "UQVCVVVJL"
+                },
                 {
                     "time": "20260801T125715.000Z",
                     "result": "win",
@@ -359855,6 +359861,52 @@
                     "id": 26000035,
                     "name": "Lumberjack",
                     "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000007-26000011-26000030-26000051-26000062-26000064-27000006-28000000": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000051,
+                    "name": "Ram Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000030,
+                    "name": "Ice Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lv1budiafU9XmSdrDkk0NYyqASAFYyZ06CPysXKZXlA.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
                 }
             ],
             "seen": 1,
