@@ -35,10 +35,10 @@
             "#2U09UULRR": "20260809T103742.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20260809T062306.000Z",
-            "#8P0J8P0L": "20260809T081204.000Z",
+            "#8P0J8P0L": "20260809T131057.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260809T122646.000Z",
-            "#2P0U2RLGY": "20260809T125745.000Z",
+            "#2P0U2RLGY": "20260809T130111.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260809T124356.000Z",
             "#RG02LG88": "20260405T075546.000Z",
@@ -4522,7 +4522,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "mauza"
             ],
@@ -4530,6 +4530,12 @@
                 "2P0U2RLGY"
             ],
             "recent_matches": [
+                {
+                    "time": "20260809T130111.000Z",
+                    "result": "loss",
+                    "player": "mauza",
+                    "tag": "2P0U2RLGY"
+                },
                 {
                     "time": "20260808T224647.000Z",
                     "result": "win",
@@ -364615,6 +364621,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000004-26000022-26000045-26000064-26000067-27000008-28000001-28000002": {
+            "cards": [
+                {
+                    "id": 26000022,
+                    "name": "Minion Horde",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Wyjq5l0IXHTkX9Rmpap6HaH08MvjbxFp1xBO9a47YSI.png"
+                },
+                {
+                    "id": 27000008,
+                    "name": "X-Bow",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/zVQ9Hme1hlj9Dc6e1ORl9xWwglcSrP7ejow5mAhLUJc.png"
+                },
+                {
+                    "id": 28000002,
+                    "name": "Rage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000067,
+                    "name": "Elixir Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/puhMsZjCIqy21HW3hYxjrk_xt8NIPyFqjRy-BeLKZwo.png"
+                },
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
