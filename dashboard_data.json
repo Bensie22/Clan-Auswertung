@@ -46,12 +46,12 @@
       "priority": 2
     },
     {
-      "name": "Johan",
+      "name": "Erastus",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Erastus",
+      "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
@@ -66,12 +66,12 @@
       "priority": 2
     },
     {
-      "name": "Jackhammer",
+      "name": "Ben Siebolf",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Ben Siebolf",
+      "name": "Jackhammer",
       "scenario": "TOP",
       "priority": 2
     },
@@ -198,13 +198,13 @@
       "status": "STARK"
     },
     {
-      "name": "Johan",
+      "name": "Erastus",
       "score": 92.35,
       "status": "STARK"
     },
     {
-      "name": "Erastus",
-      "score": 92.09,
+      "name": "Johan",
+      "score": 92.35,
       "status": "STARK"
     },
     {
@@ -218,6 +218,11 @@
       "status": "STARK"
     },
     {
+      "name": "Ben Siebolf",
+      "score": 91.07,
+      "status": "STARK"
+    },
+    {
       "name": "Jackhammer",
       "score": 90.75,
       "status": "STARK"
@@ -225,11 +230,6 @@
     {
       "name": "elazeto",
       "score": 90.75,
-      "status": "STARK"
-    },
-    {
-      "name": "Ben Siebolf",
-      "score": 90.53,
       "status": "STARK"
     },
     {
@@ -450,13 +450,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Johan",
+      "name": "Erastus",
       "score": 92.35,
       "tip": "Weiter so"
     },
     {
-      "name": "Erastus",
-      "score": 92.09,
+      "name": "Johan",
+      "score": 92.35,
       "tip": "Weiter so"
     },
     {
@@ -470,6 +470,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Ben Siebolf",
+      "score": 91.07,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Jackhammer",
       "score": 90.75,
       "tip": "Weiter so"
@@ -477,11 +482,6 @@
     {
       "name": "elazeto",
       "score": 90.75,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Ben Siebolf",
-      "score": 90.53,
       "tip": "Weiter so"
     },
     {
@@ -770,6 +770,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Erastus",
+        "player_tag": "#Q8L0RJ8Y8",
+        "role": "member",
+        "score": 92.35,
+        "strikes": 0,
+        "donations": 630,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Johan",
         "player_tag": "#UQVCVVVJL",
         "role": "member",
@@ -778,18 +790,6 @@
         "donations": 118,
         "participation_count": 10,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Erastus",
-        "player_tag": "#Q8L0RJ8Y8",
-        "role": "member",
-        "score": 92.09,
-        "strikes": 0,
-        "donations": 630,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -818,6 +818,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Ben Siebolf",
+        "player_tag": "#PLG90C0C",
+        "role": "member",
+        "score": 91.07,
+        "strikes": 0,
+        "donations": 180,
+        "participation_count": 1,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Jackhammer",
         "player_tag": "#2CJYG9UG",
         "role": "member",
@@ -826,18 +838,6 @@
         "donations": 202,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Ben Siebolf",
-        "player_tag": "#PLG90C0C",
-        "role": "member",
-        "score": 90.53,
-        "strikes": 0,
-        "donations": 180,
-        "participation_count": 1,
-        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
