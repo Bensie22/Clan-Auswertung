@@ -10,7 +10,7 @@
             "#P0JYR9YUY": "20260808T172108.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260809T064713.000Z",
-            "#G02LC9C8": "20260809T071429.000Z",
+            "#G02LC9C8": "20260809T075638.000Z",
             "#2U8288CVY": "20260808T212732.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
@@ -19,10 +19,10 @@
             "#QULCQGGG": "20260809T002817.000Z",
             "#JRGC9RRQG": "20260809T000153.000Z",
             "#QVQGCV8Y9": "20260808T212608.000Z",
-            "#Q8L0RJ8Y8": "20260807T183924.000Z",
+            "#Q8L0RJ8Y8": "20260809T075951.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260809T070559.000Z",
-            "#LLQQJCLC": "20260809T074826.000Z",
+            "#LLQQJCLC": "20260809T075814.000Z",
             "#2VJR80RL": "20260808T170216.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
@@ -35,7 +35,7 @@
             "#2U09UULRR": "20260809T054141.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20260809T062306.000Z",
-            "#8P0J8P0L": "20260809T075101.000Z",
+            "#8P0J8P0L": "20260809T075952.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260808T190216.000Z",
             "#2P0U2RLGY": "20260808T224647.000Z",
@@ -3561,7 +3561,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
                 }
             ],
-            "wins": 3,
+            "wins": 4,
             "losses": 0,
             "players": [
                 "Erastus"
@@ -3570,6 +3570,12 @@
                 "Q8L0RJ8Y8"
             ],
             "recent_matches": [
+                {
+                    "time": "20260809T075951.000Z",
+                    "result": "win",
+                    "player": "Erastus",
+                    "tag": "Q8L0RJ8Y8"
+                },
                 {
                     "time": "20260807T183924.000Z",
                     "result": "win",
@@ -362717,6 +362723,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000001-26000004-26000022-26000042-26000067-26000084-26000106-27000006": {
+            "cards": [
+                {
+                    "id": 26000022,
+                    "name": "Minion Horde",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Wyjq5l0IXHTkX9Rmpap6HaH08MvjbxFp1xBO9a47YSI.png"
+                },
+                {
+                    "id": 26000106,
+                    "name": "Ronin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X0dTFs7OGUavreDEzOtYd_YNZ8Zly6qgAE-dd-bNfWU.png"
+                },
+                {
+                    "id": 26000067,
+                    "name": "Elixir Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/puhMsZjCIqy21HW3hYxjrk_xt8NIPyFqjRy-BeLKZwo.png"
+                },
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 26000084,
+                    "name": "Electro Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WKd4-IAFsgPpMo7dDi9sujmYjRhOMEWiE07OUJpvD9g.png"
+                },
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
