@@ -121,17 +121,17 @@
       "priority": 2
     },
     {
-      "name": "Reklaminator",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Wario",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Dolphin",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Reklaminator",
       "scenario": "TOP",
       "priority": 2
     },
@@ -161,12 +161,12 @@
       "priority": 2
     },
     {
-      "name": "Desteoyer",
+      "name": "seroo",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "seroo",
+      "name": "Desteoyer",
       "scenario": "TOP",
       "priority": 2
     },
@@ -179,7 +179,7 @@
   "smart": [
     {
       "name": "Hemelm",
-      "score": 95.07,
+      "score": 95.2,
       "status": "STARK"
     },
     {
@@ -278,11 +278,6 @@
       "status": "STARK"
     },
     {
-      "name": "Reklaminator",
-      "score": 88.2,
-      "status": "STARK"
-    },
-    {
       "name": "Wario",
       "score": 88.17,
       "status": "STARK"
@@ -290,6 +285,11 @@
     {
       "name": "Dolphin",
       "score": 88.08,
+      "status": "STARK"
+    },
+    {
+      "name": "Reklaminator",
+      "score": 88.06,
       "status": "STARK"
     },
     {
@@ -318,13 +318,13 @@
       "status": "STARK"
     },
     {
-      "name": "Desteoyer",
-      "score": 85.53,
+      "name": "seroo",
+      "score": 85.58,
       "status": "STARK"
     },
     {
-      "name": "seroo",
-      "score": 85.45,
+      "name": "Desteoyer",
+      "score": 85.53,
       "status": "STARK"
     },
     {
@@ -431,7 +431,7 @@
   "coaching": [
     {
       "name": "Hemelm",
-      "score": 95.07,
+      "score": 95.2,
       "tip": "Weiter so"
     },
     {
@@ -530,11 +530,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Reklaminator",
-      "score": 88.2,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Wario",
       "score": 88.17,
       "tip": "Weiter so"
@@ -542,6 +537,11 @@
     {
       "name": "Dolphin",
       "score": 88.08,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Reklaminator",
+      "score": 88.06,
       "tip": "Weiter so"
     },
     {
@@ -570,13 +570,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Desteoyer",
-      "score": 85.53,
+      "name": "seroo",
+      "score": 85.58,
       "tip": "Weiter so"
     },
     {
-      "name": "seroo",
-      "score": 85.45,
+      "name": "Desteoyer",
+      "score": 85.53,
       "tip": "Weiter so"
     },
     {
@@ -725,7 +725,7 @@
         "name": "Hemelm",
         "player_tag": "#PVGU89PUL",
         "role": "member",
-        "score": 95.07,
+        "score": 95.2,
         "strikes": 0,
         "donations": 62,
         "participation_count": 1,
@@ -919,7 +919,7 @@
         "role": "member",
         "score": 88.97,
         "strikes": 0,
-        "donations": 208,
+        "donations": 218,
         "participation_count": 9,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -950,18 +950,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Reklaminator",
-        "player_tag": "#P0G2GYJQ9",
-        "role": "member",
-        "score": 88.2,
-        "strikes": 0,
-        "donations": 128,
-        "participation_count": 6,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Wario",
         "player_tag": "#2PUQYJC02",
         "role": "member",
@@ -982,6 +970,18 @@
         "donations": 184,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Reklaminator",
+        "player_tag": "#P0G2GYJQ9",
+        "role": "member",
+        "score": 88.06,
+        "strikes": 0,
+        "donations": 128,
+        "participation_count": 6,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -1046,24 +1046,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Desteoyer",
-        "player_tag": "#2V800VCQ0",
+        "name": "seroo",
+        "player_tag": "#JRGC9RRQG",
         "role": "member",
-        "score": 85.53,
+        "score": 85.58,
         "strikes": 0,
-        "donations": 78,
+        "donations": 138,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
       {
-        "name": "seroo",
-        "player_tag": "#JRGC9RRQG",
+        "name": "Desteoyer",
+        "player_tag": "#2V800VCQ0",
         "role": "member",
-        "score": 85.45,
+        "score": 85.53,
         "strikes": 0,
-        "donations": 138,
+        "donations": 78,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
