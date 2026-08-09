@@ -96,17 +96,17 @@
       "priority": 2
     },
     {
+      "name": "SankKiI9",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "agostini",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "AaleDieter",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "SankKiI9",
       "scenario": "TOP",
       "priority": 2
     },
@@ -253,6 +253,11 @@
       "status": "STARK"
     },
     {
+      "name": "SankKiI9",
+      "score": 89.1,
+      "status": "STARK"
+    },
+    {
       "name": "AaleDieter",
       "score": 88.97,
       "status": "STARK"
@@ -260,11 +265,6 @@
     {
       "name": "agostini",
       "score": 88.97,
-      "status": "STARK"
-    },
-    {
-      "name": "SankKiI9",
-      "score": 88.84,
       "status": "STARK"
     },
     {
@@ -505,6 +505,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "SankKiI9",
+      "score": 89.1,
+      "tip": "Weiter so"
+    },
+    {
       "name": "AaleDieter",
       "score": 88.97,
       "tip": "Weiter so"
@@ -512,11 +517,6 @@
     {
       "name": "agostini",
       "score": 88.97,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "SankKiI9",
-      "score": 88.84,
       "tip": "Weiter so"
     },
     {
@@ -890,6 +890,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "SankKiI9",
+        "player_tag": "#89CJRRV8",
+        "role": "member",
+        "score": 89.1,
+        "strikes": 0,
+        "donations": 820,
+        "participation_count": 10,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "agostini",
         "player_tag": "#P2YQ2QQUV",
         "role": "member",
@@ -910,18 +922,6 @@
         "donations": 238,
         "participation_count": 9,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "SankKiI9",
-        "player_tag": "#89CJRRV8",
-        "role": "member",
-        "score": 88.84,
-        "strikes": 0,
-        "donations": 812,
-        "participation_count": 10,
-        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
