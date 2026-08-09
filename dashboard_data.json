@@ -46,12 +46,12 @@
       "priority": 2
     },
     {
-      "name": "Erastus",
+      "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Johan",
+      "name": "Erastus",
       "scenario": "TOP",
       "priority": 2
     },
@@ -198,13 +198,13 @@
       "status": "STARK"
     },
     {
-      "name": "Erastus",
+      "name": "Johan",
       "score": 92.35,
       "status": "STARK"
     },
     {
-      "name": "Johan",
-      "score": 92.35,
+      "name": "Erastus",
+      "score": 92.22,
       "status": "STARK"
     },
     {
@@ -450,13 +450,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Erastus",
+      "name": "Johan",
       "score": 92.35,
       "tip": "Weiter so"
     },
     {
-      "name": "Johan",
-      "score": 92.35,
+      "name": "Erastus",
+      "score": 92.22,
       "tip": "Weiter so"
     },
     {
@@ -770,18 +770,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Erastus",
-        "player_tag": "#Q8L0RJ8Y8",
-        "role": "member",
-        "score": 92.35,
-        "strikes": 0,
-        "donations": 630,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Johan",
         "player_tag": "#UQVCVVVJL",
         "role": "member",
@@ -790,6 +778,18 @@
         "donations": 118,
         "participation_count": 10,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Erastus",
+        "player_tag": "#Q8L0RJ8Y8",
+        "role": "member",
+        "score": 92.22,
+        "strikes": 0,
+        "donations": 630,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },

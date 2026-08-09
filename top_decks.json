@@ -19,7 +19,7 @@
             "#QULCQGGG": "20260809T002817.000Z",
             "#JRGC9RRQG": "20260809T100947.000Z",
             "#QVQGCV8Y9": "20260809T094201.000Z",
-            "#Q8L0RJ8Y8": "20260809T105933.000Z",
+            "#Q8L0RJ8Y8": "20260809T110156.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260809T092941.000Z",
             "#LLQQJCLC": "20260809T081336.000Z",
@@ -3592,7 +3592,7 @@
                 }
             ],
             "wins": 4,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Erastus"
             ],
@@ -3600,6 +3600,12 @@
                 "Q8L0RJ8Y8"
             ],
             "recent_matches": [
+                {
+                    "time": "20260809T110156.000Z",
+                    "result": "loss",
+                    "player": "Erastus",
+                    "tag": "Q8L0RJ8Y8"
+                },
                 {
                     "time": "20260809T075951.000Z",
                     "result": "win",
@@ -364013,6 +364019,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000001-26000003-26000026-26000041-26000045-26000064-28000004-28000008": {
+            "cards": [
+                {
+                    "id": 26000003,
+                    "name": "Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Axr4ox5_b7edmLsoHxBX3vmgijAIibuF6RImTbqLlXE.png"
+                },
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
