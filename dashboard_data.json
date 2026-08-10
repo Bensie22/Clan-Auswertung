@@ -166,12 +166,12 @@
       "priority": 2
     },
     {
-      "name": "seroo",
+      "name": "bes",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "bes",
+      "name": "seroo",
       "scenario": "TOP",
       "priority": 2
     }
@@ -328,13 +328,13 @@
       "status": "STARK"
     },
     {
-      "name": "seroo",
-      "score": 85.45,
+      "name": "bes",
+      "score": 85.47,
       "status": "STARK"
     },
     {
-      "name": "bes",
-      "score": 85.34,
+      "name": "seroo",
+      "score": 85.45,
       "status": "STARK"
     },
     {
@@ -349,7 +349,7 @@
     },
     {
       "name": "Knitte",
-      "score": 84.11,
+      "score": 83.97,
       "status": "STARK"
     },
     {
@@ -580,13 +580,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "seroo",
-      "score": 85.45,
+      "name": "bes",
+      "score": 85.47,
       "tip": "Weiter so"
     },
     {
-      "name": "bes",
-      "score": 85.34,
+      "name": "seroo",
+      "score": 85.45,
       "tip": "Weiter so"
     },
     {
@@ -601,7 +601,7 @@
     },
     {
       "name": "Knitte",
-      "score": 84.11,
+      "score": 83.97,
       "tip": "Weiter so"
     },
     {
@@ -1070,6 +1070,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "bes",
+        "player_tag": "#LLQQJCLC",
+        "role": "member",
+        "score": 85.47,
+        "strikes": 0,
+        "donations": 392,
+        "participation_count": 10,
+        "trend": "🟡🟡🟡🟡🟡",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "seroo",
         "player_tag": "#JRGC9RRQG",
         "role": "member",
@@ -1078,18 +1090,6 @@
         "donations": 138,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "bes",
-        "player_tag": "#LLQQJCLC",
-        "role": "member",
-        "score": 85.34,
-        "strikes": 0,
-        "donations": 392,
-        "participation_count": 10,
-        "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       }
