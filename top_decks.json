@@ -7,7 +7,7 @@
             "#2QRVR9L8": "20260810T052120.000Z",
             "#ULYJ2CQP": "20260810T071439.000Z",
             "#UJ2P9UYUV": "20260810T073611.000Z",
-            "#P0JYR9YUY": "20260809T134735.000Z",
+            "#P0JYR9YUY": "20260810T082459.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260809T201913.000Z",
             "#G02LC9C8": "20260810T074448.000Z",
@@ -21,7 +21,7 @@
             "#QVQGCV8Y9": "20260810T070120.000Z",
             "#Q8L0RJ8Y8": "20260809T111714.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
-            "#2CPRGY8G": "20260810T082009.000Z",
+            "#2CPRGY8G": "20260810T082221.000Z",
             "#LLQQJCLC": "20260810T070830.000Z",
             "#2VJR80RL": "20260809T113741.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
@@ -48,7 +48,7 @@
             "#LVUGLUCP9": "20260809T212826.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
             "#V9GYJQ0J9": "",
-            "#URJ0LUYPV": "20260810T081251.000Z",
+            "#URJ0LUYPV": "20260810T082723.000Z",
             "#Q2GRGLQR": "20260810T054212.000Z",
             "#J9RQPGLVP": "20260713T204019.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
@@ -3886,7 +3886,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Chico"
             ],
@@ -3894,6 +3894,12 @@
                 "P0JYR9YUY"
             ],
             "recent_matches": [
+                {
+                    "time": "20260810T082459.000Z",
+                    "result": "loss",
+                    "player": "Chico",
+                    "tag": "P0JYR9YUY"
+                },
                 {
                     "time": "20260809T080327.000Z",
                     "result": "win",
@@ -367843,6 +367849,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000011-26000021-26000037-26000055-26000093-27000010-28000005-28000008": {
+            "cards": [
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000093,
+                    "name": "Little Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dY-gSseki6KBpkIG17safHH5YlB8SErFZO9OXbJxf9w.png"
+                },
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000037,
+                    "name": "Inferno Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
+                },
+                {
+                    "id": 28000005,
+                    "name": "Freeze",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
