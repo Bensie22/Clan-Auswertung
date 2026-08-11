@@ -6,6 +6,11 @@
       "priority": 4
     },
     {
+      "name": "suck",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "beho_pro",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -413,6 +418,11 @@
       "status": "RISIKO"
     },
     {
+      "name": "suck",
+      "score": 0.0,
+      "status": "RISIKO"
+    },
+    {
       "name": "beho_pro",
       "score": 0.0,
       "status": "RISIKO"
@@ -655,6 +665,11 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
+      "name": "suck",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "beho_pro",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
@@ -682,6 +697,18 @@
         "score": 0.0,
         "strikes": 0,
         "donations": 26,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "suck",
+        "player_tag": "#200PGVGQ9U",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
