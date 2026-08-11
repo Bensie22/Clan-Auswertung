@@ -232,7 +232,7 @@
                     <button type="button" data-lang="en" aria-pressed="false">EN</button>
                 </div>
                 <h1 class="header-title"><span onclick="toggleChat()" style="cursor: pointer;" title="Chat-Hilfe ein-/ausblenden">📊</span> <span class="i18n-de">Clan-Auswertung</span><span class="i18n-en">Clan Report</span>: HAMBURG <br>
-                <span class="header-date"><span class="i18n-de">Stand</span><span class="i18n-en">As of</span>: 11.08.2026, 21:21 Uhr</span>
+                <span class="header-date"><span class="i18n-de">Stand</span><span class="i18n-en">As of</span>: 11.08.2026, 21:31 Uhr</span>
                 <span class="header-mobile-tip"><span class="i18n-de">📱 Tipp: Für die beste Übersicht am Handy bitte quer halten 🔄</span><span class="i18n-en">📱 Tip: For the best view on mobile, hold the device sideways 🔄</span></span>
                 <span class="header-mobile-tip" style="margin-top: 2px;"><span class="i18n-de">🔄 An Kriegstagen wird alle 10 Minuten eine neue Version erstellt – zum Anzeigen der neuesten Daten bitte die Seite manuell neu laden (F5).</span><span class="i18n-en">🔄 On war days a new version is generated every 10 minutes – to see the latest data please reload the page manually (F5).</span></span></h1>
             </div>
@@ -363,57 +363,47 @@
 
                     <div id="admin-chat-container" style="display: none; width: 100%;">
                         <div class="card messenger">
-                            <h3 style="color: #f1c40f; margin-bottom: 10px;">🎮 <span class="i18n-de">Chat-Hilfe</span><span class="i18n-en">Chat Helper</span> (5-<span class="i18n-de">Teiler</span><span class="i18n-en">parts</span>)</h3>
-                            <p style="font-size: 0.9em; color: #cbd5e1; margin-top: 0; margin-bottom: 15px;"><span class="i18n-de">Klicke oben auf das 📊-Symbol, um diese Hilfe ein- oder auszublenden. Wähle den passenden Tonfall und kopiere dann die</span><span class="i18n-en">Click the 📊 symbol above to toggle this helper. Pick the matching tone, then copy the</span> 5 <span class="i18n-de">Texte nacheinander in den Chat.</span><span class="i18n-en">texts one by one into the chat.</span></p>
+                            <h3 style="color: #f1c40f; margin-bottom: 10px;">🎮 <span class="i18n-de">Chat-Hilfe</span><span class="i18n-en">Chat Helper</span> (4-<span class="i18n-de">Teiler</span><span class="i18n-en">parts</span>)</h3>
+                            <p style="font-size: 0.9em; color: #cbd5e1; margin-top: 0; margin-bottom: 15px;"><span class="i18n-de">Klicke oben auf das 📊-Symbol, um diese Hilfe ein- oder auszublenden. Wähle den passenden Tonfall und kopiere dann die</span><span class="i18n-en">Click the 📊 symbol above to toggle this helper. Pick the matching tone, then copy the</span> 4 <span class="i18n-de">Texte nacheinander in den Chat.</span><span class="i18n-en">texts one by one into the chat.</span></p>
                             
         <div style="margin-bottom: 15px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                <label style="color: #38bdf8; font-weight: bold; font-size: 0.9em;">💬 Teil 1/5:</label>
+                <label style="color: #38bdf8; font-weight: bold; font-size: 0.9em;">💬 Teil 1/4:</label>
                 <select onchange="document.getElementById('chatbox_0').value = this.value" style="background: rgba(30, 41, 59, 0.9); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 2px 6px; font-family: inherit; font-size: 0.85em; cursor: pointer;">
-                    <option value="1/5 👋 Moin prolike14, willkommen bei uns im Clan. Alles Wichtige findet ihr unter clan-hamburg.de">Sachlich</option><option value="1/5 🎉 Moin prolike14, herzlich willkommen in der HAMBURG-Family! Alles Wichtige findet ihr unter clan-hamburg.de">Motivierend</option><option value="1/5 👋 Moin prolike14, willkommen im Clan! Alles Wichtige: clan-hamburg.de">Kurz & Knackig</option>
+                    <option value="1/4 👋 Moin mad 3ad y gawad, willkommen zurück. Schön, dass ihr wieder da seid.">Sachlich</option><option value="1/4 🎉 Moin mad 3ad y gawad, nice dass ihr wieder am Start seid! Willkommen zurück in der HAMBURG-Family.">Motivierend</option><option value="1/4 👋 Willkommen zurück mad 3ad y gawad! Schön, euch wieder im Clan zu haben.">Kurz & Knackig</option>
                 </select>
             </div>
-            <textarea id="chatbox_0" readonly style="width: 100%; height: 50px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 8px; font-family: inherit; font-size: 0.95em; resize: none;">1/5 👋 Moin prolike14, willkommen bei uns im Clan. Alles Wichtige findet ihr unter clan-hamburg.de</textarea>
+            <textarea id="chatbox_0" readonly style="width: 100%; height: 50px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 8px; font-family: inherit; font-size: 0.95em; resize: none;">1/4 👋 Moin mad 3ad y gawad, willkommen zurück. Schön, dass ihr wieder da seid.</textarea>
         </div>
         
         <div style="margin-bottom: 15px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                <label style="color: #a855f7; font-weight: bold; font-size: 0.9em;">💬 Teil 2/5:</label>
+                <label style="color: #a855f7; font-weight: bold; font-size: 0.9em;">💬 Teil 2/4:</label>
                 <select onchange="document.getElementById('chatbox_1').value = this.value" style="background: rgba(30, 41, 59, 0.9); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 2px 6px; font-family: inherit; font-size: 0.85em; cursor: pointer;">
-                    <option value="2/5 👋 Moin mad 3ad y gawad, willkommen zurück. Schön, dass ihr wieder da seid.">Sachlich</option><option value="2/5 🎉 Moin mad 3ad y gawad, nice dass ihr wieder am Start seid! Willkommen zurück in der HAMBURG-Family.">Motivierend</option><option value="2/5 👋 Willkommen zurück mad 3ad y gawad! Schön, euch wieder im Clan zu haben.">Kurz & Knackig</option>
+                    <option value="2/4 📊 Clan-Ø: 81.4%. MVPs: Hemelm, Deniz, Citykingalex 🏆 🚀 Top-Pusher: elazeto (+3004🏆)">Sachlich</option><option value="2/4 🔥 Super Leistung! Clan-Ø: 81.4%. Ein dickes Danke an unsere MVPs: Hemelm, Deniz, Citykingalex! 🚀 Top-Pusher: elazeto (+3004🏆)">Motivierend</option><option value="2/4 ⚔️ Auswertung da! Schnitt: 81.4%. Top 3: Hemelm, Deniz, Citykingalex. 🚀 Top-Pusher: elazeto (+3004🏆)">Kurz & Knackig</option>
                 </select>
             </div>
-            <textarea id="chatbox_1" readonly style="width: 100%; height: 50px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 8px; font-family: inherit; font-size: 0.95em; resize: none;">2/5 👋 Moin mad 3ad y gawad, willkommen zurück. Schön, dass ihr wieder da seid.</textarea>
+            <textarea id="chatbox_1" readonly style="width: 100%; height: 50px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 8px; font-family: inherit; font-size: 0.95em; resize: none;">2/4 📊 Clan-Ø: 81.4%. MVPs: Hemelm, Deniz, Citykingalex 🏆 🚀 Top-Pusher: elazeto (+3004🏆)</textarea>
         </div>
         
         <div style="margin-bottom: 15px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                <label style="color: #ef4444; font-weight: bold; font-size: 0.9em;">💬 Teil 3/5:</label>
+                <label style="color: #ef4444; font-weight: bold; font-size: 0.9em;">💬 Teil 3/4:</label>
                 <select onchange="document.getElementById('chatbox_2').value = this.value" style="background: rgba(30, 41, 59, 0.9); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 2px 6px; font-family: inherit; font-size: 0.85em; cursor: pointer;">
-                    <option value="3/5 📊 Clan-Ø: 81.4%. MVPs: Hemelm, Deniz, Citykingalex 🏆 🚀 Top-Pusher: elazeto (+3004🏆)">Sachlich</option><option value="3/5 🔥 Super Leistung! Clan-Ø: 81.4%. Ein dickes Danke an unsere MVPs: Hemelm, Deniz, Citykingalex! 🚀 Top-Pusher: elazeto (+3004🏆)">Motivierend</option><option value="3/5 ⚔️ Auswertung da! Schnitt: 81.4%. Top 3: Hemelm, Deniz, Citykingalex. 🚀 Top-Pusher: elazeto (+3004🏆)">Kurz & Knackig</option>
+                    <option value="3/4 🃏 Ein Lob an unsere Top-Spender: LazyFrog, agostini! 🤝">Sachlich</option><option value="3/4 💚 Wahnsinn, was ihr spendet! Top-Supporter: LazyFrog, agostini. Danke fürs Karten teilen!">Motivierend</option><option value="3/4 ⚠️ Spenden-Check: Danke an LazyFrog, agostini.">Kurz & Knackig</option>
                 </select>
             </div>
-            <textarea id="chatbox_2" readonly style="width: 100%; height: 50px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 8px; font-family: inherit; font-size: 0.95em; resize: none;">3/5 📊 Clan-Ø: 81.4%. MVPs: Hemelm, Deniz, Citykingalex 🏆 🚀 Top-Pusher: elazeto (+3004🏆)</textarea>
+            <textarea id="chatbox_2" readonly style="width: 100%; height: 50px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 8px; font-family: inherit; font-size: 0.95em; resize: none;">3/4 🃏 Ein Lob an unsere Top-Spender: LazyFrog, agostini! 🤝</textarea>
         </div>
         
         <div style="margin-bottom: 15px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                <label style="color: #f97316; font-weight: bold; font-size: 0.9em;">💬 Teil 4/5:</label>
+                <label style="color: #f97316; font-weight: bold; font-size: 0.9em;">💬 Teil 4/4:</label>
                 <select onchange="document.getElementById('chatbox_3').value = this.value" style="background: rgba(30, 41, 59, 0.9); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 2px 6px; font-family: inherit; font-size: 0.85em; cursor: pointer;">
-                    <option value="4/5 🃏 Ein Lob an unsere Top-Spender: LazyFrog, agostini! 🤝">Sachlich</option><option value="4/5 💚 Wahnsinn, was ihr spendet! Top-Supporter: LazyFrog, agostini. Danke fürs Karten teilen!">Motivierend</option><option value="4/5 ⚠️ Spenden-Check: Danke an LazyFrog, agostini.">Kurz & Knackig</option>
+                    <option value="4/4 👋 Verabschiedung: Amp, gang. Grund: über längere Zeit zu wenig Kriegsaktivität. Wir wünschen euch alles Gute! ✌️">Sachlich</option><option value="4/4 👋 Wir verabschieden Amp, gang und wünschen alles Gute. Danke für die gemeinsame Zeit! ✌️">Motivierend</option><option value="4/4 👋 Verabschiedung: Amp, gang. Alles Gute! ✌️">Kurz & Knackig</option>
                 </select>
             </div>
-            <textarea id="chatbox_3" readonly style="width: 100%; height: 50px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 8px; font-family: inherit; font-size: 0.95em; resize: none;">4/5 🃏 Ein Lob an unsere Top-Spender: LazyFrog, agostini! 🤝</textarea>
-        </div>
-        
-        <div style="margin-bottom: 15px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                <label style="color: #10b981; font-weight: bold; font-size: 0.9em;">💬 Teil 5/5:</label>
-                <select onchange="document.getElementById('chatbox_4').value = this.value" style="background: rgba(30, 41, 59, 0.9); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 2px 6px; font-family: inherit; font-size: 0.85em; cursor: pointer;">
-                    <option value="5/5 👋 Verabschiedung: Amp, gang. Grund: über längere Zeit zu wenig Kriegsaktivität. Wir wünschen euch alles Gute! ✌️">Sachlich</option><option value="5/5 👋 Wir verabschieden Amp, gang und wünschen alles Gute. Danke für die gemeinsame Zeit! ✌️">Motivierend</option><option value="5/5 👋 Verabschiedung: Amp, gang. Alles Gute! ✌️">Kurz & Knackig</option>
-                </select>
-            </div>
-            <textarea id="chatbox_4" readonly style="width: 100%; height: 50px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 8px; font-family: inherit; font-size: 0.95em; resize: none;">5/5 👋 Verabschiedung: Amp, gang. Grund: über längere Zeit zu wenig Kriegsaktivität. Wir wünschen euch alles Gute! ✌️</textarea>
+            <textarea id="chatbox_3" readonly style="width: 100%; height: 50px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 8px; font-family: inherit; font-size: 0.95em; resize: none;">4/4 👋 Verabschiedung: Amp, gang. Grund: über längere Zeit zu wenig Kriegsaktivität. Wir wünschen euch alles Gute! ✌️</textarea>
         </div>
         
                         </div>
@@ -798,24 +788,9 @@
                 </div>
                 
                 <div class="deck-card">
-                    <div class="archetype-badge">⚡ <span class="i18n-de">Schneller Angriff (Rush/Spam)</span><span class="i18n-en">Fast Push (Rush/Spam)</span></div>
-                    <div class="deck-header">
-                        <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🏆 <span class="i18n-de">Meta-Decks</span><span class="i18n-en">Meta Decks</span> #5</h3>
-                        <span class="winrate">🔥 100% Win</span>
-                    </div>
-                    <div class="deck-images">
-                        <img src='https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png' style='width: 23%; border-radius: 4px; margin: 1%;' title='Mega Knight'><img src='https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png' style='width: 23%; border-radius: 4px; margin: 1%;' title='Freeze'><img src='https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png' style='width: 23%; border-radius: 4px; margin: 1%;' title='Furnace'><img src='https://api-assets.clashroyale.com/cards/300/X_DQUye_OaS3QN6VC9CPw05Fit7wvSm3XegXIXKP--0.png' style='width: 23%; border-radius: 4px; margin: 1%;' title='Goblins'><img src='https://api-assets.clashroyale.com/cards/300/Ie07nQNK9CjhKOa4-arFAewi4EroqaA-86Xo7r5tx94.png' style='width: 23%; border-radius: 4px; margin: 1%;' title='Rocket'><img src='https://api-assets.clashroyale.com/cards/300/NpCrXDEDBBJgNv9QrBAcJmmMFbS7pe3KCY8xJ5VB18A.png' style='width: 23%; border-radius: 4px; margin: 1%;' title='Night Witch'><img src='https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png' style='width: 23%; border-radius: 4px; margin: 1%;' title='Prince'><img src='https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png' style='width: 23%; border-radius: 4px; margin: 1%;' title='Ram Rider'>
-                    </div>
-                    <p style="font-size: 0.85em; color: #94a3b8; margin: 10px 0;">5 <span class="i18n-de">Siege</span><span class="i18n-en">wins</span> / 0 <span class="i18n-de">Niederlagen</span><span class="i18n-en">losses</span> <span class="i18n-de">in</span><span class="i18n-en">in</span> 5 <span class="i18n-de">Spielen</span><span class="i18n-en">games</span><br><span style="color:#e2e8f0; font-weight:bold;"><span class="i18n-de">Oft gewonnen von:</span><span class="i18n-en">Often won by:</span> Nati</span></p>
-                    <div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px;">
-                        <a href="https://royaleapi.com/decks/stats/freeze,furnace,goblins,mega-knight,night-witch,prince,ram-rider,rocket" class="copy-btn" style="background: #38bdf8; color: #0f172a;" target="_blank">🔗 <span class="i18n-de">Auf RoyaleAPI öffnen & kopieren</span><span class="i18n-en">Open & copy on RoyaleAPI</span></a>
-                    </div>
-                </div>
-                
-                <div class="deck-card">
                     <div class="archetype-badge">⚔️ <span class="i18n-de">Hybrid / Allrounder</span><span class="i18n-en">Hybrid / All-rounder</span></div>
                     <div class="deck-header">
-                        <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🏆 <span class="i18n-de">Meta-Decks</span><span class="i18n-en">Meta Decks</span> #6</h3>
+                        <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🏆 <span class="i18n-de">Meta-Decks</span><span class="i18n-en">Meta Decks</span> #5</h3>
                         <span class="winrate">🔥 100% Win</span>
                     </div>
                     <div class="deck-images">
@@ -830,7 +805,7 @@
                 <div class="deck-card">
                     <div class="archetype-badge">🛡️ <span class="i18n-de">Schwerer Angriff (Beatdown)</span><span class="i18n-en">Heavy Push (Beatdown)</span></div>
                     <div class="deck-header">
-                        <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🏆 <span class="i18n-de">Meta-Decks</span><span class="i18n-en">Meta Decks</span> #7</h3>
+                        <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🏆 <span class="i18n-de">Meta-Decks</span><span class="i18n-en">Meta Decks</span> #6</h3>
                         <span class="winrate">🔥 100% Win</span>
                     </div>
                     <div class="deck-images">
@@ -845,7 +820,7 @@
                 <div class="deck-card">
                     <div class="archetype-badge">⚡ <span class="i18n-de">Schneller Angriff (Rush/Spam)</span><span class="i18n-en">Fast Push (Rush/Spam)</span></div>
                     <div class="deck-header">
-                        <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🏆 <span class="i18n-de">Meta-Decks</span><span class="i18n-en">Meta Decks</span> #8</h3>
+                        <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🏆 <span class="i18n-de">Meta-Decks</span><span class="i18n-en">Meta Decks</span> #7</h3>
                         <span class="winrate">🔥 100% Win</span>
                     </div>
                     <div class="deck-images">
@@ -866,9 +841,24 @@
                 <div class="deck-slider">
                     
                 <div class="deck-card">
-                    <div class="archetype-badge">⚔️ <span class="i18n-de">Hybrid / Allrounder</span><span class="i18n-en">Hybrid / All-rounder</span></div>
+                    <div class="archetype-badge">⚡ <span class="i18n-de">Schneller Angriff (Rush/Spam)</span><span class="i18n-en">Fast Push (Rush/Spam)</span></div>
                     <div class="deck-header">
                         <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🛡️ <span class="i18n-de">Solide Decks</span><span class="i18n-en">Solid Decks</span> #1</h3>
+                        <span class="winrate">🔥 100% Win</span>
+                    </div>
+                    <div class="deck-images">
+                        <img src='https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png' style='width: 23%; border-radius: 4px; margin: 1%;' title='Mega Knight'><img src='https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png' style='width: 23%; border-radius: 4px; margin: 1%;' title='Freeze'><img src='https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png' style='width: 23%; border-radius: 4px; margin: 1%;' title='Furnace'><img src='https://api-assets.clashroyale.com/cards/300/X_DQUye_OaS3QN6VC9CPw05Fit7wvSm3XegXIXKP--0.png' style='width: 23%; border-radius: 4px; margin: 1%;' title='Goblins'><img src='https://api-assets.clashroyale.com/cards/300/Ie07nQNK9CjhKOa4-arFAewi4EroqaA-86Xo7r5tx94.png' style='width: 23%; border-radius: 4px; margin: 1%;' title='Rocket'><img src='https://api-assets.clashroyale.com/cards/300/NpCrXDEDBBJgNv9QrBAcJmmMFbS7pe3KCY8xJ5VB18A.png' style='width: 23%; border-radius: 4px; margin: 1%;' title='Night Witch'><img src='https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png' style='width: 23%; border-radius: 4px; margin: 1%;' title='Prince'><img src='https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png' style='width: 23%; border-radius: 4px; margin: 1%;' title='Ram Rider'>
+                    </div>
+                    <p style="font-size: 0.85em; color: #94a3b8; margin: 10px 0;">4 <span class="i18n-de">Siege</span><span class="i18n-en">wins</span> / 0 <span class="i18n-de">Niederlagen</span><span class="i18n-en">losses</span> <span class="i18n-de">in</span><span class="i18n-en">in</span> 4 <span class="i18n-de">Spielen</span><span class="i18n-en">games</span><br><span style="color:#e2e8f0; font-weight:bold;"><span class="i18n-de">Oft gewonnen von:</span><span class="i18n-en">Often won by:</span> Nati</span></p>
+                    <div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px;">
+                        <a href="https://royaleapi.com/decks/stats/freeze,furnace,goblins,mega-knight,night-witch,prince,ram-rider,rocket" class="copy-btn" style="background: #38bdf8; color: #0f172a;" target="_blank">🔗 <span class="i18n-de">Auf RoyaleAPI öffnen & kopieren</span><span class="i18n-en">Open & copy on RoyaleAPI</span></a>
+                    </div>
+                </div>
+                
+                <div class="deck-card">
+                    <div class="archetype-badge">⚔️ <span class="i18n-de">Hybrid / Allrounder</span><span class="i18n-en">Hybrid / All-rounder</span></div>
+                    <div class="deck-header">
+                        <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🛡️ <span class="i18n-de">Solide Decks</span><span class="i18n-en">Solid Decks</span> #2</h3>
                         <span class="winrate">🔥 100% Win</span>
                     </div>
                     <div class="deck-images">
@@ -883,7 +873,7 @@
                 <div class="deck-card">
                     <div class="archetype-badge">🗡️ <span class="i18n-de">Nadelstiche (Bait/Control)</span><span class="i18n-en">Pinpricks (Bait/Control)</span></div>
                     <div class="deck-header">
-                        <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🛡️ <span class="i18n-de">Solide Decks</span><span class="i18n-en">Solid Decks</span> #2</h3>
+                        <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🛡️ <span class="i18n-de">Solide Decks</span><span class="i18n-en">Solid Decks</span> #3</h3>
                         <span class="winrate">🔥 100% Win</span>
                     </div>
                     <div class="deck-images">
@@ -898,7 +888,7 @@
                 <div class="deck-card">
                     <div class="archetype-badge">🗡️ <span class="i18n-de">Nadelstiche (Bait/Control)</span><span class="i18n-en">Pinpricks (Bait/Control)</span></div>
                     <div class="deck-header">
-                        <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🛡️ <span class="i18n-de">Solide Decks</span><span class="i18n-en">Solid Decks</span> #3</h3>
+                        <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🛡️ <span class="i18n-de">Solide Decks</span><span class="i18n-en">Solid Decks</span> #4</h3>
                         <span class="winrate">🔥 100% Win</span>
                     </div>
                     <div class="deck-images">
@@ -913,7 +903,7 @@
                 <div class="deck-card">
                     <div class="archetype-badge">🗡️ <span class="i18n-de">Nadelstiche (Bait/Control)</span><span class="i18n-en">Pinpricks (Bait/Control)</span></div>
                     <div class="deck-header">
-                        <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🛡️ <span class="i18n-de">Solide Decks</span><span class="i18n-en">Solid Decks</span> #4</h3>
+                        <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🛡️ <span class="i18n-de">Solide Decks</span><span class="i18n-en">Solid Decks</span> #5</h3>
                         <span class="winrate">🔥 100% Win</span>
                     </div>
                     <div class="deck-images">
@@ -928,7 +918,7 @@
                 <div class="deck-card">
                     <div class="archetype-badge">⚔️ <span class="i18n-de">Hybrid / Allrounder</span><span class="i18n-en">Hybrid / All-rounder</span></div>
                     <div class="deck-header">
-                        <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🛡️ <span class="i18n-de">Solide Decks</span><span class="i18n-en">Solid Decks</span> #5</h3>
+                        <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🛡️ <span class="i18n-de">Solide Decks</span><span class="i18n-en">Solid Decks</span> #6</h3>
                         <span class="winrate">🔥 100% Win</span>
                     </div>
                     <div class="deck-images">
@@ -943,7 +933,7 @@
                 <div class="deck-card">
                     <div class="archetype-badge">🛡️ <span class="i18n-de">Schwerer Angriff (Beatdown)</span><span class="i18n-en">Heavy Push (Beatdown)</span></div>
                     <div class="deck-header">
-                        <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🛡️ <span class="i18n-de">Solide Decks</span><span class="i18n-en">Solid Decks</span> #6</h3>
+                        <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🛡️ <span class="i18n-de">Solide Decks</span><span class="i18n-en">Solid Decks</span> #7</h3>
                         <span class="winrate">🔥 100% Win</span>
                     </div>
                     <div class="deck-images">
@@ -958,7 +948,7 @@
                 <div class="deck-card">
                     <div class="archetype-badge">🗡️ <span class="i18n-de">Nadelstiche (Bait/Control)</span><span class="i18n-en">Pinpricks (Bait/Control)</span></div>
                     <div class="deck-header">
-                        <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🛡️ <span class="i18n-de">Solide Decks</span><span class="i18n-en">Solid Decks</span> #7</h3>
+                        <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🛡️ <span class="i18n-de">Solide Decks</span><span class="i18n-en">Solid Decks</span> #8</h3>
                         <span class="winrate">🔥 100% Win</span>
                     </div>
                     <div class="deck-images">
@@ -973,7 +963,7 @@
                 <div class="deck-card">
                     <div class="archetype-badge">🗡️ <span class="i18n-de">Nadelstiche (Bait/Control)</span><span class="i18n-en">Pinpricks (Bait/Control)</span></div>
                     <div class="deck-header">
-                        <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🛡️ <span class="i18n-de">Solide Decks</span><span class="i18n-en">Solid Decks</span> #8</h3>
+                        <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">🛡️ <span class="i18n-de">Solide Decks</span><span class="i18n-en">Solid Decks</span> #9</h3>
                         <span class="winrate">🔥 100% Win</span>
                     </div>
                     <div class="deck-images">
