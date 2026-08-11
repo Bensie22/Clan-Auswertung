@@ -6,6 +6,11 @@
       "priority": 4
     },
     {
+      "name": "anna-maria",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "beho_pro",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -408,6 +413,11 @@
       "status": "RISIKO"
     },
     {
+      "name": "anna-maria",
+      "score": 0.0,
+      "status": "RISIKO"
+    },
+    {
       "name": "prolike14",
       "score": 0.0,
       "status": "RISIKO"
@@ -650,6 +660,11 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
+      "name": "anna-maria",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "prolike14",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
@@ -666,6 +681,18 @@
       {
         "name": "likemike",
         "player_tag": "#VP8P9UG8V",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "anna-maria",
+        "player_tag": "#RR0GV9L00",
         "role": "member",
         "score": 0.0,
         "strikes": 0,
