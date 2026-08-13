@@ -6,6 +6,11 @@
       "priority": 4
     },
     {
+      "name": "KurdiHyperYT",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "beho_pro",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -403,6 +408,11 @@
       "status": "RISIKO"
     },
     {
+      "name": "KurdiHyperYT",
+      "score": 0.0,
+      "status": "RISIKO"
+    },
+    {
       "name": "beho_pro",
       "score": 0.0,
       "status": "RISIKO"
@@ -650,6 +660,11 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
+      "name": "KurdiHyperYT",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "beho_pro",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
@@ -661,6 +676,18 @@
       {
         "name": "likemike",
         "player_tag": "#VP8P9UG8V",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "KurdiHyperYT",
+        "player_tag": "#2JQUVJUUG",
         "role": "member",
         "score": 0.0,
         "strikes": 0,
@@ -1050,7 +1077,7 @@
         "role": "member",
         "score": 86.12,
         "strikes": 0,
-        "donations": 68,
+        "donations": 84,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
