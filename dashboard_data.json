@@ -12,7 +12,7 @@
     },
     {
       "name": "prolike14",
-      "scenario": "KEINE_TEILNAHME",
+      "scenario": "STRIKE",
       "priority": 4
     },
     {
@@ -388,12 +388,12 @@
       "status": "RISIKO"
     },
     {
-      "name": "likemike",
-      "score": 0.0,
+      "name": "prolike14",
+      "score": 3.33,
       "status": "RISIKO"
     },
     {
-      "name": "prolike14",
+      "name": "likemike",
       "score": 0.0,
       "status": "RISIKO"
     },
@@ -635,12 +635,12 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
-      "name": "likemike",
-      "score": 0.0,
+      "name": "prolike14",
+      "score": 3.33,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
-      "name": "prolike14",
+      "name": "likemike",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
     },
@@ -666,24 +666,24 @@
         "recommended_action": "kick_review"
       },
       {
-        "name": "prolike14",
-        "player_tag": "#G9QR0YVU",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 52,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
         "name": "beho_pro",
         "player_tag": "#UQV90UP09",
         "role": "member",
         "score": 0.0,
         "strikes": 0,
         "donations": 18,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "prolike14",
+        "player_tag": "#G9QR0YVU",
+        "role": "member",
+        "score": 3.33,
+        "strikes": 0,
+        "donations": 70,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -1009,7 +1009,7 @@
         "role": "member",
         "score": 87.38,
         "strikes": 0,
-        "donations": 542,
+        "donations": 558,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
