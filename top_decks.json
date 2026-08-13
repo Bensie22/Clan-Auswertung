@@ -1,7 +1,7 @@
 {
     "_metadata": {
         "last_battles": {
-            "#22Q920RLR": "20260813T165714.000Z",
+            "#22Q920RLR": "20260813T173035.000Z",
             "#L8PV090J": "20260809T191028.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260813T141352.000Z",
@@ -40,7 +40,7 @@
             "#CUJ9PJ2UV": "20260813T160800.000Z",
             "#2P0U2RLGY": "20260813T161937.000Z",
             "#8P89UPQ0": "",
-            "#RLJPJL8C2": "20260813T171854.000Z",
+            "#RLJPJL8C2": "20260813T173112.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
             "#UUPCULU9V": "20260813T150710.000Z",
@@ -105,8 +105,8 @@
             "#VCYQ9L9QV": "20260729T140933.000Z",
             "#GRR999Q29": "20260801T003732.000Z",
             "#202QYVY8CC": "20260810T095353.000Z",
-            "#PLG90C0C": "20260813T084255.000Z",
-            "#LGUGQ0PRG": "20260813T130120.000Z",
+            "#PLG90C0C": "20260813T172710.000Z",
+            "#LGUGQ0PRG": "20260813T172911.000Z",
             "#UVGRVC8LU": "20260809T181113.000Z",
             "#PVGU89PUL": "20260812T114554.000Z",
             "#V9JP2PGGP": "20260813T070317.000Z",
@@ -5088,7 +5088,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/Ie07nQNK9CjhKOa4-arFAewi4EroqaA-86Xo7r5tx94.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "Ben Siebolf"
@@ -5097,6 +5097,12 @@
                 "PLG90C0C"
             ],
             "recent_matches": [
+                {
+                    "time": "20260813T172710.000Z",
+                    "result": "win",
+                    "player": "Ben Siebolf",
+                    "tag": "PLG90C0C"
+                },
                 {
                     "time": "20260809T142524.000Z",
                     "result": "win",
@@ -372138,6 +372144,52 @@
                     "id": 26000015,
                     "name": "Baby Dragon",
                     "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000003-26000015-26000042-26000048-26000069-26000106-27000006-28000000": {
+            "cards": [
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000069,
+                    "name": "Skeleton King",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dCd69_wN9f8DxwuqOGtR4QgWhHIPIaTNxZ1e23RzAAc.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 26000106,
+                    "name": "Ronin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X0dTFs7OGUavreDEzOtYd_YNZ8Zly6qgAE-dd-bNfWU.png"
+                },
+                {
+                    "id": 26000048,
+                    "name": "Night Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NpCrXDEDBBJgNv9QrBAcJmmMFbS7pe3KCY8xJ5VB18A.png"
+                },
+                {
+                    "id": 26000003,
+                    "name": "Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Axr4ox5_b7edmLsoHxBX3vmgijAIibuF6RImTbqLlXE.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
                 }
             ],
             "seen": 1,
