@@ -151,12 +151,12 @@
       "priority": 2
     },
     {
-      "name": "kl.kranker Affe",
+      "name": "bes",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "bes",
+      "name": "kl.kranker Affe",
       "scenario": "TOP",
       "priority": 2
     }
@@ -199,7 +199,7 @@
     },
     {
       "name": "agostini",
-      "score": 92.27,
+      "score": 92.0,
       "status": "STARK"
     },
     {
@@ -318,6 +318,11 @@
       "status": "STARK"
     },
     {
+      "name": "bes",
+      "score": 85.34,
+      "status": "STARK"
+    },
+    {
       "name": "Desteoyer",
       "score": 85.17,
       "status": "STARK"
@@ -325,11 +330,6 @@
     {
       "name": "kl.kranker Affe",
       "score": 85.09,
-      "status": "STARK"
-    },
-    {
-      "name": "bes",
-      "score": 85.08,
       "status": "STARK"
     },
     {
@@ -446,7 +446,7 @@
     },
     {
       "name": "agostini",
-      "score": 92.27,
+      "score": 92.0,
       "tip": "Weiter so"
     },
     {
@@ -565,6 +565,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "bes",
+      "score": 85.34,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Desteoyer",
       "score": 85.17,
       "tip": "Weiter so"
@@ -572,11 +577,6 @@
     {
       "name": "kl.kranker Affe",
       "score": 85.09,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "bes",
-      "score": 85.08,
       "tip": "Weiter so"
     },
     {
@@ -796,9 +796,9 @@
         "name": "agostini",
         "player_tag": "#P2YQ2QQUV",
         "role": "member",
-        "score": 92.27,
+        "score": 92.0,
         "strikes": 0,
-        "donations": 525,
+        "donations": 565,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
@@ -930,7 +930,7 @@
         "role": "member",
         "score": 88.38,
         "strikes": 0,
-        "donations": 240,
+        "donations": 274,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -966,7 +966,7 @@
         "role": "member",
         "score": 87.9,
         "strikes": 0,
-        "donations": 74,
+        "donations": 108,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1069,6 +1069,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "bes",
+        "player_tag": "#LLQQJCLC",
+        "role": "member",
+        "score": 85.34,
+        "strikes": 0,
+        "donations": 123,
+        "participation_count": 10,
+        "trend": "🟡🟡🟡🟡🟡",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Desteoyer",
         "player_tag": "#2V800VCQ0",
         "role": "member",
@@ -1089,18 +1101,6 @@
         "donations": 62,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "bes",
-        "player_tag": "#LLQQJCLC",
-        "role": "member",
-        "score": 85.08,
-        "strikes": 0,
-        "donations": 101,
-        "participation_count": 10,
-        "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       }
