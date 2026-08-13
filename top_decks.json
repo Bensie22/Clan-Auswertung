@@ -6,7 +6,7 @@
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260813T184815.000Z",
             "#ULYJ2CQP": "20260813T131848.000Z",
-            "#UJ2P9UYUV": "20260813T191657.000Z",
+            "#UJ2P9UYUV": "20260813T193004.000Z",
             "#P0JYR9YUY": "20260813T151810.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260813T110353.000Z",
@@ -37,7 +37,7 @@
             "#8QYYL8LCQ": "20260813T131532.000Z",
             "#8P0J8P0L": "20260813T170909.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20260813T160800.000Z",
+            "#CUJ9PJ2UV": "20260813T192356.000Z",
             "#2P0U2RLGY": "20260813T161937.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260813T174802.000Z",
@@ -4267,7 +4267,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "hi2oka"
             ],
@@ -4275,6 +4275,12 @@
                 "UJ2P9UYUV"
             ],
             "recent_matches": [
+                {
+                    "time": "20260813T193004.000Z",
+                    "result": "loss",
+                    "player": "hi2oka",
+                    "tag": "UJ2P9UYUV"
+                },
                 {
                     "time": "20260809T190238.000Z",
                     "result": "win",
@@ -372954,6 +372960,52 @@
                     "id": 26000042,
                     "name": "Electro Wizard",
                     "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000000-26000027-26000028-26000064-26000080-26000099-27000000-28000011": {
+            "cards": [
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000099,
+                    "name": "Goblinstein",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mQ20B49dXdk7Nv0lMdLw175M3YvkSpN6KNnho8UKBd8.png"
+                },
+                {
+                    "id": 26000027,
+                    "name": "Dark Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/M7fXlrKXHu2IvpSGpk36kXVstslbR08Bbxcy0jQcln8.png"
+                },
+                {
+                    "id": 26000028,
+                    "name": "Three Musketeers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_J2GhbkX3vswaFk1wG-dopwiHyNc_YiPhwroiKF3Mek.png"
+                },
+                {
+                    "id": 27000000,
+                    "name": "Cannon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nZK1y-beLxO5vnlyUhK6-2zH2NzXJwqykcosqQ1cmZ8.png"
+                },
+                {
+                    "id": 26000080,
+                    "name": "Skeleton Dragons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qPOtg9uONh47_NLxGhhFc_ww9PlZ6z3Ry507q1NZUXs.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
                 }
             ],
             "seen": 1,
