@@ -51,17 +51,17 @@
       "priority": 2
     },
     {
-      "name": "Bensie",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "agostini",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Bensie",
       "scenario": "TOP",
       "priority": 2
     },
@@ -188,11 +188,6 @@
       "status": "STARK"
     },
     {
-      "name": "Bensie",
-      "score": 92.67,
-      "status": "STARK"
-    },
-    {
       "name": "chris",
       "score": 92.62,
       "status": "STARK"
@@ -200,6 +195,11 @@
     {
       "name": "agostini",
       "score": 92.27,
+      "status": "STARK"
+    },
+    {
+      "name": "Bensie",
+      "score": 92.13,
       "status": "STARK"
     },
     {
@@ -289,7 +289,7 @@
     },
     {
       "name": "HardcoreSoldier",
-      "score": 87.19,
+      "score": 87.06,
       "status": "STARK"
     },
     {
@@ -435,11 +435,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Bensie",
-      "score": 92.67,
-      "tip": "Weiter so"
-    },
-    {
       "name": "chris",
       "score": 92.62,
       "tip": "Weiter so"
@@ -447,6 +442,11 @@
     {
       "name": "agostini",
       "score": 92.27,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Bensie",
+      "score": 92.13,
       "tip": "Weiter so"
     },
     {
@@ -536,7 +536,7 @@
     },
     {
       "name": "HardcoreSoldier",
-      "score": 87.19,
+      "score": 87.06,
       "tip": "Weiter so"
     },
     {
@@ -776,18 +776,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Bensie",
-        "player_tag": "#2QRVR9L8",
-        "role": "member",
-        "score": 92.67,
-        "strikes": 0,
-        "donations": 499,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "chris",
         "player_tag": "#YQ82VR9JQ",
         "role": "member",
@@ -808,6 +796,18 @@
         "donations": 481,
         "participation_count": 10,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Bensie",
+        "player_tag": "#2QRVR9L8",
+        "role": "member",
+        "score": 92.13,
+        "strikes": 0,
+        "donations": 499,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -1007,7 +1007,7 @@
         "name": "HardcoreSoldier",
         "player_tag": "#GRGCY0R8",
         "role": "member",
-        "score": 87.19,
+        "score": 87.06,
         "strikes": 0,
         "donations": 288,
         "participation_count": 10,
@@ -1021,7 +1021,7 @@
         "role": "member",
         "score": 86.97,
         "strikes": 0,
-        "donations": 478,
+        "donations": 488,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
