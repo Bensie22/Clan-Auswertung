@@ -31,17 +31,17 @@
       "priority": 2
     },
     {
+      "name": "mauza",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Citykingalex",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Erastus",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "mauza",
       "scenario": "TOP",
       "priority": 2
     },
@@ -168,6 +168,11 @@
       "status": "STARK"
     },
     {
+      "name": "mauza",
+      "score": 93.15,
+      "status": "STARK"
+    },
+    {
       "name": "Citykingalex",
       "score": 93.02,
       "status": "STARK"
@@ -175,11 +180,6 @@
     {
       "name": "Erastus",
       "score": 92.89,
-      "status": "STARK"
-    },
-    {
-      "name": "mauza",
-      "score": 92.75,
       "status": "STARK"
     },
     {
@@ -415,6 +415,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "mauza",
+      "score": 93.15,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Citykingalex",
       "score": 93.02,
       "tip": "Weiter so"
@@ -422,11 +427,6 @@
     {
       "name": "Erastus",
       "score": 92.89,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "mauza",
-      "score": 92.75,
       "tip": "Weiter so"
     },
     {
@@ -728,6 +728,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "mauza",
+        "player_tag": "#2P0U2RLGY",
+        "role": "member",
+        "score": 93.15,
+        "strikes": 0,
+        "donations": 172,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Citykingalex",
         "player_tag": "#QULCQGGG",
         "role": "member",
@@ -746,18 +758,6 @@
         "score": 92.89,
         "strikes": 0,
         "donations": 354,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "mauza",
-        "player_tag": "#2P0U2RLGY",
-        "role": "member",
-        "score": 92.75,
-        "strikes": 0,
-        "donations": 172,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
