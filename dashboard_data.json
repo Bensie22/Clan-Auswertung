@@ -86,17 +86,17 @@
       "priority": 2
     },
     {
-      "name": "Reklaminator",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "SankKiI9",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "hi2oka",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Reklaminator",
       "scenario": "TOP",
       "priority": 2
     },
@@ -243,11 +243,6 @@
       "status": "STARK"
     },
     {
-      "name": "Reklaminator",
-      "score": 88.43,
-      "status": "STARK"
-    },
-    {
       "name": "SankKiI9",
       "score": 88.39,
       "status": "STARK"
@@ -255,6 +250,11 @@
     {
       "name": "hi2oka",
       "score": 88.38,
+      "status": "STARK"
+    },
+    {
+      "name": "Reklaminator",
+      "score": 88.3,
       "status": "STARK"
     },
     {
@@ -294,7 +294,7 @@
     },
     {
       "name": "LazyFrog",
-      "score": 86.97,
+      "score": 86.84,
       "status": "STARK"
     },
     {
@@ -359,7 +359,7 @@
     },
     {
       "name": "Denis",
-      "score": 80.88,
+      "score": 81.28,
       "status": "STARK"
     },
     {
@@ -490,11 +490,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Reklaminator",
-      "score": 88.43,
-      "tip": "Weiter so"
-    },
-    {
       "name": "SankKiI9",
       "score": 88.39,
       "tip": "Weiter so"
@@ -502,6 +497,11 @@
     {
       "name": "hi2oka",
       "score": 88.38,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Reklaminator",
+      "score": 88.3,
       "tip": "Weiter so"
     },
     {
@@ -541,7 +541,7 @@
     },
     {
       "name": "LazyFrog",
-      "score": 86.97,
+      "score": 86.84,
       "tip": "Weiter so"
     },
     {
@@ -606,7 +606,7 @@
     },
     {
       "name": "Denis",
-      "score": 80.88,
+      "score": 81.28,
       "tip": "Weiter so"
     },
     {
@@ -757,7 +757,7 @@
         "role": "member",
         "score": 92.89,
         "strikes": 0,
-        "donations": 390,
+        "donations": 398,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -769,7 +769,7 @@
         "role": "member",
         "score": 92.75,
         "strikes": 0,
-        "donations": 330,
+        "donations": 346,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -896,24 +896,12 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Reklaminator",
-        "player_tag": "#P0G2GYJQ9",
-        "role": "member",
-        "score": 88.43,
-        "strikes": 0,
-        "donations": 153,
-        "participation_count": 7,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "SankKiI9",
         "player_tag": "#89CJRRV8",
         "role": "member",
         "score": 88.39,
         "strikes": 0,
-        "donations": 429,
+        "donations": 445,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
@@ -928,6 +916,18 @@
         "donations": 240,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Reklaminator",
+        "player_tag": "#P0G2GYJQ9",
+        "role": "member",
+        "score": 88.3,
+        "strikes": 0,
+        "donations": 153,
+        "participation_count": 7,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -961,7 +961,7 @@
         "role": "member",
         "score": 87.82,
         "strikes": 0,
-        "donations": 288,
+        "donations": 296,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
@@ -1019,7 +1019,7 @@
         "name": "LazyFrog",
         "player_tag": "#22Q920RLR",
         "role": "member",
-        "score": 86.97,
+        "score": 86.84,
         "strikes": 0,
         "donations": 514,
         "participation_count": 10,
