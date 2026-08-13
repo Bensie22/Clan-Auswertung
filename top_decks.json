@@ -10,12 +10,12 @@
             "#P0JYR9YUY": "20260813T151810.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260813T205004.000Z",
-            "#G02LC9C8": "20260813T205757.000Z",
+            "#G02LC9C8": "20260813T210738.000Z",
             "#2U8288CVY": "20260813T094037.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
-            "#PPR2QQC0U": "20260813T205923.000Z",
+            "#PPR2QQC0U": "20260813T210906.000Z",
             "#QULCQGGG": "20260813T133845.000Z",
             "#JRGC9RRQG": "20260813T183057.000Z",
             "#QVQGCV8Y9": "20260813T171204.000Z",
@@ -34,7 +34,7 @@
             "#JUUR8UGL8": "20260813T174030.000Z",
             "#2U09UULRR": "20260813T153442.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
-            "#8QYYL8LCQ": "20260813T204555.000Z",
+            "#8QYYL8LCQ": "20260813T210709.000Z",
             "#8P0J8P0L": "20260813T170909.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260813T205406.000Z",
@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20260813T175401.000Z",
+            "#YUQVVVLQ": "20260813T210807.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260810T215147.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
@@ -115,9 +115,9 @@
             "#V8VGG0LUG": "20260803T085547.000Z",
             "#2V2QYJGCG": "20260804T011752.000Z",
             "#UQV90UP09": "20260810T190628.000Z",
-            "#JV80YYJRJ": "20260813T182805.000Z",
+            "#JV80YYJRJ": "20260813T210800.000Z",
             "#VP8P9UG8V": "20260812T232656.000Z",
-            "#G9QR0YVU": "20260813T205849.000Z",
+            "#G9QR0YVU": "20260813T210830.000Z",
             "#200PGVGQ9U": "20260811T201941.000Z",
             "#RR0GV9L00": "20260813T183359.000Z"
         }
@@ -1578,7 +1578,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
                 }
             ],
-            "wins": 5,
+            "wins": 6,
             "losses": 0,
             "players": [
                 "Flauschos"
@@ -1587,6 +1587,12 @@
                 "PPR2QQC0U"
             ],
             "recent_matches": [
+                {
+                    "time": "20260813T210315.000Z",
+                    "result": "win",
+                    "player": "Flauschos",
+                    "tag": "PPR2QQC0U"
+                },
                 {
                     "time": "20260809T065938.000Z",
                     "result": "win",
@@ -3606,7 +3612,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/LjSfSbwQfkZuRJY4pVxKspZ-a0iM5KAhU8w-a_N5Z7Y.png"
                 }
             ],
-            "wins": 4,
+            "wins": 5,
             "losses": 1,
             "players": [
                 "April#"
@@ -3615,6 +3621,12 @@
                 "YUQVVVLQ"
             ],
             "recent_matches": [
+                {
+                    "time": "20260813T210807.000Z",
+                    "result": "win",
+                    "player": "April#",
+                    "tag": "YUQVVVLQ"
+                },
                 {
                     "time": "20260812T212103.000Z",
                     "result": "loss",
@@ -4140,7 +4152,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "Flauschos"
@@ -4149,6 +4161,12 @@
                 "PPR2QQC0U"
             ],
             "recent_matches": [
+                {
+                    "time": "20260813T210906.000Z",
+                    "result": "win",
+                    "player": "Flauschos",
+                    "tag": "PPR2QQC0U"
+                },
                 {
                     "time": "20260809T070311.000Z",
                     "result": "win",
@@ -350192,7 +350210,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
                 }
             ],
-            "seen": 1,
+            "seen": 2,
             "losses": 1
         },
         "26000001-26000010-26000018-26000020-26000026-26000064-26000103-28000000": {
@@ -373148,6 +373166,98 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000005-26000006-26000007-26000027-26000041-26000055-26000069-28000004": {
+            "cards": [
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000069,
+                    "name": "Skeleton King",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dCd69_wN9f8DxwuqOGtR4QgWhHIPIaTNxZ1e23RzAAc.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                },
+                {
+                    "id": 26000027,
+                    "name": "Dark Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/M7fXlrKXHu2IvpSGpk36kXVstslbR08Bbxcy0jQcln8.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000006-26000011-26000014-26000029-26000058-26000093-28000002-28000023": {
+            "cards": [
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000093,
+                    "name": "Little Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dY-gSseki6KBpkIG17safHH5YlB8SErFZO9OXbJxf9w.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                },
+                {
+                    "id": 26000029,
+                    "name": "Lava Hound",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/unicRQ975sBY2oLtfgZbAI56ZvaWz7azj-vXTLxc0r8.png"
+                },
+                {
+                    "id": 26000058,
+                    "name": "Wall Breakers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_xPphEfC8eEwFNrfU3cMQG9-f5JaLQ31ARCA7l3XtW4.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 28000023,
+                    "name": "Void",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BykyeWDqzn4PlHSszu3NbrXT1mHxW2EA8vHbQGR5LDE.png"
+                },
+                {
+                    "id": 28000002,
+                    "name": "Rage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
