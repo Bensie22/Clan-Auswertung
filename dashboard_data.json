@@ -156,17 +156,17 @@
       "priority": 2
     },
     {
-      "name": "seroo",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Ben Siebolf",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "kl.kranker Affe",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "seroo",
       "scenario": "TOP",
       "priority": 2
     },
@@ -318,11 +318,6 @@
       "status": "STARK"
     },
     {
-      "name": "seroo",
-      "score": 86.38,
-      "status": "STARK"
-    },
-    {
       "name": "Ben Siebolf",
       "score": 86.28,
       "status": "STARK"
@@ -335,6 +330,11 @@
     {
       "name": "Nati",
       "score": 86.1,
+      "status": "STARK"
+    },
+    {
+      "name": "seroo",
+      "score": 85.98,
       "status": "STARK"
     },
     {
@@ -570,11 +570,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "seroo",
-      "score": 86.38,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Ben Siebolf",
       "score": 86.28,
       "tip": "Weiter so"
@@ -587,6 +582,11 @@
     {
       "name": "Nati",
       "score": 86.1,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "seroo",
+      "score": 85.98,
       "tip": "Weiter so"
     },
     {
@@ -811,7 +811,7 @@
         "role": "member",
         "score": 92.62,
         "strikes": 0,
-        "donations": 186,
+        "donations": 194,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -835,7 +835,7 @@
         "role": "member",
         "score": 92.13,
         "strikes": 0,
-        "donations": 643,
+        "donations": 651,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
@@ -931,7 +931,7 @@
         "role": "member",
         "score": 88.74,
         "strikes": 0,
-        "donations": 288,
+        "donations": 296,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
@@ -1070,18 +1070,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "seroo",
-        "player_tag": "#JRGC9RRQG",
-        "role": "member",
-        "score": 86.38,
-        "strikes": 0,
-        "donations": 94,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Ben Siebolf",
         "player_tag": "#PLG90C0C",
         "role": "member",
@@ -1112,6 +1100,18 @@
         "score": 86.1,
         "strikes": 0,
         "donations": 0,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "seroo",
+        "player_tag": "#JRGC9RRQG",
+        "role": "member",
+        "score": 85.98,
+        "strikes": 0,
+        "donations": 94,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
