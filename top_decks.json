@@ -19,14 +19,14 @@
             "#QULCQGGG": "20260814T161206.000Z",
             "#JRGC9RRQG": "20260814T162808.000Z",
             "#QVQGCV8Y9": "20260813T171204.000Z",
-            "#Q8L0RJ8Y8": "20260814T181932.000Z",
+            "#Q8L0RJ8Y8": "20260814T182310.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260814T180225.000Z",
             "#LLQQJCLC": "20260814T124134.000Z",
             "#2VJR80RL": "20260814T125036.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
-            "#2CJYG9UG": "20260814T164908.000Z",
+            "#2CJYG9UG": "20260814T182700.000Z",
             "#2PUQYJC02": "20260813T191305.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
             "#2V800VCQ0": "20260809T074328.000Z",
@@ -3896,7 +3896,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Jackhammer"
             ],
@@ -3904,6 +3904,12 @@
                 "2CJYG9UG"
             ],
             "recent_matches": [
+                {
+                    "time": "20260814T182700.000Z",
+                    "result": "loss",
+                    "player": "Jackhammer",
+                    "tag": "2CJYG9UG"
+                },
                 {
                     "time": "20260814T003350.000Z",
                     "result": "win",
@@ -377237,6 +377243,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000020-26000025-26000044-26000055-26000056-26000064-28000000-28000008": {
+            "cards": [
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000020,
+                    "name": "Giant Skeleton",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0p0gd0XaVRu1Hb1iSG1hTYbz2AN6aEiZnhaAib5O8Z8.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000044,
+                    "name": "Hunter",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/VNabB1WKnYtYRSG7X_FZfnZjQDHTBs9A96OGMFmecrA.png"
+                },
+                {
+                    "id": 26000025,
+                    "name": "Guards",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/1ArKfLJxYo6_NU_S9cAeIrfbXqWH0oULVJXedxBXQlU.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
