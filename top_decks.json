@@ -10,7 +10,7 @@
             "#P0JYR9YUY": "20260813T151810.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260814T162552.000Z",
-            "#G02LC9C8": "20260814T191015.000Z",
+            "#G02LC9C8": "20260814T192502.000Z",
             "#2U8288CVY": "20260814T172542.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
@@ -31,14 +31,14 @@
             "#YQVQYUYRV": "20260525T095543.000Z",
             "#2V800VCQ0": "20260809T074328.000Z",
             "#2UQUPYQCJ": "20260810T113227.000Z",
-            "#JUUR8UGL8": "20260814T105952.000Z",
+            "#JUUR8UGL8": "20260814T192309.000Z",
             "#2U09UULRR": "20260814T115858.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20260814T184807.000Z",
             "#8P0J8P0L": "20260814T101040.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260814T102158.000Z",
-            "#2P0U2RLGY": "20260813T161937.000Z",
+            "#2P0U2RLGY": "20260814T192842.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260814T121254.000Z",
             "#RG02LG88": "20260405T075546.000Z",
@@ -119,7 +119,7 @@
             "#VP8P9UG8V": "20260814T001107.000Z",
             "#G9QR0YVU": "20260814T085005.000Z",
             "#200PGVGQ9U": "20260811T201941.000Z",
-            "#RR0GV9L00": "20260813T183359.000Z",
+            "#RR0GV9L00": "20260814T192811.000Z",
             "#2JQUVJUUG": "20260813T213647.000Z"
         }
     },
@@ -5179,7 +5179,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/fpnESbYqe5GyZmaVVYe-SEu7tE0Kxh_HZyVigzvLjks.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "Theezy"
@@ -5188,6 +5188,12 @@
                 "JUUR8UGL8"
             ],
             "recent_matches": [
+                {
+                    "time": "20260814T192309.000Z",
+                    "result": "win",
+                    "player": "Theezy",
+                    "tag": "JUUR8UGL8"
+                },
                 {
                     "time": "20260813T131134.000Z",
                     "result": "win",
@@ -377463,6 +377469,52 @@
                     "id": 26000026,
                     "name": "Princess",
                     "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000013-26000017-26000024-26000034-26000036-26000039-26000063-28000008": {
+            "cards": [
+                {
+                    "id": 26000063,
+                    "name": "Electro Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/tN9h6lnMNPCNsx0LMFmvpHgznbDZ1fBRkx-C7UfNmfY.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000024,
+                    "name": "Royal Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mnlRaNtmfpQx2e6mp70sLd0ND-pKPF70Cf87_agEKg4.png"
+                },
+                {
+                    "id": 26000036,
+                    "name": "Battle Ram",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dyc50V2cplKi4H7pq1B3I36pl_sEH5DQrNHboS_dbbM.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 26000039,
+                    "name": "Mega Minion",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/-T_e4YLbuhPBKbYnBwQfXgynNpp5eOIN_0RracYwL9c.png"
+                },
+                {
+                    "id": 26000013,
+                    "name": "Bomber",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
                 }
             ],
             "seen": 1,
