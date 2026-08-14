@@ -106,7 +106,7 @@
             "#GRR999Q29": "20260801T003732.000Z",
             "#202QYVY8CC": "20260810T095353.000Z",
             "#PLG90C0C": "20260814T151957.000Z",
-            "#LGUGQ0PRG": "20260814T170000.000Z",
+            "#LGUGQ0PRG": "20260814T170747.000Z",
             "#UVGRVC8LU": "20260809T181113.000Z",
             "#PVGU89PUL": "20260814T163606.000Z",
             "#V9JP2PGGP": "20260814T090058.000Z",
@@ -4783,7 +4783,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/dyc50V2cplKi4H7pq1B3I36pl_sEH5DQrNHboS_dbbM.png"
                 }
             ],
-            "wins": 2,
+            "wins": 3,
             "losses": 0,
             "players": [
                 "shorttrack alex"
@@ -4792,6 +4792,12 @@
                 "LGUGQ0PRG"
             ],
             "recent_matches": [
+                {
+                    "time": "20260814T170747.000Z",
+                    "result": "win",
+                    "player": "shorttrack alex",
+                    "tag": "LGUGQ0PRG"
+                },
                 {
                     "time": "20260813T173239.000Z",
                     "result": "win",
@@ -376587,6 +376593,52 @@
                     "id": 26000015,
                     "name": "Baby Dragon",
                     "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000007-26000033-26000040-26000050-26000061-26000064-26000103-27000003": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000103,
+                    "name": "Boss Bandit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nuceG9o7rAyvyc7D3sp2QSiRYtSOEgraq0NJkDf729s.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 26000061,
+                    "name": "Fisherman",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/U2KZ3g0wyufcuA5P2Xrn3Z3lr1WiJmc5S0IWOZHgizQ.png"
+                },
+                {
+                    "id": 26000050,
+                    "name": "Royal Ghost",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3En2cz0ISQAaMTHY3hj3rTveFN2kJYq-H4VxvdJNvCM.png"
+                },
+                {
+                    "id": 26000033,
+                    "name": "Sparky",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/2GKMkBrArZXgQxf2ygFjDs4VvGYPbx8F6Lj_68iVhIM.png"
+                },
+                {
+                    "id": 27000003,
+                    "name": "Inferno Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
                 }
             ],
             "seen": 1,
