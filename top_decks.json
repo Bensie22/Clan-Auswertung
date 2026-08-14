@@ -10,7 +10,7 @@
             "#P0JYR9YUY": "20260813T151810.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260814T162552.000Z",
-            "#G02LC9C8": "20260814T201823.000Z",
+            "#G02LC9C8": "20260814T202502.000Z",
             "#2U8288CVY": "20260814T172542.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
@@ -81,7 +81,7 @@
             "#YPURGGJQ": "20260528T170655.000Z",
             "#YUQVVVLQ": "20260814T152614.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
-            "#VP82QGC8Y": "20260814T201919.000Z",
+            "#VP82QGC8Y": "20260814T202710.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
             "#GRGCY0R8": "20260814T201023.000Z",
             "#P2YQ2QQUV": "20260814T200133.000Z",
@@ -119,7 +119,7 @@
             "#VP8P9UG8V": "20260814T001107.000Z",
             "#G9QR0YVU": "20260814T085005.000Z",
             "#200PGVGQ9U": "20260811T201941.000Z",
-            "#RR0GV9L00": "20260814T202001.000Z",
+            "#RR0GV9L00": "20260814T203055.000Z",
             "#2JQUVJUUG": "20260813T213647.000Z"
         }
     },
@@ -5863,7 +5863,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "mad 3ad y gawad"
@@ -5872,6 +5872,12 @@
                 "VP82QGC8Y"
             ],
             "recent_matches": [
+                {
+                    "time": "20260814T202710.000Z",
+                    "result": "win",
+                    "player": "mad 3ad y gawad",
+                    "tag": "VP82QGC8Y"
+                },
                 {
                     "time": "20260813T224048.000Z",
                     "result": "win",
@@ -5924,7 +5930,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "mad 3ad y gawad"
             ],
@@ -5932,6 +5938,12 @@
                 "VP82QGC8Y"
             ],
             "recent_matches": [
+                {
+                    "time": "20260814T202249.000Z",
+                    "result": "loss",
+                    "player": "mad 3ad y gawad",
+                    "tag": "VP82QGC8Y"
+                },
                 {
                     "time": "20260813T223703.000Z",
                     "result": "win",
@@ -377755,6 +377767,98 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000001-26000014-26000043-26000056-26000069-27000009-27000010-28000011": {
+            "cards": [
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 26000069,
+                    "name": "Skeleton King",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dCd69_wN9f8DxwuqOGtR4QgWhHIPIaTNxZ1e23RzAAc.png"
+                },
+                {
+                    "id": 27000009,
+                    "name": "Tombstone",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LjSfSbwQfkZuRJY4pVxKspZ-a0iM5KAhU8w-a_N5Z7Y.png"
+                },
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000043,
+                    "name": "Elite Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/C88C5JH_F3lLZj6K-tLcMo5DPjrFmvzIb1R2M6xCfTE.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000017-26000019-26000024-26000027-26000032-28000000-28000010-28000017": {
+            "cards": [
+                {
+                    "id": 26000024,
+                    "name": "Royal Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mnlRaNtmfpQx2e6mp70sLd0ND-pKPF70Cf87_agEKg4.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000019,
+                    "name": "Spear Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/FSDFotjaXidI4ku_WFpVCTWS1hKGnFh1sxX0lxM43_E.png"
+                },
+                {
+                    "id": 26000032,
+                    "name": "Miner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Y4yWvdwBCg2FpAZgs8T09Gy34WOwpLZW-ttL52Ae8NE.png"
+                },
+                {
+                    "id": 28000017,
+                    "name": "Giant Snowball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
+                },
+                {
+                    "id": 26000027,
+                    "name": "Dark Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/M7fXlrKXHu2IvpSGpk36kXVstslbR08Bbxcy0jQcln8.png"
+                },
+                {
+                    "id": 28000010,
+                    "name": "Graveyard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Icp8BIyyfBTj1ncCJS7mb82SY7TPV-MAE-J2L2R48DI.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
