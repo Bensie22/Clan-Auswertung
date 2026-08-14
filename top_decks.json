@@ -2,7 +2,7 @@
     "_metadata": {
         "last_battles": {
             "#22Q920RLR": "20260814T154202.000Z",
-            "#L8PV090J": "20260814T153703.000Z",
+            "#L8PV090J": "20260814T202046.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260814T174051.000Z",
             "#ULYJ2CQP": "20260814T194224.000Z",
@@ -10,7 +10,7 @@
             "#P0JYR9YUY": "20260813T151810.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260814T162552.000Z",
-            "#G02LC9C8": "20260814T200812.000Z",
+            "#G02LC9C8": "20260814T201823.000Z",
             "#2U8288CVY": "20260814T172542.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
@@ -81,7 +81,7 @@
             "#YPURGGJQ": "20260528T170655.000Z",
             "#YUQVVVLQ": "20260814T152614.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
-            "#VP82QGC8Y": "20260813T224048.000Z",
+            "#VP82QGC8Y": "20260814T201919.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
             "#GRGCY0R8": "20260814T201023.000Z",
             "#P2YQ2QQUV": "20260814T200133.000Z",
@@ -119,7 +119,7 @@
             "#VP8P9UG8V": "20260814T001107.000Z",
             "#G9QR0YVU": "20260814T085005.000Z",
             "#200PGVGQ9U": "20260811T201941.000Z",
-            "#RR0GV9L00": "20260814T192811.000Z",
+            "#RR0GV9L00": "20260814T202001.000Z",
             "#2JQUVJUUG": "20260813T213647.000Z"
         }
     },
@@ -4987,7 +4987,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
                 }
             ],
-            "wins": 3,
+            "wins": 4,
             "losses": 0,
             "players": [
                 "mad 3ad y gawad"
@@ -4996,6 +4996,12 @@
                 "VP82QGC8Y"
             ],
             "recent_matches": [
+                {
+                    "time": "20260814T201424.000Z",
+                    "result": "win",
+                    "player": "mad 3ad y gawad",
+                    "tag": "VP82QGC8Y"
+                },
                 {
                     "time": "20260813T222944.000Z",
                     "result": "win",
@@ -245543,8 +245549,8 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
                 }
             ],
-            "seen": 1,
-            "losses": 1
+            "seen": 2,
+            "losses": 2
         },
         "26000000-26000004-26000021-26000038-26000045-26000049-28000008-28000011": {
             "cards": [
@@ -377703,6 +377709,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000007-26000012-26000021-26000034-26000049-26000103-28000000-28000011": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000103,
+                    "name": "Boss Bandit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nuceG9o7rAyvyc7D3sp2QSiRYtSOEgraq0NJkDf729s.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
