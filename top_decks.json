@@ -38,7 +38,7 @@
             "#8P0J8P0L": "20260814T101040.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260814T102158.000Z",
-            "#2P0U2RLGY": "20260814T192842.000Z",
+            "#2P0U2RLGY": "20260814T193217.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260814T121254.000Z",
             "#RG02LG88": "20260405T075546.000Z",
@@ -5432,7 +5432,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "mauza"
             ],
@@ -5440,6 +5440,12 @@
                 "2P0U2RLGY"
             ],
             "recent_matches": [
+                {
+                    "time": "20260814T193217.000Z",
+                    "result": "loss",
+                    "player": "mauza",
+                    "tag": "2P0U2RLGY"
+                },
                 {
                     "time": "20260813T161937.000Z",
                     "result": "win",
@@ -377519,6 +377525,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000007-26000017-26000020-26000033-26000037-26000042-26000055-26000064": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000033,
+                    "name": "Sparky",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/2GKMkBrArZXgQxf2ygFjDs4VvGYPbx8F6Lj_68iVhIM.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000037,
+                    "name": "Inferno Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
+                },
+                {
+                    "id": 26000020,
+                    "name": "Giant Skeleton",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0p0gd0XaVRu1Hb1iSG1hTYbz2AN6aEiZnhaAib5O8Z8.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
