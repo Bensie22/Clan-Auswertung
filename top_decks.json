@@ -19,7 +19,7 @@
             "#QULCQGGG": "20260814T161206.000Z",
             "#JRGC9RRQG": "20260814T162808.000Z",
             "#QVQGCV8Y9": "20260813T171204.000Z",
-            "#Q8L0RJ8Y8": "20260814T174931.000Z",
+            "#Q8L0RJ8Y8": "20260814T180114.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260814T161043.000Z",
             "#LLQQJCLC": "20260814T124134.000Z",
@@ -115,7 +115,7 @@
             "#V8VGG0LUG": "20260803T085547.000Z",
             "#2V2QYJGCG": "20260804T011752.000Z",
             "#UQV90UP09": "20260810T190628.000Z",
-            "#JV80YYJRJ": "20260814T083222.000Z",
+            "#JV80YYJRJ": "20260814T180011.000Z",
             "#VP8P9UG8V": "20260814T001107.000Z",
             "#G9QR0YVU": "20260814T085005.000Z",
             "#200PGVGQ9U": "20260811T201941.000Z",
@@ -2497,7 +2497,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
                 }
             ],
-            "wins": 5,
+            "wins": 6,
             "losses": 0,
             "players": [
                 "Deniz"
@@ -2506,6 +2506,12 @@
                 "JV80YYJRJ"
             ],
             "recent_matches": [
+                {
+                    "time": "20260814T180011.000Z",
+                    "result": "win",
+                    "player": "Deniz",
+                    "tag": "JV80YYJRJ"
+                },
                 {
                     "time": "20260814T065500.000Z",
                     "result": "win",
@@ -376943,6 +376949,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000003-26000013-26000017-26000026-26000040-26000050-26000058-26000062": {
+            "cards": [
+                {
+                    "id": 26000050,
+                    "name": "Royal Ghost",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3En2cz0ISQAaMTHY3hj3rTveFN2kJYq-H4VxvdJNvCM.png"
+                },
+                {
+                    "id": 26000003,
+                    "name": "Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Axr4ox5_b7edmLsoHxBX3vmgijAIibuF6RImTbqLlXE.png"
+                },
+                {
+                    "id": 26000013,
+                    "name": "Bomber",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 26000058,
+                    "name": "Wall Breakers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_xPphEfC8eEwFNrfU3cMQG9-f5JaLQ31ARCA7l3XtW4.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
