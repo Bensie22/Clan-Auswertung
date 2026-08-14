@@ -9,14 +9,14 @@
             "#UJ2P9UYUV": "20260814T153537.000Z",
             "#P0JYR9YUY": "20260813T151810.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
-            "#YQ82VR9JQ": "20260814T162552.000Z",
+            "#YQ82VR9JQ": "20260814T205745.000Z",
             "#G02LC9C8": "20260814T202502.000Z",
             "#2U8288CVY": "20260814T172542.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260813T210906.000Z",
-            "#QULCQGGG": "20260814T161206.000Z",
+            "#QULCQGGG": "20260814T205703.000Z",
             "#JRGC9RRQG": "20260814T162808.000Z",
             "#QVQGCV8Y9": "20260813T171204.000Z",
             "#Q8L0RJ8Y8": "20260814T182310.000Z",
@@ -43,7 +43,7 @@
             "#RLJPJL8C2": "20260814T121254.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20260814T162605.000Z",
+            "#UUPCULU9V": "20260814T210005.000Z",
             "#202VP2QL9P": "20260724T185949.000Z",
             "#LVUGLUCP9": "20260814T174746.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20260814T204901.000Z",
+            "#YUQVVVLQ": "20260814T205749.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260814T202710.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
@@ -106,7 +106,7 @@
             "#GRR999Q29": "20260801T003732.000Z",
             "#202QYVY8CC": "20260810T095353.000Z",
             "#PLG90C0C": "20260814T151957.000Z",
-            "#LGUGQ0PRG": "20260814T170747.000Z",
+            "#LGUGQ0PRG": "20260814T210109.000Z",
             "#UVGRVC8LU": "20260809T181113.000Z",
             "#PVGU89PUL": "20260814T163606.000Z",
             "#V9JP2PGGP": "20260814T174742.000Z",
@@ -117,9 +117,9 @@
             "#UQV90UP09": "20260810T190628.000Z",
             "#JV80YYJRJ": "20260814T203456.000Z",
             "#VP8P9UG8V": "20260814T001107.000Z",
-            "#G9QR0YVU": "20260814T085005.000Z",
+            "#G9QR0YVU": "20260814T210054.000Z",
             "#200PGVGQ9U": "20260811T201941.000Z",
-            "#RR0GV9L00": "20260814T204756.000Z",
+            "#RR0GV9L00": "20260814T205129.000Z",
             "#2JQUVJUUG": "20260813T213647.000Z"
         }
     },
@@ -5564,7 +5564,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "shorttrack alex"
             ],
@@ -5572,6 +5572,12 @@
                 "LGUGQ0PRG"
             ],
             "recent_matches": [
+                {
+                    "time": "20260814T210109.000Z",
+                    "result": "loss",
+                    "player": "shorttrack alex",
+                    "tag": "LGUGQ0PRG"
+                },
                 {
                     "time": "20260813T173554.000Z",
                     "result": "win",
@@ -378147,6 +378153,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000000-26000006-26000007-26000016-26000042-26000053-26000064-28000008": {
+            "cards": [
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 26000053,
+                    "name": "Rascals",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/KV48DfwVHKx9XCjzBdk3daT_Eb52Me4VgjVO7WctRc4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
