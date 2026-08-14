@@ -56,17 +56,17 @@
       "priority": 2
     },
     {
-      "name": "chris",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "agostini",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Bensie",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
@@ -106,11 +106,6 @@
       "priority": 2
     },
     {
-      "name": "shorttrack alex",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "hi2oka",
       "scenario": "TOP",
       "priority": 2
@@ -122,6 +117,11 @@
     },
     {
       "name": "Wario",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "shorttrack alex",
       "scenario": "TOP",
       "priority": 2
     },
@@ -208,11 +208,6 @@
       "status": "STARK"
     },
     {
-      "name": "chris",
-      "score": 92.22,
-      "status": "STARK"
-    },
-    {
       "name": "agostini",
       "score": 92.13,
       "status": "STARK"
@@ -220,6 +215,11 @@
     {
       "name": "Bensie",
       "score": 92.0,
+      "status": "STARK"
+    },
+    {
+      "name": "chris",
+      "score": 91.95,
       "status": "STARK"
     },
     {
@@ -268,11 +268,6 @@
       "status": "STARK"
     },
     {
-      "name": "shorttrack alex",
-      "score": 88.38,
-      "status": "STARK"
-    },
-    {
       "name": "hi2oka",
       "score": 88.12,
       "status": "STARK"
@@ -285,6 +280,11 @@
     {
       "name": "Wario",
       "score": 87.9,
+      "status": "STARK"
+    },
+    {
+      "name": "shorttrack alex",
+      "score": 87.85,
       "status": "STARK"
     },
     {
@@ -409,7 +409,7 @@
     },
     {
       "name": "prolike14",
-      "score": 3.87,
+      "score": 3.33,
       "status": "RISIKO"
     },
     {
@@ -460,11 +460,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "chris",
-      "score": 92.22,
-      "tip": "Weiter so"
-    },
-    {
       "name": "agostini",
       "score": 92.13,
       "tip": "Weiter so"
@@ -472,6 +467,11 @@
     {
       "name": "Bensie",
       "score": 92.0,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "chris",
+      "score": 91.95,
       "tip": "Weiter so"
     },
     {
@@ -520,11 +520,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "shorttrack alex",
-      "score": 88.38,
-      "tip": "Weiter so"
-    },
-    {
       "name": "hi2oka",
       "score": 88.12,
       "tip": "Weiter so"
@@ -537,6 +532,11 @@
     {
       "name": "Wario",
       "score": 87.9,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "shorttrack alex",
+      "score": 87.85,
       "tip": "Weiter so"
     },
     {
@@ -661,7 +661,7 @@
     },
     {
       "name": "prolike14",
-      "score": 3.87,
+      "score": 3.33,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
@@ -723,7 +723,7 @@
         "name": "prolike14",
         "player_tag": "#G9QR0YVU",
         "role": "member",
-        "score": 3.87,
+        "score": 3.33,
         "strikes": 0,
         "donations": 166,
         "participation_count": 0,
@@ -818,18 +818,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "chris",
-        "player_tag": "#YQ82VR9JQ",
-        "role": "member",
-        "score": 92.22,
-        "strikes": 0,
-        "donations": 204,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "agostini",
         "player_tag": "#P2YQ2QQUV",
         "role": "member",
@@ -848,6 +836,18 @@
         "score": 92.0,
         "strikes": 0,
         "donations": 645,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "chris",
+        "player_tag": "#YQ82VR9JQ",
+        "role": "member",
+        "score": 91.95,
+        "strikes": 0,
+        "donations": 220,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -950,18 +950,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "shorttrack alex",
-        "player_tag": "#LGUGQ0PRG",
-        "role": "member",
-        "score": 88.38,
-        "strikes": 0,
-        "donations": 288,
-        "participation_count": 2,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "hi2oka",
         "player_tag": "#UJ2P9UYUV",
         "role": "member",
@@ -994,6 +982,18 @@
         "donations": 108,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "shorttrack alex",
+        "player_tag": "#LGUGQ0PRG",
+        "role": "member",
+        "score": 87.85,
+        "strikes": 0,
+        "donations": 288,
+        "participation_count": 2,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
