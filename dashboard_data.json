@@ -111,11 +111,6 @@
       "priority": 2
     },
     {
-      "name": "April#",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "hi2oka",
       "scenario": "TOP",
       "priority": 2
@@ -127,6 +122,11 @@
     },
     {
       "name": "Wario",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "April#",
       "scenario": "TOP",
       "priority": 2
     },
@@ -273,11 +273,6 @@
       "status": "STARK"
     },
     {
-      "name": "April#",
-      "score": 88.22,
-      "status": "STARK"
-    },
-    {
       "name": "hi2oka",
       "score": 88.12,
       "status": "STARK"
@@ -290,6 +285,11 @@
     {
       "name": "Wario",
       "score": 87.9,
+      "status": "STARK"
+    },
+    {
+      "name": "April#",
+      "score": 87.82,
       "status": "STARK"
     },
     {
@@ -404,7 +404,7 @@
     },
     {
       "name": "anna-maria",
-      "score": 6.67,
+      "score": 5.6,
       "status": "RISIKO"
     },
     {
@@ -525,11 +525,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "April#",
-      "score": 88.22,
-      "tip": "Weiter so"
-    },
-    {
       "name": "hi2oka",
       "score": 88.12,
       "tip": "Weiter so"
@@ -542,6 +537,11 @@
     {
       "name": "Wario",
       "score": 87.9,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "April#",
+      "score": 87.82,
       "tip": "Weiter so"
     },
     {
@@ -656,7 +656,7 @@
     },
     {
       "name": "anna-maria",
-      "score": 6.67,
+      "score": 5.6,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
@@ -735,9 +735,9 @@
         "name": "anna-maria",
         "player_tag": "#RR0GV9L00",
         "role": "member",
-        "score": 6.67,
+        "score": 5.6,
         "strikes": 0,
-        "donations": 61,
+        "donations": 79,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -799,7 +799,7 @@
         "role": "member",
         "score": 92.75,
         "strikes": 0,
-        "donations": 218,
+        "donations": 236,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -847,7 +847,7 @@
         "role": "member",
         "score": 92.0,
         "strikes": 0,
-        "donations": 637,
+        "donations": 645,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -962,18 +962,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "April#",
-        "player_tag": "#YUQVVVLQ",
-        "role": "member",
-        "score": 88.22,
-        "strikes": 0,
-        "donations": 366,
-        "participation_count": 10,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "hi2oka",
         "player_tag": "#UJ2P9UYUV",
         "role": "member",
@@ -1010,12 +998,24 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "April#",
+        "player_tag": "#YUQVVVLQ",
+        "role": "member",
+        "score": 87.82,
+        "strikes": 0,
+        "donations": 366,
+        "participation_count": 10,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "SankKiI9",
         "player_tag": "#89CJRRV8",
         "role": "member",
         "score": 87.59,
         "strikes": 0,
-        "donations": 663,
+        "donations": 671,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
