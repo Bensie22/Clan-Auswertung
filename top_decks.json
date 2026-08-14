@@ -45,7 +45,7 @@
             "#29L2P9YJ": "20260331T230948.000Z",
             "#UUPCULU9V": "20260814T133030.000Z",
             "#202VP2QL9P": "20260724T185949.000Z",
-            "#LVUGLUCP9": "20260809T212826.000Z",
+            "#LVUGLUCP9": "20260814T140439.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
             "#V9GYJQ0J9": "",
             "#URJ0LUYPV": "20260814T093119.000Z",
@@ -2797,7 +2797,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
                 }
             ],
-            "wins": 3,
+            "wins": 4,
             "losses": 0,
             "players": [
                 "Nati"
@@ -2806,6 +2806,12 @@
                 "LVUGLUCP9"
             ],
             "recent_matches": [
+                {
+                    "time": "20260814T140439.000Z",
+                    "result": "win",
+                    "player": "Nati",
+                    "tag": "LVUGLUCP9"
+                },
                 {
                     "time": "20260809T212826.000Z",
                     "result": "win",
@@ -375979,6 +375985,52 @@
                     "id": 26000067,
                     "name": "Elixir Golem",
                     "icon": "https://api-assets.clashroyale.com/cards/300/puhMsZjCIqy21HW3hYxjrk_xt8NIPyFqjRy-BeLKZwo.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000013-26000020-26000021-26000050-26000083-27000003-27000010-28000001": {
+            "cards": [
+                {
+                    "id": 26000013,
+                    "name": "Bomber",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
+                },
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000050,
+                    "name": "Royal Ghost",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3En2cz0ISQAaMTHY3hj3rTveFN2kJYq-H4VxvdJNvCM.png"
+                },
+                {
+                    "id": 27000003,
+                    "name": "Inferno Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000083,
+                    "name": "Mother Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fO-Xah8XZkYKaSK9SCp3wnzwxtvIhun9NVY-zzte1Ng.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 26000020,
+                    "name": "Giant Skeleton",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0p0gd0XaVRu1Hb1iSG1hTYbz2AN6aEiZnhaAib5O8Z8.png"
                 }
             ],
             "seen": 1,
