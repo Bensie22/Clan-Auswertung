@@ -23,7 +23,7 @@
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260815T080742.000Z",
             "#LLQQJCLC": "20260815T130242.000Z",
-            "#2VJR80RL": "20260814T125036.000Z",
+            "#2VJR80RL": "20260815T143015.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
             "#2CJYG9UG": "20260815T124206.000Z",
@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20260815T141856.000Z",
+            "#YUQVVVLQ": "20260815T142157.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260814T202710.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
@@ -117,7 +117,7 @@
             "#UQV90UP09": "20260810T190628.000Z",
             "#JV80YYJRJ": "20260815T115554.000Z",
             "#VP8P9UG8V": "20260815T001451.000Z",
-            "#G9QR0YVU": "20260815T064819.000Z",
+            "#G9QR0YVU": "20260815T143033.000Z",
             "#200PGVGQ9U": "20260811T201941.000Z",
             "#RR0GV9L00": "20260815T135258.000Z",
             "#2JQUVJUUG": "20260813T213647.000Z"
@@ -5653,7 +5653,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "Denis"
@@ -5662,6 +5662,12 @@
                 "2VJR80RL"
             ],
             "recent_matches": [
+                {
+                    "time": "20260815T143015.000Z",
+                    "result": "win",
+                    "player": "Denis",
+                    "tag": "2VJR80RL"
+                },
                 {
                     "time": "20260814T124813.000Z",
                     "result": "win",
@@ -381065,6 +381071,52 @@
                     "id": 26000031,
                     "name": "Fire Spirit",
                     "icon": "https://api-assets.clashroyale.com/cards/300/16-BqusVvynIgYI8_Jci3LDC-r8AI_xaIYLgXqtlmS8.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000009-26000017-26000018-26000025-26000039-26000041-28000008-28000011": {
+            "cards": [
+                {
+                    "id": 26000009,
+                    "name": "Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/npdmCnET7jmVjJvjJQkFnNSNnDxYHDBigbvIAloFMds.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 26000039,
+                    "name": "Mega Minion",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/-T_e4YLbuhPBKbYnBwQfXgynNpp5eOIN_0RracYwL9c.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000025,
+                    "name": "Guards",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/1ArKfLJxYo6_NU_S9cAeIrfbXqWH0oULVJXedxBXQlU.png"
                 }
             ],
             "seen": 1,
