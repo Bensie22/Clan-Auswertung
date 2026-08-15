@@ -71,12 +71,12 @@
       "priority": 2
     },
     {
-      "name": "Jackhammer",
+      "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "OneAndOnly",
+      "name": "Jackhammer",
       "scenario": "TOP",
       "priority": 2
     },
@@ -228,13 +228,13 @@
       "status": "STARK"
     },
     {
-      "name": "Jackhammer",
-      "score": 90.22,
+      "name": "OneAndOnly",
+      "score": 90.0,
       "status": "STARK"
     },
     {
-      "name": "OneAndOnly",
-      "score": 90.0,
+      "name": "Jackhammer",
+      "score": 89.95,
       "status": "STARK"
     },
     {
@@ -480,13 +480,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Jackhammer",
-      "score": 90.22,
+      "name": "OneAndOnly",
+      "score": 90.0,
       "tip": "Weiter so"
     },
     {
-      "name": "OneAndOnly",
-      "score": 90.0,
+      "name": "Jackhammer",
+      "score": 89.95,
       "tip": "Weiter so"
     },
     {
@@ -854,24 +854,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Jackhammer",
-        "player_tag": "#2CJYG9UG",
-        "role": "member",
-        "score": 90.22,
-        "strikes": 0,
-        "donations": 185,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "OneAndOnly",
         "player_tag": "#8P0J8P0L",
         "role": "member",
         "score": 90.0,
         "strikes": 0,
         "donations": 399,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Jackhammer",
+        "player_tag": "#2CJYG9UG",
+        "role": "member",
+        "score": 89.95,
+        "strikes": 0,
+        "donations": 185,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1051,7 +1051,7 @@
         "role": "member",
         "score": 86.97,
         "strikes": 0,
-        "donations": 842,
+        "donations": 850,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
