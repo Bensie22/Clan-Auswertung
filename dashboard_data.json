@@ -36,12 +36,12 @@
       "priority": 2
     },
     {
-      "name": "Erastus",
+      "name": "Citykingalex",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Citykingalex",
+      "name": "Erastus",
       "scenario": "TOP",
       "priority": 2
     },
@@ -116,17 +116,17 @@
       "priority": 2
     },
     {
-      "name": "Wario",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "shorttrack alex",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "April#",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Wario",
       "scenario": "TOP",
       "priority": 2
     },
@@ -188,17 +188,17 @@
       "status": "STARK"
     },
     {
-      "name": "Erastus",
-      "score": 93.15,
-      "status": "STARK"
-    },
-    {
       "name": "Citykingalex",
       "score": 93.02,
       "status": "STARK"
     },
     {
       "name": "mauza",
+      "score": 92.75,
+      "status": "STARK"
+    },
+    {
+      "name": "Erastus",
       "score": 92.75,
       "status": "STARK"
     },
@@ -278,11 +278,6 @@
       "status": "STARK"
     },
     {
-      "name": "Wario",
-      "score": 87.9,
-      "status": "STARK"
-    },
-    {
       "name": "shorttrack alex",
       "score": 87.85,
       "status": "STARK"
@@ -290,6 +285,11 @@
     {
       "name": "April#",
       "score": 87.68,
+      "status": "STARK"
+    },
+    {
+      "name": "Wario",
+      "score": 87.64,
       "status": "STARK"
     },
     {
@@ -384,8 +384,8 @@
     },
     {
       "name": "Merlin1659",
-      "score": 80.1,
-      "status": "STARK"
+      "score": 79.83,
+      "status": "OK"
     },
     {
       "name": "Chico",
@@ -440,17 +440,17 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Erastus",
-      "score": 93.15,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Citykingalex",
       "score": 93.02,
       "tip": "Weiter so"
     },
     {
       "name": "mauza",
+      "score": 92.75,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Erastus",
       "score": 92.75,
       "tip": "Weiter so"
     },
@@ -530,11 +530,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Wario",
-      "score": 87.9,
-      "tip": "Weiter so"
-    },
-    {
       "name": "shorttrack alex",
       "score": 87.85,
       "tip": "Weiter so"
@@ -542,6 +537,11 @@
     {
       "name": "April#",
       "score": 87.68,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Wario",
+      "score": 87.64,
       "tip": "Weiter so"
     },
     {
@@ -636,7 +636,7 @@
     },
     {
       "name": "Merlin1659",
-      "score": 80.1,
+      "score": 79.83,
       "tip": "Weiter so"
     },
     {
@@ -725,7 +725,7 @@
         "role": "member",
         "score": 3.33,
         "strikes": 0,
-        "donations": 174,
+        "donations": 210,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -763,21 +763,9 @@
         "role": "member",
         "score": 93.87,
         "strikes": 0,
-        "donations": 226,
+        "donations": 236,
         "participation_count": 1,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Erastus",
-        "player_tag": "#Q8L0RJ8Y8",
-        "role": "member",
-        "score": 93.15,
-        "strikes": 0,
-        "donations": 511,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -790,6 +778,18 @@
         "donations": 195,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Erastus",
+        "player_tag": "#Q8L0RJ8Y8",
+        "role": "member",
+        "score": 92.75,
+        "strikes": 0,
+        "donations": 511,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -847,7 +847,7 @@
         "role": "member",
         "score": 91.95,
         "strikes": 0,
-        "donations": 262,
+        "donations": 272,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -974,18 +974,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Wario",
-        "player_tag": "#2PUQYJC02",
-        "role": "member",
-        "score": 87.9,
-        "strikes": 0,
-        "donations": 108,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "shorttrack alex",
         "player_tag": "#LGUGQ0PRG",
         "role": "member",
@@ -1006,6 +994,18 @@
         "donations": 374,
         "participation_count": 10,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Wario",
+        "player_tag": "#2PUQYJC02",
+        "role": "member",
+        "score": 87.64,
+        "strikes": 0,
+        "donations": 108,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -1051,7 +1051,7 @@
         "role": "member",
         "score": 86.97,
         "strikes": 0,
-        "donations": 712,
+        "donations": 748,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
