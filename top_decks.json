@@ -19,7 +19,7 @@
             "#QULCQGGG": "20260814T205703.000Z",
             "#JRGC9RRQG": "20260815T103826.000Z",
             "#QVQGCV8Y9": "20260815T094159.000Z",
-            "#Q8L0RJ8Y8": "20260815T082259.000Z",
+            "#Q8L0RJ8Y8": "20260815T174516.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260815T145141.000Z",
             "#LLQQJCLC": "20260815T130242.000Z",
@@ -105,7 +105,7 @@
             "#VCYQ9L9QV": "20260729T140933.000Z",
             "#GRR999Q29": "20260801T003732.000Z",
             "#202QYVY8CC": "20260810T095353.000Z",
-            "#PLG90C0C": "20260815T173828.000Z",
+            "#PLG90C0C": "20260815T174900.000Z",
             "#LGUGQ0PRG": "20260815T151244.000Z",
             "#UVGRVC8LU": "20260809T181113.000Z",
             "#PVGU89PUL": "20260815T103600.000Z",
@@ -119,7 +119,7 @@
             "#VP8P9UG8V": "20260815T001451.000Z",
             "#G9QR0YVU": "20260815T152802.000Z",
             "#200PGVGQ9U": "20260811T201941.000Z",
-            "#RR0GV9L00": "20260815T173803.000Z",
+            "#RR0GV9L00": "20260815T174443.000Z",
             "#2JQUVJUUG": "20260813T213647.000Z"
         }
     },
@@ -4193,7 +4193,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
                 }
             ],
-            "wins": 5,
+            "wins": 6,
             "losses": 0,
             "players": [
                 "Erastus"
@@ -4202,6 +4202,12 @@
                 "Q8L0RJ8Y8"
             ],
             "recent_matches": [
+                {
+                    "time": "20260815T174516.000Z",
+                    "result": "win",
+                    "player": "Erastus",
+                    "tag": "Q8L0RJ8Y8"
+                },
                 {
                     "time": "20260815T070141.000Z",
                     "result": "win",
@@ -381863,6 +381869,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000001-26000002-26000004-26000005-26000017-26000050-28000004-28000005": {
+            "cards": [
+                {
+                    "id": 26000050,
+                    "name": "Royal Ghost",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3En2cz0ISQAaMTHY3hj3rTveFN2kJYq-H4VxvdJNvCM.png"
+                },
+                {
+                    "id": 26000002,
+                    "name": "Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X_DQUye_OaS3QN6VC9CPw05Fit7wvSm3XegXIXKP--0.png"
+                },
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                },
+                {
+                    "id": 28000005,
+                    "name": "Freeze",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
