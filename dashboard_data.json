@@ -116,17 +116,17 @@
       "priority": 2
     },
     {
+      "name": "Dolphin",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Wario",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "April#",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
     },
@@ -146,12 +146,12 @@
       "priority": 2
     },
     {
-      "name": "LazyFrog",
+      "name": "HardcoreSoldier",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "HardcoreSoldier",
+      "name": "LazyFrog",
       "scenario": "TOP",
       "priority": 2
     },
@@ -278,17 +278,17 @@
       "status": "STARK"
     },
     {
+      "name": "Dolphin",
+      "score": 87.82,
+      "status": "STARK"
+    },
+    {
       "name": "Wario",
       "score": 87.77,
       "status": "STARK"
     },
     {
       "name": "April#",
-      "score": 87.68,
-      "status": "STARK"
-    },
-    {
-      "name": "Dolphin",
       "score": 87.68,
       "status": "STARK"
     },
@@ -308,13 +308,13 @@
       "status": "STARK"
     },
     {
-      "name": "LazyFrog",
-      "score": 86.97,
+      "name": "HardcoreSoldier",
+      "score": 87.06,
       "status": "STARK"
     },
     {
-      "name": "HardcoreSoldier",
-      "score": 86.92,
+      "name": "LazyFrog",
+      "score": 86.97,
       "status": "STARK"
     },
     {
@@ -349,7 +349,7 @@
     },
     {
       "name": "Elvi",
-      "score": 84.68,
+      "score": 84.42,
       "status": "STARK"
     },
     {
@@ -530,17 +530,17 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Dolphin",
+      "score": 87.82,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Wario",
       "score": 87.77,
       "tip": "Weiter so"
     },
     {
       "name": "April#",
-      "score": 87.68,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Dolphin",
       "score": 87.68,
       "tip": "Weiter so"
     },
@@ -560,13 +560,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "LazyFrog",
-      "score": 86.97,
+      "name": "HardcoreSoldier",
+      "score": 87.06,
       "tip": "Weiter so"
     },
     {
-      "name": "HardcoreSoldier",
-      "score": 86.92,
+      "name": "LazyFrog",
+      "score": 86.97,
       "tip": "Weiter so"
     },
     {
@@ -601,7 +601,7 @@
     },
     {
       "name": "Elvi",
-      "score": 84.68,
+      "score": 84.42,
       "tip": "Weiter so"
     },
     {
@@ -974,6 +974,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Dolphin",
+        "player_tag": "#2U09UULRR",
+        "role": "member",
+        "score": 87.82,
+        "strikes": 0,
+        "donations": 114,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Wario",
         "player_tag": "#2PUQYJC02",
         "role": "member",
@@ -998,24 +1010,12 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Dolphin",
-        "player_tag": "#2U09UULRR",
-        "role": "member",
-        "score": 87.68,
-        "strikes": 0,
-        "donations": 114,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "SankKiI9",
         "player_tag": "#89CJRRV8",
         "role": "member",
         "score": 87.59,
         "strikes": 0,
-        "donations": 763,
+        "donations": 789,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
@@ -1046,6 +1046,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "HardcoreSoldier",
+        "player_tag": "#GRGCY0R8",
+        "role": "member",
+        "score": 87.06,
+        "strikes": 0,
+        "donations": 410,
+        "participation_count": 10,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "LazyFrog",
         "player_tag": "#22Q920RLR",
         "role": "member",
@@ -1054,18 +1066,6 @@
         "donations": 850,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "HardcoreSoldier",
-        "player_tag": "#GRGCY0R8",
-        "role": "member",
-        "score": 86.92,
-        "strikes": 0,
-        "donations": 402,
-        "participation_count": 10,
-        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
