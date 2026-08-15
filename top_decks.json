@@ -1,7 +1,7 @@
 {
     "_metadata": {
         "last_battles": {
-            "#22Q920RLR": "20260815T091630.000Z",
+            "#22Q920RLR": "20260815T093614.000Z",
             "#L8PV090J": "20260814T202046.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260815T033236.000Z",
@@ -18,7 +18,7 @@
             "#PPR2QQC0U": "20260815T075735.000Z",
             "#QULCQGGG": "20260814T205703.000Z",
             "#JRGC9RRQG": "20260815T084443.000Z",
-            "#QVQGCV8Y9": "20260813T171204.000Z",
+            "#QVQGCV8Y9": "20260815T093837.000Z",
             "#Q8L0RJ8Y8": "20260815T082259.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260815T080742.000Z",
@@ -48,7 +48,7 @@
             "#LVUGLUCP9": "20260814T174746.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
             "#V9GYJQ0J9": "",
-            "#URJ0LUYPV": "20260815T092828.000Z",
+            "#URJ0LUYPV": "20260815T093121.000Z",
             "#Q2GRGLQR": "20260815T075020.000Z",
             "#J9RQPGLVP": "20260713T204019.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20260815T081022.000Z",
+            "#YUQVVVLQ": "20260815T093913.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260814T202710.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
@@ -1207,7 +1207,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/2GKMkBrArZXgQxf2ygFjDs4VvGYPbx8F6Lj_68iVhIM.png"
                 }
             ],
-            "wins": 6,
+            "wins": 7,
             "losses": 0,
             "players": [
                 "Rainer"
@@ -1216,6 +1216,12 @@
                 "QVQGCV8Y9"
             ],
             "recent_matches": [
+                {
+                    "time": "20260815T093837.000Z",
+                    "result": "win",
+                    "player": "Rainer",
+                    "tag": "QVQGCV8Y9"
+                },
                 {
                     "time": "20260813T120400.000Z",
                     "result": "win",
@@ -379737,6 +379743,52 @@
                     "id": 26000059,
                     "name": "Royal Hogs",
                     "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000000-26000001-26000026-26000033-26000056-26000102-27000006-28000018": {
+            "cards": [
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000102,
+                    "name": "Berserker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NA6W8S1JBYBlOPwD3dNvJLFvVDKq-UuBs_J3i3ewLFI.png"
+                },
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 26000033,
+                    "name": "Sparky",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/2GKMkBrArZXgQxf2ygFjDs4VvGYPbx8F6Lj_68iVhIM.png"
+                },
+                {
+                    "id": 28000018,
+                    "name": "Royal Delivery",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LPg7AGjGI3_xmi7gLLgGC50yKM1jJ2teWkZfoHJcIZo.png"
                 }
             ],
             "seen": 1,
