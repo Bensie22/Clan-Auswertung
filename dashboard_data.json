@@ -116,11 +116,6 @@
       "priority": 2
     },
     {
-      "name": "shorttrack alex",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
@@ -137,6 +132,11 @@
     },
     {
       "name": "SankKiI9",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "shorttrack alex",
       "scenario": "TOP",
       "priority": 2
     },
@@ -249,7 +249,7 @@
     },
     {
       "name": "Swordfish",
-      "score": 89.1,
+      "score": 89.24,
       "status": "STARK"
     },
     {
@@ -278,11 +278,6 @@
       "status": "STARK"
     },
     {
-      "name": "shorttrack alex",
-      "score": 87.85,
-      "status": "STARK"
-    },
-    {
       "name": "Dolphin",
       "score": 87.82,
       "status": "STARK"
@@ -300,6 +295,11 @@
     {
       "name": "SankKiI9",
       "score": 87.59,
+      "status": "STARK"
+    },
+    {
+      "name": "shorttrack alex",
+      "score": 87.45,
       "status": "STARK"
     },
     {
@@ -501,7 +501,7 @@
     },
     {
       "name": "Swordfish",
-      "score": 89.1,
+      "score": 89.24,
       "tip": "Weiter so"
     },
     {
@@ -530,11 +530,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "shorttrack alex",
-      "score": 87.85,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Dolphin",
       "score": 87.82,
       "tip": "Weiter so"
@@ -552,6 +547,11 @@
     {
       "name": "SankKiI9",
       "score": 87.59,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "shorttrack alex",
+      "score": 87.45,
       "tip": "Weiter so"
     },
     {
@@ -725,7 +725,7 @@
         "role": "member",
         "score": 2.8,
         "strikes": 0,
-        "donations": 244,
+        "donations": 262,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -905,9 +905,9 @@
         "name": "Swordfish",
         "player_tag": "#2CPRGY8G",
         "role": "member",
-        "score": 89.1,
+        "score": 89.24,
         "strikes": 0,
-        "donations": 106,
+        "donations": 140,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -974,18 +974,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "shorttrack alex",
-        "player_tag": "#LGUGQ0PRG",
-        "role": "member",
-        "score": 87.85,
-        "strikes": 0,
-        "donations": 370,
-        "participation_count": 2,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Dolphin",
         "player_tag": "#2U09UULRR",
         "role": "member",
@@ -1029,6 +1017,18 @@
         "strikes": 0,
         "donations": 747,
         "participation_count": 10,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "shorttrack alex",
+        "player_tag": "#LGUGQ0PRG",
+        "role": "member",
+        "score": 87.45,
+        "strikes": 0,
+        "donations": 378,
+        "participation_count": 2,
         "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
