@@ -34,7 +34,7 @@
             "#JUUR8UGL8": "20260815T133041.000Z",
             "#2U09UULRR": "20260815T172456.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
-            "#8QYYL8LCQ": "20260815T232904.000Z",
+            "#8QYYL8LCQ": "20260815T234041.000Z",
             "#8P0J8P0L": "20260815T102230.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260814T230551.000Z",
@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20260815T232923.000Z",
+            "#YUQVVVLQ": "20260815T234034.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260815T230523.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
@@ -116,7 +116,7 @@
             "#2V2QYJGCG": "20260804T011752.000Z",
             "#UQV90UP09": "20260810T190628.000Z",
             "#JV80YYJRJ": "20260815T210330.000Z",
-            "#VP8P9UG8V": "20260815T001451.000Z",
+            "#VP8P9UG8V": "20260815T234022.000Z",
             "#G9QR0YVU": "20260815T152802.000Z",
             "#200PGVGQ9U": "20260811T201941.000Z",
             "#RR0GV9L00": "20260815T200930.000Z",
@@ -2933,7 +2933,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
                 }
             ],
-            "wins": 4,
+            "wins": 5,
             "losses": 0,
             "players": [
                 "SirHenry87"
@@ -2942,6 +2942,12 @@
                 "8QYYL8LCQ"
             ],
             "recent_matches": [
+                {
+                    "time": "20260815T234041.000Z",
+                    "result": "win",
+                    "player": "SirHenry87",
+                    "tag": "8QYYL8LCQ"
+                },
                 {
                     "time": "20260814T232218.000Z",
                     "result": "win",
@@ -382963,6 +382969,52 @@
                     "id": 26000047,
                     "name": "Royal Recruits",
                     "icon": "https://api-assets.clashroyale.com/cards/300/jcNyYGUiXXNz3kuz8NBkHNKNREQKraXlb_Ts7rhCIdM.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000012-26000020-26000022-26000031-26000033-26000040-28000012-28000013": {
+            "cards": [
+                {
+                    "id": 26000022,
+                    "name": "Minion Horde",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Wyjq5l0IXHTkX9Rmpap6HaH08MvjbxFp1xBO9a47YSI.png"
+                },
+                {
+                    "id": 26000033,
+                    "name": "Sparky",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/2GKMkBrArZXgQxf2ygFjDs4VvGYPbx8F6Lj_68iVhIM.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 26000020,
+                    "name": "Giant Skeleton",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0p0gd0XaVRu1Hb1iSG1hTYbz2AN6aEiZnhaAib5O8Z8.png"
+                },
+                {
+                    "id": 28000013,
+                    "name": "Clone",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mHVCet-1TkwWq-pxVIU2ZWY9_2z7Z7wtP25ArEUsP_g.png"
+                },
+                {
+                    "id": 26000031,
+                    "name": "Fire Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/16-BqusVvynIgYI8_Jci3LDC-r8AI_xaIYLgXqtlmS8.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 28000012,
+                    "name": "Tornado",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QJB-QK1QJHdw4hjpAwVSyZBozc2ZWAR9pQ-SMUyKaT0.png"
                 }
             ],
             "seen": 1,
