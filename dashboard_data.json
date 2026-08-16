@@ -169,6 +169,11 @@
       "name": "seroo",
       "scenario": "TOP",
       "priority": 2
+    },
+    {
+      "name": "bes",
+      "scenario": "TOP",
+      "priority": 2
     }
   ],
   "smart": [
@@ -328,6 +333,11 @@
       "status": "STARK"
     },
     {
+      "name": "bes",
+      "score": 85.47,
+      "status": "STARK"
+    },
+    {
       "name": "Nati",
       "score": 85.44,
       "status": "STARK"
@@ -335,11 +345,6 @@
     {
       "name": "Desteoyer",
       "score": 85.17,
-      "status": "STARK"
-    },
-    {
-      "name": "bes",
-      "score": 84.94,
       "status": "STARK"
     },
     {
@@ -580,6 +585,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "bes",
+      "score": 85.47,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Nati",
       "score": 85.44,
       "tip": "Weiter so"
@@ -587,11 +597,6 @@
     {
       "name": "Desteoyer",
       "score": 85.17,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "bes",
-      "score": 84.94,
       "tip": "Weiter so"
     },
     {
@@ -962,7 +967,7 @@
         "role": "member",
         "score": 87.85,
         "strikes": 0,
-        "donations": 316,
+        "donations": 324,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1097,6 +1102,18 @@
         "donations": 154,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "bes",
+        "player_tag": "#LLQQJCLC",
+        "role": "member",
+        "score": 85.47,
+        "strikes": 0,
+        "donations": 277,
+        "participation_count": 10,
+        "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
