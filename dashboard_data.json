@@ -61,12 +61,12 @@
       "priority": 2
     },
     {
-      "name": "OmniOni",
+      "name": "agostini",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "agostini",
+      "name": "OmniOni",
       "scenario": "TOP",
       "priority": 2
     },
@@ -208,13 +208,13 @@
       "status": "STARK"
     },
     {
-      "name": "OmniOni",
-      "score": 91.68,
+      "name": "agostini",
+      "score": 91.6,
       "status": "STARK"
     },
     {
-      "name": "agostini",
-      "score": 91.6,
+      "name": "OmniOni",
+      "score": 91.55,
       "status": "STARK"
     },
     {
@@ -399,7 +399,7 @@
     },
     {
       "name": "anna-maria",
-      "score": 7.33,
+      "score": 9.47,
       "status": "RISIKO"
     },
     {
@@ -460,13 +460,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "OmniOni",
-      "score": 91.68,
+      "name": "agostini",
+      "score": 91.6,
       "tip": "Weiter so"
     },
     {
-      "name": "agostini",
-      "score": 91.6,
+      "name": "OmniOni",
+      "score": 91.55,
       "tip": "Weiter so"
     },
     {
@@ -651,7 +651,7 @@
     },
     {
       "name": "anna-maria",
-      "score": 7.33,
+      "score": 9.47,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
@@ -730,7 +730,7 @@
         "name": "anna-maria",
         "player_tag": "#RR0GV9L00",
         "role": "member",
-        "score": 7.33,
+        "score": 9.47,
         "strikes": 0,
         "donations": 134,
         "participation_count": 0,
@@ -825,18 +825,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "OmniOni",
-        "player_tag": "#UUPCULU9V",
-        "role": "member",
-        "score": 91.68,
-        "strikes": 0,
-        "donations": 772,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "agostini",
         "player_tag": "#P2YQ2QQUV",
         "role": "member",
@@ -845,6 +833,18 @@
         "donations": 853,
         "participation_count": 10,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "OmniOni",
+        "player_tag": "#UUPCULU9V",
+        "role": "member",
+        "score": 91.55,
+        "strikes": 0,
+        "donations": 782,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
