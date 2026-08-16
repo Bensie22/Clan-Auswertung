@@ -228,11 +228,6 @@
       "status": "STARK"
     },
     {
-      "name": "Johan",
-      "score": 89.85,
-      "status": "STARK"
-    },
-    {
       "name": "Jackhammer",
       "score": 89.82,
       "status": "STARK"
@@ -240,6 +235,11 @@
     {
       "name": "Swordfish",
       "score": 89.77,
+      "status": "STARK"
+    },
+    {
+      "name": "Johan",
+      "score": 89.59,
       "status": "STARK"
     },
     {
@@ -480,11 +480,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Johan",
-      "score": 89.85,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Jackhammer",
       "score": 89.82,
       "tip": "Weiter so"
@@ -492,6 +487,11 @@
     {
       "name": "Swordfish",
       "score": 89.77,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Johan",
+      "score": 89.59,
       "tip": "Weiter so"
     },
     {
@@ -861,18 +861,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Johan",
-        "player_tag": "#UQVCVVVJL",
-        "role": "member",
-        "score": 89.85,
-        "strikes": 0,
-        "donations": 46,
-        "participation_count": 10,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Jackhammer",
         "player_tag": "#2CJYG9UG",
         "role": "member",
@@ -893,6 +881,18 @@
         "donations": 178,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Johan",
+        "player_tag": "#UQVCVVVJL",
+        "role": "member",
+        "score": 89.59,
+        "strikes": 0,
+        "donations": 46,
+        "participation_count": 10,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
