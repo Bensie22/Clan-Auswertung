@@ -111,17 +111,17 @@
       "priority": 2
     },
     {
-      "name": "Reklaminator",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "hi2oka",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Dolphin",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Reklaminator",
       "scenario": "TOP",
       "priority": 2
     },
@@ -273,11 +273,6 @@
       "status": "STARK"
     },
     {
-      "name": "Reklaminator",
-      "score": 88.03,
-      "status": "STARK"
-    },
-    {
       "name": "hi2oka",
       "score": 87.85,
       "status": "STARK"
@@ -285,6 +280,11 @@
     {
       "name": "Dolphin",
       "score": 87.82,
+      "status": "STARK"
+    },
+    {
+      "name": "Reklaminator",
+      "score": 87.76,
       "status": "STARK"
     },
     {
@@ -358,6 +358,11 @@
       "status": "STARK"
     },
     {
+      "name": "Rainer",
+      "score": 83.43,
+      "status": "STARK"
+    },
+    {
       "name": "lukasl 5",
       "score": 83.42,
       "status": "STARK"
@@ -365,11 +370,6 @@
     {
       "name": "rote sonne",
       "score": 83.3,
-      "status": "STARK"
-    },
-    {
-      "name": "Rainer",
-      "score": 82.9,
       "status": "STARK"
     },
     {
@@ -525,11 +525,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Reklaminator",
-      "score": 88.03,
-      "tip": "Weiter so"
-    },
-    {
       "name": "hi2oka",
       "score": 87.85,
       "tip": "Weiter so"
@@ -537,6 +532,11 @@
     {
       "name": "Dolphin",
       "score": 87.82,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Reklaminator",
+      "score": 87.76,
       "tip": "Weiter so"
     },
     {
@@ -610,6 +610,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Rainer",
+      "score": 83.43,
+      "tip": "Weiter so"
+    },
+    {
       "name": "lukasl 5",
       "score": 83.42,
       "tip": "Weiter so"
@@ -617,11 +622,6 @@
     {
       "name": "rote sonne",
       "score": 83.3,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Rainer",
-      "score": 82.9,
       "tip": "Weiter so"
     },
     {
@@ -725,7 +725,7 @@
         "role": "member",
         "score": 2.8,
         "strikes": 0,
-        "donations": 292,
+        "donations": 312,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -962,18 +962,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Reklaminator",
-        "player_tag": "#P0G2GYJQ9",
-        "role": "member",
-        "score": 88.03,
-        "strikes": 0,
-        "donations": 223,
-        "participation_count": 7,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "hi2oka",
         "player_tag": "#UJ2P9UYUV",
         "role": "member",
@@ -991,9 +979,21 @@
         "role": "member",
         "score": 87.82,
         "strikes": 0,
-        "donations": 134,
+        "donations": 144,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Reklaminator",
+        "player_tag": "#P0G2GYJQ9",
+        "role": "member",
+        "score": 87.76,
+        "strikes": 0,
+        "donations": 223,
+        "participation_count": 7,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -1003,7 +1003,7 @@
         "role": "member",
         "score": 87.5,
         "strikes": 0,
-        "donations": 142,
+        "donations": 152,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
