@@ -76,12 +76,12 @@
       "priority": 2
     },
     {
-      "name": "Jackhammer",
+      "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Swordfish",
+      "name": "Jackhammer",
       "scenario": "TOP",
       "priority": 2
     },
@@ -179,7 +179,7 @@
     },
     {
       "name": "Deniz",
-      "score": 94.0,
+      "score": 93.73,
       "status": "STARK"
     },
     {
@@ -228,11 +228,6 @@
       "status": "STARK"
     },
     {
-      "name": "Jackhammer",
-      "score": 89.82,
-      "status": "STARK"
-    },
-    {
       "name": "Swordfish",
       "score": 89.77,
       "status": "STARK"
@@ -240,6 +235,11 @@
     {
       "name": "Johan",
       "score": 89.59,
+      "status": "STARK"
+    },
+    {
+      "name": "Jackhammer",
+      "score": 89.55,
       "status": "STARK"
     },
     {
@@ -431,7 +431,7 @@
     },
     {
       "name": "Deniz",
-      "score": 94.0,
+      "score": 93.73,
       "tip": "Weiter so"
     },
     {
@@ -480,11 +480,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Jackhammer",
-      "score": 89.82,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Swordfish",
       "score": 89.77,
       "tip": "Weiter so"
@@ -492,6 +487,11 @@
     {
       "name": "Johan",
       "score": 89.59,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Jackhammer",
+      "score": 89.55,
       "tip": "Weiter so"
     },
     {
@@ -756,7 +756,7 @@
         "name": "Deniz",
         "player_tag": "#JV80YYJRJ",
         "role": "member",
-        "score": 94.0,
+        "score": 93.73,
         "strikes": 0,
         "donations": 254,
         "participation_count": 1,
@@ -842,7 +842,7 @@
         "role": "member",
         "score": 91.6,
         "strikes": 0,
-        "donations": 833,
+        "donations": 853,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
@@ -855,18 +855,6 @@
         "score": 90.4,
         "strikes": 0,
         "donations": 497,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Jackhammer",
-        "player_tag": "#2CJYG9UG",
-        "role": "member",
-        "score": 89.82,
-        "strikes": 0,
-        "donations": 255,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -893,6 +881,18 @@
         "donations": 46,
         "participation_count": 10,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Jackhammer",
+        "player_tag": "#2CJYG9UG",
+        "role": "member",
+        "score": 89.55,
+        "strikes": 0,
+        "donations": 275,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -998,7 +998,7 @@
         "role": "member",
         "score": 87.45,
         "strikes": 0,
-        "donations": 867,
+        "donations": 897,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
