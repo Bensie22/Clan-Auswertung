@@ -116,12 +116,12 @@
       "priority": 2
     },
     {
-      "name": "Reklaminator",
+      "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Dolphin",
+      "name": "Reklaminator",
       "scenario": "TOP",
       "priority": 2
     },
@@ -278,13 +278,13 @@
       "status": "STARK"
     },
     {
-      "name": "Reklaminator",
-      "score": 87.76,
+      "name": "Dolphin",
+      "score": 87.68,
       "status": "STARK"
     },
     {
-      "name": "Dolphin",
-      "score": 87.68,
+      "name": "Reklaminator",
+      "score": 87.63,
       "status": "STARK"
     },
     {
@@ -530,13 +530,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Reklaminator",
-      "score": 87.76,
+      "name": "Dolphin",
+      "score": 87.68,
       "tip": "Weiter so"
     },
     {
-      "name": "Dolphin",
-      "score": 87.68,
+      "name": "Reklaminator",
+      "score": 87.63,
       "tip": "Weiter so"
     },
     {
@@ -974,18 +974,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Reklaminator",
-        "player_tag": "#P0G2GYJQ9",
-        "role": "member",
-        "score": 87.76,
-        "strikes": 0,
-        "donations": 223,
-        "participation_count": 7,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Dolphin",
         "player_tag": "#2U09UULRR",
         "role": "member",
@@ -994,6 +982,18 @@
         "donations": 164,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Reklaminator",
+        "player_tag": "#P0G2GYJQ9",
+        "role": "member",
+        "score": 87.63,
+        "strikes": 0,
+        "donations": 223,
+        "participation_count": 7,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
