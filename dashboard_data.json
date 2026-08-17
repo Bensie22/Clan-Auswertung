@@ -1,21 +1,6 @@
 {
   "full_auto": [
     {
-      "name": "likemike",
-      "scenario": "KEINE_TEILNAHME",
-      "priority": 4
-    },
-    {
-      "name": "KurdiHyperYT",
-      "scenario": "KEINE_TEILNAHME",
-      "priority": 4
-    },
-    {
-      "name": "beho_pro",
-      "scenario": "KEINE_TEILNAHME",
-      "priority": 4
-    },
-    {
       "name": "prolike14",
       "scenario": "STRIKE",
       "priority": 4
@@ -411,21 +396,6 @@
       "name": "prolike14",
       "score": 2.93,
       "status": "RISIKO"
-    },
-    {
-      "name": "likemike",
-      "score": 0.0,
-      "status": "RISIKO"
-    },
-    {
-      "name": "KurdiHyperYT",
-      "score": 0.0,
-      "status": "RISIKO"
-    },
-    {
-      "name": "beho_pro",
-      "score": 0.0,
-      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -663,62 +633,11 @@
       "name": "prolike14",
       "score": 2.93,
       "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "likemike",
-      "score": 0.0,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "KurdiHyperYT",
-      "score": 0.0,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "beho_pro",
-      "score": 0.0,
-      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
-      {
-        "name": "likemike",
-        "player_tag": "#VP8P9UG8V",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 0,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
-        "name": "KurdiHyperYT",
-        "player_tag": "#2JQUVJUUG",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 0,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
-        "name": "beho_pro",
-        "player_tag": "#UQV90UP09",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 18,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
       {
         "name": "prolike14",
         "player_tag": "#G9QR0YVU",
