@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "Timi",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "elazeto",
       "scenario": "TOP",
       "priority": 2
@@ -396,6 +401,11 @@
       "name": "mad 3ad y gawad",
       "score": 66.8,
       "status": "OK"
+    },
+    {
+      "name": "Timi",
+      "score": 0.0,
+      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -633,11 +643,29 @@
       "name": "mad 3ad y gawad",
       "score": 66.8,
       "tip": "Konstanz verbessern"
+    },
+    {
+      "name": "Timi",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
-    "remove": [],
+    "remove": [
+      {
+        "name": "Timi",
+        "player_tag": "#JGYCRU2YP",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 8,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      }
+    ],
     "core": [
       {
         "name": "Deniz",
