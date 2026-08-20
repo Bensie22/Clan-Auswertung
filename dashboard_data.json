@@ -86,11 +86,6 @@
       "priority": 2
     },
     {
-      "name": "SirHenry87",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "HardcoreSoldier",
       "scenario": "TOP",
       "priority": 2
@@ -102,6 +97,11 @@
     },
     {
       "name": "April#",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "SirHenry87",
       "scenario": "TOP",
       "priority": 2
     },
@@ -248,11 +248,6 @@
       "status": "STARK"
     },
     {
-      "name": "SirHenry87",
-      "score": 88.87,
-      "status": "STARK"
-    },
-    {
       "name": "HardcoreSoldier",
       "score": 88.84,
       "status": "STARK"
@@ -270,6 +265,11 @@
     {
       "name": "April#",
       "score": 88.48,
+      "status": "STARK"
+    },
+    {
+      "name": "SirHenry87",
+      "score": 88.47,
       "status": "STARK"
     },
     {
@@ -490,11 +490,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "SirHenry87",
-      "score": 88.87,
-      "tip": "Weiter so"
-    },
-    {
       "name": "HardcoreSoldier",
       "score": 88.84,
       "tip": "Weiter so"
@@ -512,6 +507,11 @@
     {
       "name": "April#",
       "score": 88.48,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "SirHenry87",
+      "score": 88.47,
       "tip": "Weiter so"
     },
     {
@@ -855,18 +855,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "SirHenry87",
-        "player_tag": "#8QYYL8LCQ",
-        "role": "member",
-        "score": 88.87,
-        "strikes": 0,
-        "donations": 284,
-        "participation_count": 10,
-        "trend": "🟡🟡🟡🟡🟡",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "HardcoreSoldier",
         "player_tag": "#GRGCY0R8",
         "role": "member",
@@ -911,6 +899,18 @@
         "donations": 278,
         "participation_count": 10,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "SirHenry87",
+        "player_tag": "#8QYYL8LCQ",
+        "role": "member",
+        "score": 88.47,
+        "strikes": 0,
+        "donations": 284,
+        "participation_count": 10,
+        "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
