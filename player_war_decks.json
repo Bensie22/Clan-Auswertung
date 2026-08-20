@@ -3,6 +3,54 @@
         "name": "Swordfish",
         "battles": [
             {
+                "time": "20260820T160925.000Z",
+                "result": "win",
+                "type": "riverRacePvP",
+                "deck_hash": "26000007-26000013-26000018-26000024-26000074-27000003-28000000-28000008",
+                "cards": [
+                    {
+                        "id": 26000024,
+                        "name": "Royal Giant",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/mnlRaNtmfpQx2e6mp70sLd0ND-pKPF70Cf87_agEKg4.png"
+                    },
+                    {
+                        "id": 26000007,
+                        "name": "Witch",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                    },
+                    {
+                        "id": 26000074,
+                        "name": "Golden Knight",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/WJd207D0O1sN-l1FTb8P9KhYL2oF5jY26vRUfTUW3FQ.png"
+                    },
+                    {
+                        "id": 26000018,
+                        "name": "Mini P.E.K.K.A",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                    },
+                    {
+                        "id": 28000008,
+                        "name": "Zap",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                    },
+                    {
+                        "id": 27000003,
+                        "name": "Inferno Tower",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
+                    },
+                    {
+                        "id": 28000000,
+                        "name": "Fireball",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                    },
+                    {
+                        "id": 26000013,
+                        "name": "Bomber",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
+                    }
+                ]
+            },
+            {
                 "time": "20260820T151625.000Z",
                 "result": "loss",
                 "type": "riverRacePvP",
@@ -37165,54 +37213,6 @@
                         "id": 28000000,
                         "name": "Fireball",
                         "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
-                    }
-                ]
-            },
-            {
-                "time": "20260721T160243.000Z",
-                "result": "win",
-                "type": "riverRacePvP",
-                "deck_hash": "26000003-26000007-26000022-26000028-26000057-26000062-28000002-28000018",
-                "cards": [
-                    {
-                        "id": 26000007,
-                        "name": "Witch",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
-                    },
-                    {
-                        "id": 26000057,
-                        "name": "Flying Machine",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/hzKNE3QwFcrSrDDRuVW3QY_OnrDPijSiIp-PsWgFevE.png"
-                    },
-                    {
-                        "id": 26000022,
-                        "name": "Minion Horde",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/Wyjq5l0IXHTkX9Rmpap6HaH08MvjbxFp1xBO9a47YSI.png"
-                    },
-                    {
-                        "id": 26000003,
-                        "name": "Giant",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/Axr4ox5_b7edmLsoHxBX3vmgijAIibuF6RImTbqLlXE.png"
-                    },
-                    {
-                        "id": 26000062,
-                        "name": "Magic Archer",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
-                    },
-                    {
-                        "id": 28000018,
-                        "name": "Royal Delivery",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/LPg7AGjGI3_xmi7gLLgGC50yKM1jJ2teWkZfoHJcIZo.png"
-                    },
-                    {
-                        "id": 26000028,
-                        "name": "Three Musketeers",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/_J2GhbkX3vswaFk1wG-dopwiHyNc_YiPhwroiKF3Mek.png"
-                    },
-                    {
-                        "id": 28000002,
-                        "name": "Rage",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
                     }
                 ]
             }
