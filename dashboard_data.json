@@ -76,17 +76,17 @@
       "priority": 2
     },
     {
+      "name": "Dolphin",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "SirHenry87",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "April#",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
     },
@@ -233,6 +233,11 @@
       "status": "STARK"
     },
     {
+      "name": "Dolphin",
+      "score": 88.88,
+      "status": "STARK"
+    },
+    {
       "name": "SirHenry87",
       "score": 88.87,
       "status": "STARK"
@@ -244,11 +249,6 @@
     },
     {
       "name": "April#",
-      "score": 88.75,
-      "status": "STARK"
-    },
-    {
-      "name": "Dolphin",
       "score": 88.75,
       "status": "STARK"
     },
@@ -353,13 +353,13 @@
       "status": "STARK"
     },
     {
-      "name": "anna-maria",
-      "score": 82.15,
+      "name": "rote sonne",
+      "score": 82.14,
       "status": "STARK"
     },
     {
-      "name": "rote sonne",
-      "score": 82.14,
+      "name": "anna-maria",
+      "score": 81.75,
       "status": "STARK"
     },
     {
@@ -475,6 +475,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Dolphin",
+      "score": 88.88,
+      "tip": "Weiter so"
+    },
+    {
       "name": "SirHenry87",
       "score": 88.87,
       "tip": "Weiter so"
@@ -486,11 +491,6 @@
     },
     {
       "name": "April#",
-      "score": 88.75,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Dolphin",
       "score": 88.75,
       "tip": "Weiter so"
     },
@@ -595,13 +595,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "anna-maria",
-      "score": 82.15,
+      "name": "rote sonne",
+      "score": 82.14,
       "tip": "Weiter so"
     },
     {
-      "name": "rote sonne",
-      "score": 82.14,
+      "name": "anna-maria",
+      "score": 81.75,
       "tip": "Weiter so"
     },
     {
@@ -826,6 +826,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Dolphin",
+        "player_tag": "#2U09UULRR",
+        "role": "member",
+        "score": 88.88,
+        "strikes": 0,
+        "donations": 69,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "SirHenry87",
         "player_tag": "#8QYYL8LCQ",
         "role": "member",
@@ -858,18 +870,6 @@
         "donations": 242,
         "participation_count": 10,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Dolphin",
-        "player_tag": "#2U09UULRR",
-        "role": "member",
-        "score": 88.75,
-        "strikes": 0,
-        "donations": 69,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
