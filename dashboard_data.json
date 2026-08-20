@@ -91,17 +91,17 @@
       "priority": 2
     },
     {
-      "name": "April#",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Jackhammer",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "HardcoreSoldier",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "April#",
       "scenario": "TOP",
       "priority": 2
     },
@@ -253,11 +253,6 @@
       "status": "STARK"
     },
     {
-      "name": "April#",
-      "score": 88.75,
-      "status": "STARK"
-    },
-    {
       "name": "Jackhammer",
       "score": 88.75,
       "status": "STARK"
@@ -265,6 +260,11 @@
     {
       "name": "HardcoreSoldier",
       "score": 88.71,
+      "status": "STARK"
+    },
+    {
+      "name": "April#",
+      "score": 88.62,
       "status": "STARK"
     },
     {
@@ -339,7 +339,7 @@
     },
     {
       "name": "Nati",
-      "score": 84.05,
+      "score": 84.19,
       "status": "STARK"
     },
     {
@@ -495,11 +495,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "April#",
-      "score": 88.75,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Jackhammer",
       "score": 88.75,
       "tip": "Weiter so"
@@ -507,6 +502,11 @@
     {
       "name": "HardcoreSoldier",
       "score": 88.71,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "April#",
+      "score": 88.62,
       "tip": "Weiter so"
     },
     {
@@ -581,7 +581,7 @@
     },
     {
       "name": "Nati",
-      "score": 84.05,
+      "score": 84.19,
       "tip": "Weiter so"
     },
     {
@@ -867,18 +867,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "April#",
-        "player_tag": "#YUQVVVLQ",
-        "role": "member",
-        "score": 88.75,
-        "strikes": 0,
-        "donations": 278,
-        "participation_count": 10,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Jackhammer",
         "player_tag": "#2CJYG9UG",
         "role": "member",
@@ -896,7 +884,19 @@
         "role": "member",
         "score": 88.71,
         "strikes": 0,
-        "donations": 158,
+        "donations": 186,
+        "participation_count": 10,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "April#",
+        "player_tag": "#YUQVVVLQ",
+        "role": "member",
+        "score": 88.62,
+        "strikes": 0,
+        "donations": 278,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
