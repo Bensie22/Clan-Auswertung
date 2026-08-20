@@ -96,22 +96,22 @@
       "priority": 2
     },
     {
-      "name": "HardcoreSoldier",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Jackhammer",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Ben Siebolf",
+      "name": "HardcoreSoldier",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "_spc07",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Ben Siebolf",
       "scenario": "TOP",
       "priority": 2
     },
@@ -258,13 +258,13 @@
       "status": "STARK"
     },
     {
-      "name": "HardcoreSoldier",
-      "score": 88.71,
+      "name": "Jackhammer",
+      "score": 88.75,
       "status": "STARK"
     },
     {
-      "name": "Jackhammer",
-      "score": 88.62,
+      "name": "HardcoreSoldier",
+      "score": 88.71,
       "status": "STARK"
     },
     {
@@ -273,13 +273,13 @@
       "status": "STARK"
     },
     {
-      "name": "Ben Siebolf",
-      "score": 88.5,
+      "name": "_spc07",
+      "score": 88.48,
       "status": "STARK"
     },
     {
-      "name": "_spc07",
-      "score": 88.48,
+      "name": "Ben Siebolf",
+      "score": 88.23,
       "status": "STARK"
     },
     {
@@ -500,13 +500,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "HardcoreSoldier",
-      "score": 88.71,
+      "name": "Jackhammer",
+      "score": 88.75,
       "tip": "Weiter so"
     },
     {
-      "name": "Jackhammer",
-      "score": 88.62,
+      "name": "HardcoreSoldier",
+      "score": 88.71,
       "tip": "Weiter so"
     },
     {
@@ -515,13 +515,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Ben Siebolf",
-      "score": 88.5,
+      "name": "_spc07",
+      "score": 88.48,
       "tip": "Weiter so"
     },
     {
-      "name": "_spc07",
-      "score": 88.48,
+      "name": "Ben Siebolf",
+      "score": 88.23,
       "tip": "Weiter so"
     },
     {
@@ -716,7 +716,7 @@
         "role": "member",
         "score": 92.8,
         "strikes": 0,
-        "donations": 458,
+        "donations": 474,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
@@ -860,7 +860,7 @@
         "role": "member",
         "score": 88.87,
         "strikes": 0,
-        "donations": 242,
+        "donations": 258,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
@@ -879,6 +879,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Jackhammer",
+        "player_tag": "#2CJYG9UG",
+        "role": "member",
+        "score": 88.75,
+        "strikes": 0,
+        "donations": 184,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "HardcoreSoldier",
         "player_tag": "#GRGCY0R8",
         "role": "member",
@@ -887,18 +899,6 @@
         "donations": 158,
         "participation_count": 10,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Jackhammer",
-        "player_tag": "#2CJYG9UG",
-        "role": "member",
-        "score": 88.62,
-        "strikes": 0,
-        "donations": 176,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -915,18 +915,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Ben Siebolf",
-        "player_tag": "#PLG90C0C",
-        "role": "member",
-        "score": 88.5,
-        "strikes": 0,
-        "donations": 60,
-        "participation_count": 3,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "_spc07",
         "player_tag": "#2U8288CVY",
         "role": "member",
@@ -935,6 +923,18 @@
         "donations": 68,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Ben Siebolf",
+        "player_tag": "#PLG90C0C",
+        "role": "member",
+        "score": 88.23,
+        "strikes": 0,
+        "donations": 68,
+        "participation_count": 3,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
