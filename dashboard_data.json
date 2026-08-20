@@ -61,6 +61,11 @@
       "priority": 2
     },
     {
+      "name": "Theezy",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "honigmelone",
       "scenario": "TOP",
       "priority": 2
@@ -218,6 +223,11 @@
       "status": "STARK"
     },
     {
+      "name": "Theezy",
+      "score": 89.33,
+      "status": "STARK"
+    },
+    {
       "name": "honigmelone",
       "score": 89.1,
       "status": "STARK"
@@ -240,11 +250,6 @@
     {
       "name": "SirHenry87",
       "score": 88.87,
-      "status": "STARK"
-    },
-    {
-      "name": "Theezy",
-      "score": 88.79,
       "status": "STARK"
     },
     {
@@ -384,7 +389,7 @@
     },
     {
       "name": "DST",
-      "score": 73.76,
+      "score": 73.62,
       "status": "OK"
     },
     {
@@ -460,6 +465,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Theezy",
+      "score": 89.33,
+      "tip": "Weiter so"
+    },
+    {
       "name": "honigmelone",
       "score": 89.1,
       "tip": "Weiter so"
@@ -482,11 +492,6 @@
     {
       "name": "SirHenry87",
       "score": 88.87,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Theezy",
-      "score": 88.79,
       "tip": "Weiter so"
     },
     {
@@ -626,7 +631,7 @@
     },
     {
       "name": "DST",
-      "score": 73.76,
+      "score": 73.62,
       "tip": "Weiter so"
     },
     {
@@ -783,7 +788,19 @@
         "role": "member",
         "score": 90.13,
         "strikes": 0,
-        "donations": 174,
+        "donations": 206,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Theezy",
+        "player_tag": "#JUUR8UGL8",
+        "role": "member",
+        "score": 89.33,
+        "strikes": 0,
+        "donations": 56,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -846,18 +863,6 @@
         "donations": 242,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Theezy",
-        "player_tag": "#JUUR8UGL8",
-        "role": "member",
-        "score": 88.79,
-        "strikes": 0,
-        "donations": 48,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
