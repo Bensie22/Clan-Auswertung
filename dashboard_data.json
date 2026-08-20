@@ -86,17 +86,17 @@
       "priority": 2
     },
     {
+      "name": "Dolphin",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "HardcoreSoldier",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Jackhammer",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
     },
@@ -214,7 +214,7 @@
     },
     {
       "name": "OneAndOnly",
-      "score": 90.27,
+      "score": 90.13,
       "status": "STARK"
     },
     {
@@ -248,13 +248,13 @@
       "status": "STARK"
     },
     {
-      "name": "HardcoreSoldier",
-      "score": 88.71,
+      "name": "Dolphin",
+      "score": 88.75,
       "status": "STARK"
     },
     {
-      "name": "Dolphin",
-      "score": 88.62,
+      "name": "HardcoreSoldier",
+      "score": 88.71,
       "status": "STARK"
     },
     {
@@ -314,7 +314,7 @@
     },
     {
       "name": "AaleDieter",
-      "score": 85.64,
+      "score": 85.77,
       "status": "STARK"
     },
     {
@@ -343,11 +343,6 @@
       "status": "STARK"
     },
     {
-      "name": "anna-maria",
-      "score": 82.82,
-      "status": "STARK"
-    },
-    {
       "name": "prolike14",
       "score": 82.27,
       "status": "STARK"
@@ -355,6 +350,11 @@
     {
       "name": "Denis",
       "score": 82.22,
+      "status": "STARK"
+    },
+    {
+      "name": "anna-maria",
+      "score": 82.15,
       "status": "STARK"
     },
     {
@@ -456,7 +456,7 @@
     },
     {
       "name": "OneAndOnly",
-      "score": 90.27,
+      "score": 90.13,
       "tip": "Weiter so"
     },
     {
@@ -490,13 +490,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "HardcoreSoldier",
-      "score": 88.71,
+      "name": "Dolphin",
+      "score": 88.75,
       "tip": "Weiter so"
     },
     {
-      "name": "Dolphin",
-      "score": 88.62,
+      "name": "HardcoreSoldier",
+      "score": 88.71,
       "tip": "Weiter so"
     },
     {
@@ -556,7 +556,7 @@
     },
     {
       "name": "AaleDieter",
-      "score": 85.64,
+      "score": 85.77,
       "tip": "Weiter so"
     },
     {
@@ -585,11 +585,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "anna-maria",
-      "score": 82.82,
-      "tip": "Weiter so"
-    },
-    {
       "name": "prolike14",
       "score": 82.27,
       "tip": "Weiter so"
@@ -597,6 +592,11 @@
     {
       "name": "Denis",
       "score": 82.22,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "anna-maria",
+      "score": 82.15,
       "tip": "Weiter so"
     },
     {
@@ -687,7 +687,7 @@
         "role": "member",
         "score": 92.89,
         "strikes": 0,
-        "donations": 424,
+        "donations": 434,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -781,7 +781,7 @@
         "name": "OneAndOnly",
         "player_tag": "#8P0J8P0L",
         "role": "member",
-        "score": 90.27,
+        "score": 90.13,
         "strikes": 0,
         "donations": 174,
         "participation_count": 10,
@@ -862,6 +862,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Dolphin",
+        "player_tag": "#2U09UULRR",
+        "role": "member",
+        "score": 88.75,
+        "strikes": 0,
+        "donations": 69,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "HardcoreSoldier",
         "player_tag": "#GRGCY0R8",
         "role": "member",
@@ -880,18 +892,6 @@
         "score": 88.62,
         "strikes": 0,
         "donations": 176,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Dolphin",
-        "player_tag": "#2U09UULRR",
-        "role": "member",
-        "score": 88.62,
-        "strikes": 0,
-        "donations": 59,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1021,7 +1021,7 @@
         "name": "AaleDieter",
         "player_tag": "#CUJ9PJ2UV",
         "role": "member",
-        "score": 85.64,
+        "score": 85.77,
         "strikes": 0,
         "donations": 132,
         "participation_count": 9,
