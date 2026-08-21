@@ -223,11 +223,6 @@
       "status": "STARK"
     },
     {
-      "name": "Hemelm",
-      "score": 89.43,
-      "status": "STARK"
-    },
-    {
       "name": "Theezy",
       "score": 89.33,
       "status": "STARK"
@@ -250,6 +245,11 @@
     {
       "name": "Johan",
       "score": 88.65,
+      "status": "STARK"
+    },
+    {
+      "name": "Hemelm",
+      "score": 88.63,
       "status": "STARK"
     },
     {
@@ -465,11 +465,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Hemelm",
-      "score": 89.43,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Theezy",
       "score": 89.33,
       "tip": "Weiter so"
@@ -492,6 +487,11 @@
     {
       "name": "Johan",
       "score": 88.65,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Hemelm",
+      "score": 88.63,
       "tip": "Weiter so"
     },
     {
@@ -654,7 +654,7 @@
         "role": "member",
         "score": 0.0,
         "strikes": 0,
-        "donations": 79,
+        "donations": 94,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -795,18 +795,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Hemelm",
-        "player_tag": "#PVGU89PUL",
-        "role": "member",
-        "score": 89.43,
-        "strikes": 0,
-        "donations": 0,
-        "participation_count": 3,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Theezy",
         "player_tag": "#JUUR8UGL8",
         "role": "member",
@@ -848,7 +836,7 @@
         "role": "member",
         "score": 88.75,
         "strikes": 0,
-        "donations": 184,
+        "donations": 192,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -862,6 +850,18 @@
         "strikes": 0,
         "donations": 138,
         "participation_count": 10,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Hemelm",
+        "player_tag": "#PVGU89PUL",
+        "role": "member",
+        "score": 88.63,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 3,
         "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
