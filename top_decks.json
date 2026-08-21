@@ -40,7 +40,7 @@
             "#CUJ9PJ2UV": "20260820T150139.000Z",
             "#2P0U2RLGY": "20260820T193541.000Z",
             "#8P89UPQ0": "",
-            "#RLJPJL8C2": "20260821T160208.000Z",
+            "#RLJPJL8C2": "20260821T161241.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
             "#UUPCULU9V": "20260821T135151.000Z",
@@ -4855,7 +4855,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "kl.kranker Affe"
             ],
@@ -4863,6 +4863,12 @@
                 "RLJPJL8C2"
             ],
             "recent_matches": [
+                {
+                    "time": "20260821T161241.000Z",
+                    "result": "loss",
+                    "player": "kl.kranker Affe",
+                    "tag": "RLJPJL8C2"
+                },
                 {
                     "time": "20260820T112933.000Z",
                     "result": "win",
@@ -397272,6 +397278,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000005-26000011-26000012-26000015-26000055-26000064-28000004-28000011": {
+            "cards": [
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
