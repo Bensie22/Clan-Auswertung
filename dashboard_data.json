@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "jad",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "Timi",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -203,13 +208,13 @@
       "status": "STARK"
     },
     {
-      "name": "Bensie",
-      "score": 91.07,
+      "name": "elazeto",
+      "score": 90.89,
       "status": "STARK"
     },
     {
-      "name": "elazeto",
-      "score": 90.89,
+      "name": "Bensie",
+      "score": 90.8,
       "status": "STARK"
     },
     {
@@ -401,6 +406,11 @@
       "name": "Timi",
       "score": 0.0,
       "status": "RISIKO"
+    },
+    {
+      "name": "jad",
+      "score": 0.0,
+      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -445,13 +455,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Bensie",
-      "score": 91.07,
+      "name": "elazeto",
+      "score": 90.89,
       "tip": "Weiter so"
     },
     {
-      "name": "elazeto",
-      "score": 90.89,
+      "name": "Bensie",
+      "score": 90.8,
       "tip": "Weiter so"
     },
     {
@@ -643,6 +653,11 @@
       "name": "Timi",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "jad",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
@@ -655,6 +670,18 @@
         "score": 0.0,
         "strikes": 0,
         "donations": 162,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "jad",
+        "player_tag": "#PC2LPCVU",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -762,9 +789,9 @@
         "name": "Bensie",
         "player_tag": "#2QRVR9L8",
         "role": "member",
-        "score": 91.07,
+        "score": 90.8,
         "strikes": 0,
-        "donations": 457,
+        "donations": 473,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -884,7 +911,7 @@
         "role": "member",
         "score": 88.48,
         "strikes": 0,
-        "donations": 302,
+        "donations": 310,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
