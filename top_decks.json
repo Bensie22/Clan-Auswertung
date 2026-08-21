@@ -5,7 +5,7 @@
             "#L8PV090J": "20260820T103257.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260821T043849.000Z",
-            "#ULYJ2CQP": "20260821T071946.000Z",
+            "#ULYJ2CQP": "20260821T083748.000Z",
             "#UJ2P9UYUV": "20260821T060149.000Z",
             "#P0JYR9YUY": "20260821T062600.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
@@ -108,7 +108,7 @@
             "#PLG90C0C": "20260821T081336.000Z",
             "#LGUGQ0PRG": "20260820T151757.000Z",
             "#UVGRVC8LU": "20260809T181113.000Z",
-            "#PVGU89PUL": "20260817T093026.000Z",
+            "#PVGU89PUL": "20260821T083811.000Z",
             "#V9JP2PGGP": "20260821T074025.000Z",
             "#R2VYJUUCP": "20260804T204503.000Z",
             "#RL9LQYCCY": "20260804T213809.000Z",
@@ -1009,7 +1009,7 @@
                 }
             ],
             "wins": 5,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Hemelm"
             ],
@@ -1017,6 +1017,12 @@
                 "PVGU89PUL"
             ],
             "recent_matches": [
+                {
+                    "time": "20260821T083811.000Z",
+                    "result": "loss",
+                    "player": "Hemelm",
+                    "tag": "PVGU89PUL"
+                },
                 {
                     "time": "20260816T102910.000Z",
                     "result": "win",
@@ -395024,6 +395030,52 @@
                     "id": 28000012,
                     "name": "Tornado",
                     "icon": "https://api-assets.clashroyale.com/cards/300/QJB-QK1QJHdw4hjpAwVSyZBozc2ZWAR9pQ-SMUyKaT0.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000049-26000051-26000064-26000103-26000106-27000010-28000008-28000014": {
+            "cards": [
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000103,
+                    "name": "Boss Bandit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nuceG9o7rAyvyc7D3sp2QSiRYtSOEgraq0NJkDf729s.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                },
+                {
+                    "id": 26000051,
+                    "name": "Ram Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
+                },
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000106,
+                    "name": "Ronin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X0dTFs7OGUavreDEzOtYd_YNZ8Zly6qgAE-dd-bNfWU.png"
+                },
+                {
+                    "id": 28000014,
+                    "name": "Earthquake",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/XeQXcrUu59C52DslyZVwCnbi4yamID-WxfVZLShgZmE.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
                 }
             ],
             "seen": 1,
