@@ -109,7 +109,7 @@
             "#LGUGQ0PRG": "20260820T151757.000Z",
             "#UVGRVC8LU": "20260809T181113.000Z",
             "#PVGU89PUL": "20260821T121729.000Z",
-            "#V9JP2PGGP": "20260821T153936.000Z",
+            "#V9JP2PGGP": "20260821T154427.000Z",
             "#R2VYJUUCP": "20260804T204503.000Z",
             "#RL9LQYCCY": "20260804T213809.000Z",
             "#V8VGG0LUG": "20260803T085547.000Z",
@@ -3701,72 +3701,6 @@
                 }
             ]
         },
-        "26000017-26000030-26000035-26000051-26000072-27000006-28000008-28000018": {
-            "cards": [
-                {
-                    "id": 26000017,
-                    "name": "Wizard",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
-                },
-                {
-                    "id": 26000072,
-                    "name": "Archer Queen",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/p7OQmOAFTery7zCzlpDdm-LOD1kINTm42AwIHchZfWk.png"
-                },
-                {
-                    "id": 26000035,
-                    "name": "Lumberjack",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
-                },
-                {
-                    "id": 28000018,
-                    "name": "Royal Delivery",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/LPg7AGjGI3_xmi7gLLgGC50yKM1jJ2teWkZfoHJcIZo.png"
-                },
-                {
-                    "id": 26000030,
-                    "name": "Ice Spirit",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/lv1budiafU9XmSdrDkk0NYyqASAFYyZ06CPysXKZXlA.png"
-                },
-                {
-                    "id": 26000051,
-                    "name": "Ram Rider",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
-                },
-                {
-                    "id": 28000008,
-                    "name": "Zap",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
-                },
-                {
-                    "id": 27000006,
-                    "name": "Tesla",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
-                }
-            ],
-            "wins": 1,
-            "losses": 1,
-            "players": [
-                "Deniz"
-            ],
-            "tags": [
-                "JV80YYJRJ"
-            ],
-            "recent_matches": [
-                {
-                    "time": "20260821T152130.000Z",
-                    "result": "loss",
-                    "player": "Deniz",
-                    "tag": "JV80YYJRJ"
-                },
-                {
-                    "time": "20260816T121138.000Z",
-                    "result": "win",
-                    "player": "Deniz",
-                    "tag": "JV80YYJRJ"
-                }
-            ]
-        },
         "26000007-26000036-26000046-26000062-27000006-28000004-28000007-28000017": {
             "cards": [
                 {
@@ -6866,6 +6800,66 @@
                     "result": "win",
                     "player": "OmniOni",
                     "tag": "UUPCULU9V"
+                }
+            ]
+        },
+        "26000000-26000009-26000015-26000041-26000050-26000064-26000093-28000011": {
+            "cards": [
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000093,
+                    "name": "Little Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dY-gSseki6KBpkIG17safHH5YlB8SErFZO9OXbJxf9w.png"
+                },
+                {
+                    "id": 26000050,
+                    "name": "Royal Ghost",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3En2cz0ISQAaMTHY3hj3rTveFN2kJYq-H4VxvdJNvCM.png"
+                },
+                {
+                    "id": 26000009,
+                    "name": "Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/npdmCnET7jmVjJvjJQkFnNSNnDxYHDBigbvIAloFMds.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                }
+            ],
+            "wins": 1,
+            "losses": 0,
+            "players": [
+                "Elvi"
+            ],
+            "tags": [
+                "V9JP2PGGP"
+            ],
+            "recent_matches": [
+                {
+                    "time": "20260821T154427.000Z",
+                    "result": "win",
+                    "player": "Elvi",
+                    "tag": "V9JP2PGGP"
                 }
             ]
         }
@@ -397200,6 +397194,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000001-26000011-26000021-26000095-26000102-26000106-28000000-28000008": {
+            "cards": [
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 26000102,
+                    "name": "Berserker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NA6W8S1JBYBlOPwD3dNvJLFvVDKq-UuBs_J3i3ewLFI.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000106,
+                    "name": "Ronin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X0dTFs7OGUavreDEzOtYd_YNZ8Zly6qgAE-dd-bNfWU.png"
+                },
+                {
+                    "id": 26000095,
+                    "name": "Goblin Demolisher",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/KVVOgdn40xasFLYuQv8Go_U_LCV7wSG9q9eE1H7f3Qk.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
