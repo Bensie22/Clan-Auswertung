@@ -71,11 +71,6 @@
       "priority": 2
     },
     {
-      "name": "Johan",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "honigmelone",
       "scenario": "TOP",
       "priority": 2
@@ -87,6 +82,11 @@
     },
     {
       "name": "Jackhammer",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
@@ -233,11 +233,6 @@
       "status": "STARK"
     },
     {
-      "name": "Johan",
-      "score": 89.19,
-      "status": "STARK"
-    },
-    {
       "name": "honigmelone",
       "score": 89.1,
       "status": "STARK"
@@ -250,6 +245,11 @@
     {
       "name": "Jackhammer",
       "score": 88.75,
+      "status": "STARK"
+    },
+    {
+      "name": "Johan",
+      "score": 88.65,
       "status": "STARK"
     },
     {
@@ -475,11 +475,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Johan",
-      "score": 89.19,
-      "tip": "Weiter so"
-    },
-    {
       "name": "honigmelone",
       "score": 89.1,
       "tip": "Weiter so"
@@ -492,6 +487,11 @@
     {
       "name": "Jackhammer",
       "score": 88.75,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Johan",
+      "score": 88.65,
       "tip": "Weiter so"
     },
     {
@@ -819,18 +819,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Johan",
-        "player_tag": "#UQVCVVVJL",
-        "role": "member",
-        "score": 89.19,
-        "strikes": 0,
-        "donations": 138,
-        "participation_count": 10,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "honigmelone",
         "player_tag": "#Q2GRGLQR",
         "role": "member",
@@ -863,6 +851,18 @@
         "donations": 184,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Johan",
+        "player_tag": "#UQVCVVVJL",
+        "role": "member",
+        "score": 88.65,
+        "strikes": 0,
+        "donations": 138,
+        "participation_count": 10,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
