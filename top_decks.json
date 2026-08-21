@@ -16,7 +16,7 @@
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260821T071835.000Z",
-            "#QULCQGGG": "20260820T114021.000Z",
+            "#QULCQGGG": "20260821T110932.000Z",
             "#JRGC9RRQG": "20260821T080331.000Z",
             "#QVQGCV8Y9": "20260821T072618.000Z",
             "#Q8L0RJ8Y8": "20260821T075025.000Z",
@@ -105,7 +105,7 @@
             "#VCYQ9L9QV": "20260729T140933.000Z",
             "#GRR999Q29": "20260801T003732.000Z",
             "#202QYVY8CC": "20260810T095353.000Z",
-            "#PLG90C0C": "20260821T092034.000Z",
+            "#PLG90C0C": "20260821T110341.000Z",
             "#LGUGQ0PRG": "20260820T151757.000Z",
             "#UVGRVC8LU": "20260809T181113.000Z",
             "#PVGU89PUL": "20260821T084332.000Z",
@@ -2052,7 +2052,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/X0dTFs7OGUavreDEzOtYd_YNZ8Zly6qgAE-dd-bNfWU.png"
                 }
             ],
-            "wins": 6,
+            "wins": 7,
             "losses": 0,
             "players": [
                 "Citykingalex"
@@ -2061,6 +2061,12 @@
                 "QULCQGGG"
             ],
             "recent_matches": [
+                {
+                    "time": "20260821T110932.000Z",
+                    "result": "win",
+                    "player": "Citykingalex",
+                    "tag": "QULCQGGG"
+                },
                 {
                     "time": "20260820T102030.000Z",
                     "result": "win",
@@ -395816,6 +395822,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000015-26000017-26000026-26000051-26000056-26000067-26000074-27000010": {
+            "cards": [
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000074,
+                    "name": "Golden Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WJd207D0O1sN-l1FTb8P9KhYL2oF5jY26vRUfTUW3FQ.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 26000051,
+                    "name": "Ram Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
+                },
+                {
+                    "id": 26000067,
+                    "name": "Elixir Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/puhMsZjCIqy21HW3hYxjrk_xt8NIPyFqjRy-BeLKZwo.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
