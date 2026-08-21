@@ -81,12 +81,12 @@
       "priority": 2
     },
     {
-      "name": "Johan",
+      "name": "Jackhammer",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Jackhammer",
+      "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
@@ -243,6 +243,11 @@
       "status": "STARK"
     },
     {
+      "name": "Jackhammer",
+      "score": 88.75,
+      "status": "STARK"
+    },
+    {
       "name": "Johan",
       "score": 88.65,
       "status": "STARK"
@@ -250,11 +255,6 @@
     {
       "name": "Hemelm",
       "score": 88.63,
-      "status": "STARK"
-    },
-    {
-      "name": "Jackhammer",
-      "score": 88.62,
       "status": "STARK"
     },
     {
@@ -485,6 +485,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Jackhammer",
+      "score": 88.75,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Johan",
       "score": 88.65,
       "tip": "Weiter so"
@@ -492,11 +497,6 @@
     {
       "name": "Hemelm",
       "score": 88.63,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Jackhammer",
-      "score": 88.62,
       "tip": "Weiter so"
     },
     {
@@ -843,6 +843,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Jackhammer",
+        "player_tag": "#2CJYG9UG",
+        "role": "member",
+        "score": 88.75,
+        "strikes": 0,
+        "donations": 200,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Johan",
         "player_tag": "#UQVCVVVJL",
         "role": "member",
@@ -863,18 +875,6 @@
         "donations": 0,
         "participation_count": 3,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Jackhammer",
-        "player_tag": "#2CJYG9UG",
-        "role": "member",
-        "score": 88.62,
-        "strikes": 0,
-        "donations": 200,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
