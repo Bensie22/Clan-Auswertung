@@ -91,17 +91,17 @@
       "priority": 2
     },
     {
-      "name": "Reklaminator",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "April#",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "SirHenry87",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Reklaminator",
       "scenario": "TOP",
       "priority": 2
     },
@@ -253,11 +253,6 @@
       "status": "STARK"
     },
     {
-      "name": "Reklaminator",
-      "score": 88.74,
-      "status": "STARK"
-    },
-    {
       "name": "kl.kranker Affe",
       "score": 88.52,
       "status": "STARK"
@@ -269,6 +264,11 @@
     },
     {
       "name": "SirHenry87",
+      "score": 88.47,
+      "status": "STARK"
+    },
+    {
+      "name": "Reklaminator",
       "score": 88.47,
       "status": "STARK"
     },
@@ -495,11 +495,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Reklaminator",
-      "score": 88.74,
-      "tip": "Weiter so"
-    },
-    {
       "name": "kl.kranker Affe",
       "score": 88.52,
       "tip": "Weiter so"
@@ -511,6 +506,11 @@
     },
     {
       "name": "SirHenry87",
+      "score": 88.47,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Reklaminator",
       "score": 88.47,
       "tip": "Weiter so"
     },
@@ -867,18 +867,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Reklaminator",
-        "player_tag": "#P0G2GYJQ9",
-        "role": "member",
-        "score": 88.74,
-        "strikes": 0,
-        "donations": 224,
-        "participation_count": 8,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "kl.kranker Affe",
         "player_tag": "#RLJPJL8C2",
         "role": "member",
@@ -911,6 +899,18 @@
         "donations": 284,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Reklaminator",
+        "player_tag": "#P0G2GYJQ9",
+        "role": "member",
+        "score": 88.47,
+        "strikes": 0,
+        "donations": 224,
+        "participation_count": 8,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
