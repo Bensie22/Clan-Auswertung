@@ -21,7 +21,7 @@
             "#QVQGCV8Y9": "20260821T161056.000Z",
             "#Q8L0RJ8Y8": "20260822T101010.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
-            "#2CPRGY8G": "20260822T104336.000Z",
+            "#2CPRGY8G": "20260822T150808.000Z",
             "#LLQQJCLC": "20260822T145558.000Z",
             "#2VJR80RL": "20260821T130835.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20260822T133643.000Z",
+            "#YUQVVVLQ": "20260822T150749.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260821T231145.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
@@ -123,7 +123,7 @@
             "#2JQUVJUUG": "20260813T213647.000Z",
             "#JGYCRU2YP": "20260822T131034.000Z",
             "#PC2LPCVU": "20260821T213327.000Z",
-            "#2GPVVPCC8": "20260822T145906.000Z"
+            "#2GPVVPCC8": "20260822T150854.000Z"
         }
     },
     "decks": {
@@ -2348,7 +2348,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/Axr4ox5_b7edmLsoHxBX3vmgijAIibuF6RImTbqLlXE.png"
                 }
             ],
-            "wins": 3,
+            "wins": 4,
             "losses": 0,
             "players": [
                 "Swordfish"
@@ -2357,6 +2357,12 @@
                 "2CPRGY8G"
             ],
             "recent_matches": [
+                {
+                    "time": "20260822T150808.000Z",
+                    "result": "win",
+                    "player": "Swordfish",
+                    "tag": "2CPRGY8G"
+                },
                 {
                     "time": "20260817T032408.000Z",
                     "result": "win",
@@ -401114,6 +401120,52 @@
                     "id": 26000020,
                     "name": "Giant Skeleton",
                     "icon": "https://api-assets.clashroyale.com/cards/300/0p0gd0XaVRu1Hb1iSG1hTYbz2AN6aEiZnhaAib5O8Z8.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000047-26000057-26000059-26000074-26000084-27000012-28000001-28000011": {
+            "cards": [
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 26000074,
+                    "name": "Golden Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WJd207D0O1sN-l1FTb8P9KhYL2oF5jY26vRUfTUW3FQ.png"
+                },
+                {
+                    "id": 27000012,
+                    "name": "Goblin Cage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vD24bBgK4rSq7wx5QEbuqChtPMRFviL_ep76GwQw1yA.png"
+                },
+                {
+                    "id": 26000084,
+                    "name": "Electro Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WKd4-IAFsgPpMo7dDi9sujmYjRhOMEWiE07OUJpvD9g.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000057,
+                    "name": "Flying Machine",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/hzKNE3QwFcrSrDDRuVW3QY_OnrDPijSiIp-PsWgFevE.png"
+                },
+                {
+                    "id": 26000047,
+                    "name": "Royal Recruits",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jcNyYGUiXXNz3kuz8NBkHNKNREQKraXlb_Ts7rhCIdM.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
                 }
             ],
             "seen": 1,
