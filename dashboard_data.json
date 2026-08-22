@@ -81,12 +81,12 @@
       "priority": 2
     },
     {
-      "name": "Dolphin",
+      "name": "HardcoreSoldier",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "HardcoreSoldier",
+      "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
     },
@@ -238,13 +238,13 @@
       "status": "STARK"
     },
     {
-      "name": "Dolphin",
-      "score": 89.15,
+      "name": "HardcoreSoldier",
+      "score": 89.11,
       "status": "STARK"
     },
     {
-      "name": "HardcoreSoldier",
-      "score": 89.11,
+      "name": "Dolphin",
+      "score": 89.02,
       "status": "STARK"
     },
     {
@@ -490,13 +490,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Dolphin",
-      "score": 89.15,
+      "name": "HardcoreSoldier",
+      "score": 89.11,
       "tip": "Weiter so"
     },
     {
-      "name": "HardcoreSoldier",
-      "score": 89.11,
+      "name": "Dolphin",
+      "score": 89.02,
       "tip": "Weiter so"
     },
     {
@@ -861,18 +861,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Dolphin",
-        "player_tag": "#2U09UULRR",
-        "role": "member",
-        "score": 89.15,
-        "strikes": 0,
-        "donations": 137,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "HardcoreSoldier",
         "player_tag": "#GRGCY0R8",
         "role": "member",
@@ -881,6 +869,18 @@
         "donations": 348,
         "participation_count": 10,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Dolphin",
+        "player_tag": "#2U09UULRR",
+        "role": "member",
+        "score": 89.02,
+        "strikes": 0,
+        "donations": 137,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -1094,7 +1094,7 @@
         "role": "member",
         "score": 85.37,
         "strikes": 0,
-        "donations": 132,
+        "donations": 140,
         "participation_count": 9,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
