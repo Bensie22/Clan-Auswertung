@@ -96,6 +96,11 @@
       "priority": 2
     },
     {
+      "name": "Reklaminator",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Jackhammer",
       "scenario": "TOP",
       "priority": 2
@@ -112,11 +117,6 @@
     },
     {
       "name": "SirHenry87",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Reklaminator",
       "scenario": "TOP",
       "priority": 2
     },
@@ -249,12 +249,17 @@
     },
     {
       "name": "HardcoreSoldier",
-      "score": 89.11,
+      "score": 89.24,
       "status": "STARK"
     },
     {
       "name": "Dolphin",
       "score": 89.02,
+      "status": "STARK"
+    },
+    {
+      "name": "Reklaminator",
+      "score": 88.74,
       "status": "STARK"
     },
     {
@@ -279,11 +284,6 @@
     },
     {
       "name": "SirHenry87",
-      "score": 88.47,
-      "status": "STARK"
-    },
-    {
-      "name": "Reklaminator",
       "score": 88.47,
       "status": "STARK"
     },
@@ -501,12 +501,17 @@
     },
     {
       "name": "HardcoreSoldier",
-      "score": 89.11,
+      "score": 89.24,
       "tip": "Weiter so"
     },
     {
       "name": "Dolphin",
       "score": 89.02,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Reklaminator",
+      "score": 88.74,
       "tip": "Weiter so"
     },
     {
@@ -531,11 +536,6 @@
     },
     {
       "name": "SirHenry87",
-      "score": 88.47,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Reklaminator",
       "score": 88.47,
       "tip": "Weiter so"
     },
@@ -881,9 +881,9 @@
         "name": "HardcoreSoldier",
         "player_tag": "#GRGCY0R8",
         "role": "member",
-        "score": 89.11,
+        "score": 89.24,
         "strikes": 0,
-        "donations": 374,
+        "donations": 398,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
@@ -898,6 +898,18 @@
         "donations": 145,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Reklaminator",
+        "player_tag": "#P0G2GYJQ9",
+        "role": "member",
+        "score": 88.74,
+        "strikes": 0,
+        "donations": 274,
+        "participation_count": 8,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -958,18 +970,6 @@
         "donations": 310,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Reklaminator",
-        "player_tag": "#P0G2GYJQ9",
-        "role": "member",
-        "score": 88.47,
-        "strikes": 0,
-        "donations": 258,
-        "participation_count": 8,
-        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
