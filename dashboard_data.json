@@ -76,17 +76,17 @@
       "priority": 2
     },
     {
-      "name": "honigmelone",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "kl.kranker Affe",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "HardcoreSoldier",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "honigmelone",
       "scenario": "TOP",
       "priority": 2
     },
@@ -238,11 +238,6 @@
       "status": "STARK"
     },
     {
-      "name": "honigmelone",
-      "score": 89.5,
-      "status": "STARK"
-    },
-    {
       "name": "kl.kranker Affe",
       "score": 89.45,
       "status": "STARK"
@@ -250,6 +245,11 @@
     {
       "name": "HardcoreSoldier",
       "score": 89.38,
+      "status": "STARK"
+    },
+    {
+      "name": "honigmelone",
+      "score": 89.37,
       "status": "STARK"
     },
     {
@@ -364,7 +364,7 @@
     },
     {
       "name": "prolike14",
-      "score": 82.53,
+      "score": 82.4,
       "status": "STARK"
     },
     {
@@ -490,11 +490,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "honigmelone",
-      "score": 89.5,
-      "tip": "Weiter so"
-    },
-    {
       "name": "kl.kranker Affe",
       "score": 89.45,
       "tip": "Weiter so"
@@ -502,6 +497,11 @@
     {
       "name": "HardcoreSoldier",
       "score": 89.38,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "honigmelone",
+      "score": 89.37,
       "tip": "Weiter so"
     },
     {
@@ -616,7 +616,7 @@
     },
     {
       "name": "prolike14",
-      "score": 82.53,
+      "score": 82.4,
       "tip": "Weiter so"
     },
     {
@@ -763,7 +763,7 @@
         "role": "member",
         "score": 92.88,
         "strikes": 0,
-        "donations": 128,
+        "donations": 154,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -854,18 +854,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "honigmelone",
-        "player_tag": "#Q2GRGLQR",
-        "role": "member",
-        "score": 89.5,
-        "strikes": 0,
-        "donations": 64,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "kl.kranker Affe",
         "player_tag": "#RLJPJL8C2",
         "role": "member",
@@ -886,6 +874,18 @@
         "donations": 398,
         "participation_count": 10,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "honigmelone",
+        "player_tag": "#Q2GRGLQR",
+        "role": "member",
+        "score": 89.37,
+        "strikes": 0,
+        "donations": 82,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
