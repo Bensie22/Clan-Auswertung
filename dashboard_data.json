@@ -21,17 +21,17 @@
       "priority": 2
     },
     {
-      "name": "Deniz",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Erastus",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Citykingalex",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Deniz",
       "scenario": "TOP",
       "priority": 2
     },
@@ -173,11 +173,6 @@
   ],
   "smart": [
     {
-      "name": "Deniz",
-      "score": 93.2,
-      "status": "STARK"
-    },
-    {
       "name": "Citykingalex",
       "score": 93.15,
       "status": "STARK"
@@ -185,6 +180,11 @@
     {
       "name": "Erastus",
       "score": 93.15,
+      "status": "STARK"
+    },
+    {
+      "name": "Deniz",
+      "score": 92.93,
       "status": "STARK"
     },
     {
@@ -425,11 +425,6 @@
   ],
   "coaching": [
     {
-      "name": "Deniz",
-      "score": 93.2,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Citykingalex",
       "score": 93.15,
       "tip": "Weiter so"
@@ -437,6 +432,11 @@
     {
       "name": "Erastus",
       "score": 93.15,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Deniz",
+      "score": 92.93,
       "tip": "Weiter so"
     },
     {
@@ -717,18 +717,6 @@
     ],
     "core": [
       {
-        "name": "Deniz",
-        "player_tag": "#JV80YYJRJ",
-        "role": "member",
-        "score": 93.2,
-        "strikes": 0,
-        "donations": 134,
-        "participation_count": 2,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Erastus",
         "player_tag": "#Q8L0RJ8Y8",
         "role": "member",
@@ -749,6 +737,18 @@
         "donations": 154,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Deniz",
+        "player_tag": "#JV80YYJRJ",
+        "role": "member",
+        "score": 92.93,
+        "strikes": 0,
+        "donations": 134,
+        "participation_count": 2,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -806,7 +806,7 @@
         "role": "member",
         "score": 91.37,
         "strikes": 0,
-        "donations": 166,
+        "donations": 174,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1022,7 +1022,7 @@
         "role": "member",
         "score": 87.51,
         "strikes": 0,
-        "donations": 791,
+        "donations": 799,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
