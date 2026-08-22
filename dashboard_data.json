@@ -1,17 +1,17 @@
 {
   "full_auto": [
     {
-      "name": ">MRK<",
-      "scenario": "KEINE_TEILNAHME",
-      "priority": 4
-    },
-    {
       "name": "Timi",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
     },
     {
       "name": "jad",
+      "scenario": "STRIKE",
+      "priority": 4
+    },
+    {
+      "name": ">MRK<",
       "scenario": "STRIKE",
       "priority": 4
     },
@@ -106,17 +106,17 @@
       "priority": 2
     },
     {
+      "name": "SirHenry87",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Reklaminator",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "_spc07",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "SirHenry87",
       "scenario": "TOP",
       "priority": 2
     },
@@ -273,6 +273,11 @@
       "status": "STARK"
     },
     {
+      "name": "SirHenry87",
+      "score": 88.47,
+      "status": "STARK"
+    },
+    {
       "name": "Reklaminator",
       "score": 88.47,
       "status": "STARK"
@@ -280,11 +285,6 @@
     {
       "name": "_spc07",
       "score": 88.35,
-      "status": "STARK"
-    },
-    {
-      "name": "SirHenry87",
-      "score": 88.34,
       "status": "STARK"
     },
     {
@@ -408,13 +408,13 @@
       "status": "OK"
     },
     {
-      "name": "jad",
-      "score": 3.33,
+      "name": ">MRK<",
+      "score": 16.67,
       "status": "RISIKO"
     },
     {
-      "name": ">MRK<",
-      "score": 0.0,
+      "name": "jad",
+      "score": 3.33,
       "status": "RISIKO"
     },
     {
@@ -525,6 +525,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "SirHenry87",
+      "score": 88.47,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Reklaminator",
       "score": 88.47,
       "tip": "Weiter so"
@@ -532,11 +537,6 @@
     {
       "name": "_spc07",
       "score": 88.35,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "SirHenry87",
-      "score": 88.34,
       "tip": "Weiter so"
     },
     {
@@ -660,13 +660,13 @@
       "tip": "Konstanz verbessern"
     },
     {
-      "name": "jad",
-      "score": 3.33,
+      "name": ">MRK<",
+      "score": 16.67,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
-      "name": ">MRK<",
-      "score": 0.0,
+      "name": "jad",
+      "score": 3.33,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
@@ -678,18 +678,6 @@
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
-      {
-        "name": ">MRK<",
-        "player_tag": "#2GPVVPCC8",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 0,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
       {
         "name": "Timi",
         "player_tag": "#JGYCRU2YP",
@@ -707,6 +695,18 @@
         "player_tag": "#PC2LPCVU",
         "role": "member",
         "score": 3.33,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": ">MRK<",
+        "player_tag": "#2GPVVPCC8",
+        "role": "member",
+        "score": 16.67,
         "strikes": 0,
         "donations": 0,
         "participation_count": 0,
@@ -945,6 +945,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "SirHenry87",
+        "player_tag": "#8QYYL8LCQ",
+        "role": "member",
+        "score": 88.47,
+        "strikes": 0,
+        "donations": 302,
+        "participation_count": 10,
+        "trend": "🟡🟡🟡🟡🟡",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Reklaminator",
         "player_tag": "#P0G2GYJQ9",
         "role": "member",
@@ -965,18 +977,6 @@
         "donations": 124,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "SirHenry87",
-        "player_tag": "#8QYYL8LCQ",
-        "role": "member",
-        "score": 88.34,
-        "strikes": 0,
-        "donations": 302,
-        "participation_count": 10,
-        "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
