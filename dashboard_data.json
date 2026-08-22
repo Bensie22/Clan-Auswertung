@@ -101,6 +101,11 @@
       "priority": 2
     },
     {
+      "name": "Johan",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Ben Siebolf",
       "scenario": "TOP",
       "priority": 2
@@ -117,11 +122,6 @@
     },
     {
       "name": "Reklaminator",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
@@ -151,12 +151,12 @@
       "priority": 2
     },
     {
-      "name": "hi2oka",
+      "name": "bes",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "bes",
+      "name": "hi2oka",
       "scenario": "TOP",
       "priority": 2
     },
@@ -204,7 +204,7 @@
     },
     {
       "name": "chris",
-      "score": 92.04,
+      "score": 91.91,
       "status": "STARK"
     },
     {
@@ -268,6 +268,11 @@
       "status": "STARK"
     },
     {
+      "name": "Johan",
+      "score": 88.52,
+      "status": "STARK"
+    },
+    {
       "name": "Ben Siebolf",
       "score": 88.5,
       "status": "STARK"
@@ -285,11 +290,6 @@
     {
       "name": "Reklaminator",
       "score": 88.47,
-      "status": "STARK"
-    },
-    {
-      "name": "Johan",
-      "score": 88.39,
       "status": "STARK"
     },
     {
@@ -318,13 +318,13 @@
       "status": "STARK"
     },
     {
-      "name": "hi2oka",
-      "score": 86.6,
+      "name": "bes",
+      "score": 86.46,
       "status": "STARK"
     },
     {
-      "name": "bes",
-      "score": 86.46,
+      "name": "hi2oka",
+      "score": 86.33,
       "status": "STARK"
     },
     {
@@ -456,7 +456,7 @@
     },
     {
       "name": "chris",
-      "score": 92.04,
+      "score": 91.91,
       "tip": "Weiter so"
     },
     {
@@ -520,6 +520,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Johan",
+      "score": 88.52,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Ben Siebolf",
       "score": 88.5,
       "tip": "Weiter so"
@@ -537,11 +542,6 @@
     {
       "name": "Reklaminator",
       "score": 88.47,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Johan",
-      "score": 88.39,
       "tip": "Weiter so"
     },
     {
@@ -570,13 +570,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "hi2oka",
-      "score": 86.6,
+      "name": "bes",
+      "score": 86.46,
       "tip": "Weiter so"
     },
     {
-      "name": "bes",
-      "score": 86.46,
+      "name": "hi2oka",
+      "score": 86.33,
       "tip": "Weiter so"
     },
     {
@@ -713,7 +713,7 @@
         "role": "member",
         "score": 16.67,
         "strikes": 0,
-        "donations": 0,
+        "donations": 28,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -785,9 +785,9 @@
         "name": "chris",
         "player_tag": "#YQ82VR9JQ",
         "role": "member",
-        "score": 92.04,
+        "score": 91.91,
         "strikes": 0,
-        "donations": 510,
+        "donations": 538,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -926,6 +926,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Johan",
+        "player_tag": "#UQVCVVVJL",
+        "role": "member",
+        "score": 88.52,
+        "strikes": 0,
+        "donations": 172,
+        "participation_count": 10,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Ben Siebolf",
         "player_tag": "#PLG90C0C",
         "role": "member",
@@ -969,18 +981,6 @@
         "strikes": 0,
         "donations": 258,
         "participation_count": 8,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Johan",
-        "player_tag": "#UQVCVVVJL",
-        "role": "member",
-        "score": 88.39,
-        "strikes": 0,
-        "donations": 172,
-        "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
@@ -1046,26 +1046,26 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "hi2oka",
-        "player_tag": "#UJ2P9UYUV",
-        "role": "member",
-        "score": 86.6,
-        "strikes": 0,
-        "donations": 426,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "bes",
         "player_tag": "#LLQQJCLC",
         "role": "member",
         "score": 86.46,
         "strikes": 0,
-        "donations": 302,
+        "donations": 312,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "hi2oka",
+        "player_tag": "#UJ2P9UYUV",
+        "role": "member",
+        "score": 86.33,
+        "strikes": 0,
+        "donations": 462,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
