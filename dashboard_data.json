@@ -21,17 +21,17 @@
       "priority": 2
     },
     {
+      "name": "Citykingalex",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "mauza",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Erastus",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Citykingalex",
       "scenario": "TOP",
       "priority": 2
     },
@@ -178,13 +178,13 @@
   ],
   "smart": [
     {
-      "name": "mauza",
+      "name": "Citykingalex",
       "score": 93.28,
       "status": "STARK"
     },
     {
-      "name": "Citykingalex",
-      "score": 93.15,
+      "name": "mauza",
+      "score": 93.28,
       "status": "STARK"
     },
     {
@@ -409,7 +409,7 @@
     },
     {
       "name": "mad 3ad y gawad",
-      "score": 68.0,
+      "score": 67.87,
       "status": "OK"
     },
     {
@@ -430,13 +430,13 @@
   ],
   "coaching": [
     {
-      "name": "mauza",
+      "name": "Citykingalex",
       "score": 93.28,
       "tip": "Weiter so"
     },
     {
-      "name": "Citykingalex",
-      "score": 93.15,
+      "name": "mauza",
+      "score": 93.28,
       "tip": "Weiter so"
     },
     {
@@ -661,7 +661,7 @@
     },
     {
       "name": "mad 3ad y gawad",
-      "score": 68.0,
+      "score": 67.87,
       "tip": "Konstanz verbessern"
     },
     {
@@ -722,6 +722,18 @@
     ],
     "core": [
       {
+        "name": "Citykingalex",
+        "player_tag": "#QULCQGGG",
+        "role": "member",
+        "score": 93.28,
+        "strikes": 0,
+        "donations": 188,
+        "participation_count": 10,
+        "trend": "🟡🟡🟡🟡🟡",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "mauza",
         "player_tag": "#2P0U2RLGY",
         "role": "member",
@@ -742,18 +754,6 @@
         "donations": 558,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Citykingalex",
-        "player_tag": "#QULCQGGG",
-        "role": "member",
-        "score": 93.15,
-        "strikes": 0,
-        "donations": 180,
-        "participation_count": 10,
-        "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -799,7 +799,7 @@
         "role": "member",
         "score": 91.28,
         "strikes": 0,
-        "donations": 457,
+        "donations": 475,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -943,7 +943,7 @@
         "role": "member",
         "score": 88.48,
         "strikes": 0,
-        "donations": 378,
+        "donations": 396,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
