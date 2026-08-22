@@ -21,6 +21,11 @@
       "priority": 2
     },
     {
+      "name": "mauza",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Erastus",
       "scenario": "TOP",
       "priority": 2
@@ -36,17 +41,12 @@
       "priority": 2
     },
     {
-      "name": "mauza",
+      "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "agostini",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
@@ -178,6 +178,11 @@
   ],
   "smart": [
     {
+      "name": "mauza",
+      "score": 93.28,
+      "status": "STARK"
+    },
+    {
       "name": "Citykingalex",
       "score": 93.15,
       "status": "STARK"
@@ -193,18 +198,13 @@
       "status": "STARK"
     },
     {
-      "name": "mauza",
-      "score": 92.88,
+      "name": "chris",
+      "score": 91.91,
       "status": "STARK"
     },
     {
       "name": "agostini",
-      "score": 92.13,
-      "status": "STARK"
-    },
-    {
-      "name": "chris",
-      "score": 91.91,
+      "score": 91.87,
       "status": "STARK"
     },
     {
@@ -364,7 +364,7 @@
     },
     {
       "name": "prolike14",
-      "score": 82.4,
+      "score": 82.67,
       "status": "STARK"
     },
     {
@@ -430,6 +430,11 @@
   ],
   "coaching": [
     {
+      "name": "mauza",
+      "score": 93.28,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Citykingalex",
       "score": 93.15,
       "tip": "Weiter so"
@@ -445,18 +450,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "mauza",
-      "score": 92.88,
+      "name": "chris",
+      "score": 91.91,
       "tip": "Weiter so"
     },
     {
       "name": "agostini",
-      "score": 92.13,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "chris",
-      "score": 91.91,
+      "score": 91.87,
       "tip": "Weiter so"
     },
     {
@@ -616,7 +616,7 @@
     },
     {
       "name": "prolike14",
-      "score": 82.4,
+      "score": 82.67,
       "tip": "Weiter so"
     },
     {
@@ -722,6 +722,18 @@
     ],
     "core": [
       {
+        "name": "mauza",
+        "player_tag": "#2P0U2RLGY",
+        "role": "member",
+        "score": 93.28,
+        "strikes": 0,
+        "donations": 162,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Erastus",
         "player_tag": "#Q8L0RJ8Y8",
         "role": "member",
@@ -758,12 +770,12 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "mauza",
-        "player_tag": "#2P0U2RLGY",
+        "name": "chris",
+        "player_tag": "#YQ82VR9JQ",
         "role": "member",
-        "score": 92.88,
+        "score": 91.91,
         "strikes": 0,
-        "donations": 154,
+        "donations": 548,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -773,23 +785,11 @@
         "name": "agostini",
         "player_tag": "#P2YQ2QQUV",
         "role": "member",
-        "score": 92.13,
+        "score": 91.87,
         "strikes": 0,
-        "donations": 734,
+        "donations": 768,
         "participation_count": 10,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "chris",
-        "player_tag": "#YQ82VR9JQ",
-        "role": "member",
-        "score": 91.91,
-        "strikes": 0,
-        "donations": 548,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -1051,7 +1051,7 @@
         "role": "member",
         "score": 86.46,
         "strikes": 0,
-        "donations": 340,
+        "donations": 348,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
