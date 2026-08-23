@@ -116,17 +116,17 @@
       "priority": 2
     },
     {
+      "name": "_spc07",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Reklaminator",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Ben Siebolf",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "_spc07",
       "scenario": "TOP",
       "priority": 2
     },
@@ -283,18 +283,18 @@
       "status": "STARK"
     },
     {
+      "name": "_spc07",
+      "score": 88.35,
+      "status": "STARK"
+    },
+    {
       "name": "Reklaminator",
       "score": 88.34,
       "status": "STARK"
     },
     {
       "name": "Ben Siebolf",
-      "score": 88.23,
-      "status": "STARK"
-    },
-    {
-      "name": "_spc07",
-      "score": 88.21,
+      "score": 88.1,
       "status": "STARK"
     },
     {
@@ -535,18 +535,18 @@
       "tip": "Weiter so"
     },
     {
+      "name": "_spc07",
+      "score": 88.35,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Reklaminator",
       "score": 88.34,
       "tip": "Weiter so"
     },
     {
       "name": "Ben Siebolf",
-      "score": 88.23,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "_spc07",
-      "score": 88.21,
+      "score": 88.1,
       "tip": "Weiter so"
     },
     {
@@ -962,6 +962,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "_spc07",
+        "player_tag": "#2U8288CVY",
+        "role": "member",
+        "score": 88.35,
+        "strikes": 0,
+        "donations": 134,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Reklaminator",
         "player_tag": "#P0G2GYJQ9",
         "role": "member",
@@ -977,23 +989,11 @@
         "name": "Ben Siebolf",
         "player_tag": "#PLG90C0C",
         "role": "member",
-        "score": 88.23,
+        "score": 88.1,
         "strikes": 0,
         "donations": 103,
         "participation_count": 3,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "_spc07",
-        "player_tag": "#2U8288CVY",
-        "role": "member",
-        "score": 88.21,
-        "strikes": 0,
-        "donations": 134,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -1075,7 +1075,7 @@
         "role": "member",
         "score": 86.25,
         "strikes": 0,
-        "donations": 196,
+        "donations": 206,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
