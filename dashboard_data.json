@@ -56,17 +56,17 @@
       "priority": 2
     },
     {
+      "name": "OneAndOnly",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Bensie",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
     },
@@ -213,23 +213,23 @@
       "status": "STARK"
     },
     {
-      "name": "Swordfish",
-      "score": 90.84,
-      "status": "STARK"
-    },
-    {
       "name": "elazeto",
       "score": 90.75,
       "status": "STARK"
     },
     {
-      "name": "Bensie",
+      "name": "OneAndOnly",
       "score": 90.67,
       "status": "STARK"
     },
     {
-      "name": "OneAndOnly",
-      "score": 90.67,
+      "name": "Swordfish",
+      "score": 90.57,
+      "status": "STARK"
+    },
+    {
+      "name": "Bensie",
+      "score": 90.4,
       "status": "STARK"
     },
     {
@@ -465,23 +465,23 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Swordfish",
-      "score": 90.84,
-      "tip": "Weiter so"
-    },
-    {
       "name": "elazeto",
       "score": 90.75,
       "tip": "Weiter so"
     },
     {
-      "name": "Bensie",
+      "name": "OneAndOnly",
       "score": 90.67,
       "tip": "Weiter so"
     },
     {
-      "name": "OneAndOnly",
-      "score": 90.67,
+      "name": "Swordfish",
+      "score": 90.57,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Bensie",
+      "score": 90.4,
       "tip": "Weiter so"
     },
     {
@@ -806,10 +806,22 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "OneAndOnly",
+        "player_tag": "#8P0J8P0L",
+        "role": "member",
+        "score": 90.67,
+        "strikes": 0,
+        "donations": 432,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Swordfish",
         "player_tag": "#2CPRGY8G",
         "role": "member",
-        "score": 90.84,
+        "score": 90.57,
         "strikes": 0,
         "donations": 214,
         "participation_count": 10,
@@ -821,21 +833,9 @@
         "name": "Bensie",
         "player_tag": "#2QRVR9L8",
         "role": "member",
-        "score": 90.67,
+        "score": 90.4,
         "strikes": 0,
         "donations": 621,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "OneAndOnly",
-        "player_tag": "#8P0J8P0L",
-        "role": "member",
-        "score": 90.67,
-        "strikes": 0,
-        "donations": 432,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
