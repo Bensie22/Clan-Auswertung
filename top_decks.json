@@ -35,7 +35,7 @@
             "#2U09UULRR": "20260827T073143.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20260827T005400.000Z",
-            "#8P0J8P0L": "20260825T131825.000Z",
+            "#8P0J8P0L": "20260827T114923.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260823T203349.000Z",
             "#2P0U2RLGY": "20260827T061814.000Z",
@@ -3957,7 +3957,7 @@
                 }
             ],
             "wins": 3,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "OneAndOnly"
             ],
@@ -3965,6 +3965,12 @@
                 "8P0J8P0L"
             ],
             "recent_matches": [
+                {
+                    "time": "20260827T114923.000Z",
+                    "result": "loss",
+                    "player": "OneAndOnly",
+                    "tag": "8P0J8P0L"
+                },
                 {
                     "time": "20260823T112524.000Z",
                     "result": "win",
@@ -410906,6 +410912,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000005-26000014-26000032-26000041-26000043-27000007-28000000-28000008": {
+            "cards": [
+                {
+                    "id": 26000032,
+                    "name": "Miner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Y4yWvdwBCg2FpAZgs8T09Gy34WOwpLZW-ttL52Ae8NE.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 27000007,
+                    "name": "Elixir Collector",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BGLo3Grsp81c72EpxLLk-Sofk3VY56zahnUNOv3JcT0.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                },
+                {
+                    "id": 26000043,
+                    "name": "Elite Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/C88C5JH_F3lLZj6K-tLcMo5DPjrFmvzIb1R2M6xCfTE.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }

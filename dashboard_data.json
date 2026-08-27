@@ -41,17 +41,17 @@
       "priority": 2
     },
     {
+      "name": "OneAndOnly",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "OmniOni",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "kl.kranker Affe",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
     },
@@ -168,6 +168,11 @@
       "status": "STARK"
     },
     {
+      "name": "OneAndOnly",
+      "score": 90.8,
+      "status": "STARK"
+    },
+    {
       "name": "OmniOni",
       "score": 90.75,
       "status": "STARK"
@@ -175,11 +180,6 @@
     {
       "name": "kl.kranker Affe",
       "score": 90.65,
-      "status": "STARK"
-    },
-    {
-      "name": "OneAndOnly",
-      "score": 90.53,
       "status": "STARK"
     },
     {
@@ -420,6 +420,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "OneAndOnly",
+      "score": 90.8,
+      "tip": "Weiter so"
+    },
+    {
       "name": "OmniOni",
       "score": 90.75,
       "tip": "Weiter so"
@@ -427,11 +432,6 @@
     {
       "name": "kl.kranker Affe",
       "score": 90.65,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "OneAndOnly",
-      "score": 90.53,
       "tip": "Weiter so"
     },
     {
@@ -728,9 +728,21 @@
         "role": "member",
         "score": 90.8,
         "strikes": 0,
-        "donations": 438,
+        "donations": 446,
         "participation_count": 10,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "OneAndOnly",
+        "player_tag": "#8P0J8P0L",
+        "role": "member",
+        "score": 90.8,
+        "strikes": 0,
+        "donations": 91,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -753,18 +765,6 @@
         "score": 90.65,
         "strikes": 0,
         "donations": 58,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "OneAndOnly",
-        "player_tag": "#8P0J8P0L",
-        "role": "member",
-        "score": 90.53,
-        "strikes": 0,
-        "donations": 91,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
