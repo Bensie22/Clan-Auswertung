@@ -36,17 +36,17 @@
       "priority": 2
     },
     {
-      "name": "agostini",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "kl.kranker Affe",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "agostini",
       "scenario": "TOP",
       "priority": 2
     },
@@ -163,11 +163,6 @@
       "status": "STARK"
     },
     {
-      "name": "agostini",
-      "score": 90.8,
-      "status": "STARK"
-    },
-    {
       "name": "OneAndOnly",
       "score": 90.8,
       "status": "STARK"
@@ -175,6 +170,11 @@
     {
       "name": "kl.kranker Affe",
       "score": 90.78,
+      "status": "STARK"
+    },
+    {
+      "name": "agostini",
+      "score": 90.53,
       "status": "STARK"
     },
     {
@@ -415,11 +415,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "agostini",
-      "score": 90.8,
-      "tip": "Weiter so"
-    },
-    {
       "name": "OneAndOnly",
       "score": 90.8,
       "tip": "Weiter so"
@@ -427,6 +422,11 @@
     {
       "name": "kl.kranker Affe",
       "score": 90.78,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "agostini",
+      "score": 90.53,
       "tip": "Weiter so"
     },
     {
@@ -723,18 +723,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "agostini",
-        "player_tag": "#P2YQ2QQUV",
-        "role": "member",
-        "score": 90.8,
-        "strikes": 0,
-        "donations": 472,
-        "participation_count": 10,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "OneAndOnly",
         "player_tag": "#8P0J8P0L",
         "role": "member",
@@ -755,6 +743,18 @@
         "donations": 58,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "agostini",
+        "player_tag": "#P2YQ2QQUV",
+        "role": "member",
+        "score": 90.53,
+        "strikes": 0,
+        "donations": 480,
+        "participation_count": 10,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -908,7 +908,7 @@
         "role": "member",
         "score": 88.5,
         "strikes": 0,
-        "donations": 144,
+        "donations": 154,
         "participation_count": 3,
         "trend": "",
         "reason": "Score über 85",
@@ -920,7 +920,7 @@
         "role": "member",
         "score": 88.17,
         "strikes": 0,
-        "donations": 625,
+        "donations": 643,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
