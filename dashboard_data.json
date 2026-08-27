@@ -66,17 +66,17 @@
       "priority": 2
     },
     {
-      "name": "Dolphin",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "April#",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Bensie",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
     },
@@ -213,11 +213,6 @@
       "status": "STARK"
     },
     {
-      "name": "Dolphin",
-      "score": 89.15,
-      "status": "STARK"
-    },
-    {
       "name": "Bensie",
       "score": 89.07,
       "status": "STARK"
@@ -225,6 +220,11 @@
     {
       "name": "honigmelone",
       "score": 89.05,
+      "status": "STARK"
+    },
+    {
+      "name": "Dolphin",
+      "score": 89.02,
       "status": "STARK"
     },
     {
@@ -465,11 +465,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Dolphin",
-      "score": 89.15,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Bensie",
       "score": 89.07,
       "tip": "Weiter so"
@@ -477,6 +472,11 @@
     {
       "name": "honigmelone",
       "score": 89.05,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Dolphin",
+      "score": 89.02,
       "tip": "Weiter so"
     },
     {
@@ -819,18 +819,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Dolphin",
-        "player_tag": "#2U09UULRR",
-        "role": "member",
-        "score": 89.15,
-        "strikes": 0,
-        "donations": 226,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "April#",
         "player_tag": "#YUQVVVLQ",
         "role": "member",
@@ -861,6 +849,18 @@
         "score": 89.05,
         "strikes": 0,
         "donations": 26,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Dolphin",
+        "player_tag": "#2U09UULRR",
+        "role": "member",
+        "score": 89.02,
+        "strikes": 0,
+        "donations": 226,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
