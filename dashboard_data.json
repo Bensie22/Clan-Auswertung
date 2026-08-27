@@ -36,17 +36,17 @@
       "priority": 2
     },
     {
+      "name": "Swordfish",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "agostini",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "OmniOni",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
@@ -163,6 +163,11 @@
       "status": "STARK"
     },
     {
+      "name": "Swordfish",
+      "score": 90.84,
+      "status": "STARK"
+    },
+    {
       "name": "agostini",
       "score": 90.8,
       "status": "STARK"
@@ -170,11 +175,6 @@
     {
       "name": "OmniOni",
       "score": 90.75,
-      "status": "STARK"
-    },
-    {
-      "name": "Swordfish",
-      "score": 90.7,
       "status": "STARK"
     },
     {
@@ -415,6 +415,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Swordfish",
+      "score": 90.84,
+      "tip": "Weiter so"
+    },
+    {
       "name": "agostini",
       "score": 90.8,
       "tip": "Weiter so"
@@ -422,11 +427,6 @@
     {
       "name": "OmniOni",
       "score": 90.75,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Swordfish",
-      "score": 90.7,
       "tip": "Weiter so"
     },
     {
@@ -654,7 +654,7 @@
         "role": "member",
         "score": 0.0,
         "strikes": 0,
-        "donations": 125,
+        "donations": 126,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -723,6 +723,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Swordfish",
+        "player_tag": "#2CPRGY8G",
+        "role": "member",
+        "score": 90.84,
+        "strikes": 0,
+        "donations": 102,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "agostini",
         "player_tag": "#P2YQ2QQUV",
         "role": "member",
@@ -741,18 +753,6 @@
         "score": 90.75,
         "strikes": 0,
         "donations": 196,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Swordfish",
-        "player_tag": "#2CPRGY8G",
-        "role": "member",
-        "score": 90.7,
-        "strikes": 0,
-        "donations": 78,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
