@@ -18,8 +18,8 @@
             "#PPR2QQC0U": "20260826T193854.000Z",
             "#QULCQGGG": "20260827T105201.000Z",
             "#JRGC9RRQG": "20260826T230947.000Z",
-            "#QVQGCV8Y9": "20260827T134039.000Z",
-            "#Q8L0RJ8Y8": "20260827T133842.000Z",
+            "#QVQGCV8Y9": "20260827T134734.000Z",
+            "#Q8L0RJ8Y8": "20260827T134934.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260827T112435.000Z",
             "#LLQQJCLC": "20260827T100150.000Z",
@@ -105,10 +105,10 @@
             "#VCYQ9L9QV": "20260729T140933.000Z",
             "#GRR999Q29": "20260801T003732.000Z",
             "#202QYVY8CC": "20260810T095353.000Z",
-            "#PLG90C0C": "20260827T104045.000Z",
+            "#PLG90C0C": "20260827T134727.000Z",
             "#LGUGQ0PRG": "20260826T204650.000Z",
             "#UVGRVC8LU": "20260809T181113.000Z",
-            "#PVGU89PUL": "20260827T133700.000Z",
+            "#PVGU89PUL": "20260827T134133.000Z",
             "#V9JP2PGGP": "20260827T091001.000Z",
             "#R2VYJUUCP": "20260804T204503.000Z",
             "#RL9LQYCCY": "20260804T213809.000Z",
@@ -5360,7 +5360,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/WKd4-IAFsgPpMo7dDi9sujmYjRhOMEWiE07OUJpvD9g.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "Hemelm"
@@ -5369,6 +5369,12 @@
                 "PVGU89PUL"
             ],
             "recent_matches": [
+                {
+                    "time": "20260827T134133.000Z",
+                    "result": "win",
+                    "player": "Hemelm",
+                    "tag": "PVGU89PUL"
+                },
                 {
                     "time": "20260822T193538.000Z",
                     "result": "win",
@@ -411264,6 +411270,52 @@
                     "id": 26000041,
                     "name": "Goblin Gang",
                     "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000011-26000021-26000042-26000055-26000062-27000004-28000009-28000012": {
+            "cards": [
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 28000012,
+                    "name": "Tornado",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QJB-QK1QJHdw4hjpAwVSyZBozc2ZWAR9pQ-SMUyKaT0.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                },
+                {
+                    "id": 27000004,
+                    "name": "Bomb Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/rirYRyHPc97emRjoH-c1O8uZCBzPVnToaGuNGusF3TQ.png"
                 }
             ],
             "seen": 1,
