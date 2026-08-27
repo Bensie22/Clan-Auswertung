@@ -6,7 +6,7 @@
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260827T042355.000Z",
             "#ULYJ2CQP": "20260827T160831.000Z",
-            "#UJ2P9UYUV": "20260827T190453.000Z",
+            "#UJ2P9UYUV": "20260827T191059.000Z",
             "#P0JYR9YUY": "20260827T070959.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260827T141343.000Z",
@@ -22,7 +22,7 @@
             "#Q8L0RJ8Y8": "20260827T190018.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260827T112435.000Z",
-            "#LLQQJCLC": "20260827T190806.000Z",
+            "#LLQQJCLC": "20260827T191209.000Z",
             "#2VJR80RL": "20260826T124355.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
@@ -31,7 +31,7 @@
             "#YQVQYUYRV": "20260525T095543.000Z",
             "#2V800VCQ0": "20260827T082408.000Z",
             "#2UQUPYQCJ": "20260810T113227.000Z",
-            "#JUUR8UGL8": "20260827T190804.000Z",
+            "#JUUR8UGL8": "20260827T192107.000Z",
             "#2U09UULRR": "20260827T183827.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20260827T171806.000Z",
@@ -121,7 +121,7 @@
             "#200PGVGQ9U": "20260811T201941.000Z",
             "#RR0GV9L00": "20260826T204434.000Z",
             "#2JQUVJUUG": "20260813T213647.000Z",
-            "#JGYCRU2YP": "20260827T185920.000Z",
+            "#JGYCRU2YP": "20260827T191237.000Z",
             "#PC2LPCVU": "20260821T213327.000Z",
             "#2GPVVPCC8": "20260827T180331.000Z"
         }
@@ -4520,7 +4520,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
                 }
             ],
-            "wins": 2,
+            "wins": 3,
             "losses": 0,
             "players": [
                 "bes"
@@ -4529,6 +4529,12 @@
                 "LLQQJCLC"
             ],
             "recent_matches": [
+                {
+                    "time": "20260827T191209.000Z",
+                    "result": "win",
+                    "player": "bes",
+                    "tag": "LLQQJCLC"
+                },
                 {
                     "time": "20260823T135251.000Z",
                     "result": "win",
@@ -412524,6 +412530,52 @@
                     "id": 26000015,
                     "name": "Baby Dragon",
                     "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000004-26000017-26000026-26000039-26000040-26000044-26000059-28000011": {
+            "cards": [
+                {
+                    "id": 26000044,
+                    "name": "Hunter",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/VNabB1WKnYtYRSG7X_FZfnZjQDHTBs9A96OGMFmecrA.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 26000039,
+                    "name": "Mega Minion",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/-T_e4YLbuhPBKbYnBwQfXgynNpp5eOIN_0RracYwL9c.png"
                 }
             ],
             "seen": 1,
