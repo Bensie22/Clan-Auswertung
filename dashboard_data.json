@@ -46,17 +46,17 @@
       "priority": 2
     },
     {
-      "name": "agostini",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "OmniOni",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Swordfish",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "agostini",
       "scenario": "TOP",
       "priority": 2
     },
@@ -178,11 +178,6 @@
       "status": "STARK"
     },
     {
-      "name": "agostini",
-      "score": 90.53,
-      "status": "STARK"
-    },
-    {
       "name": "OmniOni",
       "score": 90.48,
       "status": "STARK"
@@ -190,6 +185,11 @@
     {
       "name": "Swordfish",
       "score": 90.44,
+      "status": "STARK"
+    },
+    {
+      "name": "agostini",
+      "score": 90.4,
       "status": "STARK"
     },
     {
@@ -349,7 +349,7 @@
     },
     {
       "name": "Merlin1659",
-      "score": 80.14,
+      "score": 80.01,
       "status": "STARK"
     },
     {
@@ -430,11 +430,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "agostini",
-      "score": 90.53,
-      "tip": "Weiter so"
-    },
-    {
       "name": "OmniOni",
       "score": 90.48,
       "tip": "Weiter so"
@@ -442,6 +437,11 @@
     {
       "name": "Swordfish",
       "score": 90.44,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "agostini",
+      "score": 90.4,
       "tip": "Weiter so"
     },
     {
@@ -601,7 +601,7 @@
     },
     {
       "name": "Merlin1659",
-      "score": 80.14,
+      "score": 80.01,
       "tip": "Weiter so"
     },
     {
@@ -697,7 +697,7 @@
         "role": "member",
         "score": 93.87,
         "strikes": 0,
-        "donations": 420,
+        "donations": 438,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -752,18 +752,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "agostini",
-        "player_tag": "#P2YQ2QQUV",
-        "role": "member",
-        "score": 90.53,
-        "strikes": 0,
-        "donations": 488,
-        "participation_count": 10,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "OmniOni",
         "player_tag": "#UUPCULU9V",
         "role": "member",
@@ -784,6 +772,18 @@
         "donations": 102,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "agostini",
+        "player_tag": "#P2YQ2QQUV",
+        "role": "member",
+        "score": 90.4,
+        "strikes": 0,
+        "donations": 498,
+        "participation_count": 10,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -925,7 +925,7 @@
         "role": "member",
         "score": 88.44,
         "strikes": 0,
-        "donations": 643,
+        "donations": 661,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1045,7 +1045,7 @@
         "role": "member",
         "score": 85.75,
         "strikes": 0,
-        "donations": 242,
+        "donations": 258,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
