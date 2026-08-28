@@ -8,8 +8,10 @@ Reference map for Clan-Auswertung. Read before adding endpoints, mode scripts, s
 Clan-Auswertung/
 ├── api.py                          FastAPI factory, OpenAPI override, /config, static pages
 ├── Master_Auswertung_GitHub.py     Monolithic cron batch: fetch + state mutation + HTML report + email
-├── config.py                       Single threshold source — STRIKE/KICK/PROMOTION/badge/tier/ampel
+├── config.py                       Single threshold source — STRIKE/KICK/PROMOTION/badge/tier/ampel + Score-Formel
+├── CONTEXT.md                      Domain glossary (Bewertung, Score, Kriegsteilnahme, laufender Krieg, …)
 ├── app/
+│   ├── bewertung.py                Score-Logik + CSV-Adapter: Kriegsteilnahme → Bewertung
 │   ├── cr_api.py                   Live Supercell client via RoyaleAPI proxy (CR_API_KEY)
 │   ├── data.py                     Central JSON/CSV loader for repo-root state files
 │   ├── services.py                 Score → badge / focus / trend / promotion-status logic
@@ -28,6 +30,7 @@ Clan-Auswertung/
 ├── merge_outputs.py                *_output.json → dashboard_data.json
 ├── run_pipeline.py                 Local orchestrator (prefetch → modes → merge)
 ├── api_client.py                   Shared HTTP GET wrapper (used by pipeline scripts)
+├── tests/                          pytest, lokal — test_bewertung.py + fixtures/, nicht im Cron
 ├── index.html / datenschutz.html / impressum.html   Static frontend + legal
 ├── .github/workflows/main.yml      Cron every 10 min: master → prefetch → modes → merge → commit + push
 └── docs/                           you are here
@@ -44,6 +47,7 @@ Clan-Auswertung/
                   ┌────────────────────▼────────────────────────────────┐
                   │  Master_Auswertung_GitHub.py                        │
                   │  - fetch_and_build_player_csv (Supercell)           │
+                  │  - app/bewertung.py::bewerte je Spieler             │
                   │  - update_top_decks, fetch_player_profiles          │
                   │  - mutate member_memory / donations / strikes /     │
                   │    records / score_history / top_decks / …          │
@@ -82,6 +86,7 @@ Clan-Auswertung/
 | Layer | Owns | Does NOT |
 |-------|------|----------|
 | **`config.py`** | All numeric thresholds (strike / kick / promotion / badges / tiers / ampel / smart / coaching). | Contain logic. |
+| **`app/bewertung.py`** | Der gewichtete 3-Faktor-Score und die Kennzahlen dahinter, plus der Adapter von einer Clan-Export-Zeile zur `Kriegsteilnahme`. Reine Funktion über Kriegsdaten. Berechnet wird sie nur im Cron; API und Mode-Skripte lesen das Ergebnis aus `player_stats.json`. | Urlaub, Strikes oder sonstige Maßnahmen kennen. |
 | **`app/utils.py`** | Pure helpers: tag/name normalization, parse_int / parse_float. | Touch I/O. |
 | **`app/data.py`** | Centralized JSON/CSV loaders + path constants. Safe fallbacks via `load_json(path, default)`. | Hold business rules. |
 | **`app/cr_api.py`** | RoyaleAPI proxy client. `cr_api_get` raises `HTTPException` with proper status codes. | Persist state. |
