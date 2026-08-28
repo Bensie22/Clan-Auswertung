@@ -15,7 +15,7 @@
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
-            "#PPR2QQC0U": "20260826T193854.000Z",
+            "#PPR2QQC0U": "20260828T043101.000Z",
             "#QULCQGGG": "20260827T151918.000Z",
             "#JRGC9RRQG": "20260827T221850.000Z",
             "#QVQGCV8Y9": "20260827T141145.000Z",
@@ -32,7 +32,7 @@
             "#2V800VCQ0": "20260827T082408.000Z",
             "#2UQUPYQCJ": "20260810T113227.000Z",
             "#JUUR8UGL8": "20260827T192107.000Z",
-            "#2U09UULRR": "20260828T041044.000Z",
+            "#2U09UULRR": "20260828T043006.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20260828T014313.000Z",
             "#8P0J8P0L": "20260827T114923.000Z",
@@ -49,7 +49,7 @@
             "#20QGJVPG8Q": "20260712T214357.000Z",
             "#V9GYJQ0J9": "",
             "#URJ0LUYPV": "20260827T183001.000Z",
-            "#Q2GRGLQR": "20260827T200505.000Z",
+            "#Q2GRGLQR": "20260828T042911.000Z",
             "#J9RQPGLVP": "20260713T204019.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
             "#9VLRQ9GR9": "20260827T091051.000Z",
@@ -2150,7 +2150,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
                 }
             ],
-            "wins": 4,
+            "wins": 5,
             "losses": 0,
             "players": [
                 "honigmelone"
@@ -2159,6 +2159,12 @@
                 "Q2GRGLQR"
             ],
             "recent_matches": [
+                {
+                    "time": "20260828T042911.000Z",
+                    "result": "win",
+                    "player": "honigmelone",
+                    "tag": "Q2GRGLQR"
+                },
                 {
                     "time": "20260824T045009.000Z",
                     "result": "win",
@@ -413654,6 +413660,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000000-26000016-26000020-26000049-26000062-26000063-27000012-28000001": {
+            "cards": [
+                {
+                    "id": 27000012,
+                    "name": "Goblin Cage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vD24bBgK4rSq7wx5QEbuqChtPMRFviL_ep76GwQw1yA.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000063,
+                    "name": "Electro Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/tN9h6lnMNPCNsx0LMFmvpHgznbDZ1fBRkx-C7UfNmfY.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 26000020,
+                    "name": "Giant Skeleton",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0p0gd0XaVRu1Hb1iSG1hTYbz2AN6aEiZnhaAib5O8Z8.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
