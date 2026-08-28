@@ -76,6 +76,11 @@
       "priority": 2
     },
     {
+      "name": "Knitte",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Bensie",
       "scenario": "TOP",
       "priority": 2
@@ -87,11 +92,6 @@
     },
     {
       "name": "HardcoreSoldier",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Knitte",
       "scenario": "TOP",
       "priority": 2
     },
@@ -149,7 +149,7 @@
     },
     {
       "name": "Erastus",
-      "score": 93.87,
+      "score": 94.27,
       "status": "STARK"
     },
     {
@@ -213,6 +213,11 @@
       "status": "STARK"
     },
     {
+      "name": "Knitte",
+      "score": 89.23,
+      "status": "STARK"
+    },
+    {
       "name": "Bensie",
       "score": 89.2,
       "status": "STARK"
@@ -225,11 +230,6 @@
     {
       "name": "HardcoreSoldier",
       "score": 88.84,
-      "status": "STARK"
-    },
-    {
-      "name": "Knitte",
-      "score": 88.83,
       "status": "STARK"
     },
     {
@@ -401,7 +401,7 @@
     },
     {
       "name": "Erastus",
-      "score": 93.87,
+      "score": 94.27,
       "tip": "Weiter so"
     },
     {
@@ -465,6 +465,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Knitte",
+      "score": 89.23,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Bensie",
       "score": 89.2,
       "tip": "Weiter so"
@@ -477,11 +482,6 @@
     {
       "name": "HardcoreSoldier",
       "score": 88.84,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Knitte",
-      "score": 88.83,
       "tip": "Weiter so"
     },
     {
@@ -690,9 +690,9 @@
         "name": "Erastus",
         "player_tag": "#Q8L0RJ8Y8",
         "role": "member",
-        "score": 93.87,
+        "score": 94.27,
         "strikes": 0,
-        "donations": 446,
+        "donations": 464,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -831,6 +831,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Knitte",
+        "player_tag": "#ULYJ2CQP",
+        "role": "member",
+        "score": 89.23,
+        "strikes": 0,
+        "donations": 566,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Bensie",
         "player_tag": "#2QRVR9L8",
         "role": "member",
@@ -863,18 +875,6 @@
         "donations": 332,
         "participation_count": 10,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Knitte",
-        "player_tag": "#ULYJ2CQP",
-        "role": "member",
-        "score": 88.83,
-        "strikes": 0,
-        "donations": 540,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
