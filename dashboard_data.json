@@ -46,17 +46,17 @@
       "priority": 2
     },
     {
+      "name": "OmniOni",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "agostini",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "OmniOni",
       "scenario": "TOP",
       "priority": 2
     },
@@ -183,6 +183,11 @@
       "status": "STARK"
     },
     {
+      "name": "OmniOni",
+      "score": 90.62,
+      "status": "STARK"
+    },
+    {
       "name": "Swordfish",
       "score": 90.57,
       "status": "STARK"
@@ -195,11 +200,6 @@
     {
       "name": "elazeto",
       "score": 90.49,
-      "status": "STARK"
-    },
-    {
-      "name": "OmniOni",
-      "score": 90.48,
       "status": "STARK"
     },
     {
@@ -435,6 +435,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "OmniOni",
+      "score": 90.62,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Swordfish",
       "score": 90.57,
       "tip": "Weiter so"
@@ -447,11 +452,6 @@
     {
       "name": "elazeto",
       "score": 90.49,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "OmniOni",
-      "score": 90.48,
       "tip": "Weiter so"
     },
     {
@@ -757,6 +757,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "OmniOni",
+        "player_tag": "#UUPCULU9V",
+        "role": "member",
+        "score": 90.62,
+        "strikes": 0,
+        "donations": 300,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Swordfish",
         "player_tag": "#2CPRGY8G",
         "role": "member",
@@ -777,18 +789,6 @@
         "donations": 564,
         "participation_count": 10,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "OmniOni",
-        "player_tag": "#UUPCULU9V",
-        "role": "member",
-        "score": 90.48,
-        "strikes": 0,
-        "donations": 284,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -822,7 +822,7 @@
         "role": "member",
         "score": 89.28,
         "strikes": 0,
-        "donations": 233,
+        "donations": 243,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
