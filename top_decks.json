@@ -16,7 +16,7 @@
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260828T043330.000Z",
-            "#QULCQGGG": "20260828T124043.000Z",
+            "#QULCQGGG": "20260828T124409.000Z",
             "#JRGC9RRQG": "20260828T122446.000Z",
             "#QVQGCV8Y9": "20260828T111956.000Z",
             "#Q8L0RJ8Y8": "20260828T102608.000Z",
@@ -37,7 +37,7 @@
             "#8QYYL8LCQ": "20260828T014313.000Z",
             "#8P0J8P0L": "20260827T114923.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20260827T200916.000Z",
+            "#CUJ9PJ2UV": "20260828T124924.000Z",
             "#2P0U2RLGY": "20260827T130811.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260828T065111.000Z",
@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20260828T123637.000Z",
+            "#YUQVVVLQ": "20260828T125032.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260827T214004.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
@@ -117,7 +117,7 @@
             "#UQV90UP09": "20260810T190628.000Z",
             "#JV80YYJRJ": "20260828T091834.000Z",
             "#VP8P9UG8V": "20260817T002911.000Z",
-            "#G9QR0YVU": "20260828T124029.000Z",
+            "#G9QR0YVU": "20260828T124525.000Z",
             "#200PGVGQ9U": "20260811T201941.000Z",
             "#RR0GV9L00": "20260827T223431.000Z",
             "#2JQUVJUUG": "20260813T213647.000Z",
@@ -3586,7 +3586,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
                 }
             ],
-            "wins": 3,
+            "wins": 4,
             "losses": 0,
             "players": [
                 "AaleDieter"
@@ -3595,6 +3595,12 @@
                 "CUJ9PJ2UV"
             ],
             "recent_matches": [
+                {
+                    "time": "20260828T124120.000Z",
+                    "result": "win",
+                    "player": "AaleDieter",
+                    "tag": "CUJ9PJ2UV"
+                },
                 {
                     "time": "20260827T174049.000Z",
                     "result": "win",
@@ -415438,6 +415444,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000014-26000049-26000053-26000054-26000058-28000004-28000014-28000015": {
+            "cards": [
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 28000015,
+                    "name": "Barbarian Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Gb0G1yNy0i5cIGUHin8uoFWxqntNtRPhY_jeMXg7HnA.png"
+                },
+                {
+                    "id": 28000014,
+                    "name": "Earthquake",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/XeQXcrUu59C52DslyZVwCnbi4yamID-WxfVZLShgZmE.png"
+                },
+                {
+                    "id": 26000053,
+                    "name": "Rascals",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/KV48DfwVHKx9XCjzBdk3daT_Eb52Me4VgjVO7WctRc4.png"
+                },
+                {
+                    "id": 26000054,
+                    "name": "Cannon Cart",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/aqwxRz8HXzqlMCO4WMXNA1txynjXTsLinknqsgZLbok.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                },
+                {
+                    "id": 26000058,
+                    "name": "Wall Breakers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_xPphEfC8eEwFNrfU3cMQG9-f5JaLQ31ARCA7l3XtW4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
