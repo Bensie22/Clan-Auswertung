@@ -86,12 +86,12 @@
       "priority": 2
     },
     {
-      "name": "Dolphin",
+      "name": "HardcoreSoldier",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "HardcoreSoldier",
+      "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
     },
@@ -223,11 +223,6 @@
       "status": "STARK"
     },
     {
-      "name": "Dolphin",
-      "score": 88.88,
-      "status": "STARK"
-    },
-    {
       "name": "HardcoreSoldier",
       "score": 88.84,
       "status": "STARK"
@@ -235,6 +230,11 @@
     {
       "name": "honigmelone",
       "score": 88.79,
+      "status": "STARK"
+    },
+    {
+      "name": "Dolphin",
+      "score": 88.75,
       "status": "STARK"
     },
     {
@@ -475,11 +475,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Dolphin",
-      "score": 88.88,
-      "tip": "Weiter so"
-    },
-    {
       "name": "HardcoreSoldier",
       "score": 88.84,
       "tip": "Weiter so"
@@ -487,6 +482,11 @@
     {
       "name": "honigmelone",
       "score": 88.79,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Dolphin",
+      "score": 88.75,
       "tip": "Weiter so"
     },
     {
@@ -855,18 +855,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Dolphin",
-        "player_tag": "#2U09UULRR",
-        "role": "member",
-        "score": 88.88,
-        "strikes": 0,
-        "donations": 280,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "HardcoreSoldier",
         "player_tag": "#GRGCY0R8",
         "role": "member",
@@ -885,6 +873,18 @@
         "score": 88.79,
         "strikes": 0,
         "donations": 26,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Dolphin",
+        "player_tag": "#2U09UULRR",
+        "role": "member",
+        "score": 88.75,
+        "strikes": 0,
+        "donations": 280,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
