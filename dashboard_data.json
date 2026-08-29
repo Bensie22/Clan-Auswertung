@@ -36,11 +36,6 @@
       "priority": 2
     },
     {
-      "name": "kl.kranker Affe",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "OmniOni",
       "scenario": "TOP",
       "priority": 2
@@ -51,12 +46,17 @@
       "priority": 2
     },
     {
-      "name": "Swordfish",
+      "name": "kl.kranker Affe",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "agostini",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
@@ -183,11 +183,6 @@
       "status": "STARK"
     },
     {
-      "name": "kl.kranker Affe",
-      "score": 90.92,
-      "status": "STARK"
-    },
-    {
       "name": "OmniOni",
       "score": 90.88,
       "status": "STARK"
@@ -198,8 +193,8 @@
       "status": "STARK"
     },
     {
-      "name": "Swordfish",
-      "score": 90.44,
+      "name": "kl.kranker Affe",
+      "score": 90.52,
       "status": "STARK"
     },
     {
@@ -210,6 +205,11 @@
     {
       "name": "elazeto",
       "score": 90.35,
+      "status": "STARK"
+    },
+    {
+      "name": "Swordfish",
+      "score": 90.3,
       "status": "STARK"
     },
     {
@@ -264,7 +264,7 @@
     },
     {
       "name": "LazyFrog",
-      "score": 88.31,
+      "score": 88.44,
       "status": "STARK"
     },
     {
@@ -435,11 +435,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "kl.kranker Affe",
-      "score": 90.92,
-      "tip": "Weiter so"
-    },
-    {
       "name": "OmniOni",
       "score": 90.88,
       "tip": "Weiter so"
@@ -450,8 +445,8 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Swordfish",
-      "score": 90.44,
+      "name": "kl.kranker Affe",
+      "score": 90.52,
       "tip": "Weiter so"
     },
     {
@@ -462,6 +457,11 @@
     {
       "name": "elazeto",
       "score": 90.35,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Swordfish",
+      "score": 90.3,
       "tip": "Weiter so"
     },
     {
@@ -516,7 +516,7 @@
     },
     {
       "name": "LazyFrog",
-      "score": 88.31,
+      "score": 88.44,
       "tip": "Weiter so"
     },
     {
@@ -743,18 +743,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "kl.kranker Affe",
-        "player_tag": "#RLJPJL8C2",
-        "role": "member",
-        "score": 90.92,
-        "strikes": 0,
-        "donations": 94,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "OmniOni",
         "player_tag": "#UUPCULU9V",
         "role": "member",
@@ -779,12 +767,12 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Swordfish",
-        "player_tag": "#2CPRGY8G",
+        "name": "kl.kranker Affe",
+        "player_tag": "#RLJPJL8C2",
         "role": "member",
-        "score": 90.44,
+        "score": 90.52,
         "strikes": 0,
-        "donations": 128,
+        "donations": 110,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -799,6 +787,18 @@
         "donations": 694,
         "participation_count": 10,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Swordfish",
+        "player_tag": "#2CPRGY8G",
+        "role": "member",
+        "score": 90.3,
+        "strikes": 0,
+        "donations": 144,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -926,9 +926,9 @@
         "name": "LazyFrog",
         "player_tag": "#22Q920RLR",
         "role": "member",
-        "score": 88.31,
+        "score": 88.44,
         "strikes": 0,
-        "donations": 899,
+        "donations": 915,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
