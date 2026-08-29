@@ -16,12 +16,12 @@
       "priority": 2
     },
     {
-      "name": "Erastus",
+      "name": "mauza",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "mauza",
+      "name": "Erastus",
       "scenario": "TOP",
       "priority": 2
     },
@@ -66,12 +66,12 @@
       "priority": 2
     },
     {
-      "name": "Theezy",
+      "name": "agostini",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "agostini",
+      "name": "Theezy",
       "scenario": "TOP",
       "priority": 2
     },
@@ -168,13 +168,13 @@
   ],
   "smart": [
     {
-      "name": "Erastus",
-      "score": 94.53,
+      "name": "mauza",
+      "score": 94.62,
       "status": "STARK"
     },
     {
-      "name": "mauza",
-      "score": 94.35,
+      "name": "Erastus",
+      "score": 94.53,
       "status": "STARK"
     },
     {
@@ -223,13 +223,13 @@
       "status": "STARK"
     },
     {
-      "name": "Theezy",
-      "score": 90.08,
+      "name": "agostini",
+      "score": 89.87,
       "status": "STARK"
     },
     {
-      "name": "agostini",
-      "score": 89.87,
+      "name": "Theezy",
+      "score": 89.82,
       "status": "STARK"
     },
     {
@@ -248,13 +248,13 @@
       "status": "STARK"
     },
     {
-      "name": "HardcoreSoldier",
+      "name": "LazyFrog",
       "score": 88.97,
       "status": "STARK"
     },
     {
-      "name": "LazyFrog",
-      "score": 88.97,
+      "name": "HardcoreSoldier",
+      "score": 88.84,
       "status": "STARK"
     },
     {
@@ -420,13 +420,13 @@
   ],
   "coaching": [
     {
-      "name": "Erastus",
-      "score": 94.53,
+      "name": "mauza",
+      "score": 94.62,
       "tip": "Weiter so"
     },
     {
-      "name": "mauza",
-      "score": 94.35,
+      "name": "Erastus",
+      "score": 94.53,
       "tip": "Weiter so"
     },
     {
@@ -475,13 +475,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Theezy",
-      "score": 90.08,
+      "name": "agostini",
+      "score": 89.87,
       "tip": "Weiter so"
     },
     {
-      "name": "agostini",
-      "score": 89.87,
+      "name": "Theezy",
+      "score": 89.82,
       "tip": "Weiter so"
     },
     {
@@ -500,13 +500,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "HardcoreSoldier",
+      "name": "LazyFrog",
       "score": 88.97,
       "tip": "Weiter so"
     },
     {
-      "name": "LazyFrog",
-      "score": 88.97,
+      "name": "HardcoreSoldier",
+      "score": 88.84,
       "tip": "Weiter so"
     },
     {
@@ -700,24 +700,24 @@
     ],
     "core": [
       {
-        "name": "Erastus",
-        "player_tag": "#Q8L0RJ8Y8",
+        "name": "mauza",
+        "player_tag": "#2P0U2RLGY",
         "role": "member",
-        "score": 94.53,
+        "score": 94.62,
         "strikes": 0,
-        "donations": 632,
+        "donations": 254,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
       {
-        "name": "mauza",
-        "player_tag": "#2P0U2RLGY",
+        "name": "Erastus",
+        "player_tag": "#Q8L0RJ8Y8",
         "role": "member",
-        "score": 94.35,
+        "score": 94.53,
         "strikes": 0,
-        "donations": 253,
+        "donations": 632,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -820,18 +820,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Theezy",
-        "player_tag": "#JUUR8UGL8",
-        "role": "member",
-        "score": 90.08,
-        "strikes": 0,
-        "donations": 70,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "agostini",
         "player_tag": "#P2YQ2QQUV",
         "role": "member",
@@ -840,6 +828,18 @@
         "donations": 746,
         "participation_count": 10,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Theezy",
+        "player_tag": "#JUUR8UGL8",
+        "role": "member",
+        "score": 89.82,
+        "strikes": 0,
+        "donations": 70,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -895,7 +895,7 @@
         "name": "HardcoreSoldier",
         "player_tag": "#GRGCY0R8",
         "role": "member",
-        "score": 88.97,
+        "score": 88.84,
         "strikes": 0,
         "donations": 460,
         "participation_count": 10,
