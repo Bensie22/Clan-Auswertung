@@ -46,12 +46,12 @@
       "priority": 2
     },
     {
-      "name": "Swordfish",
+      "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "OneAndOnly",
+      "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
@@ -126,6 +126,11 @@
       "priority": 2
     },
     {
+      "name": "seroo",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Elvi",
       "scenario": "TOP",
       "priority": 2
@@ -137,11 +142,6 @@
     },
     {
       "name": "SirHenry87",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "seroo",
       "scenario": "TOP",
       "priority": 2
     },
@@ -193,13 +193,13 @@
       "status": "STARK"
     },
     {
-      "name": "Swordfish",
-      "score": 90.57,
+      "name": "OneAndOnly",
+      "score": 90.53,
       "status": "STARK"
     },
     {
-      "name": "OneAndOnly",
-      "score": 90.53,
+      "name": "Swordfish",
+      "score": 90.44,
       "status": "STARK"
     },
     {
@@ -288,6 +288,11 @@
       "status": "STARK"
     },
     {
+      "name": "seroo",
+      "score": 86.78,
+      "status": "STARK"
+    },
+    {
       "name": "Elvi",
       "score": 86.61,
       "status": "STARK"
@@ -300,11 +305,6 @@
     {
       "name": "SirHenry87",
       "score": 86.6,
-      "status": "STARK"
-    },
-    {
-      "name": "seroo",
-      "score": 86.52,
       "status": "STARK"
     },
     {
@@ -445,13 +445,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Swordfish",
-      "score": 90.57,
+      "name": "OneAndOnly",
+      "score": 90.53,
       "tip": "Weiter so"
     },
     {
-      "name": "OneAndOnly",
-      "score": 90.53,
+      "name": "Swordfish",
+      "score": 90.44,
       "tip": "Weiter so"
     },
     {
@@ -540,6 +540,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "seroo",
+      "score": 86.78,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Elvi",
       "score": 86.61,
       "tip": "Weiter so"
@@ -552,11 +557,6 @@
     {
       "name": "SirHenry87",
       "score": 86.6,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "seroo",
-      "score": 86.52,
       "tip": "Weiter so"
     },
     {
@@ -767,24 +767,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Swordfish",
-        "player_tag": "#2CPRGY8G",
-        "role": "member",
-        "score": 90.57,
-        "strikes": 0,
-        "donations": 128,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "OneAndOnly",
         "player_tag": "#8P0J8P0L",
         "role": "member",
         "score": 90.53,
         "strikes": 0,
         "donations": 111,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Swordfish",
+        "player_tag": "#2CPRGY8G",
+        "role": "member",
+        "score": 90.44,
+        "strikes": 0,
+        "donations": 128,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -983,6 +983,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "seroo",
+        "player_tag": "#JRGC9RRQG",
+        "role": "member",
+        "score": 86.78,
+        "strikes": 0,
+        "donations": 76,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Elvi",
         "player_tag": "#V9JP2PGGP",
         "role": "member",
@@ -1015,18 +1027,6 @@
         "donations": 238,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "seroo",
-        "player_tag": "#JRGC9RRQG",
-        "role": "member",
-        "score": 86.52,
-        "strikes": 0,
-        "donations": 66,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
