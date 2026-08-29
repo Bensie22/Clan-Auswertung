@@ -146,6 +146,11 @@
       "priority": 2
     },
     {
+      "name": "bes",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "hi2oka",
       "scenario": "TOP",
       "priority": 2
@@ -308,13 +313,13 @@
       "status": "STARK"
     },
     {
-      "name": "hi2oka",
-      "score": 85.22,
+      "name": "bes",
+      "score": 85.34,
       "status": "STARK"
     },
     {
-      "name": "bes",
-      "score": 84.94,
+      "name": "hi2oka",
+      "score": 85.22,
       "status": "STARK"
     },
     {
@@ -384,7 +389,7 @@
     },
     {
       "name": "DST",
-      "score": 73.36,
+      "score": 73.49,
       "status": "OK"
     },
     {
@@ -560,13 +565,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "hi2oka",
-      "score": 85.22,
+      "name": "bes",
+      "score": 85.34,
       "tip": "Weiter so"
     },
     {
-      "name": "bes",
-      "score": 84.94,
+      "name": "hi2oka",
+      "score": 85.22,
       "tip": "Weiter so"
     },
     {
@@ -636,7 +641,7 @@
     },
     {
       "name": "DST",
-      "score": 73.36,
+      "score": 73.49,
       "tip": "Weiter so"
     },
     {
@@ -834,7 +839,7 @@
         "role": "member",
         "score": 89.63,
         "strikes": 0,
-        "donations": 652,
+        "donations": 662,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1041,6 +1046,18 @@
         "donations": 142,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "bes",
+        "player_tag": "#LLQQJCLC",
+        "role": "member",
+        "score": 85.34,
+        "strikes": 0,
+        "donations": 341,
+        "participation_count": 10,
+        "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
