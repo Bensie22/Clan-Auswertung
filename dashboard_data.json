@@ -71,12 +71,12 @@
       "priority": 2
     },
     {
-      "name": "Jackhammer",
+      "name": "Knitte",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Knitte",
+      "name": "Jackhammer",
       "scenario": "TOP",
       "priority": 2
     },
@@ -213,6 +213,11 @@
       "status": "STARK"
     },
     {
+      "name": "Knitte",
+      "score": 89.77,
+      "status": "STARK"
+    },
+    {
       "name": "Jackhammer",
       "score": 89.69,
       "status": "STARK"
@@ -220,11 +225,6 @@
     {
       "name": "Hemelm",
       "score": 89.28,
-      "status": "STARK"
-    },
-    {
-      "name": "Knitte",
-      "score": 89.23,
       "status": "STARK"
     },
     {
@@ -465,6 +465,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Knitte",
+      "score": 89.77,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Jackhammer",
       "score": 89.69,
       "tip": "Weiter so"
@@ -472,11 +477,6 @@
     {
       "name": "Hemelm",
       "score": 89.28,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Knitte",
-      "score": 89.23,
       "tip": "Weiter so"
     },
     {
@@ -817,6 +817,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Knitte",
+        "player_tag": "#ULYJ2CQP",
+        "role": "member",
+        "score": 89.77,
+        "strikes": 0,
+        "donations": 652,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Jackhammer",
         "player_tag": "#2CJYG9UG",
         "role": "member",
@@ -837,18 +849,6 @@
         "donations": 8,
         "participation_count": 4,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Knitte",
-        "player_tag": "#ULYJ2CQP",
-        "role": "member",
-        "score": 89.23,
-        "strikes": 0,
-        "donations": 634,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
