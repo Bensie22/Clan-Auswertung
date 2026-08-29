@@ -51,12 +51,12 @@
       "priority": 2
     },
     {
-      "name": "agostini",
+      "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Swordfish",
+      "name": "agostini",
       "scenario": "TOP",
       "priority": 2
     },
@@ -203,11 +203,6 @@
       "status": "STARK"
     },
     {
-      "name": "agostini",
-      "score": 90.4,
-      "status": "STARK"
-    },
-    {
       "name": "elazeto",
       "score": 90.35,
       "status": "STARK"
@@ -215,6 +210,11 @@
     {
       "name": "Swordfish",
       "score": 90.3,
+      "status": "STARK"
+    },
+    {
+      "name": "agostini",
+      "score": 90.13,
       "status": "STARK"
     },
     {
@@ -455,11 +455,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "agostini",
-      "score": 90.4,
-      "tip": "Weiter so"
-    },
-    {
       "name": "elazeto",
       "score": 90.35,
       "tip": "Weiter so"
@@ -467,6 +462,11 @@
     {
       "name": "Swordfish",
       "score": 90.3,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "agostini",
+      "score": 90.13,
       "tip": "Weiter so"
     },
     {
@@ -784,18 +784,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "agostini",
-        "player_tag": "#P2YQ2QQUV",
-        "role": "member",
-        "score": 90.4,
-        "strikes": 0,
-        "donations": 746,
-        "participation_count": 10,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Swordfish",
         "player_tag": "#2CPRGY8G",
         "role": "member",
@@ -804,6 +792,18 @@
         "donations": 144,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "agostini",
+        "player_tag": "#P2YQ2QQUV",
+        "role": "member",
+        "score": 90.13,
+        "strikes": 0,
+        "donations": 746,
+        "participation_count": 10,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -861,7 +861,7 @@
         "role": "member",
         "score": 89.63,
         "strikes": 0,
-        "donations": 726,
+        "donations": 733,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
