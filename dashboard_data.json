@@ -46,6 +46,11 @@
       "priority": 2
     },
     {
+      "name": "agostini",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Jackhammer",
       "scenario": "TOP",
       "priority": 2
@@ -57,11 +62,6 @@
     },
     {
       "name": "Swordfish",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "agostini",
       "scenario": "TOP",
       "priority": 2
     },
@@ -203,6 +203,11 @@
       "status": "STARK"
     },
     {
+      "name": "agostini",
+      "score": 90.27,
+      "status": "STARK"
+    },
+    {
       "name": "Jackhammer",
       "score": 90.09,
       "status": "STARK"
@@ -220,11 +225,6 @@
     {
       "name": "Swordfish",
       "score": 90.04,
-      "status": "STARK"
-    },
-    {
-      "name": "agostini",
-      "score": 89.87,
       "status": "STARK"
     },
     {
@@ -348,13 +348,13 @@
       "status": "STARK"
     },
     {
-      "name": "rote sonne",
-      "score": 82.64,
+      "name": "prolike14",
+      "score": 82.67,
       "status": "STARK"
     },
     {
-      "name": "prolike14",
-      "score": 82.53,
+      "name": "rote sonne",
+      "score": 82.64,
       "status": "STARK"
     },
     {
@@ -455,6 +455,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "agostini",
+      "score": 90.27,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Jackhammer",
       "score": 90.09,
       "tip": "Weiter so"
@@ -472,11 +477,6 @@
     {
       "name": "Swordfish",
       "score": 90.04,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "agostini",
-      "score": 89.87,
       "tip": "Weiter so"
     },
     {
@@ -600,13 +600,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "rote sonne",
-      "score": 82.64,
+      "name": "prolike14",
+      "score": 82.67,
       "tip": "Weiter so"
     },
     {
-      "name": "prolike14",
-      "score": 82.53,
+      "name": "rote sonne",
+      "score": 82.64,
       "tip": "Weiter so"
     },
     {
@@ -765,9 +765,21 @@
         "role": "member",
         "score": 90.88,
         "strikes": 0,
-        "donations": 440,
+        "donations": 488,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "agostini",
+        "player_tag": "#P2YQ2QQUV",
+        "role": "member",
+        "score": 90.27,
+        "strikes": 0,
+        "donations": 913,
+        "participation_count": 10,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -789,7 +801,7 @@
         "role": "member",
         "score": 90.08,
         "strikes": 0,
-        "donations": 409,
+        "donations": 419,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
@@ -816,18 +828,6 @@
         "donations": 194,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "agostini",
-        "player_tag": "#P2YQ2QQUV",
-        "role": "member",
-        "score": 89.87,
-        "strikes": 0,
-        "donations": 893,
-        "participation_count": 10,
-        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
