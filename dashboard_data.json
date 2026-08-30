@@ -61,17 +61,17 @@
       "priority": 2
     },
     {
-      "name": "Theezy",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "agostini",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "kl.kranker Affe",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Theezy",
       "scenario": "TOP",
       "priority": 2
     },
@@ -223,11 +223,6 @@
       "status": "STARK"
     },
     {
-      "name": "Theezy",
-      "score": 89.95,
-      "status": "STARK"
-    },
-    {
       "name": "agostini",
       "score": 89.87,
       "status": "STARK"
@@ -235,6 +230,11 @@
     {
       "name": "kl.kranker Affe",
       "score": 89.85,
+      "status": "STARK"
+    },
+    {
+      "name": "Theezy",
+      "score": 89.68,
       "status": "STARK"
     },
     {
@@ -475,11 +475,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Theezy",
-      "score": 89.95,
-      "tip": "Weiter so"
-    },
-    {
       "name": "agostini",
       "score": 89.87,
       "tip": "Weiter so"
@@ -487,6 +482,11 @@
     {
       "name": "kl.kranker Affe",
       "score": 89.85,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Theezy",
+      "score": 89.68,
       "tip": "Weiter so"
     },
     {
@@ -820,18 +820,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Theezy",
-        "player_tag": "#JUUR8UGL8",
-        "role": "member",
-        "score": 89.95,
-        "strikes": 0,
-        "donations": 78,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "agostini",
         "player_tag": "#P2YQ2QQUV",
         "role": "member",
@@ -850,6 +838,18 @@
         "score": 89.85,
         "strikes": 0,
         "donations": 110,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Theezy",
+        "player_tag": "#JUUR8UGL8",
+        "role": "member",
+        "score": 89.68,
+        "strikes": 0,
+        "donations": 88,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
