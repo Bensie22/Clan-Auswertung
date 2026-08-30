@@ -46,12 +46,12 @@
       "priority": 2
     },
     {
-      "name": "kl.kranker Affe",
+      "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Swordfish",
+      "name": "kl.kranker Affe",
       "scenario": "TOP",
       "priority": 2
     },
@@ -198,11 +198,6 @@
       "status": "STARK"
     },
     {
-      "name": "kl.kranker Affe",
-      "score": 90.52,
-      "status": "STARK"
-    },
-    {
       "name": "elazeto",
       "score": 90.49,
       "status": "STARK"
@@ -210,6 +205,11 @@
     {
       "name": "Swordfish",
       "score": 90.3,
+      "status": "STARK"
+    },
+    {
+      "name": "kl.kranker Affe",
+      "score": 90.12,
       "status": "STARK"
     },
     {
@@ -450,11 +450,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "kl.kranker Affe",
-      "score": 90.52,
-      "tip": "Weiter so"
-    },
-    {
       "name": "elazeto",
       "score": 90.49,
       "tip": "Weiter so"
@@ -462,6 +457,11 @@
     {
       "name": "Swordfish",
       "score": 90.3,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "kl.kranker Affe",
+      "score": 90.12,
       "tip": "Weiter so"
     },
     {
@@ -772,18 +772,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "kl.kranker Affe",
-        "player_tag": "#RLJPJL8C2",
-        "role": "member",
-        "score": 90.52,
-        "strikes": 0,
-        "donations": 110,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Swordfish",
         "player_tag": "#2CPRGY8G",
         "role": "member",
@@ -796,12 +784,24 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "kl.kranker Affe",
+        "player_tag": "#RLJPJL8C2",
+        "role": "member",
+        "score": 90.12,
+        "strikes": 0,
+        "donations": 110,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Jackhammer",
         "player_tag": "#2CJYG9UG",
         "role": "member",
         "score": 90.09,
         "strikes": 0,
-        "donations": 220,
+        "donations": 230,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
