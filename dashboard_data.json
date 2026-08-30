@@ -91,12 +91,12 @@
       "priority": 2
     },
     {
-      "name": "Dolphin",
+      "name": "Deniz",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Deniz",
+      "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
     },
@@ -249,17 +249,17 @@
     },
     {
       "name": "LazyFrog",
-      "score": 88.97,
+      "score": 88.84,
+      "status": "STARK"
+    },
+    {
+      "name": "Deniz",
+      "score": 88.77,
       "status": "STARK"
     },
     {
       "name": "Dolphin",
       "score": 88.75,
-      "status": "STARK"
-    },
-    {
-      "name": "Deniz",
-      "score": 88.63,
       "status": "STARK"
     },
     {
@@ -501,17 +501,17 @@
     },
     {
       "name": "LazyFrog",
-      "score": 88.97,
+      "score": 88.84,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Deniz",
+      "score": 88.77,
       "tip": "Weiter so"
     },
     {
       "name": "Dolphin",
       "score": 88.75,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Deniz",
-      "score": 88.63,
       "tip": "Weiter so"
     },
     {
@@ -883,11 +883,23 @@
         "name": "LazyFrog",
         "player_tag": "#22Q920RLR",
         "role": "member",
-        "score": 88.97,
+        "score": 88.84,
         "strikes": 0,
-        "donations": 1019,
+        "donations": 1029,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Deniz",
+        "player_tag": "#JV80YYJRJ",
+        "role": "member",
+        "score": 88.77,
+        "strikes": 0,
+        "donations": 218,
+        "participation_count": 3,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -900,18 +912,6 @@
         "donations": 344,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Deniz",
-        "player_tag": "#JV80YYJRJ",
-        "role": "member",
-        "score": 88.63,
-        "strikes": 0,
-        "donations": 210,
-        "participation_count": 3,
-        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -957,7 +957,7 @@
         "role": "member",
         "score": 87.4,
         "strikes": 0,
-        "donations": 573,
+        "donations": 583,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
