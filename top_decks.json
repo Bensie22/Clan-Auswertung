@@ -5,7 +5,7 @@
             "#L8PV090J": "20260828T223555.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260830T065943.000Z",
-            "#ULYJ2CQP": "20260829T192854.000Z",
+            "#ULYJ2CQP": "20260830T071852.000Z",
             "#UJ2P9UYUV": "20260829T144141.000Z",
             "#P0JYR9YUY": "20260829T125456.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
@@ -2763,7 +2763,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Knitte"
             ],
@@ -2771,6 +2771,12 @@
                 "ULYJ2CQP"
             ],
             "recent_matches": [
+                {
+                    "time": "20260830T071852.000Z",
+                    "result": "loss",
+                    "player": "Knitte",
+                    "tag": "ULYJ2CQP"
+                },
                 {
                     "time": "20260824T063923.000Z",
                     "result": "win",
@@ -422440,6 +422446,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000002-26000022-26000032-26000056-26000062-27000002-28000009-28000011": {
+            "cards": [
+                {
+                    "id": 26000022,
+                    "name": "Minion Horde",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Wyjq5l0IXHTkX9Rmpap6HaH08MvjbxFp1xBO9a47YSI.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 26000032,
+                    "name": "Miner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Y4yWvdwBCg2FpAZgs8T09Gy34WOwpLZW-ttL52Ae8NE.png"
+                },
+                {
+                    "id": 27000002,
+                    "name": "Mortar",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lPOSw6H7YOHq2miSCrf7ZDL3ANjhJdPPDYOTujdNrVE.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                },
+                {
+                    "id": 26000002,
+                    "name": "Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X_DQUye_OaS3QN6VC9CPw05Fit7wvSm3XegXIXKP--0.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
