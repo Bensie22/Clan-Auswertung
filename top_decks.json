@@ -34,7 +34,7 @@
             "#JUUR8UGL8": "20260830T200938.000Z",
             "#2U09UULRR": "20260830T141123.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
-            "#8QYYL8LCQ": "20260830T232331.000Z",
+            "#8QYYL8LCQ": "20260830T233748.000Z",
             "#8P0J8P0L": "20260830T104413.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260830T204028.000Z",
@@ -6187,7 +6187,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "SirHenry87"
             ],
@@ -6195,6 +6195,12 @@
                 "8QYYL8LCQ"
             ],
             "recent_matches": [
+                {
+                    "time": "20260830T233233.000Z",
+                    "result": "loss",
+                    "player": "SirHenry87",
+                    "tag": "8QYYL8LCQ"
+                },
                 {
                     "time": "20260830T001158.000Z",
                     "result": "win",
@@ -426442,6 +426448,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000005-26000011-26000016-26000043-26000045-26000058-26000062-27000012": {
+            "cards": [
+                {
+                    "id": 26000043,
+                    "name": "Elite Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/C88C5JH_F3lLZj6K-tLcMo5DPjrFmvzIb1R2M6xCfTE.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 27000012,
+                    "name": "Goblin Cage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vD24bBgK4rSq7wx5QEbuqChtPMRFviL_ep76GwQw1yA.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 26000058,
+                    "name": "Wall Breakers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_xPphEfC8eEwFNrfU3cMQG9-f5JaLQ31ARCA7l3XtW4.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
