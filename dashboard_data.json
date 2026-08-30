@@ -31,17 +31,17 @@
       "priority": 2
     },
     {
+      "name": "chris",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "OmniOni",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
@@ -183,6 +183,11 @@
       "status": "STARK"
     },
     {
+      "name": "chris",
+      "score": 90.97,
+      "status": "STARK"
+    },
+    {
       "name": "OneAndOnly",
       "score": 90.93,
       "status": "STARK"
@@ -190,11 +195,6 @@
     {
       "name": "OmniOni",
       "score": 90.88,
-      "status": "STARK"
-    },
-    {
-      "name": "chris",
-      "score": 90.84,
       "status": "STARK"
     },
     {
@@ -435,6 +435,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "chris",
+      "score": 90.97,
+      "tip": "Weiter so"
+    },
+    {
       "name": "OneAndOnly",
       "score": 90.93,
       "tip": "Weiter so"
@@ -442,11 +447,6 @@
     {
       "name": "OmniOni",
       "score": 90.88,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "chris",
-      "score": 90.84,
       "tip": "Weiter so"
     },
     {
@@ -736,6 +736,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "chris",
+        "player_tag": "#YQ82VR9JQ",
+        "role": "member",
+        "score": 90.97,
+        "strikes": 0,
+        "donations": 484,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "OneAndOnly",
         "player_tag": "#8P0J8P0L",
         "role": "member",
@@ -754,18 +766,6 @@
         "score": 90.88,
         "strikes": 0,
         "donations": 440,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "chris",
-        "player_tag": "#YQ82VR9JQ",
-        "role": "member",
-        "score": 90.84,
-        "strikes": 0,
-        "donations": 484,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
