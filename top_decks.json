@@ -16,10 +16,10 @@
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260830T114904.000Z",
-            "#QULCQGGG": "20260830T142509.000Z",
+            "#QULCQGGG": "20260830T200035.000Z",
             "#JRGC9RRQG": "20260830T144948.000Z",
             "#QVQGCV8Y9": "20260829T153557.000Z",
-            "#Q8L0RJ8Y8": "20260830T092608.000Z",
+            "#Q8L0RJ8Y8": "20260830T200048.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260830T144009.000Z",
             "#LLQQJCLC": "20260830T182155.000Z",
@@ -37,7 +37,7 @@
             "#8QYYL8LCQ": "20260830T145545.000Z",
             "#8P0J8P0L": "20260830T104413.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20260830T175613.000Z",
+            "#CUJ9PJ2UV": "20260830T200041.000Z",
             "#2P0U2RLGY": "20260830T194938.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260830T141842.000Z",
@@ -4366,7 +4366,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
                 }
             ],
-            "wins": 2,
+            "wins": 3,
             "losses": 0,
             "players": [
                 "Erastus"
@@ -4375,6 +4375,12 @@
                 "Q8L0RJ8Y8"
             ],
             "recent_matches": [
+                {
+                    "time": "20260830T200048.000Z",
+                    "result": "win",
+                    "player": "Erastus",
+                    "tag": "Q8L0RJ8Y8"
+                },
                 {
                     "time": "20260830T091632.000Z",
                     "result": "win",
@@ -425704,6 +425710,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000002-26000032-26000059-26000062-26000106-27000006-28000017-28000018": {
+            "cards": [
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 26000106,
+                    "name": "Ronin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X0dTFs7OGUavreDEzOtYd_YNZ8Zly6qgAE-dd-bNfWU.png"
+                },
+                {
+                    "id": 28000018,
+                    "name": "Royal Delivery",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LPg7AGjGI3_xmi7gLLgGC50yKM1jJ2teWkZfoHJcIZo.png"
+                },
+                {
+                    "id": 28000017,
+                    "name": "Giant Snowball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
+                },
+                {
+                    "id": 26000032,
+                    "name": "Miner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Y4yWvdwBCg2FpAZgs8T09Gy34WOwpLZW-ttL52Ae8NE.png"
+                },
+                {
+                    "id": 26000002,
+                    "name": "Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X_DQUye_OaS3QN6VC9CPw05Fit7wvSm3XegXIXKP--0.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
