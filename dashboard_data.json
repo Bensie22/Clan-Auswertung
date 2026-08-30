@@ -126,17 +126,17 @@
       "priority": 2
     },
     {
-      "name": "Johan",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "SankKiI9",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "SirHenry87",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
@@ -288,11 +288,6 @@
       "status": "STARK"
     },
     {
-      "name": "Johan",
-      "score": 87.05,
-      "status": "STARK"
-    },
-    {
       "name": "SankKiI9",
       "score": 87.0,
       "status": "STARK"
@@ -300,6 +295,11 @@
     {
       "name": "SirHenry87",
       "score": 87.0,
+      "status": "STARK"
+    },
+    {
+      "name": "Johan",
+      "score": 86.79,
       "status": "STARK"
     },
     {
@@ -540,11 +540,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Johan",
-      "score": 87.05,
-      "tip": "Weiter so"
-    },
-    {
       "name": "SankKiI9",
       "score": 87.0,
       "tip": "Weiter so"
@@ -552,6 +547,11 @@
     {
       "name": "SirHenry87",
       "score": 87.0,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Johan",
+      "score": 86.79,
       "tip": "Weiter so"
     },
     {
@@ -921,7 +921,7 @@
         "role": "member",
         "score": 88.57,
         "strikes": 0,
-        "donations": 530,
+        "donations": 548,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
@@ -976,18 +976,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Johan",
-        "player_tag": "#UQVCVVVJL",
-        "role": "member",
-        "score": 87.05,
-        "strikes": 0,
-        "donations": 204,
-        "participation_count": 10,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "SankKiI9",
         "player_tag": "#89CJRRV8",
         "role": "member",
@@ -1008,6 +996,18 @@
         "donations": 332,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Johan",
+        "player_tag": "#UQVCVVVJL",
+        "role": "member",
+        "score": 86.79,
+        "strikes": 0,
+        "donations": 204,
+        "participation_count": 10,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
