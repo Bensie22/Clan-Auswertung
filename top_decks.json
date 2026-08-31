@@ -9,7 +9,7 @@
             "#UJ2P9UYUV": "20260830T191520.000Z",
             "#P0JYR9YUY": "20260831T093421.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
-            "#YQ82VR9JQ": "20260831T194839.000Z",
+            "#YQ82VR9JQ": "20260831T195152.000Z",
             "#G02LC9C8": "20260831T184345.000Z",
             "#2U8288CVY": "20260830T174419.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
@@ -71,7 +71,7 @@
             "#GJVVGUYJC": "20260518T141110.000Z",
             "#UQVCVVVJL": "20260830T122624.000Z",
             "#22CVYQP8R": "20260509T062429.000Z",
-            "#89CJRRV8": "20260831T140447.000Z",
+            "#89CJRRV8": "20260831T195739.000Z",
             "#VL989Y20J": "20260516T051537.000Z",
             "#RULG988Y": "20260606T102155.000Z",
             "#99909G00": "20260512T084926.000Z",
@@ -236,7 +236,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/l8ZdzzNLcwB4u7ihGgxNFQOjCT_njFuAhZr7D6PRF7E.png"
                 }
             ],
-            "wins": 2,
+            "wins": 1,
             "losses": 0,
             "players": [
                 "elazeto"
@@ -247,12 +247,6 @@
             "recent_matches": [
                 {
                     "time": "20260802T122707.000Z",
-                    "result": "win",
-                    "player": "elazeto",
-                    "tag": "URJ0LUYPV"
-                },
-                {
-                    "time": "20260801T195311.000Z",
                     "result": "win",
                     "player": "elazeto",
                     "tag": "URJ0LUYPV"
@@ -3027,7 +3021,7 @@
                 }
             ],
             "wins": 7,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "chris"
             ],
@@ -3035,6 +3029,12 @@
                 "YQ82VR9JQ"
             ],
             "recent_matches": [
+                {
+                    "time": "20260831T195152.000Z",
+                    "result": "loss",
+                    "player": "chris",
+                    "tag": "YQ82VR9JQ"
+                },
                 {
                     "time": "20260830T174930.000Z",
                     "result": "win",
@@ -427686,6 +427686,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000006-26000008-26000014-26000017-26000021-26000043-26000045-28000002": {
+            "cards": [
+                {
+                    "id": 26000043,
+                    "name": "Elite Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/C88C5JH_F3lLZj6K-tLcMo5DPjrFmvzIb1R2M6xCfTE.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 26000008,
+                    "name": "Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/TvJsuu2S4yhyk1jVYUAQwdKOnW4U77KuWWOTPOWnwfI.png"
+                },
+                {
+                    "id": 28000002,
+                    "name": "Rage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
