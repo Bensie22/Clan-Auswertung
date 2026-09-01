@@ -36,13 +36,14 @@ Dependency direction: routes → `app/services.py` → `app/data.py` / `app/cr_a
 
 ```bash
 pip install -r requirements.txt
+pip install -r requirements-dev.txt                     # + pytest, nur lokal
 python -m uvicorn api:app --port 8001 --reload         # FastAPI
 python -m http.server 3000                             # static frontend
 python Master_Auswertung_GitHub.py                     # batch (needs SUPERCELL_API_TOKEN; RUN_MODE=radar|weekly)
 python run_pipeline.py                                 # rebuild dashboard_data.json
 ```
 
-No tests, no linter. After Python edits, smoke via `python -c "import api"` for the FastAPI side or run the affected mode script standalone.
+No linter. Tests are local-only (`pytest tests/`, needs `requirements-dev.txt`) and deliberately **not** wired into the cron — a failing test must never block the state-file push. After Python edits, smoke via `python -c "import api"` for the FastAPI side or run the affected mode script standalone.
 
 ## Critical Rules
 
@@ -54,7 +55,9 @@ No tests, no linter. After Python edits, smoke via `python -c "import api"` for 
 6. **Timezone for week-boundary logic is `Europe/Berlin`** (via `zoneinfo`). Don't switch to naive `datetime.now()`.
 7. **Don't collide with cron commit message** — GitHub Action commits as `📊 Automatische Clan-Auswertung + Full Auto`. Use a different message style for human commits.
 8. **Player tag normalization** — always go through `app/utils.py::normalize_tag` (URL-encoded `%23` ↔ `#` is a frequent footgun).
-9. **Never push without explicit user review.** No PRs without approval.
+9. **Score comes from `app/bewertung.py`.** Never recompute the weighted 3-Faktor-Score anywhere else. Only the cron computes it (`Master_Auswertung_GitHub.py` imports `bewerte`); the API and the mode scripts consume the result out of `player_stats.json`. `DECKS_PRO_KRIEG` (16), `ROLLING_KRIEGE` (4) and `LAUFENDER_KRIEG_ID` live in that module — window sizes and Supercell facts, not tunables; the weights and quality bounds live in `config.py` and are re-exported via `/config`.
+10. **Domain terms live in `CONTEXT.md`.** New concept, new entry — that is what keeps the two runtimes calling the same thing by the same name.
+11. **Never push without explicit user review.** No PRs without approval.
 
 ## Patterns
 
@@ -93,6 +96,7 @@ The FastAPI `/config` endpoint re-exports these so the frontend can't drift.
 | State-file read helper | `app/data.py` |
 | Live Supercell call | `app/cr_api.py::cr_api_get` |
 | Threshold / score boundary | `config.py` (only) |
+| Score / Bewertung logic | `app/bewertung.py` (only) |
 | New pipeline mode | `<name>_mode.py` + entry in `merge_outputs.py` + `run_pipeline.py::STEPS` + workflow YAML |
 | Cron schedule / env wiring | `.github/workflows/main.yml` |
 | Static page / dashboard markup | `index.html`, `datenschutz.html`, `impressum.html` |
@@ -112,6 +116,7 @@ The FastAPI `/config` endpoint re-exports these so the frontend can't drift.
 
 | Path | Purpose |
 |------|---------|
+| [`CONTEXT.md`](CONTEXT.md) | Domain glossary — Bewertung, Score, Kriegsteilnahme, laufender Krieg, Welpenschutz, Maßnahmen, Strike, Mahnwache, Radar. **Read before naming anything.** |
 | [`docs/code-architecture.md`](docs/code-architecture.md) | Full file map, data flow, batch vs. API split, state-file schemas, where-to-put guide. **Read before adding features.** |
 
 When the deeper file changes (new package, new state file, new system integration), update `docs/code-architecture.md` and bump the relevant CLAUDE.md section.

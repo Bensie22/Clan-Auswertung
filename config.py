@@ -1,6 +1,14 @@
 # Zentrale Konfiguration – alle Score-Schwellenwerte an einem Ort
 # Änderungen hier wirken sich auf alle Mode-Skripte aus.
 
+# --- Score-Formel ---
+# Gewichtung der drei Faktoren (Summe = 100)
+SCORE_GEWICHT_DECKS       = 50   # Deck-Vollständigkeit: wurden die möglichen Decks gespielt?
+SCORE_GEWICHT_ANWESENHEIT = 30   # Dabei-Quote: war der Spieler in den Kriegen dabei?
+SCORE_GEWICHT_QUALITAET   = 20   # Qualität: normierter Ø Fame pro Deck
+QUALITAET_FAME_MIN        = 75   # Ø Punkte/Deck: ab hier zählt die Qualität überhaupt
+QUALITAET_FAME_MAX        = 225  # Ø Punkte/Deck: ab hier volle Qualitätswertung
+
 # --- Verwarnungs- & Kick-Schwellen ---
 STRIKE_THRESHOLD    = 50   # Score unter diesem Wert → Verwarnung
 KICK_THRESHOLD      = 40   # Score unter diesem Wert → Kick-Kandidat
