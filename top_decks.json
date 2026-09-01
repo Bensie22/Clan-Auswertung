@@ -1,7 +1,7 @@
 {
     "_metadata": {
         "last_battles": {
-            "#22Q920RLR": "20260901T161546.000Z",
+            "#22Q920RLR": "20260901T162546.000Z",
             "#L8PV090J": "20260830T143134.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260901T121006.000Z",
@@ -19,7 +19,7 @@
             "#QULCQGGG": "20260901T125045.000Z",
             "#JRGC9RRQG": "20260901T143919.000Z",
             "#QVQGCV8Y9": "20260901T130048.000Z",
-            "#Q8L0RJ8Y8": "20260901T161825.000Z",
+            "#Q8L0RJ8Y8": "20260901T162901.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260831T205222.000Z",
             "#LLQQJCLC": "20260901T053607.000Z",
@@ -109,7 +109,7 @@
             "#LGUGQ0PRG": "20260901T151139.000Z",
             "#UVGRVC8LU": "20260809T181113.000Z",
             "#PVGU89PUL": "20260830T105027.000Z",
-            "#V9JP2PGGP": "20260831T062453.000Z",
+            "#V9JP2PGGP": "20260901T162301.000Z",
             "#R2VYJUUCP": "20260804T204503.000Z",
             "#RL9LQYCCY": "20260804T213809.000Z",
             "#V8VGG0LUG": "20260803T085547.000Z",
@@ -3286,7 +3286,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
                 }
             ],
-            "wins": 3,
+            "wins": 4,
             "losses": 1,
             "players": [
                 "Elvi"
@@ -3295,6 +3295,12 @@
                 "V9JP2PGGP"
             ],
             "recent_matches": [
+                {
+                    "time": "20260901T162301.000Z",
+                    "result": "win",
+                    "player": "Elvi",
+                    "tag": "V9JP2PGGP"
+                },
                 {
                     "time": "20260830T165717.000Z",
                     "result": "loss",
@@ -428104,6 +428110,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000011-26000012-26000040-26000049-26000051-26000059-26000074-26000084": {
+            "cards": [
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 26000074,
+                    "name": "Golden Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WJd207D0O1sN-l1FTb8P9KhYL2oF5jY26vRUfTUW3FQ.png"
+                },
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 26000084,
+                    "name": "Electro Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WKd4-IAFsgPpMo7dDi9sujmYjRhOMEWiE07OUJpvD9g.png"
+                },
+                {
+                    "id": 26000051,
+                    "name": "Ram Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
