@@ -1,7 +1,7 @@
 {
     "_metadata": {
         "last_battles": {
-            "#22Q920RLR": "20260902T141258.000Z",
+            "#22Q920RLR": "20260902T143743.000Z",
             "#L8PV090J": "20260901T191240.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260902T053801.000Z",
@@ -17,7 +17,7 @@
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260902T054027.000Z",
             "#QULCQGGG": "20260902T100908.000Z",
-            "#JRGC9RRQG": "20260902T054613.000Z",
+            "#JRGC9RRQG": "20260902T143411.000Z",
             "#QVQGCV8Y9": "20260902T140207.000Z",
             "#Q8L0RJ8Y8": "20260901T182833.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
@@ -43,7 +43,7 @@
             "#RLJPJL8C2": "20260902T135558.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20260901T142557.000Z",
+            "#UUPCULU9V": "20260902T143756.000Z",
             "#202VP2QL9P": "20260724T185949.000Z",
             "#LVUGLUCP9": "20260830T204202.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
@@ -84,7 +84,7 @@
             "#VP82QGC8Y": "20260831T193711.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
             "#GRGCY0R8": "20260902T104336.000Z",
-            "#P2YQ2QQUV": "20260902T105847.000Z",
+            "#P2YQ2QQUV": "20260902T143705.000Z",
             "#JG8Q0GPU9": "20260713T010600.000Z",
             "#9QV99QVCV": "20260701T045607.000Z",
             "#JQ08UR882": "20260619T100820.000Z",
@@ -119,9 +119,9 @@
             "#VP8P9UG8V": "20260817T002911.000Z",
             "#G9QR0YVU": "20260831T162542.000Z",
             "#200PGVGQ9U": "20260811T201941.000Z",
-            "#RR0GV9L00": "20260902T142817.000Z",
+            "#RR0GV9L00": "20260902T143232.000Z",
             "#2JQUVJUUG": "20260813T213647.000Z",
-            "#JGYCRU2YP": "20260902T105050.000Z",
+            "#JGYCRU2YP": "20260902T144008.000Z",
             "#PC2LPCVU": "20260901T194235.000Z",
             "#2GPVVPCC8": "20260901T145204.000Z"
         }
@@ -4109,7 +4109,7 @@
                 }
             ],
             "wins": 3,
-            "losses": 2,
+            "losses": 3,
             "players": [
                 "OmniOni"
             ],
@@ -4117,6 +4117,12 @@
                 "UUPCULU9V"
             ],
             "recent_matches": [
+                {
+                    "time": "20260902T143350.000Z",
+                    "result": "loss",
+                    "player": "OmniOni",
+                    "tag": "UUPCULU9V"
+                },
                 {
                     "time": "20260901T141516.000Z",
                     "result": "loss",
@@ -428800,6 +428806,52 @@
                     "id": 28000000,
                     "name": "Fireball",
                     "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000011-26000021-26000040-26000041-26000102-27000003-28000000-28000011": {
+            "cards": [
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 26000102,
+                    "name": "Berserker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NA6W8S1JBYBlOPwD3dNvJLFvVDKq-UuBs_J3i3ewLFI.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 27000003,
+                    "name": "Inferno Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
                 }
             ],
             "seen": 1,
