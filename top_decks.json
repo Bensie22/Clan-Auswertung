@@ -9,7 +9,7 @@
             "#UJ2P9UYUV": "20260902T134041.000Z",
             "#P0JYR9YUY": "20260902T084006.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
-            "#YQ82VR9JQ": "20260902T172544.000Z",
+            "#YQ82VR9JQ": "20260902T173919.000Z",
             "#G02LC9C8": "20260901T223946.000Z",
             "#2U8288CVY": "20260830T174419.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
@@ -19,7 +19,7 @@
             "#QULCQGGG": "20260902T170348.000Z",
             "#JRGC9RRQG": "20260902T164203.000Z",
             "#QVQGCV8Y9": "20260902T171836.000Z",
-            "#Q8L0RJ8Y8": "20260902T173048.000Z",
+            "#Q8L0RJ8Y8": "20260902T173956.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260902T144253.000Z",
             "#LLQQJCLC": "20260902T063348.000Z",
@@ -37,7 +37,7 @@
             "#8QYYL8LCQ": "20260901T233129.000Z",
             "#8P0J8P0L": "20260901T063742.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20260902T165025.000Z",
+            "#CUJ9PJ2UV": "20260902T173806.000Z",
             "#2P0U2RLGY": "20260902T160748.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260902T135558.000Z",
@@ -109,7 +109,7 @@
             "#LGUGQ0PRG": "20260901T151139.000Z",
             "#UVGRVC8LU": "20260809T181113.000Z",
             "#PVGU89PUL": "20260830T105027.000Z",
-            "#V9JP2PGGP": "20260902T173057.000Z",
+            "#V9JP2PGGP": "20260902T173645.000Z",
             "#R2VYJUUCP": "20260804T204503.000Z",
             "#RL9LQYCCY": "20260804T213809.000Z",
             "#V8VGG0LUG": "20260803T085547.000Z",
@@ -4282,7 +4282,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
                 }
             ],
-            "wins": 3,
+            "wins": 4,
             "losses": 1,
             "players": [
                 "Erastus"
@@ -4291,6 +4291,12 @@
                 "Q8L0RJ8Y8"
             ],
             "recent_matches": [
+                {
+                    "time": "20260902T173403.000Z",
+                    "result": "win",
+                    "player": "Erastus",
+                    "tag": "Q8L0RJ8Y8"
+                },
                 {
                     "time": "20260901T042856.000Z",
                     "result": "loss",
@@ -429054,6 +429060,52 @@
                     "id": 26000018,
                     "name": "Mini P.E.K.K.A",
                     "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000000-26000013-26000023-26000041-26000056-27000001-28000000-28000015": {
+            "cards": [
+                {
+                    "id": 26000013,
+                    "name": "Bomber",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 26000023,
+                    "name": "Ice Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W3dkw0HTw9n1jB-zbknY2w3wHuyuLxSRIAV5fUT1SEY.png"
+                },
+                {
+                    "id": 27000001,
+                    "name": "Goblin Hut",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/l8ZdzzNLcwB4u7ihGgxNFQOjCT_njFuAhZr7D6PRF7E.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 28000015,
+                    "name": "Barbarian Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Gb0G1yNy0i5cIGUHin8uoFWxqntNtRPhY_jeMXg7HnA.png"
                 }
             ],
             "seen": 1,
