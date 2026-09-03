@@ -71,12 +71,12 @@
       "priority": 2
     },
     {
-      "name": "Dolphin",
+      "name": "agostini",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "agostini",
+      "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
     },
@@ -126,12 +126,12 @@
       "priority": 2
     },
     {
-      "name": "honigmelone",
+      "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Johan",
+      "name": "honigmelone",
       "scenario": "TOP",
       "priority": 2
     },
@@ -183,13 +183,13 @@
       "status": "STARK"
     },
     {
-      "name": "Knitte",
-      "score": 90.57,
+      "name": "kl.kranker Affe",
+      "score": 90.78,
       "status": "STARK"
     },
     {
-      "name": "kl.kranker Affe",
-      "score": 90.38,
+      "name": "Knitte",
+      "score": 90.57,
       "status": "STARK"
     },
     {
@@ -208,17 +208,17 @@
       "status": "STARK"
     },
     {
-      "name": "Dolphin",
-      "score": 89.38,
-      "status": "STARK"
-    },
-    {
       "name": "agostini",
       "score": 89.33,
       "status": "STARK"
     },
     {
       "name": "elazeto",
+      "score": 89.24,
+      "status": "STARK"
+    },
+    {
+      "name": "Dolphin",
       "score": 89.24,
       "status": "STARK"
     },
@@ -283,13 +283,13 @@
       "status": "STARK"
     },
     {
-      "name": "honigmelone",
-      "score": 86.52,
+      "name": "Johan",
+      "score": 86.61,
       "status": "STARK"
     },
     {
-      "name": "Johan",
-      "score": 86.34,
+      "name": "honigmelone",
+      "score": 86.52,
       "status": "STARK"
     },
     {
@@ -435,13 +435,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Knitte",
-      "score": 90.57,
+      "name": "kl.kranker Affe",
+      "score": 90.78,
       "tip": "Weiter so"
     },
     {
-      "name": "kl.kranker Affe",
-      "score": 90.38,
+      "name": "Knitte",
+      "score": 90.57,
       "tip": "Weiter so"
     },
     {
@@ -460,17 +460,17 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Dolphin",
-      "score": 89.38,
-      "tip": "Weiter so"
-    },
-    {
       "name": "agostini",
       "score": 89.33,
       "tip": "Weiter so"
     },
     {
       "name": "elazeto",
+      "score": 89.24,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Dolphin",
       "score": 89.24,
       "tip": "Weiter so"
     },
@@ -535,13 +535,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "honigmelone",
-      "score": 86.52,
+      "name": "Johan",
+      "score": 86.61,
       "tip": "Weiter so"
     },
     {
-      "name": "Johan",
-      "score": 86.34,
+      "name": "honigmelone",
+      "score": 86.52,
       "tip": "Weiter so"
     },
     {
@@ -771,24 +771,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Knitte",
-        "player_tag": "#ULYJ2CQP",
+        "name": "kl.kranker Affe",
+        "player_tag": "#RLJPJL8C2",
         "role": "member",
-        "score": 90.57,
+        "score": 90.78,
         "strikes": 0,
-        "donations": 272,
+        "donations": 16,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
       {
-        "name": "kl.kranker Affe",
-        "player_tag": "#RLJPJL8C2",
+        "name": "Knitte",
+        "player_tag": "#ULYJ2CQP",
         "role": "member",
-        "score": 90.38,
+        "score": 90.57,
         "strikes": 0,
-        "donations": 16,
+        "donations": 272,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -831,18 +831,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Dolphin",
-        "player_tag": "#2U09UULRR",
-        "role": "member",
-        "score": 89.38,
-        "strikes": 0,
-        "donations": 150,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "agostini",
         "player_tag": "#P2YQ2QQUV",
         "role": "member",
@@ -851,6 +839,18 @@
         "donations": 402,
         "participation_count": 10,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Dolphin",
+        "player_tag": "#2U09UULRR",
+        "role": "member",
+        "score": 89.24,
+        "strikes": 0,
+        "donations": 160,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -999,6 +999,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Johan",
+        "player_tag": "#UQVCVVVJL",
+        "role": "member",
+        "score": 86.61,
+        "strikes": 0,
+        "donations": 138,
+        "participation_count": 10,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "honigmelone",
         "player_tag": "#Q2GRGLQR",
         "role": "member",
@@ -1007,18 +1019,6 @@
         "donations": 71,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Johan",
-        "player_tag": "#UQVCVVVJL",
-        "role": "member",
-        "score": 86.34,
-        "strikes": 0,
-        "donations": 128,
-        "participation_count": 10,
-        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
