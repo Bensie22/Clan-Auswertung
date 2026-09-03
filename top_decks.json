@@ -79,12 +79,12 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20260903T173345.000Z",
+            "#YUQVVVLQ": "20260903T201808.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260902T191531.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
             "#GRGCY0R8": "20260903T155501.000Z",
-            "#P2YQ2QQUV": "20260903T201055.000Z",
+            "#P2YQ2QQUV": "20260903T201200.000Z",
             "#JG8Q0GPU9": "20260713T010600.000Z",
             "#9QV99QVCV": "20260701T045607.000Z",
             "#JQ08UR882": "20260619T100820.000Z",
@@ -105,7 +105,7 @@
             "#VCYQ9L9QV": "20260729T140933.000Z",
             "#GRR999Q29": "20260801T003732.000Z",
             "#202QYVY8CC": "20260810T095353.000Z",
-            "#PLG90C0C": "20260903T185525.000Z",
+            "#PLG90C0C": "20260903T202024.000Z",
             "#LGUGQ0PRG": "20260903T084705.000Z",
             "#UVGRVC8LU": "20260809T181113.000Z",
             "#PVGU89PUL": "20260830T105027.000Z",
@@ -2660,7 +2660,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
                 }
             ],
-            "wins": 4,
+            "wins": 5,
             "losses": 0,
             "players": [
                 "agostini"
@@ -2669,6 +2669,12 @@
                 "P2YQ2QQUV"
             ],
             "recent_matches": [
+                {
+                    "time": "20260903T201200.000Z",
+                    "result": "win",
+                    "player": "agostini",
+                    "tag": "P2YQ2QQUV"
+                },
                 {
                     "time": "20260830T190241.000Z",
                     "result": "win",
@@ -432360,6 +432366,52 @@
                     "id": 27000006,
                     "name": "Tesla",
                     "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000003-26000005-26000007-26000018-26000034-28000008-28000010-28000017": {
+            "cards": [
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 26000003,
+                    "name": "Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Axr4ox5_b7edmLsoHxBX3vmgijAIibuF6RImTbqLlXE.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 28000010,
+                    "name": "Graveyard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Icp8BIyyfBTj1ncCJS7mb82SY7TPV-MAE-J2L2R48DI.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                },
+                {
+                    "id": 28000017,
+                    "name": "Giant Snowball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
                 }
             ],
             "seen": 1,
