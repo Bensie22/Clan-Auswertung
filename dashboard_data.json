@@ -31,17 +31,17 @@
       "priority": 2
     },
     {
-      "name": "OmniOni",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Theezy",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "OmniOni",
       "scenario": "TOP",
       "priority": 2
     },
@@ -163,13 +163,13 @@
       "status": "STARK"
     },
     {
-      "name": "OmniOni",
+      "name": "OneAndOnly",
       "score": 91.87,
       "status": "STARK"
     },
     {
-      "name": "OneAndOnly",
-      "score": 91.87,
+      "name": "OmniOni",
+      "score": 91.6,
       "status": "STARK"
     },
     {
@@ -415,13 +415,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "OmniOni",
+      "name": "OneAndOnly",
       "score": 91.87,
       "tip": "Weiter so"
     },
     {
-      "name": "OneAndOnly",
-      "score": 91.87,
+      "name": "OmniOni",
+      "score": 91.6,
       "tip": "Weiter so"
     },
     {
@@ -711,18 +711,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "OmniOni",
-        "player_tag": "#UUPCULU9V",
-        "role": "member",
-        "score": 91.87,
-        "strikes": 0,
-        "donations": 420,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "OneAndOnly",
         "player_tag": "#8P0J8P0L",
         "role": "member",
@@ -741,6 +729,18 @@
         "score": 91.87,
         "strikes": 0,
         "donations": 125,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "OmniOni",
+        "player_tag": "#UUPCULU9V",
+        "role": "member",
+        "score": 91.6,
+        "strikes": 0,
+        "donations": 420,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -812,7 +812,7 @@
         "role": "member",
         "score": 89.82,
         "strikes": 0,
-        "donations": 347,
+        "donations": 375,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -908,7 +908,7 @@
         "role": "member",
         "score": 87.92,
         "strikes": 0,
-        "donations": 230,
+        "donations": 240,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
