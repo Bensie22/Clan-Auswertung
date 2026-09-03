@@ -4,7 +4,7 @@
             "#22Q920RLR": "20260903T170755.000Z",
             "#L8PV090J": "20260903T114959.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
-            "#2QRVR9L8": "20260903T200640.000Z",
+            "#2QRVR9L8": "20260903T202930.000Z",
             "#ULYJ2CQP": "20260903T135358.000Z",
             "#UJ2P9UYUV": "20260903T191958.000Z",
             "#P0JYR9YUY": "20260903T133521.000Z",
@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20260903T201808.000Z",
+            "#YUQVVVLQ": "20260903T202802.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260902T191531.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
@@ -105,7 +105,7 @@
             "#VCYQ9L9QV": "20260729T140933.000Z",
             "#GRR999Q29": "20260801T003732.000Z",
             "#202QYVY8CC": "20260810T095353.000Z",
-            "#PLG90C0C": "20260903T202024.000Z",
+            "#PLG90C0C": "20260903T202855.000Z",
             "#LGUGQ0PRG": "20260903T084705.000Z",
             "#UVGRVC8LU": "20260809T181113.000Z",
             "#PVGU89PUL": "20260830T105027.000Z",
@@ -5743,7 +5743,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Bensie"
             ],
@@ -5751,6 +5751,12 @@
                 "2QRVR9L8"
             ],
             "recent_matches": [
+                {
+                    "time": "20260903T202930.000Z",
+                    "result": "loss",
+                    "player": "Bensie",
+                    "tag": "2QRVR9L8"
+                },
                 {
                     "time": "20260831T023938.000Z",
                     "result": "win",
@@ -432416,6 +432422,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000005-26000013-26000022-26000024-26000039-26000060-28000008-28000011": {
+            "cards": [
+                {
+                    "id": 26000024,
+                    "name": "Royal Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mnlRaNtmfpQx2e6mp70sLd0ND-pKPF70Cf87_agEKg4.png"
+                },
+                {
+                    "id": 26000060,
+                    "name": "Goblin Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SoW16cY3jXBwaTDvb39DkqiVsoFVaDWbzf5QBYphJrY.png"
+                },
+                {
+                    "id": 26000039,
+                    "name": "Mega Minion",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/-T_e4YLbuhPBKbYnBwQfXgynNpp5eOIN_0RracYwL9c.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                },
+                {
+                    "id": 26000013,
+                    "name": "Bomber",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
+                },
+                {
+                    "id": 26000022,
+                    "name": "Minion Horde",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Wyjq5l0IXHTkX9Rmpap6HaH08MvjbxFp1xBO9a47YSI.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
