@@ -11,7 +11,7 @@
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260903T084738.000Z",
             "#G02LC9C8": "20260903T060106.000Z",
-            "#2U8288CVY": "20260830T174419.000Z",
+            "#2U8288CVY": "20260903T100841.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
@@ -52,7 +52,7 @@
             "#Q2GRGLQR": "20260901T202954.000Z",
             "#J9RQPGLVP": "20260713T204019.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
-            "#9VLRQ9GR9": "20260901T132333.000Z",
+            "#9VLRQ9GR9": "20260903T100938.000Z",
             "#29RLRYLQL": "20260420T155237.000Z",
             "#QGGU22L9": "20260420T144732.000Z",
             "#2RQU00RLR": "20260421T120601.000Z",
@@ -105,7 +105,7 @@
             "#VCYQ9L9QV": "20260729T140933.000Z",
             "#GRR999Q29": "20260801T003732.000Z",
             "#202QYVY8CC": "20260810T095353.000Z",
-            "#PLG90C0C": "20260902T161801.000Z",
+            "#PLG90C0C": "20260903T100826.000Z",
             "#LGUGQ0PRG": "20260903T084705.000Z",
             "#UVGRVC8LU": "20260809T181113.000Z",
             "#PVGU89PUL": "20260830T105027.000Z",
@@ -4379,7 +4379,7 @@
                 }
             ],
             "wins": 3,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "_spc07"
             ],
@@ -4387,6 +4387,12 @@
                 "2U8288CVY"
             ],
             "recent_matches": [
+                {
+                    "time": "20260903T100206.000Z",
+                    "result": "loss",
+                    "player": "_spc07",
+                    "tag": "2U8288CVY"
+                },
                 {
                     "time": "20260830T172718.000Z",
                     "result": "win",
@@ -4816,7 +4822,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
                 }
             ],
-            "wins": 2,
+            "wins": 3,
             "losses": 1,
             "players": [
                 "DST"
@@ -4825,6 +4831,12 @@
                 "9VLRQ9GR9"
             ],
             "recent_matches": [
+                {
+                    "time": "20260903T100627.000Z",
+                    "result": "win",
+                    "player": "DST",
+                    "tag": "9VLRQ9GR9"
+                },
                 {
                     "time": "20260830T120933.000Z",
                     "result": "loss",
@@ -5545,7 +5557,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "DST"
             ],
@@ -5553,6 +5565,12 @@
                 "9VLRQ9GR9"
             ],
             "recent_matches": [
+                {
+                    "time": "20260903T100938.000Z",
+                    "result": "loss",
+                    "player": "DST",
+                    "tag": "9VLRQ9GR9"
+                },
                 {
                     "time": "20260829T123927.000Z",
                     "result": "win",
@@ -5605,7 +5623,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "DST"
             ],
@@ -5613,6 +5631,12 @@
                 "9VLRQ9GR9"
             ],
             "recent_matches": [
+                {
+                    "time": "20260903T100807.000Z",
+                    "result": "loss",
+                    "player": "DST",
+                    "tag": "9VLRQ9GR9"
+                },
                 {
                     "time": "20260829T123441.000Z",
                     "result": "win",
@@ -429422,6 +429446,190 @@
                     "id": 26000025,
                     "name": "Guards",
                     "icon": "https://api-assets.clashroyale.com/cards/300/1ArKfLJxYo6_NU_S9cAeIrfbXqWH0oULVJXedxBXQlU.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000008-26000013-26000020-26000033-26000052-26000055-26000101-27000000": {
+            "cards": [
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000013,
+                    "name": "Bomber",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
+                },
+                {
+                    "id": 26000008,
+                    "name": "Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/TvJsuu2S4yhyk1jVYUAQwdKOnW4U77KuWWOTPOWnwfI.png"
+                },
+                {
+                    "id": 26000020,
+                    "name": "Giant Skeleton",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0p0gd0XaVRu1Hb1iSG1hTYbz2AN6aEiZnhaAib5O8Z8.png"
+                },
+                {
+                    "id": 26000101,
+                    "name": "Rune Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/UogMnGHQXT-TOVXRxslKdAKXUPhqUvrD_hV9x8lbzdE.png"
+                },
+                {
+                    "id": 26000033,
+                    "name": "Sparky",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/2GKMkBrArZXgQxf2ygFjDs4VvGYPbx8F6Lj_68iVhIM.png"
+                },
+                {
+                    "id": 26000052,
+                    "name": "Zappies",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QZfHRpLRmutZbCr5fpLnTpIp89vLI6NrAwzGZ8tHEc4.png"
+                },
+                {
+                    "id": 27000000,
+                    "name": "Cannon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nZK1y-beLxO5vnlyUhK6-2zH2NzXJwqykcosqQ1cmZ8.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000007-26000009-26000012-26000045-26000064-27000010-28000000-28000009": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                },
+                {
+                    "id": 26000009,
+                    "name": "Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/npdmCnET7jmVjJvjJQkFnNSNnDxYHDBigbvIAloFMds.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000003-26000015-26000017-26000020-26000063-26000074-26000099-28000009": {
+            "cards": [
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000099,
+                    "name": "Goblinstein",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mQ20B49dXdk7Nv0lMdLw175M3YvkSpN6KNnho8UKBd8.png"
+                },
+                {
+                    "id": 26000074,
+                    "name": "Golden Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WJd207D0O1sN-l1FTb8P9KhYL2oF5jY26vRUfTUW3FQ.png"
+                },
+                {
+                    "id": 26000063,
+                    "name": "Electro Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/tN9h6lnMNPCNsx0LMFmvpHgznbDZ1fBRkx-C7UfNmfY.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                },
+                {
+                    "id": 26000003,
+                    "name": "Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Axr4ox5_b7edmLsoHxBX3vmgijAIibuF6RImTbqLlXE.png"
+                },
+                {
+                    "id": 26000020,
+                    "name": "Giant Skeleton",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0p0gd0XaVRu1Hb1iSG1hTYbz2AN6aEiZnhaAib5O8Z8.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000008-26000018-26000025-26000045-26000050-26000067-26000084-28000003": {
+            "cards": [
+                {
+                    "id": 26000008,
+                    "name": "Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/TvJsuu2S4yhyk1jVYUAQwdKOnW4U77KuWWOTPOWnwfI.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 26000050,
+                    "name": "Royal Ghost",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3En2cz0ISQAaMTHY3hj3rTveFN2kJYq-H4VxvdJNvCM.png"
+                },
+                {
+                    "id": 26000067,
+                    "name": "Elixir Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/puhMsZjCIqy21HW3hYxjrk_xt8NIPyFqjRy-BeLKZwo.png"
+                },
+                {
+                    "id": 26000025,
+                    "name": "Guards",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/1ArKfLJxYo6_NU_S9cAeIrfbXqWH0oULVJXedxBXQlU.png"
+                },
+                {
+                    "id": 26000084,
+                    "name": "Electro Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WKd4-IAFsgPpMo7dDi9sujmYjRhOMEWiE07OUJpvD9g.png"
+                },
+                {
+                    "id": 28000003,
+                    "name": "Rocket",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ie07nQNK9CjhKOa4-arFAewi4EroqaA-86Xo7r5tx94.png"
                 }
             ],
             "seen": 1,
