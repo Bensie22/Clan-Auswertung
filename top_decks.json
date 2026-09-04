@@ -40,7 +40,7 @@
             "#CUJ9PJ2UV": "20260904T112838.000Z",
             "#2P0U2RLGY": "20260904T054038.000Z",
             "#8P89UPQ0": "",
-            "#RLJPJL8C2": "20260903T203934.000Z",
+            "#RLJPJL8C2": "20260904T133111.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
             "#UUPCULU9V": "20260903T143219.000Z",
@@ -121,7 +121,7 @@
             "#200PGVGQ9U": "20260811T201941.000Z",
             "#RR0GV9L00": "20260904T095755.000Z",
             "#2JQUVJUUG": "20260813T213647.000Z",
-            "#JGYCRU2YP": "20260904T072426.000Z",
+            "#JGYCRU2YP": "20260904T132905.000Z",
             "#PC2LPCVU": "20260901T194235.000Z",
             "#2GPVVPCC8": "20260904T044352.000Z"
         }
@@ -5957,7 +5957,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "kl.kranker Affe"
             ],
@@ -5965,6 +5965,12 @@
                 "RLJPJL8C2"
             ],
             "recent_matches": [
+                {
+                    "time": "20260904T133111.000Z",
+                    "result": "loss",
+                    "player": "kl.kranker Affe",
+                    "tag": "RLJPJL8C2"
+                },
                 {
                     "time": "20260903T132149.000Z",
                     "result": "win",
@@ -435406,6 +435412,52 @@
                     "id": 28000004,
                     "name": "Goblin Barrel",
                     "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000033-26000064-26000077-26000102-27000006-28000004-28000005-28000015": {
+            "cards": [
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 26000102,
+                    "name": "Berserker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NA6W8S1JBYBlOPwD3dNvJLFvVDKq-UuBs_J3i3ewLFI.png"
+                },
+                {
+                    "id": 26000077,
+                    "name": "Monk",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/2onG4t4-CxqwFVZAn6zpWxFz3_mG2ksSj4Q7zldo1SM.png"
+                },
+                {
+                    "id": 26000033,
+                    "name": "Sparky",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/2GKMkBrArZXgQxf2ygFjDs4VvGYPbx8F6Lj_68iVhIM.png"
+                },
+                {
+                    "id": 28000005,
+                    "name": "Freeze",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
+                },
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 28000015,
+                    "name": "Barbarian Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Gb0G1yNy0i5cIGUHin8uoFWxqntNtRPhY_jeMXg7HnA.png"
                 }
             ],
             "seen": 1,
