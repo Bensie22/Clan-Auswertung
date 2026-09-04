@@ -9,7 +9,7 @@
             "#UJ2P9UYUV": "20260903T191958.000Z",
             "#P0JYR9YUY": "20260904T143316.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
-            "#YQ82VR9JQ": "20260904T050549.000Z",
+            "#YQ82VR9JQ": "20260904T152252.000Z",
             "#G02LC9C8": "20260904T062045.000Z",
             "#2U8288CVY": "20260904T104700.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
@@ -83,7 +83,7 @@
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260904T135924.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
-            "#GRGCY0R8": "20260904T103412.000Z",
+            "#GRGCY0R8": "20260904T153014.000Z",
             "#P2YQ2QQUV": "20260904T125445.000Z",
             "#JG8Q0GPU9": "20260713T010600.000Z",
             "#9QV99QVCV": "20260701T045607.000Z",
@@ -108,7 +108,7 @@
             "#PLG90C0C": "20260904T144349.000Z",
             "#LGUGQ0PRG": "20260903T084705.000Z",
             "#UVGRVC8LU": "20260809T181113.000Z",
-            "#PVGU89PUL": "20260903T210841.000Z",
+            "#PVGU89PUL": "20260904T152833.000Z",
             "#V9JP2PGGP": "20260904T003945.000Z",
             "#R2VYJUUCP": "20260804T204503.000Z",
             "#RL9LQYCCY": "20260804T213809.000Z",
@@ -2480,7 +2480,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/WKd4-IAFsgPpMo7dDi9sujmYjRhOMEWiE07OUJpvD9g.png"
                 }
             ],
-            "wins": 5,
+            "wins": 6,
             "losses": 0,
             "players": [
                 "Hemelm"
@@ -2489,6 +2489,12 @@
                 "PVGU89PUL"
             ],
             "recent_matches": [
+                {
+                    "time": "20260904T152833.000Z",
+                    "result": "win",
+                    "player": "Hemelm",
+                    "tag": "PVGU89PUL"
+                },
                 {
                     "time": "20260903T210559.000Z",
                     "result": "win",
@@ -435878,6 +435884,52 @@
                     "id": 26000020,
                     "name": "Giant Skeleton",
                     "icon": "https://api-assets.clashroyale.com/cards/300/0p0gd0XaVRu1Hb1iSG1hTYbz2AN6aEiZnhaAib5O8Z8.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000005-26000007-26000011-26000015-26000041-26000056-28000001-28000018": {
+            "cards": [
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                },
+                {
+                    "id": 28000018,
+                    "name": "Royal Delivery",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LPg7AGjGI3_xmi7gLLgGC50yKM1jJ2teWkZfoHJcIZo.png"
                 }
             ],
             "seen": 1,
