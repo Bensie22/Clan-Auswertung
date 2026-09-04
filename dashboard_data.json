@@ -56,17 +56,12 @@
       "priority": 2
     },
     {
-      "name": "chris",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Jackhammer",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "LazyFrog",
+      "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
@@ -77,6 +72,11 @@
     },
     {
       "name": "agostini",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "LazyFrog",
       "scenario": "TOP",
       "priority": 2
     },
@@ -193,18 +193,13 @@
       "status": "STARK"
     },
     {
-      "name": "chris",
-      "score": 90.35,
-      "status": "STARK"
-    },
-    {
       "name": "Jackhammer",
       "score": 90.35,
       "status": "STARK"
     },
     {
-      "name": "LazyFrog",
-      "score": 89.38,
+      "name": "chris",
+      "score": 89.95,
       "status": "STARK"
     },
     {
@@ -219,6 +214,11 @@
     },
     {
       "name": "elazeto",
+      "score": 89.24,
+      "status": "STARK"
+    },
+    {
+      "name": "LazyFrog",
       "score": 89.24,
       "status": "STARK"
     },
@@ -445,18 +445,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "chris",
-      "score": 90.35,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Jackhammer",
       "score": 90.35,
       "tip": "Weiter so"
     },
     {
-      "name": "LazyFrog",
-      "score": 89.38,
+      "name": "chris",
+      "score": 89.95,
       "tip": "Weiter so"
     },
     {
@@ -471,6 +466,11 @@
     },
     {
       "name": "elazeto",
+      "score": 89.24,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "LazyFrog",
       "score": 89.24,
       "tip": "Weiter so"
     },
@@ -795,18 +795,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "chris",
-        "player_tag": "#YQ82VR9JQ",
-        "role": "member",
-        "score": 90.35,
-        "strikes": 0,
-        "donations": 417,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Jackhammer",
         "player_tag": "#2CJYG9UG",
         "role": "member",
@@ -819,12 +807,12 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "LazyFrog",
-        "player_tag": "#22Q920RLR",
+        "name": "chris",
+        "player_tag": "#YQ82VR9JQ",
         "role": "member",
-        "score": 89.38,
+        "score": 89.95,
         "strikes": 0,
-        "donations": 592,
+        "donations": 417,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -851,6 +839,18 @@
         "donations": 402,
         "participation_count": 10,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "LazyFrog",
+        "player_tag": "#22Q920RLR",
+        "role": "member",
+        "score": 89.24,
+        "strikes": 0,
+        "donations": 626,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
