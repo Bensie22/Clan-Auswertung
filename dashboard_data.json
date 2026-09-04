@@ -71,17 +71,17 @@
       "priority": 2
     },
     {
+      "name": "LazyFrog",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "agostini",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "LazyFrog",
       "scenario": "TOP",
       "priority": 2
     },
@@ -208,6 +208,11 @@
       "status": "STARK"
     },
     {
+      "name": "LazyFrog",
+      "score": 89.78,
+      "status": "STARK"
+    },
+    {
       "name": "Dolphin",
       "score": 89.38,
       "status": "STARK"
@@ -215,11 +220,6 @@
     {
       "name": "agostini",
       "score": 89.33,
-      "status": "STARK"
-    },
-    {
-      "name": "LazyFrog",
-      "score": 89.24,
       "status": "STARK"
     },
     {
@@ -460,6 +460,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "LazyFrog",
+      "score": 89.78,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Dolphin",
       "score": 89.38,
       "tip": "Weiter so"
@@ -467,11 +472,6 @@
     {
       "name": "agostini",
       "score": 89.33,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "LazyFrog",
-      "score": 89.24,
       "tip": "Weiter so"
     },
     {
@@ -824,6 +824,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "LazyFrog",
+        "player_tag": "#22Q920RLR",
+        "role": "member",
+        "score": 89.78,
+        "strikes": 0,
+        "donations": 678,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Dolphin",
         "player_tag": "#2U09UULRR",
         "role": "member",
@@ -844,18 +856,6 @@
         "donations": 476,
         "participation_count": 10,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "LazyFrog",
-        "player_tag": "#22Q920RLR",
-        "role": "member",
-        "score": 89.24,
-        "strikes": 0,
-        "donations": 670,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -937,7 +937,7 @@
         "role": "member",
         "score": 87.9,
         "strikes": 0,
-        "donations": 384,
+        "donations": 392,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
