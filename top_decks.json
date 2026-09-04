@@ -108,7 +108,7 @@
             "#PLG90C0C": "20260904T144349.000Z",
             "#LGUGQ0PRG": "20260903T084705.000Z",
             "#UVGRVC8LU": "20260809T181113.000Z",
-            "#PVGU89PUL": "20260904T152833.000Z",
+            "#PVGU89PUL": "20260904T153231.000Z",
             "#V9JP2PGGP": "20260904T003945.000Z",
             "#R2VYJUUCP": "20260804T204503.000Z",
             "#RL9LQYCCY": "20260804T213809.000Z",
@@ -6460,7 +6460,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/hzKNE3QwFcrSrDDRuVW3QY_OnrDPijSiIp-PsWgFevE.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "Hemelm"
@@ -6469,6 +6469,12 @@
                 "PVGU89PUL"
             ],
             "recent_matches": [
+                {
+                    "time": "20260904T153231.000Z",
+                    "result": "win",
+                    "player": "Hemelm",
+                    "tag": "PVGU89PUL"
+                },
                 {
                     "time": "20260903T210841.000Z",
                     "result": "win",
@@ -435930,6 +435936,52 @@
                     "id": 28000018,
                     "name": "Royal Delivery",
                     "icon": "https://api-assets.clashroyale.com/cards/300/LPg7AGjGI3_xmi7gLLgGC50yKM1jJ2teWkZfoHJcIZo.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000019-26000031-26000059-26000072-27000000-28000001-28000009-28000018": {
+            "cards": [
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                },
+                {
+                    "id": 26000072,
+                    "name": "Archer Queen",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/p7OQmOAFTery7zCzlpDdm-LOD1kINTm42AwIHchZfWk.png"
+                },
+                {
+                    "id": 26000019,
+                    "name": "Spear Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/FSDFotjaXidI4ku_WFpVCTWS1hKGnFh1sxX0lxM43_E.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 28000018,
+                    "name": "Royal Delivery",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LPg7AGjGI3_xmi7gLLgGC50yKM1jJ2teWkZfoHJcIZo.png"
+                },
+                {
+                    "id": 26000031,
+                    "name": "Fire Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/16-BqusVvynIgYI8_Jci3LDC-r8AI_xaIYLgXqtlmS8.png"
+                },
+                {
+                    "id": 27000000,
+                    "name": "Cannon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nZK1y-beLxO5vnlyUhK6-2zH2NzXJwqykcosqQ1cmZ8.png"
                 }
             ],
             "seen": 1,
