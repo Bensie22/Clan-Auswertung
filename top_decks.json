@@ -4,12 +4,12 @@
             "#22Q920RLR": "20260904T181136.000Z",
             "#L8PV090J": "20260904T162508.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
-            "#2QRVR9L8": "20260905T104945.000Z",
+            "#2QRVR9L8": "20260905T122227.000Z",
             "#ULYJ2CQP": "20260905T095417.000Z",
             "#UJ2P9UYUV": "20260904T193316.000Z",
             "#P0JYR9YUY": "20260905T105726.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
-            "#YQ82VR9JQ": "20260905T112220.000Z",
+            "#YQ82VR9JQ": "20260905T122157.000Z",
             "#G02LC9C8": "20260905T083917.000Z",
             "#2U8288CVY": "20260904T192838.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
@@ -21,7 +21,7 @@
             "#QVQGCV8Y9": "20260904T150327.000Z",
             "#Q8L0RJ8Y8": "20260905T111053.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
-            "#2CPRGY8G": "20260905T073410.000Z",
+            "#2CPRGY8G": "20260905T123045.000Z",
             "#LLQQJCLC": "20260905T085646.000Z",
             "#2VJR80RL": "20260905T103648.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
@@ -83,7 +83,7 @@
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260904T135924.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
-            "#GRGCY0R8": "20260905T103214.000Z",
+            "#GRGCY0R8": "20260905T122619.000Z",
             "#P2YQ2QQUV": "20260905T115207.000Z",
             "#JG8Q0GPU9": "20260713T010600.000Z",
             "#9QV99QVCV": "20260701T045607.000Z",
@@ -105,7 +105,7 @@
             "#VCYQ9L9QV": "20260729T140933.000Z",
             "#GRR999Q29": "20260801T003732.000Z",
             "#202QYVY8CC": "20260810T095353.000Z",
-            "#PLG90C0C": "20260905T103929.000Z",
+            "#PLG90C0C": "20260905T122942.000Z",
             "#LGUGQ0PRG": "20260904T190855.000Z",
             "#UVGRVC8LU": "20260809T181113.000Z",
             "#PVGU89PUL": "20260905T104748.000Z",
@@ -1215,7 +1215,7 @@
                 }
             ],
             "wins": 7,
-            "losses": 1,
+            "losses": 2,
             "players": [
                 "Swordfish"
             ],
@@ -1223,6 +1223,12 @@
                 "2CPRGY8G"
             ],
             "recent_matches": [
+                {
+                    "time": "20260905T123045.000Z",
+                    "result": "loss",
+                    "player": "Swordfish",
+                    "tag": "2CPRGY8G"
+                },
                 {
                     "time": "20260904T083438.000Z",
                     "result": "loss",
@@ -439208,6 +439214,52 @@
                     "id": 28000002,
                     "name": "Rage",
                     "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000007-26000011-26000036-26000040-26000055-26000064-28000004-28000011": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 26000036,
+                    "name": "Battle Ram",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dyc50V2cplKi4H7pq1B3I36pl_sEH5DQrNHboS_dbbM.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
                 }
             ],
             "seen": 1,
