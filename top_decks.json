@@ -7,7 +7,7 @@
             "#2QRVR9L8": "20260904T224207.000Z",
             "#ULYJ2CQP": "20260904T102147.000Z",
             "#UJ2P9UYUV": "20260904T193316.000Z",
-            "#P0JYR9YUY": "20260904T143316.000Z",
+            "#P0JYR9YUY": "20260905T082959.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20260905T075402.000Z",
             "#G02LC9C8": "20260905T061500.000Z",
@@ -93,7 +93,7 @@
             "#P00PQ9CUQ": "20260613T120503.000Z",
             "#PVYJ80YCL": "20260619T140927.000Z",
             "#RP9RVGQJU": "20260615T092432.000Z",
-            "#P0G2GYJQ9": "20260905T065303.000Z",
+            "#P0G2GYJQ9": "20260905T082703.000Z",
             "#8P2GV8UQY": "20260718T102217.000Z",
             "#VV2JR990": "20260622T193820.000Z",
             "#YYJR9R0GR": "20260713T093713.000Z",
@@ -5201,7 +5201,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Chico"
             ],
@@ -5209,6 +5209,12 @@
                 "P0JYR9YUY"
             ],
             "recent_matches": [
+                {
+                    "time": "20260905T082959.000Z",
+                    "result": "loss",
+                    "player": "Chico",
+                    "tag": "P0JYR9YUY"
+                },
                 {
                     "time": "20260903T133206.000Z",
                     "result": "win",
@@ -438212,6 +438218,52 @@
                     "id": 26000080,
                     "name": "Skeleton Dragons",
                     "icon": "https://api-assets.clashroyale.com/cards/300/qPOtg9uONh47_NLxGhhFc_ww9PlZ6z3Ry507q1NZUXs.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000010-26000021-26000064-26000065-26000084-27000000-28000011-28000014": {
+            "cards": [
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000065,
+                    "name": "Mighty Miner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Cd9R56yraxTvJiD8xJ2qT2OdsHyh94FqOAarXpbyelo.png"
+                },
+                {
+                    "id": 27000000,
+                    "name": "Cannon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nZK1y-beLxO5vnlyUhK6-2zH2NzXJwqykcosqQ1cmZ8.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 26000010,
+                    "name": "Skeletons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/oO7iKMU5m0cdxhYPZA3nWQiAUh2yoGgdThLWB1rVSec.png"
+                },
+                {
+                    "id": 28000014,
+                    "name": "Earthquake",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/XeQXcrUu59C52DslyZVwCnbi4yamID-WxfVZLShgZmE.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000084,
+                    "name": "Electro Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WKd4-IAFsgPpMo7dDi9sujmYjRhOMEWiE07OUJpvD9g.png"
                 }
             ],
             "seen": 1,
