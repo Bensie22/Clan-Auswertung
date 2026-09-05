@@ -56,17 +56,17 @@
       "priority": 2
     },
     {
+      "name": "Jackhammer",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Knitte",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "April#",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Jackhammer",
       "scenario": "TOP",
       "priority": 2
     },
@@ -198,17 +198,17 @@
       "status": "STARK"
     },
     {
+      "name": "Jackhammer",
+      "score": 90.89,
+      "status": "STARK"
+    },
+    {
       "name": "Knitte",
       "score": 90.83,
       "status": "STARK"
     },
     {
       "name": "April#",
-      "score": 90.75,
-      "status": "STARK"
-    },
-    {
-      "name": "Jackhammer",
       "score": 90.75,
       "status": "STARK"
     },
@@ -450,17 +450,17 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Jackhammer",
+      "score": 90.89,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Knitte",
       "score": 90.83,
       "tip": "Weiter so"
     },
     {
       "name": "April#",
-      "score": 90.75,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Jackhammer",
       "score": 90.75,
       "tip": "Weiter so"
     },
@@ -786,6 +786,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Jackhammer",
+        "player_tag": "#2CJYG9UG",
+        "role": "member",
+        "score": 90.89,
+        "strikes": 0,
+        "donations": 128,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Knitte",
         "player_tag": "#ULYJ2CQP",
         "role": "member",
@@ -806,18 +818,6 @@
         "donations": 238,
         "participation_count": 10,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Jackhammer",
-        "player_tag": "#2CJYG9UG",
-        "role": "member",
-        "score": 90.75,
-        "strikes": 0,
-        "donations": 128,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -911,7 +911,7 @@
         "role": "member",
         "score": 88.38,
         "strikes": 0,
-        "donations": 212,
+        "donations": 222,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
