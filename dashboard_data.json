@@ -106,17 +106,17 @@
       "priority": 2
     },
     {
-      "name": "SankKiI9",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "_spc07",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "bes",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "SankKiI9",
       "scenario": "TOP",
       "priority": 2
     },
@@ -253,11 +253,6 @@
       "status": "STARK"
     },
     {
-      "name": "SankKiI9",
-      "score": 88.11,
-      "status": "STARK"
-    },
-    {
       "name": "Hemelm",
       "score": 88.07,
       "status": "STARK"
@@ -270,6 +265,11 @@
     {
       "name": "bes",
       "score": 87.92,
+      "status": "STARK"
+    },
+    {
+      "name": "SankKiI9",
+      "score": 87.85,
       "status": "STARK"
     },
     {
@@ -505,11 +505,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "SankKiI9",
-      "score": 88.11,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Hemelm",
       "score": 88.07,
       "tip": "Weiter so"
@@ -522,6 +517,11 @@
     {
       "name": "bes",
       "score": 87.92,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "SankKiI9",
+      "score": 87.85,
       "tip": "Weiter so"
     },
     {
@@ -695,7 +695,7 @@
         "role": "member",
         "score": 94.22,
         "strikes": 0,
-        "donations": 352,
+        "donations": 368,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
@@ -767,7 +767,7 @@
         "role": "member",
         "score": 91.29,
         "strikes": 0,
-        "donations": 138,
+        "donations": 146,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -906,18 +906,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "SankKiI9",
-        "player_tag": "#89CJRRV8",
-        "role": "member",
-        "score": 88.11,
-        "strikes": 0,
-        "donations": 559,
-        "participation_count": 10,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Hemelm",
         "player_tag": "#PVGU89PUL",
         "role": "member",
@@ -950,6 +938,18 @@
         "donations": 384,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "SankKiI9",
+        "player_tag": "#89CJRRV8",
+        "role": "member",
+        "score": 87.85,
+        "strikes": 0,
+        "donations": 559,
+        "participation_count": 10,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
