@@ -31,7 +31,7 @@
             "#YQVQYUYRV": "20260525T095543.000Z",
             "#2V800VCQ0": "20260906T121318.000Z",
             "#2UQUPYQCJ": "20260810T113227.000Z",
-            "#JUUR8UGL8": "20260906T173617.000Z",
+            "#JUUR8UGL8": "20260906T175359.000Z",
             "#2U09UULRR": "20260906T123129.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20260906T001459.000Z",
@@ -849,7 +849,7 @@
                 }
             ],
             "wins": 8,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Theezy"
             ],
@@ -857,6 +857,12 @@
                 "JUUR8UGL8"
             ],
             "recent_matches": [
+                {
+                    "time": "20260906T175359.000Z",
+                    "result": "loss",
+                    "player": "Theezy",
+                    "tag": "JUUR8UGL8"
+                },
                 {
                     "time": "20260905T161644.000Z",
                     "result": "win",
@@ -445206,6 +445212,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000007-26000053-26000056-26000084-26000106-27000009-28000003-28000004": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 27000009,
+                    "name": "Tombstone",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LjSfSbwQfkZuRJY4pVxKspZ-a0iM5KAhU8w-a_N5Z7Y.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 26000084,
+                    "name": "Electro Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WKd4-IAFsgPpMo7dDi9sujmYjRhOMEWiE07OUJpvD9g.png"
+                },
+                {
+                    "id": 26000053,
+                    "name": "Rascals",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/KV48DfwVHKx9XCjzBdk3daT_Eb52Me4VgjVO7WctRc4.png"
+                },
+                {
+                    "id": 26000106,
+                    "name": "Ronin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X0dTFs7OGUavreDEzOtYd_YNZ8Zly6qgAE-dd-bNfWU.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 28000003,
+                    "name": "Rocket",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ie07nQNK9CjhKOa4-arFAewi4EroqaA-86Xo7r5tx94.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
