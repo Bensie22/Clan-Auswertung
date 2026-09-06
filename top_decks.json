@@ -52,7 +52,7 @@
             "#Q2GRGLQR": "20260906T072944.000Z",
             "#J9RQPGLVP": "20260713T204019.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
-            "#9VLRQ9GR9": "20260906T114531.000Z",
+            "#9VLRQ9GR9": "20260906T140849.000Z",
             "#29RLRYLQL": "20260420T155237.000Z",
             "#QGGU22L9": "20260420T144732.000Z",
             "#2RQU00RLR": "20260421T120601.000Z",
@@ -71,7 +71,7 @@
             "#GJVVGUYJC": "20260518T141110.000Z",
             "#UQVCVVVJL": "20260905T205028.000Z",
             "#22CVYQP8R": "20260509T062429.000Z",
-            "#89CJRRV8": "20260906T102822.000Z",
+            "#89CJRRV8": "20260906T140803.000Z",
             "#VL989Y20J": "20260516T051537.000Z",
             "#RULG988Y": "20260606T102155.000Z",
             "#99909G00": "20260512T084926.000Z",
@@ -106,7 +106,7 @@
             "#GRR999Q29": "20260801T003732.000Z",
             "#202QYVY8CC": "20260810T095353.000Z",
             "#PLG90C0C": "20260906T123515.000Z",
-            "#LGUGQ0PRG": "20260906T104652.000Z",
+            "#LGUGQ0PRG": "20260906T140921.000Z",
             "#UVGRVC8LU": "20260809T181113.000Z",
             "#PVGU89PUL": "20260905T104748.000Z",
             "#V9JP2PGGP": "20260906T012206.000Z",
@@ -5606,7 +5606,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/fO-Xah8XZkYKaSK9SCp3wnzwxtvIhun9NVY-zzte1Ng.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "DST"
@@ -5615,6 +5615,12 @@
                 "9VLRQ9GR9"
             ],
             "recent_matches": [
+                {
+                    "time": "20260906T140849.000Z",
+                    "result": "win",
+                    "player": "DST",
+                    "tag": "9VLRQ9GR9"
+                },
                 {
                     "time": "20260905T133952.000Z",
                     "result": "win",
@@ -444022,6 +444028,52 @@
                     "id": 27000010,
                     "name": "Furnace",
                     "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000006-26000015-26000016-26000017-26000037-26000055-27000004-27000006": {
+            "cards": [
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 27000004,
+                    "name": "Bomb Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/rirYRyHPc97emRjoH-c1O8uZCBzPVnToaGuNGusF3TQ.png"
+                },
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 26000037,
+                    "name": "Inferno Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
                 }
             ],
             "seen": 1,
