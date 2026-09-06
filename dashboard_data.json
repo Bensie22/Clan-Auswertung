@@ -61,12 +61,12 @@
       "priority": 2
     },
     {
-      "name": "Knitte",
+      "name": "April#",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "April#",
+      "name": "Knitte",
       "scenario": "TOP",
       "priority": 2
     },
@@ -121,17 +121,17 @@
       "priority": 2
     },
     {
-      "name": "Reklaminator",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "SankKiI9",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "HardcoreSoldier",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Reklaminator",
       "scenario": "TOP",
       "priority": 2
     },
@@ -203,13 +203,13 @@
       "status": "STARK"
     },
     {
-      "name": "Knitte",
-      "score": 90.83,
+      "name": "April#",
+      "score": 90.75,
       "status": "STARK"
     },
     {
-      "name": "April#",
-      "score": 90.75,
+      "name": "Knitte",
+      "score": 90.43,
       "status": "STARK"
     },
     {
@@ -224,7 +224,7 @@
     },
     {
       "name": "LazyFrog",
-      "score": 89.38,
+      "score": 89.24,
       "status": "STARK"
     },
     {
@@ -273,11 +273,6 @@
       "status": "STARK"
     },
     {
-      "name": "Reklaminator",
-      "score": 87.9,
-      "status": "STARK"
-    },
-    {
       "name": "SankKiI9",
       "score": 87.85,
       "status": "STARK"
@@ -285,6 +280,11 @@
     {
       "name": "HardcoreSoldier",
       "score": 87.72,
+      "status": "STARK"
+    },
+    {
+      "name": "Reklaminator",
+      "score": 87.63,
       "status": "STARK"
     },
     {
@@ -455,13 +455,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Knitte",
-      "score": 90.83,
+      "name": "April#",
+      "score": 90.75,
       "tip": "Weiter so"
     },
     {
-      "name": "April#",
-      "score": 90.75,
+      "name": "Knitte",
+      "score": 90.43,
       "tip": "Weiter so"
     },
     {
@@ -476,7 +476,7 @@
     },
     {
       "name": "LazyFrog",
-      "score": 89.38,
+      "score": 89.24,
       "tip": "Weiter so"
     },
     {
@@ -525,11 +525,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Reklaminator",
-      "score": 87.9,
-      "tip": "Weiter so"
-    },
-    {
       "name": "SankKiI9",
       "score": 87.85,
       "tip": "Weiter so"
@@ -537,6 +532,11 @@
     {
       "name": "HardcoreSoldier",
       "score": 87.72,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Reklaminator",
+      "score": 87.63,
       "tip": "Weiter so"
     },
     {
@@ -719,7 +719,7 @@
         "role": "member",
         "score": 93.47,
         "strikes": 0,
-        "donations": 516,
+        "donations": 536,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -798,26 +798,26 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Knitte",
-        "player_tag": "#ULYJ2CQP",
-        "role": "member",
-        "score": 90.83,
-        "strikes": 0,
-        "donations": 405,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "April#",
         "player_tag": "#YUQVVVLQ",
         "role": "member",
         "score": 90.75,
         "strikes": 0,
-        "donations": 238,
+        "donations": 248,
         "participation_count": 10,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Knitte",
+        "player_tag": "#ULYJ2CQP",
+        "role": "member",
+        "score": 90.43,
+        "strikes": 0,
+        "donations": 425,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -839,7 +839,7 @@
         "role": "member",
         "score": 89.6,
         "strikes": 0,
-        "donations": 665,
+        "donations": 685,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
@@ -849,7 +849,7 @@
         "name": "LazyFrog",
         "player_tag": "#22Q920RLR",
         "role": "member",
-        "score": 89.38,
+        "score": 89.24,
         "strikes": 0,
         "donations": 784,
         "participation_count": 10,
@@ -954,18 +954,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Reklaminator",
-        "player_tag": "#P0G2GYJQ9",
-        "role": "member",
-        "score": 87.9,
-        "strikes": 0,
-        "donations": 444,
-        "participation_count": 10,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "SankKiI9",
         "player_tag": "#89CJRRV8",
         "role": "member",
@@ -984,6 +972,18 @@
         "score": 87.72,
         "strikes": 0,
         "donations": 636,
+        "participation_count": 10,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Reklaminator",
+        "player_tag": "#P0G2GYJQ9",
+        "role": "member",
+        "score": 87.63,
+        "strikes": 0,
+        "donations": 454,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
