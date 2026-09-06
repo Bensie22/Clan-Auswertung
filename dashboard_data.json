@@ -21,12 +21,12 @@
       "priority": 2
     },
     {
-      "name": "Erastus",
+      "name": "Citykingalex",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Citykingalex",
+      "name": "Erastus",
       "scenario": "TOP",
       "priority": 2
     },
@@ -121,17 +121,17 @@
       "priority": 2
     },
     {
+      "name": "Reklaminator",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "SankKiI9",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "HardcoreSoldier",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Reklaminator",
       "scenario": "TOP",
       "priority": 2
     },
@@ -163,13 +163,13 @@
       "status": "STARK"
     },
     {
-      "name": "Erastus",
-      "score": 93.87,
+      "name": "Citykingalex",
+      "score": 93.82,
       "status": "STARK"
     },
     {
-      "name": "Citykingalex",
-      "score": 93.82,
+      "name": "Erastus",
+      "score": 93.47,
       "status": "STARK"
     },
     {
@@ -273,6 +273,11 @@
       "status": "STARK"
     },
     {
+      "name": "Reklaminator",
+      "score": 87.9,
+      "status": "STARK"
+    },
+    {
       "name": "SankKiI9",
       "score": 87.85,
       "status": "STARK"
@@ -280,11 +285,6 @@
     {
       "name": "HardcoreSoldier",
       "score": 87.72,
-      "status": "STARK"
-    },
-    {
-      "name": "Reklaminator",
-      "score": 87.63,
       "status": "STARK"
     },
     {
@@ -415,13 +415,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Erastus",
-      "score": 93.87,
+      "name": "Citykingalex",
+      "score": 93.82,
       "tip": "Weiter so"
     },
     {
-      "name": "Citykingalex",
-      "score": 93.82,
+      "name": "Erastus",
+      "score": 93.47,
       "tip": "Weiter so"
     },
     {
@@ -525,6 +525,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Reklaminator",
+      "score": 87.9,
+      "tip": "Weiter so"
+    },
+    {
       "name": "SankKiI9",
       "score": 87.85,
       "tip": "Weiter so"
@@ -532,11 +537,6 @@
     {
       "name": "HardcoreSoldier",
       "score": 87.72,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Reklaminator",
-      "score": 87.63,
       "tip": "Weiter so"
     },
     {
@@ -702,18 +702,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Erastus",
-        "player_tag": "#Q8L0RJ8Y8",
-        "role": "member",
-        "score": 93.87,
-        "strikes": 0,
-        "donations": 506,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Citykingalex",
         "player_tag": "#QULCQGGG",
         "role": "member",
@@ -722,6 +710,18 @@
         "donations": 306,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Erastus",
+        "player_tag": "#Q8L0RJ8Y8",
+        "role": "member",
+        "score": 93.47,
+        "strikes": 0,
+        "donations": 516,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -803,7 +803,7 @@
         "role": "member",
         "score": 90.83,
         "strikes": 0,
-        "donations": 395,
+        "donations": 405,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -851,7 +851,7 @@
         "role": "member",
         "score": 89.38,
         "strikes": 0,
-        "donations": 754,
+        "donations": 784,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -954,6 +954,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Reklaminator",
+        "player_tag": "#P0G2GYJQ9",
+        "role": "member",
+        "score": 87.9,
+        "strikes": 0,
+        "donations": 444,
+        "participation_count": 10,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "SankKiI9",
         "player_tag": "#89CJRRV8",
         "role": "member",
@@ -972,18 +984,6 @@
         "score": 87.72,
         "strikes": 0,
         "donations": 636,
-        "participation_count": 10,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Reklaminator",
-        "player_tag": "#P0G2GYJQ9",
-        "role": "member",
-        "score": 87.63,
-        "strikes": 0,
-        "donations": 434,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
