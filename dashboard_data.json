@@ -116,6 +116,11 @@
       "priority": 2
     },
     {
+      "name": "bes",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "SankKiI9",
       "scenario": "TOP",
       "priority": 2
@@ -127,11 +132,6 @@
     },
     {
       "name": "Reklaminator",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "bes",
       "scenario": "TOP",
       "priority": 2
     },
@@ -268,6 +268,11 @@
       "status": "STARK"
     },
     {
+      "name": "bes",
+      "score": 87.92,
+      "status": "STARK"
+    },
+    {
       "name": "SankKiI9",
       "score": 87.85,
       "status": "STARK"
@@ -280,11 +285,6 @@
     {
       "name": "Reklaminator",
       "score": 87.63,
-      "status": "STARK"
-    },
-    {
-      "name": "bes",
-      "score": 87.39,
       "status": "STARK"
     },
     {
@@ -520,6 +520,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "bes",
+      "score": 87.92,
+      "tip": "Weiter so"
+    },
+    {
       "name": "SankKiI9",
       "score": 87.85,
       "tip": "Weiter so"
@@ -532,11 +537,6 @@
     {
       "name": "Reklaminator",
       "score": 87.63,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "bes",
-      "score": 87.39,
       "tip": "Weiter so"
     },
     {
@@ -839,7 +839,7 @@
         "role": "member",
         "score": 89.6,
         "strikes": 0,
-        "donations": 627,
+        "donations": 645,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
@@ -911,7 +911,7 @@
         "role": "member",
         "score": 88.25,
         "strikes": 0,
-        "donations": 222,
+        "donations": 230,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
@@ -938,6 +938,18 @@
         "donations": 0,
         "participation_count": 5,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "bes",
+        "player_tag": "#LLQQJCLC",
+        "role": "member",
+        "score": 87.92,
+        "strikes": 0,
+        "donations": 374,
+        "participation_count": 10,
+        "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -974,18 +986,6 @@
         "donations": 434,
         "participation_count": 10,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "bes",
-        "player_tag": "#LLQQJCLC",
-        "role": "member",
-        "score": 87.39,
-        "strikes": 0,
-        "donations": 364,
-        "participation_count": 10,
-        "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
