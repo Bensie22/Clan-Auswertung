@@ -19,7 +19,7 @@
             "#QULCQGGG": "20260907T081639.000Z",
             "#JRGC9RRQG": "20260907T145216.000Z",
             "#QVQGCV8Y9": "20260907T153016.000Z",
-            "#Q8L0RJ8Y8": "20260907T185738.000Z",
+            "#Q8L0RJ8Y8": "20260907T191030.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260907T152135.000Z",
             "#LLQQJCLC": "20260907T185405.000Z",
@@ -37,7 +37,7 @@
             "#8QYYL8LCQ": "20260907T014427.000Z",
             "#8P0J8P0L": "20260907T151817.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20260906T182552.000Z",
+            "#CUJ9PJ2UV": "20260907T190340.000Z",
             "#2P0U2RLGY": "20260905T222432.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20260907T173115.000Z",
@@ -84,7 +84,7 @@
             "#VP82QGC8Y": "20260906T221822.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
             "#GRGCY0R8": "20260907T172430.000Z",
-            "#P2YQ2QQUV": "20260907T185308.000Z",
+            "#P2YQ2QQUV": "20260907T191022.000Z",
             "#JG8Q0GPU9": "20260713T010600.000Z",
             "#9QV99QVCV": "20260701T045607.000Z",
             "#JQ08UR882": "20260619T100820.000Z",
@@ -4737,7 +4737,7 @@
                 }
             ],
             "wins": 3,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Erastus"
             ],
@@ -4745,6 +4745,12 @@
                 "Q8L0RJ8Y8"
             ],
             "recent_matches": [
+                {
+                    "time": "20260907T191030.000Z",
+                    "result": "loss",
+                    "player": "Erastus",
+                    "tag": "Q8L0RJ8Y8"
+                },
                 {
                     "time": "20260907T042053.000Z",
                     "result": "win",
@@ -448014,6 +448020,52 @@
                     "id": 27000004,
                     "name": "Bomb Tower",
                     "icon": "https://api-assets.clashroyale.com/cards/300/rirYRyHPc97emRjoH-c1O8uZCBzPVnToaGuNGusF3TQ.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000000-26000030-26000040-26000041-26000055-27000003-28000004-28000011": {
+            "cards": [
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 26000030,
+                    "name": "Ice Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lv1budiafU9XmSdrDkk0NYyqASAFYyZ06CPysXKZXlA.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 27000003,
+                    "name": "Inferno Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
                 }
             ],
             "seen": 1,
