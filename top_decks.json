@@ -4,12 +4,12 @@
             "#22Q920RLR": "20260907T182124.000Z",
             "#L8PV090J": "20260906T151130.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
-            "#2QRVR9L8": "20260908T041811.000Z",
+            "#2QRVR9L8": "20260908T042213.000Z",
             "#ULYJ2CQP": "20260907T114230.000Z",
             "#UJ2P9UYUV": "20260907T113149.000Z",
             "#P0JYR9YUY": "20260906T054748.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
-            "#YQ82VR9JQ": "20260907T181344.000Z",
+            "#YQ82VR9JQ": "20260908T042948.000Z",
             "#G02LC9C8": "20260908T041907.000Z",
             "#2U8288CVY": "20260907T202057.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
@@ -22,7 +22,7 @@
             "#Q8L0RJ8Y8": "20260907T191030.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260907T152135.000Z",
-            "#LLQQJCLC": "20260908T041907.000Z",
+            "#LLQQJCLC": "20260908T042740.000Z",
             "#2VJR80RL": "20260907T041504.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
@@ -109,7 +109,7 @@
             "#LGUGQ0PRG": "20260907T115002.000Z",
             "#UVGRVC8LU": "20260809T181113.000Z",
             "#PVGU89PUL": "20260907T095246.000Z",
-            "#V9JP2PGGP": "20260908T042017.000Z",
+            "#V9JP2PGGP": "20260908T043033.000Z",
             "#R2VYJUUCP": "20260804T204503.000Z",
             "#RL9LQYCCY": "20260804T213809.000Z",
             "#V8VGG0LUG": "20260803T085547.000Z",
@@ -524,7 +524,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
                 }
             ],
-            "wins": 5,
+            "wins": 6,
             "losses": 0,
             "players": [
                 "bes"
@@ -533,6 +533,12 @@
                 "LLQQJCLC"
             ],
             "recent_matches": [
+                {
+                    "time": "20260908T042740.000Z",
+                    "result": "win",
+                    "player": "bes",
+                    "tag": "LLQQJCLC"
+                },
                 {
                     "time": "20260821T054755.000Z",
                     "result": "win",
@@ -448064,6 +448070,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000014-26000025-26000027-26000050-26000051-26000056-26000064-27000010": {
+            "cards": [
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000027,
+                    "name": "Dark Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/M7fXlrKXHu2IvpSGpk36kXVstslbR08Bbxcy0jQcln8.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000050,
+                    "name": "Royal Ghost",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3En2cz0ISQAaMTHY3hj3rTveFN2kJYq-H4VxvdJNvCM.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000025,
+                    "name": "Guards",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/1ArKfLJxYo6_NU_S9cAeIrfbXqWH0oULVJXedxBXQlU.png"
+                },
+                {
+                    "id": 26000051,
+                    "name": "Ram Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
