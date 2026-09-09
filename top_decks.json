@@ -19,7 +19,7 @@
             "#QULCQGGG": "20260909T164951.000Z",
             "#JRGC9RRQG": "20260909T092233.000Z",
             "#QVQGCV8Y9": "20260909T133425.000Z",
-            "#Q8L0RJ8Y8": "20260909T170902.000Z",
+            "#Q8L0RJ8Y8": "20260909T171311.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260909T120522.000Z",
             "#LLQQJCLC": "20260908T203601.000Z",
@@ -34,7 +34,7 @@
             "#JUUR8UGL8": "20260908T123836.000Z",
             "#2U09UULRR": "20260909T141942.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
-            "#8QYYL8LCQ": "20260909T015301.000Z",
+            "#8QYYL8LCQ": "20260909T171452.000Z",
             "#8P0J8P0L": "20260908T183622.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260908T180509.000Z",
@@ -4712,7 +4712,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
                 }
             ],
-            "wins": 3,
+            "wins": 4,
             "losses": 1,
             "players": [
                 "Erastus"
@@ -4721,6 +4721,12 @@
                 "Q8L0RJ8Y8"
             ],
             "recent_matches": [
+                {
+                    "time": "20260909T171311.000Z",
+                    "result": "win",
+                    "player": "Erastus",
+                    "tag": "Q8L0RJ8Y8"
+                },
                 {
                     "time": "20260907T191030.000Z",
                     "result": "loss",
@@ -449346,6 +449352,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000001-26000022-26000024-26000039-26000043-26000062-26000084-28000008": {
+            "cards": [
+                {
+                    "id": 26000043,
+                    "name": "Elite Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/C88C5JH_F3lLZj6K-tLcMo5DPjrFmvzIb1R2M6xCfTE.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000024,
+                    "name": "Royal Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mnlRaNtmfpQx2e6mp70sLd0ND-pKPF70Cf87_agEKg4.png"
+                },
+                {
+                    "id": 26000039,
+                    "name": "Mega Minion",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/-T_e4YLbuhPBKbYnBwQfXgynNpp5eOIN_0RracYwL9c.png"
+                },
+                {
+                    "id": 26000022,
+                    "name": "Minion Horde",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Wyjq5l0IXHTkX9Rmpap6HaH08MvjbxFp1xBO9a47YSI.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 26000084,
+                    "name": "Electro Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WKd4-IAFsgPpMo7dDi9sujmYjRhOMEWiE07OUJpvD9g.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
