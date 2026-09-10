@@ -36,6 +36,11 @@
       "priority": 2
     },
     {
+      "name": "OmniOni",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
@@ -47,11 +52,6 @@
     },
     {
       "name": "SankKiI9",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "OmniOni",
       "scenario": "TOP",
       "priority": 2
     },
@@ -158,6 +158,11 @@
       "status": "STARK"
     },
     {
+      "name": "OmniOni",
+      "score": 91.33,
+      "status": "STARK"
+    },
+    {
       "name": "OneAndOnly",
       "score": 91.33,
       "status": "STARK"
@@ -170,11 +175,6 @@
     {
       "name": "SankKiI9",
       "score": 91.23,
-      "status": "STARK"
-    },
-    {
-      "name": "OmniOni",
-      "score": 91.2,
       "status": "STARK"
     },
     {
@@ -410,6 +410,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "OmniOni",
+      "score": 91.33,
+      "tip": "Weiter so"
+    },
+    {
       "name": "OneAndOnly",
       "score": 91.33,
       "tip": "Weiter so"
@@ -422,11 +427,6 @@
     {
       "name": "SankKiI9",
       "score": 91.23,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "OmniOni",
-      "score": 91.2,
       "tip": "Weiter so"
     },
     {
@@ -725,6 +725,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "OmniOni",
+        "player_tag": "#UUPCULU9V",
+        "role": "member",
+        "score": 91.33,
+        "strikes": 0,
+        "donations": 421,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "OneAndOnly",
         "player_tag": "#8P0J8P0L",
         "role": "member",
@@ -757,18 +769,6 @@
         "donations": 447,
         "participation_count": 10,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "OmniOni",
-        "player_tag": "#UUPCULU9V",
-        "role": "member",
-        "score": 91.2,
-        "strikes": 0,
-        "donations": 421,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -946,7 +946,7 @@
         "role": "member",
         "score": 88.16,
         "strikes": 0,
-        "donations": 202,
+        "donations": 212,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
