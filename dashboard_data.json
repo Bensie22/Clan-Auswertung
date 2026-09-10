@@ -76,17 +76,17 @@
       "priority": 2
     },
     {
+      "name": "Bensie",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Reklaminator",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "LazyFrog",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Bensie",
       "scenario": "TOP",
       "priority": 2
     },
@@ -203,6 +203,11 @@
       "status": "STARK"
     },
     {
+      "name": "Bensie",
+      "score": 89.2,
+      "status": "STARK"
+    },
+    {
       "name": "Reklaminator",
       "score": 89.15,
       "status": "STARK"
@@ -215,11 +220,6 @@
     {
       "name": "_spc07",
       "score": 89.02,
-      "status": "STARK"
-    },
-    {
-      "name": "Bensie",
-      "score": 88.93,
       "status": "STARK"
     },
     {
@@ -455,6 +455,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Bensie",
+      "score": 89.2,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Reklaminator",
       "score": 89.15,
       "tip": "Weiter so"
@@ -467,11 +472,6 @@
     {
       "name": "_spc07",
       "score": 89.02,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Bensie",
-      "score": 88.93,
       "tip": "Weiter so"
     },
     {
@@ -826,6 +826,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Bensie",
+        "player_tag": "#2QRVR9L8",
+        "role": "member",
+        "score": 89.2,
+        "strikes": 0,
+        "donations": 392,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Reklaminator",
         "player_tag": "#P0G2GYJQ9",
         "role": "member",
@@ -856,18 +868,6 @@
         "score": 89.02,
         "strikes": 0,
         "donations": 49,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Bensie",
-        "player_tag": "#2QRVR9L8",
-        "role": "member",
-        "score": 88.93,
-        "strikes": 0,
-        "donations": 392,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
