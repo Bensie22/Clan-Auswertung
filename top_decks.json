@@ -48,7 +48,7 @@
             "#LVUGLUCP9": "20260906T194125.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
             "#V9GYJQ0J9": "",
-            "#URJ0LUYPV": "20260910T090822.000Z",
+            "#URJ0LUYPV": "20260910T091145.000Z",
             "#Q2GRGLQR": "20260910T065138.000Z",
             "#J9RQPGLVP": "20260713T204019.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20260910T090126.000Z",
+            "#YUQVVVLQ": "20260910T091752.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20260908T195041.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
@@ -7166,7 +7166,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/-T_e4YLbuhPBKbYnBwQfXgynNpp5eOIN_0RracYwL9c.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "elazeto"
@@ -7175,6 +7175,12 @@
                 "URJ0LUYPV"
             ],
             "recent_matches": [
+                {
+                    "time": "20260910T091145.000Z",
+                    "result": "win",
+                    "player": "elazeto",
+                    "tag": "URJ0LUYPV"
+                },
                 {
                     "time": "20260908T131501.000Z",
                     "result": "win",
@@ -449582,6 +449588,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000011-26000018-26000026-26000036-26000037-26000045-26000069-27000006": {
+            "cards": [
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 26000069,
+                    "name": "Skeleton King",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dCd69_wN9f8DxwuqOGtR4QgWhHIPIaTNxZ1e23RzAAc.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000036,
+                    "name": "Battle Ram",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dyc50V2cplKi4H7pq1B3I36pl_sEH5DQrNHboS_dbbM.png"
+                },
+                {
+                    "id": 26000037,
+                    "name": "Inferno Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                },
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
