@@ -31,11 +31,6 @@
       "priority": 2
     },
     {
-      "name": "kl.kranker Affe",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Theezy",
       "scenario": "TOP",
       "priority": 2
@@ -47,6 +42,11 @@
     },
     {
       "name": "OneAndOnly",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "kl.kranker Affe",
       "scenario": "TOP",
       "priority": 2
     },
@@ -153,11 +153,6 @@
       "status": "STARK"
     },
     {
-      "name": "kl.kranker Affe",
-      "score": 91.58,
-      "status": "STARK"
-    },
-    {
       "name": "Theezy",
       "score": 91.47,
       "status": "STARK"
@@ -170,6 +165,11 @@
     {
       "name": "OneAndOnly",
       "score": 91.33,
+      "status": "STARK"
+    },
+    {
+      "name": "kl.kranker Affe",
+      "score": 91.32,
       "status": "STARK"
     },
     {
@@ -405,11 +405,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "kl.kranker Affe",
-      "score": 91.58,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Theezy",
       "score": 91.47,
       "tip": "Weiter so"
@@ -422,6 +417,11 @@
     {
       "name": "OneAndOnly",
       "score": 91.33,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "kl.kranker Affe",
+      "score": 91.32,
       "tip": "Weiter so"
     },
     {
@@ -713,18 +713,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "kl.kranker Affe",
-        "player_tag": "#RLJPJL8C2",
-        "role": "member",
-        "score": 91.58,
-        "strikes": 0,
-        "donations": 74,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Theezy",
         "player_tag": "#JUUR8UGL8",
         "role": "member",
@@ -755,6 +743,18 @@
         "score": 91.33,
         "strikes": 0,
         "donations": 202,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "kl.kranker Affe",
+        "player_tag": "#RLJPJL8C2",
+        "role": "member",
+        "score": 91.32,
+        "strikes": 0,
+        "donations": 74,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",

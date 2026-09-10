@@ -18,7 +18,7 @@
             "#PPR2QQC0U": "20260909T060552.000Z",
             "#QULCQGGG": "20260910T142714.000Z",
             "#JRGC9RRQG": "20260910T142048.000Z",
-            "#QVQGCV8Y9": "20260910T152745.000Z",
+            "#QVQGCV8Y9": "20260910T153107.000Z",
             "#Q8L0RJ8Y8": "20260909T171311.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260910T134232.000Z",
@@ -40,7 +40,7 @@
             "#CUJ9PJ2UV": "20260910T152100.000Z",
             "#2P0U2RLGY": "20260905T222432.000Z",
             "#8P89UPQ0": "",
-            "#RLJPJL8C2": "20260910T153124.000Z",
+            "#RLJPJL8C2": "20260910T153523.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
             "#UUPCULU9V": "20260910T132202.000Z",
@@ -3159,7 +3159,7 @@
                 }
             ],
             "wins": 4,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "kl.kranker Affe"
             ],
@@ -3167,6 +3167,12 @@
                 "RLJPJL8C2"
             ],
             "recent_matches": [
+                {
+                    "time": "20260910T153523.000Z",
+                    "result": "loss",
+                    "player": "kl.kranker Affe",
+                    "tag": "RLJPJL8C2"
+                },
                 {
                     "time": "20260906T110758.000Z",
                     "result": "win",
@@ -451128,6 +451134,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000007-26000014-26000019-26000034-26000050-26000080-27000009-28000001": {
+            "cards": [
+                {
+                    "id": 26000050,
+                    "name": "Royal Ghost",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3En2cz0ISQAaMTHY3hj3rTveFN2kJYq-H4VxvdJNvCM.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000019,
+                    "name": "Spear Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/FSDFotjaXidI4ku_WFpVCTWS1hKGnFh1sxX0lxM43_E.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 27000009,
+                    "name": "Tombstone",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LjSfSbwQfkZuRJY4pVxKspZ-a0iM5KAhU8w-a_N5Z7Y.png"
+                },
+                {
+                    "id": 26000080,
+                    "name": "Skeleton Dragons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qPOtg9uONh47_NLxGhhFc_ww9PlZ6z3Ry507q1NZUXs.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
