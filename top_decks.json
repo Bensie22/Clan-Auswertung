@@ -16,9 +16,9 @@
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260911T071120.000Z",
-            "#QULCQGGG": "20260911T065751.000Z",
+            "#QULCQGGG": "20260911T081758.000Z",
             "#JRGC9RRQG": "20260910T204156.000Z",
-            "#QVQGCV8Y9": "20260911T080705.000Z",
+            "#QVQGCV8Y9": "20260911T082010.000Z",
             "#Q8L0RJ8Y8": "20260911T055612.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20260911T031423.000Z",
@@ -48,7 +48,7 @@
             "#LVUGLUCP9": "20260910T122857.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
             "#V9GYJQ0J9": "",
-            "#URJ0LUYPV": "20260911T080917.000Z",
+            "#URJ0LUYPV": "20260911T081148.000Z",
             "#Q2GRGLQR": "20260910T192949.000Z",
             "#J9RQPGLVP": "20260713T204019.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
@@ -93,7 +93,7 @@
             "#P00PQ9CUQ": "20260613T120503.000Z",
             "#PVYJ80YCL": "20260619T140927.000Z",
             "#RP9RVGQJU": "20260615T092432.000Z",
-            "#P0G2GYJQ9": "20260910T052858.000Z",
+            "#P0G2GYJQ9": "20260911T081804.000Z",
             "#8P2GV8UQY": "20260718T102217.000Z",
             "#VV2JR990": "20260622T193820.000Z",
             "#YYJR9R0GR": "20260713T093713.000Z",
@@ -5493,7 +5493,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "elazeto"
             ],
@@ -5501,6 +5501,12 @@
                 "URJ0LUYPV"
             ],
             "recent_matches": [
+                {
+                    "time": "20260911T081148.000Z",
+                    "result": "loss",
+                    "player": "elazeto",
+                    "tag": "URJ0LUYPV"
+                },
                 {
                     "time": "20260910T091145.000Z",
                     "result": "win",
@@ -453652,6 +453658,98 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000008-26000026-26000033-26000053-26000064-26000074-28000000-28000018": {
+            "cards": [
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000008,
+                    "name": "Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/TvJsuu2S4yhyk1jVYUAQwdKOnW4U77KuWWOTPOWnwfI.png"
+                },
+                {
+                    "id": 26000074,
+                    "name": "Golden Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WJd207D0O1sN-l1FTb8P9KhYL2oF5jY26vRUfTUW3FQ.png"
+                },
+                {
+                    "id": 26000053,
+                    "name": "Rascals",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/KV48DfwVHKx9XCjzBdk3daT_Eb52Me4VgjVO7WctRc4.png"
+                },
+                {
+                    "id": 26000033,
+                    "name": "Sparky",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/2GKMkBrArZXgQxf2ygFjDs4VvGYPbx8F6Lj_68iVhIM.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 28000018,
+                    "name": "Royal Delivery",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LPg7AGjGI3_xmi7gLLgGC50yKM1jJ2teWkZfoHJcIZo.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000002-26000011-26000021-26000045-28000001-28000003-28000012-28000016": {
+            "cards": [
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 26000002,
+                    "name": "Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X_DQUye_OaS3QN6VC9CPw05Fit7wvSm3XegXIXKP--0.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 28000012,
+                    "name": "Tornado",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QJB-QK1QJHdw4hjpAwVSyZBozc2ZWAR9pQ-SMUyKaT0.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 28000003,
+                    "name": "Rocket",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ie07nQNK9CjhKOa4-arFAewi4EroqaA-86Xo7r5tx94.png"
+                },
+                {
+                    "id": 28000016,
+                    "name": "Heal Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GITl06sa2nGRLPvboyXbGEv5E3I-wAwn1Eqa5esggbc.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }

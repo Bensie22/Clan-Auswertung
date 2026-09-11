@@ -71,6 +71,11 @@
       "priority": 2
     },
     {
+      "name": "Reklaminator",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "LazyFrog",
       "scenario": "TOP",
       "priority": 2
@@ -82,11 +87,6 @@
     },
     {
       "name": "Bensie",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Reklaminator",
       "scenario": "TOP",
       "priority": 2
     },
@@ -198,6 +198,11 @@
       "status": "STARK"
     },
     {
+      "name": "Reklaminator",
+      "score": 89.55,
+      "status": "STARK"
+    },
+    {
       "name": "LazyFrog",
       "score": 89.42,
       "status": "STARK"
@@ -210,11 +215,6 @@
     {
       "name": "Bensie",
       "score": 89.2,
-      "status": "STARK"
-    },
-    {
-      "name": "Reklaminator",
-      "score": 89.15,
       "status": "STARK"
     },
     {
@@ -238,13 +238,13 @@
       "status": "STARK"
     },
     {
-      "name": "elazeto",
-      "score": 88.7,
+      "name": "Dolphin",
+      "score": 88.58,
       "status": "STARK"
     },
     {
-      "name": "Dolphin",
-      "score": 88.58,
+      "name": "elazeto",
+      "score": 88.57,
       "status": "STARK"
     },
     {
@@ -450,6 +450,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Reklaminator",
+      "score": 89.55,
+      "tip": "Weiter so"
+    },
+    {
       "name": "LazyFrog",
       "score": 89.42,
       "tip": "Weiter so"
@@ -462,11 +467,6 @@
     {
       "name": "Bensie",
       "score": 89.2,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Reklaminator",
-      "score": 89.15,
       "tip": "Weiter so"
     },
     {
@@ -490,13 +490,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "elazeto",
-      "score": 88.7,
+      "name": "Dolphin",
+      "score": 88.58,
       "tip": "Weiter so"
     },
     {
-      "name": "Dolphin",
-      "score": 88.58,
+      "name": "elazeto",
+      "score": 88.57,
       "tip": "Weiter so"
     },
     {
@@ -687,7 +687,7 @@
         "role": "member",
         "score": 93.95,
         "strikes": 0,
-        "donations": 248,
+        "donations": 280,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
@@ -814,6 +814,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Reklaminator",
+        "player_tag": "#P0G2GYJQ9",
+        "role": "member",
+        "score": 89.55,
+        "strikes": 0,
+        "donations": 82,
+        "participation_count": 10,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "LazyFrog",
         "player_tag": "#22Q920RLR",
         "role": "member",
@@ -846,18 +858,6 @@
         "donations": 464,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Reklaminator",
-        "player_tag": "#P0G2GYJQ9",
-        "role": "member",
-        "score": 89.15,
-        "strikes": 0,
-        "donations": 82,
-        "participation_count": 10,
-        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -915,7 +915,7 @@
         "role": "member",
         "score": 88.58,
         "strikes": 0,
-        "donations": 187,
+        "donations": 203,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1011,7 +1011,7 @@
         "role": "member",
         "score": 86.72,
         "strikes": 0,
-        "donations": 213,
+        "donations": 237,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
