@@ -109,7 +109,7 @@
             "#LGUGQ0PRG": "20260907T115002.000Z",
             "#UVGRVC8LU": "20260809T181113.000Z",
             "#PVGU89PUL": "20260910T112457.000Z",
-            "#V9JP2PGGP": "20260911T061734.000Z",
+            "#V9JP2PGGP": "20260911T063049.000Z",
             "#R2VYJUUCP": "20260804T204503.000Z",
             "#RL9LQYCCY": "20260804T213809.000Z",
             "#V8VGG0LUG": "20260803T085547.000Z",
@@ -4875,7 +4875,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Elvi"
             ],
@@ -4883,6 +4883,12 @@
                 "V9JP2PGGP"
             ],
             "recent_matches": [
+                {
+                    "time": "20260911T063049.000Z",
+                    "result": "loss",
+                    "player": "Elvi",
+                    "tag": "V9JP2PGGP"
+                },
                 {
                     "time": "20260907T070027.000Z",
                     "result": "win",
@@ -453034,6 +453040,98 @@
                     "id": 26000050,
                     "name": "Royal Ghost",
                     "icon": "https://api-assets.clashroyale.com/cards/300/3En2cz0ISQAaMTHY3hj3rTveFN2kJYq-H4VxvdJNvCM.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000000-26000006-26000013-26000019-26000042-26000052-28000001-28000005": {
+            "cards": [
+                {
+                    "id": 28000005,
+                    "name": "Freeze",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000013,
+                    "name": "Bomber",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
+                },
+                {
+                    "id": 26000052,
+                    "name": "Zappies",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QZfHRpLRmutZbCr5fpLnTpIp89vLI6NrAwzGZ8tHEc4.png"
+                },
+                {
+                    "id": 26000019,
+                    "name": "Spear Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/FSDFotjaXidI4ku_WFpVCTWS1hKGnFh1sxX0lxM43_E.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000003-26000007-26000015-26000025-26000033-27000009-28000009-28000015": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 28000015,
+                    "name": "Barbarian Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Gb0G1yNy0i5cIGUHin8uoFWxqntNtRPhY_jeMXg7HnA.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 26000003,
+                    "name": "Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Axr4ox5_b7edmLsoHxBX3vmgijAIibuF6RImTbqLlXE.png"
+                },
+                {
+                    "id": 26000033,
+                    "name": "Sparky",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/2GKMkBrArZXgQxf2ygFjDs4VvGYPbx8F6Lj_68iVhIM.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                },
+                {
+                    "id": 26000025,
+                    "name": "Guards",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/1ArKfLJxYo6_NU_S9cAeIrfbXqWH0oULVJXedxBXQlU.png"
+                },
+                {
+                    "id": 27000009,
+                    "name": "Tombstone",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LjSfSbwQfkZuRJY4pVxKspZ-a0iM5KAhU8w-a_N5Z7Y.png"
                 }
             ],
             "seen": 1,
