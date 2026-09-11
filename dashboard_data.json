@@ -106,12 +106,12 @@
       "priority": 2
     },
     {
-      "name": "HardcoreSoldier",
+      "name": "Knitte",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Knitte",
+      "name": "HardcoreSoldier",
       "scenario": "TOP",
       "priority": 2
     },
@@ -253,13 +253,13 @@
       "status": "STARK"
     },
     {
-      "name": "HardcoreSoldier",
-      "score": 88.25,
+      "name": "Knitte",
+      "score": 88.16,
       "status": "STARK"
     },
     {
-      "name": "Knitte",
-      "score": 88.16,
+      "name": "HardcoreSoldier",
+      "score": 88.12,
       "status": "STARK"
     },
     {
@@ -505,13 +505,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "HardcoreSoldier",
-      "score": 88.25,
+      "name": "Knitte",
+      "score": 88.16,
       "tip": "Weiter so"
     },
     {
-      "name": "Knitte",
-      "score": 88.16,
+      "name": "HardcoreSoldier",
+      "score": 88.12,
       "tip": "Weiter so"
     },
     {
@@ -934,18 +934,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "HardcoreSoldier",
-        "player_tag": "#GRGCY0R8",
-        "role": "member",
-        "score": 88.25,
-        "strikes": 0,
-        "donations": 274,
-        "participation_count": 10,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Knitte",
         "player_tag": "#ULYJ2CQP",
         "role": "member",
@@ -954,6 +942,18 @@
         "donations": 212,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "HardcoreSoldier",
+        "player_tag": "#GRGCY0R8",
+        "role": "member",
+        "score": 88.12,
+        "strikes": 0,
+        "donations": 274,
+        "participation_count": 10,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
