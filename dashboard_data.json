@@ -16,12 +16,12 @@
       "priority": 2
     },
     {
-      "name": "Erastus",
+      "name": "Citykingalex",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Citykingalex",
+      "name": "Erastus",
       "scenario": "TOP",
       "priority": 2
     },
@@ -143,13 +143,13 @@
   ],
   "smart": [
     {
-      "name": "Erastus",
-      "score": 94.0,
+      "name": "Citykingalex",
+      "score": 94.35,
       "status": "STARK"
     },
     {
-      "name": "Citykingalex",
-      "score": 93.95,
+      "name": "Erastus",
+      "score": 94.0,
       "status": "STARK"
     },
     {
@@ -228,13 +228,13 @@
       "status": "STARK"
     },
     {
-      "name": "agostini",
+      "name": "Wario",
       "score": 88.88,
       "status": "STARK"
     },
     {
-      "name": "Wario",
-      "score": 88.75,
+      "name": "agostini",
+      "score": 88.88,
       "status": "STARK"
     },
     {
@@ -395,13 +395,13 @@
   ],
   "coaching": [
     {
-      "name": "Erastus",
-      "score": 94.0,
+      "name": "Citykingalex",
+      "score": 94.35,
       "tip": "Weiter so"
     },
     {
-      "name": "Citykingalex",
-      "score": 93.95,
+      "name": "Erastus",
+      "score": 94.0,
       "tip": "Weiter so"
     },
     {
@@ -480,13 +480,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "agostini",
+      "name": "Wario",
       "score": 88.88,
       "tip": "Weiter so"
     },
     {
-      "name": "Wario",
-      "score": 88.75,
+      "name": "agostini",
+      "score": 88.88,
       "tip": "Weiter so"
     },
     {
@@ -675,6 +675,18 @@
     ],
     "core": [
       {
+        "name": "Citykingalex",
+        "player_tag": "#QULCQGGG",
+        "role": "member",
+        "score": 94.35,
+        "strikes": 0,
+        "donations": 312,
+        "participation_count": 10,
+        "trend": "🟡🟡🟡🟡🟡",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Erastus",
         "player_tag": "#Q8L0RJ8Y8",
         "role": "member",
@@ -683,18 +695,6 @@
         "donations": 246,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Citykingalex",
-        "player_tag": "#QULCQGGG",
-        "role": "member",
-        "score": 93.95,
-        "strikes": 0,
-        "donations": 312,
-        "participation_count": 10,
-        "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -728,7 +728,7 @@
         "role": "member",
         "score": 91.33,
         "strikes": 0,
-        "donations": 505,
+        "donations": 513,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -894,7 +894,7 @@
         "name": "Wario",
         "player_tag": "#2PUQYJC02",
         "role": "member",
-        "score": 88.75,
+        "score": 88.88,
         "strikes": 0,
         "donations": 44,
         "participation_count": 10,
