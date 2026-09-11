@@ -17,11 +17,11 @@
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260911T071120.000Z",
             "#QULCQGGG": "20260911T102905.000Z",
-            "#JRGC9RRQG": "20260910T204156.000Z",
+            "#JRGC9RRQG": "20260911T121912.000Z",
             "#QVQGCV8Y9": "20260911T092552.000Z",
             "#Q8L0RJ8Y8": "20260911T055612.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
-            "#2CPRGY8G": "20260911T031423.000Z",
+            "#2CPRGY8G": "20260911T121558.000Z",
             "#LLQQJCLC": "20260911T083155.000Z",
             "#2VJR80RL": "20260910T222503.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
@@ -5492,7 +5492,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "seroo"
@@ -5501,6 +5501,12 @@
                 "JRGC9RRQG"
             ],
             "recent_matches": [
+                {
+                    "time": "20260911T121912.000Z",
+                    "result": "win",
+                    "player": "seroo",
+                    "tag": "JRGC9RRQG"
+                },
                 {
                     "time": "20260910T130619.000Z",
                     "result": "win",
@@ -454344,6 +454350,98 @@
                     "id": 28000016,
                     "name": "Heal Spirit",
                     "icon": "https://api-assets.clashroyale.com/cards/300/GITl06sa2nGRLPvboyXbGEv5E3I-wAwn1Eqa5esggbc.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000009-26000013-26000015-26000035-26000048-26000050-26000057-26000062": {
+            "cards": [
+                {
+                    "id": 26000035,
+                    "name": "Lumberjack",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 26000057,
+                    "name": "Flying Machine",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/hzKNE3QwFcrSrDDRuVW3QY_OnrDPijSiIp-PsWgFevE.png"
+                },
+                {
+                    "id": 26000013,
+                    "name": "Bomber",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
+                },
+                {
+                    "id": 26000050,
+                    "name": "Royal Ghost",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3En2cz0ISQAaMTHY3hj3rTveFN2kJYq-H4VxvdJNvCM.png"
+                },
+                {
+                    "id": 26000048,
+                    "name": "Night Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NpCrXDEDBBJgNv9QrBAcJmmMFbS7pe3KCY8xJ5VB18A.png"
+                },
+                {
+                    "id": 26000009,
+                    "name": "Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/npdmCnET7jmVjJvjJQkFnNSNnDxYHDBigbvIAloFMds.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000011-26000026-26000030-26000034-26000040-27000000-28000004-28000015": {
+            "cards": [
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 28000015,
+                    "name": "Barbarian Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Gb0G1yNy0i5cIGUHin8uoFWxqntNtRPhY_jeMXg7HnA.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                },
+                {
+                    "id": 27000000,
+                    "name": "Cannon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nZK1y-beLxO5vnlyUhK6-2zH2NzXJwqykcosqQ1cmZ8.png"
+                },
+                {
+                    "id": 26000030,
+                    "name": "Ice Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lv1budiafU9XmSdrDkk0NYyqASAFYyZ06CPysXKZXlA.png"
                 }
             ],
             "seen": 1,
