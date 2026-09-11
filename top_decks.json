@@ -27,7 +27,7 @@
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
             "#2CJYG9UG": "20260911T005009.000Z",
-            "#2PUQYJC02": "20260911T102749.000Z",
+            "#2PUQYJC02": "20260911T103126.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
             "#2V800VCQ0": "20260911T090418.000Z",
             "#2UQUPYQCJ": "20260810T113227.000Z",
@@ -115,7 +115,7 @@
             "#V8VGG0LUG": "20260803T085547.000Z",
             "#2V2QYJGCG": "20260804T011752.000Z",
             "#UQV90UP09": "20260810T190628.000Z",
-            "#JV80YYJRJ": "20260911T101719.000Z",
+            "#JV80YYJRJ": "20260911T103513.000Z",
             "#VP8P9UG8V": "20260817T002911.000Z",
             "#G9QR0YVU": "20260908T165202.000Z",
             "#200PGVGQ9U": "20260811T201941.000Z",
@@ -2487,7 +2487,7 @@
                 }
             ],
             "wins": 6,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Deniz"
             ],
@@ -2495,6 +2495,12 @@
                 "JV80YYJRJ"
             ],
             "recent_matches": [
+                {
+                    "time": "20260911T103513.000Z",
+                    "result": "loss",
+                    "player": "Deniz",
+                    "tag": "JV80YYJRJ"
+                },
                 {
                     "time": "20260910T135610.000Z",
                     "result": "win",
@@ -454152,6 +454158,98 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000014-26000031-26000032-26000049-26000058-26000095-28000011-28000018": {
+            "cards": [
+                {
+                    "id": 26000058,
+                    "name": "Wall Breakers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_xPphEfC8eEwFNrfU3cMQG9-f5JaLQ31ARCA7l3XtW4.png"
+                },
+                {
+                    "id": 26000032,
+                    "name": "Miner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Y4yWvdwBCg2FpAZgs8T09Gy34WOwpLZW-ttL52Ae8NE.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000095,
+                    "name": "Goblin Demolisher",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/KVVOgdn40xasFLYuQv8Go_U_LCV7wSG9q9eE1H7f3Qk.png"
+                },
+                {
+                    "id": 28000018,
+                    "name": "Royal Delivery",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LPg7AGjGI3_xmi7gLLgGC50yKM1jJ2teWkZfoHJcIZo.png"
+                },
+                {
+                    "id": 26000031,
+                    "name": "Fire Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/16-BqusVvynIgYI8_Jci3LDC-r8AI_xaIYLgXqtlmS8.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000005-26000011-26000028-26000046-26000062-27000010-27000012-28000001": {
+            "cards": [
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 27000012,
+                    "name": "Goblin Cage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vD24bBgK4rSq7wx5QEbuqChtPMRFviL_ep76GwQw1yA.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000046,
+                    "name": "Bandit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QWDdXMKJNpv0go-HYaWQWP6p8uIOHjqn-zX7G0p3DyM.png"
+                },
+                {
+                    "id": 26000028,
+                    "name": "Three Musketeers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_J2GhbkX3vswaFk1wG-dopwiHyNc_YiPhwroiKF3Mek.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
