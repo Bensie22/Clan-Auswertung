@@ -66,22 +66,22 @@
       "priority": 2
     },
     {
-      "name": "LazyFrog",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Swordfish",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Reklaminator",
       "scenario": "TOP",
       "priority": 2
     },
     {
+      "name": "LazyFrog",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Bensie",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
@@ -131,12 +131,12 @@
       "priority": 2
     },
     {
-      "name": "Johan",
+      "name": "Deniz",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Deniz",
+      "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
@@ -203,23 +203,23 @@
       "status": "STARK"
     },
     {
-      "name": "LazyFrog",
-      "score": 89.42,
-      "status": "STARK"
-    },
-    {
-      "name": "Swordfish",
-      "score": 89.42,
-      "status": "STARK"
-    },
-    {
       "name": "Reklaminator",
       "score": 89.42,
       "status": "STARK"
     },
     {
+      "name": "LazyFrog",
+      "score": 89.28,
+      "status": "STARK"
+    },
+    {
       "name": "Bensie",
       "score": 89.2,
+      "status": "STARK"
+    },
+    {
+      "name": "Swordfish",
+      "score": 89.15,
       "status": "STARK"
     },
     {
@@ -298,13 +298,13 @@
       "status": "STARK"
     },
     {
-      "name": "Johan",
-      "score": 86.08,
+      "name": "Deniz",
+      "score": 86.1,
       "status": "STARK"
     },
     {
-      "name": "Deniz",
-      "score": 85.97,
+      "name": "Johan",
+      "score": 86.08,
       "status": "STARK"
     },
     {
@@ -455,23 +455,23 @@
       "tip": "Weiter so"
     },
     {
-      "name": "LazyFrog",
-      "score": 89.42,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Swordfish",
-      "score": 89.42,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Reklaminator",
       "score": 89.42,
       "tip": "Weiter so"
     },
     {
+      "name": "LazyFrog",
+      "score": 89.28,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Bensie",
       "score": 89.2,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Swordfish",
+      "score": 89.15,
       "tip": "Weiter so"
     },
     {
@@ -550,13 +550,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Johan",
-      "score": 86.08,
+      "name": "Deniz",
+      "score": 86.1,
       "tip": "Weiter so"
     },
     {
-      "name": "Deniz",
-      "score": 85.97,
+      "name": "Johan",
+      "score": 86.08,
       "tip": "Weiter so"
     },
     {
@@ -805,33 +805,9 @@
         "role": "member",
         "score": 90.12,
         "strikes": 0,
-        "donations": 298,
+        "donations": 306,
         "participation_count": 10,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "LazyFrog",
-        "player_tag": "#22Q920RLR",
-        "role": "member",
-        "score": 89.42,
-        "strikes": 0,
-        "donations": 562,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Swordfish",
-        "player_tag": "#2CPRGY8G",
-        "role": "member",
-        "score": 89.42,
-        "strikes": 0,
-        "donations": 88,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -848,12 +824,36 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "LazyFrog",
+        "player_tag": "#22Q920RLR",
+        "role": "member",
+        "score": 89.28,
+        "strikes": 0,
+        "donations": 562,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Bensie",
         "player_tag": "#2QRVR9L8",
         "role": "member",
         "score": 89.2,
         "strikes": 0,
         "donations": 464,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Swordfish",
+        "player_tag": "#2CPRGY8G",
+        "role": "member",
+        "score": 89.15,
+        "strikes": 0,
+        "donations": 88,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -889,7 +889,7 @@
         "role": "member",
         "score": 88.88,
         "strikes": 0,
-        "donations": 514,
+        "donations": 522,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
@@ -1028,6 +1028,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Deniz",
+        "player_tag": "#JV80YYJRJ",
+        "role": "member",
+        "score": 86.1,
+        "strikes": 0,
+        "donations": 114,
+        "participation_count": 5,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Johan",
         "player_tag": "#UQVCVVVJL",
         "role": "member",
@@ -1035,18 +1047,6 @@
         "strikes": 0,
         "donations": 244,
         "participation_count": 10,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Deniz",
-        "player_tag": "#JV80YYJRJ",
-        "role": "member",
-        "score": 85.97,
-        "strikes": 0,
-        "donations": 114,
-        "participation_count": 5,
         "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
