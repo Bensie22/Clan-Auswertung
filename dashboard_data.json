@@ -71,6 +71,11 @@
       "priority": 2
     },
     {
+      "name": "LazyFrog",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "chris",
       "scenario": "TOP",
       "priority": 2
@@ -82,11 +87,6 @@
     },
     {
       "name": "Reklaminator",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "LazyFrog",
       "scenario": "TOP",
       "priority": 2
     },
@@ -198,6 +198,11 @@
       "status": "STARK"
     },
     {
+      "name": "LazyFrog",
+      "score": 89.42,
+      "status": "STARK"
+    },
+    {
       "name": "chris",
       "score": 89.23,
       "status": "STARK"
@@ -210,11 +215,6 @@
     {
       "name": "Reklaminator",
       "score": 89.15,
-      "status": "STARK"
-    },
-    {
-      "name": "LazyFrog",
-      "score": 89.02,
       "status": "STARK"
     },
     {
@@ -450,6 +450,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "LazyFrog",
+      "score": 89.42,
+      "tip": "Weiter so"
+    },
+    {
       "name": "chris",
       "score": 89.23,
       "tip": "Weiter so"
@@ -462,11 +467,6 @@
     {
       "name": "Reklaminator",
       "score": 89.15,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "LazyFrog",
-      "score": 89.02,
       "tip": "Weiter so"
     },
     {
@@ -783,7 +783,7 @@
         "role": "member",
         "score": 90.75,
         "strikes": 0,
-        "donations": 166,
+        "donations": 176,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
@@ -808,6 +808,18 @@
         "score": 89.55,
         "strikes": 0,
         "donations": 88,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "LazyFrog",
+        "player_tag": "#22Q920RLR",
+        "role": "member",
+        "score": 89.42,
+        "strikes": 0,
+        "donations": 534,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -846,18 +858,6 @@
         "donations": 58,
         "participation_count": 10,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "LazyFrog",
-        "player_tag": "#22Q920RLR",
-        "role": "member",
-        "score": 89.02,
-        "strikes": 0,
-        "donations": 524,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
