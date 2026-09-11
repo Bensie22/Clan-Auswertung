@@ -76,6 +76,11 @@
       "priority": 2
     },
     {
+      "name": "agostini",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Reklaminator",
       "scenario": "TOP",
       "priority": 2
@@ -92,11 +97,6 @@
     },
     {
       "name": "chris",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "agostini",
       "scenario": "TOP",
       "priority": 2
     },
@@ -218,6 +218,11 @@
       "status": "STARK"
     },
     {
+      "name": "agostini",
+      "score": 89.42,
+      "status": "STARK"
+    },
+    {
       "name": "LazyFrog",
       "score": 89.28,
       "status": "STARK"
@@ -230,11 +235,6 @@
     {
       "name": "chris",
       "score": 89.1,
-      "status": "STARK"
-    },
-    {
-      "name": "agostini",
-      "score": 89.02,
       "status": "STARK"
     },
     {
@@ -344,7 +344,7 @@
     },
     {
       "name": "mad 3ad y gawad",
-      "score": 80.95,
+      "score": 81.08,
       "status": "STARK"
     },
     {
@@ -470,6 +470,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "agostini",
+      "score": 89.42,
+      "tip": "Weiter so"
+    },
+    {
       "name": "LazyFrog",
       "score": 89.28,
       "tip": "Weiter so"
@@ -482,11 +487,6 @@
     {
       "name": "chris",
       "score": 89.1,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "agostini",
-      "score": 89.02,
       "tip": "Weiter so"
     },
     {
@@ -596,7 +596,7 @@
     },
     {
       "name": "mad 3ad y gawad",
-      "score": 80.95,
+      "score": 81.08,
       "tip": "Weiter so"
     },
     {
@@ -836,6 +836,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "agostini",
+        "player_tag": "#P2YQ2QQUV",
+        "role": "member",
+        "score": 89.42,
+        "strikes": 0,
+        "donations": 574,
+        "participation_count": 10,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Reklaminator",
         "player_tag": "#P0G2GYJQ9",
         "role": "member",
@@ -880,18 +892,6 @@
         "donations": 300,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "agostini",
-        "player_tag": "#P2YQ2QQUV",
-        "role": "member",
-        "score": 89.02,
-        "strikes": 0,
-        "donations": 574,
-        "participation_count": 10,
-        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
