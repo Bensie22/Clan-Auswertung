@@ -17,7 +17,7 @@
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260912T102619.000Z",
             "#QULCQGGG": "20260912T081548.000Z",
-            "#JRGC9RRQG": "20260912T113700.000Z",
+            "#JRGC9RRQG": "20260912T114113.000Z",
             "#QVQGCV8Y9": "20260912T083130.000Z",
             "#Q8L0RJ8Y8": "20260912T073620.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
@@ -48,7 +48,7 @@
             "#LVUGLUCP9": "20260910T122857.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
             "#V9GYJQ0J9": "",
-            "#URJ0LUYPV": "20260912T112224.000Z",
+            "#URJ0LUYPV": "20260912T114709.000Z",
             "#Q2GRGLQR": "20260912T090250.000Z",
             "#J9RQPGLVP": "20260713T204019.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
@@ -644,7 +644,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
                 }
             ],
-            "wins": 2,
+            "wins": 1,
             "losses": 0,
             "players": [
                 "anna-maria"
@@ -655,12 +655,6 @@
             "recent_matches": [
                 {
                     "time": "20260814T204756.000Z",
-                    "result": "win",
-                    "player": "anna-maria",
-                    "tag": "RR0GV9L00"
-                },
-                {
-                    "time": "20260813T114422.000Z",
                     "result": "win",
                     "player": "anna-maria",
                     "tag": "RR0GV9L00"
@@ -5157,7 +5151,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "elazeto"
             ],
@@ -5165,6 +5159,12 @@
                 "URJ0LUYPV"
             ],
             "recent_matches": [
+                {
+                    "time": "20260912T114709.000Z",
+                    "result": "loss",
+                    "player": "elazeto",
+                    "tag": "URJ0LUYPV"
+                },
                 {
                     "time": "20260911T092724.000Z",
                     "result": "win",
@@ -459470,6 +459470,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000007-26000024-26000050-26000062-26000080-28000001-28000003-28000009": {
+            "cards": [
+                {
+                    "id": 26000050,
+                    "name": "Royal Ghost",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3En2cz0ISQAaMTHY3hj3rTveFN2kJYq-H4VxvdJNvCM.png"
+                },
+                {
+                    "id": 26000024,
+                    "name": "Royal Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mnlRaNtmfpQx2e6mp70sLd0ND-pKPF70Cf87_agEKg4.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000080,
+                    "name": "Skeleton Dragons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qPOtg9uONh47_NLxGhhFc_ww9PlZ6z3Ry507q1NZUXs.png"
+                },
+                {
+                    "id": 28000003,
+                    "name": "Rocket",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ie07nQNK9CjhKOa4-arFAewi4EroqaA-86Xo7r5tx94.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
