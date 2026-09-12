@@ -31,12 +31,12 @@
       "priority": 2
     },
     {
-      "name": "Theezy",
+      "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "OneAndOnly",
+      "name": "Theezy",
       "scenario": "TOP",
       "priority": 2
     },
@@ -169,7 +169,7 @@
     },
     {
       "name": "Theezy",
-      "score": 91.73,
+      "score": 91.6,
       "status": "STARK"
     },
     {
@@ -273,11 +273,6 @@
       "status": "STARK"
     },
     {
-      "name": "AaleDieter",
-      "score": 87.5,
-      "status": "STARK"
-    },
-    {
       "name": "honigmelone",
       "score": 87.45,
       "status": "STARK"
@@ -285,6 +280,11 @@
     {
       "name": "Elvi",
       "score": 87.25,
+      "status": "STARK"
+    },
+    {
+      "name": "AaleDieter",
+      "score": 87.23,
       "status": "STARK"
     },
     {
@@ -369,7 +369,7 @@
     },
     {
       "name": "DST",
-      "score": 73.75,
+      "score": 73.88,
       "status": "OK"
     },
     {
@@ -421,7 +421,7 @@
     },
     {
       "name": "Theezy",
-      "score": 91.73,
+      "score": 91.6,
       "tip": "Weiter so"
     },
     {
@@ -525,11 +525,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "AaleDieter",
-      "score": 87.5,
-      "tip": "Weiter so"
-    },
-    {
       "name": "honigmelone",
       "score": 87.45,
       "tip": "Weiter so"
@@ -537,6 +532,11 @@
     {
       "name": "Elvi",
       "score": 87.25,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "AaleDieter",
+      "score": 87.23,
       "tip": "Weiter so"
     },
     {
@@ -621,7 +621,7 @@
     },
     {
       "name": "DST",
-      "score": 73.75,
+      "score": 73.88,
       "tip": "Weiter so"
     },
     {
@@ -728,24 +728,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Theezy",
-        "player_tag": "#JUUR8UGL8",
-        "role": "member",
-        "score": 91.73,
-        "strikes": 0,
-        "donations": 134,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "OneAndOnly",
         "player_tag": "#8P0J8P0L",
         "role": "member",
         "score": 91.6,
         "strikes": 0,
         "donations": 308,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Theezy",
+        "player_tag": "#JUUR8UGL8",
+        "role": "member",
+        "score": 91.6,
+        "strikes": 0,
+        "donations": 134,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -949,7 +949,7 @@
         "role": "member",
         "score": 87.76,
         "strikes": 0,
-        "donations": 266,
+        "donations": 274,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -964,18 +964,6 @@
         "donations": 420,
         "participation_count": 10,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "AaleDieter",
-        "player_tag": "#CUJ9PJ2UV",
-        "role": "member",
-        "score": 87.5,
-        "strikes": 0,
-        "donations": 16,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -1000,6 +988,18 @@
         "donations": 40,
         "participation_count": 6,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "AaleDieter",
+        "player_tag": "#CUJ9PJ2UV",
+        "role": "member",
+        "score": 87.23,
+        "strikes": 0,
+        "donations": 16,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
