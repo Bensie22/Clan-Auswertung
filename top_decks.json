@@ -29,7 +29,7 @@
             "#2CJYG9UG": "20260911T231911.000Z",
             "#2PUQYJC02": "20260911T103126.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20260912T131237.000Z",
+            "#2V800VCQ0": "20260912T143304.000Z",
             "#2UQUPYQCJ": "20260810T113227.000Z",
             "#JUUR8UGL8": "20260912T101449.000Z",
             "#2U09UULRR": "20260912T112901.000Z",
@@ -119,7 +119,7 @@
             "#VP8P9UG8V": "20260817T002911.000Z",
             "#G9QR0YVU": "20260908T165202.000Z",
             "#200PGVGQ9U": "20260811T201941.000Z",
-            "#RR0GV9L00": "20260912T142855.000Z",
+            "#RR0GV9L00": "20260912T143734.000Z",
             "#2JQUVJUUG": "20260813T213647.000Z",
             "#JGYCRU2YP": "20260912T123202.000Z",
             "#PC2LPCVU": "20260901T194235.000Z",
@@ -4316,7 +4316,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "anna-maria"
@@ -4325,6 +4325,12 @@
                 "RR0GV9L00"
             ],
             "recent_matches": [
+                {
+                    "time": "20260912T143734.000Z",
+                    "result": "win",
+                    "player": "anna-maria",
+                    "tag": "RR0GV9L00"
+                },
                 {
                     "time": "20260910T130540.000Z",
                     "result": "win",
@@ -297300,7 +297306,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/QJB-QK1QJHdw4hjpAwVSyZBozc2ZWAR9pQ-SMUyKaT0.png"
                 }
             ],
-            "seen": 1,
+            "seen": 2,
             "losses": 1
         },
         "26000000-26000002-26000005-26000014-26000024-26000032-26000040-28000008": {
@@ -459958,6 +459964,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000007-26000011-26000031-26000036-26000083-27000000-27000009-28000007": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 27000009,
+                    "name": "Tombstone",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LjSfSbwQfkZuRJY4pVxKspZ-a0iM5KAhU8w-a_N5Z7Y.png"
+                },
+                {
+                    "id": 27000000,
+                    "name": "Cannon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nZK1y-beLxO5vnlyUhK6-2zH2NzXJwqykcosqQ1cmZ8.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000083,
+                    "name": "Mother Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fO-Xah8XZkYKaSK9SCp3wnzwxtvIhun9NVY-zzte1Ng.png"
+                },
+                {
+                    "id": 26000031,
+                    "name": "Fire Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/16-BqusVvynIgYI8_Jci3LDC-r8AI_xaIYLgXqtlmS8.png"
+                },
+                {
+                    "id": 26000036,
+                    "name": "Battle Ram",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dyc50V2cplKi4H7pq1B3I36pl_sEH5DQrNHboS_dbbM.png"
+                },
+                {
+                    "id": 28000007,
+                    "name": "Lightning",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fpnESbYqe5GyZmaVVYe-SEu7tE0Kxh_HZyVigzvLjks.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
