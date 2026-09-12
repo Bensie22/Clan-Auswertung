@@ -1,16 +1,6 @@
 {
   "full_auto": [
     {
-      "name": "jad",
-      "scenario": "STRIKE",
-      "priority": 4
-    },
-    {
-      "name": "Timi",
-      "scenario": "STRIKE",
-      "priority": 4
-    },
-    {
       "name": "elazeto",
       "scenario": "TOP",
       "priority": 2
@@ -26,12 +16,12 @@
       "priority": 2
     },
     {
-      "name": "Jackhammer",
+      "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "OneAndOnly",
+      "name": "Jackhammer",
       "scenario": "TOP",
       "priority": 2
     },
@@ -86,11 +76,6 @@
       "priority": 2
     },
     {
-      "name": "LazyFrog",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
@@ -102,6 +87,11 @@
     },
     {
       "name": "chris",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "LazyFrog",
       "scenario": "TOP",
       "priority": 2
     },
@@ -168,13 +158,13 @@
       "status": "STARK"
     },
     {
-      "name": "Jackhammer",
-      "score": 91.95,
+      "name": "OneAndOnly",
+      "score": 92.13,
       "status": "STARK"
     },
     {
-      "name": "OneAndOnly",
-      "score": 91.73,
+      "name": "Jackhammer",
+      "score": 91.95,
       "status": "STARK"
     },
     {
@@ -228,11 +218,6 @@
       "status": "STARK"
     },
     {
-      "name": "LazyFrog",
-      "score": 89.28,
-      "status": "STARK"
-    },
-    {
       "name": "Swordfish",
       "score": 89.28,
       "status": "STARK"
@@ -248,8 +233,13 @@
       "status": "STARK"
     },
     {
+      "name": "LazyFrog",
+      "score": 89.02,
+      "status": "STARK"
+    },
+    {
       "name": "Wario",
-      "score": 88.75,
+      "score": 89.02,
       "status": "STARK"
     },
     {
@@ -383,24 +373,9 @@
       "status": "OK"
     },
     {
-      "name": "prolike14",
-      "score": 67.04,
-      "status": "OK"
-    },
-    {
       "name": "shorttrack alex",
       "score": 61.79,
       "status": "OK"
-    },
-    {
-      "name": "Timi",
-      "score": 19.58,
-      "status": "RISIKO"
-    },
-    {
-      "name": "jad",
-      "score": 16.46,
-      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -420,13 +395,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Jackhammer",
-      "score": 91.95,
+      "name": "OneAndOnly",
+      "score": 92.13,
       "tip": "Weiter so"
     },
     {
-      "name": "OneAndOnly",
-      "score": 91.73,
+      "name": "Jackhammer",
+      "score": 91.95,
       "tip": "Weiter so"
     },
     {
@@ -480,11 +455,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "LazyFrog",
-      "score": 89.28,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Swordfish",
       "score": 89.28,
       "tip": "Weiter so"
@@ -500,8 +470,13 @@
       "tip": "Weiter so"
     },
     {
+      "name": "LazyFrog",
+      "score": 89.02,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Wario",
-      "score": 88.75,
+      "score": 89.02,
       "tip": "Weiter so"
     },
     {
@@ -635,54 +610,14 @@
       "tip": "Weiter so"
     },
     {
-      "name": "prolike14",
-      "score": 67.04,
-      "tip": "Konstanz verbessern"
-    },
-    {
       "name": "shorttrack alex",
       "score": 61.79,
       "tip": "Konstanz verbessern"
-    },
-    {
-      "name": "Timi",
-      "score": 19.58,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "jad",
-      "score": 16.46,
-      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
-    "remove": [
-      {
-        "name": "jad",
-        "player_tag": "#PC2LPCVU",
-        "role": "member",
-        "score": 16.46,
-        "strikes": 0,
-        "donations": 0,
-        "participation_count": 1,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
-        "name": "Timi",
-        "player_tag": "#JGYCRU2YP",
-        "role": "member",
-        "score": 19.58,
-        "strikes": 0,
-        "donations": 38,
-        "participation_count": 1,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      }
-    ],
+    "remove": [],
     "core": [
       {
         "name": "Citykingalex",
@@ -721,24 +656,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Jackhammer",
-        "player_tag": "#2CJYG9UG",
+        "name": "OneAndOnly",
+        "player_tag": "#8P0J8P0L",
         "role": "member",
-        "score": 91.95,
+        "score": 92.13,
         "strikes": 0,
-        "donations": 227,
+        "donations": 326,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
       {
-        "name": "OneAndOnly",
-        "player_tag": "#8P0J8P0L",
+        "name": "Jackhammer",
+        "player_tag": "#2CJYG9UG",
         "role": "member",
-        "score": 91.73,
+        "score": 91.95,
         "strikes": 0,
-        "donations": 326,
+        "donations": 227,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -865,18 +800,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "LazyFrog",
-        "player_tag": "#22Q920RLR",
-        "role": "member",
-        "score": 89.28,
-        "strikes": 0,
-        "donations": 760,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Swordfish",
         "player_tag": "#2CPRGY8G",
         "role": "member",
@@ -913,10 +836,22 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "LazyFrog",
+        "player_tag": "#22Q920RLR",
+        "role": "member",
+        "score": 89.02,
+        "strikes": 0,
+        "donations": 760,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Wario",
         "player_tag": "#2PUQYJC02",
         "role": "member",
-        "score": 88.75,
+        "score": 89.02,
         "strikes": 0,
         "donations": 54,
         "participation_count": 10,
