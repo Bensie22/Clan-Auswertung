@@ -46,11 +46,6 @@
       "priority": 2
     },
     {
-      "name": "SankKiI9",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Bensie",
       "scenario": "TOP",
       "priority": 2
@@ -61,7 +56,7 @@
       "priority": 2
     },
     {
-      "name": "April#",
+      "name": "SankKiI9",
       "scenario": "TOP",
       "priority": 2
     },
@@ -72,6 +67,11 @@
     },
     {
       "name": "Reklaminator",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "April#",
       "scenario": "TOP",
       "priority": 2
     },
@@ -188,11 +188,6 @@
       "status": "STARK"
     },
     {
-      "name": "SankKiI9",
-      "score": 90.43,
-      "status": "STARK"
-    },
-    {
       "name": "Bensie",
       "score": 90.4,
       "status": "STARK"
@@ -203,8 +198,8 @@
       "status": "STARK"
     },
     {
-      "name": "April#",
-      "score": 89.72,
+      "name": "SankKiI9",
+      "score": 90.03,
       "status": "STARK"
     },
     {
@@ -215,6 +210,11 @@
     {
       "name": "agostini",
       "score": 89.42,
+      "status": "STARK"
+    },
+    {
+      "name": "April#",
+      "score": 89.33,
       "status": "STARK"
     },
     {
@@ -425,11 +425,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "SankKiI9",
-      "score": 90.43,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Bensie",
       "score": 90.4,
       "tip": "Weiter so"
@@ -440,8 +435,8 @@
       "tip": "Weiter so"
     },
     {
-      "name": "April#",
-      "score": 89.72,
+      "name": "SankKiI9",
+      "score": 90.03,
       "tip": "Weiter so"
     },
     {
@@ -452,6 +447,11 @@
     {
       "name": "agostini",
       "score": 89.42,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "April#",
+      "score": 89.33,
       "tip": "Weiter so"
     },
     {
@@ -728,18 +728,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "SankKiI9",
-        "player_tag": "#89CJRRV8",
-        "role": "member",
-        "score": 90.43,
-        "strikes": 0,
-        "donations": 632,
-        "participation_count": 10,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Bensie",
         "player_tag": "#2QRVR9L8",
         "role": "member",
@@ -764,12 +752,12 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "April#",
-        "player_tag": "#YUQVVVLQ",
+        "name": "SankKiI9",
+        "player_tag": "#89CJRRV8",
         "role": "member",
-        "score": 89.72,
+        "score": 90.03,
         "strikes": 0,
-        "donations": 396,
+        "donations": 632,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
@@ -794,6 +782,18 @@
         "score": 89.42,
         "strikes": 0,
         "donations": 82,
+        "participation_count": 10,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "April#",
+        "player_tag": "#YUQVVVLQ",
+        "role": "member",
+        "score": 89.33,
+        "strikes": 0,
+        "donations": 396,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
