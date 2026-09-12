@@ -41,12 +41,12 @@
       "priority": 2
     },
     {
-      "name": "kl.kranker Affe",
+      "name": "OmniOni",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "OmniOni",
+      "name": "kl.kranker Affe",
       "scenario": "TOP",
       "priority": 2
     },
@@ -111,12 +111,12 @@
       "priority": 2
     },
     {
-      "name": "HardcoreSoldier",
+      "name": "Knitte",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Knitte",
+      "name": "HardcoreSoldier",
       "scenario": "TOP",
       "priority": 2
     },
@@ -178,13 +178,13 @@
       "status": "STARK"
     },
     {
-      "name": "kl.kranker Affe",
-      "score": 91.32,
+      "name": "OmniOni",
+      "score": 91.07,
       "status": "STARK"
     },
     {
-      "name": "OmniOni",
-      "score": 91.07,
+      "name": "kl.kranker Affe",
+      "score": 91.05,
       "status": "STARK"
     },
     {
@@ -263,13 +263,13 @@
       "status": "STARK"
     },
     {
-      "name": "HardcoreSoldier",
-      "score": 87.85,
+      "name": "Knitte",
+      "score": 87.76,
       "status": "STARK"
     },
     {
-      "name": "Knitte",
-      "score": 87.76,
+      "name": "HardcoreSoldier",
+      "score": 87.72,
       "status": "STARK"
     },
     {
@@ -430,13 +430,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "kl.kranker Affe",
-      "score": 91.32,
+      "name": "OmniOni",
+      "score": 91.07,
       "tip": "Weiter so"
     },
     {
-      "name": "OmniOni",
-      "score": 91.07,
+      "name": "kl.kranker Affe",
+      "score": 91.05,
       "tip": "Weiter so"
     },
     {
@@ -515,13 +515,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "HardcoreSoldier",
-      "score": 87.85,
+      "name": "Knitte",
+      "score": 87.76,
       "tip": "Weiter so"
     },
     {
-      "name": "Knitte",
-      "score": 87.76,
+      "name": "HardcoreSoldier",
+      "score": 87.72,
       "tip": "Weiter so"
     },
     {
@@ -752,24 +752,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "kl.kranker Affe",
-        "player_tag": "#RLJPJL8C2",
-        "role": "member",
-        "score": 91.32,
-        "strikes": 0,
-        "donations": 120,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "OmniOni",
         "player_tag": "#UUPCULU9V",
         "role": "member",
         "score": 91.07,
         "strikes": 0,
         "donations": 615,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "kl.kranker Affe",
+        "player_tag": "#RLJPJL8C2",
+        "role": "member",
+        "score": 91.05,
+        "strikes": 0,
+        "donations": 120,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -944,18 +944,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "HardcoreSoldier",
-        "player_tag": "#GRGCY0R8",
-        "role": "member",
-        "score": 87.85,
-        "strikes": 0,
-        "donations": 380,
-        "participation_count": 10,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Knitte",
         "player_tag": "#ULYJ2CQP",
         "role": "member",
@@ -964,6 +952,18 @@
         "donations": 266,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "HardcoreSoldier",
+        "player_tag": "#GRGCY0R8",
+        "role": "member",
+        "score": 87.72,
+        "strikes": 0,
+        "donations": 380,
+        "participation_count": 10,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
