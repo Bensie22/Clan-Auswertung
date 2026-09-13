@@ -116,12 +116,12 @@
       "priority": 2
     },
     {
-      "name": "seroo",
+      "name": "Knitte",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Knitte",
+      "name": "seroo",
       "scenario": "TOP",
       "priority": 2
     },
@@ -268,11 +268,6 @@
       "status": "STARK"
     },
     {
-      "name": "seroo",
-      "score": 88.3,
-      "status": "STARK"
-    },
-    {
       "name": "elazeto",
       "score": 88.17,
       "status": "STARK"
@@ -280,6 +275,11 @@
     {
       "name": "Knitte",
       "score": 88.16,
+      "status": "STARK"
+    },
+    {
+      "name": "seroo",
+      "score": 88.03,
       "status": "STARK"
     },
     {
@@ -520,11 +520,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "seroo",
-      "score": 88.3,
-      "tip": "Weiter so"
-    },
-    {
       "name": "elazeto",
       "score": 88.17,
       "tip": "Weiter so"
@@ -532,6 +527,11 @@
     {
       "name": "Knitte",
       "score": 88.16,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "seroo",
+      "score": 88.03,
       "tip": "Weiter so"
     },
     {
@@ -820,7 +820,7 @@
         "role": "member",
         "score": 90.4,
         "strikes": 0,
-        "donations": 574,
+        "donations": 594,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -959,18 +959,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "seroo",
-        "player_tag": "#JRGC9RRQG",
-        "role": "member",
-        "score": 88.3,
-        "strikes": 0,
-        "donations": 183,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Knitte",
         "player_tag": "#ULYJ2CQP",
         "role": "member",
@@ -983,12 +971,24 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "seroo",
+        "player_tag": "#JRGC9RRQG",
+        "role": "member",
+        "score": 88.03,
+        "strikes": 0,
+        "donations": 183,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "HardcoreSoldier",
         "player_tag": "#GRGCY0R8",
         "role": "member",
         "score": 87.85,
         "strikes": 0,
-        "donations": 502,
+        "donations": 522,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
