@@ -1,7 +1,7 @@
 {
     "_metadata": {
         "last_battles": {
-            "#22Q920RLR": "20260913T155657.000Z",
+            "#22Q920RLR": "20260913T171911.000Z",
             "#L8PV090J": "20260913T164503.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260913T042504.000Z",
@@ -52,7 +52,7 @@
             "#Q2GRGLQR": "20260913T161933.000Z",
             "#J9RQPGLVP": "20260713T204019.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
-            "#9VLRQ9GR9": "20260913T074709.000Z",
+            "#9VLRQ9GR9": "20260913T171631.000Z",
             "#29RLRYLQL": "20260420T155237.000Z",
             "#QGGU22L9": "20260420T144732.000Z",
             "#2RQU00RLR": "20260421T120601.000Z",
@@ -71,7 +71,7 @@
             "#GJVVGUYJC": "20260518T141110.000Z",
             "#UQVCVVVJL": "20260913T110327.000Z",
             "#22CVYQP8R": "20260509T062429.000Z",
-            "#89CJRRV8": "20260913T152909.000Z",
+            "#89CJRRV8": "20260913T171911.000Z",
             "#VL989Y20J": "20260516T051537.000Z",
             "#RULG988Y": "20260606T102155.000Z",
             "#99909G00": "20260512T084926.000Z",
@@ -109,7 +109,7 @@
             "#LGUGQ0PRG": "20260912T133150.000Z",
             "#UVGRVC8LU": "20260809T181113.000Z",
             "#PVGU89PUL": "20260913T115839.000Z",
-            "#V9JP2PGGP": "20260913T170921.000Z",
+            "#V9JP2PGGP": "20260913T172030.000Z",
             "#R2VYJUUCP": "20260804T204503.000Z",
             "#RL9LQYCCY": "20260804T213809.000Z",
             "#V8VGG0LUG": "20260803T085547.000Z",
@@ -3372,7 +3372,7 @@
                 }
             ],
             "wins": 4,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "DST"
             ],
@@ -3380,6 +3380,12 @@
                 "9VLRQ9GR9"
             ],
             "recent_matches": [
+                {
+                    "time": "20260913T171631.000Z",
+                    "result": "loss",
+                    "player": "DST",
+                    "tag": "9VLRQ9GR9"
+                },
                 {
                     "time": "20260912T101946.000Z",
                     "result": "win",
@@ -464731,6 +464737,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000006-26000014-26000018-26000020-26000035-27000006-28000000-28000013": {
+            "cards": [
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                },
+                {
+                    "id": 26000020,
+                    "name": "Giant Skeleton",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0p0gd0XaVRu1Hb1iSG1hTYbz2AN6aEiZnhaAib5O8Z8.png"
+                },
+                {
+                    "id": 26000035,
+                    "name": "Lumberjack",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
+                },
+                {
+                    "id": 28000013,
+                    "name": "Clone",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mHVCet-1TkwWq-pxVIU2ZWY9_2z7Z7wtP25ArEUsP_g.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
