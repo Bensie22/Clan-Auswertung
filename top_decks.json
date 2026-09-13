@@ -1,7 +1,7 @@
 {
     "_metadata": {
         "last_battles": {
-            "#22Q920RLR": "20260913T135543.000Z",
+            "#22Q920RLR": "20260913T141440.000Z",
             "#L8PV090J": "20260913T120156.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260913T042504.000Z",
@@ -17,7 +17,7 @@
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20260913T082747.000Z",
             "#QULCQGGG": "20260913T121017.000Z",
-            "#JRGC9RRQG": "20260912T161807.000Z",
+            "#JRGC9RRQG": "20260913T141830.000Z",
             "#QVQGCV8Y9": "20260912T083130.000Z",
             "#Q8L0RJ8Y8": "20260913T084526.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
@@ -84,7 +84,7 @@
             "#VP82QGC8Y": "20260912T214709.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
             "#GRGCY0R8": "20260913T112621.000Z",
-            "#P2YQ2QQUV": "20260913T141042.000Z",
+            "#P2YQ2QQUV": "20260913T142002.000Z",
             "#JG8Q0GPU9": "20260713T010600.000Z",
             "#9QV99QVCV": "20260701T045607.000Z",
             "#JQ08UR882": "20260619T100820.000Z",
@@ -105,7 +105,7 @@
             "#VCYQ9L9QV": "20260729T140933.000Z",
             "#GRR999Q29": "20260801T003732.000Z",
             "#202QYVY8CC": "20260810T095353.000Z",
-            "#PLG90C0C": "20260913T131503.000Z",
+            "#PLG90C0C": "20260913T141702.000Z",
             "#LGUGQ0PRG": "20260912T133150.000Z",
             "#UVGRVC8LU": "20260809T181113.000Z",
             "#PVGU89PUL": "20260913T115839.000Z",
@@ -125,7 +125,8 @@
             "#PC2LPCVU": "20260901T194235.000Z",
             "#2GPVVPCC8": "20260912T003903.000Z",
             "#Y8LJ8VRJL": "20260913T132519.000Z",
-            "#JJVYUP8C": "20260913T140727.000Z"
+            "#JJVYUP8C": "20260913T141651.000Z",
+            "#CCPC2Q9GU": "20260913T113758.000Z"
         }
     },
     "decks": {
@@ -3736,7 +3737,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
                 }
             ],
-            "wins": 3,
+            "wins": 4,
             "losses": 0,
             "players": [
                 "seroo"
@@ -3745,6 +3746,12 @@
                 "JRGC9RRQG"
             ],
             "recent_matches": [
+                {
+                    "time": "20260913T141830.000Z",
+                    "result": "win",
+                    "player": "seroo",
+                    "tag": "JRGC9RRQG"
+                },
                 {
                     "time": "20260912T112644.000Z",
                     "result": "win",
@@ -463786,6 +463793,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000005-26000017-26000019-26000027-26000042-26000055-26000064-28000001": {
+            "cards": [
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000027,
+                    "name": "Dark Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/M7fXlrKXHu2IvpSGpk36kXVstslbR08Bbxcy0jQcln8.png"
+                },
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 26000019,
+                    "name": "Spear Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/FSDFotjaXidI4ku_WFpVCTWS1hKGnFh1sxX0lxM43_E.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
