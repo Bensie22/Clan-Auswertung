@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "Karim",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "abrr3r",
       "scenario": "STRIKE",
       "priority": 4
@@ -66,6 +71,11 @@
       "priority": 2
     },
     {
+      "name": "LazyFrog",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Reklaminator",
       "scenario": "TOP",
       "priority": 2
@@ -87,11 +97,6 @@
     },
     {
       "name": "Swordfish",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "LazyFrog",
       "scenario": "TOP",
       "priority": 2
     },
@@ -213,6 +218,11 @@
       "status": "STARK"
     },
     {
+      "name": "LazyFrog",
+      "score": 89.42,
+      "status": "STARK"
+    },
+    {
       "name": "Reklaminator",
       "score": 89.42,
       "status": "STARK"
@@ -235,11 +245,6 @@
     {
       "name": "Swordfish",
       "score": 89.15,
-      "status": "STARK"
-    },
-    {
-      "name": "LazyFrog",
-      "score": 89.02,
       "status": "STARK"
     },
     {
@@ -369,7 +374,7 @@
     },
     {
       "name": "Chico",
-      "score": 75.5,
+      "score": 75.76,
       "status": "OK"
     },
     {
@@ -390,6 +395,11 @@
     {
       "name": "abrr3r",
       "score": 4.93,
+      "status": "RISIKO"
+    },
+    {
+      "name": "Karim",
+      "score": 0.0,
       "status": "RISIKO"
     }
   ],
@@ -455,6 +465,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "LazyFrog",
+      "score": 89.42,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Reklaminator",
       "score": 89.42,
       "tip": "Weiter so"
@@ -477,11 +492,6 @@
     {
       "name": "Swordfish",
       "score": 89.15,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "LazyFrog",
-      "score": 89.02,
       "tip": "Weiter so"
     },
     {
@@ -611,7 +621,7 @@
     },
     {
       "name": "Chico",
-      "score": 75.5,
+      "score": 75.76,
       "tip": "Weiter so"
     },
     {
@@ -633,11 +643,28 @@
       "name": "abrr3r",
       "score": 4.93,
       "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "Karim",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
+      {
+        "name": "Karim",
+        "player_tag": "#JJVYUP8C",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
       {
         "name": "abrr3r",
         "player_tag": "#Y8LJ8VRJL",
@@ -797,6 +824,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "LazyFrog",
+        "player_tag": "#22Q920RLR",
+        "role": "member",
+        "score": 89.42,
+        "strikes": 0,
+        "donations": 859,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Reklaminator",
         "player_tag": "#P0G2GYJQ9",
         "role": "member",
@@ -857,18 +896,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "LazyFrog",
-        "player_tag": "#22Q920RLR",
-        "role": "member",
-        "score": 89.02,
-        "strikes": 0,
-        "donations": 859,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Wario",
         "player_tag": "#2PUQYJC02",
         "role": "member",
@@ -886,7 +913,7 @@
         "role": "member",
         "score": 88.83,
         "strikes": 0,
-        "donations": 436,
+        "donations": 444,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1030,7 +1057,7 @@
         "role": "member",
         "score": 85.63,
         "strikes": 0,
-        "donations": 360,
+        "donations": 371,
         "participation_count": 6,
         "trend": "",
         "reason": "Score über 85",
