@@ -1,7 +1,7 @@
 {
     "_metadata": {
         "last_battles": {
-            "#22Q920RLR": "20260913T182914.000Z",
+            "#22Q920RLR": "20260913T183553.000Z",
             "#L8PV090J": "20260913T164503.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20260913T042504.000Z",
@@ -35,7 +35,7 @@
             "#2U09UULRR": "20260913T103919.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20260913T060215.000Z",
-            "#8P0J8P0L": "20260913T183004.000Z",
+            "#8P0J8P0L": "20260913T183321.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20260913T173531.000Z",
             "#2P0U2RLGY": "20260905T222432.000Z",
@@ -108,7 +108,7 @@
             "#PLG90C0C": "20260913T164058.000Z",
             "#LGUGQ0PRG": "20260912T133150.000Z",
             "#UVGRVC8LU": "20260809T181113.000Z",
-            "#PVGU89PUL": "20260913T115839.000Z",
+            "#PVGU89PUL": "20260913T183544.000Z",
             "#V9JP2PGGP": "20260913T173307.000Z",
             "#R2VYJUUCP": "20260804T204503.000Z",
             "#RL9LQYCCY": "20260804T213809.000Z",
@@ -617,7 +617,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/C88C5JH_F3lLZj6K-tLcMo5DPjrFmvzIb1R2M6xCfTE.png"
                 }
             ],
-            "wins": 3,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "elazeto"
@@ -634,12 +634,6 @@
                 },
                 {
                     "time": "20260815T110115.000Z",
-                    "result": "win",
-                    "player": "elazeto",
-                    "tag": "URJ0LUYPV"
-                },
-                {
-                    "time": "20260814T183544.000Z",
                     "result": "win",
                     "player": "elazeto",
                     "tag": "URJ0LUYPV"
@@ -4409,7 +4403,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
                 }
             ],
-            "wins": 2,
+            "wins": 3,
             "losses": 0,
             "players": [
                 "OneAndOnly"
@@ -4418,6 +4412,12 @@
                 "8P0J8P0L"
             ],
             "recent_matches": [
+                {
+                    "time": "20260913T183321.000Z",
+                    "result": "win",
+                    "player": "OneAndOnly",
+                    "tag": "8P0J8P0L"
+                },
                 {
                     "time": "20260912T153001.000Z",
                     "result": "win",
@@ -464937,6 +464937,52 @@
                     "id": 28000013,
                     "name": "Clone",
                     "icon": "https://api-assets.clashroyale.com/cards/300/mHVCet-1TkwWq-pxVIU2ZWY9_2z7Z7wtP25ArEUsP_g.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000010-26000024-26000034-26000035-26000042-26000083-27000010-28000006": {
+            "cards": [
+                {
+                    "id": 26000035,
+                    "name": "Lumberjack",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000010,
+                    "name": "Skeletons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/oO7iKMU5m0cdxhYPZA3nWQiAUh2yoGgdThLWB1rVSec.png"
+                },
+                {
+                    "id": 28000006,
+                    "name": "Mirror",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/wC6Cm9rKLEOk72zTsukVwxewKIoO4ZcMJun54zCPWvA.png"
+                },
+                {
+                    "id": 26000083,
+                    "name": "Mother Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fO-Xah8XZkYKaSK9SCp3wnzwxtvIhun9NVY-zzte1Ng.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 26000024,
+                    "name": "Royal Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mnlRaNtmfpQx2e6mp70sLd0ND-pKPF70Cf87_agEKg4.png"
                 }
             ],
             "seen": 1,
