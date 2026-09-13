@@ -86,17 +86,17 @@
       "priority": 2
     },
     {
-      "name": "Reklaminator",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "April#",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Reklaminator",
       "scenario": "TOP",
       "priority": 2
     },
@@ -233,11 +233,6 @@
       "status": "STARK"
     },
     {
-      "name": "Reklaminator",
-      "score": 89.42,
-      "status": "STARK"
-    },
-    {
       "name": "Dolphin",
       "score": 89.38,
       "status": "STARK"
@@ -245,6 +240,11 @@
     {
       "name": "April#",
       "score": 89.33,
+      "status": "STARK"
+    },
+    {
+      "name": "Reklaminator",
+      "score": 89.28,
       "status": "STARK"
     },
     {
@@ -485,11 +485,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Reklaminator",
-      "score": 89.42,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Dolphin",
       "score": 89.38,
       "tip": "Weiter so"
@@ -497,6 +492,11 @@
     {
       "name": "April#",
       "score": 89.33,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Reklaminator",
+      "score": 89.28,
       "tip": "Weiter so"
     },
     {
@@ -674,7 +674,7 @@
         "role": "member",
         "score": 0.0,
         "strikes": 0,
-        "donations": 8,
+        "donations": 9,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -712,7 +712,7 @@
         "role": "member",
         "score": 94.35,
         "strikes": 0,
-        "donations": 398,
+        "donations": 426,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
@@ -875,18 +875,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Reklaminator",
-        "player_tag": "#P0G2GYJQ9",
-        "role": "member",
-        "score": 89.42,
-        "strikes": 0,
-        "donations": 107,
-        "participation_count": 10,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Dolphin",
         "player_tag": "#2U09UULRR",
         "role": "member",
@@ -904,7 +892,19 @@
         "role": "member",
         "score": 89.33,
         "strikes": 0,
-        "donations": 422,
+        "donations": 440,
+        "participation_count": 10,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Reklaminator",
+        "player_tag": "#P0G2GYJQ9",
+        "role": "member",
+        "score": 89.28,
+        "strikes": 0,
+        "donations": 107,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
@@ -928,7 +928,7 @@
         "role": "member",
         "score": 89.15,
         "strikes": 0,
-        "donations": 70,
+        "donations": 88,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
