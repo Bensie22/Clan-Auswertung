@@ -32,7 +32,7 @@
             "#2V800VCQ0": "20260913T101919.000Z",
             "#2UQUPYQCJ": "20260810T113227.000Z",
             "#JUUR8UGL8": "20260912T101449.000Z",
-            "#2U09UULRR": "20260913T060258.000Z",
+            "#2U09UULRR": "20260913T103115.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20260913T060215.000Z",
             "#8P0J8P0L": "20260912T154332.000Z",
@@ -3435,7 +3435,7 @@
                 }
             ],
             "wins": 4,
-            "losses": 0,
+            "losses": 1,
             "players": [
                 "Dolphin"
             ],
@@ -3443,6 +3443,12 @@
                 "2U09UULRR"
             ],
             "recent_matches": [
+                {
+                    "time": "20260913T103115.000Z",
+                    "result": "loss",
+                    "player": "Dolphin",
+                    "tag": "2U09UULRR"
+                },
                 {
                     "time": "20260912T111445.000Z",
                     "result": "win",
@@ -462806,6 +462812,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000010-26000016-26000038-26000041-26000053-26000059-28000000-28000008": {
+            "cards": [
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 26000038,
+                    "name": "Ice Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/r05cmpwV1o7i7FHodtZwW3fmjbXCW34IJCsDEV5cZC4.png"
+                },
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000053,
+                    "name": "Rascals",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/KV48DfwVHKx9XCjzBdk3daT_Eb52Me4VgjVO7WctRc4.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 26000010,
+                    "name": "Skeletons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/oO7iKMU5m0cdxhYPZA3nWQiAUh2yoGgdThLWB1rVSec.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
