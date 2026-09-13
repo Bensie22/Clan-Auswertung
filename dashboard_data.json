@@ -81,6 +81,11 @@
       "priority": 2
     },
     {
+      "name": "chris",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "LazyFrog",
       "scenario": "TOP",
       "priority": 2
@@ -97,11 +102,6 @@
     },
     {
       "name": "Reklaminator",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
@@ -228,6 +228,11 @@
       "status": "STARK"
     },
     {
+      "name": "chris",
+      "score": 89.5,
+      "status": "STARK"
+    },
+    {
       "name": "LazyFrog",
       "score": 89.42,
       "status": "STARK"
@@ -245,11 +250,6 @@
     {
       "name": "Reklaminator",
       "score": 89.28,
-      "status": "STARK"
-    },
-    {
-      "name": "chris",
-      "score": 89.23,
       "status": "STARK"
     },
     {
@@ -480,6 +480,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "chris",
+      "score": 89.5,
+      "tip": "Weiter so"
+    },
+    {
       "name": "LazyFrog",
       "score": 89.42,
       "tip": "Weiter so"
@@ -497,11 +502,6 @@
     {
       "name": "Reklaminator",
       "score": 89.28,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "chris",
-      "score": 89.23,
       "tip": "Weiter so"
     },
     {
@@ -863,6 +863,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "chris",
+        "player_tag": "#YQ82VR9JQ",
+        "role": "member",
+        "score": 89.5,
+        "strikes": 0,
+        "donations": 462,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "LazyFrog",
         "player_tag": "#22Q920RLR",
         "role": "member",
@@ -907,18 +919,6 @@
         "donations": 107,
         "participation_count": 10,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "chris",
-        "player_tag": "#YQ82VR9JQ",
-        "role": "member",
-        "score": 89.23,
-        "strikes": 0,
-        "donations": 462,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -988,7 +988,7 @@
         "role": "member",
         "score": 87.99,
         "strikes": 0,
-        "donations": 492,
+        "donations": 502,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
