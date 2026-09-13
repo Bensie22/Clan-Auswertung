@@ -101,17 +101,17 @@
       "priority": 2
     },
     {
+      "name": "chris",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Swordfish",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Wario",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
@@ -248,6 +248,11 @@
       "status": "STARK"
     },
     {
+      "name": "chris",
+      "score": 89.23,
+      "status": "STARK"
+    },
+    {
       "name": "Swordfish",
       "score": 89.15,
       "status": "STARK"
@@ -255,11 +260,6 @@
     {
       "name": "Wario",
       "score": 89.15,
-      "status": "STARK"
-    },
-    {
-      "name": "chris",
-      "score": 88.83,
       "status": "STARK"
     },
     {
@@ -500,6 +500,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "chris",
+      "score": 89.23,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Swordfish",
       "score": 89.15,
       "tip": "Weiter so"
@@ -507,11 +512,6 @@
     {
       "name": "Wario",
       "score": 89.15,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "chris",
-      "score": 88.83,
       "tip": "Weiter so"
     },
     {
@@ -911,6 +911,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "chris",
+        "player_tag": "#YQ82VR9JQ",
+        "role": "member",
+        "score": 89.23,
+        "strikes": 0,
+        "donations": 462,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Swordfish",
         "player_tag": "#2CPRGY8G",
         "role": "member",
@@ -935,24 +947,12 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "chris",
-        "player_tag": "#YQ82VR9JQ",
-        "role": "member",
-        "score": 88.83,
-        "strikes": 0,
-        "donations": 444,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Nati",
         "player_tag": "#LVUGLUCP9",
         "role": "member",
         "score": 88.56,
         "strikes": 0,
-        "donations": 36,
+        "donations": 44,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
