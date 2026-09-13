@@ -86,17 +86,17 @@
       "priority": 2
     },
     {
-      "name": "chris",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "LazyFrog",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Wario",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
@@ -131,12 +131,12 @@
       "priority": 2
     },
     {
-      "name": "bes",
+      "name": "Deniz",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Deniz",
+      "name": "bes",
       "scenario": "TOP",
       "priority": 2
     },
@@ -233,11 +233,6 @@
       "status": "STARK"
     },
     {
-      "name": "chris",
-      "score": 89.1,
-      "status": "STARK"
-    },
-    {
       "name": "LazyFrog",
       "score": 89.02,
       "status": "STARK"
@@ -245,6 +240,11 @@
     {
       "name": "Wario",
       "score": 89.02,
+      "status": "STARK"
+    },
+    {
+      "name": "chris",
+      "score": 88.83,
       "status": "STARK"
     },
     {
@@ -298,13 +298,13 @@
       "status": "STARK"
     },
     {
-      "name": "bes",
-      "score": 86.19,
+      "name": "Deniz",
+      "score": 85.97,
       "status": "STARK"
     },
     {
-      "name": "Deniz",
-      "score": 85.97,
+      "name": "bes",
+      "score": 85.66,
       "status": "STARK"
     },
     {
@@ -470,11 +470,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "chris",
-      "score": 89.1,
-      "tip": "Weiter so"
-    },
-    {
       "name": "LazyFrog",
       "score": 89.02,
       "tip": "Weiter so"
@@ -482,6 +477,11 @@
     {
       "name": "Wario",
       "score": 89.02,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "chris",
+      "score": 88.83,
       "tip": "Weiter so"
     },
     {
@@ -535,13 +535,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "bes",
-      "score": 86.19,
+      "name": "Deniz",
+      "score": 85.97,
       "tip": "Weiter so"
     },
     {
-      "name": "Deniz",
-      "score": 85.97,
+      "name": "bes",
+      "score": 85.66,
       "tip": "Weiter so"
     },
     {
@@ -642,7 +642,7 @@
         "role": "member",
         "score": 94.27,
         "strikes": 0,
-        "donations": 324,
+        "donations": 334,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -702,7 +702,7 @@
         "role": "member",
         "score": 91.07,
         "strikes": 0,
-        "donations": 755,
+        "donations": 775,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -762,7 +762,7 @@
         "role": "member",
         "score": 90.03,
         "strikes": 0,
-        "donations": 672,
+        "donations": 702,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
@@ -829,24 +829,12 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "chris",
-        "player_tag": "#YQ82VR9JQ",
-        "role": "member",
-        "score": 89.1,
-        "strikes": 0,
-        "donations": 416,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "LazyFrog",
         "player_tag": "#22Q920RLR",
         "role": "member",
         "score": 89.02,
         "strikes": 0,
-        "donations": 791,
+        "donations": 841,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -859,6 +847,18 @@
         "score": 89.02,
         "strikes": 0,
         "donations": 62,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "chris",
+        "player_tag": "#YQ82VR9JQ",
+        "role": "member",
+        "score": 88.83,
+        "strikes": 0,
+        "donations": 436,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -973,18 +973,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "bes",
-        "player_tag": "#LLQQJCLC",
-        "role": "member",
-        "score": 86.19,
-        "strikes": 0,
-        "donations": 315,
-        "participation_count": 10,
-        "trend": "🟡🟡🟡🟡🟡",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Deniz",
         "player_tag": "#JV80YYJRJ",
         "role": "member",
@@ -993,6 +981,18 @@
         "donations": 132,
         "participation_count": 5,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "bes",
+        "player_tag": "#LLQQJCLC",
+        "role": "member",
+        "score": 85.66,
+        "strikes": 0,
+        "donations": 325,
+        "participation_count": 10,
+        "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
