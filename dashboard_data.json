@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "Naughty",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "Karim",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -398,6 +403,11 @@
       "status": "RISIKO"
     },
     {
+      "name": "Naughty",
+      "score": 0.0,
+      "status": "RISIKO"
+    },
+    {
       "name": "Karim",
       "score": 0.0,
       "status": "RISIKO"
@@ -645,6 +655,11 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
+      "name": "Naughty",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "Karim",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
@@ -653,6 +668,18 @@
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
+      {
+        "name": "Naughty",
+        "player_tag": "#G8L2Q900",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
       {
         "name": "Karim",
         "player_tag": "#JJVYUP8C",
