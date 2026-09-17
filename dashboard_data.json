@@ -51,12 +51,12 @@
       "priority": 2
     },
     {
-      "name": "OmniOni",
+      "name": "kl.kranker Affe",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "kl.kranker Affe",
+      "name": "OmniOni",
       "scenario": "TOP",
       "priority": 2
     },
@@ -168,13 +168,13 @@
       "status": "STARK"
     },
     {
-      "name": "OmniOni",
-      "score": 91.47,
+      "name": "kl.kranker Affe",
+      "score": 91.45,
       "status": "STARK"
     },
     {
-      "name": "kl.kranker Affe",
-      "score": 91.45,
+      "name": "OmniOni",
+      "score": 91.2,
       "status": "STARK"
     },
     {
@@ -268,11 +268,6 @@
       "status": "STARK"
     },
     {
-      "name": "AaleDieter",
-      "score": 87.23,
-      "status": "STARK"
-    },
-    {
       "name": "elazeto",
       "score": 87.19,
       "status": "STARK"
@@ -280,6 +275,11 @@
     {
       "name": "Johan",
       "score": 87.14,
+      "status": "STARK"
+    },
+    {
+      "name": "AaleDieter",
+      "score": 86.96,
       "status": "STARK"
     },
     {
@@ -420,13 +420,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "OmniOni",
-      "score": 91.47,
+      "name": "kl.kranker Affe",
+      "score": 91.45,
       "tip": "Weiter so"
     },
     {
-      "name": "kl.kranker Affe",
-      "score": 91.45,
+      "name": "OmniOni",
+      "score": 91.2,
       "tip": "Weiter so"
     },
     {
@@ -520,11 +520,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "AaleDieter",
-      "score": 87.23,
-      "tip": "Weiter so"
-    },
-    {
       "name": "elazeto",
       "score": 87.19,
       "tip": "Weiter so"
@@ -532,6 +527,11 @@
     {
       "name": "Johan",
       "score": 87.14,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "AaleDieter",
+      "score": 86.96,
       "tip": "Weiter so"
     },
     {
@@ -747,24 +747,24 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "OmniOni",
-        "player_tag": "#UUPCULU9V",
-        "role": "member",
-        "score": 91.47,
-        "strikes": 0,
-        "donations": 379,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "kl.kranker Affe",
         "player_tag": "#RLJPJL8C2",
         "role": "member",
         "score": 91.45,
         "strikes": 0,
         "donations": 128,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "OmniOni",
+        "player_tag": "#UUPCULU9V",
+        "role": "member",
+        "score": 91.2,
+        "strikes": 0,
+        "donations": 387,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -932,7 +932,7 @@
         "role": "member",
         "score": 88.43,
         "strikes": 0,
-        "donations": 298,
+        "donations": 306,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -987,18 +987,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "AaleDieter",
-        "player_tag": "#CUJ9PJ2UV",
-        "role": "member",
-        "score": 87.23,
-        "strikes": 0,
-        "donations": 24,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Johan",
         "player_tag": "#UQVCVVVJL",
         "role": "member",
@@ -1007,6 +995,18 @@
         "donations": 88,
         "participation_count": 10,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "AaleDieter",
+        "player_tag": "#CUJ9PJ2UV",
+        "role": "member",
+        "score": 86.96,
+        "strikes": 0,
+        "donations": 24,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
