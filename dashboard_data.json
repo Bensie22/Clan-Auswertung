@@ -1,13 +1,13 @@
 {
   "full_auto": [
     {
-      "name": "Naughty",
+      "name": "Karim",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
     },
     {
-      "name": "Karim",
-      "scenario": "KEINE_TEILNAHME",
+      "name": "Naughty",
+      "scenario": "STRIKE",
       "priority": 4
     },
     {
@@ -169,7 +169,7 @@
     },
     {
       "name": "Jackhammer",
-      "score": 92.09,
+      "score": 91.69,
       "status": "STARK"
     },
     {
@@ -394,7 +394,7 @@
     },
     {
       "name": "Naughty",
-      "score": 0.0,
+      "score": 3.33,
       "status": "RISIKO"
     },
     {
@@ -421,7 +421,7 @@
     },
     {
       "name": "Jackhammer",
-      "score": 92.09,
+      "score": 91.69,
       "tip": "Weiter so"
     },
     {
@@ -646,7 +646,7 @@
     },
     {
       "name": "Naughty",
-      "score": 0.0,
+      "score": 3.33,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
@@ -659,24 +659,24 @@
     "generated_from": "_prefetch.json",
     "remove": [
       {
-        "name": "Naughty",
-        "player_tag": "#G8L2Q900",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 10,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
         "name": "Karim",
         "player_tag": "#JJVYUP8C",
         "role": "member",
         "score": 0.0,
         "strikes": 0,
         "donations": 70,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "Naughty",
+        "player_tag": "#G8L2Q900",
+        "role": "member",
+        "score": 3.33,
+        "strikes": 0,
+        "donations": 10,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -736,9 +736,9 @@
         "name": "Jackhammer",
         "player_tag": "#2CJYG9UG",
         "role": "member",
-        "score": 92.09,
+        "score": 91.69,
         "strikes": 0,
-        "donations": 100,
+        "donations": 118,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -918,7 +918,7 @@
         "role": "member",
         "score": 88.66,
         "strikes": 0,
-        "donations": 226,
+        "donations": 234,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
