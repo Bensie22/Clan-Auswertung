@@ -1,12 +1,12 @@
 {
   "full_auto": [
     {
-      "name": "Karim",
-      "scenario": "KEINE_TEILNAHME",
+      "name": "Naughty",
+      "scenario": "STRIKE",
       "priority": 4
     },
     {
-      "name": "Naughty",
+      "name": "Karim",
       "scenario": "STRIKE",
       "priority": 4
     },
@@ -41,11 +41,6 @@
       "priority": 2
     },
     {
-      "name": "Jackhammer",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Bensie",
       "scenario": "TOP",
       "priority": 2
@@ -57,6 +52,11 @@
     },
     {
       "name": "OmniOni",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Jackhammer",
       "scenario": "TOP",
       "priority": 2
     },
@@ -168,11 +168,6 @@
       "status": "STARK"
     },
     {
-      "name": "Jackhammer",
-      "score": 91.69,
-      "status": "STARK"
-    },
-    {
       "name": "Bensie",
       "score": 91.6,
       "status": "STARK"
@@ -185,6 +180,11 @@
     {
       "name": "OmniOni",
       "score": 91.33,
+      "status": "STARK"
+    },
+    {
+      "name": "Jackhammer",
+      "score": 91.29,
       "status": "STARK"
     },
     {
@@ -399,7 +399,7 @@
     },
     {
       "name": "Karim",
-      "score": 0.0,
+      "score": 3.33,
       "status": "RISIKO"
     }
   ],
@@ -420,11 +420,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Jackhammer",
-      "score": 91.69,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Bensie",
       "score": 91.6,
       "tip": "Weiter so"
@@ -437,6 +432,11 @@
     {
       "name": "OmniOni",
       "score": 91.33,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Jackhammer",
+      "score": 91.29,
       "tip": "Weiter so"
     },
     {
@@ -651,7 +651,7 @@
     },
     {
       "name": "Karim",
-      "score": 0.0,
+      "score": 3.33,
       "tip": "Mehr Teilnahme notwendig"
     }
   ],
@@ -659,24 +659,24 @@
     "generated_from": "_prefetch.json",
     "remove": [
       {
-        "name": "Karim",
-        "player_tag": "#JJVYUP8C",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 70,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
         "name": "Naughty",
         "player_tag": "#G8L2Q900",
         "role": "member",
         "score": 3.33,
         "strikes": 0,
         "donations": 10,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "Karim",
+        "player_tag": "#JJVYUP8C",
+        "role": "member",
+        "score": 3.33,
+        "strikes": 0,
+        "donations": 78,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -733,18 +733,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Jackhammer",
-        "player_tag": "#2CJYG9UG",
-        "role": "member",
-        "score": 91.69,
-        "strikes": 0,
-        "donations": 118,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Bensie",
         "player_tag": "#2QRVR9L8",
         "role": "member",
@@ -775,6 +763,18 @@
         "score": 91.33,
         "strikes": 0,
         "donations": 387,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Jackhammer",
+        "player_tag": "#2CJYG9UG",
+        "role": "member",
+        "score": 91.29,
+        "strikes": 0,
+        "donations": 118,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
