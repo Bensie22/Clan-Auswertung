@@ -116,17 +116,17 @@
       "priority": 2
     },
     {
+      "name": "Johan",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Deniz",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Knitte",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Johan",
       "scenario": "TOP",
       "priority": 2
     },
@@ -278,6 +278,11 @@
       "status": "STARK"
     },
     {
+      "name": "Johan",
+      "score": 87.14,
+      "status": "STARK"
+    },
+    {
       "name": "Deniz",
       "score": 86.72,
       "status": "STARK"
@@ -285,11 +290,6 @@
     {
       "name": "Knitte",
       "score": 86.69,
-      "status": "STARK"
-    },
-    {
-      "name": "Johan",
-      "score": 86.61,
       "status": "STARK"
     },
     {
@@ -530,6 +530,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Johan",
+      "score": 87.14,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Deniz",
       "score": 86.72,
       "tip": "Weiter so"
@@ -537,11 +542,6 @@
     {
       "name": "Knitte",
       "score": 86.69,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Johan",
-      "score": 86.61,
       "tip": "Weiter so"
     },
     {
@@ -999,6 +999,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "Johan",
+        "player_tag": "#UQVCVVVJL",
+        "role": "member",
+        "score": 87.14,
+        "strikes": 0,
+        "donations": 88,
+        "participation_count": 10,
+        "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Deniz",
         "player_tag": "#JV80YYJRJ",
         "role": "member",
@@ -1019,18 +1031,6 @@
         "donations": 248,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Johan",
-        "player_tag": "#UQVCVVVJL",
-        "role": "member",
-        "score": 86.61,
-        "strikes": 0,
-        "donations": 88,
-        "participation_count": 10,
-        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
