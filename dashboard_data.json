@@ -131,12 +131,12 @@
       "priority": 2
     },
     {
-      "name": "Deniz",
+      "name": "Knitte",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Knitte",
+      "name": "Deniz",
       "scenario": "TOP",
       "priority": 2
     },
@@ -159,7 +159,7 @@
   "smart": [
     {
       "name": "Citykingalex",
-      "score": 95.6,
+      "score": 95.33,
       "status": "STARK"
     },
     {
@@ -298,13 +298,13 @@
       "status": "STARK"
     },
     {
-      "name": "Deniz",
-      "score": 86.85,
+      "name": "Knitte",
+      "score": 86.69,
       "status": "STARK"
     },
     {
-      "name": "Knitte",
-      "score": 86.69,
+      "name": "Deniz",
+      "score": 86.59,
       "status": "STARK"
     },
     {
@@ -411,7 +411,7 @@
   "coaching": [
     {
       "name": "Citykingalex",
-      "score": 95.6,
+      "score": 95.33,
       "tip": "Weiter so"
     },
     {
@@ -550,13 +550,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Deniz",
-      "score": 86.85,
+      "name": "Knitte",
+      "score": 86.69,
       "tip": "Weiter so"
     },
     {
-      "name": "Knitte",
-      "score": 86.69,
+      "name": "Deniz",
+      "score": 86.59,
       "tip": "Weiter so"
     },
     {
@@ -705,9 +705,9 @@
         "name": "Citykingalex",
         "player_tag": "#QULCQGGG",
         "role": "member",
-        "score": 95.6,
+        "score": 95.33,
         "strikes": 0,
-        "donations": 247,
+        "donations": 257,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
@@ -743,7 +743,7 @@
         "role": "member",
         "score": 91.6,
         "strikes": 0,
-        "donations": 458,
+        "donations": 466,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1026,18 +1026,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Deniz",
-        "player_tag": "#JV80YYJRJ",
-        "role": "member",
-        "score": 86.85,
-        "strikes": 0,
-        "donations": 110,
-        "participation_count": 6,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Knitte",
         "player_tag": "#ULYJ2CQP",
         "role": "member",
@@ -1046,6 +1034,18 @@
         "donations": 286,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Deniz",
+        "player_tag": "#JV80YYJRJ",
+        "role": "member",
+        "score": 86.59,
+        "strikes": 0,
+        "donations": 110,
+        "participation_count": 6,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
