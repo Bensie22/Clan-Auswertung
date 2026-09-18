@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "DyC",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "Karim",
       "scenario": "STRIKE",
       "priority": 4
@@ -204,7 +209,7 @@
     },
     {
       "name": "Theezy",
-      "score": 90.67,
+      "score": 90.53,
       "status": "STARK"
     },
     {
@@ -279,7 +284,7 @@
     },
     {
       "name": "Nati",
-      "score": 87.58,
+      "score": 87.17,
       "status": "STARK"
     },
     {
@@ -406,6 +411,11 @@
       "name": "Karim",
       "score": 3.33,
       "status": "RISIKO"
+    },
+    {
+      "name": "DyC",
+      "score": 0.0,
+      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -451,7 +461,7 @@
     },
     {
       "name": "Theezy",
-      "score": 90.67,
+      "score": 90.53,
       "tip": "Weiter so"
     },
     {
@@ -526,7 +536,7 @@
     },
     {
       "name": "Nati",
-      "score": 87.58,
+      "score": 87.17,
       "tip": "Weiter so"
     },
     {
@@ -653,11 +663,28 @@
       "name": "Karim",
       "score": 3.33,
       "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "DyC",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
+      {
+        "name": "DyC",
+        "player_tag": "#88QGQUUY",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 16,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
       {
         "name": "Karim",
         "player_tag": "#JJVYUP8C",
@@ -796,7 +823,7 @@
         "name": "Theezy",
         "player_tag": "#JUUR8UGL8",
         "role": "member",
-        "score": 90.67,
+        "score": 90.53,
         "strikes": 0,
         "donations": 210,
         "participation_count": 10,
@@ -858,7 +885,7 @@
         "role": "member",
         "score": 89.68,
         "strikes": 0,
-        "donations": 100,
+        "donations": 108,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -976,7 +1003,7 @@
         "name": "Nati",
         "player_tag": "#LVUGLUCP9",
         "role": "member",
-        "score": 87.58,
+        "score": 87.17,
         "strikes": 0,
         "donations": 0,
         "participation_count": 10,
