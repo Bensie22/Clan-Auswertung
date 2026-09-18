@@ -91,17 +91,17 @@
       "priority": 2
     },
     {
-      "name": "Dolphin",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "LazyFrog",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Wario",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Dolphin",
       "scenario": "TOP",
       "priority": 2
     },
@@ -159,7 +159,7 @@
   "smart": [
     {
       "name": "Citykingalex",
-      "score": 95.33,
+      "score": 95.73,
       "status": "STARK"
     },
     {
@@ -233,11 +233,6 @@
       "status": "STARK"
     },
     {
-      "name": "Dolphin",
-      "score": 89.47,
-      "status": "STARK"
-    },
-    {
       "name": "LazyFrog",
       "score": 89.37,
       "status": "STARK"
@@ -245,6 +240,11 @@
     {
       "name": "Wario",
       "score": 89.28,
+      "status": "STARK"
+    },
+    {
+      "name": "Dolphin",
+      "score": 89.2,
       "status": "STARK"
     },
     {
@@ -411,7 +411,7 @@
   "coaching": [
     {
       "name": "Citykingalex",
-      "score": 95.33,
+      "score": 95.73,
       "tip": "Weiter so"
     },
     {
@@ -485,11 +485,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Dolphin",
-      "score": 89.47,
-      "tip": "Weiter so"
-    },
-    {
       "name": "LazyFrog",
       "score": 89.37,
       "tip": "Weiter so"
@@ -497,6 +492,11 @@
     {
       "name": "Wario",
       "score": 89.28,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Dolphin",
+      "score": 89.2,
       "tip": "Weiter so"
     },
     {
@@ -705,9 +705,9 @@
         "name": "Citykingalex",
         "player_tag": "#QULCQGGG",
         "role": "member",
-        "score": 95.33,
+        "score": 95.73,
         "strikes": 0,
-        "donations": 257,
+        "donations": 265,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
@@ -882,18 +882,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Dolphin",
-        "player_tag": "#2U09UULRR",
-        "role": "member",
-        "score": 89.47,
-        "strikes": 0,
-        "donations": 230,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "LazyFrog",
         "player_tag": "#22Q920RLR",
         "role": "member",
@@ -912,6 +900,18 @@
         "score": 89.28,
         "strikes": 0,
         "donations": 50,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Dolphin",
+        "player_tag": "#2U09UULRR",
+        "role": "member",
+        "score": 89.2,
+        "strikes": 0,
+        "donations": 230,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
