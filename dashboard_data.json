@@ -1,12 +1,12 @@
 {
   "full_auto": [
     {
-      "name": "Naughty",
+      "name": "Karim",
       "scenario": "STRIKE",
       "priority": 4
     },
     {
-      "name": "Karim",
+      "name": "Naughty",
       "scenario": "STRIKE",
       "priority": 4
     },
@@ -126,6 +126,11 @@
       "priority": 2
     },
     {
+      "name": "AaleDieter",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Johan",
       "scenario": "TOP",
       "priority": 2
@@ -169,7 +174,7 @@
     },
     {
       "name": "OneAndOnly",
-      "score": 92.4,
+      "score": 92.53,
       "status": "STARK"
     },
     {
@@ -399,7 +404,7 @@
     },
     {
       "name": "Naughty",
-      "score": 3.33,
+      "score": 7.73,
       "status": "RISIKO"
     },
     {
@@ -421,7 +426,7 @@
     },
     {
       "name": "OneAndOnly",
-      "score": 92.4,
+      "score": 92.53,
       "tip": "Weiter so"
     },
     {
@@ -651,7 +656,7 @@
     },
     {
       "name": "Naughty",
-      "score": 3.33,
+      "score": 7.73,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
@@ -664,24 +669,24 @@
     "generated_from": "_prefetch.json",
     "remove": [
       {
-        "name": "Naughty",
-        "player_tag": "#G8L2Q900",
-        "role": "member",
-        "score": 3.33,
-        "strikes": 0,
-        "donations": 10,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
         "name": "Karim",
         "player_tag": "#JJVYUP8C",
         "role": "member",
         "score": 3.33,
         "strikes": 0,
         "donations": 78,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "Naughty",
+        "player_tag": "#G8L2Q900",
+        "role": "member",
+        "score": 7.73,
+        "strikes": 0,
+        "donations": 10,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -729,7 +734,7 @@
         "name": "OneAndOnly",
         "player_tag": "#8P0J8P0L",
         "role": "member",
-        "score": 92.4,
+        "score": 92.53,
         "strikes": 0,
         "donations": 386,
         "participation_count": 10,
@@ -923,7 +928,7 @@
         "role": "member",
         "score": 88.66,
         "strikes": 0,
-        "donations": 260,
+        "donations": 276,
         "participation_count": 10,
         "trend": "",
         "reason": "Score über 85",
@@ -1007,7 +1012,7 @@
         "role": "member",
         "score": 87.23,
         "strikes": 0,
-        "donations": 42,
+        "donations": 50,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
