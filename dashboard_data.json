@@ -56,17 +56,17 @@
       "priority": 2
     },
     {
-      "name": "SankKiI9",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Bensie",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "kl.kranker Affe",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "SankKiI9",
       "scenario": "TOP",
       "priority": 2
     },
@@ -193,11 +193,6 @@
       "status": "STARK"
     },
     {
-      "name": "SankKiI9",
-      "score": 91.28,
-      "status": "STARK"
-    },
-    {
       "name": "Bensie",
       "score": 91.2,
       "status": "STARK"
@@ -205,6 +200,11 @@
     {
       "name": "kl.kranker Affe",
       "score": 91.05,
+      "status": "STARK"
+    },
+    {
+      "name": "SankKiI9",
+      "score": 90.88,
       "status": "STARK"
     },
     {
@@ -445,11 +445,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "SankKiI9",
-      "score": 91.28,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Bensie",
       "score": 91.2,
       "tip": "Weiter so"
@@ -457,6 +452,11 @@
     {
       "name": "kl.kranker Affe",
       "score": 91.05,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "SankKiI9",
+      "score": 90.88,
       "tip": "Weiter so"
     },
     {
@@ -729,7 +729,7 @@
         "role": "member",
         "score": 96.0,
         "strikes": 0,
-        "donations": 291,
+        "donations": 307,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
@@ -784,18 +784,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "SankKiI9",
-        "player_tag": "#89CJRRV8",
-        "role": "member",
-        "score": 91.28,
-        "strikes": 0,
-        "donations": 487,
-        "participation_count": 10,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Bensie",
         "player_tag": "#2QRVR9L8",
         "role": "member",
@@ -816,6 +804,18 @@
         "donations": 154,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "SankKiI9",
+        "player_tag": "#89CJRRV8",
+        "role": "member",
+        "score": 90.88,
+        "strikes": 0,
+        "donations": 487,
+        "participation_count": 10,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
