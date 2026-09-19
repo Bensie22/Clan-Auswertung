@@ -116,17 +116,17 @@
       "priority": 2
     },
     {
-      "name": "seroo",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "HardcoreSoldier",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "seroo",
       "scenario": "TOP",
       "priority": 2
     },
@@ -152,11 +152,6 @@
     },
     {
       "name": "Reklaminator",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Ben Siebolf",
       "scenario": "TOP",
       "priority": 2
     },
@@ -263,11 +258,6 @@
       "status": "STARK"
     },
     {
-      "name": "seroo",
-      "score": 87.77,
-      "status": "STARK"
-    },
-    {
       "name": "chris",
       "score": 87.76,
       "status": "STARK"
@@ -275,6 +265,11 @@
     {
       "name": "HardcoreSoldier",
       "score": 87.72,
+      "status": "STARK"
+    },
+    {
+      "name": "seroo",
+      "score": 87.63,
       "status": "STARK"
     },
     {
@@ -315,11 +310,6 @@
     {
       "name": "Reklaminator",
       "score": 86.12,
-      "status": "STARK"
-    },
-    {
-      "name": "Ben Siebolf",
-      "score": 86.01,
       "status": "STARK"
     },
     {
@@ -515,11 +505,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "seroo",
-      "score": 87.77,
-      "tip": "Weiter so"
-    },
-    {
       "name": "chris",
       "score": 87.76,
       "tip": "Weiter so"
@@ -527,6 +512,11 @@
     {
       "name": "HardcoreSoldier",
       "score": 87.72,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "seroo",
+      "score": 87.63,
       "tip": "Weiter so"
     },
     {
@@ -567,11 +557,6 @@
     {
       "name": "Reklaminator",
       "score": 86.12,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Ben Siebolf",
-      "score": 86.01,
       "tip": "Weiter so"
     },
     {
@@ -753,7 +738,7 @@
         "role": "member",
         "score": 92.4,
         "strikes": 0,
-        "donations": 432,
+        "donations": 442,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -952,18 +937,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "seroo",
-        "player_tag": "#JRGC9RRQG",
-        "role": "member",
-        "score": 87.77,
-        "strikes": 0,
-        "donations": 418,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "chris",
         "player_tag": "#YQ82VR9JQ",
         "role": "member",
@@ -984,6 +957,18 @@
         "donations": 400,
         "participation_count": 10,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "seroo",
+        "player_tag": "#JRGC9RRQG",
+        "role": "member",
+        "score": 87.63,
+        "strikes": 0,
+        "donations": 436,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -1067,18 +1052,6 @@
         "strikes": 0,
         "donations": 188,
         "participation_count": 10,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Ben Siebolf",
-        "player_tag": "#PLG90C0C",
-        "role": "member",
-        "score": 86.01,
-        "strikes": 0,
-        "donations": 93,
-        "participation_count": 7,
         "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
