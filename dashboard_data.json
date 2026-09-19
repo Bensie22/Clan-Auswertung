@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "HRVAT85",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "DyC",
       "scenario": "STRIKE",
       "priority": 4
@@ -411,6 +416,11 @@
       "name": "Karim",
       "score": 3.33,
       "status": "RISIKO"
+    },
+    {
+      "name": "HRVAT85",
+      "score": 0.0,
+      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -658,11 +668,28 @@
       "name": "Karim",
       "score": 3.33,
       "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "HRVAT85",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
+      {
+        "name": "HRVAT85",
+        "player_tag": "#UJCPPUJLJ",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
       {
         "name": "DyC",
         "player_tag": "#88QGQUUY",
