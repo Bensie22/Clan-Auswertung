@@ -46,17 +46,17 @@
       "priority": 2
     },
     {
-      "name": "Bensie",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "OmniOni",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Jackhammer",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Bensie",
       "scenario": "TOP",
       "priority": 2
     },
@@ -183,11 +183,6 @@
       "status": "STARK"
     },
     {
-      "name": "Bensie",
-      "score": 91.47,
-      "status": "STARK"
-    },
-    {
       "name": "OmniOni",
       "score": 91.47,
       "status": "STARK"
@@ -195,6 +190,11 @@
     {
       "name": "Jackhammer",
       "score": 91.42,
+      "status": "STARK"
+    },
+    {
+      "name": "Bensie",
+      "score": 91.2,
       "status": "STARK"
     },
     {
@@ -435,11 +435,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Bensie",
-      "score": 91.47,
-      "tip": "Weiter so"
-    },
-    {
       "name": "OmniOni",
       "score": 91.47,
       "tip": "Weiter so"
@@ -447,6 +442,11 @@
     {
       "name": "Jackhammer",
       "score": 91.42,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Bensie",
+      "score": 91.2,
       "tip": "Weiter so"
     },
     {
@@ -729,7 +729,7 @@
         "role": "member",
         "score": 95.73,
         "strikes": 0,
-        "donations": 273,
+        "donations": 281,
         "participation_count": 10,
         "trend": "🟡🟡🟡🟡🟡",
         "reason": "Score über 85",
@@ -741,7 +741,7 @@
         "role": "member",
         "score": 95.33,
         "strikes": 0,
-        "donations": 242,
+        "donations": 260,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -754,18 +754,6 @@
         "score": 92.53,
         "strikes": 0,
         "donations": 386,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Bensie",
-        "player_tag": "#2QRVR9L8",
-        "role": "member",
-        "score": 91.47,
-        "strikes": 0,
-        "donations": 538,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -790,6 +778,18 @@
         "score": 91.42,
         "strikes": 0,
         "donations": 206,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Bensie",
+        "player_tag": "#2QRVR9L8",
+        "role": "member",
+        "score": 91.2,
+        "strikes": 0,
+        "donations": 538,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
