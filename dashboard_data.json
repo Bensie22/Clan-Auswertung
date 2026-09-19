@@ -116,17 +116,17 @@
       "priority": 2
     },
     {
+      "name": "seroo",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "HardcoreSoldier",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "seroo",
       "scenario": "TOP",
       "priority": 2
     },
@@ -179,7 +179,7 @@
     },
     {
       "name": "OneAndOnly",
-      "score": 92.53,
+      "score": 92.4,
       "status": "STARK"
     },
     {
@@ -238,13 +238,13 @@
       "status": "STARK"
     },
     {
-      "name": "Hemelm",
-      "score": 89.23,
+      "name": "Dolphin",
+      "score": 89.2,
       "status": "STARK"
     },
     {
-      "name": "Dolphin",
-      "score": 89.2,
+      "name": "Hemelm",
+      "score": 89.1,
       "status": "STARK"
     },
     {
@@ -263,6 +263,11 @@
       "status": "STARK"
     },
     {
+      "name": "seroo",
+      "score": 87.9,
+      "status": "STARK"
+    },
+    {
       "name": "chris",
       "score": 87.76,
       "status": "STARK"
@@ -270,11 +275,6 @@
     {
       "name": "HardcoreSoldier",
       "score": 87.72,
-      "status": "STARK"
-    },
-    {
-      "name": "seroo",
-      "score": 87.63,
       "status": "STARK"
     },
     {
@@ -298,13 +298,13 @@
       "status": "STARK"
     },
     {
-      "name": "elazeto",
-      "score": 86.79,
+      "name": "Knitte",
+      "score": 86.69,
       "status": "STARK"
     },
     {
-      "name": "Knitte",
-      "score": 86.69,
+      "name": "elazeto",
+      "score": 86.65,
       "status": "STARK"
     },
     {
@@ -431,7 +431,7 @@
     },
     {
       "name": "OneAndOnly",
-      "score": 92.53,
+      "score": 92.4,
       "tip": "Weiter so"
     },
     {
@@ -490,13 +490,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Hemelm",
-      "score": 89.23,
+      "name": "Dolphin",
+      "score": 89.2,
       "tip": "Weiter so"
     },
     {
-      "name": "Dolphin",
-      "score": 89.2,
+      "name": "Hemelm",
+      "score": 89.1,
       "tip": "Weiter so"
     },
     {
@@ -515,6 +515,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "seroo",
+      "score": 87.9,
+      "tip": "Weiter so"
+    },
+    {
       "name": "chris",
       "score": 87.76,
       "tip": "Weiter so"
@@ -522,11 +527,6 @@
     {
       "name": "HardcoreSoldier",
       "score": 87.72,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "seroo",
-      "score": 87.63,
       "tip": "Weiter so"
     },
     {
@@ -550,13 +550,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "elazeto",
-      "score": 86.79,
+      "name": "Knitte",
+      "score": 86.69,
       "tip": "Weiter so"
     },
     {
-      "name": "Knitte",
-      "score": 86.69,
+      "name": "elazeto",
+      "score": 86.65,
       "tip": "Weiter so"
     },
     {
@@ -751,7 +751,7 @@
         "name": "OneAndOnly",
         "player_tag": "#8P0J8P0L",
         "role": "member",
-        "score": 92.53,
+        "score": 92.4,
         "strikes": 0,
         "donations": 432,
         "participation_count": 10,
@@ -801,7 +801,7 @@
         "role": "member",
         "score": 91.05,
         "strikes": 0,
-        "donations": 128,
+        "donations": 154,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -892,18 +892,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Hemelm",
-        "player_tag": "#PVGU89PUL",
-        "role": "member",
-        "score": 89.23,
-        "strikes": 0,
-        "donations": 16,
-        "participation_count": 7,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Dolphin",
         "player_tag": "#2U09UULRR",
         "role": "member",
@@ -912,6 +900,18 @@
         "donations": 308,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Hemelm",
+        "player_tag": "#PVGU89PUL",
+        "role": "member",
+        "score": 89.1,
+        "strikes": 0,
+        "donations": 16,
+        "participation_count": 7,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -952,6 +952,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "seroo",
+        "player_tag": "#JRGC9RRQG",
+        "role": "member",
+        "score": 87.9,
+        "strikes": 0,
+        "donations": 418,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "chris",
         "player_tag": "#YQ82VR9JQ",
         "role": "member",
@@ -972,18 +984,6 @@
         "donations": 400,
         "participation_count": 10,
         "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "seroo",
-        "player_tag": "#JRGC9RRQG",
-        "role": "member",
-        "score": 87.63,
-        "strikes": 0,
-        "donations": 418,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
