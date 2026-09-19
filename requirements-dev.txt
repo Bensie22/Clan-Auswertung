@@ -1,0 +1,4 @@
+# Nur lokal. Bewusst NICHT in requirements.txt: Cron (.github/workflows/main.yml)
+# und Render installieren requirements.txt – ein Test-Dependency hat dort nichts zu suchen.
+-r requirements.txt
+pytest==7.4.3

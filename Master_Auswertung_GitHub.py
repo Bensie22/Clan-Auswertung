@@ -29,6 +29,13 @@ from config import (
     TIER_SEHR_STARK, TIER_SOLIDE,
     CLAN_RELIABLE_GREEN, CLAN_RELIABLE_YELLOW,
 )
+from app.bewertung import (
+    DECKS_PRO_KRIEG,
+    LAUFENDER_KRIEG_ID,
+    bewerte,
+    fame_spalten_sortiert,
+    kriegsteilnahme_aus_csv_zeile,
+)
 
 APP_CONFIG = {
     "STRIKE_THRESHOLD":    STRIKE_THRESHOLD,
@@ -476,7 +483,7 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
                         break
 
                 if my_clan_live:
-                    current_race_id = "zzzcurrent"
+                    current_race_id = LAUFENDER_KRIEG_ID
                     for p in my_clan_live.get("participants", []):
                         ptag = p.get("tag")
                         pname = p.get("name")
@@ -523,6 +530,10 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
         "player_donations",
         "player_donations_received",
         "player_trophies",
+        # contribution_count und total_decks_used liest niemand mehr:
+        # app/bewertung.py leitet beide aus den Kriegsspalten ab. Sie bleiben nur
+        # zur manuellen Sichtung des Exports drin. participating_count ist anders –
+        # den braucht die Kriegsteilnahme, weil 0 Fame / 0 Decks zweideutig ist.
         "player_contribution_count",
         "player_participating_count",
         "player_total_decks_used",
@@ -552,7 +563,7 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
 
                 # zzzcurrent ist der laufende Krieg (noch nicht abgeschlossen).
                 # Er wird nicht in den Score-Metriken gezählt – unfair, da noch nicht fertig.
-                if rid != "zzzcurrent":
+                if rid != LAUFENDER_KRIEG_ID:
                     total_decks += decks
                     total_boat_attacks += ba
                     if decks > 0:
@@ -562,7 +573,7 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
             # Entspricht der tatsaechlichen Clan-Zugehoerigkeit im Auswertungsfenster.
             # Nicht total_races (immer 10), weil neue Spieler die frueheren Kriege schlicht
             # noch nicht kennen konnten. zzzcurrent (laufender Krieg) wird nicht mitgezählt.
-            wars_in_clan = len([k for k in data["history"] if k != "zzzcurrent"])
+            wars_in_clan = len([k for k in data["history"] if k != LAUFENDER_KRIEG_ID])
 
             row = [
                 tag,
@@ -2127,12 +2138,7 @@ def generate_html_report(
 
     # Loop-invariante Spalten einmal vor der Schleife berechnen
     _all_cols = df_active.columns
-    fame_columns_all = sorted(
-        [col for col in _all_cols if str(col).startswith("s_") and str(col).endswith("_fame")],
-        reverse=True
-    )
-    fame_cols_rolling  = fame_columns_all[:4]
-    decks_cols_rolling = [col.replace("_fame", "_decks_used") for col in fame_cols_rolling]
+    fame_columns_all = fame_spalten_sortiert(_all_cols)
     aktueller_decks_spalte = fame_spalte.replace("_fame", "_decks_used")
     _player_profiles   = player_profiles or {}
 
@@ -2145,9 +2151,7 @@ def generate_html_report(
         role_de = role_map.get(raw_role, (raw_role.capitalize(), raw_role.capitalize()))[0]
         is_urlaub = name.lower() in urlauber_liste_lower
 
-        wars_with_participation = int(getattr(row, "player_contribution_count", 0) or 0)
         wars_in_history_window  = int(getattr(row, "player_participating_count", 0) or 0)
-        decks_total             = int(getattr(row, "player_total_decks_used", 0) or 0)
         donations               = int(getattr(row, "player_donations", 0) or 0)
         donations_received      = int(getattr(row, "player_donations_received", 0) or 0)
         aktueller_trophy        = int(getattr(row, "player_trophies", 0) or 0)
@@ -2157,32 +2161,21 @@ def generate_html_report(
         player_tag = str(getattr(row, "player_tag", "") or "")
         profile = _player_profiles.get(player_tag, {})
 
-        # Score-Logik: Gewichteter 3-Faktor-Score
-        # 50% Deck-Vollstaendigkeit: Wie viele der moeglichen Decks wurden gespielt?
-        # 30% Dabei-Quote (Anwesenheit): In wie vielen Kriegen war der Spieler dabei?
-        # 20% Qualitaet: Normierter Ø Fame/Deck-Wert (75 = min, 225 = max)
-        anwesenheits_rate = (wars_with_participation / wars_in_history_window) if wars_in_history_window > 0 else 0.0
-        max_moegliche_decks   = wars_with_participation * 16
-        deck_vollstaendigkeit = (decks_total / max_moegliche_decks) if max_moegliche_decks > 0 else 0.0
+        # Score-Logik und CSV-Adapter stecken in app/bewertung.py.
+        bewertung = bewerte(kriegsteilnahme_aus_csv_zeile(
+            row._asdict(), fame_columns_all, wars_in_history_window
+        ))
 
-        total_war_points   = sum(int(getattr(row, col, 0) or 0) for col in fame_columns_all)
+        score                   = bewertung.score
+        fame_per_deck           = bewertung.fame_per_deck
+        deck_vollstaendigkeit   = bewertung.deck_vollstaendigkeit
+        max_moegliche_decks     = bewertung.max_moegliche_decks
+        decks_total             = bewertung.decks_gesamt
+        wars_with_participation = bewertung.kriege_mit_teilnahme
+        total_war_points        = bewertung.war_points_total
+
         aktueller_fame     = int(getattr(row, fame_spalte, 0) or 0)
         aktueller_decks    = int(getattr(row, aktueller_decks_spalte, 0) or 0)
-
-        # Ø Punkte: rollierender Schnitt ueber die letzten 3-4 Kriege.
-        # Glaettet Ausreisser durch Pech beim Matchmaking für ein faireres Bild.
-        rolling_fame  = sum(int(getattr(row, c, 0) or 0) for c in fame_cols_rolling)
-        rolling_decks = sum(int(getattr(row, c, 0) or 0) for c in decks_cols_rolling)
-        fame_per_deck = round(rolling_fame / rolling_decks) if rolling_decks > 0 else 0
-
-        # Score-Berechnung: 50% Deck-Vollständigkeit + 30% Dabei-Quote + 20% Qualität
-        qualitaet = max(0.0, min(1.0, (fame_per_deck - 75) / 150)) if fame_per_deck > 0 else 0.0
-        score = round(
-            50 * deck_vollstaendigkeit +
-            30 * anwesenheits_rate +
-            20 * qualitaet,
-            2
-        )
 
         leecher_warnung = ""
         if 0 < fame_per_deck < APP_CONFIG["DROPPER_THRESHOLD"]:
@@ -2222,7 +2215,7 @@ def generate_html_report(
             w_fame  = int(getattr(row, fame_col,  0) or 0)
             if w_decks == 0 and w_fame == 0:
                 continue  # Krieg existiert, Spieler war nicht dabei → überspringen (kein Punkt)
-            ratio = w_decks / 16
+            ratio = w_decks / DECKS_PRO_KRIEG
             if ratio >= 0.90:
                 trend_dots.append("🟢")
             elif ratio >= 0.50:
@@ -2240,7 +2233,7 @@ def generate_html_report(
         if (
             wars_with_participation >= 3
             and wars_with_participation == wars_in_history_window
-            and decks_total == wars_with_participation * 16
+            and decks_total == wars_with_participation * DECKS_PRO_KRIEG
         ):
             streak_badge = (
                 f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥 {wars_with_participation}"
@@ -2286,7 +2279,9 @@ def generate_html_report(
             )
 
         # Welpenschutz-Logik
-        is_welpenschutz = wars_with_participation <= APP_CONFIG["MIN_PARTICIPATION"] and not is_urlaub
+        # Welpenschutz kommt aus der Bewertung; Urlaub ist eine Maßnahmen-Entscheidung
+        # des Anführers und bleibt deshalb hier.
+        is_welpenschutz = bewertung.ist_welpenschutz and not is_urlaub
         welpenschutz_badge = ""
         if is_welpenschutz:
             welpenschutz_badge = (
@@ -3806,7 +3801,7 @@ def main():
         )
         df_active = df_active[visible_mask].copy()
 
-    fame_columns = sorted([col for col in df.columns if col.startswith("s_") and col.endswith("_fame")], reverse=True)
+    fame_columns = fame_spalten_sortiert(df.columns)
     if not fame_columns:
         print("❌ Keine Fame-Spalten gefunden.")
         return
