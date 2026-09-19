@@ -141,12 +141,12 @@
       "priority": 2
     },
     {
-      "name": "Knitte",
+      "name": "Deniz",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Deniz",
+      "name": "Knitte",
       "scenario": "TOP",
       "priority": 2
     },
@@ -303,13 +303,13 @@
       "status": "STARK"
     },
     {
-      "name": "Knitte",
-      "score": 86.69,
+      "name": "Deniz",
+      "score": 86.59,
       "status": "STARK"
     },
     {
-      "name": "Deniz",
-      "score": 86.59,
+      "name": "Knitte",
+      "score": 86.56,
       "status": "STARK"
     },
     {
@@ -384,7 +384,7 @@
     },
     {
       "name": "Chico",
-      "score": 74.2,
+      "score": 74.87,
       "status": "OK"
     },
     {
@@ -555,13 +555,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Knitte",
-      "score": 86.69,
+      "name": "Deniz",
+      "score": 86.59,
       "tip": "Weiter so"
     },
     {
-      "name": "Deniz",
-      "score": 86.59,
+      "name": "Knitte",
+      "score": 86.56,
       "tip": "Weiter so"
     },
     {
@@ -636,7 +636,7 @@
     },
     {
       "name": "Chico",
-      "score": 74.2,
+      "score": 74.87,
       "tip": "Weiter so"
     },
     {
@@ -1036,18 +1036,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Knitte",
-        "player_tag": "#ULYJ2CQP",
-        "role": "member",
-        "score": 86.69,
-        "strikes": 0,
-        "donations": 430,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Deniz",
         "player_tag": "#JV80YYJRJ",
         "role": "member",
@@ -1056,6 +1044,18 @@
         "donations": 110,
         "participation_count": 6,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Knitte",
+        "player_tag": "#ULYJ2CQP",
+        "role": "member",
+        "score": 86.56,
+        "strikes": 0,
+        "donations": 430,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
