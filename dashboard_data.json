@@ -71,17 +71,17 @@
       "priority": 2
     },
     {
-      "name": "_spc07",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Theezy",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "kl.kranker Affe",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "_spc07",
       "scenario": "TOP",
       "priority": 2
     },
@@ -208,11 +208,6 @@
       "status": "STARK"
     },
     {
-      "name": "_spc07",
-      "score": 90.75,
-      "status": "STARK"
-    },
-    {
       "name": "Theezy",
       "score": 90.67,
       "status": "STARK"
@@ -220,6 +215,11 @@
     {
       "name": "kl.kranker Affe",
       "score": 90.65,
+      "status": "STARK"
+    },
+    {
+      "name": "_spc07",
+      "score": 90.62,
       "status": "STARK"
     },
     {
@@ -234,7 +234,7 @@
     },
     {
       "name": "Swordfish",
-      "score": 89.82,
+      "score": 89.95,
       "status": "STARK"
     },
     {
@@ -460,11 +460,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "_spc07",
-      "score": 90.75,
-      "tip": "Weiter so"
-    },
-    {
       "name": "Theezy",
       "score": 90.67,
       "tip": "Weiter so"
@@ -472,6 +467,11 @@
     {
       "name": "kl.kranker Affe",
       "score": 90.65,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "_spc07",
+      "score": 90.62,
       "tip": "Weiter so"
     },
     {
@@ -486,7 +486,7 @@
     },
     {
       "name": "Swordfish",
-      "score": 89.82,
+      "score": 89.95,
       "tip": "Weiter so"
     },
     {
@@ -825,18 +825,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "_spc07",
-        "player_tag": "#2U8288CVY",
-        "role": "member",
-        "score": 90.75,
-        "strikes": 0,
-        "donations": 198,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Theezy",
         "player_tag": "#JUUR8UGL8",
         "role": "member",
@@ -855,6 +843,18 @@
         "score": 90.65,
         "strikes": 0,
         "donations": 154,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "_spc07",
+        "player_tag": "#2U8288CVY",
+        "role": "member",
+        "score": 90.62,
+        "strikes": 0,
+        "donations": 198,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -888,7 +888,7 @@
         "name": "Swordfish",
         "player_tag": "#2CPRGY8G",
         "role": "member",
-        "score": 89.82,
+        "score": 89.95,
         "strikes": 0,
         "donations": 196,
         "participation_count": 10,
