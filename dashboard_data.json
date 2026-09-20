@@ -131,17 +131,17 @@
       "priority": 2
     },
     {
-      "name": "chris",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "AaleDieter",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Johan",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
@@ -162,11 +162,6 @@
     },
     {
       "name": "honigmelone",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "rote sonne",
       "scenario": "TOP",
       "priority": 2
     }
@@ -273,11 +268,6 @@
       "status": "STARK"
     },
     {
-      "name": "chris",
-      "score": 87.63,
-      "status": "STARK"
-    },
-    {
       "name": "AaleDieter",
       "score": 87.63,
       "status": "STARK"
@@ -290,6 +280,11 @@
     {
       "name": "Johan",
       "score": 87.54,
+      "status": "STARK"
+    },
+    {
+      "name": "chris",
+      "score": 87.5,
       "status": "STARK"
     },
     {
@@ -329,7 +324,7 @@
     },
     {
       "name": "rote sonne",
-      "score": 85.35,
+      "score": 84.95,
       "status": "STARK"
     },
     {
@@ -379,7 +374,7 @@
     },
     {
       "name": "DST",
-      "score": 78.12,
+      "score": 78.25,
       "status": "OK"
     },
     {
@@ -525,11 +520,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "chris",
-      "score": 87.63,
-      "tip": "Weiter so"
-    },
-    {
       "name": "AaleDieter",
       "score": 87.63,
       "tip": "Weiter so"
@@ -542,6 +532,11 @@
     {
       "name": "Johan",
       "score": 87.54,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "chris",
+      "score": 87.5,
       "tip": "Weiter so"
     },
     {
@@ -581,7 +576,7 @@
     },
     {
       "name": "rote sonne",
-      "score": 85.35,
+      "score": 84.95,
       "tip": "Weiter so"
     },
     {
@@ -631,7 +626,7 @@
     },
     {
       "name": "DST",
-      "score": 78.12,
+      "score": 78.25,
       "tip": "Weiter so"
     },
     {
@@ -794,7 +789,7 @@
         "role": "member",
         "score": 91.55,
         "strikes": 0,
-        "donations": 250,
+        "donations": 260,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -993,18 +988,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "chris",
-        "player_tag": "#YQ82VR9JQ",
-        "role": "member",
-        "score": 87.63,
-        "strikes": 0,
-        "donations": 410,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "AaleDieter",
         "player_tag": "#CUJ9PJ2UV",
         "role": "member",
@@ -1025,6 +1008,18 @@
         "donations": 170,
         "participation_count": 10,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "chris",
+        "player_tag": "#YQ82VR9JQ",
+        "role": "member",
+        "score": 87.5,
+        "strikes": 0,
+        "donations": 420,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
@@ -1095,18 +1090,6 @@
         "score": 85.9,
         "strikes": 0,
         "donations": 110,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "rote sonne",
-        "player_tag": "#L8PV090J",
-        "role": "member",
-        "score": 85.35,
-        "strikes": 0,
-        "donations": 148,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
