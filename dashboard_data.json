@@ -46,12 +46,12 @@
       "priority": 2
     },
     {
-      "name": "OneAndOnly",
+      "name": "OmniOni",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "OmniOni",
+      "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
     },
@@ -178,18 +178,18 @@
       "status": "STARK"
     },
     {
-      "name": "OneAndOnly",
-      "score": 92.53,
-      "status": "STARK"
-    },
-    {
       "name": "OmniOni",
       "score": 92.27,
       "status": "STARK"
     },
     {
+      "name": "OneAndOnly",
+      "score": 92.27,
+      "status": "STARK"
+    },
+    {
       "name": "Bensie",
-      "score": 91.6,
+      "score": 91.73,
       "status": "STARK"
     },
     {
@@ -430,18 +430,18 @@
       "tip": "Weiter so"
     },
     {
-      "name": "OneAndOnly",
-      "score": 92.53,
-      "tip": "Weiter so"
-    },
-    {
       "name": "OmniOni",
       "score": 92.27,
       "tip": "Weiter so"
     },
     {
+      "name": "OneAndOnly",
+      "score": 92.27,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Bensie",
-      "score": 91.6,
+      "score": 91.73,
       "tip": "Weiter so"
     },
     {
@@ -679,7 +679,7 @@
         "role": "member",
         "score": 3.33,
         "strikes": 0,
-        "donations": 186,
+        "donations": 194,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -703,7 +703,7 @@
         "role": "member",
         "score": 6.67,
         "strikes": 0,
-        "donations": 152,
+        "donations": 160,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
@@ -760,18 +760,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "OneAndOnly",
-        "player_tag": "#8P0J8P0L",
-        "role": "member",
-        "score": 92.53,
-        "strikes": 0,
-        "donations": 482,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "OmniOni",
         "player_tag": "#UUPCULU9V",
         "role": "member",
@@ -784,10 +772,22 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "OneAndOnly",
+        "player_tag": "#8P0J8P0L",
+        "role": "member",
+        "score": 92.27,
+        "strikes": 0,
+        "donations": 482,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Bensie",
         "player_tag": "#2QRVR9L8",
         "role": "member",
-        "score": 91.6,
+        "score": 91.73,
         "strikes": 0,
         "donations": 754,
         "participation_count": 10,
