@@ -146,17 +146,17 @@
       "priority": 2
     },
     {
-      "name": "Knitte",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "Deniz",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Reklaminator",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Knitte",
       "scenario": "TOP",
       "priority": 2
     },
@@ -298,11 +298,6 @@
       "status": "STARK"
     },
     {
-      "name": "Knitte",
-      "score": 86.69,
-      "status": "STARK"
-    },
-    {
       "name": "elazeto",
       "score": 86.65,
       "status": "STARK"
@@ -320,6 +315,11 @@
     {
       "name": "Reklaminator",
       "score": 86.12,
+      "status": "STARK"
+    },
+    {
+      "name": "Knitte",
+      "score": 86.03,
       "status": "STARK"
     },
     {
@@ -550,11 +550,6 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Knitte",
-      "score": 86.69,
-      "tip": "Weiter so"
-    },
-    {
       "name": "elazeto",
       "score": 86.65,
       "tip": "Weiter so"
@@ -572,6 +567,11 @@
     {
       "name": "Reklaminator",
       "score": 86.12,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Knitte",
+      "score": 86.03,
       "tip": "Weiter so"
     },
     {
@@ -794,7 +794,7 @@
         "role": "member",
         "score": 91.29,
         "strikes": 0,
-        "donations": 240,
+        "donations": 250,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
@@ -1041,18 +1041,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Knitte",
-        "player_tag": "#ULYJ2CQP",
-        "role": "member",
-        "score": 86.69,
-        "strikes": 0,
-        "donations": 564,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Nati",
         "player_tag": "#LVUGLUCP9",
         "role": "member",
@@ -1085,6 +1073,18 @@
         "donations": 188,
         "participation_count": 10,
         "trend": "",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Knitte",
+        "player_tag": "#ULYJ2CQP",
+        "role": "member",
+        "score": 86.03,
+        "strikes": 0,
+        "donations": 584,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       },
