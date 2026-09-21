@@ -151,17 +151,17 @@
       "priority": 2
     },
     {
+      "name": "honigmelone",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "Reklaminator",
       "scenario": "TOP",
       "priority": 2
     },
     {
       "name": "Knitte",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "honigmelone",
       "scenario": "TOP",
       "priority": 2
     }
@@ -308,6 +308,11 @@
       "status": "STARK"
     },
     {
+      "name": "honigmelone",
+      "score": 86.3,
+      "status": "STARK"
+    },
+    {
       "name": "Reklaminator",
       "score": 86.12,
       "status": "STARK"
@@ -315,11 +320,6 @@
     {
       "name": "Knitte",
       "score": 86.03,
-      "status": "STARK"
-    },
-    {
-      "name": "honigmelone",
-      "score": 85.9,
       "status": "STARK"
     },
     {
@@ -560,6 +560,11 @@
       "tip": "Weiter so"
     },
     {
+      "name": "honigmelone",
+      "score": 86.3,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Reklaminator",
       "score": 86.12,
       "tip": "Weiter so"
@@ -567,11 +572,6 @@
     {
       "name": "Knitte",
       "score": 86.03,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "honigmelone",
-      "score": 85.9,
       "tip": "Weiter so"
     },
     {
@@ -1060,6 +1060,18 @@
         "recommended_action": "promote_review"
       },
       {
+        "name": "honigmelone",
+        "player_tag": "#Q2GRGLQR",
+        "role": "member",
+        "score": 86.3,
+        "strikes": 0,
+        "donations": 130,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
         "name": "Reklaminator",
         "player_tag": "#P0G2GYJQ9",
         "role": "member",
@@ -1078,18 +1090,6 @@
         "score": 86.03,
         "strikes": 0,
         "donations": 612,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "honigmelone",
-        "player_tag": "#Q2GRGLQR",
-        "role": "member",
-        "score": 85.9,
-        "strikes": 0,
-        "donations": 130,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
         "reason": "Score über 85",
