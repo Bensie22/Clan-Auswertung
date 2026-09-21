@@ -156,12 +156,12 @@
       "priority": 2
     },
     {
-      "name": "Reklaminator",
+      "name": "Knitte",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "Knitte",
+      "name": "Reklaminator",
       "scenario": "TOP",
       "priority": 2
     }
@@ -313,13 +313,13 @@
       "status": "STARK"
     },
     {
-      "name": "Reklaminator",
-      "score": 86.12,
+      "name": "Knitte",
+      "score": 86.03,
       "status": "STARK"
     },
     {
-      "name": "Knitte",
-      "score": 86.03,
+      "name": "Reklaminator",
+      "score": 85.98,
       "status": "STARK"
     },
     {
@@ -565,13 +565,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "Reklaminator",
-      "score": 86.12,
+      "name": "Knitte",
+      "score": 86.03,
       "tip": "Weiter so"
     },
     {
-      "name": "Knitte",
-      "score": 86.03,
+      "name": "Reklaminator",
+      "score": 85.98,
       "tip": "Weiter so"
     },
     {
@@ -1072,18 +1072,6 @@
         "recommended_action": "promote_review"
       },
       {
-        "name": "Reklaminator",
-        "player_tag": "#P0G2GYJQ9",
-        "role": "member",
-        "score": 86.12,
-        "strikes": 0,
-        "donations": 188,
-        "participation_count": 10,
-        "trend": "",
-        "reason": "Score über 85",
-        "recommended_action": "promote_review"
-      },
-      {
         "name": "Knitte",
         "player_tag": "#ULYJ2CQP",
         "role": "member",
@@ -1092,6 +1080,18 @@
         "donations": 612,
         "participation_count": 10,
         "trend": "🟢🟢🟢🟢🟢",
+        "reason": "Score über 85",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Reklaminator",
+        "player_tag": "#P0G2GYJQ9",
+        "role": "member",
+        "score": 85.98,
+        "strikes": 0,
+        "donations": 188,
+        "participation_count": 10,
+        "trend": "",
         "reason": "Score über 85",
         "recommended_action": "promote_review"
       }
