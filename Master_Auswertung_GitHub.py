@@ -4421,7 +4421,9 @@ def generate_html_report(
         for opp in top_opp:
             medal = rank_medals.get(opp["rank"], f"#{opp['rank']}")
             images_html = "".join([
-                f"<img src=\"{esc(c['icon'])}\" style='width: 23%; border-radius: 4px; margin: 1%;' loading='lazy' decoding='async' width='300' height='360' alt=\"{esc(c['name'])}\" title=\"{esc(c['name'])}\">"
+                # Groesse kommt aus .deck-images img (siehe dort) – der Container
+                # heisst hier genauso, die Regel greift also mit.
+                f"<img src=\"{esc(c['icon'])}\" loading='lazy' decoding='async' width='300' height='360' alt=\"{esc(c['name'])}\" title=\"{esc(c['name'])}\">"
                 for c in opp["cards"]
             ])
             api_names = [c["name"].lower().replace(".", "").replace(" ", "-") for c in opp["cards"]]

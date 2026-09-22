@@ -132,6 +132,11 @@ def seite():
             raw_mahnwache=[{"name": '>MRK< <img src=x onerror=alert(1)>', "offen": 4}],
             top_decks_data={"decks": {"d1": {"wins": 12, "losses": 4, "cards": karten,
                                              "players": ["Vorbild"]}}},
+            # Gegner-Decks gehoeren mit in die Fixture: Sie bauen ihre Kartenbilder
+            # in einem eigenen Codepfad. Ohne sie lief der Test gegen verzerrte
+            # Bilder ins Leere – dort stand der kaputte Inline-Stil noch, waehrend
+            # der Clan-Deck-Pfad laengst korrigiert war.
+            opponent_decks={"g1": {"cards": karten, "seen": 10, "losses": 9}},
             echte_neulinge=["Neuling"], rueckkehrer=[], warn_rueckkehrer=[],
             kicked_players={}, is_weekly_run=True,
             player_profiles={"#AAA": {"exp_level": 60, "best_trophies": 9000,
@@ -598,6 +603,12 @@ def test_kartenbilder_werden_nicht_verzerrt(seite):
     nur die Breite, bleibt height=360px wirksam und die Karte wird gequetscht –
     gemessen am 22.09.2026: 64x360 statt 64x77, Verhaeltnis 0,18 statt 0,83.
     """
+    # Beide Bildpfade muessen in der Fixture vorkommen – Clan-Decks und
+    # Gegner-Decks werden an verschiedenen Stellen gebaut. Genau daran ist die
+    # erste Fassung dieses Tests vorbeigelaufen.
+    assert "Meta-Decks" in seite, "Fixture rendert keine Clan-Decks"
+    assert "Gegner-Deck" in seite, "Fixture rendert keine Gegner-Decks"
+
     regel = re.search(r"\.deck-images img \{([^}]*)\}", seite)
     assert regel, "keine eigene Regel fuer .deck-images img"
     assert "height: auto" in regel.group(1), "ohne height:auto gewinnt das Attribut"
