@@ -591,6 +591,26 @@ def test_spaltenbreiten_ergeben_hundert_prozent(seite):
     assert sum(breiten) == 100, f"{sum(breiten)}% statt 100%"
 
 
+def test_kartenbilder_werden_nicht_verzerrt(seite):
+    """Breite per CSS ohne Hoehe laesst die Attribut-Hoehe stehen.
+
+    Die Kartenbilder tragen width='300' height='360' als Attribut. Setzt das CSS
+    nur die Breite, bleibt height=360px wirksam und die Karte wird gequetscht –
+    gemessen am 22.09.2026: 64x360 statt 64x77, Verhaeltnis 0,18 statt 0,83.
+    """
+    regel = re.search(r"\.deck-images img \{([^}]*)\}", seite)
+    assert regel, "keine eigene Regel fuer .deck-images img"
+    assert "height: auto" in regel.group(1), "ohne height:auto gewinnt das Attribut"
+    assert "aspect-ratio" in regel.group(1), \
+        "ohne aspect-ratio faellt das Deck zusammen, wenn die Bilder blockiert sind"
+
+    # Und inline darf keine Breite ohne Hoehe mehr auftauchen.
+    for bild in re.findall(r"<img [^>]*>", seite):
+        stil = re.search(r"style=['\"]([^'\"]*)['\"]", bild)
+        if stil and "width" in stil.group(1):
+            assert "height" in stil.group(1), f"Breite ohne Hoehe inline: {bild[:90]}"
+
+
 def test_kartenbilder_haben_alt_und_laden_verzoegert(seite):
     bilder = re.findall(r"<img [^>]*>", seite)
     assert bilder, "keine Kartenbilder gerendert"

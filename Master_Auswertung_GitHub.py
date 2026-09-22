@@ -1551,6 +1551,15 @@ def render_html_template(
             .deck-header {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }}
             .winrate {{ background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 4px 8px; border-radius: 6px; font-weight: bold; font-size: 0.85em; margin-left: auto; }}
             .deck-images {{ display: flex; flex-wrap: wrap; justify-content: center; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }}
+            /* height: auto ist hier Pflicht, nicht Kosmetik: Die Bilder tragen
+               width='300' height='360' als Attribut. Setzt man per CSS nur die
+               Breite, bleibt die Attribut-Hoehe von 360px stehen – gemessen am
+               22.09.2026 wurde jede Karte als 64x360 gequetscht (Verhaeltnis 0,18
+               statt 0,83). Erst mit height:auto greift das Seitenverhaeltnis.
+               aspect-ratio haelt den Platz zusaetzlich frei, wenn die Karten-
+               bilder von Supercell blockiert werden (Adblocker, strenge Browser) –
+               sonst faellt das Deck in sich zusammen. */
+            .deck-images img {{ width: 23%; height: auto; aspect-ratio: 300 / 360; margin: 1%; border-radius: 4px; }}
             .copy-btn {{ display: block; text-align: center; text-decoration: none; padding: 10px; border-radius: 8px; font-weight: bold; margin-top: 8px; transition: 0.2s; border: 1px solid rgba(255,255,255,0.1); }}
             .copy-btn:hover {{ opacity: 0.8; }}
 
@@ -4023,7 +4032,10 @@ def generate_html_report(
                 royaleapi_link = f"https://royaleapi.com/decks/stats/{','.join(api_names)}"
 
                 images_html = "".join([
-                    f"<img src=\"{esc(c['icon'])}\" style='width: 23%; border-radius: 4px; margin: 1%;' loading='lazy' decoding='async' width='300' height='360' alt=\"{esc(c['name'])}\" title=\"{esc(c['name'])}\">"
+                    # Groesse kommt aus .deck-images img – inline stand hier nur die
+                    # Breite, was die Karten verzerrt hat. width/height bleiben als
+                    # Attribut erhalten: Sie reservieren den Platz schon vor dem CSS.
+                    f"<img src=\"{esc(c['icon'])}\" loading='lazy' decoding='async' width='300' height='360' alt=\"{esc(c['name'])}\" title=\"{esc(c['name'])}\">"
                     for c in d["cards"]
                 ])
 
