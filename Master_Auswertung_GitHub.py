@@ -12,6 +12,7 @@ import time
 import traceback
 import html
 import copy
+import math
 import unicodedata
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
@@ -959,10 +960,22 @@ def update_top_decks(current_members: dict, top_decks_data: dict, player_war_dec
             del decks[deck_hash]
 
     # --- DECK CLEANUP (Max 100 Decks behalten, um JSON klein zu halten) ---
+    # Aussortiert wird nach ANZAHL SPIELE, nicht nach Siegquote.
+    #
+    # Vorher war die Siegquote das erste Sortierkriterium. Damit flogen genau die
+    # Decks zuerst raus, die Niederlagen gesammelt hatten – uebrig blieb eine
+    # reine Gewinnerauswahl. Messung vom 22.09.2026: 93 von 100 gespeicherten
+    # Decks standen auf 100 %, 38 davon aus einem einzigen Spiel. Eine Siegquote,
+    # die fast immer 100 % ist, sagt nichts mehr aus, und die Ueberschrift
+    # "die staerksten und belastbarsten Decks" war damit schlicht nicht gedeckt.
+    #
+    # Nach Spielanzahl zu kuerzen wirft stattdessen die Zufallstreffer weg
+    # (ein Deck, ein Spiel) und behaelt die Decks mit belastbarer Bilanz –
+    # auch die mit Niederlagen. Erst dadurch ist die Quote ueberhaupt eine Aussage.
     if len(decks) > 100:
         to_remove = heapq.nsmallest(
             len(decks) - 100, decks,
-            key=lambda k: (get_deck_winrate(decks[k]), decks[k]["wins"] + decks[k]["losses"], decks[k]["wins"])
+            key=lambda k: (decks[k]["wins"] + decks[k]["losses"], get_deck_winrate(decks[k]))
         )
         for k in to_remove:
             del decks[k]
@@ -1005,6 +1018,28 @@ def get_deck_winrate(deck_data: dict) -> float:
     return deck_data.get("wins", 0) / total_matches
 
 
+def get_deck_guete(wins: int, total: int, z: float = 1.96) -> float:
+    """Untere Grenze des 95%-Konfidenzintervalls der Siegquote (Wilson).
+
+    Wofuer: Die rohe Siegquote taugt nicht zum Sortieren, weil sie die Anzahl der
+    Spiele ignoriert. 6 Siege aus 6 Spielen ergeben 100 % und schlagen damit eine
+    14:1-Bilanz mit 93 % – obwohl die zweite Zahl offensichtlich mehr wert ist.
+
+    Die Wilson-Untergrenze beantwortet stattdessen: Wie gut ist dieses Deck
+    mindestens, wenn man die Unsicherheit bei wenigen Spielen einrechnet?
+
+        6:0   -> 0.61      14:1  -> 0.70      15:0  -> 0.80
+
+    Damit landet oben, was sich auch bewaehrt hat, und nicht der Zufallstreffer.
+    """
+    if total <= 0:
+        return 0.0
+    p = wins / total
+    nenner = 1 + z * z / total
+    zaehler = p + z * z / (2 * total) - z * math.sqrt((p * (1 - p) + z * z / (4 * total)) / total)
+    return max(0.0, zaehler / nenner)
+
+
 def is_beginner_friendly_deck(cards: list) -> bool:
     card_names = {c.get("name", "") for c in cards}
     tricky_cards = {
@@ -1036,13 +1071,16 @@ def build_deck_sections(top_decks_data: dict) -> list:
         deck_copy["_hash"] = deck_hash
         deck_copy["total_matches"] = total_matches
         deck_copy["winrate"] = int(round(get_deck_winrate(deck_data) * 100))
+        deck_copy["guete"] = get_deck_guete(deck_data.get("wins", 0), total_matches)
         deck_copy["archetype"] = get_deck_archetype(deck_data.get("cards", []))
         deck_copy["is_beginner_friendly"] = is_beginner_friendly_deck(deck_data.get("cards", []))
         decks.append(deck_copy)
 
+    # Sortiert nach Guete, nicht nach roher Quote: sonst steht ein 6:0-Zufallstreffer
+    # vor einer 14:1-Bilanz. Siehe get_deck_guete().
     meta_decks = sorted(
         [d for d in decks if d["total_matches"] >= DECK_META_MIN_MATCHES],
-        key=lambda d: (d["winrate"], d["total_matches"], d["wins"]),
+        key=lambda d: (d["guete"], d["total_matches"], d["wins"]),
         reverse=True
     )[:10]
     meta_hashes = {d["_hash"] for d in meta_decks}
@@ -1062,7 +1100,7 @@ def build_deck_sections(top_decks_data: dict) -> list:
             and d["winrate"] >= 50
             and d["is_beginner_friendly"]
         ],
-        key=lambda d: (d["winrate"], d["total_matches"], d["wins"]),
+        key=lambda d: (d["guete"], d["total_matches"], d["wins"]),
         reverse=True
     )
     beginner_decks = [d for d in beginner_decks if d["_hash"] not in meta_hashes and d["_hash"] not in solid_hashes][:10]
@@ -2223,7 +2261,11 @@ def render_html_template(
                 document.getElementById(tabName).style.display = "block";
                 setTimeout(() => document.getElementById(tabName).classList.add("active"), 10);
                 evt.currentTarget.classList.add("active");
-                window.scrollTo({{top: 0, behavior: 'smooth'}});
+                // Harter Sprung statt smooth – gleiche Begruendung wie bei toggleChat():
+                // Smooth-Scrolling wird je nach Browser und Systemeinstellung ignoriert.
+                // Dann bleibt die Seite stehen wo sie war, und die Ueberschrift des neuen
+                // Tabs liegt hinter der sticky Tab-Leiste.
+                window.scrollTo(0, 0);
             }}
 
             function openTabByName(tabName) {{
@@ -2243,7 +2285,11 @@ def render_html_template(
                 }}
                 document.getElementById(tabName).style.display = "block";
                 setTimeout(() => document.getElementById(tabName).classList.add("active"), 10);
-                window.scrollTo({{top: 0, behavior: 'smooth'}});
+                // Harter Sprung statt smooth – gleiche Begruendung wie bei toggleChat():
+                // Smooth-Scrolling wird je nach Browser und Systemeinstellung ignoriert.
+                // Dann bleibt die Seite stehen wo sie war, und die Ueberschrift des neuen
+                // Tabs liegt hinter der sticky Tab-Leiste.
+                window.scrollTo(0, 0);
             }}
 
             (function enableMobileSwipeNavigation() {{
@@ -3971,12 +4017,12 @@ def generate_html_report(
                     <div class="archetype-badge">{d['archetype']}</div>
                     <div class="deck-header">
                         <h3 style="margin: 0; color: #f97316; font-size: 1.1em; font-weight: 800;">{section['title']} #{idx}</h3>
-                        <span class="winrate">🔥 {d['winrate']}% Win</span>
+                        <span class="winrate">🔥 {d['winrate']}% {t('aus', 'from')} {d['total_matches']} {t('Spielen', 'games')}</span>
                     </div>
                     <div class="deck-images">
                         {images_html}
                     </div>
-                    <p style="font-size: 0.85em; color: #94a3b8; margin: 10px 0;">{d['wins']} {t('Siege', 'wins')} / {d['losses']} {t('Niederlagen', 'losses')} {t('in', 'in')} {d['total_matches']} {t('Spielen', 'games')}<br><span style="color:#e2e8f0; font-weight:bold;">{t('Oft gewonnen von:', 'Often won by:')} {players_str}</span></p>
+                    <p style="font-size: 0.85em; color: #94a3b8; margin: 10px 0;">{d['wins']} {t('Siege', 'wins')} / {d['losses']} {t('Niederlagen', 'losses')}<br><span style="color:#e2e8f0; font-weight:bold;">{t('Oft gewonnen von:', 'Often won by:')} {players_str}</span></p>
                     <div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px;">
                         <a href="{royaleapi_link}" class="copy-btn" style="background: #38bdf8; color: #0f172a;" target="_blank">🔗 {t('Auf RoyaleAPI öffnen & kopieren', 'Open & copy on RoyaleAPI')}</a>
                     </div>

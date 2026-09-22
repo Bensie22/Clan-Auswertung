@@ -465,6 +465,84 @@ def test_body_ist_kein_scroll_container(seite):
     assert re.search(r"\bhtml \{[^}]*overflow-x:\s*hidden", seite)
 
 
+def test_tabwechsel_springt_ohne_animation(seite):
+    """Tabwechsel muss hart nach oben springen, nicht smooth.
+
+    Gemessen: behavior:'smooth' wird je nach Browser und Systemeinstellung
+    ignoriert – window.scrollTo tut dann gar nichts. Die Seite bleibt stehen wo
+    sie war, und die Ueberschrift des neuen Tabs liegt hinter der sticky
+    Tab-Leiste. Genau so ist die Top-Decks-Ansicht aufgefallen.
+
+    Der scrollIntoView im Akkordeon ist bewusst nicht mitgemeint: Dort hat der
+    Nutzer das Element gerade selbst angeklickt, es ist also ohnehin sichtbar.
+    """
+    for name in ("openTab", "openTabByName"):
+        treffer = re.search(rf"function {name}\(.*?\n            \}}", seite, re.S)
+        assert treffer, f"{name} nicht gefunden"
+        code = re.sub(r"//[^\n]*", "", treffer.group(0))   # Kommentare raus, sonst
+        assert "behavior" not in code, f"{name} scrollt noch animiert"
+        assert re.search(r"window\.scrollTo\(0,\s*0\)", code), \
+            f"{name} springt nicht an den Seitenanfang"
+
+
+# ── Top-Decks: Siegquote ohne Stichprobe ist keine Aussage ─────────────────
+#
+# Stand 22.09.2026 standen 93 von 100 gespeicherten Decks auf 100 %, 38 davon
+# aus einem einzigen Spiel. Ursache war das Kuerzen der Datei nach Siegquote:
+# Decks mit Niederlagen flogen zuerst raus, uebrig blieb eine Gewinnerauswahl.
+
+def _deck_karten(variante=1):
+    """Acht Karten mit eindeutigen Namen – build_deck_sections dedupliziert danach."""
+    return [{"name": f"Karte {variante}-{i}", "icon": "data:image/gif;base64,R0lGODlhAQABAAAAACw="}
+            for i in range(8)]
+
+
+def test_guete_bevorzugt_die_belastbare_bilanz():
+    """6:0 darf nicht vor 14:1 stehen – der Kern des Problems."""
+    m = _mg()
+    assert m.get_deck_guete(14, 15) > m.get_deck_guete(6, 6)
+    assert m.get_deck_guete(15, 15) > m.get_deck_guete(14, 15)
+    assert m.get_deck_guete(5, 5) > m.get_deck_guete(1, 1)
+    assert m.get_deck_guete(0, 0) == 0.0
+
+
+def test_decks_werden_nach_spielanzahl_gekuerzt_nicht_nach_quote():
+    """Sonst bleibt eine Gewinnerauswahl uebrig und die Quote sagt nichts mehr."""
+    with open(os.path.join(REPO, "Master_Auswertung_GitHub.py"), encoding="utf-8") as f:
+        code = f.read()
+    block = code[code.index("--- DECK CLEANUP"):]
+    block = block[:block.index("top_decks_data[")]
+    schluessel = re.search(r"key=lambda k: \((.*?)\)\n", block, re.S).group(1)
+    assert schluessel.strip().startswith('decks[k]["wins"] + decks[k]["losses"]'), (
+        f"gekuerzt wird nach '{schluessel.strip()}' – die Spielanzahl muss zuerst kommen"
+    )
+
+
+def test_meta_decks_sortieren_nach_guete():
+    """Ein Zufallstreffer darf nicht oben auf der Seite landen."""
+    m = _mg()
+    daten = {"decks": {
+        "zufall":   {"cards": _deck_karten(1), "wins": 6,  "losses": 0, "players": ["A"], "tags": ["#A"]},
+        "bewaehrt": {"cards": _deck_karten(2), "wins": 14, "losses": 1, "players": ["B"], "tags": ["#B"]},
+    }}
+    meta = [s for s in m.build_deck_sections(daten) if "Meta" in s["title"]][0]["decks"]
+    assert meta, "keine Meta-Decks gebildet"
+    assert meta[0]["wins"] == 14, "der 6:0-Zufallstreffer steht vorn"
+
+
+def test_winrate_nennt_die_stichprobe(seite):
+    """100 % ohne Spielanzahl ist die eigentliche Irrefuehrung."""
+    # Das Badge enthaelt i18n-Spans – ohne sie zu entfernen stuende im Text
+    # "aus from 16 Spielen games". Also erst die englische Fassung raus, dann
+    # alle Tags, dann auf dem reinen deutschen Text pruefen.
+    nur_de = re.sub(r"<span class=['\"]i18n-en['\"]>.*?</span>", "", seite, flags=re.S)
+    nur_text = re.sub(r"<[^>]+>", " ", nur_de)
+    assert re.search(r"\d+%\s+aus\s+\d+\s+Spielen", nur_text), \
+        "kein Winrate-Badge nennt die Spielanzahl"
+    assert not re.search(r"\d+%\s+Win\b", nur_text), \
+        "altes Badge '100% Win' ohne Stichprobe ist noch da"
+
+
 def test_spaltenbreiten_ergeben_hundert_prozent(seite):
     breiten = [int(b) for b in re.findall(r"th:nth-child\(\d\) \{ width: (\d+)%", seite)]
     assert sum(breiten) == 100, f"{sum(breiten)}% statt 100%"
