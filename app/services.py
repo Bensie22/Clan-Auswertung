@@ -8,7 +8,7 @@ from app.data import (
     load_player_stats, strikes_for_player,
 )
 from config import (
-    STRIKE_THRESHOLD, PROMOTION_SCORE_MIN,
+    STRIKE_THRESHOLD, PROMOTION_FAME_MIN,
     DROPPER_THRESHOLD, MIN_PARTICIPATION,
     BADGE_STARK_SCORE, BADGE_STARK_FAME,
     BADGE_STABIL_SCORE, BADGE_STABIL_FAME,
@@ -73,29 +73,33 @@ def get_focus_badge(score: float, fame_per_deck: float, participation_count: int
 
 
 def build_promotion_status(p: Dict[str, Any]) -> Dict[str, Any]:
+    # Beförderung hängt am Fame des laufenden Krieges (PROMOTION_FAME_MIN) – dieselbe
+    # Kennzahl wie das "➔ BEFÖRDERN"-Badge auf der Website. Der Score spielt hier bewusst
+    # keine Rolle mehr, sonst melden Seite und Auswertung wieder Unterschiedliches.
     score = p.get("score", 0)
+    fame = p.get("fame", 0)
     donations = p.get("donations", 0)
     strikes = p.get("strikes", 0)
     role = normalize_name(p.get("role", "member"))
 
-    missing_score = max(0.0, round(PROMOTION_SCORE_MIN - score, 2))
+    missing_fame = max(0, round(PROMOTION_FAME_MIN - fame))
     missing_donations = max(0, PROMOTION_DONATIONS_MIN - donations)
 
     eligible = (
         role in {"member", "mitglied", ""}
-        and score >= PROMOTION_SCORE_MIN
+        and fame >= PROMOTION_FAME_MIN
         and donations >= PROMOTION_DONATIONS_MIN
         and strikes == 0
     )
 
-    score_progress = min(100.0, round(score / PROMOTION_SCORE_MIN * 100, 1)) if PROMOTION_SCORE_MIN else 100.0
+    fame_progress = min(100.0, round(fame / PROMOTION_FAME_MIN * 100, 1)) if PROMOTION_FAME_MIN else 100.0
     donation_progress = min(100.0, round(donations / PROMOTION_DONATIONS_MIN * 100, 1)) if PROMOTION_DONATIONS_MIN else 100.0
     strike_ok = strikes == 0
-    overall_progress = round((score_progress + donation_progress + (100.0 if strike_ok else 0.0)) / 3, 1)
+    overall_progress = round((fame_progress + donation_progress + (100.0 if strike_ok else 0.0)) / 3, 1)
 
     missing_items = []
-    if missing_score > 0:
-        missing_items.append(f"{missing_score}% Score fehlen")
+    if missing_fame > 0:
+        missing_items.append(f"{missing_fame} Fame fehlen")
     if missing_donations > 0:
         missing_items.append(f"{missing_donations} Spenden fehlen")
     if strikes > 0:
@@ -105,7 +109,11 @@ def build_promotion_status(p: Dict[str, Any]) -> Dict[str, Any]:
         "eligible": eligible,
         "current_role": p.get("role", "member"),
         "score": score,
-        "score_progress_pct": score_progress,
+        "fame": fame,
+        "fame_progress_pct": fame_progress,
+        # Alter Feldname bleibt erhalten, damit bestehende Frontend-/KI-Aufrufe
+        # nicht ins Leere greifen – er trägt jetzt den Fame-Fortschritt.
+        "score_progress_pct": fame_progress,
         "donations": donations,
         "donation_progress_pct": donation_progress,
         "strikes": strikes,
@@ -177,6 +185,8 @@ def build_players_enriched() -> Dict[str, Dict[str, Any]]:
                 "trophies": stat_entry.get("trophies", score_entry.get("trophies", 0)),
                 "score_date": score_entry.get("date"),
                 "strikes": strikes_for_player(tag, base.get("name", "")),
+                # Fame im laufenden Krieg – Grundlage der Beförderung (PROMOTION_FAME_MIN).
+                "fame": stat_entry.get("fame", 0),
                 "fame_per_deck": stat_entry.get("fame_per_deck", 0),
                 "war_points_total": stat_entry.get("war_points_total", 0),
                 "wars_with_participation": stat_entry.get("participation_count", 0),
@@ -209,6 +219,7 @@ def build_warning_candidates() -> List[Dict[str, Any]]:
                 "donations_received": p["donations_received"],
                 "trophies": p["trophies"],
                 "strikes": p["strikes"],
+                "fame": p.get("fame", 0),
                 "reason": "; ".join(reasons),
                 "recommended_action": "warning",
             })
@@ -222,7 +233,7 @@ def build_promotion_candidates() -> List[Dict[str, Any]]:
         role = normalize_name(p.get("role", "member"))
         if role not in {"member", "mitglied", ""}:
             continue
-        if p["score"] < PROMOTION_SCORE_MIN:
+        if p.get("fame", 0) < PROMOTION_FAME_MIN:
             continue
         if p["donations"] < PROMOTION_DONATIONS_MIN:
             continue
@@ -233,6 +244,7 @@ def build_promotion_candidates() -> List[Dict[str, Any]]:
             "tag": tag,
             "current_role": p.get("role", "member"),
             "score": p["score"],
+            "fame": p.get("fame", 0),
             "donations": p["donations"],
             "donations_received": p["donations_received"],
             "trophies": p["trophies"],

@@ -5,6 +5,7 @@ import shutil
 import requests
 import csv
 import base64
+import hashlib
 import json
 import sys
 import time
@@ -28,6 +29,13 @@ from config import (
     BADGE_STABIL_SCORE, BADGE_STABIL_FAME,
     TIER_SEHR_STARK, TIER_SOLIDE,
     CLAN_RELIABLE_GREEN, CLAN_RELIABLE_YELLOW,
+    PROMOTION_FAME_MIN,
+    DECK_QUOTE_REGEL_AKTIV, DECK_QUOTE_MIN,
+    DECK_QUOTE_MIN_KRIEGE, DECK_QUOTE_MIN_FEHLEND,
+    SCORE_MODELL_ERFUELLUNG, SCORE_GEWICHT_ERFUELLUNG, SCORE_GEWICHT_QUALITAET,
+    ZEIGE_KONSEQUENZEN_BLOCK, ZEIGE_LEISTUNGSTRAEGER, LEISTUNGSTRAEGER_QUOTE,
+    ZEIGE_ERWARTUNG_BEITRITT, ERWARTUNG_DECKS_PRO_KRIEG,
+    FAME_SCHNITT_ALLE_KRIEGE, STRIKES_AUSGESETZT_BIS,
 )
 
 APP_CONFIG = {
@@ -42,6 +50,7 @@ APP_CONFIG = {
     "TIER_SOLIDE":         TIER_SOLIDE,
     "CLAN_RELIABLE_GREEN": CLAN_RELIABLE_GREEN,
     "CLAN_RELIABLE_YELLOW":CLAN_RELIABLE_YELLOW,
+    "PROMOTION_FAME_MIN":  PROMOTION_FAME_MIN,
 }
 
 CHAT_COLORS = ["#38bdf8", "#a855f7", "#ef4444", "#f97316", "#10b981", "#fbbf24", "#6366f1", "#ec4899"]
@@ -56,6 +65,9 @@ DECK_BEGINNER_MIN_MATCHES = 3
 
 # API Settings (Token & E-Mails kommen sicher aus den Secrets!)
 API_TOKEN = os.environ.get("SUPERCELL_API_TOKEN")
+# Passwort fuer den verschluesselten Leitungs-Bereich in index.html.
+# Fehlt es, wird der Bereich gar nicht erst erzeugt (nie im Klartext!).
+ADMIN_PASSPHRASE = os.environ.get("ADMIN_PASSPHRASE", "")
 CLAN_TAG = "%23Y9YQC8UG"
 CLAN_NAME = "HAMBURG"
 CLAN_URL = "clan-hamburg.de"
@@ -115,6 +127,81 @@ def normalize_player_tag(tag: str) -> str:
 
 def normalize_player_name(name: str) -> str:
     return str(name or "").strip().casefold()
+
+
+def bewerte_deck_quote(kriege: list[dict]) -> dict:
+    """Bewertet, wie vollständig ein Spieler seine Decks ausspielt.
+
+    `kriege` ist chronologisch (ältester zuerst) und enthält je Krieg
+    {"decks": int, "im_clan": bool} – nur abgeschlossene Kriege, kein zzzcurrent.
+
+    Gewertet wird ein Krieg nur, wenn der Spieler auch im VORHERIGEN Krieg schon
+    im Clan war. Denn nur dann stand er beim Kriegsstart bereits im Clan und hatte
+    tatsächlich alle 16 Decks zur Verfügung. Wer mitten in der Kriegswoche beitritt,
+    konnte gar keine 16 spielen – sein Beitrittskrieg würde die Quote sonst
+    verfälschen. Dasselbe gilt für Rückkehrer nach einer Pause.
+
+    Der älteste Krieg im Fenster ist die Ausnahme: Dahinter reichen unsere Daten
+    nicht zurück. War der Spieler dort im Clan, war er es vorher auch – der Krieg
+    zählt. Sonst würden Langzeitmitglieder grundlos einen Krieg verlieren.
+
+    Die Anwesenheit ("Dabei") bleibt davon unberührt: Der Beitrittskrieg zählt
+    weiterhin als dabei gewesen, nur nicht als Maßstab für Vollständigkeit.
+    """
+    gewertete_decks = 0
+    gewertete_kriege = 0
+    for i, krieg in enumerate(kriege):
+        if not krieg["im_clan"]:
+            continue
+        vorher_im_clan = (i == 0) or kriege[i - 1]["im_clan"]
+        if not vorher_im_clan:
+            continue  # Beitritts- oder Rückkehrkrieg – nicht wertbar
+        gewertete_kriege += 1
+        gewertete_decks += krieg["decks"]
+
+    moeglich = gewertete_kriege * 16
+    fehlend = moeglich - gewertete_decks
+    quote = (gewertete_decks / moeglich) if moeglich else None
+
+    auffaellig = (
+        DECK_QUOTE_REGEL_AKTIV
+        and quote is not None
+        and gewertete_kriege >= DECK_QUOTE_MIN_KRIEGE
+        and quote < DECK_QUOTE_MIN
+        and fehlend >= DECK_QUOTE_MIN_FEHLEND
+    )
+    return {
+        "quote": quote, "kriege": gewertete_kriege,
+        "decks": gewertete_decks, "moeglich": moeglich,
+        "fehlend": fehlend, "auffaellig": auffaellig,
+    }
+
+
+def migrate_strikes_to_tags(strikes: dict, tag_by_name: dict) -> dict:
+    """Schluesselt Verwarnungen einmalig von Ingame-Name auf Spieler-Tag um.
+
+    Bis August 2026 war strikes.json nach Namen indiziert. Weil sich Ingame-Namen jederzeit
+    aendern lassen, hat eine Umbenennung den Verwarnungsstand still zurueckgesetzt – und die
+    Verwarnung damit umgehbar gemacht. Tags sind dauerhaft stabil.
+
+    Eintraege, zu denen sich kein aktuelles Mitglied finden laesst (Ex-Mitglieder), bleiben
+    unter ihrem Namensschluessel stehen; das Aufraeumen erledigt spaeter die bestehende
+    Bereinigung. Trifft ein Namensschluessel auf ein bereits vorhandenes Tag, gewinnt der
+    Tag-Eintrag – so kann in der Uebergangsphase nichts doppelt gezaehlt werden.
+    """
+    migrated: dict = {}
+    for key, value in strikes.items():
+        if str(key).startswith("#"):
+            migrated[key] = value
+
+    for key, value in strikes.items():
+        if str(key).startswith("#"):
+            continue
+        target = tag_by_name.get(normalize_player_name(key), key)
+        if target not in migrated:
+            migrated[target] = value
+
+    return migrated
 
 
 def load_website_opt_outs() -> tuple[dict, set, set]:
@@ -294,6 +381,13 @@ def build_legal_pages() -> Tuple[str, str]:
             <div class="legal-section">
                 <h3>{t('6. Cookies und Tracking', '6. Cookies and tracking')}</h3>
                 <p>{t('Diese Website verwendet keine eigenen Cookies, kein Kontaktformular und keine Analyse- oder Tracking-Tools.', 'This website does not use its own cookies, contact form, or analytics/tracking tools.')}</p>
+                <p>{t('Für die gewählte Sprache (Deutsch/Englisch) wird ein technisch notwendiger Eintrag im lokalen Speicher des Browsers (localStorage) abgelegt. Er enthält keine personenbezogenen Daten und wird nicht an einen Server übertragen.', 'A technically necessary entry for the selected language (German/English) is stored in the local storage of your browser. It contains no personal data and is not transmitted to any server.')}</p>
+            </div>
+            <div class="legal-section">
+                <h3>{t('6a. Eingebundene Inhalte Dritter', '6a. Embedded third-party content')}</h3>
+                <p>{t('Im Bereich „Top-Decks“ werden Kartenbilder direkt von den Servern von Supercell (api-assets.clashroyale.com) geladen. Beim Aufruf dieses Bereichs wird deine IP-Adresse an Supercell übertragen. Wir haben auf diese Verarbeitung keinen Einfluss.', 'In the "Top Decks" section, card images are loaded directly from Supercell servers (api-assets.clashroyale.com). When you open that section your IP address is transmitted to Supercell. We have no influence over this processing.')}</p>
+                <p>{t('Es gilt die Datenschutzerklärung von Supercell:', "Supercell's privacy policy applies:")}<br><a href="https://supercell.com/en/privacy-policy/" target="_blank" rel="noopener noreferrer">https://supercell.com/en/privacy-policy/</a></p>
+                <p>{t('Schriftarten und sonstige Ressourcen werden nicht von externen Anbietern nachgeladen. Externe Links (z. B. zu RoyaleAPI) werden erst beim Anklicken aufgerufen.', 'Fonts and other resources are not loaded from external providers. External links (e.g. to RoyaleAPI) are only called when you click them.')}</p>
             </div>
             <div class="legal-section">
                 <h3>{t('7. Versand der Clan-Auswertung per E-Mail', '7. Sending the clan report by email')}</h3>
@@ -529,8 +623,12 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
         "player_total_boat_attacks"
     ]
 
+    # s_<rid>_in_clan: 1 = Spieler war in diesem Krieg im Clan (auch mit 0 Decks), 0 = noch nicht da.
+    # Ohne diese Spalte ist "war dabei, hat nichts gespielt" nicht von "war noch nicht im Clan"
+    # unterscheidbar – beides steht sonst als 0/0 in der Zeile. Rein additiv: bestehende
+    # Auswertungen filtern auf _fame / _decks_used und sehen die Spalte nicht.
     for rid in race_ids:
-        headers_csv.extend([f"s_{rid}_fame", f"s_{rid}_decks_used", f"s_{rid}_boat_attacks"])
+        headers_csv.extend([f"s_{rid}_fame", f"s_{rid}_decks_used", f"s_{rid}_boat_attacks", f"s_{rid}_in_clan"])
 
     with open(filename, mode="w", newline="", encoding="utf-8") as file:
         writer = csv.writer(file)
@@ -544,11 +642,12 @@ def fetch_and_build_player_csv() -> Tuple[bool, dict]:
             row_history = []
 
             for rid in race_ids:
+                was_in_clan = rid in data["history"]
                 r_data = data["history"].get(rid, {"decks": 0, "fame": 0, "boat_attacks": 0})
                 decks = r_data["decks"]
                 fame = r_data["fame"]
                 ba = r_data.get("boat_attacks", 0)
-                row_history.extend([fame, decks, ba])
+                row_history.extend([fame, decks, ba, 1 if was_in_clan else 0])
 
                 # zzzcurrent ist der laufende Krieg (noch nicht abgeschlossen).
                 # Er wird nicht in den Score-Metriken gezählt – unfair, da noch nicht fertig.
@@ -999,6 +1098,10 @@ def build_deck_sections(top_decks_data: dict) -> list:
 
 def build_top_opponent_decks(opponent_decks: dict, top_n: int = 10) -> list:
     """Findet die Top-N Gegner-Decks gegen die wir am häufigsten verloren haben."""
+    # Der Aufrufer darf None uebergeben (Parameter-Default in generate_html_report),
+    # z. B. wenn der Gegner-Cache noch nicht existiert.
+    if not opponent_decks:
+        return []
     valid = [
         (deck_hash, data)
         for deck_hash, data in opponent_decks.items()
@@ -1041,7 +1144,8 @@ def calculate_teamplay_score(active_players: list[dict]) -> tuple[int, dict]:
     leecher = sum(
         1
         for p in active_players
-        if p["donations"] == 0 and p["donations_received"] > 0 and p["teilnahme_int"] > APP_CONFIG["MIN_PARTICIPATION"]
+        if p["donations"] == 0 and p["donations_received"] > 0
+        and p.get("wars_in_window", 0) > APP_CONFIG["MIN_PARTICIPATION"]
     )
     sleeper = sum(1 for p in active_players if p["donations"] == 0 and p["donations_received"] == 0)
 
@@ -1138,6 +1242,80 @@ def escape_for_html(text: str) -> str:
     return html.escape(text, quote=True)
 
 
+ADMIN_PBKDF2_ITERATIONS = 310_000
+
+
+def encrypt_admin_block(plain_html: str, passphrase: str) -> dict | None:
+    """Verschluesselt den Leitungs-Bereich fuer die oeffentliche index.html.
+
+    Hintergrund: Das Repository ist oeffentlich und der Cron committet die erzeugte
+    index.html. Alles, was im Klartext in der Seite steht, ist damit dauerhaft fuer
+    jeden lesbar – auch ueber die Git-Historie. Der Admin-Teil (Spenden-Auffaelligkeiten,
+    Chat- und Abschiedstexte) wird deshalb verschluesselt eingebettet und erst im Browser
+    entschluesselt, wenn die Clanleitung das Passwort eingibt.
+
+    Verfahren bewusst so gewaehlt, dass die WebCrypto-API es ohne Zusatzbibliothek
+    entschluesseln kann: PBKDF2-HMAC-SHA256 -> 256-Bit-Schluessel -> AES-GCM.
+    AESGCM.encrypt haengt den Auth-Tag hinten an, genau das erwartet WebCrypto.
+
+    WICHTIG: Der Chiffretext bleibt fuer immer in der Git-Historie. Ein spaeter
+    geaendertes Passwort schuetzt alte Commits nicht rueckwirkend – die Staerke des
+    Passworts ist der einzige Schutz. Ohne gesetztes Passwort wird der Block komplett
+    weggelassen (siehe Aufrufstelle), niemals im Klartext ausgeliefert.
+    """
+    if not passphrase:
+        return None
+
+    from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+
+    salt = os.urandom(16)
+    iv = os.urandom(12)
+    key = hashlib.pbkdf2_hmac(
+        "sha256", passphrase.encode("utf-8"), salt, ADMIN_PBKDF2_ITERATIONS, dklen=32
+    )
+    ciphertext = AESGCM(key).encrypt(iv, plain_html.encode("utf-8"), None)
+
+    return {
+        "v": 1,
+        "salt": base64.b64encode(salt).decode("ascii"),
+        "iv": base64.b64encode(iv).decode("ascii"),
+        "iter": ADMIN_PBKDF2_ITERATIONS,
+        "data": base64.b64encode(ciphertext).decode("ascii"),
+    }
+
+
+def esc(text) -> str:
+    """HTML-Escaping fuer alle Strings aus der API (Spielernamen, Kartennamen, Clannamen).
+
+    Spielernamen duerfen in Clash Royale Zeichen wie < > & enthalten – im Clan gibt es
+    z. B. ">MRK<". Ohne Escaping landen die roh im HTML und koennen das Markup zerlegen
+    oder Script einschleusen. Immer an der Ausgabestelle anwenden, nie an der Quelle:
+    Namen dienen an anderer Stelle als Schluessel (strikes.json, score_history.csv).
+    """
+    return html.escape(str(text), quote=True)
+
+
+def karenzzeit_aktiv(heute=None) -> tuple[bool, str]:
+    """Laeuft gerade eine Karenzzeit, in der keine Massnahmen ausgefuehrt werden?
+
+    Gibt (aktiv, Stichtag als TT.MM.JJJJ) zurueck. Nach einer Regelaenderung
+    wird die neue Bewertung sofort angezeigt, aber niemand wird automatisch
+    degradiert oder entfernt – sonst trifft es Leute fuer Verhalten, das unter
+    den alten Regeln in Ordnung war. Laeuft von selbst ab.
+    """
+    if not STRIKES_AUSGESETZT_BIS:
+        return False, ""
+    try:
+        stichtag = datetime.strptime(STRIKES_AUSGESETZT_BIS, "%Y-%m-%d").date()
+    except (TypeError, ValueError):
+        print(f"⚠️ STRIKES_AUSGESETZT_BIS ist kein Datum (JJJJ-MM-TT): {STRIKES_AUSGESETZT_BIS!r} "
+              f"– Karenzzeit wird ignoriert.")
+        return False, ""
+    if heute is None:
+        heute = datetime.now(ZoneInfo("Europe/Berlin")).date()
+    return heute <= stichtag, stichtag.strftime("%d.%m.%Y")
+
+
 def is_clan_war_period(now_utc: datetime | None = None) -> bool:
     if now_utc is None:
         now_utc = datetime.now(timezone.utc)
@@ -1216,18 +1394,23 @@ def render_html_template(
     records,
     urlaub_html,
     top_aufsteiger,
-    top_leecher,
-    total_msgs,
-    chat_boxes_html,
+    admin_blob_json,
     table_html,
     deck_html,
     impressum_html,
     datenschutz_html,
     clan_overview_html="",
+    konsequenzen_html="",
+    leistungstraeger_html="",
+    fame_zeitraum="",
     opponent_meta_html="",
-    warlog_data=None
+    warlog_data=None,
+    join_cta_html=""
 ):
-    warlog_json = json.dumps(warlog_data or {}, ensure_ascii=False)
+    # "</" maskieren, damit ein Wert wie "</script>" den Script-Block nicht vorzeitig beendet.
+    warlog_json = json.dumps(warlog_data or {}, ensure_ascii=False).replace("</", "<\\/")
+    # Schwellenwert im Regeltext: kommt aus config.py, damit Text und Bewertung nicht auseinanderlaufen.
+    strike_threshold_txt = APP_CONFIG["STRIKE_THRESHOLD"]
     return f"""<!DOCTYPE html>
     <html lang="de">
     <head>
@@ -1235,7 +1418,28 @@ def render_html_template(
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Auswertung: {clan_name}</title>
         <style>
-            @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap');
+            /* Nunito wird selbst ausgeliefert, NICHT von Google Fonts geladen – sonst ginge bei
+               jedem Seitenaufruf die IP der Besucher an einen Google-Server (in DE abmahnrelevant).
+               Die Dateien liegen unter fonts/ im Repo (SIL Open Font License, fonts/OFL.txt).
+               Es ist eine Variable Font: eine Datei deckt 400–800 ab, daher der Bereich in
+               font-weight. Zwei Subsets: latin deckt Deutsch/Englisch, latin-ext internationale
+               Spielernamen (z. B. polnische oder türkische Zeichen). */
+            @font-face {{
+                font-family: 'Nunito';
+                font-style: normal;
+                font-weight: 400 800;
+                font-display: swap;
+                src: url('fonts/nunito-latin.woff2') format('woff2');
+                unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+            }}
+            @font-face {{
+                font-family: 'Nunito';
+                font-style: normal;
+                font-weight: 400 800;
+                font-display: swap;
+                src: url('fonts/nunito-latin-ext.woff2') format('woff2');
+                unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+            }}
             html[lang="de"] .i18n-en {{ display: none !important; }}
             html[lang="en"] .i18n-de {{ display: none !important; }}
             .lang-toggle {{ position: absolute; top: 16px; right: 16px; display: inline-flex; gap: 0; background: rgba(15,23,42,0.85); border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; padding: 3px; z-index: 5; backdrop-filter: blur(4px); box-shadow: 0 4px 12px rgba(0,0,0,0.4); }}
@@ -1243,8 +1447,11 @@ def render_html_template(
             .lang-toggle button:hover {{ color: #fff; }}
             .lang-toggle button.active {{ background: #38bdf8; color: #0f172a; box-shadow: 0 2px 6px rgba(56,189,248,0.45); }}
             @media (max-width: 600px) {{ .lang-toggle {{ top: 10px; right: 10px; padding: 2px; }} .lang-toggle button {{ padding: 5px 10px; font-size: 0.78em; }} }}
-            html, body {{ width: 100%; max-width: 100%; overflow-x: hidden; }}
-            body {{ font-family: 'Nunito', sans-serif; margin: 0; padding: 0; background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('https://images.hdqwalls.com/download/clash-royale-4k-19-1920x1080.jpg') no-repeat center center fixed; background-size: cover; color: #f8fafc; }}
+            /* overflow-x NUR auf <html>. Auf <body> macht es den Body zum Scroll-Container,
+               dadurch verliert jedes position:sticky darin (Tab-Leiste, Tabellenkoepfe) seine
+               Wirkung. Auf <html> wird der Wert an den Viewport weitergereicht – sticky bleibt heil. */
+            html {{ width: 100%; max-width: 100%; overflow-x: hidden; }}
+            body {{ width: 100%; max-width: 100%; font-family: 'Nunito', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif; margin: 0; padding: 0; background: radial-gradient(1100px 600px at 50% -5%, rgba(56, 189, 248, 0.10), transparent 60%), linear-gradient(180deg, #0f172a 0%, #131f38 45%, #0f172a 100%); background-attachment: fixed; color: #f8fafc; }}
             .container {{ max-width: 1200px; margin: auto; padding: 20px; box-sizing: border-box; }}
             .header-container {{ position: relative; background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('{header_img_src}') no-repeat center center; background-size: cover; border-radius: 12px; padding: 40px 20px; margin-top: 20px; margin-bottom: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }}
             .header-title {{ font-weight: 800; color: #ffffff; font-size: 2.2em; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.5); letter-spacing: 1px; }}
@@ -1258,7 +1465,16 @@ def render_html_template(
             .tab-btn.active {{ background: #38bdf8; color: #0f172a; border-color: #38bdf8; font-weight: 800; box-shadow: 0 4px 10px rgba(56, 189, 248, 0.3); }}
             .tab-content {{ display: none; animation: fadeIn 0.4s ease-in-out; }}
             .tab-content.active {{ display: block; }}
-            @keyframes fadeIn {{ from {{ opacity: 0; transform: translateY(10px); }} to {{ opacity: 1; transform: translateY(0); }} }}
+            /* Bewusst nur opacity: ein transform auf .tab-content erzeugt einen Containing Block
+               und setzt waehrend der Animation die sticky Tabellenkoepfe darin ausser Kraft. */
+            @keyframes fadeIn {{ from {{ opacity: 0; }} to {{ opacity: 1; }} }}
+            @media (prefers-reduced-motion: reduce) {{
+                .tab-content {{ animation: none; }}
+                * {{ scroll-behavior: auto !important; }}
+            }}
+            :focus-visible {{ outline: 3px solid #38bdf8; outline-offset: 2px; border-radius: 4px; }}
+            /* Nur fuer Screenreader – sichtbar ausgeblendet, aber vorlesbar. */
+            .visually-hidden {{ position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }}
 
             .welcome-box {{ background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95)); border-left: 5px solid #fbbf24; padding: 25px 30px; border-radius: 12px; margin-bottom: 30px; font-size: 1.05em; color: #e2e8f0; line-height: 1.7; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); border: 1px solid rgba(251, 191, 36, 0.2); }}
             .welcome-box p {{ margin: 0 0 12px 0; }}
@@ -1300,12 +1516,39 @@ def render_html_template(
             .copy-btn {{ display: block; text-align: center; text-decoration: none; padding: 10px; border-radius: 8px; font-weight: bold; margin-top: 8px; transition: 0.2s; border: 1px solid rgba(255,255,255,0.1); }}
             .copy-btn:hover {{ opacity: 0.8; }}
 
+            /* Spieler-Suche ueber der Detail-Auswertung */
+            .spieler-suche {{ background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #38bdf8; border-radius: 10px; padding: 16px 20px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }}
+            .spieler-suche label {{ display: block; color: #cbd5e1; font-weight: 700; font-size: 0.95em; margin-bottom: 10px; }}
+            .suche-zeile {{ display: flex; gap: 10px; flex-wrap: wrap; }}
+            .spieler-suche input[type="search"] {{ flex: 1 1 240px; min-width: 0; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 12px 14px; font-family: inherit; font-size: 1em; }}
+            .spieler-suche input[type="search"]::placeholder {{ color: #64748b; }}
+            .spieler-suche button {{ background: rgba(56,189,248,0.15); color: #38bdf8; border: 1px solid rgba(56,189,248,0.35); border-radius: 8px; padding: 12px 16px; font-family: inherit; font-weight: 700; font-size: 0.95em; cursor: pointer; white-space: nowrap; }}
+            .spieler-suche button:hover {{ background: rgba(56,189,248,0.28); color: #fff; }}
+            .stufen-filter {{ display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }}
+            .stufe-btn {{ background: rgba(15, 23, 42, 0.7); color: #94a3b8; border: 1px solid rgba(255,255,255,0.12); border-radius: 999px; padding: 8px 14px; font-family: inherit; font-weight: 700; font-size: 0.85em; cursor: pointer; transition: all 0.15s ease; }}
+            .stufe-btn:hover {{ background: rgba(56,189,248,0.18); color: #fff; }}
+            .stufe-btn.aktiv {{ background: #38bdf8; color: #0f172a; border-color: #38bdf8; }}
+            /* Stufe ist gerade unbesetzt: Knopf bleibt sichtbar (das Stufensystem soll
+               immer vollstaendig erkennbar sein), aber gedaempft. Ausblenden waere
+               irrefuehrend – dann sieht es aus, als gaebe es die Stufe nicht mehr. */
+            .stufe-btn.leer {{ opacity: 0.45; }}
+            .stufe-btn .anzahl {{ opacity: 0.75; font-weight: 600; margin-left: 4px; }}
+            #spieler-suche-status {{ margin: 10px 0 0 0; font-size: 0.9em; color: #94a3b8; min-height: 1.2em; }}
+            #spieler-suche-status.kein-treffer {{ color: #fbbf24; font-weight: 700; }}
+            /* Ausblenden per Klasse statt inline-style: die Tabelle wechselt je nach
+               Bildschirmbreite zwischen table-row und block – ein fester Wert waere falsch. */
+            .suche-versteckt {{ display: none !important; }}
+
             .tier-section {{ position: relative; }}
             .tier-title {{ margin: 0; padding: 15px 0 10px 0; font-weight: 800; font-size: 1.4em; color: #fbbf24; border-bottom: 2px solid rgba(255,255,255,0.1); }}
             table {{ width: 100%; table-layout: fixed; border-collapse: collapse; background: rgba(15, 23, 42, 0.9); border-radius: 8px; margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.1); }}
-            th:nth-child(1) {{ width: 18%; }}
+            /* Spieler 18%->16% zugunsten der Status-Spalte (siehe nth-child(3)).
+               179px reichen fuer die realen Ingame-Namen weiterhin locker. */
+            th:nth-child(1) {{ width: 16%; }}
             th:nth-child(2) {{ width: 12%; text-align: center; }}
-            th:nth-child(3) {{ width: 10%; text-align: center; }}
+            /* 10%->12%: Das "➔ BEFÖRDERN"-Badge ist ~120px breit und passte sonst nicht
+               in die Zelle (table-layout: fixed schneidet nicht ab, es ragte in "Dabei"). */
+            th:nth-child(3) {{ width: 12%; text-align: center; }}
             th:nth-child(4) {{ width: 9%; text-align: center; }}
             th:nth-child(5) {{ width: 10%; text-align: center; }}
             th:nth-child(6) {{ width: 9%; text-align: center; }}
@@ -1315,12 +1558,18 @@ def render_html_template(
             tr:nth-child(odd) {{ background-color: rgba(0, 0, 0, 0.45); }} tr:nth-child(even) {{ background-color: rgba(255, 255, 255, 0.15); }} tr:hover {{ background-color: rgba(255, 255, 255, 0.3); }}
             th, td {{ padding: 14px 8px; text-align: left; word-wrap: break-word; overflow-wrap: break-word; vertical-align: middle; }}
             td:nth-child(2), td:nth-child(4), td:nth-child(5), td:nth-child(6), td:nth-child(7), td:nth-child(8), td:nth-child(9) {{ text-align: center; }}
-            th:nth-child(3), td:nth-child(3) {{ text-align: center; white-space: nowrap; }}
+            /* Kein nowrap in der Status-Spalte: bei table-layout:fixed ist sie nur ~10% breit,
+               das "➔ BEFÖRDERN"-Badge allein ist aber breiter. Ohne Umbruch ragte es in die
+               Nachbarspalte "Dabei" und verdeckte sie. Die Rollennamen sind Einzelwoerter,
+               brechen also ohnehin nicht um. */
+            th:nth-child(3), td:nth-child(3) {{ text-align: center; }}
 
             th {{ position: sticky; top: 128px; background-color: #0f172a; color: #94a3b8; z-index: 800; font-weight: 600; font-size: 0.9em; border-bottom: 1px solid rgba(255,255,255,0.1); line-height: 1.4; box-shadow: 0 4px 5px rgba(0,0,0,0.3); }}
             td {{ border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-size: 1.05em; }}
 
-            .badge-ja {{ background-color: #10b981; color: #ffffff; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 0.8em; margin-left: 8px; }}
+            /* inline-block: das Badge rutscht als Ganzes in die naechste Zeile,
+               statt zwischen "➔" und "BEFÖRDERN" auseinandergerissen zu werden. */
+            .badge-ja {{ display: inline-block; background-color: #10b981; color: #ffffff; padding: 4px 8px; border-radius: 6px; font-weight: 800; font-size: 0.8em; margin-top: 4px; white-space: nowrap; }}
             .name-col {{ font-weight: 800; color: #ffffff; }}
             .focus-pill {{ display: inline-flex; align-items: center; justify-content: center; min-width: 104px; padding: 5px 10px; border-radius: 999px; font-size: 0.8em; font-weight: 800; white-space: nowrap; }}
 
@@ -1334,13 +1583,13 @@ def render_html_template(
 
             .custom-tooltip {{ position: relative; display: inline-block; cursor: help; }}
             .custom-tooltip.dotted {{ border-bottom: 1px dotted rgba(56, 189, 248, 0.5); }}
-            .custom-tooltip .tooltip-text {{ visibility: hidden; width: max-content; background-color: rgba(15, 23, 42, 0.98); color: #fff; text-align: center; border-radius: 6px; padding: 6px 12px; position: absolute; z-index: 9999; bottom: 140%; left: 50%; transform: translateX(-50%); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 4px 10px rgba(0,0,0,0.4); opacity: 0; transition: opacity 0.2s ease-in-out; font-size: 0.9em; font-weight: normal; font-family: 'Nunito', sans-serif; }}
+            .custom-tooltip .tooltip-text {{ visibility: hidden; width: max-content; background-color: rgba(15, 23, 42, 0.98); color: #fff; text-align: center; border-radius: 6px; padding: 6px 12px; position: absolute; z-index: 9999; bottom: 140%; left: 50%; transform: translateX(-50%); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 4px 10px rgba(0,0,0,0.4); opacity: 0; transition: opacity 0.2s ease-in-out; font-size: 0.9em; font-weight: normal; font-family: 'Nunito', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif; }}
             .custom-tooltip .tooltip-text::after {{ content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: rgba(255, 255, 255, 0.2) transparent transparent transparent; }}
             .custom-tooltip.align-left .tooltip-text {{ left: 0; transform: none; }}
             .custom-tooltip.align-left .tooltip-text::after {{ left: 10px; margin-left: 0; }}
             .custom-tooltip:hover .tooltip-text {{ visibility: visible; opacity: 1; }}
 
-            .accordion-btn {{ background: rgba(30, 41, 59, 0.9); color: #cbd5e1; cursor: pointer; padding: 18px 25px; width: 100%; border: none; text-align: left; outline: none; font-size: 1.1em; font-weight: 600; border-radius: 8px; margin-bottom: 8px; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.05); font-family: inherit; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); scroll-margin-top: 80px; }}
+            .accordion-btn {{ background: rgba(30, 41, 59, 0.9); color: #cbd5e1; cursor: pointer; padding: 18px 25px; width: 100%; border: none; text-align: left; font-size: 1.1em; font-weight: 600; border-radius: 8px; margin-bottom: 8px; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.05); font-family: inherit; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); scroll-margin-top: 80px; }}
             .accordion-btn.active, .accordion-btn:hover {{ background: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.3); color: #fff; }}
             .accordion-btn::after {{ content: '+'; font-size: 1.5em; color: #38bdf8; font-weight: bold; transition: 0.3s; }}
             .accordion-btn.active::after {{ content: '−'; transform: rotate(180deg); }}
@@ -1415,6 +1664,17 @@ def render_html_template(
                 table:not(.radar-table):not(.war-hist-table) td:nth-child(7)::before, .wiki-table td:nth-child(7)::before {{ content: "Fame gesamt"; }}
                 table:not(.radar-table):not(.war-hist-table) td:nth-child(8)::before, .wiki-table td:nth-child(8)::before {{ content: "Trend"; }}
                 table:not(.radar-table):not(.war-hist-table) td:nth-child(9)::before, .wiki-table td:nth-child(9)::before {{ content: "Spenden"; }}
+                /* Englische Spaltenbeschriftung der Karten-Ansicht. CSS content: laesst sich nicht
+                   ueber die i18n-Spans uebersetzen, deshalb pro Sprache eine eigene Regel. */
+                html[lang="en"] table:not(.radar-table):not(.war-hist-table) td:nth-child(1)::before, html[lang="en"] .wiki-table td:nth-child(1)::before {{ content: "Player"; }}
+                html[lang="en"] table:not(.radar-table):not(.war-hist-table) td:nth-child(2)::before, html[lang="en"] .wiki-table td:nth-child(2)::before {{ content: "Check"; }}
+                html[lang="en"] table:not(.radar-table):not(.war-hist-table) td:nth-child(3)::before, html[lang="en"] .wiki-table td:nth-child(3)::before {{ content: "Status"; }}
+                html[lang="en"] table:not(.radar-table):not(.war-hist-table) td:nth-child(4)::before, html[lang="en"] .wiki-table td:nth-child(4)::before {{ content: "Present"; }}
+                html[lang="en"] table:not(.radar-table):not(.war-hist-table) td:nth-child(5)::before, html[lang="en"] .wiki-table td:nth-child(5)::before {{ content: "Deck Usage"; }}
+                html[lang="en"] table:not(.radar-table):not(.war-hist-table) td:nth-child(6)::before, html[lang="en"] .wiki-table td:nth-child(6)::before {{ content: "Avg Fame/Deck"; }}
+                html[lang="en"] table:not(.radar-table):not(.war-hist-table) td:nth-child(7)::before, html[lang="en"] .wiki-table td:nth-child(7)::before {{ content: "Total Fame"; }}
+                html[lang="en"] table:not(.radar-table):not(.war-hist-table) td:nth-child(8)::before, html[lang="en"] .wiki-table td:nth-child(8)::before {{ content: "Trend"; }}
+                html[lang="en"] table:not(.radar-table):not(.war-hist-table) td:nth-child(9)::before, html[lang="en"] .wiki-table td:nth-child(9)::before {{ content: "Donations"; }}
                 .wiki-table td {{ font-size: 0.92em; }}
                 .name-col {{ font-size: 1.05em; }}
                 .focus-pill {{ min-width: 0; width: fit-content; }}
@@ -1442,7 +1702,9 @@ def render_html_template(
                 table:not(.radar-table):not(.war-hist-table) {{ table-layout: auto; font-size: 0.82em; }}
                 table:not(.radar-table):not(.war-hist-table):not(.wiki-table) th {{
                     position: sticky;
-                    top: 78px;
+                    /* Muss >= Hoehe der sticky Tab-Leiste sein (gemessen 86px), sonst schiebt
+                       sich der Tabellenkopf unter die Navigation. */
+                    top: 88px;
                     white-space: nowrap;
                     padding: 8px 5px;
                     font-size: 0.8em;
@@ -1461,7 +1723,7 @@ def render_html_template(
                     <button type="button" data-lang="de" aria-pressed="true">DE</button>
                     <button type="button" data-lang="en" aria-pressed="false">EN</button>
                 </div>
-                <h1 class="header-title"><span onclick="toggleChat()" style="cursor: pointer;" title="Chat-Hilfe ein-/ausblenden">📊</span> {t('Clan-Auswertung', 'Clan Report')}: {clan_name} <br>
+                <h1 class="header-title"><button type="button" onclick="toggleChat()" aria-controls="admin-chat-container" aria-expanded="false" data-i18n-attr="title" data-i18n-de="Bereich der Clanleitung ein-/ausblenden" data-i18n-en="Toggle clan leadership area" title="Bereich der Clanleitung ein-/ausblenden" style="background: none; border: 0; padding: 0; font: inherit; color: inherit; cursor: pointer;"><span aria-hidden="true">📊</span><span class="visually-hidden">{t('Bereich der Clanleitung', 'Clan leadership area')}</span></button> {t('Clan-Auswertung', 'Clan Report')}: {clan_name} <br>
                 <span class="header-date">{t('Stand', 'As of')}: {heute_datum}</span>
                 <span class="header-mobile-tip">{t('📱 Tipp: Für die beste Übersicht am Handy bitte quer halten 🔄', '📱 Tip: For the best view on mobile, hold the device sideways 🔄')}</span>
                 <span class="header-mobile-tip" style="margin-top: 2px;">{t('🔄 An Kriegstagen wird alle 10 Minuten eine neue Version erstellt – zum Anzeigen der neuesten Daten bitte die Seite manuell neu laden (F5).', '🔄 On war days a new version is generated every 10 minutes – to see the latest data please reload the page manually (F5).')}</span></h1>
@@ -1480,8 +1742,10 @@ def render_html_template(
                     <p>{t('Schön, dass du über unsere Clan-Info hierher gefunden hast. Egal ob du schon ewig dabei bist oder gerade erst überlegst, uns beizutreten: Schau dich in Ruhe um!', 'Great that you found us through our clan info. Whether you have been around forever or are just thinking about joining: take a look around!')}</p>
                     <p>{t('Ein starker Clan braucht aktive Mitglieder. Auf dieser Seite tracken wir jede Woche transparent unseren Erfolg im Clankrieg und unsere Spendenbereitschaft.', 'A strong clan needs active members. On this page we transparently track our clan war success and donation behavior every week.')}</p>
                     <p>{t('Wir sind eine entspannte, aber ehrgeizige Truppe. Bei uns zählt Verlässlichkeit mehr als reine Trophäen. Wenn du einen dauerhaft aktiven Clan suchst und deine 4 Decks verlässlich spielst, bist du bei uns genau <b>richtig</b>! 🛡️', 'We are a relaxed but ambitious crew. Reliability matters more here than raw trophies. If you are looking for a persistently active clan and you reliably play your 4 decks, you are in exactly the <b>right</b> place! 🛡️')}</p>
-                    <p>{t('Damit unser Clan langfristig erfolgreich bleibt, setzen wir auf klare und faire Regeln. Wer einmal verhindert ist, kann sich selbstverständlich vorab abmelden. Ein vollständig ausgelassener Kriegstag (0 von 4 Kämpfen) wird jedoch konsequent geahndet und führt in der Regel zu einer sofortigen Degradierung oder zum Ausschluss aus dem Clan.', 'To keep our clan successful in the long run, we rely on clear and fair rules. If you are unable to participate once, you can of course notify us in advance. However, completely skipping a war day (0 out of 4 battles) will be consistently penalized and typically results in an immediate demotion or removal from the clan.')}</p>
+                    <p>{t(f'Damit unser Clan langfristig erfolgreich bleibt, setzen wir auf klare und faire Regeln. Wer einmal verhindert ist, meldet sich vorab ab — das ist jederzeit okay. Zwei Dinge schauen wir uns an: Ein vollständig ausgelassener Kriegstag (0 von 4 Kämpfen) ohne Abmeldung wird direkt von der Clanleitung angesprochen. Zusätzlich läuft einmal pro Woche die automatische Auswertung: Wer dort unter einen Score von {APP_CONFIG["STRIKE_THRESHOLD"]} rutscht, bekommt einen internen Hinweis. Wie sich der Score zusammensetzt, steht unter „Regeln &amp; System“.', f'To keep our clan successful in the long run, we rely on clear and fair rules. If you cannot make it, just let us know in advance — that is always fine. We look at two things: completely skipping a war day (0 out of 4 battles) without notice is addressed directly by the clan leadership. On top of that, the automatic evaluation runs once a week: anyone dropping below a score of {APP_CONFIG["STRIKE_THRESHOLD"]} gets an internal flag. How the score is calculated is explained under "Rules &amp; System".')}</p>
                 </div>
+
+                {join_cta_html}
 
                 {hype_balken_html}
 
@@ -1489,6 +1753,8 @@ def render_html_template(
                 {mahnwache_html}
                 {clan_overview_html}
                 {clan_ampel_html}
+                {konsequenzen_html}
+                {leistungstraeger_html}
                 {weekly_summary_html}
                 {coach_html}
 
@@ -1516,9 +1782,9 @@ def render_html_template(
                     <div class="card hof">
                         <h3>📖 {t('Hall of Fame (Ewig)', 'Hall of Fame (All-Time)')}</h3>
                         <ul style="font-size: 0.95em;">
-                            <li><b>{t('Spenden-Gott', 'Donation God')}:</b> {records['donations']['name']} ({records['donations']['val']})</li>
-                            <li><b>{t('Max Trophäen', 'Max Trophies')}:</b> {records['trophies']['name']} ({records['trophies']['val']} 🏆)</li>
-                            <li><b>{t('Mega-Comeback', 'Mega Comeback')}:</b> {records['delta']['name']} (+{records['delta']['val']}%)</li>
+                            <li><b>{t('Spenden-Gott', 'Donation God')}:</b> {esc(records['donations']['name'])} ({records['donations']['val']})</li>
+                            <li><b>{t('Max Trophäen', 'Max Trophies')}:</b> {esc(records['trophies']['name'])} ({records['trophies']['val']} 🏆)</li>
+                            <li><b>{t('Mega-Comeback', 'Mega Comeback')}:</b> {esc(records['delta']['name'])} (+{records['delta']['val']}%)</li>
                         </ul>
                     </div>
                     <div class="card urlaub">
@@ -1529,17 +1795,28 @@ def render_html_template(
                         <h3>🚀 {t('Größte Aufsteiger', 'Top Risers')}</h3>
                         <ul>{top_aufsteiger}</ul>
                     </div>
-                    <div class="card leecher">
-                        <h3>📦 {t('Spenden auffällig', 'Notable Donations')}</h3>
-                        <ul>{top_leecher}</ul>
-                    </div>
-
+                    <!-- Leitungs-Bereich: steht NICHT im Klartext in dieser Datei.
+                         Der Inhalt liegt verschluesselt in ADMIN_BLOB (unten im Script-Block)
+                         und wird erst nach Passworteingabe im Browser entschluesselt. -->
                     <div id="admin-chat-container" style="display: none; width: 100%;">
-                        <div class="card messenger">
-                            <h3 style="color: #f1c40f; margin-bottom: 10px;">🎮 {t('Chat-Hilfe', 'Chat Helper')} ({total_msgs}-{t('Teiler', 'parts')})</h3>
-                            <p style="font-size: 0.9em; color: #cbd5e1; margin-top: 0; margin-bottom: 15px;">{t('Klicke oben auf das 📊-Symbol, um diese Hilfe ein- oder auszublenden. Wähle den passenden Tonfall und kopiere dann die', 'Click the 📊 symbol above to toggle this helper. Pick the matching tone, then copy the')} {total_msgs} {t('Texte nacheinander in den Chat.', 'texts one by one into the chat.')}</p>
-                            {chat_boxes_html}
+                        <div class="card messenger" id="admin-lock">
+                            <h3 style="color: #f1c40f; margin-bottom: 10px;">🔒 {t('Bereich der Clanleitung', 'Clan Leadership Area')}</h3>
+                            <p style="font-size: 0.9em; color: #cbd5e1; margin-top: 0; margin-bottom: 15px;">{t('Dieser Bereich ist verschlüsselt. Bitte das Passwort der Clanleitung eingeben.', 'This area is encrypted. Please enter the clan leadership password.')}</p>
+                            <form id="admin-unlock-form" style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+                                <label for="admin-pass" class="visually-hidden">{t('Passwort', 'Password')}</label>
+                                <input type="password" id="admin-pass" autocomplete="current-password"
+                                       data-i18n-attr="placeholder" data-i18n-de="Passwort" data-i18n-en="Password"
+                                       placeholder="Passwort"
+                                       style="flex: 1 1 200px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 10px; font-family: inherit; font-size: 1em;">
+                                <button type="submit"
+                                        style="background: rgba(241,196,15,0.15); color: #f1c40f; border: 1px solid rgba(241,196,15,0.4); border-radius: 6px; padding: 10px 18px; font-family: inherit; font-weight: 800; font-size: 0.95em; cursor: pointer;">🔓 {t('Entsperren', 'Unlock')}</button>
+                                <label style="display: flex; align-items: center; gap: 6px; color: #94a3b8; font-size: 0.85em; cursor: pointer;">
+                                    <input type="checkbox" id="admin-remember"> {t('Auf diesem Gerät merken', 'Remember on this device')}
+                                </label>
+                            </form>
+                            <p id="admin-error" role="alert" style="display: none; color: #ef4444; font-size: 0.9em; margin: 10px 0 0 0;"></p>
                         </div>
+                        <div id="admin-content" style="width: 100%;"></div>
                     </div>
 
                 </div>
@@ -1551,15 +1828,39 @@ def render_html_template(
                     <p style="margin: 0 0 15px 0; font-size: 0.9em; color: #94a3b8; font-style: italic;">{t('Weitere Infos unter', 'More info under')} <b>📖 {t('Regeln & System', 'Rules & System')}</b>.</p>
                     <div style="display: flex; flex-wrap: wrap; gap: 15px; color: #cbd5e1;">
                         <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>🌱 {t('Welpenschutz', 'Pup Protection')}:</b> {t('Erster Clankrieg geschützt – danach volle Bewertung', 'First clan war protected – full scoring afterwards')}</div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>❌ 1/1:</b> {t('Interner Hinweis bei Inaktivität → sofortige Maßnahme', 'Internal flag on inactivity → immediate action')}</div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>📦 {t('Spenden auffällig', 'Notable donations')}:</b> {t('Fordert, spendet aber 0', 'Requests but donates 0')}</div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>💤 {t('Spenden inaktiv', 'Donations inactive')}:</b> {t('Spendet 0, fordert 0', 'Donates 0, requests 0')}</div>
                         <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>⚠️ {t('Ø Punkte', 'Avg points')}:</b> {t('Auffällig niedriger Punkteschnitt pro Deck', 'Notably low points-per-deck average')} (&lt;130)</div>
                         <div style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 6px;"><b>🔥 Streak:</b> {t('Mehrere Wochen 100% Score', 'Multiple weeks at 100% score')}</div>
                     </div>
                 </div>
 
-                <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; margin-bottom: 30px; color: #ffffff;">📋 {t('Detail-Auswertung', 'Detailed Stats')}</h2>
+                <h2 style="font-weight: 800; font-size: 1.8em; text-align: center; margin-top: 10px; margin-bottom: 20px; color: #ffffff;">📋 {t('Detail-Auswertung', 'Detailed Stats')}</h2>
+
+                <div class="spieler-suche">
+                    <label for="spieler-suche-feld">🔎 {t('Namen eingeben – mehrere durch Komma trennen, um sie zu vergleichen:', 'Enter names – separate several with a comma to compare them:')}</label>
+                    <div class="suche-zeile">
+                        <input type="search" id="spieler-suche-feld" autocomplete="off"
+                               data-i18n-attr="placeholder"
+                               data-i18n-de="z. B. Bensie, DST" data-i18n-en="e.g. Bensie, DST"
+                               placeholder="z. B. Bensie, DST">
+                        <button type="button" id="spieler-suche-reset"
+                                data-i18n-attr="title"
+                                data-i18n-de="Suche und Filter zurücksetzen" data-i18n-en="Clear search and filters"
+                                title="Suche und Filter zurücksetzen">✕ {t('Alle', 'All')}</button>
+                    </div>
+                    <div class="stufen-filter" role="group"
+                         data-i18n-attr="aria-label"
+                         data-i18n-de="Nach Leistungsstufe filtern" data-i18n-en="Filter by performance tier"
+                         aria-label="Nach Leistungsstufe filtern">
+                        <button type="button" class="stufe-btn aktiv" data-tier="alle" aria-pressed="true">{t('Alle', 'All')}</button>
+                        <button type="button" class="stufe-btn" data-tier="sehr-stark" aria-pressed="false">{t('Sehr stark', 'Very Strong')}</button>
+                        <button type="button" class="stufe-btn" data-tier="solide-basis" aria-pressed="false">{t('Solide Basis', 'Solid Base')}</button>
+                        <button type="button" class="stufe-btn" data-tier="mehr-drin" aria-pressed="false">{t('Mehr drin', 'Underperforming')}</button>
+                        <button type="button" class="stufe-btn" data-tier="ausbaufaehig" aria-pressed="false">{t('Ausbaufähig', 'Room to Grow')}</button>
+                        <button type="button" class="stufe-btn" data-tier="urlaub" aria-pressed="false">🏖️ {t('Urlaub', 'Vacation')}</button>
+                    </div>
+                    <p id="spieler-suche-status" role="status" aria-live="polite"></p>
+                </div>
+
                 {table_html}
             </div>
 
@@ -1579,11 +1880,18 @@ def render_html_template(
                 <button class="accordion-btn">⚖️ {t('Regeln bei Inaktivität', 'Rules on Inactivity')}</button>
                 <div class="accordion-content">
                     <p><span class="i18n-de">Wer verhindert ist, meldet sich vorher ab — das ist jederzeit okay. Wer ohne Abmeldung gar nicht kämpft (0 von 4 Decks), muss mit sofortiger Degradierung oder Rauswurf rechnen.</span><span class="i18n-en">If you can't make it, just let us know in advance — that's always fine. Anyone who doesn't fight at all without prior notice (0 out of 4 decks) faces immediate demotion or removal.</span></p>
+                    <p style="background: rgba(56,189,248,0.08); border-left: 3px solid #38bdf8; padding: 10px 14px; border-radius: 6px;"><span class="i18n-de"><b>Zwei getrennte Dinge — bitte nicht verwechseln:</b><br>
+                    <b>1. Der Kriegstag.</b> Ein komplett ausgelassener Kriegstag ohne Abmeldung wird von der Clanleitung von Hand angesprochen. Das ist eine Entscheidung von Menschen, keine Rechnung.<br>
+                    <b>2. Die Wochen-Auswertung.</b> Einmal pro Woche läuft die automatische Bewertung über den Score (siehe unten). Wer dabei unter <b>{strike_threshold_txt}</b> liegt, bekommt einen internen Hinweis; wer darüber liegt, baut einen bestehenden Hinweis wieder ab. Ein einzelner schwacher Kriegstag führt hier nicht automatisch zu einer Maßnahme — entscheidend ist das Wochenbild.<br>
+                    Der <b>Welpenschutz 🌱</b> gilt im ersten Krieg nach dem Beitritt: In dieser Zeit gibt es keine Verwarnung. Maßgeblich ist, wie lange du im Clan bist — nicht, wie oft du gespielt hast.</span><span class="i18n-en"><b>Two separate things — please don't mix them up:</b><br>
+                    <b>1. The war day.</b> A completely skipped war day without notice is addressed manually by the clan leadership. That is a human decision, not a calculation.<br>
+                    <b>2. The weekly evaluation.</b> Once a week the automatic scoring runs (see below). Anyone below <b>{strike_threshold_txt}</b> gets an internal flag; anyone above works off an existing flag. A single weak war day does not automatically trigger action here — what counts is the weekly picture.<br>
+                    <b>Pup protection 🌱</b> applies during your first war after joining: no warnings in that period. What matters is how long you have been in the clan — not how often you played.</span></p>
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th><span class="i18n-de">Spieler</span><span class="i18n-en">Player</span></th><th><span class="i18n-de">Check</span><span class="i18n-en">Check</span></th><th><span class="i18n-de">Status</span><span class="i18n-en">Status</span></th><th><span class="i18n-de">Dabei</span><span class="i18n-en">Present</span></th><th><span class="i18n-de">Deck-Nutzung</span><span class="i18n-en">Deck Usage</span></th><th><span class="i18n-de">Ø Fame/Deck</span><span class="i18n-en">Avg Fame/Deck</span></th><th><span class="i18n-de">Fame gesamt</span><span class="i18n-en">Total Fame</span></th><th><span class="i18n-de">Trend</span><span class="i18n-en">Trend</span></th><th>🃏 <span class="i18n-de">Spenden</span><span class="i18n-en">Donations</span></th></tr>
-                            <tr><td class='name-col'><span class='i18n-de'>Spieler A</span><span class='i18n-en'>Player A</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'><span class='i18n-de'>⚠️ ausbaufähig</span><span class='i18n-en'>⚠️ room to grow</span></span></td><td><span class='i18n-de'>Ältester</span><span class='i18n-en'>Elder</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>95/160</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>179</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>14.320</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>303</span></td></tr>
-                            <tr><td class='name-col'><span class='i18n-de'>Spieler B</span><span class='i18n-en'>Player B</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'><span class='i18n-de'>⚠️ ausbaufähig</span><span class='i18n-en'>⚠️ room to grow</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>4/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>28/64</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>100</span> ⚠️<br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>3.200</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> 💤</td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler A</span><span class='i18n-en'>Player A</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'><span class='i18n-de'>⚠️ ausbaufähig</span><span class='i18n-en'>⚠️ room to grow</span></span></td><td><span class='i18n-de'>Ältester</span><span class='i18n-en'>Elder</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>95/160</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>179</span><br><span style='font-size:0.75em; color:#64748b;'>{fame_zeitraum}</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>14.320</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>303</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler B</span><span class='i18n-en'>Player B</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'><span class='i18n-de'>⚠️ ausbaufähig</span><span class='i18n-en'>⚠️ room to grow</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>4/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>28/64</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>100</span> ⚠️<br><span style='font-size:0.75em; color:#64748b;'>{fame_zeitraum}</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>3.200</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🔴🔴🔴🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> 💤</td></tr>
                         </table>
                     </div>
                     <ul>
@@ -1605,8 +1913,8 @@ def render_html_template(
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th><span class="i18n-de">Spieler</span><span class="i18n-en">Player</span></th><th><span class="i18n-de">Check</span><span class="i18n-en">Check</span></th><th><span class="i18n-de">Status</span><span class="i18n-en">Status</span></th><th><span class="i18n-de">Dabei</span><span class="i18n-en">Present</span></th><th><span class="i18n-de">Deck-Nutzung</span><span class="i18n-en">Deck Usage</span></th><th><span class="i18n-de">Ø Fame/Deck</span><span class="i18n-en">Avg Fame/Deck</span></th><th><span class="i18n-de">Fame gesamt</span><span class="i18n-en">Total Fame</span></th><th><span class="i18n-de">Trend</span><span class="i18n-en">Trend</span></th><th>🃏 <span class="i18n-de">Spenden</span><span class="i18n-en">Donations</span></th></tr>
-                            <tr><td class='name-col'><span class='i18n-de'>Spieler C </span><span class='i18n-en'>Player C </span><span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥 4</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'><span class='i18n-de'>🛡️ stabil</span><span class='i18n-en'>🛡️ stable</span></span></td><td><span class='i18n-de'>Vize</span><span class='i18n-en'>Co-leader</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>160/160</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>131</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>10.480</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>146</span></td></tr>
-                            <tr><td class='name-col'><span class='i18n-de'>Spieler D </span><span class='i18n-en'>Player D </span><span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'><span class='i18n-de'>neu dabei</span><span class='i18n-en'>newcomer</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#60a5fa;'>1/10</span><br><span style='font-size:0.75em; color:#60a5fa;'><span class='i18n-de'>neu dabei</span><span class='i18n-en'>newcomer</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>16/16</span><br><span style='font-size:0.75em; color:#60a5fa;'><span class='i18n-de'>neu dabei</span><span class='i18n-en'>newcomer</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>200</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>1.600</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler C </span><span class='i18n-en'>Player C </span><span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥 4</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'><span class='i18n-de'>🛡️ stabil</span><span class='i18n-en'>🛡️ stable</span></span></td><td><span class='i18n-de'>Vize</span><span class='i18n-en'>Co-leader</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>160/160</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>131</span><br><span style='font-size:0.75em; color:#64748b;'>{fame_zeitraum}</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>10.480</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>146</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler D </span><span class='i18n-en'>Player D </span><span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'><span class='i18n-de'>neu dabei</span><span class='i18n-en'>newcomer</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#60a5fa;'>1/10</span><br><span style='font-size:0.75em; color:#60a5fa;'><span class='i18n-de'>neu dabei</span><span class='i18n-en'>newcomer</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>16/16</span><br><span style='font-size:0.75em; color:#60a5fa;'><span class='i18n-de'>neu dabei</span><span class='i18n-en'>newcomer</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>200</span><br><span style='font-size:0.75em; color:#64748b;'>{fame_zeitraum}</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>1.600</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span></td></tr>
                         </table>
                     </div>
                     <ul>
@@ -1630,8 +1938,8 @@ def render_html_template(
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th><span class="i18n-de">Spieler</span><span class="i18n-en">Player</span></th><th><span class="i18n-de">Check</span><span class="i18n-en">Check</span></th><th><span class="i18n-de">Status</span><span class="i18n-en">Status</span></th><th><span class="i18n-de">Dabei</span><span class="i18n-en">Present</span></th><th><span class="i18n-de">Deck-Nutzung</span><span class="i18n-en">Deck Usage</span></th><th><span class="i18n-de">Ø Fame/Deck</span><span class="i18n-en">Avg Fame/Deck</span></th><th><span class="i18n-de">Fame gesamt</span><span class="i18n-en">Total Fame</span></th><th><span class="i18n-de">Trend</span><span class="i18n-en">Trend</span></th><th>🃏 <span class="i18n-de">Spenden</span><span class="i18n-en">Donations</span></th></tr>
-                            <tr><td class='name-col'><span class='i18n-de'>Spieler X</span><span class='i18n-en'>Player X</span></td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'><span class='i18n-de'>⭐ stark</span><span class='i18n-en'>⭐ strong</span></span></td><td><span class='i18n-de'>Ältester</span><span class='i18n-en'>Elder</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>160/160</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>185</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>14.800</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>180</span></td></tr>
-                            <tr><td class='name-col'><span class='i18n-de'>Spieler Y</span><span class='i18n-en'>Player Y</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'><span class='i18n-de'>⚠️ ausbaufähig</span><span class='i18n-en'>⚠️ room to grow</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>95/160</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>175</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>11.875</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟡🟡🔴🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>60</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler X</span><span class='i18n-en'>Player X</span></td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'><span class='i18n-de'>⭐ stark</span><span class='i18n-en'>⭐ strong</span></span></td><td><span class='i18n-de'>Ältester</span><span class='i18n-en'>Elder</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>160/160</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>185</span><br><span style='font-size:0.75em; color:#64748b;'>{fame_zeitraum}</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>14.800</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>180</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler Y</span><span class='i18n-en'>Player Y</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'><span class='i18n-de'>⚠️ ausbaufähig</span><span class='i18n-en'>⚠️ room to grow</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>95/160</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>175</span><br><span style='font-size:0.75em; color:#64748b;'>{fame_zeitraum}</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>11.875</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟡🟡🔴🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>60</span></td></tr>
                         </table>
                     </div>
                     <ul>
@@ -1647,8 +1955,8 @@ def render_html_template(
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th><span class="i18n-de">Spieler</span><span class="i18n-en">Player</span></th><th><span class="i18n-de">Check</span><span class="i18n-en">Check</span></th><th><span class="i18n-de">Status</span><span class="i18n-en">Status</span></th><th><span class="i18n-de">Dabei</span><span class="i18n-en">Present</span></th><th><span class="i18n-de">Deck-Nutzung</span><span class="i18n-en">Deck Usage</span></th><th><span class="i18n-de">Ø Fame/Deck</span><span class="i18n-en">Avg Fame/Deck</span></th><th><span class="i18n-de">Fame gesamt</span><span class="i18n-en">Total Fame</span></th><th><span class="i18n-de">Trend</span><span class="i18n-en">Trend</span></th><th>🃏 <span class="i18n-de">Spenden</span><span class="i18n-en">Donations</span></th></tr>
-                            <tr><td class='name-col'><span class='i18n-de'>Spieler E</span><span class='i18n-en'>Player E</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'><span class='i18n-de'>⚠️ ausbaufähig</span><span class='i18n-en'>⚠️ room to grow</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>8/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>100/128</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>180</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>11.520</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟢🟢🟡🟡🟡🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>150</span></td></tr>
-                            <tr><td class='name-col'><span class='i18n-de'>Spieler F</span><span class='i18n-en'>Player F</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'><span class='i18n-de'>🛡️ stabil</span><span class='i18n-en'>🛡️ stable</span></span></td><td><span class='i18n-de'>Ältester</span><span class='i18n-en'>Elder</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>6/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>80/96</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>160</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>7.680</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🔴🔴🟡🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>200</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler E</span><span class='i18n-en'>Player E</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'><span class='i18n-de'>⚠️ ausbaufähig</span><span class='i18n-en'>⚠️ room to grow</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>8/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>100/128</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>180</span><br><span style='font-size:0.75em; color:#64748b;'>{fame_zeitraum}</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>11.520</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟢🟢🟡🟡🟡🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>150</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler F</span><span class='i18n-en'>Player F</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'><span class='i18n-de'>🛡️ stabil</span><span class='i18n-en'>🛡️ stable</span></span></td><td><span class='i18n-de'>Ältester</span><span class='i18n-en'>Elder</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>6/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>80/96</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>160</span><br><span style='font-size:0.75em; color:#64748b;'>{fame_zeitraum}</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>7.680</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🔴🔴🟡🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>200</span></td></tr>
                         </table>
                     </div>
                     <ul>
@@ -1666,12 +1974,12 @@ def render_html_template(
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th><span class="i18n-de">Spieler</span><span class="i18n-en">Player</span></th><th><span class="i18n-de">Check</span><span class="i18n-en">Check</span></th><th><span class="i18n-de">Status</span><span class="i18n-en">Status</span></th><th><span class="i18n-de">Dabei</span><span class="i18n-en">Present</span></th><th><span class="i18n-de">Deck-Nutzung</span><span class="i18n-en">Deck Usage</span></th><th><span class="i18n-de">Ø Fame/Deck</span><span class="i18n-en">Avg Fame/Deck</span></th><th><span class="i18n-de">Fame gesamt</span><span class="i18n-en">Total Fame</span></th><th><span class="i18n-de">Trend</span><span class="i18n-en">Trend</span></th><th>🃏 <span class="i18n-de">Spenden</span><span class="i18n-en">Donations</span></th></tr>
-                            <tr><td class='name-col'><span class='i18n-de'>Spieler P</span><span class='i18n-en'>Player P</span></td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'><span class='i18n-de'>⭐ stark</span><span class='i18n-en'>⭐ strong</span></span></td><td><span class='i18n-de'>Ältester</span><span class='i18n-en'>Elder</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>160/160</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>182</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>14.560</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>220</span></td></tr>
-                            <tr><td class='name-col'><span class='i18n-de'>Spieler Q</span><span class='i18n-en'>Player Q</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'><span class='i18n-de'>🛡️ stabil</span><span class='i18n-en'>🛡️ stable</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>9/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>130/144</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>142</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>10.224</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟢🟢🟡🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>95</span></td></tr>
-                            <tr><td class='name-col'><span class='i18n-de'>Spieler R</span><span class='i18n-en'>Player R</span></td><td><span class='focus-pill' style='background:#94a3b822; color:#94a3b8; border:1px solid #94a3b855;'><span class='i18n-de'>🙂 solide</span><span class='i18n-en'>🙂 solid</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>7/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>95/112</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>150</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>8.400</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟡🟡🟡🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>70</span></td></tr>
-                            <tr><td class='name-col'><span class='i18n-de'>Spieler S</span><span class='i18n-en'>Player S</span></td><td><span class='focus-pill' style='background:#ef444422; color:#ef4444; border:1px solid #ef444455;'><span class='i18n-de'>👀 auffällig</span><span class='i18n-en'>👀 watch</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>9/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>138/144</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>102</span> ⚠️<br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>7.344</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟢🟡🟡🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>40</span></td></tr>
-                            <tr><td class='name-col'><span class='i18n-de'>Spieler T</span><span class='i18n-en'>Player T</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'><span class='i18n-de'>⚠️ ausbaufähig</span><span class='i18n-en'>⚠️ room to grow</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>4/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>40/64</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>140</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>4.480</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🔴🔴🟡🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>30</span></td></tr>
-                            <tr><td class='name-col'><span class='i18n-de'>Spieler U </span><span class='i18n-en'>Player U </span><span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'><span class='i18n-de'>neu dabei</span><span class='i18n-en'>newcomer</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#60a5fa;'>2/10</span><br><span style='font-size:0.75em; color:#60a5fa;'><span class='i18n-de'>neu dabei</span><span class='i18n-en'>newcomer</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>32/32</span><br><span style='font-size:0.75em; color:#60a5fa;'><span class='i18n-de'>neu dabei</span><span class='i18n-en'>newcomer</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>170</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>2.720</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>35</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler P</span><span class='i18n-en'>Player P</span></td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'><span class='i18n-de'>⭐ stark</span><span class='i18n-en'>⭐ strong</span></span></td><td><span class='i18n-de'>Ältester</span><span class='i18n-en'>Elder</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>160/160</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>182</span><br><span style='font-size:0.75em; color:#64748b;'>{fame_zeitraum}</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>14.560</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>220</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler Q</span><span class='i18n-en'>Player Q</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'><span class='i18n-de'>🛡️ stabil</span><span class='i18n-en'>🛡️ stable</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>9/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>130/144</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>142</span><br><span style='font-size:0.75em; color:#64748b;'>{fame_zeitraum}</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>10.224</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟢🟢🟡🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>95</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler R</span><span class='i18n-en'>Player R</span></td><td><span class='focus-pill' style='background:#94a3b822; color:#94a3b8; border:1px solid #94a3b855;'><span class='i18n-de'>🙂 solide</span><span class='i18n-en'>🙂 solid</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>7/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>95/112</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>150</span><br><span style='font-size:0.75em; color:#64748b;'>{fame_zeitraum}</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>8.400</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟡🟡🟡🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>70</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler S</span><span class='i18n-en'>Player S</span></td><td><span class='focus-pill' style='background:#ef444422; color:#ef4444; border:1px solid #ef444455;'><span class='i18n-de'>👀 auffällig</span><span class='i18n-en'>👀 watch</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>9/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>138/144</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>102</span> ⚠️<br><span style='font-size:0.75em; color:#64748b;'>{fame_zeitraum}</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>7.344</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟢🟡🟡🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>40</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler T</span><span class='i18n-en'>Player T</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'><span class='i18n-de'>⚠️ ausbaufähig</span><span class='i18n-en'>⚠️ room to grow</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>4/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>40/64</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>140</span><br><span style='font-size:0.75em; color:#64748b;'>{fame_zeitraum}</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>4.480</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🔴🔴🟡🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>30</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler U </span><span class='i18n-en'>Player U </span><span class='custom-tooltip align-left' style='opacity:0.8;'>🌱</span></td><td><span class='focus-pill' style='background:#38bdf822; color:#38bdf8; border:1px solid #38bdf855;'><span class='i18n-de'>neu dabei</span><span class='i18n-en'>newcomer</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#60a5fa;'>2/10</span><br><span style='font-size:0.75em; color:#60a5fa;'><span class='i18n-de'>neu dabei</span><span class='i18n-en'>newcomer</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>32/32</span><br><span style='font-size:0.75em; color:#60a5fa;'><span class='i18n-de'>neu dabei</span><span class='i18n-en'>newcomer</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>170</span><br><span style='font-size:0.75em; color:#64748b;'>{fame_zeitraum}</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>2.720</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>35</span></td></tr>
                         </table>
                     </div>
                     <ul>
@@ -1691,7 +1999,7 @@ def render_html_template(
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th><span class="i18n-de">Spieler</span><span class="i18n-en">Player</span></th><th><span class="i18n-de">Check</span><span class="i18n-en">Check</span></th><th><span class="i18n-de">Status</span><span class="i18n-en">Status</span></th><th><span class="i18n-de">Dabei</span><span class="i18n-en">Present</span></th><th><span class="i18n-de">Deck-Nutzung</span><span class="i18n-en">Deck Usage</span></th><th><span class="i18n-de">Ø Fame/Deck</span><span class="i18n-en">Avg Fame/Deck</span></th><th><span class="i18n-de">Fame gesamt</span><span class="i18n-en">Total Fame</span></th><th><span class="i18n-de">Trend</span><span class="i18n-en">Trend</span></th><th>🃏 <span class="i18n-de">Spenden</span><span class="i18n-en">Donations</span></th></tr>
-                            <tr><td class='name-col'><span class='i18n-de'>Spieler J </span><span class='i18n-en'>Player J </span><span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'><span class='i18n-de'>⚠️ ausbaufähig</span><span class='i18n-en'>⚠️ room to grow</span></span></td><td><span class='i18n-de'>Ältester</span><span class='i18n-en'>Elder</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>8/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>125/128</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>100</span> ⚠️<br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>6.400</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🔴🔴🔴🔴🔴🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>72</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler J </span><span class='i18n-en'>Player J </span><span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 3/3</span></td><td><span class='focus-pill' style='background:#f9731622; color:#f97316; border:1px solid #f9731655;'><span class='i18n-de'>⚠️ ausbaufähig</span><span class='i18n-en'>⚠️ room to grow</span></span></td><td><span class='i18n-de'>Ältester</span><span class='i18n-en'>Elder</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>8/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>125/128</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#ef4444;'>100</span> ⚠️<br><span style='font-size:0.75em; color:#64748b;'>{fame_zeitraum}</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>6.400</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🔴🔴🔴🔴🔴🔴</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>72</span></td></tr>
                         </table>
                     </div>
                     <ul>
@@ -1720,14 +2028,14 @@ def render_html_template(
                     <div style="overflow-x:auto;">
                         <table class="wiki-table">
                             <tr><th><span class="i18n-de">Spieler</span><span class="i18n-en">Player</span></th><th><span class="i18n-de">Check</span><span class="i18n-en">Check</span></th><th><span class="i18n-de">Status</span><span class="i18n-en">Status</span></th><th><span class="i18n-de">Dabei</span><span class="i18n-en">Present</span></th><th><span class="i18n-de">Deck-Nutzung</span><span class="i18n-en">Deck Usage</span></th><th><span class="i18n-de">Ø Fame/Deck</span><span class="i18n-en">Avg Fame/Deck</span></th><th><span class="i18n-de">Fame gesamt</span><span class="i18n-en">Total Fame</span></th><th><span class="i18n-de">Trend</span><span class="i18n-en">Trend</span></th><th>🃏 <span class="i18n-de">Spenden</span><span class="i18n-en">Donations</span></th></tr>
-                            <tr><td class='name-col'><span class='i18n-de'>Spieler K</span><span class='i18n-en'>Player K</span></td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'><span class='i18n-de'>⭐ stark</span><span class='i18n-en'>⭐ strong</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>160/160</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>200</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>16.000</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>📦</span></td></tr>
-                            <tr><td class='name-col'><span class='i18n-de'>Spieler L</span><span class='i18n-en'>Player L</span></td><td><span class='focus-pill' style='background:#94a3b822; color:#94a3b8; border:1px solid #94a3b855;'><span class='i18n-de'>🙂 solide</span><span class='i18n-en'>🙂 solid</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>5/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>72/80</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>150</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>6.000</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟡🟡🟡🟡</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span> <span class='custom-tooltip' style='font-size: 1.1em;'>💤</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler K</span><span class='i18n-en'>Player K</span></td><td><span class='focus-pill' style='background:#10b98122; color:#10b981; border:1px solid #10b98155;'><span class='i18n-de'>⭐ stark</span><span class='i18n-en'>⭐ strong</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>10/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>160/160</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#10b981;'>200</span><br><span style='font-size:0.75em; color:#64748b;'>{fame_zeitraum}</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>16.000</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟢🟢🟢🟢</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span></td></tr>
+                            <tr><td class='name-col'><span class='i18n-de'>Spieler L</span><span class='i18n-en'>Player L</span></td><td><span class='focus-pill' style='background:#94a3b822; color:#94a3b8; border:1px solid #94a3b855;'><span class='i18n-de'>🙂 solide</span><span class='i18n-en'>🙂 solid</span></span></td><td><span class='i18n-de'>Mitglied</span><span class='i18n-en'>Member</span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>5/10</span><br><span style='font-size:0.75em; color:#64748b;'><span class="i18n-de">Kriege aktiv</span><span class="i18n-en">Wars active</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>72/80</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span></td><td style='white-space:nowrap;'><span style='font-weight:800; color:#fbbf24;'>150</span><br><span style='font-size:0.75em; color:#64748b;'>{fame_zeitraum}</span></td><td style='white-space:nowrap;'><span style='font-weight:700; color:#c4b5fd;'>6.000</span><br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>30 Tage</span><span class='i18n-en'>30 days</span></span></td><td class='trend-cell'>🟡🟡🟡🟡</td><td style='color:#38bdf8; font-weight:bold;'><span class='custom-tooltip dotted'>0</span></td></tr>
                         </table>
                     </div>
                     <ul>
-                        <li><span class="i18n-de"><b>📦 Spenden auffällig:</b> Jemand fordert regelmäßig Karten an, spendet aber selbst nichts zurück.</span><span class="i18n-en"><b>📦 Notable donations:</b> Someone regularly requests cards but donates nothing back.</span></li>
-                        <li><span class="i18n-de"><b>💤 Spenden inaktiv:</b> Jemand spendet nicht und fordert auch nichts an.</span><span class="i18n-en"><b>💤 Donations inactive:</b> Someone does not donate and does not request anything either.</span></li>
-                        <li><span class="i18n-de"><b>Wichtig:</b> Diese Hinweise sollen nicht bloßstellen, sondern zeigen, wo im Clan noch etwas mehr Mitziehen helfen würde.</span><span class="i18n-en"><b>Important:</b> These notes are not meant to expose anyone, but to show where a little more participation in the clan would help.</span></li>
+                        <li><span class="i18n-de">In der Spalte steht die reine Zahl: wie viele Karten du gespendet hast. Der Tooltip zeigt zusätzlich, wie viele du erhalten hast.</span><span class="i18n-en">The column shows the plain number: how many cards you donated. The tooltip additionally shows how many you received.</span></li>
+                        <li><span class="i18n-de"><b>Keine Bewertung auf dieser Seite:</b> Es gibt hier bewusst keine Markierung wie „Spenden auffällig" neben einzelnen Namen. Wer viel fordert und nichts zurückgibt, wird von der Clanleitung direkt angesprochen – nicht öffentlich auf der Website ausgestellt.</span><span class="i18n-en"><b>No public judgement here:</b> There is deliberately no flag such as "notable donations" next to individual names. Anyone who requests a lot and gives nothing back is addressed directly by the clan leadership – not put on display on the website.</span></li>
+                        <li><span class="i18n-de"><b>Warum Spenden zählen:</b> Karten teilen kostet dich nichts und hilft allen beim Aufleveln. Deshalb schauen wir auf den Clan-Schnitt – nicht auf einzelne Personen.</span><span class="i18n-en"><b>Why donations matter:</b> Sharing cards costs you nothing and helps everyone level up. That is why we look at the clan average – not at individuals.</span></li>
                     </ul>
                 </div>
 
@@ -1813,8 +2121,8 @@ def render_html_template(
 
             <footer class="site-footer">
                 <div class="footer-links">
-                    <a class="footer-link" onclick="openTabByName('Impressum')">{t('Impressum', 'Imprint')}</a>
-                    <a class="footer-link" onclick="openTabByName('Datenschutz')">{t('Datenschutz', 'Privacy')}</a>
+                    <a class="footer-link" href="#Impressum" onclick="openTabByName('Impressum'); return false;">{t('Impressum', 'Imprint')}</a>
+                    <a class="footer-link" href="#Datenschutz" onclick="openTabByName('Datenschutz'); return false;">{t('Datenschutz', 'Privacy')}</a>
                 </div>
             </footer>
         </div>
@@ -1836,6 +2144,9 @@ def render_html_template(
                         }});
                     }});
                     syncToggleUI(document.documentElement.lang);
+                    // setLanguage() lief oben schon, da gab es das DOM aber noch nicht –
+                    // die Attribut-Uebersetzung deshalb hier nachholen.
+                    uebersetzeAttribute(document.documentElement.lang);
                 }});
             }})();
 
@@ -1844,6 +2155,20 @@ def render_html_template(
                 document.documentElement.lang = lang;
                 try {{ localStorage.setItem('clanLang', lang); }} catch (e) {{}}
                 syncToggleUI(lang);
+                uebersetzeAttribute(lang);
+            }}
+
+            // Attribute (title, placeholder, aria-label) lassen sich nicht ueber die
+            // i18n-Spans umschalten – Markup in einem Attributwert zerlegt das HTML.
+            // Solche Texte stehen deshalb in data-i18n-de / data-i18n-en und werden
+            // hier auf das in data-i18n-attr genannte Attribut geschrieben.
+            function uebersetzeAttribute(lang) {{
+                var elemente = document.querySelectorAll('[data-i18n-attr]');
+                elemente.forEach(function (el) {{
+                    var attr = el.getAttribute('data-i18n-attr');
+                    var wert = el.getAttribute('data-i18n-' + lang);
+                    if (attr && wert !== null) el.setAttribute(attr, wert);
+                }});
             }}
 
             function syncToggleUI(lang) {{
@@ -1858,11 +2183,30 @@ def render_html_template(
             function toggleChat() {{
                 var el = document.getElementById("admin-chat-container");
                 if (!el) return;
-                if (el.style.display === "none" || el.style.display === "") {{
-                    el.style.display = "block";
-                }} else {{
-                    el.style.display = "none";
+                var oeffnen = (el.style.display === "none" || el.style.display === "");
+                el.style.display = oeffnen ? "block" : "none";
+
+                var knopf = document.querySelector('.header-title button[aria-controls="admin-chat-container"]');
+                if (knopf) knopf.setAttribute("aria-expanded", oeffnen ? "true" : "false");
+                if (!oeffnen) return;
+
+                // Der Bereich haengt am Ende der Uebersicht, rund 3000px unter dem Knopf.
+                // Ohne Tabwechsel und Scrollen sieht es aus, als passiere beim Klick nichts.
+                var uebersicht = document.getElementById("Overview");
+                if (uebersicht && !uebersicht.classList.contains("active")) {{
+                    openTabByName("Overview");
                 }}
+                setTimeout(function () {{
+                    // Bewusst ohne smooth-Animation: Der Bereich liegt rund 3000px tiefer.
+                    // Smooth-Scrolling wird je nach Browser/Einstellung verzoegert oder ganz
+                    // ignoriert – dann sieht es aus, als reagiere der Knopf nicht. Der harte
+                    // Sprung ist sofort sichtbar und funktioniert ueberall.
+                    // 90px Abzug: Platz fuer die sticky Tab-Leiste ueber dem Bereich.
+                    var ziel = Math.max(0, el.getBoundingClientRect().top + window.scrollY - 90);
+                    window.scrollTo(0, ziel);
+                    var feld = document.getElementById("admin-pass");
+                    if (feld && feld.offsetParent !== null) feld.focus({{ preventScroll: true }});
+                }}, 60);
             }}
 
             function openTab(evt, tabName) {{
@@ -1985,6 +2329,351 @@ def render_html_template(
                     }}
                 }});
             }}
+
+            // ── Spieler-Suche in der Detail-Auswertung ──────────────────────────────
+            // Blendet alle Zeilen aus, die nicht zum eingegebenen Namen passen, damit
+            // jedes Mitglied seine eigenen Werte findet, ohne 50 Zeilen abzusuchen.
+            (function setupSpielerSuche() {{
+                var SPEICHER = "clanSuchName";
+
+                // Zwei Schreibweisen pro Name, damit beide Tippgewohnheiten funktionieren:
+                //   "deutsch"  -> Müller wird zu "mueller" (wer "mueller" tippt)
+                //   "schlicht" -> Müller wird zu "muller"  (wer "muller" tippt)
+                // Nur eine der beiden zu pruefen wuerde jeweils die andere Haelfte
+                // der Leute ins Leere laufen lassen. Akzente (é, ñ) fallen ebenfalls weg.
+                function formen(text) {{
+                    var s = String(text || "").toLowerCase().trim();
+                    var deutsch = s.replace(/ä/g, "ae").replace(/ö/g, "oe")
+                                   .replace(/ü/g, "ue").replace(/ß/g, "ss");
+                    var schlicht = s.replace(/ß/g, "ss");
+                    if (String.prototype.normalize) {{
+                        deutsch = deutsch.normalize("NFD").replace(/[\\u0300-\\u036f]/g, "");
+                        schlicht = schlicht.normalize("NFD").replace(/[\\u0300-\\u036f]/g, "");
+                    }}
+                    return [deutsch, schlicht];
+                }}
+
+                function passtZu(name, suche) {{
+                    var n = formen(name), s = formen(suche);
+                    return n[0].indexOf(s[0]) !== -1 || n[1].indexOf(s[1]) !== -1;
+                }}
+
+                var aktuelleStufe = "alle";
+
+                function filtern(suchtext) {{
+                    var suche = String(suchtext || "").trim();
+                    // Mehrere Namen durch Komma trennen: "Bensie, DST" zeigt beide
+                    // nebeneinander – so lassen sich Werte direkt vergleichen.
+                    var begriffe = suche.split(",")
+                        .map(function (b) {{ return b.trim(); }})
+                        .filter(function (b) {{ return b.length > 0; }});
+
+                    var zeilen = document.querySelectorAll("#Table .player-row");
+                    var treffer = 0;
+
+                    zeilen.forEach(function (zeile) {{
+                        var name = zeile.getAttribute("data-name");
+                        var nameOk = begriffe.length === 0 || begriffe.some(function (b) {{
+                            return passtZu(name, b);
+                        }});
+                        var block = zeile.closest(".tier-section");
+                        var stufeOk = aktuelleStufe === "alle" ||
+                                      (block && block.getAttribute("data-tier") === aktuelleStufe);
+                        var passt = nameOk && stufeOk;
+
+                        zeile.classList.toggle("suche-versteckt", !passt);
+                        if (passt) treffer++;
+
+                        // Der aufgeklappte Kriegsverlauf haengt als eigene Zeile darunter.
+                        var verlauf = zeile.nextElementSibling;
+                        if (verlauf && verlauf.classList.contains("war-history-row")) {{
+                            verlauf.classList.toggle("suche-versteckt", !passt);
+                        }}
+                    }});
+
+                    // Tier-Bloecke ohne sichtbare Zeile ganz ausblenden, sonst bleiben
+                    // leere Ueberschriften wie "Sehr stark" ohne Inhalt stehen.
+                    document.querySelectorAll("#Table .tier-section").forEach(function (block) {{
+                        var sichtbar = block.querySelectorAll(".player-row:not(.suche-versteckt)").length;
+                        block.classList.toggle("suche-versteckt", sichtbar === 0);
+                    }});
+
+                    // Genau ein Treffer -> Kriegsverlauf gleich mit aufklappen, damit man
+                    // seine letzten Kriege ohne weiteren Klick sieht. Bei mehreren
+                    // Treffern bleibt alles zu, sonst wird die Vergleichsansicht unuebersichtlich.
+                    var sichtbareZeilen = document.querySelectorAll("#Table .player-row:not(.suche-versteckt)");
+                    if (sichtbareZeilen.length === 1 && begriffe.length > 0) {{
+                        var einzige = sichtbareZeilen[0];
+                        if (!einzige.classList.contains("expanded") && typeof oeffneKriegsverlauf === "function") {{
+                            oeffneKriegsverlauf(einzige);
+                        }}
+                    }}
+
+                    var status = document.getElementById("spieler-suche-status");
+                    if (status) {{
+                        var en = document.documentElement.lang === "en";
+                        var gefiltert = begriffe.length > 0 || aktuelleStufe !== "alle";
+                        if (!gefiltert) {{
+                            status.textContent = "";
+                            status.classList.remove("kein-treffer");
+                        }} else if (treffer === 0) {{
+                            // Unterscheiden: Stufe ist schlicht unbesetzt (voellig normal)
+                            // vs. der Name wurde nicht gefunden (Tippfehler o. ae.).
+                            var stufeLeer = aktuelleStufe !== "alle" &&
+                                !document.querySelector('#Table .tier-section[data-tier="' + aktuelleStufe + '"]');
+                            var stufenName = "";
+                            var aktiverKnopf = document.querySelector('.stufe-btn[data-tier="' + aktuelleStufe + '"]');
+                            if (aktiverKnopf) {{
+                                var etikett = aktiverKnopf.cloneNode(true);
+                                var z = etikett.querySelector(".anzahl");
+                                if (z) z.remove();
+                                // Nur den sichtbaren Sprachteil nehmen, nicht beide.
+                                etikett.querySelectorAll(en ? ".i18n-de" : ".i18n-en").forEach(function (s) {{ s.remove(); }});
+                                stufenName = etikett.textContent.trim();
+                            }}
+                            if (stufeLeer && begriffe.length === 0) {{
+                                status.textContent = en
+                                    ? "No one is in \\"" + stufenName + "\\" at the moment – that is not an error."
+                                    : "In der Stufe \\"" + stufenName + "\\" ist aktuell niemand – das ist kein Fehler.";
+                            }} else {{
+                                // Stufe und Name koennen nicht gleichzeitig aktiv sein,
+                                // also liegt es hier immer an der Schreibweise.
+                                status.textContent = en
+                                    ? "No player found. Check the spelling – the name must match the in-game name."
+                                    : "Kein Spieler gefunden. Bitte Schreibweise prüfen – der Name muss dem Ingame-Namen entsprechen.";
+                            }}
+                            status.classList.add("kein-treffer");
+                        }} else {{
+                            var txt = en
+                                ? treffer + " of " + zeilen.length + " players shown"
+                                : treffer + " von " + zeilen.length + " Spielern angezeigt";
+                            if (treffer > 1 && begriffe.length > 1) {{
+                                txt += en ? " – comparison" : " – Vergleich";
+                            }}
+                            status.textContent = txt;
+                            status.classList.remove("kein-treffer");
+                        }}
+                    }}
+                    return treffer;
+                }}
+
+                // Von aussen aufrufbar, damit der Stufen-Filter dieselbe Logik nutzt.
+                window.clanFilterAktualisieren = function () {{
+                    var feld = document.getElementById("spieler-suche-feld");
+                    return filtern(feld ? feld.value : "");
+                }};
+
+                document.addEventListener("DOMContentLoaded", function () {{
+                    var feld = document.getElementById("spieler-suche-feld");
+                    var reset = document.getElementById("spieler-suche-reset");
+                    if (!feld) return;
+
+                    feld.addEventListener("input", function () {{
+                        if (feld.value.trim()) stufeZuruecksetzen();
+                        filtern(feld.value);
+                        try {{
+                            if (feld.value.trim()) localStorage.setItem(SPEICHER, feld.value.trim());
+                            else localStorage.removeItem(SPEICHER);
+                        }} catch (e) {{}}
+                    }});
+
+                    // ── Stufen-Filter (Sehr stark / Solide Basis / Mehr drin / …) ──
+                    var stufenKnoepfe = document.querySelectorAll(".stufe-btn");
+
+                    // Namenssuche und Stufen-Filter schliessen sich gegenseitig aus.
+                    // Beides gleichzeitig ergibt schnell "0 Treffer" ohne erkennbaren Grund
+                    // (z. B. Stufe "Sehr stark" + ein Name aus "Mehr drin").
+                    function stufeSetzen(slug) {{
+                        aktuelleStufe = slug;
+                        if (feld.value !== "") {{
+                            feld.value = "";
+                            try {{ localStorage.removeItem(SPEICHER); }} catch (e) {{}}
+                        }}
+                        stufenKnoepfe.forEach(function (b) {{
+                            var an = b.getAttribute("data-tier") === slug;
+                            b.classList.toggle("aktiv", an);
+                            b.setAttribute("aria-pressed", an ? "true" : "false");
+                        }});
+                        filtern("");
+                    }}
+
+                    // Gegenrichtung: Sobald jemand tippt, faellt der Stufen-Filter auf "Alle"
+                    // zurueck – sonst versteckt er den gesuchten Spieler stillschweigend.
+                    function stufeZuruecksetzen() {{
+                        if (aktuelleStufe === "alle") return;
+                        aktuelleStufe = "alle";
+                        stufenKnoepfe.forEach(function (b) {{
+                            var an = b.getAttribute("data-tier") === "alle";
+                            b.classList.toggle("aktiv", an);
+                            b.setAttribute("aria-pressed", an ? "true" : "false");
+                        }});
+                    }}
+
+                    // Anzahl je Stufe an den Knopf schreiben. Alle Stufen bleiben sichtbar,
+                    // auch unbesetzte – sonst wirkt es, als sei die Stufe abgeschafft worden.
+                    stufenKnoepfe.forEach(function (b) {{
+                        var slug = b.getAttribute("data-tier");
+                        var anzahl;
+                        if (slug === "alle") {{
+                            anzahl = document.querySelectorAll("#Table .player-row").length;
+                        }} else {{
+                            var block = document.querySelector('#Table .tier-section[data-tier="' + slug + '"]');
+                            anzahl = block ? parseInt(block.getAttribute("data-anzahl"), 10) || 0 : 0;
+                        }}
+                        b.setAttribute("data-anzahl", anzahl);
+                        b.classList.toggle("leer", anzahl === 0);
+                        var zaehler = document.createElement("span");
+                        zaehler.className = "anzahl";
+                        zaehler.textContent = "(" + anzahl + ")";
+                        b.appendChild(document.createTextNode(" "));
+                        b.appendChild(zaehler);
+                        b.addEventListener("click", function () {{ stufeSetzen(slug); }});
+                    }});
+
+                    if (reset) reset.addEventListener("click", function () {{
+                        feld.value = "";
+                        try {{ localStorage.removeItem(SPEICHER); }} catch (e) {{}}
+                        stufeSetzen("alle");   // setzt auch den Namensfilter zurueck
+                        feld.focus();
+                    }});
+
+                    // Beim naechsten Besuch nicht erneut tippen muessen.
+                    var gemerkt = null;
+                    try {{ gemerkt = localStorage.getItem(SPEICHER); }} catch (e) {{}}
+                    if (gemerkt) {{
+                        feld.value = gemerkt;
+                        // Passt der gemerkte Name nicht mehr (umbenannt, Clan verlassen),
+                        // lieber alles zeigen als eine leere Tabelle.
+                        if (filtern(gemerkt) === 0) {{
+                            feld.value = "";
+                            filtern("");
+                            try {{ localStorage.removeItem(SPEICHER); }} catch (e) {{}}
+                        }}
+                    }}
+
+                    // Sprachwechsel: Statuszeile in der neuen Sprache neu schreiben.
+                    document.querySelectorAll('.lang-toggle button[data-lang]').forEach(function (b) {{
+                        b.addEventListener("click", function () {{ filtern(feld.value); }});
+                    }});
+                }});
+            }})();
+
+            // Direktlinks auf einen Bereich, z. B. clan-hamburg.de/#Wiki oder #Datenschutz.
+            // Ohne das landet jeder geteilte Link immer auf der Uebersicht.
+            (function enableHashNavigation() {{
+                var valid = ["Overview", "Table", "Wiki", "Decks", "Impressum", "Datenschutz"];
+                function openFromHash() {{
+                    var name = (location.hash || "").replace("#", "");
+                    if (valid.indexOf(name) !== -1) openTabByName(name);
+                }}
+                window.addEventListener("hashchange", openFromHash);
+                if (document.readyState === "loading") {{
+                    document.addEventListener("DOMContentLoaded", openFromHash);
+                }} else {{
+                    openFromHash();
+                }}
+            }})();
+
+            // ── Verschluesselter Bereich der Clanleitung ────────────────────────────
+            // Der Inhalt steht nirgends im Klartext in dieser Datei. ADMIN_BLOB enthaelt
+            // AES-GCM-Chiffretext; der Schluessel entsteht erst im Browser aus dem
+            // eingegebenen Passwort (PBKDF2-HMAC-SHA256). Ohne Passwort ist der Block
+            // wertlos – auch fuer jemanden, der den Quelltext liest.
+            var ADMIN_BLOB = {admin_blob_json};
+
+            (function setupAdminUnlock() {{
+                // Ohne ADMIN_PASSPHRASE beim Erzeugen gibt es keinen Block. Dann muss auch
+                // der 📊-Knopf weg – sonst oeffnet er ein Passwortfeld, das nichts entsperren
+                // kann, und das sieht nach einem kaputten Knopf aus.
+                if (!ADMIN_BLOB) {{
+                    document.addEventListener("DOMContentLoaded", function () {{
+                        var knopf = document.querySelector('.header-title button[aria-controls="admin-chat-container"]');
+                        if (knopf) knopf.style.display = "none";
+                        var kasten = document.getElementById("admin-chat-container");
+                        if (kasten) kasten.remove();
+                    }});
+                    return;
+                }}
+                var STORE_KEY = "clanAdminPass";
+
+                function b64ToBytes(b64) {{
+                    var bin = atob(b64);
+                    var out = new Uint8Array(bin.length);
+                    for (var i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+                    return out;
+                }}
+
+                async function entschluesseln(passwort) {{
+                    var enc = new TextEncoder();
+                    var basis = await crypto.subtle.importKey(
+                        "raw", enc.encode(passwort), "PBKDF2", false, ["deriveKey"]);
+                    var schluessel = await crypto.subtle.deriveKey(
+                        {{ name: "PBKDF2", salt: b64ToBytes(ADMIN_BLOB.salt),
+                           iterations: ADMIN_BLOB.iter, hash: "SHA-256" }},
+                        basis, {{ name: "AES-GCM", length: 256 }}, false, ["decrypt"]);
+                    var klar = await crypto.subtle.decrypt(
+                        {{ name: "AES-GCM", iv: b64ToBytes(ADMIN_BLOB.iv) }},
+                        schluessel, b64ToBytes(ADMIN_BLOB.data));
+                    return new TextDecoder().decode(klar);
+                }}
+
+                function anzeigen(html) {{
+                    var ziel = document.getElementById("admin-content");
+                    var schloss = document.getElementById("admin-lock");
+                    if (!ziel) return;
+                    ziel.innerHTML = html;
+                    if (schloss) schloss.style.display = "none";
+                    // Der Block kommt erst nach DOMContentLoaded ins DOM – die
+                    // Attribut-Uebersetzung muss fuer den neuen Inhalt nachgezogen werden.
+                    uebersetzeAttribute(document.documentElement.lang);
+                }}
+
+                async function versuchen(passwort, merken, beiFehler) {{
+                    try {{
+                        var html = await entschluesseln(passwort);
+                        anzeigen(html);
+                        try {{
+                            (merken ? localStorage : sessionStorage).setItem(STORE_KEY, passwort);
+                        }} catch (e) {{}}
+                        return true;
+                    }} catch (e) {{
+                        // AES-GCM schlaegt bei falschem Passwort fehl (Auth-Tag passt nicht).
+                        try {{ sessionStorage.removeItem(STORE_KEY); localStorage.removeItem(STORE_KEY); }} catch (e2) {{}}
+                        if (beiFehler) beiFehler();
+                        return false;
+                    }}
+                }}
+
+                document.addEventListener("DOMContentLoaded", function () {{
+                    var form = document.getElementById("admin-unlock-form");
+                    var feld = document.getElementById("admin-pass");
+                    var fehler = document.getElementById("admin-error");
+                    var merkenBox = document.getElementById("admin-remember");
+                    if (!form || !feld) return;
+
+                    form.addEventListener("submit", function (e) {{
+                        e.preventDefault();
+                        if (fehler) fehler.style.display = "none";
+                        versuchen(feld.value, merkenBox && merkenBox.checked, function () {{
+                            if (fehler) {{
+                                fehler.textContent = document.documentElement.lang === "en"
+                                    ? "Wrong password."
+                                    : "Passwort falsch.";
+                                fehler.style.display = "block";
+                            }}
+                            feld.value = "";
+                            feld.focus();
+                        }});
+                    }});
+
+                    // Bereits gemerktes Passwort? Dann still im Hintergrund entsperren.
+                    var gemerkt = null;
+                    try {{
+                        gemerkt = sessionStorage.getItem(STORE_KEY) || localStorage.getItem(STORE_KEY);
+                    }} catch (e) {{}}
+                    if (gemerkt) versuchen(gemerkt, false, null);
+                }});
+            }})();
         </script>
 <style>
 .player-row {{ cursor: pointer; }}
@@ -2053,14 +2742,53 @@ var WARLOG_DATA = {warlog_json};
     }}
     var open=next.classList.toggle('open');
     playerRow.classList.toggle('expanded',open);
+    playerRow.setAttribute('aria-expanded', open ? 'true' : 'false');
   }}
   document.addEventListener('click',function(e){{
     var row=e.target.closest('.player-row');
     if(row) toggleRow(row);
   }});
+  // Der Kriegsverlauf muss auch ohne Maus erreichbar sein: die Zeilen sind per
+  // tabindex fokussierbar, Enter und Leertaste klappen sie auf und zu.
+  document.addEventListener('keydown',function(e){{
+    if(e.key!=='Enter'&&e.key!==' '&&e.key!=='Spacebar') return;
+    var row=e.target.closest&&e.target.closest('.player-row');
+    if(!row) return;
+    e.preventDefault();
+    toggleRow(row);
+  }});
   document.querySelectorAll('.player-row').forEach(function(row){{
     var first=row.cells[0];
     if(first){{var icon=document.createElement('span');icon.className='war-expand-icon';icon.textContent='▼';first.appendChild(icon);}}
+  }});
+
+  // Fuer die Spieler-Suche: bei genau einem Treffer wird der Verlauf automatisch
+  // geoeffnet. Bewusst nur oeffnen, nie schliessen – sonst wuerde die Suche einen
+  // Verlauf zuklappen, den der Nutzer selbst aufgemacht hat.
+  window.oeffneKriegsverlauf = function(row) {{
+    if (row && !row.classList.contains('expanded')) toggleRow(row);
+  }};
+
+  // Chat-Texte in die Zwischenablage kopieren.
+  document.addEventListener('click',function(e){{
+    var btn=e.target.closest&&e.target.closest('.chat-copy-btn');
+    if(!btn) return;
+    var box=document.getElementById(btn.getAttribute('data-target'));
+    if(!box) return;
+    // innerHTML sichern, nicht textContent: die Beschriftung besteht aus den
+    // i18n-de/i18n-en-Spans und wuerde sonst nach dem ersten Klick zerstoert.
+    if(btn.dataset.label===undefined) btn.dataset.label=btn.innerHTML;
+    function done(okText){{
+      btn.textContent=okText;
+      setTimeout(function(){{btn.innerHTML=btn.dataset.label;}},1500);
+    }}
+    if(navigator.clipboard&&navigator.clipboard.writeText){{
+      navigator.clipboard.writeText(box.value).then(function(){{done('✅');}},function(){{
+        box.select();done(document.execCommand('copy')?'✅':'❌');
+      }});
+    }} else {{
+      box.select();done(document.execCommand('copy')?'✅':'❌');
+    }}
   }});
 }})();
 </script>
@@ -2108,18 +2836,37 @@ def generate_html_report(
         "unknown":  ("<span class='i18n-de'>Ehemalig</span><span class='i18n-en'>Former</span>",    "Former"),
     }
 
-    strikes = strikes_data.get("players", {})
+    # Verwarnungen werden ueber den Spieler-Tag gefuehrt, nicht ueber den Ingame-Namen.
+    # Der Namensstand aus frueheren Laeufen wird hier einmalig umgeschluesselt.
+    tag_by_name = {
+        normalize_player_name(n): normalize_player_tag(tg)
+        for n, tg in zip(df_active["player_name"].tolist(), df_active["player_tag"].tolist())
+        if str(tg or "").strip()
+    }
+    strikes = migrate_strikes_to_tags(strikes_data.get("players", {}), tag_by_name)
     last_strike_week = strikes_data.get("last_strike_week", 0)
 
     curr_week = datetime.now(timezone.utc).isocalendar()[:2]  # (Jahr, Woche) – verhindert Fehler beim Jahreswechsel
 
+    karenz_aktiv, karenz_bis = karenzzeit_aktiv()
+
     apply_strikes_now = False
     if is_weekly_run:
         if last_strike_week != curr_week:
-            apply_strikes_now = True
+            # Wochenwechsel wird IMMER gebucht – auch in der Karenzzeit. Sonst
+            # blieben die Listen der Vorwoche stehen und der Konsequenzen-Block
+            # zeigte alte Namen als "diese Woche".
             strikes_data["last_strike_week"] = curr_week
             strikes_data["demoted_this_week"] = []
             strikes_data["kicked_this_week"] = []
+            if karenz_aktiv:
+                # Bewusst auch KEINE Verwarnung sammeln: Sonst stuende am Tag
+                # nach Ablauf der Karenzzeit sofort eine Maßnahme an, und die
+                # Schonfrist waere wertlos gewesen.
+                print(f"🕊️ Karenzzeit bis {karenz_bis} – Bewertung wird angezeigt, "
+                      f"aber keine Verwarnungen, Degradierungen oder Ausschlüsse.")
+            else:
+                apply_strikes_now = True
 
     # Vorhandene Historie vorbereiten
     if df_history.empty:
@@ -2131,8 +2878,23 @@ def generate_html_report(
         [col for col in _all_cols if str(col).startswith("s_") and str(col).endswith("_fame")],
         reverse=True
     )
-    fame_cols_rolling  = fame_columns_all[:4]
+    # Zeitfenster fuer den Ø-Fame/Deck.
+    # Der laufende Krieg (zzzcurrent) bleibt in BEIDEN Modi draussen: Er ist noch
+    # nicht abgeschlossen und wuerde den Wert waehrend des Kriegstags wandern
+    # lassen – dieselbe Begruendung, aus der er schon bei Decks und Teilnahme
+    # ausgeklammert wird.
+    _fame_cols_fertig = [c for c in fame_columns_all if "zzzcurrent" not in c]
+    if FAME_SCHNITT_ALLE_KRIEGE:
+        # Ueber alle verzeichneten Kriege: laesst sich vom Mitglied im
+        # Kriegsverlauf nachrechnen und schwankt nicht mit dem Zeitfenster.
+        fame_cols_rolling = _fame_cols_fertig
+    else:
+        fame_cols_rolling = _fame_cols_fertig[:4]
     decks_cols_rolling = [col.replace("_fame", "_decks_used") for col in fame_cols_rolling]
+    _fame_zeitraum_de = ("Ø alle Kriege" if FAME_SCHNITT_ALLE_KRIEGE
+                         else f"Ø letzte {len(fame_cols_rolling)} Kriege")
+    _fame_zeitraum_en = ("Avg all wars" if FAME_SCHNITT_ALLE_KRIEGE
+                         else f"Avg last {len(fame_cols_rolling)} wars")
     aktueller_decks_spalte = fame_spalte.replace("_fame", "_decks_used")
     _player_profiles   = player_profiles or {}
 
@@ -2174,22 +2936,47 @@ def generate_html_report(
         rolling_fame  = sum(int(getattr(row, c, 0) or 0) for c in fame_cols_rolling)
         rolling_decks = sum(int(getattr(row, c, 0) or 0) for c in decks_cols_rolling)
         fame_per_deck = round(rolling_fame / rolling_decks) if rolling_decks > 0 else 0
+        _fame_tip = t(
+            f"{rolling_fame:,} Fame aus {rolling_decks} Decks".replace(",", ".")
+            + f" ({_fame_zeitraum_de.replace('Ø ', '')}). Der laufende Krieg zählt nicht mit.",
+            f"{rolling_fame:,} fame from {rolling_decks} decks"
+            + f" ({_fame_zeitraum_en.replace('Avg ', '')}). The running war is not counted."
+        )
 
         # Score-Berechnung: 50% Deck-Vollständigkeit + 30% Dabei-Quote + 20% Qualität
         qualitaet = max(0.0, min(1.0, (fame_per_deck - 75) / 150)) if fame_per_deck > 0 else 0.0
-        score = round(
-            50 * deck_vollstaendigkeit +
-            30 * anwesenheits_rate +
-            20 * qualitaet,
-            2
-        )
+
+        if SCORE_MODELL_ERFUELLUNG:
+            # Alternatives Modell: ein einziger Leistungswert statt zwei.
+            # Erfuellung misst gegen ALLE Kriege im Clan, nicht nur gegen die
+            # mit Teilnahme. Ein komplett verpasster Krieg zaehlt damit als 0 von 16,
+            # statt wie bisher aus dem Nenner zu fallen und die Quote zu verbessern.
+            # Die Anwesenheit ist dadurch implizit enthalten und entfaellt als
+            # eigener Posten - heute schenkt sie 30 der 50 noetigen Punkte.
+            max_moegliche_decks = wars_in_history_window * 16
+            deck_vollstaendigkeit = (decks_total / max_moegliche_decks) if max_moegliche_decks > 0 else 0.0
+            score = round(
+                SCORE_GEWICHT_ERFUELLUNG * deck_vollstaendigkeit +
+                SCORE_GEWICHT_QUALITAET * qualitaet,
+                2
+            )
+        else:
+            score = round(
+                50 * deck_vollstaendigkeit +
+                30 * anwesenheits_rate +
+                20 * qualitaet,
+                2
+            )
 
         leecher_warnung = ""
         if 0 < fame_per_deck < APP_CONFIG["DROPPER_THRESHOLD"]:
+            _low_tip = t(
+                "Auffällig niedriger Ertrag pro Deck (Schnitt der letzten 3–4 Kriege, bitte Spielweise prüfen)",
+                "Notably low points per deck (average of the last 3–4 wars, please review your play style)"
+            )
             leecher_warnung = (
                 " <span class='custom-tooltip'>⚠️"
-                "<span class='tooltip-text'>Auffällig niedriger Ertrag pro Deck "
-                "(Schnitt der letzten 3–4 Kriege, bitte Spielweise prüfen)</span></span>"
+                f"<span class='tooltip-text'>{_low_tip}</span></span>"
             )
 
         historie_spieler = df_history[df_history["player_name"] == name].copy()
@@ -2213,15 +3000,59 @@ def generate_html_report(
         if aktueller_trophy > records.setdefault("trophies", {"name": "-", "val": 0})["val"]:
             records["trophies"] = {"name": name, "val": aktueller_trophy}
 
+        # Deck-Vollstaendigkeit ueber die abgeschlossenen Kriege, chronologisch
+        # (aeltester zuerst), damit bewerte_deck_quote den Beitrittskrieg erkennt.
+        _kriege_chrono = []
+        for fame_col in reversed([c for c in fame_columns_all if "zzzcurrent" not in c]):
+            decks_col = fame_col.replace("_fame", "_decks_used")
+            in_clan_col = fame_col.replace("_fame", "_in_clan")
+            _roh = getattr(row, in_clan_col, None)
+            # Aeltere CSV-Staende ohne _in_clan-Spalte: 0 Decks + 0 Fame als "nicht im Clan"
+            if _roh is None or pd.isna(_roh):
+                _im_clan = not (int(getattr(row, decks_col, 0) or 0) == 0
+                                and int(getattr(row, fame_col, 0) or 0) == 0)
+            else:
+                _im_clan = bool(int(_roh))
+            _kriege_chrono.append({"decks": int(getattr(row, decks_col, 0) or 0),
+                                   "im_clan": _im_clan})
+        deck_quote = bewerte_deck_quote(_kriege_chrono)
+
+        quote_warnung = ""
+        if deck_quote["auffaellig"]:
+            _qtip = t(
+                f"Nur {deck_quote['quote']:.0%} der möglichen Decks gespielt "
+                f"({deck_quote['decks']} von {deck_quote['moeglich']} in {deck_quote['kriege']} Kriegen, "
+                f"{deck_quote['fehlend']} liegengelassen). Der Beitrittskrieg zählt hier nicht mit.",
+                f"Only {deck_quote['quote']:.0%} of possible decks played "
+                f"({deck_quote['decks']} of {deck_quote['moeglich']} across {deck_quote['kriege']} wars, "
+                f"{deck_quote['fehlend']} left unplayed). The joining war is not counted here."
+            )
+            quote_warnung = (
+                " <span class='custom-tooltip' style='font-size: 0.9em;'>🎯"
+                f"<span class='tooltip-text'>{_qtip}</span></span>"
+            )
+
         # Trend basiert auf echten Kriegsdaten (Decks gespielt pro Krieg)
         # Spalten: s_DATUM_fame / s_DATUM_decks_used, sortiert absteigend (neueste zuerst)
+        # Nur abgeschlossene Kriege: der laufende Krieg (zzzcurrent) zaehlt wie beim Score nicht mit,
+        # sonst stuende dort fuer alle ein roter Punkt, solange der Kriegstag laeuft.
         trend_dots = []
-        for fame_col in fame_columns_all[:6]:
+        for fame_col in [c for c in fame_columns_all if "zzzcurrent" not in c][:6]:
             decks_col = fame_col.replace("_fame", "_decks_used")
+            in_clan_col = fame_col.replace("_fame", "_in_clan")
             w_decks = int(getattr(row, decks_col, 0) or 0)
             w_fame  = int(getattr(row, fame_col,  0) or 0)
-            if w_decks == 0 and w_fame == 0:
-                continue  # Krieg existiert, Spieler war nicht dabei → überspringen (kein Punkt)
+            # Bei aelteren CSV-Staenden ohne _in_clan-Spalte: auf das alte Verhalten zurueckfallen
+            # und 0/0 als "war nicht im Clan" werten.
+            _in_clan_raw = getattr(row, in_clan_col, None)
+            was_in_clan = -1 if _in_clan_raw is None or pd.isna(_in_clan_raw) else int(_in_clan_raw)
+            if was_in_clan == -1:
+                if w_decks == 0 and w_fame == 0:
+                    continue
+            elif was_in_clan == 0:
+                continue  # Spieler war in diesem Krieg noch nicht im Clan → kein Punkt
+            # Ab hier: Spieler war im Clan. 0 Decks ist damit ein bewusst verpasster Krieg
+            # und bekommt einen roten Punkt statt wie bisher zu verschwinden.
             ratio = w_decks / 16
             if ratio >= 0.90:
                 trend_dots.append("🟢")
@@ -2242,56 +3073,80 @@ def generate_html_report(
             and wars_with_participation == wars_in_history_window
             and decks_total == wars_with_participation * 16
         ):
+            _streak_tip = t(
+                f"{wars_with_participation}x alle Decks gespielt – ohne Ausnahme!",
+                f"{wars_with_participation}x played every deck – without exception!"
+            )
             streak_badge = (
                 f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>🔥 {wars_with_participation}"
-                f"<span class='tooltip-text'>{wars_with_participation}x alle Decks gespielt – ohne Ausnahme!</span></span>"
+                f"<span class='tooltip-text'>{_streak_tip}</span></span>"
             )
 
-        # Verwarnungen nur bei mehr als MIN_PARTICIPATION und nicht im Urlaub
-        if apply_strikes_now:
-            if not is_urlaub and wars_with_participation > APP_CONFIG["MIN_PARTICIPATION"]:
-                if score < APP_CONFIG["STRIKE_THRESHOLD"]:
-                    strikes[name] = strikes.get(name, 0) + 1
-                else:
-                    if strikes.get(name, 0) > 0:
-                        strikes[name] -= 1
+        # Verwarnungen erst ab dem 2. Krieg der Clan-Zugehoerigkeit und nicht im Urlaub.
+        # Bewusst wars_in_history_window (wie lange im Clan) statt wars_with_participation
+        # (wie oft gespielt) – sonst schuetzt gerade dauerhafte Inaktivitaet vor der Verwarnung.
+        # Schluessel ist der Spieler-Tag (stabil), mit Rueckfall auf den Namen, falls
+        # die Zeile ausnahmsweise keinen Tag mitbringt.
+        strike_key = normalize_player_tag(player_tag) or name
 
-        strike_val = strikes.get(name, 0)
+        if apply_strikes_now:
+            if not is_urlaub and wars_in_history_window > APP_CONFIG["MIN_PARTICIPATION"]:
+                if score < APP_CONFIG["STRIKE_THRESHOLD"]:
+                    strikes[strike_key] = strikes.get(strike_key, 0) + 1
+                else:
+                    if strikes.get(strike_key, 0) > 0:
+                        strikes[strike_key] -= 1
+
+        strike_val = strikes.get(strike_key, 0)
 
         if apply_strikes_now and strike_val >= 1:
             if not is_urlaub:
                 if raw_role in ["leader", "coleader", "elder"]:
                     strikes_data.setdefault("demoted_this_week", []).append(name)
-                    strikes[name] = 0
+                    strikes[strike_key] = 0
                 elif raw_role == "member":
                     strikes_data.setdefault("kicked_this_week", []).append(name)
                     kicked_players[name] = heute_datum
-                    strikes[name] = 1
+                    strikes[strike_key] = 1
 
+        # Hinweis: strike_badge wird berechnet und in player_stats mitgefuehrt, aber bewusst
+        # NICHT in die oeffentliche Tabelle gerendert – eine Verwarnung ist eine interne
+        # Massnahme und gehoert nicht neben den Namen auf eine oeffentliche Seite.
+        # Die Symbol-Legende erklaert das Zeichen weiterhin fuer die Clanleitung.
         strike_badge = ""
         if name in strikes_data.get("demoted_this_week", []):
+            _stip = t("Wurde degradiert! Bewährungschance aktiv.", "Demoted – probation period active.")
             strike_badge = (
                 " <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 1/1"
-                "<span class='tooltip-text'>Wurde degradiert! Bewährungschance aktiv.</span></span>"
+                f"<span class='tooltip-text'>{_stip}</span></span>"
             )
         elif name in strikes_data.get("kicked_this_week", []):
+            _stip = t("1 interner Hinweis: interne Maßnahme erfolgt.", "1 internal flag: internal action taken.")
             strike_badge = (
                 " <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ 1/1"
-                "<span class='tooltip-text'>1 interner Hinweis: interne Maßnahme erfolgt.</span></span>"
+                f"<span class='tooltip-text'>{_stip}</span></span>"
             )
         elif strike_val > 0:
+            _stip = t("Interner Hinweis. Bei 1/1 folgen interne Maßnahmen.", "Internal flag. At 1/1 internal action follows.")
             strike_badge = (
                 f" <span class='custom-tooltip align-left' style='font-size: 0.9em;'>❌ {strike_val}/1"
-                "<span class='tooltip-text'>Interner Hinweis. Bei 1/1 folgen interne Maßnahmen.</span></span>"
+                f"<span class='tooltip-text'>{_stip}</span></span>"
             )
 
         # Welpenschutz-Logik
-        is_welpenschutz = wars_with_participation <= APP_CONFIG["MIN_PARTICIPATION"] and not is_urlaub
+        # Massgeblich ist die Clan-Zugehoerigkeit (wars_in_history_window), NICHT die Zahl der
+        # Kriege mit Teilnahme. Sonst gilt jemand, der in 10 Kriegen nur einmal spielt, dauerhaft
+        # als "neu dabei" und ist damit dauerhaft vor Verwarnungen geschuetzt.
+        is_welpenschutz = wars_in_history_window <= APP_CONFIG["MIN_PARTICIPATION"] and not is_urlaub
         welpenschutz_badge = ""
         if is_welpenschutz:
+            _wtip = t(
+                "Erster Clankrieg – Welpenschutz aktiv. Ab dem 2. Krieg volle Bewertung.",
+                "First clan war – pup protection active. Full scoring from the 2nd war on."
+            )
             welpenschutz_badge = (
                 " <span class='custom-tooltip align-left' style='opacity:0.8;'>🌱"
-                "<span class='tooltip-text'>Erster Clankrieg – Welpenschutz aktiv. Ab dem 2. Krieg volle Bewertung.</span></span>"
+                f"<span class='tooltip-text'>{_wtip}</span></span>"
             )
             # trend_str wurde bereits oben aus echten Kriegsdaten berechnet – kein Override nötig
 
@@ -2314,7 +3169,7 @@ def generate_html_report(
         else:
             status_html = (
                 f"{role_de} <span class='badge-ja'>➔ BEFÖRDERN</span>"
-                if raw_role == "member" and aktueller_fame >= 2800
+                if raw_role == "member" and aktueller_fame >= APP_CONFIG["PROMOTION_FAME_MIN"]
                 else role_de
             )
 
@@ -2362,6 +3217,9 @@ def generate_html_report(
             "tag": player_tag,
             "total_decks": decks_total,
             "deck_vollstaendigkeit": deck_vollstaendigkeit,
+            "quote_warnung": quote_warnung,
+            "fame_tip": _fame_tip,
+            "deck_quote": deck_quote,
             "max_moegliche_decks": max_moegliche_decks,
             "wars_in_window": wars_in_history_window,
         })
@@ -2392,6 +3250,9 @@ def generate_html_report(
                 "role": p["raw_role"],
                 "score": p["score"],
                 "trophies": p["trophies"],
+                # Fame im laufenden Krieg – Grundlage der Beförderung (PROMOTION_FAME_MIN).
+                # Wird von app/services.py fuer Badge und Kandidatenliste gebraucht.
+                "fame": p["fame"],
                 "fame_per_deck": p["fame_per_deck"],
                 "participation_count": p["teilnahme_int"],
                 "total_decks": p["total_decks"],
@@ -2455,13 +3316,31 @@ def generate_html_report(
         key=lambda x: x["donations"])
 
     top_leecher_list = heapq.nlargest(3,
-        (p for p in aktive_spieler if p["teilnahme_int"] > MIN_PARTICIPATION and p["donations"] == 0 and p["donations_received"] > 0),
+        (p for p in aktive_spieler if p.get("wars_in_window", 0) > MIN_PARTICIPATION and p["donations"] == 0 and p["donations_received"] > 0),
         key=lambda x: x["donations_received"])
 
-    top_performers_html = "".join([f"<li><b>{p['name']}</b> ({p['score']}%)</li>" for p in top_performers_list])
-    top_aufsteiger_html = "".join([f"<li><b>{p['name']}</b> (+{p['delta']}%)</li>" for p in top_aufsteiger_list]) if top_aufsteiger_list else "<li>Keine Verbesserungen</li>"
-    top_spender_html = "".join([f"<li><b>{p['name']}</b> ({p['donations']})</li>" for p in top_spender_list]) if top_spender_list else "<li>Keine Spenden</li>"
-    top_leecher_html = "".join([f"<li><b>{p['name']}</b> ({p['donations']} gesp. / {p['donations_received']} empf.)</li>" for p in top_leecher_list]) if top_leecher_list else f"<li>{t('Keine Auffälligkeiten', 'No issues')} 🎉</li>"
+    top_performers_html = "".join([f"<li><b>{esc(p['name'])}</b> ({p['score']}%)</li>" for p in top_performers_list])
+    top_aufsteiger_html = "".join([f"<li><b>{esc(p['name'])}</b> (+{p['delta']}%)</li>" for p in top_aufsteiger_list]) if top_aufsteiger_list else f"<li>{t('Keine Verbesserungen', 'No improvements')}</li>"
+    top_spender_html = "".join([f"<li><b>{esc(p['name'])}</b> ({p['donations']})</li>" for p in top_spender_list]) if top_spender_list else f"<li>{t('Keine Spenden', 'No donations')}</li>"
+    # Spenden-Auffaelligkeiten: nur noch im Admin-Bereich hinter dem 📊-Button, nicht mehr
+    # oeffentlich in der Uebersicht. Deshalb hier vollstaendig (nicht nur Top 3) und inklusive
+    # der "spendet 0, fordert 0"-Gruppe, die vorher am Namen als 💤 haftete.
+    leecher_alle = sorted(
+        (p for p in aktive_spieler
+         if p.get("wars_in_window", 0) > MIN_PARTICIPATION and p["donations"] == 0 and p["donations_received"] > 0),
+        key=lambda x: x["donations_received"], reverse=True)
+    sleeper_alle = sorted(
+        (p for p in aktive_spieler
+         if p.get("wars_in_window", 0) > MIN_PARTICIPATION and p["donations"] == 0 and p["donations_received"] == 0),
+        key=lambda x: x["name"].lower())
+
+    _leecher_zeilen = "".join(
+        f"<li>📦 <b>{esc(p['name'])}</b> ({p['donations']} {t('gesp.', 'donated')} / {p['donations_received']} {t('empf.', 'received')})</li>"
+        for p in leecher_alle)
+    _sleeper_zeilen = "".join(
+        f"<li>💤 <b>{esc(p['name'])}</b> ({t('spendet 0, fordert 0', 'donates 0, requests 0')})</li>"
+        for p in sleeper_alle)
+    top_leecher_html = (_leecher_zeilen + _sleeper_zeilen) or f"<li>{t('Keine Auffälligkeiten', 'No issues')} 🎉</li>"
 
     reliability_state, reliability_color = get_signal_state(clan_avg, APP_CONFIG["CLAN_RELIABLE_GREEN"], APP_CONFIG["CLAN_RELIABLE_YELLOW"])
     quality_state, quality_color = get_signal_state(clan_avg_points_per_deck, APP_CONFIG["BADGE_STARK_FAME"], APP_CONFIG["BADGE_STABIL_FAME"])
@@ -2558,7 +3437,7 @@ def generate_html_report(
 
     # 6. Aufsteiger (top 3 mit delta > 0)
     if top_aufsteiger_list:
-        names_str = ", ".join(f"<b>{p['name']}</b> <span style='color:#10b981;'>(+{p['delta']}%)</span>" for p in top_aufsteiger_list)
+        names_str = ", ".join(f"<b>{esc(p['name'])}</b> <span style='color:#10b981;'>(+{p['delta']}%)</span>" for p in top_aufsteiger_list)
         summary_lines.append(f"🚀 {t('Stärkste Verbesserung:', 'Biggest improvement:')} {names_str}")
 
     # 6. Absteiger (top 3 mit delta < 0, keine Neulinge)
@@ -2567,7 +3446,7 @@ def generate_html_report(
         key=lambda x: x["delta"]
     )[:3]
     if top_absteiger_list:
-        names_str = ", ".join(f"<b>{p['name']}</b> <span style='color:#ef4444;'>({p['delta']}%)</span>" for p in top_absteiger_list)
+        names_str = ", ".join(f"<b>{esc(p['name'])}</b> <span style='color:#ef4444;'>({p['delta']}%)</span>" for p in top_absteiger_list)
         summary_lines.append(f"⚠️ {t('Stärkster Rückgang:', 'Biggest decline:')} {names_str}")
 
     # 7+8. Nur an Kampftagen (nicht Trainingstag, da dort bereits in Coach-Ecke)
@@ -2577,7 +3456,7 @@ def generate_html_report(
             key=lambda x: x["score"], reverse=True
         )[:3]
         if streak_players:
-            names_str = ", ".join(f"<b>{p['name']}</b>" for p in streak_players)
+            names_str = ", ".join(f"<b>{esc(p['name'])}</b>" for p in streak_players)
             summary_lines.append(f"🔥 {t('Konstant stark:', 'Consistently strong:')} {names_str}")
 
         kurz_vor_aufstieg = sorted(
@@ -2588,7 +3467,7 @@ def generate_html_report(
             key=lambda x: x["score"], reverse=True
         )
         if kurz_vor_aufstieg:
-            names_str = ", ".join(f"<b>{p['name']}</b> ({p['score']}%)" for p in kurz_vor_aufstieg)
+            names_str = ", ".join(f"<b>{esc(p['name'])}</b> ({p['score']}%)" for p in kurz_vor_aufstieg)
             summary_lines.append(f"⚡ {t('Fast im grünen Bereich:', 'Almost in the green zone:')} {names_str} – {t('noch ein paar Kämpfe!', 'a few more battles!')}")
 
     weekly_summary_html = f"<div class='info-box' style='border-left-color: #fbbf24;'><h3 style='margin-top:0; color:#fbbf24;'>🧭 {t('Wochenfazit', 'Weekly Summary')}</h3><ul style='margin:0;'>" + "".join([f"<li>{line}</li>" for line in summary_lines]) + "</ul></div>"
@@ -2630,7 +3509,7 @@ def generate_html_report(
         )[:3]
         if aufsteiger:
             names_str = ", ".join(
-                f"<b>{p['name']}</b> <span style='color:#10b981;'>+{p['delta']}%</span>"
+                f"<b>{esc(p['name'])}</b> <span style='color:#10b981;'>+{p['delta']}%</span>"
                 for p in aufsteiger
             )
             training_items.append(
@@ -2643,7 +3522,7 @@ def generate_html_report(
             key=lambda x: x["score"], reverse=True
         )[:3]
         if streak_players:
-            names_str = ", ".join(f"<b>{p['name']}</b>" for p in streak_players)
+            names_str = ", ".join(f"<b>{esc(p['name'])}</b>" for p in streak_players)
             training_items.append(
                 f"<li><b>🔥 {t('Konstanz zahlt sich aus!', 'Consistency pays off!')}</b> {names_str} {t('liefern Krieg für Krieg ab — genau das trägt den Clan nach vorne.', 'deliver war after war — that is exactly what moves the clan forward.')}</li>"
             )
@@ -2658,7 +3537,7 @@ def generate_html_report(
         )
         if kurz_vor_aufstieg:
             names_str = ", ".join(
-                f"<b>{p['name']}</b> ({p['score']}%)"
+                f"<b>{esc(p['name'])}</b> ({p['score']}%)"
                 for p in kurz_vor_aufstieg[:3]
             )
             grenze = APP_CONFIG["TIER_SOLIDE"]
@@ -2669,7 +3548,7 @@ def generate_html_report(
         # Neulinge willkommen
         neulinge = [p for p in aktive_spieler if p["is_welpenschutz"]]
         if neulinge:
-            namen = ", ".join(f"<b>{p['name']}</b>" for p in neulinge[:4])
+            namen = ", ".join(f"<b>{esc(p['name'])}</b>" for p in neulinge[:4])
             training_items.append(
                 f"<li><b>👋 {t('Willkommen im Team!', 'Welcome to the team!')}</b> {namen} {t('— schön, euch dabei zu haben. Einfach Decks spielen, ausprobieren, Spaß haben. Der Rest kommt von alleine.', '— great to have you here. Just play your decks, experiment and have fun. The rest will follow.')}</li>"
             )
@@ -2814,15 +3693,15 @@ def generate_html_report(
         reverse=True
     )[:3]
     if top_pusher_list:
-        pusher_html = "".join([f"<li><b>{p['name']}</b> (+{p['trophy_push']} 🏆)</li>" for p in top_pusher_list])
+        pusher_html = "".join([f"<li><b>{esc(p['name'])}</b> (+{p['trophy_push']} 🏆)</li>" for p in top_pusher_list])
         pusher_chat = f"🚀 Top-Pusher: {top_pusher_list[0]['name']} (+{top_pusher_list[0]['trophy_push']}🏆)"
     else:
-        pusher_html = "<li>Niemand</li>"
+        pusher_html = f"<li>{t('Niemand', 'Nobody')}</li>"
         pusher_chat = ""
 
-    urlaub_html = "<li>Niemand</li>"
+    urlaub_html = f"<li>{t('Niemand', 'Nobody')}</li>"
     if urlauber_liste:
-        urlaub_html = "".join([f"<li>🏖️ <b>{u}</b></li>" for u in urlauber_liste])
+        urlaub_html = "".join([f"<li>🏖️ <b>{esc(u)}</b></li>" for u in urlauber_liste])
 
     radar_html = ""
     if radar_clans:
@@ -2838,7 +3717,7 @@ def generate_html_report(
         radar_html += f"<tr style='border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; font-weight: 600; text-align: left;'><td style='padding-bottom: 8px; border: none; text-align: left;'>{t('Clan', 'Clan')}</td><td style='padding-bottom: 8px; border: none; text-align: center;'>⛵ {t('Boot', 'Boat')}</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🥇 {t('Medaille', 'Medal')}</td><td style='padding-bottom: 8px; border: none; text-align: center;'>⚡ {t('Effizienz', 'Efficiency')}</td><td style='padding-bottom: 8px; border: none; text-align: center;'>🏆 {t('Trophäe', 'Trophy')}</td></tr>"
 
         for idx, c in enumerate(radar_clans):
-            bold_name = f"<b style='color:#fff;'>{c['name']} (WIR)</b>" if c["is_us"] else c["name"]
+            bold_name = f"<b style='color:#fff;'>{esc(c['name'])} {t('(WIR)', '(US)')}</b>" if c["is_us"] else esc(c["name"])
             bg_color = "rgba(255,255,255,0.05)" if idx % 2 == 0 else "transparent"
             medals_heute = c.get("medals_heute")
             if medals_heute is not None and c['decks_used'] > 0:
@@ -2876,7 +3755,7 @@ def generate_html_report(
                 name_color = mahnwache_colors[mahnwache_idx % len(mahnwache_colors)]
                 offen_label = t(f"({m['offen']} offen)", f"({m['offen']} open)")
                 gefilterte_mahnwache.append(
-                    f"<span style='color:{name_color}; font-weight:800;'>{m['name']}</span> "
+                    f"<span style='color:{name_color}; font-weight:800;'>{esc(m['name'])}</span> "
                     f"<span style='color:#ffffff;'>{offen_label}</span>"
                 )
                 mahnwache_idx += 1
@@ -3011,21 +3890,56 @@ def generate_html_report(
         for style_name, text_content in block_vars.items():
             final_text = enforce_chat_limit(text_content, prefix=prefix)
             safe_text = escape_for_html(final_text)
-            options_html += f'<option value="{safe_text}">{style_name}</option>'
+            options_html += f'<option value="{safe_text}">{esc(style_name)}</option>'
 
-        default_text = enforce_chat_limit(list(block_vars.values())[0], prefix=prefix)
+        # Auch der Vorgabetext muss escaped werden: er steht als Textknoten im <textarea>
+        # und enthaelt Spielernamen (z. B. ">MRK<").
+        default_text = escape_for_html(enforce_chat_limit(list(block_vars.values())[0], prefix=prefix))
+        teil_label = t(f"Teil {i+1}/{total_msgs}", f"Part {i+1}/{total_msgs}")
+        # aria-label ist ein Attribut – dort darf kein i18n-Markup stehen (siehe
+        # uebersetzeAttribute im Seiten-Script), deshalb reiner Text per data-Attribut.
+        select_de = esc(f"Tonfall für Teil {i+1}")
+        select_en = esc(f"Tone for part {i+1}")
 
         chat_boxes_html += f"""
         <div style="margin-bottom: 15px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                <label style="color: {color}; font-weight: bold; font-size: 0.9em;">💬 Teil {i+1}/{total_msgs}:</label>
-                <select onchange="document.getElementById('chatbox_{i}').value = this.value" style="background: rgba(30, 41, 59, 0.9); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 2px 6px; font-family: inherit; font-size: 0.85em; cursor: pointer;">
+                <label for="chatbox_{i}" style="color: {color}; font-weight: bold; font-size: 0.9em;">💬 {teil_label}:</label>
+                <select data-i18n-attr="aria-label" data-i18n-de="{select_de}" data-i18n-en="{select_en}" aria-label="{select_de}" onchange="document.getElementById('chatbox_{i}').value = this.value" style="background: rgba(30, 41, 59, 0.9); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 2px 6px; font-family: inherit; font-size: 0.85em; cursor: pointer;">
                     {options_html}
                 </select>
             </div>
             <textarea id="chatbox_{i}" readonly style="width: 100%; height: 50px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 8px; font-family: inherit; font-size: 0.95em; resize: none;">{default_text}</textarea>
+            <button type="button" class="chat-copy-btn" data-target="chatbox_{i}" style="margin-top: 6px; background: rgba(56,189,248,0.15); color: #38bdf8; border: 1px solid rgba(56,189,248,0.35); border-radius: 6px; padding: 6px 12px; font-family: inherit; font-weight: 700; font-size: 0.85em; cursor: pointer;">📋 {t('Kopieren', 'Copy')}</button>
         </div>
         """
+
+    # ── Leitungs-Bereich zusammenbauen und verschluesseln ───────────────────────
+    # Alles hier drin (Spenden-Auffaelligkeiten mit Namen, Chat- und Abschiedstexte)
+    # darf NICHT im Klartext in die oeffentliche index.html: das Repo ist oeffentlich
+    # und der Cron committet die Datei. Der Block wird verschluesselt eingebettet und
+    # erst nach Passworteingabe im Browser entschluesselt.
+    admin_inner_html = f"""
+        <div class="card leecher" style="width: 100%; flex: 100%; margin-bottom: 20px;">
+            <h3>📦 {t('Spenden auffällig', 'Notable Donations')}</h3>
+            <ul>{top_leecher_html}</ul>
+        </div>
+        <div class="card messenger">
+            <h3 style="color: #f1c40f; margin-bottom: 10px;">🎮 {t('Chat-Hilfe', 'Chat Helper')} ({total_msgs}-{t('Teiler', 'parts')})</h3>
+            <p style="font-size: 0.9em; color: #cbd5e1; margin-top: 0; margin-bottom: 15px;">{t('Wähle den passenden Tonfall und kopiere dann die', 'Pick the matching tone, then copy the')} {total_msgs} {t('Texte nacheinander in den Chat.', 'texts one by one into the chat.')}</p>
+            {chat_boxes_html}
+        </div>
+    """
+
+    admin_blob = encrypt_admin_block(admin_inner_html, ADMIN_PASSPHRASE)
+    if admin_blob is None:
+        print("⚠️ ADMIN_PASSPHRASE nicht gesetzt – Leitungs-Bereich wird weggelassen "
+              "(niemals unverschlüsselt ausliefern!).")
+        admin_blob_json = "null"
+    else:
+        admin_blob_json = json.dumps(admin_blob, ensure_ascii=False).replace("</", "<\\/")
+        print(f"🔒 Leitungs-Bereich verschlüsselt eingebettet "
+              f"({len(admin_blob['data'])} Zeichen Chiffretext).")
 
     deck_html = ""
     deck_sections = build_deck_sections(top_decks_data)
@@ -3048,7 +3962,7 @@ def generate_html_report(
                 royaleapi_link = f"https://royaleapi.com/decks/stats/{','.join(api_names)}"
 
                 images_html = "".join([
-                    f"<img src='{c['icon']}' style='width: 23%; border-radius: 4px; margin: 1%;' title='{c['name']}'>"
+                    f"<img src=\"{esc(c['icon'])}\" style='width: 23%; border-radius: 4px; margin: 1%;' loading='lazy' decoding='async' width='300' height='360' alt=\"{esc(c['name'])}\" title=\"{esc(c['name'])}\">"
                     for c in d["cards"]
                 ])
 
@@ -3080,23 +3994,26 @@ def generate_html_report(
             """
 
 
+    # (Slug, Anzeigename). Der Slug ist sprachunabhaengig und landet als data-tier
+    # am Block – die Filterknoepfe im Browser koennen sich sonst an nichts festhalten,
+    # weil der Anzeigename i18n-Markup enthaelt und beim Umschalten wechselt.
     tiers = [
-        t("Sehr stark", "Very Strong"),
-        t("Solide Basis", "Solid Base"),
-        t("Mehr drin", "Underperforming"),
-        t("Ausbaufaehig", "Room to Grow"),
-        "🏖️ " + t("Abgemeldet / Im Urlaub (Pausiert)", "Logged Off / On Vacation (Paused)")
+        ("sehr-stark",   t("Sehr stark", "Very Strong")),
+        ("solide-basis", t("Solide Basis", "Solid Base")),
+        ("mehr-drin",    t("Mehr drin", "Underperforming")),
+        ("ausbaufaehig", t("Ausbaufaehig", "Room to Grow")),
+        ("urlaub",       "🏖️ " + t("Abgemeldet / Im Urlaub (Pausiert)", "Logged Off / On Vacation (Paused)")),
     ]
 
     table_html = ""
-    for tier_name in tiers:
+    for tier_slug, tier_name in tiers:
         players_in_tier = sorted(
             [p for p in player_stats if p["tier"] == tier_name],
             key=lambda x: (x["teilnahme_int"], x["fame_per_deck"], x["war_points_total"]),
             reverse=True
         )
         if players_in_tier:
-            table_html += "<div class='tier-section'>"
+            table_html += f"<div class='tier-section' data-tier='{tier_slug}' data-anzahl='{len(players_in_tier)}'>"
             table_html += f"<div class='tier-title'>{tier_name}</div>"
             table_html += """<table>
                 <thead>
@@ -3115,41 +4032,43 @@ def generate_html_report(
                 <tbody>"""
 
             for p in players_in_tier:
-                spenden_warnung = ""
-                if p["donations"] == 0 and p["teilnahme_int"] > APP_CONFIG["MIN_PARTICIPATION"] and not p["is_urlaub"]:
-                    if p["donations_received"] > 0:
-                        spenden_warnung = f" <span class='custom-tooltip' style='font-size: 1.1em;'>📦<span class='tooltip-text'>Spenden auffällig (0 gespendet, aber {p['donations_received']} erhalten)</span></span>"
-                    else:
-                        spenden_warnung = " <span class='custom-tooltip' style='font-size: 1.1em;'>💤<span class='tooltip-text'>Spenden inaktiv (0 gespendet, 0 erhalten)</span></span>"
-
-                spenden_zelle = f"<span class='custom-tooltip dotted'>{p['donations']}<span class='tooltip-text'>Gespendet: {p['donations']} | Empfangen: {p['donations_received']}</span></span>"
-                spenden_block = f"<span class='spenden-cell'><span>{spenden_zelle}</span><span class='spenden-extra'>{spenden_warnung}</span></span>" if spenden_warnung else spenden_zelle
+                # Bewusst keine 📦/💤-Markierung mehr neben dem Namen: das hat einzelne
+                # Mitglieder oeffentlich als "Spenden auffällig" ausgewiesen. Die nackten
+                # Spendenzahlen bleiben sichtbar, die Bewertung sieht nur die Clanleitung
+                # im Admin-Bereich hinter dem 📊-Button.
+                _spenden_tip = t(
+                    f"Gespendet: {p['donations']} | Empfangen: {p['donations_received']}",
+                    f"Donated: {p['donations']} | Received: {p['donations_received']}"
+                )
+                spenden_block = f"<span class='custom-tooltip dotted'>{p['donations']}<span class='tooltip-text'>{_spenden_tip}</span></span>"
 
                 # Boot-Angriff-Badge
                 boat_badge = ""
                 if p.get("boat_attacks", 0) > 0:
-                    boat_badge = f" <span class='custom-tooltip' style='font-size: 0.9em;'>⛵<span class='tooltip-text'>Boot-Angriffe: {p['boat_attacks']}</span></span>"
+                    _boat_tip = t(f"Boot-Angriffe: {p['boat_attacks']}", f"Boat attacks: {p['boat_attacks']}")
+                    boat_badge = f" <span class='custom-tooltip' style='font-size: 0.9em;'>⛵<span class='tooltip-text'>{_boat_tip}</span></span>"
 
                 # Spieler-Profil-Tooltip
                 profile_tooltip = ""
                 if p.get("win_rate", 0) > 0 or p.get("best_trophies", 0) > 0:
                     tt_parts = []
                     if p.get("exp_level", 0) > 0:
-                        tt_parts.append(f"Level: {p['exp_level']}")
+                        tt_parts.append(t(f"Level: {p['exp_level']}", f"Level: {p['exp_level']}"))
                     if p.get("best_trophies", 0) > 0:
-                        tt_parts.append(f"Best: {p['best_trophies']} 🏆")
+                        tt_parts.append(t(f"Best: {p['best_trophies']} 🏆", f"Best: {p['best_trophies']} 🏆"))
                     if p.get("win_rate", 0) > 0:
-                        tt_parts.append(f"Winrate: {p['win_rate']}%")
+                        tt_parts.append(t(f"Winrate: {p['win_rate']}%", f"Win rate: {p['win_rate']}%"))
                     if p.get("challenge_max_wins", 0) > 0:
-                        tt_parts.append(f"Challenge-Max: {p['challenge_max_wins']}")
+                        tt_parts.append(t(f"Challenge-Max: {p['challenge_max_wins']}", f"Challenge max: {p['challenge_max_wins']}"))
                     if p.get("war_day_wins", 0) > 0:
-                        tt_parts.append(f"Kriegssiege: {p['war_day_wins']}")
+                        tt_parts.append(t(f"Kriegssiege: {p['war_day_wins']}", f"War day wins: {p['war_day_wins']}"))
                     if p.get("favourite_card"):
-                        tt_parts.append(f"Lieblingskarte: {p['favourite_card']}")
+                        _fav = esc(p["favourite_card"])
+                        tt_parts.append(t(f"Lieblingskarte: {_fav}", f"Favorite card: {_fav}"))
                     if tt_parts:
                         profile_tooltip = f" <span class='custom-tooltip' style='font-size: 0.85em; cursor: help;'>ℹ️<span class='tooltip-text'>{'<br>'.join(tt_parts)}</span></span>"
 
-                name_cell = f"{p['name']}{p['welpenschutz_badge']}{p['streak_badge']}{boat_badge}{profile_tooltip}"
+                name_cell = f"{esc(p['name'])}{p['welpenschutz_badge']}{p['streak_badge']}{boat_badge}{profile_tooltip}"
 
                 # Dabei-Farbe: grün wenn volle Teilnahme, gelb wenn ok, rot wenn wenig
                 dabei_wars  = p["teilnahme_int"]
@@ -3175,7 +4094,11 @@ def generate_html_report(
                 deck_label = "Decksets" if max_decks > 0 else "-"
 
                 table_html += (
-                    f"<tr class='player-row' data-tag='{p['tag']}'>"
+                    # data-name traegt den reinen Spielernamen fuer die Suche. Ueber den
+                    # Zellinhalt zu suchen waere falsch: dort stecken auch Tooltip-Texte
+                    # ("Level: 69", "Best: 14000"), man wuerde also Unsinn mitfinden.
+                    f"<tr class='player-row' tabindex='0' role='button' aria-expanded='false' "
+                    f"data-tag=\"{esc(p['tag'])}\" data-name=\"{esc(p['name'])}\">"
                     f"<td class='name-col'><span class='name-inline'>{name_cell}</span></td>"
                     f"<td>{p['focus_badge']}</td>"
                     f"<td>{p['status']}</td>"
@@ -3184,12 +4107,13 @@ def generate_html_report(
                     f"<br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Kriege aktiv</span><span class='i18n-en'>Wars active</span></span>"
                     f"</td>"
                     f"<td style='white-space:nowrap;'>"
-                    f"<span style='font-weight:800; color:{deck_color};'>{total_decks_played}/{max_decks}</span>"
+                    f"<span style='font-weight:800; color:{deck_color};'>{total_decks_played}/{max_decks}</span>{p.get('quote_warnung', '')}"
                     f"<br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Decks gespielt</span><span class='i18n-en'>Decks played</span></span>"
                     f"</td>"
                     f"<td style='white-space:nowrap;'>"
-                    f"<span style='font-weight:800; color:{fpd_color};'>{fpd}</span>{p['leecher_warnung']}"
-                    f"<br><span style='font-size:0.75em; color:#64748b;'><span class='i18n-de'>Ø pro Deck</span><span class='i18n-en'>Avg per deck</span></span>"
+                    f"<span class='custom-tooltip dotted' style='font-weight:800; color:{fpd_color};'>{fpd}"
+                    f"<span class='tooltip-text'>{p.get('fame_tip', '')}</span></span>{p['leecher_warnung']}"
+                    f"<br><span style='font-size:0.75em; color:#64748b;'>{t(_fame_zeitraum_de, _fame_zeitraum_en)}</span>"
                     f"</td>"
                     f"<td style='white-space:nowrap;'>"
                     f"<span style='font-weight:700; color:#c4b5fd;'>{fame_total_str}</span>"
@@ -3202,10 +4126,14 @@ def generate_html_report(
 
             table_html += "</tbody></table></div>"
 
-    keys_to_delete = []
-    for s_name in strikes.keys():
-        if s_name not in aktive_namen_set:
-            keys_to_delete.append(s_name)
+    # Verwarnungen von Spielern aufraeumen, die nicht mehr im Clan sind. Der Schluessel ist
+    # inzwischen der Tag; alte Namensschluessel werden ueber aktive_namen_set mit abgedeckt,
+    # damit beim Umstieg nichts stehen bleibt.
+    aktive_tags_set = {normalize_player_tag(tg) for tg in df_active["player_tag"].tolist()}
+    keys_to_delete = [
+        k for k in strikes.keys()
+        if k not in aktive_tags_set and k not in aktive_namen_set
+    ]
     for k in keys_to_delete:
         del strikes[k]
 
@@ -3284,6 +4212,128 @@ def generate_html_report(
         </div>
         """
 
+    # ── Konsequenzen sichtbar machen (Zahlen, keine Namen) ─────────────────────
+    # Die engagierten Mitglieder erleben sonst nie, dass ueberhaupt etwas passiert –
+    # das ist ein haeufiger Grund, warum gute Spieler still den Clan verlassen.
+    # Bewusst nur Zahlen: Namen gehoeren in den Leitungsbereich, nicht auf die
+    # oeffentliche Seite (dieselbe Linie wie bei den Spenden-Auffaelligkeiten).
+    konsequenzen_html = ""
+    if ZEIGE_KONSEQUENZEN_BLOCK:
+        _demoted = len(strikes_data.get("demoted_this_week", []))
+        _kicked = len(strikes_data.get("kicked_this_week", []))
+        _hinweise = sum(1 for v in strikes.values() if isinstance(v, int) and v > 0)
+        _passiert = _demoted + _kicked + _hinweise
+
+        if karenz_aktiv:
+            # Waehrend der Karenzzeit ist "keine Maßnahmen" kein Lob, sondern eine
+            # Ansage: Die Bewertung gilt schon, die Konsequenzen noch nicht.
+            _inhalt = (
+                f"<p style='margin:0 0 8px 0;'><b>{t('Neue Bewertung aktiv – Schonfrist bis', 'New scoring active – grace period until')} {karenz_bis}.</b></p>"
+                f"<p style='margin:0; color:#cbd5e1;'>"
+                f"{t('Die Kriege zählen jetzt anders: Ein ausgelassener Kriegstag senkt deine Deck-Quote, statt wie bisher aus der Rechnung zu fallen. Bis zum Stichtag gibt es dafür keine Verwarnungen, Degradierungen oder Ausschlüsse – schau dir deinen neuen Wert in Ruhe an.', 'Wars now count differently: a skipped war day lowers your deck rate instead of dropping out of the calculation as before. Until the deadline there are no warnings, demotions or removals – take your time to look at your new value.')}"
+                f"</p>"
+            )
+        elif _passiert == 0:
+            _inhalt = (
+                f"<p style='margin:0; color:#94a3b8;'>"
+                f"{t('Diese Woche waren keine Maßnahmen nötig – alle sind im Rahmen geblieben. 👍', 'No action was needed this week – everyone stayed on track. 👍')}"
+                f"</p>"
+            )
+        else:
+            _teile = []
+            if _hinweise:
+                _teile.append(f"<li><b>{_hinweise}</b> {t('interner Hinweis wegen zu wenig Kriegsaktivität', 'internal flag for low war activity') if _hinweise == 1 else t('interne Hinweise wegen zu wenig Kriegsaktivität', 'internal flags for low war activity')}</li>")
+            if _demoted:
+                _teile.append(f"<li><b>{_demoted}</b> {t('Degradierung als Bewährungschance', 'demotion as a probation chance') if _demoted == 1 else t('Degradierungen als Bewährungschance', 'demotions as probation chances')}</li>")
+            if _kicked:
+                _teile.append(f"<li><b>{_kicked}</b> {t('Verabschiedung aus dem Clan', 'departure from the clan') if _kicked == 1 else t('Verabschiedungen aus dem Clan', 'departures from the clan')}</li>")
+            _inhalt = "<ul style='margin:0; padding-left:20px;'>" + "".join(_teile) + "</ul>"
+
+        _k_farbe = "#38bdf8" if karenz_aktiv else "#f97316"
+        _k_bg = "rgba(56, 189, 248, 0.08)" if karenz_aktiv else "rgba(249, 115, 22, 0.08)"
+        _k_titel = (f"🕊️ {t('Umstellung der Bewertung', 'Scoring change')}" if karenz_aktiv
+                    else f"⚖️ {t('Was diese Woche passiert ist', 'What happened this week')}")
+        konsequenzen_html = f"""
+        <div class='info-box' style='border-left-color: {_k_farbe}; background: {_k_bg}; margin-bottom: 25px;'>
+            <h3 style='margin-top:0; color:{_k_farbe}; margin-bottom:10px;'>{_k_titel}</h3>
+            {_inhalt}
+            <p style='margin:10px 0 0 0; font-size:0.85em; color:#64748b;'>
+                {'' if karenz_aktiv else t('Bewusst ohne Namen – wer betroffen ist, erfährt es persönlich von der Clanleitung.', 'Deliberately without names – anyone affected hears it personally from the clan leadership.')}
+            </p>
+        </div>
+        """
+
+    # ── Anerkennung: alle, die vollständig liefern ─────────────────────────────
+    # Das System ist sonst fast nur auf Fehlersuche ausgerichtet. Bewusst KEINE
+    # Top-3-Liste, sondern jede und jeder, der die Erwartung erfuellt – damit
+    # Anerkennung nicht auf drei Plaetze begrenzt ist.
+    leistungstraeger_html = ""
+    if ZEIGE_LEISTUNGSTRAEGER:
+        _traeger = [
+            p for p in aktive_spieler
+            if p.get("max_moegliche_decks", 0) > 0
+            and (p.get("total_decks", 0) / p["max_moegliche_decks"]) >= LEISTUNGSTRAEGER_QUOTE
+            and not p.get("is_welpenschutz")
+        ]
+        _traeger.sort(key=lambda x: (-(x["total_decks"] / x["max_moegliche_decks"]), x["name"].lower()))
+        if _traeger:
+            _namen = " · ".join(f"<b>{esc(p['name'])}</b>" for p in _traeger)
+            _anteil = len(_traeger) / len(aktive_spieler) if aktive_spieler else 0
+            leistungstraeger_html = f"""
+        <div class='info-box' style='border-left-color: #10b981; background: rgba(16, 185, 129, 0.08); margin-bottom: 25px;'>
+            <h3 style='margin-top:0; color:#10b981; margin-bottom:10px;'>🏅 {t('Leistungsträger', 'Backbone of the clan')}
+                <span style='font-size:0.75em; font-weight:normal; opacity:0.85;'>({len(_traeger)} {t('von', 'of')} {len(aktive_spieler)}, {_anteil:.0%})</span></h3>
+            <p style='margin:0 0 8px 0; font-size:0.95em;'>{t('Diese Mitglieder haben mindestens', 'These members played at least')} <b>{LEISTUNGSTRAEGER_QUOTE:.0%}</b> {t('ihrer möglichen Decks gespielt. Sie tragen den Clan – danke dafür!', 'of their possible decks. They carry the clan – thank you!')}</p>
+            <p style='margin:0; line-height:1.9;'>{_namen}</p>
+        </div>
+            """
+
+    # ── Beitritts-Hinweis für Interessenten ──
+    # Erstes Ziel der Seite: Interessenten sollen sofort sehen, wie sie zu uns finden
+    # und was von ihnen erwartet wird – ohne dafür die Regelseite durchlesen zu müssen.
+    _co_join = clan_overview or {}
+    _min_trophies = _co_join.get("required_trophies", 0)
+    _min_trophies_line = (
+        f"<li>{t('Mindest-Trophäen', 'Minimum trophies')}: <b>{_min_trophies}</b> 🏆</li>"
+        if _min_trophies else ""
+    )
+    # Konkrete Zahl statt vager Formulierung: "verlässlich spielen" laesst offen,
+    # ob 12 von 16 reichen. Wer die Erwartung vorher kennt, tritt entweder passend
+    # bei oder gar nicht – das ist fairer als eine Korrektur Wochen spaeter.
+    erwartung_zeile = ""
+    if ZEIGE_ERWARTUNG_BEITRITT:
+        _schnitt = ""
+        if aktive_spieler:
+            _q = [p["total_decks"] / p["max_moegliche_decks"]
+                  for p in aktive_spieler if p.get("max_moegliche_decks", 0) > 0]
+            if _q:
+                _schnitt = t(
+                    f" Unser Clan-Schnitt liegt aktuell bei {sum(_q)/len(_q)*16:.0f} von 16.",
+                    f" Our clan average is currently {sum(_q)/len(_q)*16:.0f} out of 16."
+                )
+        erwartung_zeile = (
+            f"<li>{t('Konkret heißt das im Schnitt', 'Concretely that means on average')} "
+            f"<b>{ERWARTUNG_DECKS_PRO_KRIEG} {t('von 16 Decks pro Krieg', 'of 16 decks per war')}</b>. "
+            f"{t('Wer dauerhaft deutlich darunter bleibt, wird von der Clanleitung angesprochen.', 'Anyone consistently well below that is approached by the clan leadership.')}"
+            f"{_schnitt}</li>"
+        )
+
+    _clan_tag_readable = CLAN_TAG.replace("%23", "#")
+    join_cta_html = f"""
+        <div class="info-box" style="border-left-color: #10b981; background: rgba(16, 185, 129, 0.10); margin-bottom: 30px;">
+            <h3 style="margin-top: 0; color: #10b981; margin-bottom: 10px; font-size: 1.2em;">🤝 {t('Du willst zu uns?', 'Want to join us?')}</h3>
+            <p style="margin: 0 0 10px 0;">{t('Suche im Spiel unter <b>Clan beitreten</b> nach unserem Clan-Tag – oder tippe ihn direkt ein:', 'In the game, go to <b>Join clan</b> and search for our clan tag – or type it in directly:')}</p>
+            <p style="margin: 0 0 12px 0;"><code style="background: rgba(0,0,0,0.45); padding: 6px 12px; border-radius: 6px; font-size: 1.15em; font-weight: 800; color: #38bdf8; letter-spacing: 1px;">{esc(_clan_tag_readable)}</code></p>
+            <ul style="margin: 0; padding-left: 20px;">
+                {_min_trophies_line}
+                <li>{t('Erwartung: an Kriegstagen deine 4 Decks spielen – oder vorher kurz abmelden.', 'Expectation: play your 4 decks on war days – or let us know in advance.')}</li>
+                {erwartung_zeile}
+                <li>{t('Dein erster Clankrieg zählt als Eingewöhnung (Welpenschutz 🌱).', 'Your first clan war counts as settling in (pup protection 🌱).')}</li>
+                <li>{t('Alle Regeln im Detail: Reiter <b>📖 Regeln &amp; System</b>. Fragen? Kontakt steht im <b>Impressum</b>.', 'All rules in detail: tab <b>📖 Rules &amp; System</b>. Questions? Contact details are in the <b>Imprint</b>.')}</li>
+            </ul>
+        </div>
+    """
+
     # ── Gegner-Decks gegen die wir am häufigsten verlieren ──
     opponent_meta_html = ""
     top_opp = build_top_opponent_decks(opponent_decks, top_n=10)
@@ -3293,7 +4343,7 @@ def generate_html_report(
         for opp in top_opp:
             medal = rank_medals.get(opp["rank"], f"#{opp['rank']}")
             images_html = "".join([
-                f"<img src='{c['icon']}' style='width: 23%; border-radius: 4px; margin: 1%;' title='{c['name']}'>"
+                f"<img src=\"{esc(c['icon'])}\" style='width: 23%; border-radius: 4px; margin: 1%;' loading='lazy' decoding='async' width='300' height='360' alt=\"{esc(c['name'])}\" title=\"{esc(c['name'])}\">"
                 for c in opp["cards"]
             ])
             api_names = [c["name"].lower().replace(".", "").replace(" ", "-") for c in opp["cards"]]
@@ -3327,7 +4377,18 @@ def generate_html_report(
         </div>
         """
 
-    anzeige_stand = datetime.now(ZoneInfo("Europe/Berlin")).strftime("%d.%m.%Y, %H:%M Uhr")
+    # Stand-Zeitpunkt in beiden Sprachen: "Uhr" ist deutsch und hat in der englischen
+    # Ansicht nichts zu suchen. Monatsname statt Ziffern, damit 08.09. nicht als
+    # 8. September oder September 8 missverstanden wird. Zeitzone dazu, weil englisch-
+    # sprachige Mitglieder nicht zwangslaeufig in Mitteleuropa sitzen.
+    _MONATE_EN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    _stand = datetime.now(ZoneInfo("Europe/Berlin"))
+    anzeige_stand = t(
+        _stand.strftime("%d.%m.%Y, %H:%M Uhr"),
+        f"{_MONATE_EN[_stand.month - 1]} {_stand.day}, {_stand.year}, "
+        f"{_stand.strftime('%H:%M')} {_stand.strftime('%Z')}"
+    )
 
     warlog_cache_path = Path(__file__).parent / "warlog_cache.json"
     if warlog_cache_path.exists():
@@ -3356,16 +4417,18 @@ def generate_html_report(
         records=records,
         urlaub_html=urlaub_html,
         top_aufsteiger=top_aufsteiger_html,
-        top_leecher=top_leecher_html,
-        total_msgs=total_msgs,
-        chat_boxes_html=chat_boxes_html,
+        admin_blob_json=admin_blob_json,
         table_html=table_html,
         deck_html=deck_html,
         impressum_html=impressum_html,
         datenschutz_html=datenschutz_html,
         clan_overview_html=clan_overview_html,
+        konsequenzen_html=konsequenzen_html,
+        leistungstraeger_html=leistungstraeger_html,
+        fame_zeitraum=t(_fame_zeitraum_de, _fame_zeitraum_en),
         opponent_meta_html=opponent_meta_html,
-        warlog_data=warlog_data
+        warlog_data=warlog_data,
+        join_cta_html=join_cta_html
     )
 
     default_mail_texts = [list(block.values())[0] for block in chat_blocks]

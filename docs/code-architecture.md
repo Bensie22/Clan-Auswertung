@@ -29,6 +29,11 @@ Clan-Auswertung/
 ├── run_pipeline.py                 Local orchestrator (prefetch → modes → merge)
 ├── api_client.py                   Shared HTTP GET wrapper (used by pipeline scripts)
 ├── index.html / datenschutz.html / impressum.html   Static frontend + legal
+├── fonts/                          Selbst gehostetes Nunito (Variable Font, woff2 + OFL.txt).
+│                                   (Verschlüsselter Leitungs-Bereich: siehe Abschnitt unten.)
+│                                   Bewusst kein Google-Fonts-CDN: sonst geht die Besucher-IP
+│                                   an einen Dritten. Eingebunden per @font-face in
+│                                   Master_Auswertung_GitHub.py::render_html_template.
 ├── .github/workflows/main.yml      Cron every 10 min: master → prefetch → modes → merge → commit + push
 └── docs/                           you are here
 ```
@@ -96,7 +101,7 @@ Clan-Auswertung/
 |------|------------|---------|-------|
 | `member_memory.json` | Master | Master, `/players` paths | `current_players`, `ever_seen_players`, `pending_events` (24h TTL join detection) |
 | `donations_memory.json` | Master | `app/data.py::load_donations_map` | Spenden-Verlauf pro Spieler |
-| `strikes.json` | Master | `/strikes`, services | Verwarnungen + Demoted/Kicked this week |
+| `strikes.json` | Master | `/strikes`, services | Verwarnungen + Demoted/Kicked this week. **`players` ist seit 08/2026 nach Spieler-Tag indiziert** (vorher Ingame-Name — ein Namenswechsel hat den Verwarnungsstand still zurückgesetzt). `Master_Auswertung_GitHub.py::migrate_strikes_to_tags` schlüsselt Altbestände beim ersten Lauf um; `app/data.py::strikes_for_player` liest beide Formate. |
 | `records.json` | Master | `/records` | Clan-Bestmarken |
 | `kicked_players.json` | Master | `/kicked`, Master (returning detection) | Liste gekickter Spieler |
 | `score_history.csv` | Master | services (trend, streak) | Wöchentlicher Score pro Spieler |
@@ -110,6 +115,47 @@ Clan-Auswertung/
 | `full_auto_output.json` / `smart_output.json` / `coaching_output.json` / `commander_output.json` | mode scripts | `merge_outputs.py` | Mode-Result |
 | `dashboard_data.json` | `merge_outputs.py` | `index.html` | Vereinigtes Dashboard-Payload |
 | `action_log.db` | Master | Master | SQLite Aktionslog |
+
+### `uploads/clan_export_*.csv` (Zwischenstand, nur Master-intern)
+
+Pro Krieg gibt es vier Spalten: `s_<rid>_fame`, `s_<rid>_decks_used`, `s_<rid>_boat_attacks`
+und `s_<rid>_in_clan`.
+
+`s_<rid>_in_clan` (1/0) unterscheidet „war im Clan, hat 0 Decks gespielt" von „war noch nicht
+im Clan" — beides steht sonst identisch als 0/0 in der Zeile. Der Trend braucht das, um einen
+bewusst ausgelassenen Krieg als roten Punkt zu zeigen statt ihn zu überspringen.
+Wer neue Auswertungen über die Kriegsspalten baut, filtert wie der Bestand auf `_fame` bzw.
+`_decks_used` — sonst wird die 0/1-Flagge versehentlich mitsummiert.
+
+Der laufende Krieg liegt unter der festen `rid` `zzzcurrent` und wird weder im Score noch
+im Trend gezählt (er ist noch nicht abgeschlossen).
+
+## Verschlüsselter Leitungs-Bereich in `index.html`
+
+Das Repository ist **öffentlich** und der Cron committet die erzeugte `index.html` alle
+10 Minuten. Alles, was dort im Klartext steht, ist damit dauerhaft für jeden lesbar — auch
+rückwirkend über die Git-Historie. Weder `display: none` noch ein schwer zu erratender
+Dateiname ändern daran etwas.
+
+Der Leitungs-Bereich (Spenden-Auffälligkeiten **mit Namen**, Chat- und Abschiedstexte) wird
+deshalb so behandelt:
+
+1. `generate_html_report` baut den Bereich als HTML-String (`admin_inner_html`).
+2. `encrypt_admin_block` verschlüsselt ihn: PBKDF2-HMAC-SHA256 (310.000 Runden, 16-Byte-Salt)
+   leitet aus `ADMIN_PASSPHRASE` einen 256-Bit-Schlüssel ab, AES-GCM verschlüsselt mit
+   12-Byte-IV. Das Ergebnis geht base64-kodiert als `ADMIN_BLOB` in die Seite.
+3. Im Browser entschlüsselt `setupAdminUnlock` per WebCrypto nach Passworteingabe und setzt
+   das Ergebnis in `#admin-content`. Das Passwort liegt in `sessionStorage`
+   (optional `localStorage` über „Auf diesem Gerät merken").
+
+**Ohne gesetztes `ADMIN_PASSPHRASE` wird der Bereich vollständig weggelassen** — er darf
+niemals unverschlüsselt in die Seite. Das Verfahren ist bewusst so gewählt, dass die
+WebCrypto-API ohne Zusatzbibliothek entschlüsseln kann; `AESGCM.encrypt` hängt den Auth-Tag
+hinten an, genau wie WebCrypto es erwartet. Python-seitig kommt `cryptography` zum Einsatz
+(einziger Zweck dieser Abhängigkeit).
+
+Grenze des Verfahrens: Der Chiffretext bleibt für immer öffentlich. Die Stärke des Passworts
+ist der einzige Schutz, und ein späterer Wechsel entschärft alte Commits nicht.
 
 ## External systems
 

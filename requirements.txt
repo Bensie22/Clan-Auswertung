@@ -2,3 +2,6 @@ fastapi==0.115.12
 uvicorn==0.34.0
 pandas==2.2.3
 requests==2.32.3
+# Verschluesselt den Admin-Block in index.html (AES-GCM, siehe encrypt_admin_block).
+# Wird nur vom Cron-Skript gebraucht, nicht von der API.
+cryptography==50.0.0

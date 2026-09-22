@@ -68,6 +68,8 @@ def players_leaderboard():
             "tag": tag,
             "role": p.get("role"),
             "score": p.get("score", 0),
+            # Fame des laufenden Krieges – die Mode-Skripte entscheiden damit ueber Beförderungen.
+            "fame": p.get("fame", 0),
             "fame_per_deck": p.get("fame_per_deck", 0),
             "trophies": p.get("trophies", 0),
             "donations": p.get("donations", 0),

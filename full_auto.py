@@ -1,6 +1,6 @@
 import json
 import sys
-from config import STRIKE_THRESHOLD, PROMOTION_SCORE_MIN
+from config import STRIKE_THRESHOLD, PROMOTION_FAME_MIN
 
 PRIORITY = {
     "OK": 1,
@@ -11,7 +11,10 @@ PRIORITY = {
 }
 
 def classify_player(p):
+    # Verwarnungen haengen weiter am Wochen-Score, "TOP" (Beförderung) dagegen am Fame
+    # des laufenden Krieges – das ist seit 08/2026 die einzige Beförderungs-Kennzahl.
     score = p.get("score", 0)
+    fame = p.get("fame", 0)
     strikes = p.get("strikes", 0)
 
     if score == 0:
@@ -22,7 +25,7 @@ def classify_player(p):
             return "STRIKE_ESKALATION", PRIORITY["STRIKE_ESKALATION"]
         return "STRIKE", PRIORITY["STRIKE"]
 
-    if score >= PROMOTION_SCORE_MIN:
+    if fame >= PROMOTION_FAME_MIN and strikes == 0:
         return "TOP", PRIORITY["TOP"]
 
     return "OK", PRIORITY["OK"]

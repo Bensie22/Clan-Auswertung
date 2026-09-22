@@ -30,7 +30,13 @@ RUN_MODE=weekly python Master_Auswertung_GitHub.py
 python run_pipeline.py
 ```
 
-Es gibt keine Tests und keinen Linter — Module nach Änderungen mit `python -c "import api"` bzw. dem betroffenen Mode-Skript prüfen.
+Tests laufen mit `pip install pytest && python -m pytest tests/ -q` (rund eine Sekunde, kein API-Token nötig).
+`tests/test_services.py` prüft die Score-, Badge- und Beförderungslogik, `tests/test_seite.py` erzeugt einen
+vollständigen Report aus erfundenen Spielern und kontrolliert, was still kaputtgehen könnte: Escaping von
+Spielernamen, keine Drittanbieter-Requests, verschlüsselter Leitungs-Bereich und die Fairness-Regeln
+(Welpenschutz nach Clan-Zugehörigkeit, ausgelassene Kriege im Trend, Verwarnungen am Spieler-Tag).
+Einen Linter gibt es nicht — Module nach Änderungen zusätzlich mit `python -c "import api"` bzw. dem
+betroffenen Mode-Skript prüfen.
 
 ## Environment
 
@@ -40,17 +46,38 @@ Lokal über `.env`, in Produktion via GitHub-Actions-Secrets bzw. Render-Env-Var
 |----------|----------|-------|
 | `SUPERCELL_API_TOKEN` | GitHub Actions | Direkter Zugriff auf RoyaleAPI-Proxy aus `Master_Auswertung_GitHub.py`. |
 | `CR_API_KEY` | Render | Live-Calls aus `app/cr_api.py` (Clan-Profil, Riverrace, Battlelog). |
-| `RUN_MODE` | GitHub Actions | `radar` (Default, 10-Min-Cron) oder `weekly` (HTML + Mail). |
+| `RUN_MODE` | GitHub Actions | `radar` (Default, 10-Min-Cron) oder `weekly` (Verwarnungen, Score-Historie, HTML + Mail). Wird im Workflow aus dem Auslöser abgeleitet, nicht von Hand gesetzt. |
 | `EMAIL_SENDER` / `EMAIL_PASS` / `EMAIL_RECEIVER` | GitHub Actions | SMTP-Versand des Wochenberichts (nur `weekly`). |
 | `IMPRESSUM_*` | GitHub Actions | Werte für Impressum / Datenschutz (Owner, Adresse, Telefon, Mail, Website). |
+| `ADMIN_PASSPHRASE` | GitHub Actions | Passwort für den verschlüsselten Leitungs-Bereich in `index.html` (Spenden-Auffälligkeiten, Chat- und Abschiedstexte). **Ohne dieses Secret wird der Bereich komplett weggelassen** — er landet nie unverschlüsselt auf der Seite. Bitte lang und zufällig wählen: Das Repo ist öffentlich, der Chiffretext bleibt dauerhaft in der Git-Historie, und ein späterer Passwortwechsel schützt alte Commits nicht rückwirkend. |
 | `CLAN_TAG` | optional | Überschreibt den Default-Clan in `app/cr_api.py` (`#Y9YQC8UG`). |
 | `API_BASE_URL` | optional | Setzt für `api_client.py` eine andere API-Basis (Default Render-Deploy). |
 
 ## Wie der Cron läuft
 
-`.github/workflows/main.yml` führt alle 10 Minuten der Reihe nach aus:
+`.github/workflows/main.yml` hat zwei Auslöser, aber nur einen Job. Welcher der beiden
+gestartet hat, entscheidet allein über `RUN_MODE`:
 
-1. `Master_Auswertung_GitHub.py` (Datenabruf + State-Mutation, `RUN_MODE=radar`)
+| Auslöser | `RUN_MODE` | Was zusätzlich passiert |
+|----------|-----------|--------------------------|
+| `workflow_dispatch` von cron-job.org, alle 10 Min. (ohne Input) | `radar` | nichts – reines Datensammeln |
+| `schedule`, montags 12:00 UTC | `weekly` | Verwarnungen/Degradierungen/Kicks, Eintrag in `score_history.csv`, HTML-Wochenbericht, Mail |
+| `workflow_dispatch` von Hand (Actions → Run workflow) | frei wählbar | zum Testen des Wochenlaufs, ohne bis Montag zu warten |
+
+Der Zeitpunkt des Wochenlaufs ist nicht beliebig: Das Flussrennen endet montags um 10:00 UTC,
+und `prefetch_warlog.py` frischt den Warlog-Cache erst ab Montag 12:00 Europe/Berlin auf. Ein
+früherer Lauf würde den gerade beendeten Krieg noch nicht sehen. `tests/test_seite.py` hält
+das fest.
+
+> **Historie:** Von April bis September 2026 gab es den `schedule`-Block nicht und `RUN_MODE`
+> stand fest auf `radar`. Dadurch lief der Wochenlauf fünf Monate lang überhaupt nicht – ohne
+> Fehlermeldung, aber auch ohne Verwarnungen und mit eingefrorener `score_history.csv`.
+> Die drei `test_wochenlauf_*`-Tests existieren genau deswegen.
+
+Der Job führt der Reihe nach aus:
+
+0. `prefetch_warlog.py` (Warlog-Cache, faktisch nur einmal pro Woche)
+1. `Master_Auswertung_GitHub.py` (Datenabruf + State-Mutation; im `weekly`-Lauf zusätzlich Maßnahmen + Bericht)
 2. `prefetch.py` → `_prefetch.json`
 3. `full_auto.py`, `smart_mode.py`, `coaching_mode.py`, `commander_mode.py`
 4. `merge_outputs.py` → `dashboard_data.json`
@@ -66,7 +93,7 @@ Alle numerischen Grenzwerte stehen in [`config.py`](config.py):
 |-----------|-----------|
 | `STRIKE_THRESHOLD` (50) | Score unter diesem Wert → Verwarnung |
 | `KICK_THRESHOLD` (40) | Score unter diesem Wert → Kick-Kandidat |
-| `PROMOTION_SCORE_MIN` (85) | Score über diesem Wert + 0 Strikes → Beförderung |
+| `PROMOTION_FAME_MIN` (2800) | Fame im laufenden Krieg über diesem Wert + 0 Strikes + `PROMOTION_DONATIONS_MIN` → Beförderung. Einzige Beförderungs-Kennzahl (gilt für Website-Badge, API und Pipeline gleichermaßen). |
 | `SMART_RISIKO_THRESHOLD` (60) / `SMART_STARK_THRESHOLD` (80) | Smart-Mode-Klassifizierung |
 | `COACHING_MID_THRESHOLD` (70) | Coaching-Stufe „Konstanz verbessern" |
 | `DROPPER_THRESHOLD` (130) / `MIN_PARTICIPATION` (1) | Deck-Qualität / Welpenschutz |

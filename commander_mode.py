@@ -1,6 +1,6 @@
 import json
 import sys
-from config import KICK_THRESHOLD, PROMOTION_SCORE_MIN
+from config import KICK_THRESHOLD, PROMOTION_FAME_MIN
 
 
 def build_remove_entry(player: dict) -> dict:
@@ -24,21 +24,23 @@ def build_core_entry(player: dict) -> dict:
         "player_tag": player.get("tag"),
         "role": player.get("role"),
         "score": player.get("score", 0),
+        "fame": player.get("fame", 0),
         "strikes": player.get("strikes", 0),
         "donations": player.get("donations", 0),
         "participation_count": player.get("participation_count", 0),
         "trend": player.get("trend", ""),
-        "reason": f"Score über {PROMOTION_SCORE_MIN}",
+        "reason": f"Fame über {PROMOTION_FAME_MIN}",
         "recommended_action": "promote_review"
     }
 
 
 def is_promotable(player: dict) -> bool:
+    # Einzige Beförderungs-Kennzahl: Fame im laufenden Krieg (siehe config.PROMOTION_FAME_MIN).
     role = str(player.get("role", "")).strip().lower()
-    score = float(player.get("score", 0) or 0)
+    fame = float(player.get("fame", 0) or 0)
     strikes = int(player.get("strikes", 0) or 0)
 
-    return score > PROMOTION_SCORE_MIN and strikes == 0 and role in {"member", "mitglied", ""}
+    return fame >= PROMOTION_FAME_MIN and strikes == 0 and role in {"member", "mitglied", ""}
 
 
 def run():
@@ -66,7 +68,7 @@ def run():
             decisions["core"].append(build_core_entry(player))
 
     decisions["remove"].sort(key=lambda p: (p["score"], -p["strikes"]))
-    decisions["core"].sort(key=lambda p: (-p["score"], p["strikes"], -p["donations"]))
+    decisions["core"].sort(key=lambda p: (-p["fame"], p["strikes"], -p["donations"]))
 
     with open("commander_output.json", "w", encoding="utf-8") as f:
         json.dump(decisions, f, indent=2, ensure_ascii=False)

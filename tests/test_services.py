@@ -56,21 +56,32 @@ def test_get_focus_badge_dropper():
     assert result["label"] == "DROPPER"
 
 
+# Seit 08/2026 haengt die Beförderung am Fame des laufenden Krieges
+# (config.PROMOTION_FAME_MIN), nicht mehr am Wochen-Score. Website-Badge, API und
+# Pipeline nutzen dieselbe Kennzahl – vorher meldeten sie Unterschiedliches.
+
+
 def test_build_promotion_status_eligible():
-    player = {"score": 90, "donations": 60, "strikes": 0, "role": "member"}
+    player = {"fame": 3000, "score": 90, "donations": 60, "strikes": 0, "role": "member"}
     result = build_promotion_status(player)
     assert result["eligible"] is True
 
 
-def test_build_promotion_status_zu_wenig_score():
-    player = {"score": 70, "donations": 60, "strikes": 0, "role": "member"}
+def test_build_promotion_status_zu_wenig_fame():
+    player = {"fame": 1000, "score": 90, "donations": 60, "strikes": 0, "role": "member"}
     result = build_promotion_status(player)
     assert result["eligible"] is False
-    assert any("Score" in m for m in result["missing"])
+    assert any("Fame" in m for m in result["missing"])
+
+
+def test_build_promotion_status_hoher_score_reicht_nicht():
+    """Ein guter Wochen-Score allein befördert nicht – nur Fame zählt."""
+    player = {"fame": 0, "score": 100, "donations": 999, "strikes": 0, "role": "member"}
+    assert build_promotion_status(player)["eligible"] is False
 
 
 def test_build_promotion_status_mit_strikes():
-    player = {"score": 90, "donations": 60, "strikes": 1, "role": "member"}
+    player = {"fame": 3000, "score": 90, "donations": 60, "strikes": 1, "role": "member"}
     result = build_promotion_status(player)
     assert result["eligible"] is False
     assert any("Strike" in m for m in result["missing"])

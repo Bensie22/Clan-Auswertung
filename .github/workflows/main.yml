@@ -1,7 +1,34 @@
 name: Clan Auswertung Automatisierung
 
 on:
-  workflow_dispatch: # Wird von cron-job.org alle 10 Minuten ausgelöst
+  # Zwei Auslöser, ein Workflow – unterschieden allein über RUN_MODE (siehe env unten).
+  #
+  # 1) Datensammeln: cron-job.org ruft alle 10 Minuten die Dispatch-API auf.
+  #    Ohne mitgeschickten Input greift der Default `radar`; der bisherige Lauf
+  #    bleibt damit unverändert.
+  # 2) Wochenauswertung: der schedule-Block darunter.
+  #
+  # Den Input gibt es zusätzlich, damit sich der Wochenlauf von Hand starten lässt
+  # (Actions → Run workflow → run_mode: weekly), ohne bis Montag zu warten.
+  workflow_dispatch:
+    inputs:
+      run_mode:
+        description: 'radar = nur Daten sammeln | weekly = Wochenauswertung (Verwarnungen, Score-Historie, Mail)'
+        type: choice
+        options:
+          - radar
+          - weekly
+        default: radar
+
+  schedule:
+    # Montag 12:00 UTC = 14:00 Berlin (Sommerzeit) bzw. 13:00 (Winterzeit).
+    # Bewusst am frühen Nachmittag und nicht früher:
+    #   - Das Flussrennen endet montags um 10:00 UTC (siehe is_clan_war_period).
+    #   - prefetch_warlog.py frischt den Warlog-Cache erst ab Montag 12:00
+    #     Europe/Berlin auf. Ein Lauf davor würde den gerade beendeten Krieg
+    #     noch nicht sehen und auf veralteten Daten bewerten.
+    # 12:00 UTC liegt in beiden Zeitzonen-Varianten sicher hinter beiden Grenzen.
+    - cron: '0 12 * * 1'
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
@@ -26,9 +53,22 @@ jobs:
       IMPRESSUM_RESPONSIBLE_STREET: ${{ secrets.IMPRESSUM_RESPONSIBLE_STREET }}
       IMPRESSUM_RESPONSIBLE_CITY: ${{ secrets.IMPRESSUM_RESPONSIBLE_CITY }}
       CLAN_API_KEY: ${{ secrets.CLAN_API_KEY }}
-      RUN_MODE: radar
+      # Passwort fuer den verschluesselten Leitungs-Bereich in index.html.
+      # Fehlt das Secret, laesst der Generator den Bereich komplett weg –
+      # er wird NIE unverschluesselt ausgeliefert.
+      ADMIN_PASSPHRASE: ${{ secrets.ADMIN_PASSPHRASE }}
+      # Der schedule-Lauf ist der Wochenlauf, jeder andere Auslöser sammelt nur Daten.
+      # Der manuelle Dispatch darf beides – über den Input oben.
+      # Bei einem Dispatch ohne Input ist der Wert leer, dann greift 'radar'.
+      # Absichtlich github.event.inputs statt inputs: Der inputs-Kontext existiert
+      # laut Doku nur bei workflow_dispatch/workflow_call, github.event gibt es
+      # dagegen bei jedem Auslöser – so kann der schedule-Lauf nicht daran scheitern.
+      RUN_MODE: ${{ github.event_name == 'schedule' && 'weekly' || github.event.inputs.run_mode || 'radar' }}
 
     steps:
+      - name: Laufmodus protokollieren
+        run: echo "RUN_MODE=$RUN_MODE (Auslöser ${{ github.event_name }})"
+
       - name: Repository klonen
         uses: actions/checkout@v4
 
@@ -73,5 +113,13 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
           git add .
-          git diff --staged --quiet || git commit -m "📊 Automatische Clan-Auswertung + Full Auto"
+          # Eigene Nachricht für den Wochenlauf: In der Historie ist damit auf einen
+          # Blick zu sehen, ob er tatsächlich gelaufen ist. Genau das war zuletzt
+          # monatelang nicht erkennbar, weil alle Commits gleich hießen.
+          if [ "$RUN_MODE" = "weekly" ]; then
+            MSG="🗓️ Wochenauswertung (Verwarnungen + Score-Historie)"
+          else
+            MSG="📊 Automatische Clan-Auswertung + Full Auto"
+          fi
+          git diff --staged --quiet || git commit -m "$MSG"
           git push
