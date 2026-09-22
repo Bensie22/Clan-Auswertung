@@ -1895,6 +1895,7 @@ def render_html_template(
                         <button type="button" class="stufe-btn" data-tier="mehr-drin" aria-pressed="false">{t('Mehr drin', 'Underperforming')}</button>
                         <button type="button" class="stufe-btn" data-tier="ausbaufaehig" aria-pressed="false">{t('Ausbaufähig', 'Room to Grow')}</button>
                         <button type="button" class="stufe-btn" data-tier="urlaub" aria-pressed="false">🏖️ {t('Urlaub', 'Vacation')}</button>
+                        <button type="button" class="stufe-btn" data-tier="offene-decks" aria-pressed="false">🎯 {t('Offene Decks', 'Unplayed decks')}</button>
                     </div>
                     <p id="spieler-suche-status" role="status" aria-live="polite"></p>
                 </div>
@@ -2423,8 +2424,13 @@ def render_html_template(
                             return passtZu(name, b);
                         }});
                         var block = zeile.closest(".tier-section");
+                        // "offene-decks" ist keine Leistungsstufe, sondern eine Eigenschaft
+                        // einzelner Zeilen – deshalb am data-offen der Zeile pruefen und
+                        // nicht am data-tier des Blocks.
                         var stufeOk = aktuelleStufe === "alle" ||
-                                      (block && block.getAttribute("data-tier") === aktuelleStufe);
+                                      (aktuelleStufe === "offene-decks"
+                                          ? zeile.getAttribute("data-offen") === "1"
+                                          : (block && block.getAttribute("data-tier") === aktuelleStufe));
                         var passt = nameOk && stufeOk;
 
                         zeile.classList.toggle("suche-versteckt", !passt);
@@ -2562,6 +2568,8 @@ def render_html_template(
                         var anzahl;
                         if (slug === "alle") {{
                             anzahl = document.querySelectorAll("#Table .player-row").length;
+                        }} else if (slug === "offene-decks") {{
+                            anzahl = document.querySelectorAll('#Table .player-row[data-offen="1"]').length;
                         }} else {{
                             var block = document.querySelector('#Table .tier-section[data-tier="' + slug + '"]');
                             anzahl = block ? parseInt(block.getAttribute("data-anzahl"), 10) || 0 : 0;
@@ -3062,6 +3070,13 @@ def generate_html_report(
             _kriege_chrono.append({"decks": int(getattr(row, decks_col, 0) or 0),
                                    "im_clan": _im_clan})
         deck_quote = bewerte_deck_quote(_kriege_chrono)
+
+        # Wer offiziell im Urlaub ist, wird laut Regelwerk aus beiden Clan-Werten
+        # herausgenommen – dann darf er auch hier nicht als auffaellig gelten.
+        # Sonst stuende ein angemeldeter Urlauber oeffentlich unter "Offene Decks",
+        # obwohl er sich genau so verhalten hat, wie er sollte.
+        if is_urlaub:
+            deck_quote = dict(deck_quote, auffaellig=False)
 
         quote_warnung = ""
         if deck_quote["auffaellig"]:
@@ -4143,7 +4158,12 @@ def generate_html_report(
                     # data-name traegt den reinen Spielernamen fuer die Suche. Ueber den
                     # Zellinhalt zu suchen waere falsch: dort stecken auch Tooltip-Texte
                     # ("Level: 69", "Best: 14000"), man wuerde also Unsinn mitfinden.
+                    # data-offen markiert Spieler mit dauerhaft unvollstaendigen Decks.
+                    # Bewusst am <tr> und nicht am Tier-Block: Die Auffaelligkeit geht
+                    # quer durch alle Stufen – auch ein "Sehr stark" kann Decks liegen
+                    # lassen. Ein eigener Abschnitt wuerde die Score-Reihenfolge zerreissen.
                     f"<tr class='player-row' tabindex='0' role='button' aria-expanded='false' "
+                    f"data-offen=\"{'1' if p.get('deck_quote', {}).get('auffaellig') else '0'}\" "
                     f"data-tag=\"{esc(p['tag'])}\" data-name=\"{esc(p['name'])}\">"
                     f"<td class='name-col'><span class='name-inline'>{name_cell}</span></td>"
                     f"<td>{p['focus_badge']}</td>"

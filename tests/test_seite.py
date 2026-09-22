@@ -543,6 +543,49 @@ def test_winrate_nennt_die_stichprobe(seite):
         "altes Badge '100% Win' ohne Stichprobe ist noch da"
 
 
+# ── Filter "Offene Decks" (oeffentlich, Entscheidung vom 22.09.2026) ───────
+
+def test_offene_decks_ist_waehlbar(seite):
+    assert 'data-tier="offene-decks"' in seite, "Filterknopf fehlt"
+    assert "Offene Decks" in seite and "Unplayed decks" in seite, "nicht zweisprachig"
+
+
+def test_jede_zeile_sagt_ob_decks_offen_sind(seite, zeilen):
+    """Ohne data-offen an JEDER Zeile filtert der Knopf ins Leere."""
+    alle = re.findall(r"<tr class='player-row'[^>]*>", seite)
+    assert alle, "keine Spielerzeilen"
+    ohne = [z for z in alle if "data-offen=" not in z]
+    assert not ohne, f"{len(ohne)} Zeilen ohne data-offen"
+    assert any('data-offen="1"' in z for z in alle), "niemand als auffaellig markiert"
+    assert any('data-offen="0"' in z for z in alle), "alle markiert – das waere unplausibel"
+
+
+def test_urlauber_gilt_nicht_als_auffaellig():
+    """Angemeldeter Urlaub nimmt aus beiden Clan-Werten heraus – dann auch hier."""
+    m = _mg()
+    kriege = [_k(2) for _ in range(6)]             # dauerhaft unvollstaendig
+    ohne_urlaub = m.bewerte_deck_quote(kriege)
+    assert ohne_urlaub["auffaellig"], "Testfall trifft die Regel gar nicht"
+    # Die Ausnahme greift im Seitenbau, nicht in bewerte_deck_quote selbst:
+    quelle = open(os.path.join(REPO, "Master_Auswertung_GitHub.py"), encoding="utf-8").read()
+    assert re.search(r"if is_urlaub:\s*\n\s*deck_quote = dict\(deck_quote, auffaellig=False\)", quelle), \
+        "Urlauber werden nicht von der Auffaelligkeit ausgenommen"
+
+
+def test_offene_decks_filtert_ueber_die_stufen_hinweg(seite):
+    """Die Auffaelligkeit ist eine Zeilen-Eigenschaft, kein eigener Tier-Block.
+
+    Ein eigener Abschnitt wuerde die Score-Reihenfolge zerreissen – auch ein
+    Spieler aus "Sehr stark" kann Decks liegen lassen.
+    """
+    assert 'data-tier="offene-decks"' not in re.sub(
+        r"<button[^>]*>", "", seite), "es gibt einen Tier-Block statt eines Zeilenfilters"
+    assert re.search(r'aktuelleStufe === "offene-decks"', seite), \
+        "die Filterlogik kennt den Knopf nicht"
+    assert re.search(r'player-row\[data-offen="1"\]', seite), \
+        "der Zaehler am Knopf fehlt"
+
+
 def test_spaltenbreiten_ergeben_hundert_prozent(seite):
     breiten = [int(b) for b in re.findall(r"th:nth-child\(\d\) \{ width: (\d+)%", seite)]
     assert sum(breiten) == 100, f"{sum(breiten)}% statt 100%"
