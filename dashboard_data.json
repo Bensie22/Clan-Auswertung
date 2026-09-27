@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "Milena.m.x",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "HRVAT85",
       "scenario": "STRIKE",
       "priority": 4
@@ -256,6 +261,11 @@
       "name": "HRVAT85",
       "score": 26.67,
       "status": "RISIKO"
+    },
+    {
+      "name": "Milena.m.x",
+      "score": 0.0,
+      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -488,11 +498,28 @@
       "name": "HRVAT85",
       "score": 26.67,
       "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "Milena.m.x",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
+      {
+        "name": "Milena.m.x",
+        "player_tag": "#98QP8YG2G",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
       {
         "name": "HRVAT85",
         "player_tag": "#UJCPPUJLJ",
