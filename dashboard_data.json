@@ -6,6 +6,11 @@
       "priority": 4
     },
     {
+      "name": "Crown",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "HRVAT85",
       "scenario": "STRIKE",
       "priority": 4
@@ -276,6 +281,11 @@
       "name": "Milena.m.x",
       "score": 0.0,
       "status": "RISIKO"
+    },
+    {
+      "name": "Crown",
+      "score": 0.0,
+      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -513,6 +523,11 @@
       "name": "Milena.m.x",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "Crown",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
@@ -521,6 +536,18 @@
       {
         "name": "Milena.m.x",
         "player_tag": "#98QP8YG2G",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "Crown",
+        "player_tag": "#QVRCRP0LY",
         "role": "member",
         "score": 0.0,
         "strikes": 0,
