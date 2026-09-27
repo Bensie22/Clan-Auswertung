@@ -1,32 +1,12 @@
 {
   "full_auto": [
     {
-      "name": "Karim",
-      "scenario": "STRIKE",
-      "priority": 4
-    },
-    {
-      "name": "✨NO MERCY✨",
-      "scenario": "STRIKE",
-      "priority": 4
-    },
-    {
-      "name": "abrr3r",
-      "scenario": "STRIKE",
-      "priority": 4
-    },
-    {
       "name": "HRVAT85",
       "scenario": "STRIKE",
       "priority": 4
     },
     {
       "name": "DyC",
-      "scenario": "STRIKE",
-      "priority": 4
-    },
-    {
-      "name": ">MRK<",
       "scenario": "STRIKE",
       "priority": 4
     },
@@ -258,11 +238,6 @@
       "status": "OK"
     },
     {
-      "name": ">MRK<",
-      "score": 44.2,
-      "status": "RISIKO"
-    },
-    {
       "name": "DyC",
       "score": 43.33,
       "status": "RISIKO"
@@ -270,21 +245,6 @@
     {
       "name": "HRVAT85",
       "score": 26.67,
-      "status": "RISIKO"
-    },
-    {
-      "name": "abrr3r",
-      "score": 14.93,
-      "status": "RISIKO"
-    },
-    {
-      "name": "✨NO MERCY✨",
-      "score": 8.33,
-      "status": "RISIKO"
-    },
-    {
-      "name": "Karim",
-      "score": 5.83,
       "status": "RISIKO"
     }
   ],
@@ -510,11 +470,6 @@
       "tip": "Konstanz verbessern"
     },
     {
-      "name": ">MRK<",
-      "score": 44.2,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
       "name": "DyC",
       "score": 43.33,
       "tip": "Mehr Teilnahme notwendig"
@@ -523,62 +478,11 @@
       "name": "HRVAT85",
       "score": 26.67,
       "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "abrr3r",
-      "score": 14.93,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "✨NO MERCY✨",
-      "score": 8.33,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "Karim",
-      "score": 5.83,
-      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
-      {
-        "name": "Karim",
-        "player_tag": "#JJVYUP8C",
-        "role": "member",
-        "score": 5.83,
-        "strikes": 0,
-        "donations": 32,
-        "participation_count": 1,
-        "trend": "🔴",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
-        "name": "✨NO MERCY✨",
-        "player_tag": "#CCPC2Q9GU",
-        "role": "member",
-        "score": 8.33,
-        "strikes": 0,
-        "donations": 0,
-        "participation_count": 1,
-        "trend": "🔴",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
-        "name": "abrr3r",
-        "player_tag": "#Y8LJ8VRJL",
-        "role": "member",
-        "score": 14.93,
-        "strikes": 0,
-        "donations": 284,
-        "participation_count": 1,
-        "trend": "🔴",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
       {
         "name": "HRVAT85",
         "player_tag": "#UJCPPUJLJ",
