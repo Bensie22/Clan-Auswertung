@@ -11,6 +11,11 @@
       "priority": 4
     },
     {
+      "name": "Quadnix",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "Milena.m.x",
       "scenario": "STRIKE",
       "priority": 4
@@ -303,6 +308,11 @@
       "status": "RISIKO"
     },
     {
+      "name": "Quadnix",
+      "score": 0.0,
+      "status": "RISIKO"
+    },
+    {
       "name": "Crown",
       "score": 0.0,
       "status": "RISIKO"
@@ -550,6 +560,11 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
+      "name": "Quadnix",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "Crown",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
@@ -567,6 +582,18 @@
         "donations": 0,
         "participation_count": 0,
         "trend": "🔴",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "Quadnix",
+        "player_tag": "#C2LU8Y8QP",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 8,
+        "participation_count": 0,
+        "trend": "",
         "reason": "Score unter 40",
         "recommended_action": "kick_review"
       },
