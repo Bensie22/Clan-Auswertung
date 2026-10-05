@@ -1,16 +1,6 @@
 {
   "full_auto": [
     {
-      "name": "Crown",
-      "scenario": "KEINE_TEILNAHME",
-      "priority": 4
-    },
-    {
-      "name": "Quadnix",
-      "scenario": "KEINE_TEILNAHME",
-      "priority": 4
-    },
-    {
       "name": "El-Joufy",
       "scenario": "STRIKE",
       "priority": 4
@@ -341,16 +331,6 @@
       "name": "El-Joufy",
       "score": 18.33,
       "status": "RISIKO"
-    },
-    {
-      "name": "Quadnix",
-      "score": 0.0,
-      "status": "RISIKO"
-    },
-    {
-      "name": "Crown",
-      "score": 0.0,
-      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -593,45 +573,11 @@
       "name": "El-Joufy",
       "score": 18.33,
       "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "Quadnix",
-      "score": 0.0,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
-      "name": "Crown",
-      "score": 0.0,
-      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
-      {
-        "name": "Quadnix",
-        "player_tag": "#C2LU8Y8QP",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 8,
-        "participation_count": 0,
-        "trend": "",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
-      {
-        "name": "Crown",
-        "player_tag": "#QVRCRP0LY",
-        "role": "member",
-        "score": 0.0,
-        "strikes": 0,
-        "donations": 0,
-        "participation_count": 0,
-        "trend": "🔴",
-        "reason": "Score unter 40",
-        "recommended_action": "kick_review"
-      },
       {
         "name": "El-Joufy",
         "player_tag": "#R8JQC08",
