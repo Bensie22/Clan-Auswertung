@@ -1,10 +1,5 @@
 [
   {
-    "name": "El-Joufy",
-    "scenario": "KEINE_TEILNAHME",
-    "priority": 4
-  },
-  {
     "name": "Crown",
     "scenario": "KEINE_TEILNAHME",
     "priority": 4
@@ -12,6 +7,11 @@
   {
     "name": "Quadnix",
     "scenario": "KEINE_TEILNAHME",
+    "priority": 4
+  },
+  {
+    "name": "El-Joufy",
+    "scenario": "STRIKE",
     "priority": 4
   },
   {
@@ -55,17 +55,17 @@
     "priority": 2
   },
   {
+    "name": "bes",
+    "scenario": "TOP",
+    "priority": 2
+  },
+  {
     "name": "chris",
     "scenario": "TOP",
     "priority": 2
   },
   {
     "name": "AaleDieter",
-    "scenario": "TOP",
-    "priority": 2
-  },
-  {
-    "name": "bes",
     "scenario": "TOP",
     "priority": 2
   },
