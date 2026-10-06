@@ -6,6 +6,11 @@
       "priority": 4
     },
     {
+      "name": "l_Bozo",
+      "scenario": "STRIKE",
+      "priority": 4
+    },
+    {
       "name": "Milena.m.x",
       "scenario": "STRIKE",
       "priority": 4
@@ -328,6 +333,11 @@
       "status": "RISIKO"
     },
     {
+      "name": "l_Bozo",
+      "score": 24.8,
+      "status": "RISIKO"
+    },
+    {
       "name": "El-Joufy",
       "score": 18.33,
       "status": "RISIKO"
@@ -570,6 +580,11 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
+      "name": "l_Bozo",
+      "score": 24.8,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "El-Joufy",
       "score": 18.33,
       "tip": "Mehr Teilnahme notwendig"
@@ -587,6 +602,18 @@
         "donations": 0,
         "participation_count": 1,
         "trend": "🔴",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "l_Bozo",
+        "player_tag": "#PQ2JYPC09",
+        "role": "member",
+        "score": 24.8,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 2,
+        "trend": "",
         "reason": "Score unter 40",
         "recommended_action": "kick_review"
       },
