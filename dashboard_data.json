@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "LUCASxxz_",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "King tursu",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -263,6 +268,11 @@
       "status": "RISIKO"
     },
     {
+      "name": "LUCASxxz_",
+      "score": 0.0,
+      "status": "RISIKO"
+    },
+    {
       "name": "jason5",
       "score": 0.0,
       "status": "RISIKO"
@@ -505,6 +515,11 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
+      "name": "LUCASxxz_",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "jason5",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
@@ -518,6 +533,18 @@
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
+      {
+        "name": "LUCASxxz_",
+        "player_tag": "#G002YL80C",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
       {
         "name": "jason5",
         "player_tag": "#2VYC2C8J",
