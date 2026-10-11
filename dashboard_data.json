@@ -6,6 +6,11 @@
       "priority": 4
     },
     {
+      "name": "alvaro.G.",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "King tursu",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -286,6 +291,11 @@
       "name": "King tursu",
       "score": 0.0,
       "status": "RISIKO"
+    },
+    {
+      "name": "alvaro.G.",
+      "score": 0.0,
+      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -533,6 +543,11 @@
       "name": "King tursu",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "alvaro.G.",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
@@ -569,6 +584,18 @@
         "score": 0.0,
         "strikes": 0,
         "donations": 8,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
+      {
+        "name": "alvaro.G.",
+        "player_tag": "#2CRVPL0GC",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
         "participation_count": 0,
         "trend": "",
         "reason": "Score unter 40",
