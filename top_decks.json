@@ -43,7 +43,7 @@
             "#RLJPJL8C2": "20261012T071748.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20261011T133114.000Z",
+            "#UUPCULU9V": "20261012T135934.000Z",
             "#202VP2QL9P": "20260724T185949.000Z",
             "#LVUGLUCP9": "20261011T192414.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
@@ -4914,7 +4914,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
                 }
             ],
-            "wins": 16,
+            "wins": 17,
             "losses": 6,
             "players": [
                 "OmniOni"
@@ -4923,6 +4923,12 @@
                 "UUPCULU9V"
             ],
             "recent_matches": [
+                {
+                    "time": "20261012T135934.000Z",
+                    "result": "win",
+                    "player": "OmniOni",
+                    "tag": "UUPCULU9V"
+                },
                 {
                     "time": "20261011T124948.000Z",
                     "result": "loss",
@@ -551036,6 +551042,52 @@
                     "id": 27000001,
                     "name": "Goblin Hut",
                     "icon": "https://api-assets.clashroyale.com/cards/300/l8ZdzzNLcwB4u7ihGgxNFQOjCT_njFuAhZr7D6PRF7E.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000030-26000036-26000052-26000062-26000085-27000012-28000004-28000017": {
+            "cards": [
+                {
+                    "id": 27000012,
+                    "name": "Goblin Cage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vD24bBgK4rSq7wx5QEbuqChtPMRFviL_ep76GwQw1yA.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000036,
+                    "name": "Battle Ram",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dyc50V2cplKi4H7pq1B3I36pl_sEH5DQrNHboS_dbbM.png"
+                },
+                {
+                    "id": 28000017,
+                    "name": "Giant Snowball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 26000052,
+                    "name": "Zappies",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QZfHRpLRmutZbCr5fpLnTpIp89vLI6NrAwzGZ8tHEc4.png"
+                },
+                {
+                    "id": 26000085,
+                    "name": "Electro Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_uChZkNHAMq6tPb3v6A49xinOe3CnhjstOhG6OZbPYc.png"
+                },
+                {
+                    "id": 26000030,
+                    "name": "Ice Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lv1budiafU9XmSdrDkk0NYyqASAFYyZ06CPysXKZXlA.png"
                 }
             ],
             "seen": 1,
