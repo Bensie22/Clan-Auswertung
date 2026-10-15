@@ -32,7 +32,7 @@
             "#2V800VCQ0": "20261015T114016.000Z",
             "#2UQUPYQCJ": "20260810T113227.000Z",
             "#JUUR8UGL8": "20261012T155308.000Z",
-            "#2U09UULRR": "20261015T163718.000Z",
+            "#2U09UULRR": "20261015T164542.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20261015T013627.000Z",
             "#8P0J8P0L": "20261011T124607.000Z",
@@ -40,10 +40,10 @@
             "#CUJ9PJ2UV": "20261014T210601.000Z",
             "#2P0U2RLGY": "20261015T114414.000Z",
             "#8P89UPQ0": "",
-            "#RLJPJL8C2": "20261015T132948.000Z",
+            "#RLJPJL8C2": "20261015T164959.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20261015T163814.000Z",
+            "#UUPCULU9V": "20261015T164712.000Z",
             "#202VP2QL9P": "20260724T185949.000Z",
             "#LVUGLUCP9": "20261011T192414.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
@@ -129,7 +129,7 @@
             "#CCPC2Q9GU": "20260927T092950.000Z",
             "#G8L2Q900": "20261012T212153.000Z",
             "#88QGQUUY": "20261015T052317.000Z",
-            "#UJCPPUJLJ": "20261015T020454.000Z",
+            "#UJCPPUJLJ": "20261015T165035.000Z",
             "#98QP8YG2G": "20261004T195105.000Z",
             "#QVRCRP0LY": "20261002T204613.000Z",
             "#R8JQC08": "20261004T120210.000Z",
@@ -7873,7 +7873,7 @@
                 }
             ],
             "wins": 7,
-            "losses": 5,
+            "losses": 6,
             "players": [
                 "Dolphin"
             ],
@@ -7881,6 +7881,12 @@
                 "2U09UULRR"
             ],
             "recent_matches": [
+                {
+                    "time": "20261015T164114.000Z",
+                    "result": "loss",
+                    "player": "Dolphin",
+                    "tag": "2U09UULRR"
+                },
                 {
                     "time": "20261012T055949.000Z",
                     "result": "loss",
@@ -10045,7 +10051,7 @@
                 }
             ],
             "wins": 3,
-            "losses": 4,
+            "losses": 5,
             "players": [
                 "HRVAT85"
             ],
@@ -10053,6 +10059,12 @@
                 "UJCPPUJLJ"
             ],
             "recent_matches": [
+                {
+                    "time": "20261015T165035.000Z",
+                    "result": "loss",
+                    "player": "HRVAT85",
+                    "tag": "UJCPPUJLJ"
+                },
                 {
                     "time": "20261013T194201.000Z",
                     "result": "loss",
@@ -555850,6 +555862,98 @@
                     "id": 26000043,
                     "name": "Elite Barbarians",
                     "icon": "https://api-assets.clashroyale.com/cards/300/C88C5JH_F3lLZj6K-tLcMo5DPjrFmvzIb1R2M6xCfTE.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000005-26000015-26000027-26000049-26000064-27000006-27000009-28000015": {
+            "cards": [
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 26000027,
+                    "name": "Dark Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/M7fXlrKXHu2IvpSGpk36kXVstslbR08Bbxcy0jQcln8.png"
+                },
+                {
+                    "id": 27000009,
+                    "name": "Tombstone",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LjSfSbwQfkZuRJY4pVxKspZ-a0iM5KAhU8w-a_N5Z7Y.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                },
+                {
+                    "id": 28000015,
+                    "name": "Barbarian Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Gb0G1yNy0i5cIGUHin8uoFWxqntNtRPhY_jeMXg7HnA.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                },
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000006-26000034-26000046-26000049-26000050-26000064-26000067-28000002": {
+            "cards": [
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 28000002,
+                    "name": "Rage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 26000050,
+                    "name": "Royal Ghost",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3En2cz0ISQAaMTHY3hj3rTveFN2kJYq-H4VxvdJNvCM.png"
+                },
+                {
+                    "id": 26000067,
+                    "name": "Elixir Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/puhMsZjCIqy21HW3hYxjrk_xt8NIPyFqjRy-BeLKZwo.png"
+                },
+                {
+                    "id": 26000046,
+                    "name": "Bandit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QWDdXMKJNpv0go-HYaWQWP6p8uIOHjqn-zX7G0p3DyM.png"
                 }
             ],
             "seen": 1,
