@@ -93,7 +93,7 @@
             "#P00PQ9CUQ": "20260613T120503.000Z",
             "#PVYJ80YCL": "20260619T140927.000Z",
             "#RP9RVGQJU": "20260615T092432.000Z",
-            "#P0G2GYJQ9": "20261015T140908.000Z",
+            "#P0G2GYJQ9": "20261015T141230.000Z",
             "#8P2GV8UQY": "20260718T102217.000Z",
             "#VV2JR990": "20260622T193820.000Z",
             "#YYJR9R0GR": "20260713T093713.000Z",
@@ -10674,7 +10674,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 1,
             "players": [
                 "Reklaminator"
@@ -10683,6 +10683,12 @@
                 "P0G2GYJQ9"
             ],
             "recent_matches": [
+                {
+                    "time": "20261015T141230.000Z",
+                    "result": "win",
+                    "player": "Reklaminator",
+                    "tag": "P0G2GYJQ9"
+                },
                 {
                     "time": "20261014T132934.000Z",
                     "result": "loss",
@@ -555452,6 +555458,52 @@
                     "id": 26000036,
                     "name": "Battle Ram",
                     "icon": "https://api-assets.clashroyale.com/cards/300/dyc50V2cplKi4H7pq1B3I36pl_sEH5DQrNHboS_dbbM.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000001-26000007-26000009-26000040-26000069-28000001-28000005-28000013": {
+            "cards": [
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 26000069,
+                    "name": "Skeleton King",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dCd69_wN9f8DxwuqOGtR4QgWhHIPIaTNxZ1e23RzAAc.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 28000013,
+                    "name": "Clone",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mHVCet-1TkwWq-pxVIU2ZWY9_2z7Z7wtP25ArEUsP_g.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 28000005,
+                    "name": "Freeze",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
+                },
+                {
+                    "id": 26000009,
+                    "name": "Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/npdmCnET7jmVjJvjJQkFnNSNnDxYHDBigbvIAloFMds.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
                 }
             ],
             "seen": 1,
