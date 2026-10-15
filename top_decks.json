@@ -40,10 +40,10 @@
             "#CUJ9PJ2UV": "20261014T210601.000Z",
             "#2P0U2RLGY": "20261015T114414.000Z",
             "#8P89UPQ0": "",
-            "#RLJPJL8C2": "20261015T164959.000Z",
+            "#RLJPJL8C2": "20261015T170002.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20261015T164712.000Z",
+            "#UUPCULU9V": "20261015T170016.000Z",
             "#202VP2QL9P": "20260724T185949.000Z",
             "#LVUGLUCP9": "20261011T192414.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
@@ -129,7 +129,7 @@
             "#CCPC2Q9GU": "20260927T092950.000Z",
             "#G8L2Q900": "20261012T212153.000Z",
             "#88QGQUUY": "20261015T052317.000Z",
-            "#UJCPPUJLJ": "20261015T165035.000Z",
+            "#UJCPPUJLJ": "20261015T165418.000Z",
             "#98QP8YG2G": "20261004T195105.000Z",
             "#QVRCRP0LY": "20261002T204613.000Z",
             "#R8JQC08": "20261004T120210.000Z",
@@ -7656,7 +7656,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
                 }
             ],
-            "wins": 7,
+            "wins": 8,
             "losses": 5,
             "players": [
                 "HRVAT85"
@@ -7665,6 +7665,12 @@
                 "UJCPPUJLJ"
             ],
             "recent_matches": [
+                {
+                    "time": "20261015T165418.000Z",
+                    "result": "win",
+                    "player": "HRVAT85",
+                    "tag": "UJCPPUJLJ"
+                },
                 {
                     "time": "20261013T194532.000Z",
                     "result": "win",
@@ -555958,6 +555964,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000025-26000027-26000030-26000040-26000064-28000001-28000006-28000011": {
+            "cards": [
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000027,
+                    "name": "Dark Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/M7fXlrKXHu2IvpSGpk36kXVstslbR08Bbxcy0jQcln8.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 26000030,
+                    "name": "Ice Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lv1budiafU9XmSdrDkk0NYyqASAFYyZ06CPysXKZXlA.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000025,
+                    "name": "Guards",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/1ArKfLJxYo6_NU_S9cAeIrfbXqWH0oULVJXedxBXQlU.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 28000006,
+                    "name": "Mirror",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/wC6Cm9rKLEOk72zTsukVwxewKIoO4ZcMJun54zCPWvA.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
