@@ -1,7 +1,7 @@
 {
     "_metadata": {
         "last_battles": {
-            "#22Q920RLR": "20261015T171543.000Z",
+            "#22Q920RLR": "20261015T174854.000Z",
             "#L8PV090J": "20261015T154418.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20261015T125652.000Z",
@@ -21,7 +21,7 @@
             "#QVQGCV8Y9": "20261015T115613.000Z",
             "#Q8L0RJ8Y8": "20261015T155935.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
-            "#2CPRGY8G": "20261015T142509.000Z",
+            "#2CPRGY8G": "20261015T174838.000Z",
             "#LLQQJCLC": "20261015T131222.000Z",
             "#2VJR80RL": "20261014T173605.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
@@ -88,7 +88,7 @@
             "#JG8Q0GPU9": "20260713T010600.000Z",
             "#9QV99QVCV": "20260701T045607.000Z",
             "#JQ08UR882": "20260619T100820.000Z",
-            "#PQ2JYPC09": "20261015T124806.000Z",
+            "#PQ2JYPC09": "20261015T174522.000Z",
             "#99JJLC02L": "20260713T165301.000Z",
             "#P00PQ9CUQ": "20260613T120503.000Z",
             "#PVYJ80YCL": "20260619T140927.000Z",
@@ -1128,7 +1128,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/KV48DfwVHKx9XCjzBdk3daT_Eb52Me4VgjVO7WctRc4.png"
                 }
             ],
-            "wins": 2,
+            "wins": 3,
             "losses": 9,
             "players": [
                 "LazyFrog"
@@ -1137,6 +1137,12 @@
                 "22Q920RLR"
             ],
             "recent_matches": [
+                {
+                    "time": "20261015T174854.000Z",
+                    "result": "win",
+                    "player": "LazyFrog",
+                    "tag": "22Q920RLR"
+                },
                 {
                     "time": "20261012T051454.000Z",
                     "result": "loss",
@@ -556162,6 +556168,52 @@
                     "id": 26000034,
                     "name": "Bowler",
                     "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000005-26000011-26000014-26000021-26000040-26000074-28000000-28000014": {
+            "cards": [
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000074,
+                    "name": "Golden Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WJd207D0O1sN-l1FTb8P9KhYL2oF5jY26vRUfTUW3FQ.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 28000014,
+                    "name": "Earthquake",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/XeQXcrUu59C52DslyZVwCnbi4yamID-WxfVZLShgZmE.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
                 }
             ],
             "seen": 1,
