@@ -18,7 +18,7 @@
             "#PPR2QQC0U": "20261015T210343.000Z",
             "#QULCQGGG": "20261016T092356.000Z",
             "#JRGC9RRQG": "20261015T195435.000Z",
-            "#QVQGCV8Y9": "20261016T085256.000Z",
+            "#QVQGCV8Y9": "20261016T103639.000Z",
             "#Q8L0RJ8Y8": "20261016T075730.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20261016T075740.000Z",
@@ -472,7 +472,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/QWDdXMKJNpv0go-HYaWQWP6p8uIOHjqn-zX7G0p3DyM.png"
                 }
             ],
-            "wins": 2,
+            "wins": 3,
             "losses": 1,
             "players": [
                 "Rainer"
@@ -481,6 +481,12 @@
                 "QVQGCV8Y9"
             ],
             "recent_matches": [
+                {
+                    "time": "20261016T103639.000Z",
+                    "result": "win",
+                    "player": "Rainer",
+                    "tag": "QVQGCV8Y9"
+                },
                 {
                     "time": "20261016T074904.000Z",
                     "result": "loss",
@@ -558690,6 +558696,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000000-26000021-26000037-26000043-26000062-26000064-28000002-28000017": {
+            "cards": [
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 28000002,
+                    "name": "Rage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 26000037,
+                    "name": "Inferno Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
+                },
+                {
+                    "id": 26000043,
+                    "name": "Elite Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/C88C5JH_F3lLZj6K-tLcMo5DPjrFmvzIb1R2M6xCfTE.png"
+                },
+                {
+                    "id": 28000017,
+                    "name": "Giant Snowball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
