@@ -37,7 +37,7 @@
             "#8QYYL8LCQ": "20261016T064755.000Z",
             "#8P0J8P0L": "20261015T171512.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20261015T194145.000Z",
+            "#CUJ9PJ2UV": "20261016T101011.000Z",
             "#2P0U2RLGY": "20261016T092904.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20261015T170002.000Z",
@@ -128,7 +128,7 @@
             "#JJVYUP8C": "20260919T184831.000Z",
             "#CCPC2Q9GU": "20260927T092950.000Z",
             "#G8L2Q900": "20261016T012254.000Z",
-            "#88QGQUUY": "20261016T082333.000Z",
+            "#88QGQUUY": "20261016T100407.000Z",
             "#UJCPPUJLJ": "20261016T015953.000Z",
             "#98QP8YG2G": "20261004T195105.000Z",
             "#QVRCRP0LY": "20261002T204613.000Z",
@@ -8124,7 +8124,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
                 }
             ],
-            "wins": 5,
+            "wins": 6,
             "losses": 4,
             "players": [
                 "AaleDieter"
@@ -8133,6 +8133,12 @@
                 "CUJ9PJ2UV"
             ],
             "recent_matches": [
+                {
+                    "time": "20261016T101011.000Z",
+                    "result": "win",
+                    "player": "AaleDieter",
+                    "tag": "CUJ9PJ2UV"
+                },
                 {
                     "time": "20261015T190352.000Z",
                     "result": "win",
@@ -558592,6 +558598,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000004-26000011-26000015-26000027-26000036-26000058-26000062-28000004": {
+            "cards": [
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000058,
+                    "name": "Wall Breakers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_xPphEfC8eEwFNrfU3cMQG9-f5JaLQ31ARCA7l3XtW4.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 26000027,
+                    "name": "Dark Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/M7fXlrKXHu2IvpSGpk36kXVstslbR08Bbxcy0jQcln8.png"
+                },
+                {
+                    "id": 26000036,
+                    "name": "Battle Ram",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dyc50V2cplKi4H7pq1B3I36pl_sEH5DQrNHboS_dbbM.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
