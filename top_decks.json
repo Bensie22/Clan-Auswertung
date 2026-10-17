@@ -15,13 +15,13 @@
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
-            "#PPR2QQC0U": "20261017T065041.000Z",
+            "#PPR2QQC0U": "20261017T070508.000Z",
             "#QULCQGGG": "20261016T214108.000Z",
             "#JRGC9RRQG": "20261016T151306.000Z",
             "#QVQGCV8Y9": "20261016T144013.000Z",
             "#Q8L0RJ8Y8": "20261016T164358.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
-            "#2CPRGY8G": "20261016T172413.000Z",
+            "#2CPRGY8G": "20261017T070856.000Z",
             "#LLQQJCLC": "20261017T065521.000Z",
             "#2VJR80RL": "20261017T030821.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
@@ -37,7 +37,7 @@
             "#8QYYL8LCQ": "20261017T064158.000Z",
             "#8P0J8P0L": "20261016T174106.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20261016T220031.000Z",
+            "#CUJ9PJ2UV": "20261017T070829.000Z",
             "#2P0U2RLGY": "20261016T200129.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20261016T153637.000Z",
@@ -49,7 +49,7 @@
             "#20QGJVPG8Q": "20260712T214357.000Z",
             "#V9GYJQ0J9": "",
             "#URJ0LUYPV": "20261016T170352.000Z",
-            "#Q2GRGLQR": "20261017T070057.000Z",
+            "#Q2GRGLQR": "20261017T070232.000Z",
             "#J9RQPGLVP": "20260713T204019.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
             "#9VLRQ9GR9": "20261016T161605.000Z",
@@ -862,7 +862,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/Axr4ox5_b7edmLsoHxBX3vmgijAIibuF6RImTbqLlXE.png"
                 }
             ],
-            "wins": 5,
+            "wins": 6,
             "losses": 3,
             "players": [
                 "Swordfish"
@@ -871,6 +871,12 @@
                 "2CPRGY8G"
             ],
             "recent_matches": [
+                {
+                    "time": "20261017T070856.000Z",
+                    "result": "win",
+                    "player": "Swordfish",
+                    "tag": "2CPRGY8G"
+                },
                 {
                     "time": "20261004T050019.000Z",
                     "result": "loss",
@@ -3493,7 +3499,7 @@
                 }
             ],
             "wins": 4,
-            "losses": 7,
+            "losses": 8,
             "players": [
                 "Flauschos"
             ],
@@ -3501,6 +3507,12 @@
                 "PPR2QQC0U"
             ],
             "recent_matches": [
+                {
+                    "time": "20261017T070508.000Z",
+                    "result": "loss",
+                    "player": "Flauschos",
+                    "tag": "PPR2QQC0U"
+                },
                 {
                     "time": "20261011T184822.000Z",
                     "result": "loss",
@@ -32204,8 +32216,8 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
                 }
             ],
-            "seen": 2,
-            "losses": 1
+            "seen": 3,
+            "losses": 2
         },
         "26000005-26000017-26000018-26000025-26000026-26000027-26000057-28000008": {
             "cards": [
@@ -563686,6 +563698,52 @@
                     "id": 28000000,
                     "name": "Fireball",
                     "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000011-26000017-26000023-26000050-26000059-27000003-28000011-28000017": {
+            "cards": [
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 27000003,
+                    "name": "Inferno Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 26000023,
+                    "name": "Ice Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W3dkw0HTw9n1jB-zbknY2w3wHuyuLxSRIAV5fUT1SEY.png"
+                },
+                {
+                    "id": 26000050,
+                    "name": "Royal Ghost",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3En2cz0ISQAaMTHY3hj3rTveFN2kJYq-H4VxvdJNvCM.png"
+                },
+                {
+                    "id": 28000017,
+                    "name": "Giant Snowball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
                 }
             ],
             "seen": 1,
