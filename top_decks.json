@@ -29,7 +29,7 @@
             "#2CJYG9UG": "20261016T135804.000Z",
             "#2PUQYJC02": "20261016T165656.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20261017T084434.000Z",
+            "#2V800VCQ0": "20261017T143108.000Z",
             "#2UQUPYQCJ": "20260810T113227.000Z",
             "#JUUR8UGL8": "20261016T113616.000Z",
             "#2U09UULRR": "20261017T131657.000Z",
@@ -84,7 +84,7 @@
             "#VP82QGC8Y": "20261016T205842.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
             "#GRGCY0R8": "20261016T175012.000Z",
-            "#P2YQ2QQUV": "20261017T142906.000Z",
+            "#P2YQ2QQUV": "20261017T143739.000Z",
             "#JG8Q0GPU9": "20260713T010600.000Z",
             "#9QV99QVCV": "20260701T045607.000Z",
             "#JQ08UR882": "20260619T100820.000Z",
@@ -2377,7 +2377,7 @@
                 }
             ],
             "wins": 12,
-            "losses": 17,
+            "losses": 18,
             "players": [
                 "Desteoyer"
             ],
@@ -2385,6 +2385,12 @@
                 "2V800VCQ0"
             ],
             "recent_matches": [
+                {
+                    "time": "20261017T143108.000Z",
+                    "result": "loss",
+                    "player": "Desteoyer",
+                    "tag": "2V800VCQ0"
+                },
                 {
                     "time": "20261017T055509.000Z",
                     "result": "win",
@@ -564816,6 +564822,52 @@
                     "id": 28000001,
                     "name": "Arrows",
                     "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000000-26000005-26000016-26000017-26000018-26000021-26000062-26000067": {
+            "cards": [
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                },
+                {
+                    "id": 26000067,
+                    "name": "Elixir Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/puhMsZjCIqy21HW3hYxjrk_xt8NIPyFqjRy-BeLKZwo.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
                 }
             ],
             "seen": 1,
