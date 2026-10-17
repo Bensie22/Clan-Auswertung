@@ -127,7 +127,7 @@
             "#Y8LJ8VRJL": "20260926T140816.000Z",
             "#JJVYUP8C": "20260919T184831.000Z",
             "#CCPC2Q9GU": "20260927T092950.000Z",
-            "#G8L2Q900": "20261017T215856.000Z",
+            "#G8L2Q900": "20261017T220146.000Z",
             "#88QGQUUY": "20261017T203255.000Z",
             "#UJCPPUJLJ": "20261017T214858.000Z",
             "#98QP8YG2G": "20261004T195105.000Z",
@@ -2791,7 +2791,7 @@
                 }
             ],
             "wins": 6,
-            "losses": 9,
+            "losses": 10,
             "players": [
                 "Naughty"
             ],
@@ -2799,6 +2799,12 @@
                 "G8L2Q900"
             ],
             "recent_matches": [
+                {
+                    "time": "20261017T220146.000Z",
+                    "result": "loss",
+                    "player": "Naughty",
+                    "tag": "G8L2Q900"
+                },
                 {
                     "time": "20261016T122411.000Z",
                     "result": "loss",
@@ -567122,6 +567128,52 @@
                     "id": 28000002,
                     "name": "Rage",
                     "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000031-26000036-26000037-26000046-26000072-26000085-26000095-28000003": {
+            "cards": [
+                {
+                    "id": 26000085,
+                    "name": "Electro Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_uChZkNHAMq6tPb3v6A49xinOe3CnhjstOhG6OZbPYc.png"
+                },
+                {
+                    "id": 26000072,
+                    "name": "Archer Queen",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/p7OQmOAFTery7zCzlpDdm-LOD1kINTm42AwIHchZfWk.png"
+                },
+                {
+                    "id": 26000036,
+                    "name": "Battle Ram",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dyc50V2cplKi4H7pq1B3I36pl_sEH5DQrNHboS_dbbM.png"
+                },
+                {
+                    "id": 26000037,
+                    "name": "Inferno Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
+                },
+                {
+                    "id": 26000046,
+                    "name": "Bandit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QWDdXMKJNpv0go-HYaWQWP6p8uIOHjqn-zX7G0p3DyM.png"
+                },
+                {
+                    "id": 28000003,
+                    "name": "Rocket",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ie07nQNK9CjhKOa4-arFAewi4EroqaA-86Xo7r5tx94.png"
+                },
+                {
+                    "id": 26000095,
+                    "name": "Goblin Demolisher",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/KVVOgdn40xasFLYuQv8Go_U_LCV7wSG9q9eE1H7f3Qk.png"
+                },
+                {
+                    "id": 26000031,
+                    "name": "Fire Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/16-BqusVvynIgYI8_Jci3LDC-r8AI_xaIYLgXqtlmS8.png"
                 }
             ],
             "seen": 1,
