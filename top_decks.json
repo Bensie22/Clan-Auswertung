@@ -15,13 +15,13 @@
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
-            "#PPR2QQC0U": "20261018T060843.000Z",
+            "#PPR2QQC0U": "20261018T062931.000Z",
             "#QULCQGGG": "20261018T054710.000Z",
             "#JRGC9RRQG": "20261017T185520.000Z",
             "#QVQGCV8Y9": "20261016T144013.000Z",
             "#Q8L0RJ8Y8": "20261017T161215.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
-            "#2CPRGY8G": "20261018T062033.000Z",
+            "#2CPRGY8G": "20261018T062708.000Z",
             "#LLQQJCLC": "20261017T233551.000Z",
             "#2VJR80RL": "20261017T163628.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
@@ -29,7 +29,7 @@
             "#2CJYG9UG": "20261018T014537.000Z",
             "#2PUQYJC02": "20261017T181456.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20261017T155952.000Z",
+            "#2V800VCQ0": "20261018T062335.000Z",
             "#2UQUPYQCJ": "20260810T113227.000Z",
             "#JUUR8UGL8": "20261017T192325.000Z",
             "#2U09UULRR": "20261017T150951.000Z",
@@ -4980,7 +4980,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
                 }
             ],
-            "wins": 4,
+            "wins": 5,
             "losses": 7,
             "players": [
                 "Flauschos"
@@ -4989,6 +4989,12 @@
                 "PPR2QQC0U"
             ],
             "recent_matches": [
+                {
+                    "time": "20261018T062931.000Z",
+                    "result": "win",
+                    "player": "Flauschos",
+                    "tag": "PPR2QQC0U"
+                },
                 {
                     "time": "20261017T065041.000Z",
                     "result": "win",
@@ -6469,7 +6475,7 @@
                 }
             ],
             "wins": 9,
-            "losses": 3,
+            "losses": 4,
             "players": [
                 "Flauschos"
             ],
@@ -6477,6 +6483,12 @@
                 "PPR2QQC0U"
             ],
             "recent_matches": [
+                {
+                    "time": "20261018T062713.000Z",
+                    "result": "loss",
+                    "player": "Flauschos",
+                    "tag": "PPR2QQC0U"
+                },
                 {
                     "time": "20261017T064713.000Z",
                     "result": "loss",
@@ -34238,7 +34250,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/Icp8BIyyfBTj1ncCJS7mb82SY7TPV-MAE-J2L2R48DI.png"
                 }
             ],
-            "seen": 2,
+            "seen": 3,
             "losses": 2
         },
         "26000012-26000024-26000037-26000038-26000039-26000056-27000004-28000008": {
@@ -568024,6 +568036,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000004-26000007-26000015-26000016-26000025-26000040-26000068-28000001": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000068,
+                    "name": "Battle Healer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/KdwXcoigS2Kg-cgA7BJJIANbUJG6SNgjetRQ-MegZ08.png"
+                },
+                {
+                    "id": 26000025,
+                    "name": "Guards",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/1ArKfLJxYo6_NU_S9cAeIrfbXqWH0oULVJXedxBXQlU.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
