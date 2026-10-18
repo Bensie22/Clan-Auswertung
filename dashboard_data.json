@@ -26,6 +26,11 @@
       "priority": 4
     },
     {
+      "name": "AaleDieter",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "elazeto",
       "scenario": "OK",
       "priority": 1
@@ -575,6 +580,20 @@
         "recommended_action": "kick_review"
       }
     ],
-    "core": []
+    "core": [
+      {
+        "name": "AaleDieter",
+        "player_tag": "#CUJ9PJ2UV",
+        "role": "member",
+        "score": 84.33,
+        "fame": 3100,
+        "strikes": 0,
+        "donations": 126,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢🟢",
+        "reason": "Fame über 2800",
+        "recommended_action": "promote_review"
+      }
+    ]
   }
 }
