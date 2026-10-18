@@ -81,7 +81,7 @@
             "#YPURGGJQ": "20260528T170655.000Z",
             "#YUQVVVLQ": "20261018T143012.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
-            "#VP82QGC8Y": "20261018T142800.000Z",
+            "#VP82QGC8Y": "20261018T143330.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
             "#GRGCY0R8": "20261018T072302.000Z",
             "#P2YQ2QQUV": "20261018T110244.000Z",
@@ -2782,7 +2782,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
                 }
             ],
-            "wins": 6,
+            "wins": 5,
             "losses": 10,
             "players": [
                 "Naughty"
@@ -2877,12 +2877,6 @@
                 },
                 {
                     "time": "20260919T215327.000Z",
-                    "result": "win",
-                    "player": "Naughty",
-                    "tag": "G8L2Q900"
-                },
-                {
-                    "time": "20260918T143657.000Z",
                     "result": "win",
                     "player": "Naughty",
                     "tag": "G8L2Q900"
@@ -570894,6 +570888,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000007-26000011-26000012-26000014-26000018-26000069-27000003-28000004": {
+            "cards": [
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000069,
+                    "name": "Skeleton King",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dCd69_wN9f8DxwuqOGtR4QgWhHIPIaTNxZ1e23RzAAc.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 27000003,
+                    "name": "Inferno Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
