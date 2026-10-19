@@ -11,7 +11,7 @@
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20261019T064005.000Z",
             "#G02LC9C8": "20261018T203900.000Z",
-            "#2U8288CVY": "20261019T110654.000Z",
+            "#2U8288CVY": "20261019T111213.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
@@ -48,7 +48,7 @@
             "#LVUGLUCP9": "20261018T201939.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
             "#V9GYJQ0J9": "",
-            "#URJ0LUYPV": "20261019T093505.000Z",
+            "#URJ0LUYPV": "20261019T111944.000Z",
             "#Q2GRGLQR": "20261019T052142.000Z",
             "#J9RQPGLVP": "20260713T204019.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
@@ -93,7 +93,7 @@
             "#P00PQ9CUQ": "20260613T120503.000Z",
             "#PVYJ80YCL": "20260619T140927.000Z",
             "#RP9RVGQJU": "20260615T092432.000Z",
-            "#P0G2GYJQ9": "20261019T093214.000Z",
+            "#P0G2GYJQ9": "20261019T111410.000Z",
             "#8P2GV8UQY": "20260718T102217.000Z",
             "#VV2JR990": "20260622T193820.000Z",
             "#YYJR9R0GR": "20260713T093713.000Z",
@@ -1624,7 +1624,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
                 }
             ],
-            "wins": 6,
+            "wins": 5,
             "losses": 4,
             "players": [
                 "Chico"
@@ -1683,12 +1683,6 @@
                 },
                 {
                     "time": "20260921T075441.000Z",
-                    "result": "win",
-                    "player": "Chico",
-                    "tag": "P0JYR9YUY"
-                },
-                {
-                    "time": "20260919T111658.000Z",
                     "result": "win",
                     "player": "Chico",
                     "tag": "P0JYR9YUY"
@@ -3346,7 +3340,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
                 }
             ],
-            "wins": 5,
+            "wins": 4,
             "losses": 4,
             "players": [
                 "Chico"
@@ -3399,12 +3393,6 @@
                 },
                 {
                     "time": "20260924T141255.000Z",
-                    "result": "win",
-                    "player": "Chico",
-                    "tag": "P0JYR9YUY"
-                },
-                {
-                    "time": "20260919T112014.000Z",
                     "result": "win",
                     "player": "Chico",
                     "tag": "P0JYR9YUY"
@@ -8057,7 +8045,7 @@
                 }
             ],
             "wins": 9,
-            "losses": 6,
+            "losses": 7,
             "players": [
                 "Reklaminator"
             ],
@@ -8065,6 +8053,12 @@
                 "P0G2GYJQ9"
             ],
             "recent_matches": [
+                {
+                    "time": "20261019T111410.000Z",
+                    "result": "loss",
+                    "player": "Reklaminator",
+                    "tag": "P0G2GYJQ9"
+                },
                 {
                     "time": "20261018T114808.000Z",
                     "result": "win",
@@ -573760,6 +573754,52 @@
                     "id": 26000021,
                     "name": "Hog Rider",
                     "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000000-26000011-26000012-26000019-26000034-26000057-27000003-28000000": {
+            "cards": [
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 26000019,
+                    "name": "Spear Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/FSDFotjaXidI4ku_WFpVCTWS1hKGnFh1sxX0lxM43_E.png"
+                },
+                {
+                    "id": 26000057,
+                    "name": "Flying Machine",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/hzKNE3QwFcrSrDDRuVW3QY_OnrDPijSiIp-PsWgFevE.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 27000003,
+                    "name": "Inferno Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
                 }
             ],
             "seen": 1,
