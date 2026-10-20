@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20261020T221519.000Z",
+            "#YUQVVVLQ": "20261020T222610.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20261020T213251.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
@@ -136,7 +136,7 @@
             "#C2LU8Y8QP": "20261005T111606.000Z",
             "#2VYC2C8J": "20261011T132442.000Z",
             "#20989CY0PC": "20261020T201147.000Z",
-            "#G002YL80C": "20261020T222023.000Z",
+            "#G002YL80C": "20261020T222500.000Z",
             "#2CRVPL0GC": "20261015T102028.000Z"
         }
     },
@@ -11104,7 +11104,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/LPg7AGjGI3_xmi7gLLgGC50yKM1jJ2teWkZfoHJcIZo.png"
                 }
             ],
-            "wins": 7,
+            "wins": 8,
             "losses": 4,
             "players": [
                 "LUCASxxz_"
@@ -11113,6 +11113,12 @@
                 "G002YL80C"
             ],
             "recent_matches": [
+                {
+                    "time": "20261020T222500.000Z",
+                    "result": "win",
+                    "player": "LUCASxxz_",
+                    "tag": "G002YL80C"
+                },
                 {
                     "time": "20261018T125519.000Z",
                     "result": "loss",
@@ -574562,6 +574568,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000004-26000007-26000026-26000041-26000045-26000057-27000001-28000005": {
+            "cards": [
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 28000005,
+                    "name": "Freeze",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                },
+                {
+                    "id": 26000057,
+                    "name": "Flying Machine",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/hzKNE3QwFcrSrDDRuVW3QY_OnrDPijSiIp-PsWgFevE.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 27000001,
+                    "name": "Goblin Hut",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/l8ZdzzNLcwB4u7ihGgxNFQOjCT_njFuAhZr7D6PRF7E.png"
+                },
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
