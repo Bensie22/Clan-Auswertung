@@ -3,6 +3,54 @@
         "name": "Swordfish",
         "battles": [
             {
+                "time": "20261022T123134.000Z",
+                "result": "win",
+                "type": "riverRacePvP",
+                "deck_hash": "26000001-26000011-26000023-26000032-26000037-26000045-26000083-26000106",
+                "cards": [
+                    {
+                        "id": 26000001,
+                        "name": "Archers",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                    },
+                    {
+                        "id": 26000011,
+                        "name": "Valkyrie",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                    },
+                    {
+                        "id": 26000045,
+                        "name": "Executioner",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                    },
+                    {
+                        "id": 26000032,
+                        "name": "Miner",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/Y4yWvdwBCg2FpAZgs8T09Gy34WOwpLZW-ttL52Ae8NE.png"
+                    },
+                    {
+                        "id": 26000083,
+                        "name": "Mother Witch",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/fO-Xah8XZkYKaSK9SCp3wnzwxtvIhun9NVY-zzte1Ng.png"
+                    },
+                    {
+                        "id": 26000106,
+                        "name": "Ronin",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/X0dTFs7OGUavreDEzOtYd_YNZ8Zly6qgAE-dd-bNfWU.png"
+                    },
+                    {
+                        "id": 26000037,
+                        "name": "Inferno Dragon",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
+                    },
+                    {
+                        "id": 26000023,
+                        "name": "Ice Wizard",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/W3dkw0HTw9n1jB-zbknY2w3wHuyuLxSRIAV5fUT1SEY.png"
+                    }
+                ]
+            },
+            {
                 "time": "20261018T212714.000Z",
                 "result": "win",
                 "type": "riverRacePvP",
@@ -77161,6 +77209,102 @@
     "88QGQUUY": {
         "name": "DyC",
         "battles": [
+            {
+                "time": "20261022T123756.000Z",
+                "result": "loss",
+                "type": "riverRacePvP",
+                "deck_hash": "26000010-26000015-26000023-26000048-26000067-28000003-28000011-28000012",
+                "cards": [
+                    {
+                        "id": 26000067,
+                        "name": "Elixir Golem",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/puhMsZjCIqy21HW3hYxjrk_xt8NIPyFqjRy-BeLKZwo.png"
+                    },
+                    {
+                        "id": 26000023,
+                        "name": "Ice Wizard",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/W3dkw0HTw9n1jB-zbknY2w3wHuyuLxSRIAV5fUT1SEY.png"
+                    },
+                    {
+                        "id": 26000048,
+                        "name": "Night Witch",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/NpCrXDEDBBJgNv9QrBAcJmmMFbS7pe3KCY8xJ5VB18A.png"
+                    },
+                    {
+                        "id": 26000010,
+                        "name": "Skeletons",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/oO7iKMU5m0cdxhYPZA3nWQiAUh2yoGgdThLWB1rVSec.png"
+                    },
+                    {
+                        "id": 28000012,
+                        "name": "Tornado",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/QJB-QK1QJHdw4hjpAwVSyZBozc2ZWAR9pQ-SMUyKaT0.png"
+                    },
+                    {
+                        "id": 28000011,
+                        "name": "The Log",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                    },
+                    {
+                        "id": 26000015,
+                        "name": "Baby Dragon",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                    },
+                    {
+                        "id": 28000003,
+                        "name": "Rocket",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/Ie07nQNK9CjhKOa4-arFAewi4EroqaA-86Xo7r5tx94.png"
+                    }
+                ]
+            },
+            {
+                "time": "20261022T123344.000Z",
+                "result": "loss",
+                "type": "riverRacePvP",
+                "deck_hash": "26000011-26000026-26000040-26000041-27000006-28000001-28000004-28000017",
+                "cards": [
+                    {
+                        "id": 28000004,
+                        "name": "Goblin Barrel",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                    },
+                    {
+                        "id": 26000011,
+                        "name": "Valkyrie",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                    },
+                    {
+                        "id": 26000026,
+                        "name": "Princess",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                    },
+                    {
+                        "id": 26000041,
+                        "name": "Goblin Gang",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                    },
+                    {
+                        "id": 28000001,
+                        "name": "Arrows",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                    },
+                    {
+                        "id": 26000040,
+                        "name": "Dart Goblin",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                    },
+                    {
+                        "id": 28000017,
+                        "name": "Giant Snowball",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
+                    },
+                    {
+                        "id": 27000006,
+                        "name": "Tesla",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                    }
+                ]
+            },
             {
                 "time": "20261022T123010.000Z",
                 "result": "loss",
