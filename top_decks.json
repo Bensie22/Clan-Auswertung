@@ -16,7 +16,7 @@
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20261019T035539.000Z",
-            "#QULCQGGG": "20261022T141552.000Z",
+            "#QULCQGGG": "20261022T184605.000Z",
             "#JRGC9RRQG": "20261022T163630.000Z",
             "#QVQGCV8Y9": "20261022T104331.000Z",
             "#Q8L0RJ8Y8": "20261021T062450.000Z",
@@ -49,7 +49,7 @@
             "#20QGJVPG8Q": "20260712T214357.000Z",
             "#V9GYJQ0J9": "",
             "#URJ0LUYPV": "20261022T174929.000Z",
-            "#Q2GRGLQR": "20261022T052450.000Z",
+            "#Q2GRGLQR": "20261022T184742.000Z",
             "#J9RQPGLVP": "20260713T204019.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
             "#9VLRQ9GR9": "20261022T151618.000Z",
@@ -84,7 +84,7 @@
             "#VP82QGC8Y": "20261022T002110.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
             "#GRGCY0R8": "20261022T092356.000Z",
-            "#P2YQ2QQUV": "20261022T181459.000Z",
+            "#P2YQ2QQUV": "20261022T185017.000Z",
             "#JG8Q0GPU9": "20260713T010600.000Z",
             "#9QV99QVCV": "20260701T045607.000Z",
             "#JQ08UR882": "20260619T100820.000Z",
@@ -128,7 +128,7 @@
             "#JJVYUP8C": "20260919T184831.000Z",
             "#CCPC2Q9GU": "20260927T092950.000Z",
             "#G8L2Q900": "20261022T095405.000Z",
-            "#88QGQUUY": "20261022T182205.000Z",
+            "#88QGQUUY": "20261022T185041.000Z",
             "#UJCPPUJLJ": "20261022T005108.000Z",
             "#98QP8YG2G": "20261004T195105.000Z",
             "#QVRCRP0LY": "20261002T204613.000Z",
@@ -7367,7 +7367,7 @@
                 }
             ],
             "wins": 5,
-            "losses": 11,
+            "losses": 12,
             "players": [
                 "honigmelone"
             ],
@@ -7375,6 +7375,12 @@
                 "Q2GRGLQR"
             ],
             "recent_matches": [
+                {
+                    "time": "20261022T184742.000Z",
+                    "result": "loss",
+                    "player": "honigmelone",
+                    "tag": "Q2GRGLQR"
+                },
                 {
                     "time": "20261019T052142.000Z",
                     "result": "loss",
@@ -578162,6 +578168,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000018-26000049-26000055-26000057-26000062-26000067-27000000-28000015": {
+            "cards": [
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 27000000,
+                    "name": "Cannon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nZK1y-beLxO5vnlyUhK6-2zH2NzXJwqykcosqQ1cmZ8.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                },
+                {
+                    "id": 28000015,
+                    "name": "Barbarian Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Gb0G1yNy0i5cIGUHin8uoFWxqntNtRPhY_jeMXg7HnA.png"
+                },
+                {
+                    "id": 26000067,
+                    "name": "Elixir Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/puhMsZjCIqy21HW3hYxjrk_xt8NIPyFqjRy-BeLKZwo.png"
+                },
+                {
+                    "id": 26000057,
+                    "name": "Flying Machine",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/hzKNE3QwFcrSrDDRuVW3QY_OnrDPijSiIp-PsWgFevE.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
