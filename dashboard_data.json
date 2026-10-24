@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "Mario",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "alvaro.G.",
       "scenario": "STRIKE",
       "priority": 4
@@ -21,9 +26,29 @@
       "priority": 4
     },
     {
-      "name": "jason5",
-      "scenario": "STRIKE",
-      "priority": 4
+      "name": "Citykingalex",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Erastus",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "Johan",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "AaleDieter",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
+      "name": "mauza",
+      "scenario": "TOP",
+      "priority": 2
     },
     {
       "name": "elazeto",
@@ -258,11 +283,6 @@
       "status": "RISIKO"
     },
     {
-      "name": "jason5",
-      "score": 48.4,
-      "status": "RISIKO"
-    },
-    {
       "name": "King tursu",
       "score": 36.87,
       "status": "RISIKO"
@@ -280,6 +300,11 @@
     {
       "name": "alvaro.G.",
       "score": 8.33,
+      "status": "RISIKO"
+    },
+    {
+      "name": "Mario",
+      "score": 0.0,
       "status": "RISIKO"
     }
   ],
@@ -510,11 +535,6 @@
       "tip": "Konstanz verbessern"
     },
     {
-      "name": "jason5",
-      "score": 48.4,
-      "tip": "Mehr Teilnahme notwendig"
-    },
-    {
       "name": "King tursu",
       "score": 36.87,
       "tip": "Mehr Teilnahme notwendig"
@@ -533,11 +553,28 @@
       "name": "alvaro.G.",
       "score": 8.33,
       "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "Mario",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
+      {
+        "name": "Mario",
+        "player_tag": "#22P998VGV",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
       {
         "name": "alvaro.G.",
         "player_tag": "#2CRVPL0GC",
@@ -587,6 +624,85 @@
         "recommended_action": "kick_review"
       }
     ],
-    "core": []
+    "core": [
+      {
+        "name": "Citykingalex",
+        "player_tag": "#QULCQGGG",
+        "role": "member",
+        "score": 94.67,
+        "fame": 3100,
+        "strikes": 0,
+        "donations": 426,
+        "participation_count": 10,
+        "trend": "🟡🟡🟢🟢🟢🟢",
+        "reason": "Fame über 2800",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "AaleDieter",
+        "player_tag": "#CUJ9PJ2UV",
+        "role": "member",
+        "score": 84.73,
+        "fame": 3100,
+        "strikes": 0,
+        "donations": 64,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢🟢",
+        "reason": "Fame über 2800",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Erastus",
+        "player_tag": "#Q8L0RJ8Y8",
+        "role": "member",
+        "score": 93.47,
+        "fame": 3000,
+        "strikes": 0,
+        "donations": 276,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢🟢",
+        "reason": "Fame über 2800",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "mauza",
+        "player_tag": "#2P0U2RLGY",
+        "role": "member",
+        "score": 78.43,
+        "fame": 2950,
+        "strikes": 0,
+        "donations": 136,
+        "participation_count": 9,
+        "trend": "🟢🟢🟢🟢🟢🟢",
+        "reason": "Fame über 2800",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "kl.kranker Affe",
+        "player_tag": "#RLJPJL8C2",
+        "role": "member",
+        "score": 90.23,
+        "fame": 2850,
+        "strikes": 0,
+        "donations": 8,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢🟢🟢",
+        "reason": "Fame über 2800",
+        "recommended_action": "promote_review"
+      },
+      {
+        "name": "Johan",
+        "player_tag": "#UQVCVVVJL",
+        "role": "member",
+        "score": 89.57,
+        "fame": 2800,
+        "strikes": 0,
+        "donations": 80,
+        "participation_count": 10,
+        "trend": "🟢🟢🟢🟢",
+        "reason": "Fame über 2800",
+        "recommended_action": "promote_review"
+      }
+    ]
   }
 }
