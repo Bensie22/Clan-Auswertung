@@ -6,7 +6,7 @@
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20261024T143057.000Z",
             "#ULYJ2CQP": "20261023T072151.000Z",
-            "#UJ2P9UYUV": "20261023T190915.000Z",
+            "#UJ2P9UYUV": "20261024T145640.000Z",
             "#P0JYR9YUY": "20261023T075500.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20261024T130006.000Z",
@@ -21,7 +21,7 @@
             "#QVQGCV8Y9": "20261023T195958.000Z",
             "#Q8L0RJ8Y8": "20261023T172423.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
-            "#2CPRGY8G": "20261024T115229.000Z",
+            "#2CPRGY8G": "20261024T145533.000Z",
             "#LLQQJCLC": "20261024T091421.000Z",
             "#2VJR80RL": "20261023T123350.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
@@ -31,7 +31,7 @@
             "#YQVQYUYRV": "20260525T095543.000Z",
             "#2V800VCQ0": "20261024T143105.000Z",
             "#2UQUPYQCJ": "20260810T113227.000Z",
-            "#JUUR8UGL8": "20261024T103701.000Z",
+            "#JUUR8UGL8": "20261024T145324.000Z",
             "#2U09UULRR": "20261024T143116.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20261024T140252.000Z",
@@ -2093,7 +2093,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
                 }
             ],
-            "wins": 12,
+            "wins": 11,
             "losses": 4,
             "players": [
                 "DST"
@@ -2188,12 +2188,6 @@
                 },
                 {
                     "time": "20260925T111106.000Z",
-                    "result": "win",
-                    "player": "DST",
-                    "tag": "9VLRQ9GR9"
-                },
-                {
-                    "time": "20260924T145954.000Z",
                     "result": "win",
                     "player": "DST",
                     "tag": "9VLRQ9GR9"
@@ -4110,7 +4104,7 @@
                 }
             ],
             "wins": 9,
-            "losses": 6,
+            "losses": 5,
             "players": [
                 "seroo"
             ],
@@ -4199,12 +4193,6 @@
                 {
                     "time": "20260925T120446.000Z",
                     "result": "win",
-                    "player": "seroo",
-                    "tag": "JRGC9RRQG"
-                },
-                {
-                    "time": "20260924T150049.000Z",
-                    "result": "loss",
                     "player": "seroo",
                     "tag": "JRGC9RRQG"
                 }
@@ -587959,6 +587947,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000004-26000010-26000023-26000037-26000041-26000102-28000011-28000018": {
+            "cards": [
+                {
+                    "id": 26000037,
+                    "name": "Inferno Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
+                },
+                {
+                    "id": 26000102,
+                    "name": "Berserker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NA6W8S1JBYBlOPwD3dNvJLFvVDKq-UuBs_J3i3ewLFI.png"
+                },
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 26000010,
+                    "name": "Skeletons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/oO7iKMU5m0cdxhYPZA3nWQiAUh2yoGgdThLWB1rVSec.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000023,
+                    "name": "Ice Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W3dkw0HTw9n1jB-zbknY2w3wHuyuLxSRIAV5fUT1SEY.png"
+                },
+                {
+                    "id": 28000018,
+                    "name": "Royal Delivery",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LPg7AGjGI3_xmi7gLLgGC50yKM1jJ2teWkZfoHJcIZo.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
