@@ -19,7 +19,7 @@
             "#QULCQGGG": "20261025T184926.000Z",
             "#JRGC9RRQG": "20261025T104423.000Z",
             "#QVQGCV8Y9": "20261023T195958.000Z",
-            "#Q8L0RJ8Y8": "20261025T185829.000Z",
+            "#Q8L0RJ8Y8": "20261025T195922.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20261025T185644.000Z",
             "#LLQQJCLC": "20261025T134413.000Z",
@@ -34,7 +34,7 @@
             "#JUUR8UGL8": "20261025T102327.000Z",
             "#2U09UULRR": "20261025T110116.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
-            "#8QYYL8LCQ": "20261025T151933.000Z",
+            "#8QYYL8LCQ": "20261025T194718.000Z",
             "#8P0J8P0L": "20261025T192027.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20261025T143157.000Z",
@@ -52,7 +52,7 @@
             "#Q2GRGLQR": "20261025T082245.000Z",
             "#J9RQPGLVP": "20260713T204019.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
-            "#9VLRQ9GR9": "20261025T155518.000Z",
+            "#9VLRQ9GR9": "20261025T195632.000Z",
             "#29RLRYLQL": "20260420T155237.000Z",
             "#QGGU22L9": "20260420T144732.000Z",
             "#2RQU00RLR": "20260421T120601.000Z",
@@ -128,8 +128,8 @@
             "#JJVYUP8C": "20260919T184831.000Z",
             "#CCPC2Q9GU": "20260927T092950.000Z",
             "#G8L2Q900": "20261024T142356.000Z",
-            "#88QGQUUY": "20261025T183043.000Z",
-            "#UJCPPUJLJ": "20261025T185647.000Z",
+            "#88QGQUUY": "20261025T194042.000Z",
+            "#UJCPPUJLJ": "20261025T194842.000Z",
             "#98QP8YG2G": "20261004T195105.000Z",
             "#QVRCRP0LY": "20261002T204613.000Z",
             "#R8JQC08": "20261004T120210.000Z",
@@ -6661,7 +6661,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 9,
+            "losses": 10,
             "players": [
                 "DST"
             ],
@@ -6669,6 +6669,12 @@
                 "9VLRQ9GR9"
             ],
             "recent_matches": [
+                {
+                    "time": "20261025T195202.000Z",
+                    "result": "loss",
+                    "player": "DST",
+                    "tag": "9VLRQ9GR9"
+                },
                 {
                     "time": "20261023T192129.000Z",
                     "result": "loss",
@@ -7537,7 +7543,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 5,
+            "losses": 6,
             "players": [
                 "DST"
             ],
@@ -7545,6 +7551,12 @@
                 "9VLRQ9GR9"
             ],
             "recent_matches": [
+                {
+                    "time": "20261025T195632.000Z",
+                    "result": "loss",
+                    "player": "DST",
+                    "tag": "9VLRQ9GR9"
+                },
                 {
                     "time": "20261023T193031.000Z",
                     "result": "loss",
@@ -9216,7 +9228,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/Wyjq5l0IXHTkX9Rmpap6HaH08MvjbxFp1xBO9a47YSI.png"
                 }
             ],
-            "wins": 7,
+            "wins": 6,
             "losses": 8,
             "players": [
                 "Wario"
@@ -9306,12 +9318,6 @@
                 {
                     "time": "20260926T125240.000Z",
                     "result": "loss",
-                    "player": "Wario",
-                    "tag": "2PUQYJC02"
-                },
-                {
-                    "time": "20260925T193141.000Z",
-                    "result": "win",
                     "player": "Wario",
                     "tag": "2PUQYJC02"
                 }
@@ -594604,6 +594610,98 @@
                     "id": 28000010,
                     "name": "Graveyard",
                     "icon": "https://api-assets.clashroyale.com/cards/300/Icp8BIyyfBTj1ncCJS7mb82SY7TPV-MAE-J2L2R48DI.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000011-26000014-26000016-26000023-26000025-26000026-26000027-28000009": {
+            "cards": [
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                },
+                {
+                    "id": 26000025,
+                    "name": "Guards",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/1ArKfLJxYo6_NU_S9cAeIrfbXqWH0oULVJXedxBXQlU.png"
+                },
+                {
+                    "id": 26000027,
+                    "name": "Dark Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/M7fXlrKXHu2IvpSGpk36kXVstslbR08Bbxcy0jQcln8.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000023,
+                    "name": "Ice Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W3dkw0HTw9n1jB-zbknY2w3wHuyuLxSRIAV5fUT1SEY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000000-26000012-26000030-26000042-26000055-26000062-28000004-28000015": {
+            "cards": [
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 26000030,
+                    "name": "Ice Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lv1budiafU9XmSdrDkk0NYyqASAFYyZ06CPysXKZXlA.png"
+                },
+                {
+                    "id": 28000015,
+                    "name": "Barbarian Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Gb0G1yNy0i5cIGUHin8uoFWxqntNtRPhY_jeMXg7HnA.png"
                 }
             ],
             "seen": 1,
