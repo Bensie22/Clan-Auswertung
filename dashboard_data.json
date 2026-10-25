@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "{FoC}-Niklas",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "Mario",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -293,6 +298,11 @@
       "status": "RISIKO"
     },
     {
+      "name": "{FoC}-Niklas",
+      "score": 0.0,
+      "status": "RISIKO"
+    },
+    {
       "name": "Mario",
       "score": 0.0,
       "status": "RISIKO"
@@ -535,6 +545,11 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
+      "name": "{FoC}-Niklas",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "Mario",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
@@ -543,6 +558,18 @@
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
+      {
+        "name": "{FoC}-Niklas",
+        "player_tag": "#LYRGV2QGQ",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 8,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
       {
         "name": "Mario",
         "player_tag": "#22P998VGV",
