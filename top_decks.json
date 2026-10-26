@@ -43,7 +43,7 @@
             "#RLJPJL8C2": "20261025T141729.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20261025T224801.000Z",
+            "#UUPCULU9V": "20261026T150120.000Z",
             "#202VP2QL9P": "20260724T185949.000Z",
             "#LVUGLUCP9": "20261025T191624.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
@@ -71,7 +71,7 @@
             "#GJVVGUYJC": "20260518T141110.000Z",
             "#UQVCVVVJL": "20261025T130848.000Z",
             "#22CVYQP8R": "20260509T062429.000Z",
-            "#89CJRRV8": "20261025T192337.000Z",
+            "#89CJRRV8": "20261026T150005.000Z",
             "#VL989Y20J": "20260516T051537.000Z",
             "#RULG988Y": "20260606T102155.000Z",
             "#99909G00": "20260512T084926.000Z",
@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20261026T144937.000Z",
+            "#YUQVVVLQ": "20261026T145347.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20261026T004344.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
@@ -4982,7 +4982,7 @@
                 }
             ],
             "wins": 21,
-            "losses": 7,
+            "losses": 8,
             "players": [
                 "OmniOni"
             ],
@@ -4990,6 +4990,12 @@
                 "UUPCULU9V"
             ],
             "recent_matches": [
+                {
+                    "time": "20261026T145353.000Z",
+                    "result": "loss",
+                    "player": "OmniOni",
+                    "tag": "UUPCULU9V"
+                },
                 {
                     "time": "20261025T223647.000Z",
                     "result": "loss",
@@ -596261,6 +596267,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000011-26000015-26000021-26000025-26000040-26000042-26000046-28000001": {
+            "cards": [
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 26000046,
+                    "name": "Bandit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QWDdXMKJNpv0go-HYaWQWP6p8uIOHjqn-zX7G0p3DyM.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000025,
+                    "name": "Guards",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/1ArKfLJxYo6_NU_S9cAeIrfbXqWH0oULVJXedxBXQlU.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
