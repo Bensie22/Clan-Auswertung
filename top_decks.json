@@ -81,7 +81,7 @@
             "#YPURGGJQ": "20260528T170655.000Z",
             "#YUQVVVLQ": "20261026T190104.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
-            "#VP82QGC8Y": "20261026T004344.000Z",
+            "#VP82QGC8Y": "20261026T212916.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
             "#GRGCY0R8": "20261026T071524.000Z",
             "#P2YQ2QQUV": "20261026T205710.000Z",
@@ -1939,7 +1939,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
                 }
             ],
-            "wins": 8,
+            "wins": 7,
             "losses": 9,
             "players": [
                 "April#"
@@ -2040,12 +2040,6 @@
                 },
                 {
                     "time": "20260927T214458.000Z",
-                    "result": "win",
-                    "player": "April#",
-                    "tag": "YUQVVVLQ"
-                },
-                {
-                    "time": "20260926T212957.000Z",
                     "result": "win",
                     "player": "April#",
                     "tag": "YUQVVVLQ"
@@ -3103,7 +3097,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
                 }
             ],
-            "wins": 14,
+            "wins": 13,
             "losses": 2,
             "players": [
                 "agostini"
@@ -3198,12 +3192,6 @@
                 },
                 {
                     "time": "20260927T181010.000Z",
-                    "result": "win",
-                    "player": "agostini",
-                    "tag": "P2YQ2QQUV"
-                },
-                {
-                    "time": "20260926T212515.000Z",
                     "result": "win",
                     "player": "agostini",
                     "tag": "P2YQ2QQUV"
@@ -5245,7 +5233,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
                 }
             ],
-            "wins": 16,
+            "wins": 17,
             "losses": 5,
             "players": [
                 "mad 3ad y gawad"
@@ -5254,6 +5242,12 @@
                 "VP82QGC8Y"
             ],
             "recent_matches": [
+                {
+                    "time": "20261026T212601.000Z",
+                    "result": "win",
+                    "player": "mad 3ad y gawad",
+                    "tag": "VP82QGC8Y"
+                },
                 {
                     "time": "20261025T214625.000Z",
                     "result": "win",
@@ -5426,7 +5420,7 @@
                 }
             ],
             "wins": 12,
-            "losses": 7,
+            "losses": 6,
             "players": [
                 "mad 3ad y gawad"
             ],
@@ -5539,12 +5533,6 @@
                 {
                     "time": "20260927T215434.000Z",
                     "result": "win",
-                    "player": "mad 3ad y gawad",
-                    "tag": "VP82QGC8Y"
-                },
-                {
-                    "time": "20260926T212453.000Z",
-                    "result": "loss",
                     "player": "mad 3ad y gawad",
                     "tag": "VP82QGC8Y"
                 }
@@ -596489,6 +596477,98 @@
                     "id": 26000059,
                     "name": "Royal Hogs",
                     "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000000-26000004-26000014-26000021-26000037-26000050-26000102-28000000": {
+            "cards": [
+                {
+                    "id": 26000050,
+                    "name": "Royal Ghost",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3En2cz0ISQAaMTHY3hj3rTveFN2kJYq-H4VxvdJNvCM.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000102,
+                    "name": "Berserker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NA6W8S1JBYBlOPwD3dNvJLFvVDKq-UuBs_J3i3ewLFI.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 26000037,
+                    "name": "Inferno Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000000-26000011-26000013-26000017-26000027-26000039-26000048-28000008": {
+            "cards": [
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000039,
+                    "name": "Mega Minion",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/-T_e4YLbuhPBKbYnBwQfXgynNpp5eOIN_0RracYwL9c.png"
+                },
+                {
+                    "id": 26000027,
+                    "name": "Dark Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/M7fXlrKXHu2IvpSGpk36kXVstslbR08Bbxcy0jQcln8.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 26000048,
+                    "name": "Night Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NpCrXDEDBBJgNv9QrBAcJmmMFbS7pe3KCY8xJ5VB18A.png"
+                },
+                {
+                    "id": 26000013,
+                    "name": "Bomber",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
                 }
             ],
             "seen": 1,
