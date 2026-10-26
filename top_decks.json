@@ -18,7 +18,7 @@
             "#PPR2QQC0U": "20261025T183215.000Z",
             "#QULCQGGG": "20261026T105624.000Z",
             "#JRGC9RRQG": "20261026T001256.000Z",
-            "#QVQGCV8Y9": "20261023T195958.000Z",
+            "#QVQGCV8Y9": "20261026T130724.000Z",
             "#Q8L0RJ8Y8": "20261025T202149.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20261026T064826.000Z",
@@ -29,7 +29,7 @@
             "#2CJYG9UG": "20261025T105131.000Z",
             "#2PUQYJC02": "20261025T165129.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20261026T123549.000Z",
+            "#2V800VCQ0": "20261026T130751.000Z",
             "#2UQUPYQCJ": "20260810T113227.000Z",
             "#JUUR8UGL8": "20261025T102327.000Z",
             "#2U09UULRR": "20261026T123808.000Z",
@@ -7765,7 +7765,7 @@
                 }
             ],
             "wins": 8,
-            "losses": 7,
+            "losses": 8,
             "players": [
                 "Desteoyer"
             ],
@@ -7773,6 +7773,12 @@
                 "2V800VCQ0"
             ],
             "recent_matches": [
+                {
+                    "time": "20261026T130751.000Z",
+                    "result": "loss",
+                    "player": "Desteoyer",
+                    "tag": "2V800VCQ0"
+                },
                 {
                     "time": "20261026T074231.000Z",
                     "result": "win",
@@ -596180,6 +596186,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000011-26000012-26000016-26000034-26000042-26000074-27000003-27000010": {
+            "cards": [
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000074,
+                    "name": "Golden Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WJd207D0O1sN-l1FTb8P9KhYL2oF5jY26vRUfTUW3FQ.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 27000003,
+                    "name": "Inferno Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
