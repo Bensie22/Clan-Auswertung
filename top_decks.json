@@ -19,7 +19,7 @@
             "#QULCQGGG": "20261026T105624.000Z",
             "#JRGC9RRQG": "20261026T162745.000Z",
             "#QVQGCV8Y9": "20261026T130724.000Z",
-            "#Q8L0RJ8Y8": "20261025T202149.000Z",
+            "#Q8L0RJ8Y8": "20261026T173727.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20261026T064826.000Z",
             "#LLQQJCLC": "20261026T172230.000Z",
@@ -84,7 +84,7 @@
             "#VP82QGC8Y": "20261026T004344.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
             "#GRGCY0R8": "20261026T071524.000Z",
-            "#P2YQ2QQUV": "20261025T192350.000Z",
+            "#P2YQ2QQUV": "20261026T173936.000Z",
             "#JG8Q0GPU9": "20260713T010600.000Z",
             "#9QV99QVCV": "20260701T045607.000Z",
             "#JQ08UR882": "20260619T100820.000Z",
@@ -93,7 +93,7 @@
             "#P00PQ9CUQ": "20260613T120503.000Z",
             "#PVYJ80YCL": "20260619T140927.000Z",
             "#RP9RVGQJU": "20260615T092432.000Z",
-            "#P0G2GYJQ9": "20261026T134753.000Z",
+            "#P0G2GYJQ9": "20261026T173304.000Z",
             "#8P2GV8UQY": "20260718T102217.000Z",
             "#VV2JR990": "20260622T193820.000Z",
             "#YYJR9R0GR": "20260713T093713.000Z",
@@ -138,7 +138,7 @@
             "#20989CY0PC": "20261026T161749.000Z",
             "#G002YL80C": "20261025T191053.000Z",
             "#2CRVPL0GC": "20261024T212927.000Z",
-            "#22P998VGV": "20261026T172832.000Z",
+            "#22P998VGV": "20261026T173923.000Z",
             "#LYRGV2QGQ": "20261025T174320.000Z",
             "#UCY0RPGV2": "20261026T135508.000Z"
         }
@@ -2090,7 +2090,7 @@
                 }
             ],
             "wins": 11,
-            "losses": 5,
+            "losses": 4,
             "players": [
                 "DST"
             ],
@@ -2185,12 +2185,6 @@
                 {
                     "time": "20260927T153513.000Z",
                     "result": "win",
-                    "player": "DST",
-                    "tag": "9VLRQ9GR9"
-                },
-                {
-                    "time": "20260926T173647.000Z",
-                    "result": "loss",
                     "player": "DST",
                     "tag": "9VLRQ9GR9"
                 }
@@ -7849,7 +7843,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/QJB-QK1QJHdw4hjpAwVSyZBozc2ZWAR9pQ-SMUyKaT0.png"
                 }
             ],
-            "wins": 12,
+            "wins": 13,
             "losses": 4,
             "players": [
                 "Reklaminator"
@@ -7858,6 +7852,12 @@
                 "P0G2GYJQ9"
             ],
             "recent_matches": [
+                {
+                    "time": "20261026T173304.000Z",
+                    "result": "win",
+                    "player": "Reklaminator",
+                    "tag": "P0G2GYJQ9"
+                },
                 {
                     "time": "20261025T113327.000Z",
                     "result": "win",
@@ -596351,6 +596351,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000006-26000014-26000016-26000035-26000040-26000056-26000106-28000001": {
+            "cards": [
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                },
+                {
+                    "id": 26000035,
+                    "name": "Lumberjack",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 26000106,
+                    "name": "Ronin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X0dTFs7OGUavreDEzOtYd_YNZ8Zly6qgAE-dd-bNfWU.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
