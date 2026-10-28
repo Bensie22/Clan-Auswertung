@@ -29,7 +29,7 @@
             "#2CJYG9UG": "20261025T105131.000Z",
             "#2PUQYJC02": "20261026T184328.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20261027T194622.000Z",
+            "#2V800VCQ0": "20261028T053827.000Z",
             "#2UQUPYQCJ": "20260810T113227.000Z",
             "#JUUR8UGL8": "20261027T210340.000Z",
             "#2U09UULRR": "20261027T103644.000Z",
@@ -1707,7 +1707,7 @@
                 }
             ],
             "wins": 8,
-            "losses": 9,
+            "losses": 8,
             "players": [
                 "honigmelone"
             ],
@@ -1807,12 +1807,6 @@
                 },
                 {
                     "time": "20261002T052411.000Z",
-                    "result": "loss",
-                    "player": "honigmelone",
-                    "tag": "Q2GRGLQR"
-                },
-                {
-                    "time": "20260928T053906.000Z",
                     "result": "loss",
                     "player": "honigmelone",
                     "tag": "Q2GRGLQR"
@@ -2277,7 +2271,7 @@
                 }
             ],
             "wins": 11,
-            "losses": 14,
+            "losses": 15,
             "players": [
                 "Desteoyer"
             ],
@@ -2285,6 +2279,12 @@
                 "2V800VCQ0"
             ],
             "recent_matches": [
+                {
+                    "time": "20261028T053827.000Z",
+                    "result": "loss",
+                    "player": "Desteoyer",
+                    "tag": "2V800VCQ0"
+                },
                 {
                     "time": "20261026T123549.000Z",
                     "result": "win",
@@ -596824,6 +596824,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000007-26000017-26000018-26000040-26000042-26000050-26000085-28000000": {
+            "cards": [
+                {
+                    "id": 26000050,
+                    "name": "Royal Ghost",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3En2cz0ISQAaMTHY3hj3rTveFN2kJYq-H4VxvdJNvCM.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 26000085,
+                    "name": "Electro Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_uChZkNHAMq6tPb3v6A49xinOe3CnhjstOhG6OZbPYc.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
