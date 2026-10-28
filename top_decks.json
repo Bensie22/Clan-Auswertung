@@ -31,7 +31,7 @@
             "#YQVQYUYRV": "20260525T095543.000Z",
             "#2V800VCQ0": "20261028T090023.000Z",
             "#2UQUPYQCJ": "20260810T113227.000Z",
-            "#JUUR8UGL8": "20261027T210340.000Z",
+            "#JUUR8UGL8": "20261028T211008.000Z",
             "#2U09UULRR": "20261028T071026.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20261028T081233.000Z",
@@ -40,7 +40,7 @@
             "#CUJ9PJ2UV": "20261028T203654.000Z",
             "#2P0U2RLGY": "20261025T220627.000Z",
             "#8P89UPQ0": "",
-            "#RLJPJL8C2": "20261028T161348.000Z",
+            "#RLJPJL8C2": "20261028T210959.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
             "#UUPCULU9V": "20261028T140723.000Z",
@@ -49,7 +49,7 @@
             "#20QGJVPG8Q": "20260712T214357.000Z",
             "#V9GYJQ0J9": "",
             "#URJ0LUYPV": "20261026T183205.000Z",
-            "#Q2GRGLQR": "20261027T054951.000Z",
+            "#Q2GRGLQR": "20261028T210856.000Z",
             "#J9RQPGLVP": "20260713T204019.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
             "#9VLRQ9GR9": "20261028T063937.000Z",
@@ -136,7 +136,7 @@
             "#C2LU8Y8QP": "20261005T111606.000Z",
             "#2VYC2C8J": "20261011T132442.000Z",
             "#20989CY0PC": "20261028T183200.000Z",
-            "#G002YL80C": "20261028T205850.000Z",
+            "#G002YL80C": "20261028T210414.000Z",
             "#2CRVPL0GC": "20261028T001430.000Z",
             "#22P998VGV": "20261028T175949.000Z",
             "#LYRGV2QGQ": "20261028T203422.000Z",
@@ -10090,7 +10090,7 @@
                 }
             ],
             "wins": 13,
-            "losses": 4,
+            "losses": 5,
             "players": [
                 "LUCASxxz_"
             ],
@@ -10098,6 +10098,12 @@
                 "G002YL80C"
             ],
             "recent_matches": [
+                {
+                    "time": "20261028T210414.000Z",
+                    "result": "loss",
+                    "player": "LUCASxxz_",
+                    "tag": "G002YL80C"
+                },
                 {
                     "time": "20261025T190153.000Z",
                     "result": "win",
@@ -597245,6 +597251,52 @@
                     "id": 28000001,
                     "name": "Arrows",
                     "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000000-26000011-26000014-26000026-27000006-28000000-28000011-28000018": {
+            "cards": [
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                },
+                {
+                    "id": 28000018,
+                    "name": "Royal Delivery",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LPg7AGjGI3_xmi7gLLgGC50yKM1jJ2teWkZfoHJcIZo.png"
+                },
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
                 }
             ],
             "seen": 1,
