@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "pacemenn",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "alvaro.G.",
       "scenario": "STRIKE",
       "priority": 4
@@ -316,6 +321,11 @@
       "name": "alvaro.G.",
       "score": 10.0,
       "status": "RISIKO"
+    },
+    {
+      "name": "pacemenn",
+      "score": 0.0,
+      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -563,11 +573,28 @@
       "name": "alvaro.G.",
       "score": 10.0,
       "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "pacemenn",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
+      {
+        "name": "pacemenn",
+        "player_tag": "#2R9YVUCU8",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
       {
         "name": "alvaro.G.",
         "player_tag": "#2CRVPL0GC",
