@@ -93,7 +93,7 @@
             "#P00PQ9CUQ": "20260613T120503.000Z",
             "#PVYJ80YCL": "20260619T140927.000Z",
             "#RP9RVGQJU": "20260615T092432.000Z",
-            "#P0G2GYJQ9": "20261029T203629.000Z",
+            "#P0G2GYJQ9": "20261029T205924.000Z",
             "#8P2GV8UQY": "20260718T102217.000Z",
             "#VV2JR990": "20260622T193820.000Z",
             "#YYJR9R0GR": "20260713T093713.000Z",
@@ -136,7 +136,7 @@
             "#C2LU8Y8QP": "20261005T111606.000Z",
             "#2VYC2C8J": "20261011T132442.000Z",
             "#20989CY0PC": "20261029T194630.000Z",
-            "#G002YL80C": "20261028T233517.000Z",
+            "#G002YL80C": "20261029T205259.000Z",
             "#2CRVPL0GC": "20261028T001430.000Z",
             "#22P998VGV": "20261029T201717.000Z",
             "#LYRGV2QGQ": "20261029T204849.000Z",
@@ -10396,7 +10396,7 @@
                 }
             ],
             "wins": 10,
-            "losses": 10,
+            "losses": 11,
             "players": [
                 "LUCASxxz_"
             ],
@@ -10404,6 +10404,12 @@
                 "G002YL80C"
             ],
             "recent_matches": [
+                {
+                    "time": "20261029T205259.000Z",
+                    "result": "loss",
+                    "player": "LUCASxxz_",
+                    "tag": "G002YL80C"
+                },
                 {
                     "time": "20261028T205850.000Z",
                     "result": "loss",
@@ -600747,6 +600753,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000000-26000002-26000042-26000059-26000074-27000010-28000000-28000001": {
+            "cards": [
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000074,
+                    "name": "Golden Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WJd207D0O1sN-l1FTb8P9KhYL2oF5jY26vRUfTUW3FQ.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000002,
+                    "name": "Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X_DQUye_OaS3QN6VC9CPw05Fit7wvSm3XegXIXKP--0.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
