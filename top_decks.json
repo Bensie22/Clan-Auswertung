@@ -7,7 +7,7 @@
             "#2QRVR9L8": "20261029T073145.000Z",
             "#ULYJ2CQP": "20261029T080447.000Z",
             "#UJ2P9UYUV": "20261025T122941.000Z",
-            "#P0JYR9YUY": "20261029T094843.000Z",
+            "#P0JYR9YUY": "20261029T095855.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20261029T080607.000Z",
             "#G02LC9C8": "20261029T064945.000Z",
@@ -139,7 +139,7 @@
             "#G002YL80C": "20261028T233517.000Z",
             "#2CRVPL0GC": "20261028T001430.000Z",
             "#22P998VGV": "20261028T175949.000Z",
-            "#LYRGV2QGQ": "20261029T060246.000Z",
+            "#LYRGV2QGQ": "20261029T095926.000Z",
             "#UCY0RPGV2": "20261026T135508.000Z",
             "#80UYP82PG": "20261026T233457.000Z",
             "#2R9YVUCU8": "20261029T012212.000Z"
@@ -700,7 +700,7 @@
                 }
             ],
             "wins": 6,
-            "losses": 1,
+            "losses": 2,
             "players": [
                 "Chico"
             ],
@@ -708,6 +708,12 @@
                 "P0JYR9YUY"
             ],
             "recent_matches": [
+                {
+                    "time": "20261029T095855.000Z",
+                    "result": "loss",
+                    "player": "Chico",
+                    "tag": "P0JYR9YUY"
+                },
                 {
                     "time": "20261026T084358.000Z",
                     "result": "win",
@@ -597693,6 +597699,52 @@
                     "id": 28000005,
                     "name": "Freeze",
                     "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000015-26000018-26000024-26000042-26000064-27000009-27000010-28000008": {
+            "cards": [
+                {
+                    "id": 26000024,
+                    "name": "Royal Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mnlRaNtmfpQx2e6mp70sLd0ND-pKPF70Cf87_agEKg4.png"
+                },
+                {
+                    "id": 27000009,
+                    "name": "Tombstone",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LjSfSbwQfkZuRJY4pVxKspZ-a0iM5KAhU8w-a_N5Z7Y.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
                 }
             ],
             "seen": 1,
