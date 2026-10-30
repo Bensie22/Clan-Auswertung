@@ -1,7 +1,7 @@
 {
     "_metadata": {
         "last_battles": {
-            "#22Q920RLR": "20261030T124840.000Z",
+            "#22Q920RLR": "20261030T125157.000Z",
             "#L8PV090J": "20261029T181009.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20261030T082300.000Z",
@@ -29,7 +29,7 @@
             "#2CJYG9UG": "20261030T033137.000Z",
             "#2PUQYJC02": "20261029T194510.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20261030T124044.000Z",
+            "#2V800VCQ0": "20261030T125947.000Z",
             "#2UQUPYQCJ": "20260810T113227.000Z",
             "#JUUR8UGL8": "20261029T180626.000Z",
             "#2U09UULRR": "20261030T121656.000Z",
@@ -1114,7 +1114,7 @@
                 }
             ],
             "wins": 6,
-            "losses": 10,
+            "losses": 11,
             "players": [
                 "LazyFrog"
             ],
@@ -1122,6 +1122,12 @@
                 "22Q920RLR"
             ],
             "recent_matches": [
+                {
+                    "time": "20261030T125157.000Z",
+                    "result": "loss",
+                    "player": "LazyFrog",
+                    "tag": "22Q920RLR"
+                },
                 {
                     "time": "20261029T164721.000Z",
                     "result": "loss",
@@ -4587,7 +4593,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
                 }
             ],
-            "wins": 19,
+            "wins": 18,
             "losses": 10,
             "players": [
                 "OmniOni"
@@ -4760,12 +4766,6 @@
                 },
                 {
                     "time": "20261001T141748.000Z",
-                    "result": "win",
-                    "player": "OmniOni",
-                    "tag": "UUPCULU9V"
-                },
-                {
-                    "time": "20260930T125600.000Z",
                     "result": "win",
                     "player": "OmniOni",
                     "tag": "UUPCULU9V"
@@ -602821,6 +602821,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000001-26000008-26000019-26000021-26000049-26000055-28000008-28000015": {
+            "cards": [
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 28000015,
+                    "name": "Barbarian Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Gb0G1yNy0i5cIGUHin8uoFWxqntNtRPhY_jeMXg7HnA.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 26000019,
+                    "name": "Spear Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/FSDFotjaXidI4ku_WFpVCTWS1hKGnFh1sxX0lxM43_E.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 26000008,
+                    "name": "Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/TvJsuu2S4yhyk1jVYUAQwdKOnW4U77KuWWOTPOWnwfI.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
