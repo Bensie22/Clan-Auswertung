@@ -17,12 +17,12 @@
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20261030T091012.000Z",
             "#QULCQGGG": "20261030T144352.000Z",
-            "#JRGC9RRQG": "20261030T104018.000Z",
+            "#JRGC9RRQG": "20261030T152357.000Z",
             "#QVQGCV8Y9": "20261030T115802.000Z",
             "#Q8L0RJ8Y8": "20261030T151155.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
-            "#2CPRGY8G": "20261030T111816.000Z",
-            "#LLQQJCLC": "20261030T150805.000Z",
+            "#2CPRGY8G": "20261030T152524.000Z",
+            "#LLQQJCLC": "20261030T152745.000Z",
             "#2VJR80RL": "20261030T132033.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
@@ -43,7 +43,7 @@
             "#RLJPJL8C2": "20261030T071516.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20261030T145516.000Z",
+            "#UUPCULU9V": "20261030T152626.000Z",
             "#202VP2QL9P": "20260724T185949.000Z",
             "#LVUGLUCP9": "20261029T215546.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
@@ -10234,7 +10234,7 @@
                 }
             ],
             "wins": 5,
-            "losses": 7,
+            "losses": 8,
             "players": [
                 "OmniOni"
             ],
@@ -10242,6 +10242,12 @@
                 "UUPCULU9V"
             ],
             "recent_matches": [
+                {
+                    "time": "20261030T152626.000Z",
+                    "result": "loss",
+                    "player": "OmniOni",
+                    "tag": "UUPCULU9V"
+                },
                 {
                     "time": "20261028T140723.000Z",
                     "result": "win",
@@ -603479,6 +603485,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000007-26000018-26000032-26000037-26000042-26000050-26000085-28000011": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000037,
+                    "name": "Inferno Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000032,
+                    "name": "Miner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Y4yWvdwBCg2FpAZgs8T09Gy34WOwpLZW-ttL52Ae8NE.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 26000050,
+                    "name": "Royal Ghost",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3En2cz0ISQAaMTHY3hj3rTveFN2kJYq-H4VxvdJNvCM.png"
+                },
+                {
+                    "id": 26000085,
+                    "name": "Electro Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_uChZkNHAMq6tPb3v6A49xinOe3CnhjstOhG6OZbPYc.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
