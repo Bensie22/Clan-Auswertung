@@ -4,7 +4,7 @@
             "#22Q920RLR": "20261029T164721.000Z",
             "#L8PV090J": "20261029T181009.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
-            "#2QRVR9L8": "20261030T012718.000Z",
+            "#2QRVR9L8": "20261030T013415.000Z",
             "#ULYJ2CQP": "20261029T144538.000Z",
             "#UJ2P9UYUV": "20261025T122941.000Z",
             "#P0JYR9YUY": "20261029T095855.000Z",
@@ -34,7 +34,7 @@
             "#JUUR8UGL8": "20261029T180626.000Z",
             "#2U09UULRR": "20261029T143022.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
-            "#8QYYL8LCQ": "20261030T011915.000Z",
+            "#8QYYL8LCQ": "20261030T014039.000Z",
             "#8P0J8P0L": "20261029T101138.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20261029T201039.000Z",
@@ -6429,7 +6429,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/NpCrXDEDBBJgNv9QrBAcJmmMFbS7pe3KCY8xJ5VB18A.png"
                 }
             ],
-            "wins": 6,
+            "wins": 7,
             "losses": 9,
             "players": [
                 "Bensie"
@@ -6438,6 +6438,12 @@
                 "2QRVR9L8"
             ],
             "recent_matches": [
+                {
+                    "time": "20261030T013415.000Z",
+                    "result": "win",
+                    "player": "Bensie",
+                    "tag": "2QRVR9L8"
+                },
                 {
                     "time": "20261025T153547.000Z",
                     "result": "win",
@@ -6573,7 +6579,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
                 }
             ],
-            "wins": 6,
+            "wins": 7,
             "losses": 5,
             "players": [
                 "Bensie"
@@ -6582,6 +6588,12 @@
                 "2QRVR9L8"
             ],
             "recent_matches": [
+                {
+                    "time": "20261030T013206.000Z",
+                    "result": "win",
+                    "player": "Bensie",
+                    "tag": "2QRVR9L8"
+                },
                 {
                     "time": "20261025T153203.000Z",
                     "result": "win",
@@ -601215,6 +601227,98 @@
                     "id": 28000004,
                     "name": "Goblin Barrel",
                     "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000006-26000011-26000012-26000017-26000022-26000037-26000046-28000004": {
+            "cards": [
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 26000022,
+                    "name": "Minion Horde",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Wyjq5l0IXHTkX9Rmpap6HaH08MvjbxFp1xBO9a47YSI.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                },
+                {
+                    "id": 26000046,
+                    "name": "Bandit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QWDdXMKJNpv0go-HYaWQWP6p8uIOHjqn-zX7G0p3DyM.png"
+                },
+                {
+                    "id": 26000037,
+                    "name": "Inferno Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000005-26000015-26000017-26000024-26000033-26000040-26000049-26000062": {
+            "cards": [
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000024,
+                    "name": "Royal Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mnlRaNtmfpQx2e6mp70sLd0ND-pKPF70Cf87_agEKg4.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                },
+                {
+                    "id": 26000033,
+                    "name": "Sparky",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/2GKMkBrArZXgQxf2ygFjDs4VvGYPbx8F6Lj_68iVhIM.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
                 }
             ],
             "seen": 1,
