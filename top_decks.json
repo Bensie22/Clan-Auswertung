@@ -37,7 +37,7 @@
             "#8QYYL8LCQ": "20261030T024448.000Z",
             "#8P0J8P0L": "20261030T171726.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20261030T200818.000Z",
+            "#CUJ9PJ2UV": "20261030T202603.000Z",
             "#2P0U2RLGY": "20261030T194602.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20261030T163314.000Z",
@@ -127,7 +127,7 @@
             "#Y8LJ8VRJL": "20260926T140816.000Z",
             "#JJVYUP8C": "20260919T184831.000Z",
             "#CCPC2Q9GU": "20260927T092950.000Z",
-            "#G8L2Q900": "20261030T201926.000Z",
+            "#G8L2Q900": "20261030T202834.000Z",
             "#88QGQUUY": "20261030T134812.000Z",
             "#UJCPPUJLJ": "20261030T170437.000Z",
             "#98QP8YG2G": "20261004T195105.000Z",
@@ -2703,7 +2703,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
                 }
             ],
-            "wins": 6,
+            "wins": 7,
             "losses": 8,
             "players": [
                 "Naughty"
@@ -2712,6 +2712,12 @@
                 "G8L2Q900"
             ],
             "recent_matches": [
+                {
+                    "time": "20261030T202450.000Z",
+                    "result": "win",
+                    "player": "Naughty",
+                    "tag": "G8L2Q900"
+                },
                 {
                     "time": "20261029T102810.000Z",
                     "result": "loss",
@@ -604671,6 +604677,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000006-26000017-26000042-26000043-26000074-27000000-28000002-28000008": {
+            "cards": [
+                {
+                    "id": 26000043,
+                    "name": "Elite Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/C88C5JH_F3lLZj6K-tLcMo5DPjrFmvzIb1R2M6xCfTE.png"
+                },
+                {
+                    "id": 26000074,
+                    "name": "Golden Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WJd207D0O1sN-l1FTb8P9KhYL2oF5jY26vRUfTUW3FQ.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                },
+                {
+                    "id": 27000000,
+                    "name": "Cannon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nZK1y-beLxO5vnlyUhK6-2zH2NzXJwqykcosqQ1cmZ8.png"
+                },
+                {
+                    "id": 28000002,
+                    "name": "Rage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
