@@ -18,7 +18,7 @@
             "#PPR2QQC0U": "20261030T091012.000Z",
             "#QULCQGGG": "20261030T085152.000Z",
             "#JRGC9RRQG": "20261030T104018.000Z",
-            "#QVQGCV8Y9": "20261027T110926.000Z",
+            "#QVQGCV8Y9": "20261030T115802.000Z",
             "#Q8L0RJ8Y8": "20261029T201526.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20261030T111816.000Z",
@@ -138,7 +138,7 @@
             "#20989CY0PC": "20261029T225948.000Z",
             "#G002YL80C": "20261030T083616.000Z",
             "#2CRVPL0GC": "20261028T001430.000Z",
-            "#22P998VGV": "20261030T114812.000Z",
+            "#22P998VGV": "20261030T115137.000Z",
             "#LYRGV2QGQ": "20261029T204849.000Z",
             "#UCY0RPGV2": "20261026T135508.000Z",
             "#80UYP82PG": "20261026T233457.000Z",
@@ -478,7 +478,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 1,
+            "losses": 2,
             "players": [
                 "Rainer"
             ],
@@ -486,6 +486,12 @@
                 "QVQGCV8Y9"
             ],
             "recent_matches": [
+                {
+                    "time": "20261030T115802.000Z",
+                    "result": "loss",
+                    "player": "Rainer",
+                    "tag": "QVQGCV8Y9"
+                },
                 {
                     "time": "20261016T103639.000Z",
                     "result": "win",
@@ -602567,6 +602573,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000004-26000011-26000014-26000059-26000080-27000009-28000000-28000015": {
+            "cards": [
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 26000080,
+                    "name": "Skeleton Dragons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qPOtg9uONh47_NLxGhhFc_ww9PlZ6z3Ry507q1NZUXs.png"
+                },
+                {
+                    "id": 27000009,
+                    "name": "Tombstone",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LjSfSbwQfkZuRJY4pVxKspZ-a0iM5KAhU8w-a_N5Z7Y.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 28000015,
+                    "name": "Barbarian Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Gb0G1yNy0i5cIGUHin8uoFWxqntNtRPhY_jeMXg7HnA.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
