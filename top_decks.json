@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20261031T194324.000Z",
+            "#YUQVVVLQ": "20261031T213737.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20261031T211815.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
@@ -5807,7 +5807,7 @@
                 }
             ],
             "wins": 6,
-            "losses": 10,
+            "losses": 9,
             "players": [
                 "Wario"
             ],
@@ -5901,12 +5901,6 @@
                 },
                 {
                     "time": "20261002T123237.000Z",
-                    "result": "loss",
-                    "player": "Wario",
-                    "tag": "2PUQYJC02"
-                },
-                {
-                    "time": "20261001T213443.000Z",
                     "result": "loss",
                     "player": "Wario",
                     "tag": "2PUQYJC02"
@@ -8417,7 +8411,7 @@
                 }
             ],
             "wins": 6,
-            "losses": 10,
+            "losses": 9,
             "players": [
                 "Wario"
             ],
@@ -8511,12 +8505,6 @@
                 },
                 {
                     "time": "20261002T123551.000Z",
-                    "result": "loss",
-                    "player": "Wario",
-                    "tag": "2PUQYJC02"
-                },
-                {
-                    "time": "20261001T213906.000Z",
                     "result": "loss",
                     "player": "Wario",
                     "tag": "2PUQYJC02"
@@ -9298,7 +9286,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
                 }
             ],
-            "wins": 2,
+            "wins": 1,
             "losses": 0,
             "players": [
                 "Milena.m.x"
@@ -9309,12 +9297,6 @@
             "recent_matches": [
                 {
                     "time": "20261004T185859.000Z",
-                    "result": "win",
-                    "player": "Milena.m.x",
-                    "tag": "98QP8YG2G"
-                },
-                {
-                    "time": "20261001T213401.000Z",
                     "result": "win",
                     "player": "Milena.m.x",
                     "tag": "98QP8YG2G"
@@ -609388,6 +609370,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000000-26000006-26000018-26000041-26000045-27000000-28000000-28000005": {
+            "cards": [
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                },
+                {
+                    "id": 27000000,
+                    "name": "Cannon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nZK1y-beLxO5vnlyUhK6-2zH2NzXJwqykcosqQ1cmZ8.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 28000005,
+                    "name": "Freeze",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
