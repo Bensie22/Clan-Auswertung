@@ -16,7 +16,7 @@
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20261031T075442.000Z",
-            "#QULCQGGG": "20261031T150852.000Z",
+            "#QULCQGGG": "20261031T151742.000Z",
             "#JRGC9RRQG": "20261031T003907.000Z",
             "#QVQGCV8Y9": "20261031T095706.000Z",
             "#Q8L0RJ8Y8": "20261030T174942.000Z",
@@ -115,7 +115,7 @@
             "#V8VGG0LUG": "20260803T085547.000Z",
             "#2V2QYJGCG": "20260804T011752.000Z",
             "#UQV90UP09": "20260810T190628.000Z",
-            "#JV80YYJRJ": "20261031T112537.000Z",
+            "#JV80YYJRJ": "20261031T151321.000Z",
             "#VP8P9UG8V": "20260817T002911.000Z",
             "#G9QR0YVU": "20260908T165202.000Z",
             "#200PGVGQ9U": "20260811T201941.000Z",
@@ -3449,7 +3449,7 @@
                 }
             ],
             "wins": 10,
-            "losses": 1,
+            "losses": 2,
             "players": [
                 "Deniz"
             ],
@@ -3457,6 +3457,12 @@
                 "JV80YYJRJ"
             ],
             "recent_matches": [
+                {
+                    "time": "20261031T151321.000Z",
+                    "result": "loss",
+                    "player": "Deniz",
+                    "tag": "JV80YYJRJ"
+                },
                 {
                     "time": "20261030T200837.000Z",
                     "result": "win",
@@ -608454,6 +608460,52 @@
                     "id": 28000011,
                     "name": "The Log",
                     "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000018-26000023-26000037-26000047-27000010-28000000-28000010-28000017": {
+            "cards": [
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000037,
+                    "name": "Inferno Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
+                },
+                {
+                    "id": 28000017,
+                    "name": "Giant Snowball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000047,
+                    "name": "Royal Recruits",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jcNyYGUiXXNz3kuz8NBkHNKNREQKraXlb_Ts7rhCIdM.png"
+                },
+                {
+                    "id": 28000010,
+                    "name": "Graveyard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Icp8BIyyfBTj1ncCJS7mb82SY7TPV-MAE-J2L2R48DI.png"
+                },
+                {
+                    "id": 26000023,
+                    "name": "Ice Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W3dkw0HTw9n1jB-zbknY2w3wHuyuLxSRIAV5fUT1SEY.png"
                 }
             ],
             "seen": 1,
