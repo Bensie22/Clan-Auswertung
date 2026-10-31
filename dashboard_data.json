@@ -1,6 +1,11 @@
 {
   "full_auto": [
     {
+      "name": "Hocho2000",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "pacemenn",
       "scenario": "KEINE_TEILNAHME",
       "priority": 4
@@ -268,6 +273,11 @@
       "status": "RISIKO"
     },
     {
+      "name": "Hocho2000",
+      "score": 0.0,
+      "status": "RISIKO"
+    },
+    {
       "name": "pacemenn",
       "score": 0.0,
       "status": "RISIKO"
@@ -515,6 +525,11 @@
       "tip": "Mehr Teilnahme notwendig"
     },
     {
+      "name": "Hocho2000",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
+    },
+    {
       "name": "pacemenn",
       "score": 0.0,
       "tip": "Mehr Teilnahme notwendig"
@@ -523,6 +538,18 @@
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
+      {
+        "name": "Hocho2000",
+        "player_tag": "#2YPY28Y2",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 11,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
       {
         "name": "pacemenn",
         "player_tag": "#2R9YVUCU8",
