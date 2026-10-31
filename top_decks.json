@@ -6,10 +6,10 @@
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20261030T154807.000Z",
             "#ULYJ2CQP": "20261030T081638.000Z",
-            "#UJ2P9UYUV": "20261030T210318.000Z",
+            "#UJ2P9UYUV": "20261031T055743.000Z",
             "#P0JYR9YUY": "20261030T232437.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
-            "#YQ82VR9JQ": "20261031T054438.000Z",
+            "#YQ82VR9JQ": "20261031T055755.000Z",
             "#G02LC9C8": "20261030T192026.000Z",
             "#2U8288CVY": "20261030T124015.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
@@ -40,7 +40,7 @@
             "#CUJ9PJ2UV": "20261030T215501.000Z",
             "#2P0U2RLGY": "20261030T194602.000Z",
             "#8P89UPQ0": "",
-            "#RLJPJL8C2": "20261030T163314.000Z",
+            "#RLJPJL8C2": "20261031T055821.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
             "#UUPCULU9V": "20261030T152626.000Z",
@@ -9700,7 +9700,7 @@
                 }
             ],
             "wins": 7,
-            "losses": 3,
+            "losses": 4,
             "players": [
                 "kl.kranker Affe"
             ],
@@ -9708,6 +9708,12 @@
                 "RLJPJL8C2"
             ],
             "recent_matches": [
+                {
+                    "time": "20261031T055821.000Z",
+                    "result": "loss",
+                    "player": "kl.kranker Affe",
+                    "tag": "RLJPJL8C2"
+                },
                 {
                     "time": "20261029T131829.000Z",
                     "result": "win",
@@ -605575,6 +605581,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000000-26000012-26000014-26000021-26000030-27000006-28000000-28000008": {
+            "cards": [
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000030,
+                    "name": "Ice Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lv1budiafU9XmSdrDkk0NYyqASAFYyZ06CPysXKZXlA.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
