@@ -6,7 +6,7 @@
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20261030T154807.000Z",
             "#ULYJ2CQP": "20261030T081638.000Z",
-            "#UJ2P9UYUV": "20261031T075017.000Z",
+            "#UJ2P9UYUV": "20261031T075755.000Z",
             "#P0JYR9YUY": "20261030T232437.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20261031T060851.000Z",
@@ -15,21 +15,21 @@
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
-            "#PPR2QQC0U": "20261031T074905.000Z",
+            "#PPR2QQC0U": "20261031T075442.000Z",
             "#QULCQGGG": "20261030T171535.000Z",
             "#JRGC9RRQG": "20261031T003907.000Z",
             "#QVQGCV8Y9": "20261031T074103.000Z",
             "#Q8L0RJ8Y8": "20261030T174942.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20261030T152524.000Z",
-            "#LLQQJCLC": "20261031T074929.000Z",
+            "#LLQQJCLC": "20261031T080006.000Z",
             "#2VJR80RL": "20261030T132033.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
             "#2CJYG9UG": "20261030T222817.000Z",
             "#2PUQYJC02": "20261030T152019.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20261031T072816.000Z",
+            "#2V800VCQ0": "20261031T075505.000Z",
             "#2UQUPYQCJ": "20260810T113227.000Z",
             "#JUUR8UGL8": "20261031T073833.000Z",
             "#2U09UULRR": "20261030T132949.000Z",
@@ -3321,7 +3321,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
                 }
             ],
-            "wins": 3,
+            "wins": 4,
             "losses": 8,
             "players": [
                 "Flauschos"
@@ -3330,6 +3330,12 @@
                 "PPR2QQC0U"
             ],
             "recent_matches": [
+                {
+                    "time": "20261031T075442.000Z",
+                    "result": "win",
+                    "player": "Flauschos",
+                    "tag": "PPR2QQC0U"
+                },
                 {
                     "time": "20261025T183215.000Z",
                     "result": "loss",
@@ -606235,6 +606241,52 @@
                     "id": 26000080,
                     "name": "Skeleton Dragons",
                     "icon": "https://api-assets.clashroyale.com/cards/300/qPOtg9uONh47_NLxGhhFc_ww9PlZ6z3Ry507q1NZUXs.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000000-26000007-26000016-26000033-26000037-26000062-26000093-27000003": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000093,
+                    "name": "Little Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dY-gSseki6KBpkIG17safHH5YlB8SErFZO9OXbJxf9w.png"
+                },
+                {
+                    "id": 26000037,
+                    "name": "Inferno Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 27000003,
+                    "name": "Inferno Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
+                },
+                {
+                    "id": 26000033,
+                    "name": "Sparky",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/2GKMkBrArZXgQxf2ygFjDs4VvGYPbx8F6Lj_68iVhIM.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
                 }
             ],
             "seen": 1,
