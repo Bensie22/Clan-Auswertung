@@ -38,7 +38,7 @@
             "#8P0J8P0L": "20261031T104406.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20261030T215501.000Z",
-            "#2P0U2RLGY": "20261030T194602.000Z",
+            "#2P0U2RLGY": "20261031T184022.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20261031T173851.000Z",
             "#RG02LG88": "20260405T075546.000Z",
@@ -1127,7 +1127,7 @@
                 }
             ],
             "wins": 6,
-            "losses": 11,
+            "losses": 10,
             "players": [
                 "LazyFrog"
             ],
@@ -1227,12 +1227,6 @@
                 },
                 {
                     "time": "20261002T114700.000Z",
-                    "result": "loss",
-                    "player": "LazyFrog",
-                    "tag": "22Q920RLR"
-                },
-                {
-                    "time": "20261001T183219.000Z",
                     "result": "loss",
                     "player": "LazyFrog",
                     "tag": "22Q920RLR"
@@ -12143,7 +12137,7 @@
                 }
             ],
             "wins": 3,
-            "losses": 1,
+            "losses": 2,
             "players": [
                 "mauza"
             ],
@@ -12151,6 +12145,12 @@
                 "2P0U2RLGY"
             ],
             "recent_matches": [
+                {
+                    "time": "20261031T184022.000Z",
+                    "result": "loss",
+                    "player": "mauza",
+                    "tag": "2P0U2RLGY"
+                },
                 {
                     "time": "20261030T194602.000Z",
                     "result": "win",
@@ -609098,6 +609098,52 @@
                     "id": 26000010,
                     "name": "Skeletons",
                     "icon": "https://api-assets.clashroyale.com/cards/300/oO7iKMU5m0cdxhYPZA3nWQiAUh2yoGgdThLWB1rVSec.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000004-26000015-26000036-26000042-26000046-26000062-28000000-28000008": {
+            "cards": [
+                {
+                    "id": 26000036,
+                    "name": "Battle Ram",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dyc50V2cplKi4H7pq1B3I36pl_sEH5DQrNHboS_dbbM.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000046,
+                    "name": "Bandit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QWDdXMKJNpv0go-HYaWQWP6p8uIOHjqn-zX7G0p3DyM.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
                 }
             ],
             "seen": 1,
