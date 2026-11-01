@@ -19,9 +19,9 @@
             "#QULCQGGG": "20261031T160456.000Z",
             "#JRGC9RRQG": "20261031T153854.000Z",
             "#QVQGCV8Y9": "20261031T095706.000Z",
-            "#Q8L0RJ8Y8": "20261101T075541.000Z",
+            "#Q8L0RJ8Y8": "20261101T081422.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
-            "#2CPRGY8G": "20261101T074603.000Z",
+            "#2CPRGY8G": "20261101T081304.000Z",
             "#LLQQJCLC": "20261101T080206.000Z",
             "#2VJR80RL": "20261030T132033.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
@@ -49,7 +49,7 @@
             "#20QGJVPG8Q": "20260712T214357.000Z",
             "#V9GYJQ0J9": "",
             "#URJ0LUYPV": "20261031T141144.000Z",
-            "#Q2GRGLQR": "20261101T080922.000Z",
+            "#Q2GRGLQR": "20261101T081704.000Z",
             "#J9RQPGLVP": "20260713T204019.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
             "#9VLRQ9GR9": "20261031T132644.000Z",
@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20261101T080949.000Z",
+            "#YUQVVVLQ": "20261101T081846.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20261031T211815.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
@@ -7360,7 +7360,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/QWDdXMKJNpv0go-HYaWQWP6p8uIOHjqn-zX7G0p3DyM.png"
                 }
             ],
-            "wins": 6,
+            "wins": 7,
             "losses": 11,
             "players": [
                 "honigmelone"
@@ -7369,6 +7369,12 @@
                 "Q2GRGLQR"
             ],
             "recent_matches": [
+                {
+                    "time": "20261101T081226.000Z",
+                    "result": "win",
+                    "player": "honigmelone",
+                    "tag": "Q2GRGLQR"
+                },
                 {
                     "time": "20261031T073115.000Z",
                     "result": "loss",
@@ -610346,6 +610352,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000007-26000011-26000015-26000050-26000053-27000010-28000000-28000008": {
+            "cards": [
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 26000053,
+                    "name": "Rascals",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/KV48DfwVHKx9XCjzBdk3daT_Eb52Me4VgjVO7WctRc4.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 26000050,
+                    "name": "Royal Ghost",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3En2cz0ISQAaMTHY3hj3rTveFN2kJYq-H4VxvdJNvCM.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
