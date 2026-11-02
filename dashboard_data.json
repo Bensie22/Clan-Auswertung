@@ -2,13 +2,13 @@
   "full_auto": [
     {
       "name": "alvaro.G.",
-      "scenario": "STRIKE",
-      "priority": 4
+      "scenario": "STRIKE_ESKALATION",
+      "priority": 5
     },
     {
       "name": "King tursu",
-      "scenario": "STRIKE",
-      "priority": 4
+      "scenario": "STRIKE_ESKALATION",
+      "priority": 5
     },
     {
       "name": "pacemenn",
@@ -59,11 +59,6 @@
       "name": "Mario",
       "scenario": "TOP",
       "priority": 2
-    },
-    {
-      "name": "elazeto",
-      "scenario": "OK",
-      "priority": 1
     }
   ],
   "smart": [
@@ -578,10 +573,10 @@
         "player_tag": "#2CRVPL0GC",
         "role": "member",
         "score": 10.83,
-        "strikes": 0,
+        "strikes": 1,
         "donations": 10,
         "participation_count": 3,
-        "trend": "🔴🔴",
+        "trend": "🔴🔴🔴",
         "reason": "Score unter 40",
         "recommended_action": "kick_review"
       },
@@ -590,10 +585,10 @@
         "player_tag": "#20989CY0PC",
         "role": "member",
         "score": 33.38,
-        "strikes": 0,
+        "strikes": 1,
         "donations": 144,
         "participation_count": 4,
-        "trend": "🔴🔴",
+        "trend": "🔴🔴🔴",
         "reason": "Score unter 40",
         "recommended_action": "kick_review"
       },
@@ -605,7 +600,7 @@
         "strikes": 0,
         "donations": 188,
         "participation_count": 1,
-        "trend": "",
+        "trend": "🔴",
         "reason": "Score unter 40",
         "recommended_action": "kick_review"
       }
@@ -633,7 +628,7 @@
         "strikes": 0,
         "donations": 447,
         "participation_count": 10,
-        "trend": "🟡🟡🟢🟢🟢🟢",
+        "trend": "🟡🟢🟢🟢🟢🟢",
         "reason": "Fame über 2800",
         "recommended_action": "promote_review"
       },
@@ -646,7 +641,7 @@
         "strikes": 0,
         "donations": 554,
         "participation_count": 2,
-        "trend": "",
+        "trend": "🟡",
         "reason": "Fame über 2800",
         "recommended_action": "promote_review"
       },
@@ -685,7 +680,7 @@
         "strikes": 0,
         "donations": 362,
         "participation_count": 10,
-        "trend": "🟢🟢🟢🟢",
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Fame über 2800",
         "recommended_action": "promote_review"
       },
@@ -698,7 +693,7 @@
         "strikes": 0,
         "donations": 159,
         "participation_count": 10,
-        "trend": "🟢🟢🟢🟢",
+        "trend": "🟢🟢🟢🟢🟢",
         "reason": "Fame über 2800",
         "recommended_action": "promote_review"
       },
