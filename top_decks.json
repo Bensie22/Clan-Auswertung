@@ -43,7 +43,7 @@
             "#RLJPJL8C2": "20261102T130355.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20261102T150918.000Z",
+            "#UUPCULU9V": "20261103T130037.000Z",
             "#202VP2QL9P": "20260724T185949.000Z",
             "#LVUGLUCP9": "20261101T205852.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
@@ -138,7 +138,7 @@
             "#20989CY0PC": "20261102T174330.000Z",
             "#G002YL80C": "20261102T195639.000Z",
             "#2CRVPL0GC": "20261102T013100.000Z",
-            "#22P998VGV": "20261102T213229.000Z",
+            "#22P998VGV": "20261103T130045.000Z",
             "#LYRGV2QGQ": "20261030T212035.000Z",
             "#UCY0RPGV2": "20261026T135508.000Z",
             "#80UYP82PG": "20261026T233457.000Z",
@@ -4463,7 +4463,7 @@
                 }
             ],
             "wins": 17,
-            "losses": 12,
+            "losses": 13,
             "players": [
                 "OmniOni"
             ],
@@ -4471,6 +4471,12 @@
                 "UUPCULU9V"
             ],
             "recent_matches": [
+                {
+                    "time": "20261103T130037.000Z",
+                    "result": "loss",
+                    "player": "OmniOni",
+                    "tag": "UUPCULU9V"
+                },
                 {
                     "time": "20261102T145801.000Z",
                     "result": "win",
@@ -615920,6 +615926,52 @@
                     "id": 28000012,
                     "name": "Tornado",
                     "icon": "https://api-assets.clashroyale.com/cards/300/QJB-QK1QJHdw4hjpAwVSyZBozc2ZWAR9pQ-SMUyKaT0.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000007-26000011-26000018-26000059-26000064-28000004-28000011-28000014": {
+            "cards": [
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 28000014,
+                    "name": "Earthquake",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/XeQXcrUu59C52DslyZVwCnbi4yamID-WxfVZLShgZmE.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
                 }
             ],
             "seen": 1,
