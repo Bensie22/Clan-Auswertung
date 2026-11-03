@@ -129,7 +129,7 @@
             "#CCPC2Q9GU": "20260927T092950.000Z",
             "#G8L2Q900": "20261102T111847.000Z",
             "#88QGQUUY": "20261102T201836.000Z",
-            "#UJCPPUJLJ": "20261102T214355.000Z",
+            "#UJCPPUJLJ": "20261103T005836.000Z",
             "#98QP8YG2G": "20261004T195105.000Z",
             "#QVRCRP0LY": "20261002T204613.000Z",
             "#R8JQC08": "20261004T120210.000Z",
@@ -142,7 +142,7 @@
             "#LYRGV2QGQ": "20261030T212035.000Z",
             "#UCY0RPGV2": "20261026T135508.000Z",
             "#80UYP82PG": "20261026T233457.000Z",
-            "#2R9YVUCU8": "20261103T004920.000Z",
+            "#2R9YVUCU8": "20261103T005408.000Z",
             "#2YPY28Y2": "20261101T145547.000Z"
         }
     },
@@ -7708,7 +7708,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
                 }
             ],
-            "wins": 11,
+            "wins": 12,
             "losses": 7,
             "players": [
                 "HRVAT85"
@@ -7717,6 +7717,12 @@
                 "UJCPPUJLJ"
             ],
             "recent_matches": [
+                {
+                    "time": "20261103T005836.000Z",
+                    "result": "win",
+                    "player": "HRVAT85",
+                    "tag": "UJCPPUJLJ"
+                },
                 {
                     "time": "20261031T174723.000Z",
                     "result": "win",
@@ -615828,6 +615834,52 @@
                     "id": 26000018,
                     "name": "Mini P.E.K.K.A",
                     "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000004-26000010-26000018-26000040-26000049-26000072-27000010-28000001": {
+            "cards": [
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000072,
+                    "name": "Archer Queen",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/p7OQmOAFTery7zCzlpDdm-LOD1kINTm42AwIHchZfWk.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000010,
+                    "name": "Skeletons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/oO7iKMU5m0cdxhYPZA3nWQiAUh2yoGgdThLWB1rVSec.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                },
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
                 }
             ],
             "seen": 1,
