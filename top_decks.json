@@ -17,7 +17,7 @@
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20261102T045734.000Z",
             "#QULCQGGG": "20261105T084122.000Z",
-            "#JRGC9RRQG": "20261105T100921.000Z",
+            "#JRGC9RRQG": "20261105T102013.000Z",
             "#QVQGCV8Y9": "20261104T075816.000Z",
             "#Q8L0RJ8Y8": "20261103T193242.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
@@ -7085,7 +7085,7 @@
                 }
             ],
             "wins": 5,
-            "losses": 8,
+            "losses": 7,
             "players": [
                 "Desteoyer"
             ],
@@ -7161,12 +7161,6 @@
                 },
                 {
                     "time": "20261011T051035.000Z",
-                    "result": "loss",
-                    "player": "Desteoyer",
-                    "tag": "2V800VCQ0"
-                },
-                {
-                    "time": "20261006T102017.000Z",
                     "result": "loss",
                     "player": "Desteoyer",
                     "tag": "2V800VCQ0"
@@ -618398,6 +618392,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000003-26000013-26000017-26000030-26000045-26000064-27000000-28000006": {
+            "cards": [
+                {
+                    "id": 26000030,
+                    "name": "Ice Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lv1budiafU9XmSdrDkk0NYyqASAFYyZ06CPysXKZXlA.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 26000003,
+                    "name": "Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Axr4ox5_b7edmLsoHxBX3vmgijAIibuF6RImTbqLlXE.png"
+                },
+                {
+                    "id": 26000013,
+                    "name": "Bomber",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
+                },
+                {
+                    "id": 28000006,
+                    "name": "Mirror",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/wC6Cm9rKLEOk72zTsukVwxewKIoO4ZcMJun54zCPWvA.png"
+                },
+                {
+                    "id": 27000000,
+                    "name": "Cannon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nZK1y-beLxO5vnlyUhK6-2zH2NzXJwqykcosqQ1cmZ8.png"
+                },
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
