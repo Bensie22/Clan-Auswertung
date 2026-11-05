@@ -37,7 +37,7 @@
             "#8QYYL8LCQ": "20261105T014024.000Z",
             "#8P0J8P0L": "20261105T154424.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20261104T171401.000Z",
+            "#CUJ9PJ2UV": "20261105T170018.000Z",
             "#2P0U2RLGY": "20261105T123335.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20261105T143601.000Z",
@@ -3940,7 +3940,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/SoW16cY3jXBwaTDvb39DkqiVsoFVaDWbzf5QBYphJrY.png"
                 }
             ],
-            "wins": 9,
+            "wins": 10,
             "losses": 4,
             "players": [
                 "AaleDieter"
@@ -3949,6 +3949,12 @@
                 "CUJ9PJ2UV"
             ],
             "recent_matches": [
+                {
+                    "time": "20261105T170018.000Z",
+                    "result": "win",
+                    "player": "AaleDieter",
+                    "tag": "CUJ9PJ2UV"
+                },
                 {
                     "time": "20261030T155940.000Z",
                     "result": "win",
@@ -619778,6 +619784,52 @@
                     "id": 28000008,
                     "name": "Zap",
                     "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000004-26000013-26000035-26000039-26000042-27000012-28000009-28000011": {
+            "cards": [
+                {
+                    "id": 27000012,
+                    "name": "Goblin Cage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vD24bBgK4rSq7wx5QEbuqChtPMRFviL_ep76GwQw1yA.png"
+                },
+                {
+                    "id": 26000013,
+                    "name": "Bomber",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
+                },
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 26000039,
+                    "name": "Mega Minion",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/-T_e4YLbuhPBKbYnBwQfXgynNpp5eOIN_0RracYwL9c.png"
+                },
+                {
+                    "id": 26000035,
+                    "name": "Lumberjack",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
                 }
             ],
             "seen": 1,
