@@ -11,6 +11,11 @@
       "priority": 5
     },
     {
+      "name": "Abmelker Ju",
+      "scenario": "KEINE_TEILNAHME",
+      "priority": 4
+    },
+    {
       "name": "pacemenn",
       "scenario": "STRIKE",
       "priority": 4
@@ -266,6 +271,11 @@
       "name": "alvaro.G.",
       "score": 10.83,
       "status": "RISIKO"
+    },
+    {
+      "name": "Abmelker Ju",
+      "score": 0.0,
+      "status": "RISIKO"
     }
   ],
   "coaching": [
@@ -513,11 +523,28 @@
       "name": "alvaro.G.",
       "score": 10.83,
       "tip": "Mehr Teilnahme notwendig"
+    },
+    {
+      "name": "Abmelker Ju",
+      "score": 0.0,
+      "tip": "Mehr Teilnahme notwendig"
     }
   ],
   "commander": {
     "generated_from": "_prefetch.json",
     "remove": [
+      {
+        "name": "Abmelker Ju",
+        "player_tag": "#CUQ2RUYQL",
+        "role": "member",
+        "score": 0.0,
+        "strikes": 0,
+        "donations": 0,
+        "participation_count": 0,
+        "trend": "",
+        "reason": "Score unter 40",
+        "recommended_action": "kick_review"
+      },
       {
         "name": "alvaro.G.",
         "player_tag": "#2CRVPL0GC",
