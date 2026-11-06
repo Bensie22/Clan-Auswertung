@@ -29,7 +29,7 @@
             "#2CJYG9UG": "20261105T204348.000Z",
             "#2PUQYJC02": "20261102T202821.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20261106T071311.000Z",
+            "#2V800VCQ0": "20261106T075014.000Z",
             "#2UQUPYQCJ": "20260810T113227.000Z",
             "#JUUR8UGL8": "20261105T061505.000Z",
             "#2U09UULRR": "20261106T054043.000Z",
@@ -93,7 +93,7 @@
             "#P00PQ9CUQ": "20260613T120503.000Z",
             "#PVYJ80YCL": "20260619T140927.000Z",
             "#RP9RVGQJU": "20260615T092432.000Z",
-            "#P0G2GYJQ9": "20261106T072058.000Z",
+            "#P0G2GYJQ9": "20261106T074801.000Z",
             "#8P2GV8UQY": "20260718T102217.000Z",
             "#VV2JR990": "20260622T193820.000Z",
             "#YYJR9R0GR": "20260713T093713.000Z",
@@ -11531,7 +11531,7 @@
                 }
             ],
             "wins": 6,
-            "losses": 2,
+            "losses": 3,
             "players": [
                 "Reklaminator"
             ],
@@ -11539,6 +11539,12 @@
                 "P0G2GYJQ9"
             ],
             "recent_matches": [
+                {
+                    "time": "20261106T074801.000Z",
+                    "result": "loss",
+                    "player": "Reklaminator",
+                    "tag": "P0G2GYJQ9"
+                },
                 {
                     "time": "20261104T205314.000Z",
                     "result": "win",
@@ -622460,6 +622466,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000009-26000015-26000037-26000048-27000007-28000008-28000009-28000025": {
+            "cards": [
+                {
+                    "id": 26000037,
+                    "name": "Inferno Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
+                },
+                {
+                    "id": 27000007,
+                    "name": "Elixir Collector",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BGLo3Grsp81c72EpxLLk-Sofk3VY56zahnUNOv3JcT0.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 26000009,
+                    "name": "Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/npdmCnET7jmVjJvjJQkFnNSNnDxYHDBigbvIAloFMds.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 26000048,
+                    "name": "Night Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NpCrXDEDBBJgNv9QrBAcJmmMFbS7pe3KCY8xJ5VB18A.png"
+                },
+                {
+                    "id": 28000025,
+                    "name": "Spirit Empress",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MWWBZqiQeRBXSqEITVMj46nO_uCIUsqBidvUw9K2twY.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
