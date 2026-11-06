@@ -37,13 +37,13 @@
             "#8QYYL8LCQ": "20261106T063354.000Z",
             "#8P0J8P0L": "20261105T154424.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20261106T112942.000Z",
+            "#CUJ9PJ2UV": "20261106T153144.000Z",
             "#2P0U2RLGY": "20261105T123335.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20261106T150411.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20261105T144453.000Z",
+            "#UUPCULU9V": "20261106T153306.000Z",
             "#202VP2QL9P": "20260724T185949.000Z",
             "#LVUGLUCP9": "20261101T205852.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
@@ -4529,7 +4529,7 @@
                 }
             ],
             "wins": 16,
-            "losses": 12,
+            "losses": 13,
             "players": [
                 "OmniOni"
             ],
@@ -4537,6 +4537,12 @@
                 "UUPCULU9V"
             ],
             "recent_matches": [
+                {
+                    "time": "20261106T153306.000Z",
+                    "result": "loss",
+                    "player": "OmniOni",
+                    "tag": "UUPCULU9V"
+                },
                 {
                     "time": "20261105T140452.000Z",
                     "result": "win",
@@ -624448,6 +624454,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000004-26000011-26000019-26000025-26000106-27000000-28000001-28000006": {
+            "cards": [
+                {
+                    "id": 27000000,
+                    "name": "Cannon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nZK1y-beLxO5vnlyUhK6-2zH2NzXJwqykcosqQ1cmZ8.png"
+                },
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000106,
+                    "name": "Ronin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X0dTFs7OGUavreDEzOtYd_YNZ8Zly6qgAE-dd-bNfWU.png"
+                },
+                {
+                    "id": 26000025,
+                    "name": "Guards",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/1ArKfLJxYo6_NU_S9cAeIrfbXqWH0oULVJXedxBXQlU.png"
+                },
+                {
+                    "id": 26000019,
+                    "name": "Spear Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/FSDFotjaXidI4ku_WFpVCTWS1hKGnFh1sxX0lxM43_E.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 28000006,
+                    "name": "Mirror",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/wC6Cm9rKLEOk72zTsukVwxewKIoO4ZcMJun54zCPWvA.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
