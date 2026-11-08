@@ -34,7 +34,7 @@
             "#JUUR8UGL8": "20261107T154921.000Z",
             "#2U09UULRR": "20261107T095320.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
-            "#8QYYL8LCQ": "20261108T010821.000Z",
+            "#8QYYL8LCQ": "20261108T011146.000Z",
             "#8P0J8P0L": "20261107T112843.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20261107T213906.000Z",
@@ -71,7 +71,7 @@
             "#GJVVGUYJC": "20260518T141110.000Z",
             "#UQVCVVVJL": "20261107T111204.000Z",
             "#22CVYQP8R": "20260509T062429.000Z",
-            "#89CJRRV8": "20261107T013702.000Z",
+            "#89CJRRV8": "20261108T011857.000Z",
             "#VL989Y20J": "20260516T051537.000Z",
             "#RULG988Y": "20260606T102155.000Z",
             "#99909G00": "20260512T084926.000Z",
@@ -6827,7 +6827,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
                 }
             ],
-            "wins": 6,
+            "wins": 7,
             "losses": 9,
             "players": [
                 "SankKiI9"
@@ -6836,6 +6836,12 @@
                 "89CJRRV8"
             ],
             "recent_matches": [
+                {
+                    "time": "20261108T011857.000Z",
+                    "result": "win",
+                    "player": "SankKiI9",
+                    "tag": "89CJRRV8"
+                },
                 {
                     "time": "20261107T013355.000Z",
                     "result": "loss",
@@ -631223,6 +631229,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000007-26000012-26000018-26000035-26000043-26000084-27000003-28000000": {
+            "cards": [
+                {
+                    "id": 26000043,
+                    "name": "Elite Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/C88C5JH_F3lLZj6K-tLcMo5DPjrFmvzIb1R2M6xCfTE.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000035,
+                    "name": "Lumberjack",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 27000003,
+                    "name": "Inferno Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
+                },
+                {
+                    "id": 26000084,
+                    "name": "Electro Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WKd4-IAFsgPpMo7dDi9sujmYjRhOMEWiE07OUJpvD9g.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
