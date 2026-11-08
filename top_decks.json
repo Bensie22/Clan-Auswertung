@@ -115,7 +115,7 @@
             "#V8VGG0LUG": "20260803T085547.000Z",
             "#2V2QYJGCG": "20260804T011752.000Z",
             "#UQV90UP09": "20260810T190628.000Z",
-            "#JV80YYJRJ": "20261108T162713.000Z",
+            "#JV80YYJRJ": "20261108T163607.000Z",
             "#VP8P9UG8V": "20260817T002911.000Z",
             "#G9QR0YVU": "20260908T165202.000Z",
             "#200PGVGQ9U": "20260811T201941.000Z",
@@ -3294,7 +3294,7 @@
                 }
             ],
             "wins": 9,
-            "losses": 2,
+            "losses": 3,
             "players": [
                 "Deniz"
             ],
@@ -3302,6 +3302,12 @@
                 "JV80YYJRJ"
             ],
             "recent_matches": [
+                {
+                    "time": "20261108T163607.000Z",
+                    "result": "loss",
+                    "player": "Deniz",
+                    "tag": "JV80YYJRJ"
+                },
                 {
                     "time": "20261107T222520.000Z",
                     "result": "win",
@@ -26087,8 +26093,8 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
                 }
             ],
-            "seen": 43,
-            "losses": 26
+            "seen": 44,
+            "losses": 27
         },
         "26000011-26000021-26000040-26000055-27000003-27000010-28000001-28000004": {
             "cards": [
@@ -634577,6 +634583,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000007-26000012-26000069-26000080-27000009-28000009-28000010-28000011": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000069,
+                    "name": "Skeleton King",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dCd69_wN9f8DxwuqOGtR4QgWhHIPIaTNxZ1e23RzAAc.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 28000010,
+                    "name": "Graveyard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Icp8BIyyfBTj1ncCJS7mb82SY7TPV-MAE-J2L2R48DI.png"
+                },
+                {
+                    "id": 27000009,
+                    "name": "Tombstone",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LjSfSbwQfkZuRJY4pVxKspZ-a0iM5KAhU8w-a_N5Z7Y.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000080,
+                    "name": "Skeleton Dragons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qPOtg9uONh47_NLxGhhFc_ww9PlZ6z3Ry507q1NZUXs.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
