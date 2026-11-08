@@ -9,7 +9,7 @@
             "#UJ2P9UYUV": "20261107T094636.000Z",
             "#P0JYR9YUY": "20261107T103115.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
-            "#YQ82VR9JQ": "20261108T072600.000Z",
+            "#YQ82VR9JQ": "20261108T073804.000Z",
             "#G02LC9C8": "20261108T032932.000Z",
             "#2U8288CVY": "20261107T195307.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
@@ -32,7 +32,7 @@
             "#2V800VCQ0": "20261107T141502.000Z",
             "#2UQUPYQCJ": "20260810T113227.000Z",
             "#JUUR8UGL8": "20261107T154921.000Z",
-            "#2U09UULRR": "20261108T073029.000Z",
+            "#2U09UULRR": "20261108T073435.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20261108T032027.000Z",
             "#8P0J8P0L": "20261107T112843.000Z",
@@ -7974,7 +7974,7 @@
                 }
             ],
             "wins": 6,
-            "losses": 11,
+            "losses": 12,
             "players": [
                 "Dolphin"
             ],
@@ -7982,6 +7982,12 @@
                 "2U09UULRR"
             ],
             "recent_matches": [
+                {
+                    "time": "20261108T073435.000Z",
+                    "result": "loss",
+                    "player": "Dolphin",
+                    "tag": "2U09UULRR"
+                },
                 {
                     "time": "20261106T114311.000Z",
                     "result": "win",
@@ -631861,6 +631867,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000039-26000041-26000046-26000055-26000062-27000006-28000015-28000017": {
+            "cards": [
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 28000015,
+                    "name": "Barbarian Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Gb0G1yNy0i5cIGUHin8uoFWxqntNtRPhY_jeMXg7HnA.png"
+                },
+                {
+                    "id": 28000017,
+                    "name": "Giant Snowball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
+                },
+                {
+                    "id": 26000039,
+                    "name": "Mega Minion",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/-T_e4YLbuhPBKbYnBwQfXgynNpp5eOIN_0RracYwL9c.png"
+                },
+                {
+                    "id": 26000046,
+                    "name": "Bandit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QWDdXMKJNpv0go-HYaWQWP6p8uIOHjqn-zX7G0p3DyM.png"
+                },
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
