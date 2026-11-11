@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20261111T111908.000Z",
+            "#YUQVVVLQ": "20261111T112840.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20261108T223505.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
@@ -136,7 +136,7 @@
             "#C2LU8Y8QP": "20261005T111606.000Z",
             "#2VYC2C8J": "20261011T132442.000Z",
             "#20989CY0PC": "20261110T183145.000Z",
-            "#G002YL80C": "20261110T145830.000Z",
+            "#G002YL80C": "20261111T112821.000Z",
             "#2CRVPL0GC": "20261102T013100.000Z",
             "#22P998VGV": "20261105T204952.000Z",
             "#LYRGV2QGQ": "20261030T212035.000Z",
@@ -2219,7 +2219,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
                 }
             ],
-            "wins": 9,
+            "wins": 8,
             "losses": 12,
             "players": [
                 "Desteoyer"
@@ -2345,12 +2345,6 @@
                 {
                     "time": "20261013T185621.000Z",
                     "result": "loss",
-                    "player": "Desteoyer",
-                    "tag": "2V800VCQ0"
-                },
-                {
-                    "time": "20261012T112504.000Z",
-                    "result": "win",
                     "player": "Desteoyer",
                     "tag": "2V800VCQ0"
                 }
@@ -9312,7 +9306,7 @@
                 }
             ],
             "wins": 16,
-            "losses": 12,
+            "losses": 13,
             "players": [
                 "LUCASxxz_"
             ],
@@ -9320,6 +9314,12 @@
                 "G002YL80C"
             ],
             "recent_matches": [
+                {
+                    "time": "20261111T112821.000Z",
+                    "result": "loss",
+                    "player": "LUCASxxz_",
+                    "tag": "G002YL80C"
+                },
                 {
                     "time": "20261110T144709.000Z",
                     "result": "win",
@@ -639193,6 +639193,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000001-26000007-26000015-26000035-26000040-26000060-28000009-28000015": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 28000015,
+                    "name": "Barbarian Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Gb0G1yNy0i5cIGUHin8uoFWxqntNtRPhY_jeMXg7HnA.png"
+                },
+                {
+                    "id": 26000060,
+                    "name": "Goblin Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SoW16cY3jXBwaTDvb39DkqiVsoFVaDWbzf5QBYphJrY.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 26000035,
+                    "name": "Lumberjack",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
