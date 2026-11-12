@@ -19,7 +19,7 @@
             "#QULCQGGG": "20261111T142308.000Z",
             "#JRGC9RRQG": "20261111T193047.000Z",
             "#QVQGCV8Y9": "20261112T010430.000Z",
-            "#Q8L0RJ8Y8": "20261112T064817.000Z",
+            "#Q8L0RJ8Y8": "20261112T065200.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20261111T221530.000Z",
             "#LLQQJCLC": "20261112T063151.000Z",
@@ -29,7 +29,7 @@
             "#2CJYG9UG": "20261108T210049.000Z",
             "#2PUQYJC02": "20261111T171622.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20261112T064911.000Z",
+            "#2V800VCQ0": "20261112T065258.000Z",
             "#2UQUPYQCJ": "20260810T113227.000Z",
             "#JUUR8UGL8": "20261111T075436.000Z",
             "#2U09UULRR": "20261112T042133.000Z",
@@ -845,7 +845,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/BGLo3Grsp81c72EpxLLk-Sofk3VY56zahnUNOv3JcT0.png"
                 }
             ],
-            "wins": 9,
+            "wins": 10,
             "losses": 7,
             "players": [
                 "Erastus"
@@ -854,6 +854,12 @@
                 "Q8L0RJ8Y8"
             ],
             "recent_matches": [
+                {
+                    "time": "20261112T065200.000Z",
+                    "result": "win",
+                    "player": "Erastus",
+                    "tag": "Q8L0RJ8Y8"
+                },
                 {
                     "time": "20261109T190158.000Z",
                     "result": "win",
@@ -639883,6 +639889,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000001-26000003-26000017-26000036-26000042-26000107-27000002-27000009": {
+            "cards": [
+                {
+                    "id": 26000107,
+                    "name": "Minion Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/VRjL0yVLzrnoe-IBh2l2fDHDok0L-UoM9cG-X_8xbMk.png"
+                },
+                {
+                    "id": 27000009,
+                    "name": "Tombstone",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LjSfSbwQfkZuRJY4pVxKspZ-a0iM5KAhU8w-a_N5Z7Y.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 27000002,
+                    "name": "Mortar",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lPOSw6H7YOHq2miSCrf7ZDL3ANjhJdPPDYOTujdNrVE.png"
+                },
+                {
+                    "id": 26000003,
+                    "name": "Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Axr4ox5_b7edmLsoHxBX3vmgijAIibuF6RImTbqLlXE.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 26000036,
+                    "name": "Battle Ram",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dyc50V2cplKi4H7pq1B3I36pl_sEH5DQrNHboS_dbbM.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
