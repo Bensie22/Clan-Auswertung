@@ -21,7 +21,7 @@
             "#QVQGCV8Y9": "20261112T081319.000Z",
             "#Q8L0RJ8Y8": "20261112T065200.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
-            "#2CPRGY8G": "20261112T131009.000Z",
+            "#2CPRGY8G": "20261112T145708.000Z",
             "#LLQQJCLC": "20261112T063151.000Z",
             "#2VJR80RL": "20261112T105951.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
@@ -43,7 +43,7 @@
             "#RLJPJL8C2": "20261112T131556.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20261112T144834.000Z",
+            "#UUPCULU9V": "20261112T145914.000Z",
             "#202VP2QL9P": "20260724T185949.000Z",
             "#LVUGLUCP9": "20261108T201930.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20261112T144938.000Z",
+            "#YUQVVVLQ": "20261112T145959.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20261108T223505.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
@@ -128,7 +128,7 @@
             "#JJVYUP8C": "20260919T184831.000Z",
             "#CCPC2Q9GU": "20260927T092950.000Z",
             "#G8L2Q900": "20261112T110027.000Z",
-            "#88QGQUUY": "20261112T144840.000Z",
+            "#88QGQUUY": "20261112T145739.000Z",
             "#UJCPPUJLJ": "20261110T011246.000Z",
             "#98QP8YG2G": "20261004T195105.000Z",
             "#QVRCRP0LY": "20261002T204613.000Z",
@@ -9011,7 +9011,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
                 }
             ],
-            "wins": 7,
+            "wins": 8,
             "losses": 9,
             "players": [
                 "OmniOni"
@@ -9020,6 +9020,12 @@
                 "UUPCULU9V"
             ],
             "recent_matches": [
+                {
+                    "time": "20261112T145914.000Z",
+                    "result": "win",
+                    "player": "OmniOni",
+                    "tag": "UUPCULU9V"
+                },
                 {
                     "time": "20261108T191416.000Z",
                     "result": "win",
@@ -641297,6 +641303,52 @@
                     "id": 28000000,
                     "name": "Fireball",
                     "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000001-26000010-26000021-26000028-26000035-26000040-26000056-28000001": {
+            "cards": [
+                {
+                    "id": 26000035,
+                    "name": "Lumberjack",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 26000010,
+                    "name": "Skeletons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/oO7iKMU5m0cdxhYPZA3nWQiAUh2yoGgdThLWB1rVSec.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 26000028,
+                    "name": "Three Musketeers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_J2GhbkX3vswaFk1wG-dopwiHyNc_YiPhwroiKF3Mek.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
                 }
             ],
             "seen": 1,
