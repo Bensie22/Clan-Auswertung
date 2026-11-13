@@ -23,7 +23,7 @@
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20261113T143435.000Z",
             "#LLQQJCLC": "20261113T084152.000Z",
-            "#2VJR80RL": "20261113T153054.000Z",
+            "#2VJR80RL": "20261113T153705.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
             "#2CJYG9UG": "20261113T002850.000Z",
@@ -35,7 +35,7 @@
             "#2U09UULRR": "20261113T112708.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20261113T033630.000Z",
-            "#8P0J8P0L": "20261113T153103.000Z",
+            "#8P0J8P0L": "20261113T153424.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20261113T142951.000Z",
             "#2P0U2RLGY": "20261113T093421.000Z",
@@ -69,7 +69,7 @@
             "#8PJY2GUY9": "20260511T140746.000Z",
             "#Y29LJJCQ2": "20260502T202004.000Z",
             "#GJVVGUYJC": "20260518T141110.000Z",
-            "#UQVCVVVJL": "20261113T121247.000Z",
+            "#UQVCVVVJL": "20261113T154012.000Z",
             "#22CVYQP8R": "20260509T062429.000Z",
             "#89CJRRV8": "20261113T000849.000Z",
             "#VL989Y20J": "20260516T051537.000Z",
@@ -3492,7 +3492,7 @@
                 }
             ],
             "wins": 10,
-            "losses": 7,
+            "losses": 8,
             "players": [
                 "OneAndOnly"
             ],
@@ -3500,6 +3500,12 @@
                 "8P0J8P0L"
             ],
             "recent_matches": [
+                {
+                    "time": "20261113T153424.000Z",
+                    "result": "loss",
+                    "player": "OneAndOnly",
+                    "tag": "8P0J8P0L"
+                },
                 {
                     "time": "20261112T195536.000Z",
                     "result": "win",
@@ -645973,6 +645979,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000013-26000020-26000045-26000047-26000059-27000012-28000000-28000008": {
+            "cards": [
+                {
+                    "id": 26000047,
+                    "name": "Royal Recruits",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jcNyYGUiXXNz3kuz8NBkHNKNREQKraXlb_Ts7rhCIdM.png"
+                },
+                {
+                    "id": 27000012,
+                    "name": "Goblin Cage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vD24bBgK4rSq7wx5QEbuqChtPMRFviL_ep76GwQw1yA.png"
+                },
+                {
+                    "id": 26000013,
+                    "name": "Bomber",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
+                },
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 26000020,
+                    "name": "Giant Skeleton",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0p0gd0XaVRu1Hb1iSG1hTYbz2AN6aEiZnhaAib5O8Z8.png"
+                },
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
