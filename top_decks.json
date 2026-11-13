@@ -71,7 +71,7 @@
             "#GJVVGUYJC": "20260518T141110.000Z",
             "#UQVCVVVJL": "20261112T120638.000Z",
             "#22CVYQP8R": "20260509T062429.000Z",
-            "#89CJRRV8": "20261112T161124.000Z",
+            "#89CJRRV8": "20261113T000849.000Z",
             "#VL989Y20J": "20260516T051537.000Z",
             "#RULG988Y": "20260606T102155.000Z",
             "#99909G00": "20260512T084926.000Z",
@@ -6468,7 +6468,7 @@
                 }
             ],
             "wins": 7,
-            "losses": 8,
+            "losses": 9,
             "players": [
                 "SankKiI9"
             ],
@@ -6476,6 +6476,12 @@
                 "89CJRRV8"
             ],
             "recent_matches": [
+                {
+                    "time": "20261113T000849.000Z",
+                    "result": "loss",
+                    "player": "SankKiI9",
+                    "tag": "89CJRRV8"
+                },
                 {
                     "time": "20261108T221608.000Z",
                     "result": "loss",
@@ -643065,6 +643071,52 @@
                     "id": 28000002,
                     "name": "Rage",
                     "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000008-26000009-26000013-26000035-26000039-26000048-28000001-28000017": {
+            "cards": [
+                {
+                    "id": 26000008,
+                    "name": "Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/TvJsuu2S4yhyk1jVYUAQwdKOnW4U77KuWWOTPOWnwfI.png"
+                },
+                {
+                    "id": 26000039,
+                    "name": "Mega Minion",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/-T_e4YLbuhPBKbYnBwQfXgynNpp5eOIN_0RracYwL9c.png"
+                },
+                {
+                    "id": 26000035,
+                    "name": "Lumberjack",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
+                },
+                {
+                    "id": 26000048,
+                    "name": "Night Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NpCrXDEDBBJgNv9QrBAcJmmMFbS7pe3KCY8xJ5VB18A.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000009,
+                    "name": "Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/npdmCnET7jmVjJvjJQkFnNSNnDxYHDBigbvIAloFMds.png"
+                },
+                {
+                    "id": 26000013,
+                    "name": "Bomber",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
+                },
+                {
+                    "id": 28000017,
+                    "name": "Giant Snowball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
                 }
             ],
             "seen": 1,
