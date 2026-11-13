@@ -10,7 +10,7 @@
             "#P0JYR9YUY": "20261113T122524.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20261113T054041.000Z",
-            "#G02LC9C8": "20261113T124424.000Z",
+            "#G02LC9C8": "20261113T140609.000Z",
             "#2U8288CVY": "20261113T101108.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
@@ -29,7 +29,7 @@
             "#2CJYG9UG": "20261113T002850.000Z",
             "#2PUQYJC02": "20261112T201753.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20261113T082038.000Z",
+            "#2V800VCQ0": "20261113T140928.000Z",
             "#2UQUPYQCJ": "20260810T113227.000Z",
             "#JUUR8UGL8": "20261112T133415.000Z",
             "#2U09UULRR": "20261113T112708.000Z",
@@ -37,7 +37,7 @@
             "#8QYYL8LCQ": "20261113T033630.000Z",
             "#8P0J8P0L": "20261112T200704.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20261113T131910.000Z",
+            "#CUJ9PJ2UV": "20261113T140215.000Z",
             "#2P0U2RLGY": "20261113T093421.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20261113T115138.000Z",
@@ -83,7 +83,7 @@
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20261112T224613.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
-            "#GRGCY0R8": "20261113T135546.000Z",
+            "#GRGCY0R8": "20261113T141011.000Z",
             "#P2YQ2QQUV": "20261112T082911.000Z",
             "#JG8Q0GPU9": "20260713T010600.000Z",
             "#9QV99QVCV": "20260701T045607.000Z",
@@ -2729,7 +2729,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
                 }
             ],
-            "wins": 6,
+            "wins": 7,
             "losses": 10,
             "players": [
                 "HardcoreSoldier"
@@ -2738,6 +2738,12 @@
                 "GRGCY0R8"
             ],
             "recent_matches": [
+                {
+                    "time": "20261113T141011.000Z",
+                    "result": "win",
+                    "player": "HardcoreSoldier",
+                    "tag": "GRGCY0R8"
+                },
                 {
                     "time": "20261113T031553.000Z",
                     "result": "loss",
@@ -4404,7 +4410,7 @@
                 }
             ],
             "wins": 15,
-            "losses": 14,
+            "losses": 13,
             "players": [
                 "OmniOni"
             ],
@@ -4576,12 +4582,6 @@
                 },
                 {
                     "time": "20261015T142203.000Z",
-                    "result": "loss",
-                    "player": "OmniOni",
-                    "tag": "UUPCULU9V"
-                },
-                {
-                    "time": "20261014T140112.000Z",
                     "result": "loss",
                     "player": "OmniOni",
                     "tag": "UUPCULU9V"
@@ -645779,6 +645779,52 @@
                     "id": 26000001,
                     "name": "Archers",
                     "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000005-26000012-26000014-26000017-26000035-26000037-26000059-27000006": {
+            "cards": [
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000005,
+                    "name": "Minions",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/yHGpoEnmUWPGV_hBbhn-Kk-Bs838OjGzWzJJlQpQKQA.png"
+                },
+                {
+                    "id": 26000037,
+                    "name": "Inferno Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
+                },
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 26000035,
+                    "name": "Lumberjack",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
                 }
             ],
             "seen": 1,
