@@ -83,7 +83,7 @@
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20261113T225054.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
-            "#GRGCY0R8": "20261114T094705.000Z",
+            "#GRGCY0R8": "20261114T100557.000Z",
             "#P2YQ2QQUV": "20261113T214721.000Z",
             "#JG8Q0GPU9": "20260713T010600.000Z",
             "#9QV99QVCV": "20260701T045607.000Z",
@@ -191,7 +191,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
                 }
             ],
-            "wins": 15,
+            "wins": 16,
             "losses": 3,
             "players": [
                 "HardcoreSoldier"
@@ -200,6 +200,12 @@
                 "GRGCY0R8"
             ],
             "recent_matches": [
+                {
+                    "time": "20261114T100557.000Z",
+                    "result": "win",
+                    "player": "HardcoreSoldier",
+                    "tag": "GRGCY0R8"
+                },
                 {
                     "time": "20261113T135546.000Z",
                     "result": "win",
@@ -9200,7 +9206,7 @@
                 }
             ],
             "wins": 0,
-            "losses": 2,
+            "losses": 1,
             "players": [
                 "l_Bozo"
             ],
@@ -9210,12 +9216,6 @@
             "recent_matches": [
                 {
                     "time": "20261016T180318.000Z",
-                    "result": "loss",
-                    "player": "l_Bozo",
-                    "tag": "PQ2JYPC09"
-                },
-                {
-                    "time": "20261015T100353.000Z",
                     "result": "loss",
                     "player": "l_Bozo",
                     "tag": "PQ2JYPC09"
@@ -649096,6 +649096,52 @@
                     "id": 28000006,
                     "name": "Mirror",
                     "icon": "https://api-assets.clashroyale.com/cards/300/wC6Cm9rKLEOk72zTsukVwxewKIoO4ZcMJun54zCPWvA.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000008-26000014-26000027-26000037-26000040-26000045-26000102-28000000": {
+            "cards": [
+                {
+                    "id": 26000037,
+                    "name": "Inferno Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
+                },
+                {
+                    "id": 26000008,
+                    "name": "Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/TvJsuu2S4yhyk1jVYUAQwdKOnW4U77KuWWOTPOWnwfI.png"
+                },
+                {
+                    "id": 26000027,
+                    "name": "Dark Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/M7fXlrKXHu2IvpSGpk36kXVstslbR08Bbxcy0jQcln8.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 26000102,
+                    "name": "Berserker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NA6W8S1JBYBlOPwD3dNvJLFvVDKq-UuBs_J3i3ewLFI.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
                 },
                 {
                     "id": 26000040,
