@@ -9,7 +9,7 @@
             "#UJ2P9UYUV": "20261113T203318.000Z",
             "#P0JYR9YUY": "20261113T122524.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
-            "#YQ82VR9JQ": "20261114T010756.000Z",
+            "#YQ82VR9JQ": "20261114T011322.000Z",
             "#G02LC9C8": "20261113T162206.000Z",
             "#2U8288CVY": "20261113T174405.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
@@ -11738,7 +11738,7 @@
                 }
             ],
             "wins": 3,
-            "losses": 3,
+            "losses": 4,
             "players": [
                 "chris"
             ],
@@ -11746,6 +11746,12 @@
                 "YQ82VR9JQ"
             ],
             "recent_matches": [
+                {
+                    "time": "20261114T011322.000Z",
+                    "result": "loss",
+                    "player": "chris",
+                    "tag": "YQ82VR9JQ"
+                },
                 {
                     "time": "20261113T032303.000Z",
                     "result": "loss",
@@ -647883,6 +647889,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000013-26000014-26000016-26000041-26000054-26000059-28000005-28000007": {
+            "cards": [
+                {
+                    "id": 26000013,
+                    "name": "Bomber",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 28000005,
+                    "name": "Freeze",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
+                },
+                {
+                    "id": 26000054,
+                    "name": "Cannon Cart",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/aqwxRz8HXzqlMCO4WMXNA1txynjXTsLinknqsgZLbok.png"
+                },
+                {
+                    "id": 28000007,
+                    "name": "Lightning",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fpnESbYqe5GyZmaVVYe-SEu7tE0Kxh_HZyVigzvLjks.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
