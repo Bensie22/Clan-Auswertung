@@ -6,7 +6,7 @@
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20261114T064847.000Z",
             "#ULYJ2CQP": "20261108T232039.000Z",
-            "#UJ2P9UYUV": "20261113T203318.000Z",
+            "#UJ2P9UYUV": "20261114T070603.000Z",
             "#P0JYR9YUY": "20261113T122524.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20261114T043113.000Z",
@@ -16,10 +16,10 @@
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20261113T060756.000Z",
-            "#QULCQGGG": "20261114T070103.000Z",
+            "#QULCQGGG": "20261114T070433.000Z",
             "#JRGC9RRQG": "20261114T024428.000Z",
             "#QVQGCV8Y9": "20261112T081319.000Z",
-            "#Q8L0RJ8Y8": "20261113T114315.000Z",
+            "#Q8L0RJ8Y8": "20261114T071107.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20261114T045545.000Z",
             "#LLQQJCLC": "20261113T175617.000Z",
@@ -34,7 +34,7 @@
             "#JUUR8UGL8": "20261113T191906.000Z",
             "#2U09UULRR": "20261114T052705.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
-            "#8QYYL8LCQ": "20261114T065737.000Z",
+            "#8QYYL8LCQ": "20261114T070559.000Z",
             "#8P0J8P0L": "20261113T153424.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20261113T142951.000Z",
@@ -143,7 +143,7 @@
             "#UCY0RPGV2": "20261026T135508.000Z",
             "#80UYP82PG": "20261026T233457.000Z",
             "#2R9YVUCU8": "20261111T184933.000Z",
-            "#2YPY28Y2": "20261114T055020.000Z",
+            "#2YPY28Y2": "20261114T070457.000Z",
             "#CUQ2RUYQL": "20261112T183436.000Z"
         }
     },
@@ -2491,7 +2491,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/X0dTFs7OGUavreDEzOtYd_YNZ8Zly6qgAE-dd-bNfWU.png"
                 }
             ],
-            "wins": 9,
+            "wins": 10,
             "losses": 6,
             "players": [
                 "Citykingalex"
@@ -2500,6 +2500,12 @@
                 "QULCQGGG"
             ],
             "recent_matches": [
+                {
+                    "time": "20261114T070433.000Z",
+                    "result": "win",
+                    "player": "Citykingalex",
+                    "tag": "QULCQGGG"
+                },
                 {
                     "time": "20261113T081536.000Z",
                     "result": "loss",
@@ -648357,6 +648363,52 @@
                     "id": 28000001,
                     "name": "Arrows",
                     "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000011-26000026-26000042-26000048-26000055-26000072-28000004-28000008": {
+            "cards": [
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000072,
+                    "name": "Archer Queen",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/p7OQmOAFTery7zCzlpDdm-LOD1kINTm42AwIHchZfWk.png"
+                },
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 26000048,
+                    "name": "Night Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NpCrXDEDBBJgNv9QrBAcJmmMFbS7pe3KCY8xJ5VB18A.png"
                 }
             ],
             "seen": 1,
