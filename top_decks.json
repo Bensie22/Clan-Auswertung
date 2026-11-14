@@ -17,7 +17,7 @@
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20261113T060756.000Z",
             "#QULCQGGG": "20261114T070433.000Z",
-            "#JRGC9RRQG": "20261114T113900.000Z",
+            "#JRGC9RRQG": "20261114T114751.000Z",
             "#QVQGCV8Y9": "20261114T095904.000Z",
             "#Q8L0RJ8Y8": "20261114T074020.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
@@ -37,7 +37,7 @@
             "#8QYYL8LCQ": "20261114T080326.000Z",
             "#8P0J8P0L": "20261113T153424.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20261114T113348.000Z",
+            "#CUJ9PJ2UV": "20261114T114952.000Z",
             "#2P0U2RLGY": "20261113T203952.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20261114T103059.000Z",
@@ -11821,7 +11821,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/i0RoY1fs6ay7VAxyFEfZGIPnD002nAKcne9FtJsWBHM.png"
                 }
             ],
-            "wins": 4,
+            "wins": 5,
             "losses": 1,
             "players": [
                 "seroo"
@@ -11830,6 +11830,12 @@
                 "JRGC9RRQG"
             ],
             "recent_matches": [
+                {
+                    "time": "20261114T114307.000Z",
+                    "result": "win",
+                    "player": "seroo",
+                    "tag": "JRGC9RRQG"
+                },
                 {
                     "time": "20261113T102250.000Z",
                     "result": "loss",
@@ -12283,7 +12289,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 1,
             "players": [
                 "seroo"
@@ -12292,6 +12298,12 @@
                 "JRGC9RRQG"
             ],
             "recent_matches": [
+                {
+                    "time": "20261114T114751.000Z",
+                    "result": "win",
+                    "player": "seroo",
+                    "tag": "JRGC9RRQG"
+                },
                 {
                     "time": "20261113T103624.000Z",
                     "result": "loss",
@@ -597519,7 +597531,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/FSDFotjaXidI4ku_WFpVCTWS1hKGnFh1sxX0lxM43_E.png"
                 }
             ],
-            "seen": 1,
+            "seen": 2,
             "losses": 1
         },
         "26000004-26000007-26000014-26000106-27000006-28000002-28000008-28000016": {
@@ -649455,6 +649467,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000011-26000012-26000014-26000019-26000052-26000059-28000001-28000009": {
+            "cards": [
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000052,
+                    "name": "Zappies",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QZfHRpLRmutZbCr5fpLnTpIp89vLI6NrAwzGZ8tHEc4.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000019,
+                    "name": "Spear Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/FSDFotjaXidI4ku_WFpVCTWS1hKGnFh1sxX0lxM43_E.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
