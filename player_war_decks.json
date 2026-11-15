@@ -10987,6 +10987,54 @@
         "name": "OneAndOnly",
         "battles": [
             {
+                "time": "20261115T193444.000Z",
+                "result": "win",
+                "type": "riverRacePvP",
+                "deck_hash": "26000011-26000015-26000024-26000041-26000049-26000055-28000000-28000017",
+                "cards": [
+                    {
+                        "id": 26000024,
+                        "name": "Royal Giant",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/mnlRaNtmfpQx2e6mp70sLd0ND-pKPF70Cf87_agEKg4.png"
+                    },
+                    {
+                        "id": 26000011,
+                        "name": "Valkyrie",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                    },
+                    {
+                        "id": 26000055,
+                        "name": "Mega Knight",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                    },
+                    {
+                        "id": 26000049,
+                        "name": "Bats",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                    },
+                    {
+                        "id": 28000017,
+                        "name": "Giant Snowball",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
+                    },
+                    {
+                        "id": 28000000,
+                        "name": "Fireball",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                    },
+                    {
+                        "id": 26000015,
+                        "name": "Baby Dragon",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                    },
+                    {
+                        "id": 26000041,
+                        "name": "Goblin Gang",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                    }
+                ]
+            },
+            {
                 "time": "20261114T143359.000Z",
                 "result": "loss",
                 "type": "riverRacePvP",
@@ -37643,6 +37691,54 @@
     "LVUGLUCP9": {
         "name": "Nati",
         "battles": [
+            {
+                "time": "20261115T193723.000Z",
+                "result": "loss",
+                "type": "riverRacePvP",
+                "deck_hash": "26000002-26000016-26000051-26000055-26000072-27000010-28000003-28000005",
+                "cards": [
+                    {
+                        "id": 26000055,
+                        "name": "Mega Knight",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                    },
+                    {
+                        "id": 26000072,
+                        "name": "Archer Queen",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/p7OQmOAFTery7zCzlpDdm-LOD1kINTm42AwIHchZfWk.png"
+                    },
+                    {
+                        "id": 27000010,
+                        "name": "Furnace",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                    },
+                    {
+                        "id": 26000002,
+                        "name": "Goblins",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/X_DQUye_OaS3QN6VC9CPw05Fit7wvSm3XegXIXKP--0.png"
+                    },
+                    {
+                        "id": 28000003,
+                        "name": "Rocket",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/Ie07nQNK9CjhKOa4-arFAewi4EroqaA-86Xo7r5tx94.png"
+                    },
+                    {
+                        "id": 28000005,
+                        "name": "Freeze",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
+                    },
+                    {
+                        "id": 26000016,
+                        "name": "Prince",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                    },
+                    {
+                        "id": 26000051,
+                        "name": "Ram Rider",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
+                    }
+                ]
+            },
             {
                 "time": "20261115T192806.000Z",
                 "result": "win",
@@ -65019,37 +65115,32 @@
                         "icon": "https://api-assets.clashroyale.com/cards/300/LjSfSbwQfkZuRJY4pVxKspZ-a0iM5KAhU8w-a_N5Z7Y.png"
                     }
                 ]
-            },
+            }
+        ]
+    },
+    "GRGCY0R8": {
+        "name": "HardcoreSoldier",
+        "battles": [
             {
-                "time": "20261016T193507.000Z",
-                "result": "loss",
+                "time": "20261115T193130.000Z",
+                "result": "win",
                 "type": "riverRacePvP",
-                "deck_hash": "26000034-26000035-26000041-26000043-26000059-27000003-28000000-28000011",
+                "deck_hash": "26000013-26000014-26000016-26000022-26000034-26000041-26000059-26000068",
                 "cards": [
-                    {
-                        "id": 26000059,
-                        "name": "Royal Hogs",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
-                    },
                     {
                         "id": 26000034,
                         "name": "Bowler",
                         "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
                     },
                     {
-                        "id": 26000035,
-                        "name": "Lumberjack",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
+                        "id": 26000016,
+                        "name": "Prince",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
                     },
                     {
-                        "id": 28000000,
-                        "name": "Fireball",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
-                    },
-                    {
-                        "id": 26000043,
-                        "name": "Elite Barbarians",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/C88C5JH_F3lLZj6K-tLcMo5DPjrFmvzIb1R2M6xCfTE.png"
+                        "id": 26000068,
+                        "name": "Battle Healer",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/KdwXcoigS2Kg-cgA7BJJIANbUJG6SNgjetRQ-MegZ08.png"
                     },
                     {
                         "id": 26000041,
@@ -65057,22 +65148,27 @@
                         "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
                     },
                     {
-                        "id": 27000003,
-                        "name": "Inferno Tower",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
+                        "id": 26000014,
+                        "name": "Musketeer",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
                     },
                     {
-                        "id": 28000011,
-                        "name": "The Log",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                        "id": 26000022,
+                        "name": "Minion Horde",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/Wyjq5l0IXHTkX9Rmpap6HaH08MvjbxFp1xBO9a47YSI.png"
+                    },
+                    {
+                        "id": 26000059,
+                        "name": "Royal Hogs",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                    },
+                    {
+                        "id": 26000013,
+                        "name": "Bomber",
+                        "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
                     }
                 ]
-            }
-        ]
-    },
-    "GRGCY0R8": {
-        "name": "HardcoreSoldier",
-        "battles": [
+            },
             {
                 "time": "20261115T192742.000Z",
                 "result": "win",
@@ -80978,54 +81074,6 @@
                         "id": 28000000,
                         "name": "Fireball",
                         "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
-                    }
-                ]
-            },
-            {
-                "time": "20261016T193138.000Z",
-                "result": "win",
-                "type": "riverRacePvP",
-                "deck_hash": "26000000-26000004-26000006-26000007-26000014-26000035-26000045-28000003",
-                "cards": [
-                    {
-                        "id": 26000007,
-                        "name": "Witch",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
-                    },
-                    {
-                        "id": 26000014,
-                        "name": "Musketeer",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
-                    },
-                    {
-                        "id": 26000004,
-                        "name": "P.E.K.K.A",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
-                    },
-                    {
-                        "id": 26000045,
-                        "name": "Executioner",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
-                    },
-                    {
-                        "id": 28000003,
-                        "name": "Rocket",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/Ie07nQNK9CjhKOa4-arFAewi4EroqaA-86Xo7r5tx94.png"
-                    },
-                    {
-                        "id": 26000000,
-                        "name": "Knight",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
-                    },
-                    {
-                        "id": 26000006,
-                        "name": "Balloon",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
-                    },
-                    {
-                        "id": 26000035,
-                        "name": "Lumberjack",
-                        "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
                     }
                 ]
             }
