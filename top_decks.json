@@ -35,7 +35,7 @@
             "#2U09UULRR": "20261115T060855.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20261115T193335.000Z",
-            "#8P0J8P0L": "20261115T193444.000Z",
+            "#8P0J8P0L": "20261115T194114.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20261115T192753.000Z",
             "#2P0U2RLGY": "20261114T221256.000Z",
@@ -3511,7 +3511,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
                 }
             ],
-            "wins": 8,
+            "wins": 9,
             "losses": 9,
             "players": [
                 "OneAndOnly"
@@ -3520,6 +3520,12 @@
                 "8P0J8P0L"
             ],
             "recent_matches": [
+                {
+                    "time": "20261115T194114.000Z",
+                    "result": "win",
+                    "player": "OneAndOnly",
+                    "tag": "8P0J8P0L"
+                },
                 {
                     "time": "20261114T143359.000Z",
                     "result": "loss",
@@ -655739,6 +655745,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000019-26000027-26000039-26000045-26000049-26000056-26000059-28000002": {
+            "cards": [
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                },
+                {
+                    "id": 28000002,
+                    "name": "Rage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bGP21OOmcpHMJ5ZA79bHVV2D-NzPtDkvBskCNJb7pg0.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 26000019,
+                    "name": "Spear Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/FSDFotjaXidI4ku_WFpVCTWS1hKGnFh1sxX0lxM43_E.png"
+                },
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 26000039,
+                    "name": "Mega Minion",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/-T_e4YLbuhPBKbYnBwQfXgynNpp5eOIN_0RracYwL9c.png"
+                },
+                {
+                    "id": 26000027,
+                    "name": "Dark Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/M7fXlrKXHu2IvpSGpk36kXVstslbR08Bbxcy0jQcln8.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
