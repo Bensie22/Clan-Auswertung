@@ -4,7 +4,7 @@
             "#22Q920RLR": "20261114T202953.000Z",
             "#L8PV090J": "20261114T182549.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
-            "#2QRVR9L8": "20261115T070935.000Z",
+            "#2QRVR9L8": "20261115T071631.000Z",
             "#ULYJ2CQP": "20261108T232039.000Z",
             "#UJ2P9UYUV": "20261114T073129.000Z",
             "#P0JYR9YUY": "20261114T121233.000Z",
@@ -19,7 +19,7 @@
             "#QULCQGGG": "20261114T181755.000Z",
             "#JRGC9RRQG": "20261114T231356.000Z",
             "#QVQGCV8Y9": "20261115T014827.000Z",
-            "#Q8L0RJ8Y8": "20261115T071051.000Z",
+            "#Q8L0RJ8Y8": "20261115T071824.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20261114T233604.000Z",
             "#LLQQJCLC": "20261115T070917.000Z",
@@ -31,7 +31,7 @@
             "#YQVQYUYRV": "20260525T095543.000Z",
             "#2V800VCQ0": "20261114T171636.000Z",
             "#2UQUPYQCJ": "20260810T113227.000Z",
-            "#JUUR8UGL8": "20261113T191906.000Z",
+            "#JUUR8UGL8": "20261115T071905.000Z",
             "#2U09UULRR": "20261115T060855.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20261115T070415.000Z",
@@ -887,7 +887,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/BGLo3Grsp81c72EpxLLk-Sofk3VY56zahnUNOv3JcT0.png"
                 }
             ],
-            "wins": 11,
+            "wins": 12,
             "losses": 7,
             "players": [
                 "Erastus"
@@ -896,6 +896,12 @@
                 "Q8L0RJ8Y8"
             ],
             "recent_matches": [
+                {
+                    "time": "20261115T071824.000Z",
+                    "result": "win",
+                    "player": "Erastus",
+                    "tag": "Q8L0RJ8Y8"
+                },
                 {
                     "time": "20261114T071256.000Z",
                     "result": "win",
@@ -652519,6 +652525,52 @@
                     "id": 28000005,
                     "name": "Freeze",
                     "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000013-26000022-26000031-26000032-26000038-26000055-26000069-27000006": {
+            "cards": [
+                {
+                    "id": 26000013,
+                    "name": "Bomber",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
+                },
+                {
+                    "id": 26000069,
+                    "name": "Skeleton King",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dCd69_wN9f8DxwuqOGtR4QgWhHIPIaTNxZ1e23RzAAc.png"
+                },
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000031,
+                    "name": "Fire Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/16-BqusVvynIgYI8_Jci3LDC-r8AI_xaIYLgXqtlmS8.png"
+                },
+                {
+                    "id": 26000038,
+                    "name": "Ice Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/r05cmpwV1o7i7FHodtZwW3fmjbXCW34IJCsDEV5cZC4.png"
+                },
+                {
+                    "id": 26000032,
+                    "name": "Miner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Y4yWvdwBCg2FpAZgs8T09Gy34WOwpLZW-ttL52Ae8NE.png"
+                },
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000022,
+                    "name": "Minion Horde",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Wyjq5l0IXHTkX9Rmpap6HaH08MvjbxFp1xBO9a47YSI.png"
                 }
             ],
             "seen": 1,
