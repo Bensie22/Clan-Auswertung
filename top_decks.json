@@ -26,7 +26,7 @@
             "#2VJR80RL": "20261115T185910.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
-            "#2CJYG9UG": "20261115T115345.000Z",
+            "#2CJYG9UG": "20261115T210331.000Z",
             "#2PUQYJC02": "20261115T184459.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
             "#2V800VCQ0": "20261115T125605.000Z",
@@ -37,7 +37,7 @@
             "#8QYYL8LCQ": "20261115T193335.000Z",
             "#8P0J8P0L": "20261115T194114.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20261115T203210.000Z",
+            "#CUJ9PJ2UV": "20261115T211049.000Z",
             "#2P0U2RLGY": "20261115T200419.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20261115T171208.000Z",
@@ -69,7 +69,7 @@
             "#8PJY2GUY9": "20260511T140746.000Z",
             "#Y29LJJCQ2": "20260502T202004.000Z",
             "#GJVVGUYJC": "20260518T141110.000Z",
-            "#UQVCVVVJL": "20261115T210128.000Z",
+            "#UQVCVVVJL": "20261115T210604.000Z",
             "#22CVYQP8R": "20260509T062429.000Z",
             "#89CJRRV8": "20261115T191157.000Z",
             "#VL989Y20J": "20260516T051537.000Z",
@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20261115T205618.000Z",
+            "#YUQVVVLQ": "20261115T210709.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20261114T233238.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
@@ -144,7 +144,7 @@
             "#80UYP82PG": "20261026T233457.000Z",
             "#2R9YVUCU8": "20261111T184933.000Z",
             "#2YPY28Y2": "20261115T155332.000Z",
-            "#CUQ2RUYQL": "20261115T210001.000Z"
+            "#CUQ2RUYQL": "20261115T210517.000Z"
         }
     },
     "decks": {
@@ -2887,7 +2887,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
                 }
             ],
-            "wins": 6,
+            "wins": 5,
             "losses": 1,
             "players": [
                 "agostini"
@@ -2928,12 +2928,6 @@
                 },
                 {
                     "time": "20261017T171205.000Z",
-                    "result": "win",
-                    "player": "agostini",
-                    "tag": "P2YQ2QQUV"
-                },
-                {
-                    "time": "20261016T210628.000Z",
                     "result": "win",
                     "player": "agostini",
                     "tag": "P2YQ2QQUV"
@@ -8452,7 +8446,7 @@
                 }
             ],
             "wins": 5,
-            "losses": 9,
+            "losses": 10,
             "players": [
                 "Jackhammer"
             ],
@@ -8460,6 +8454,12 @@
                 "2CJYG9UG"
             ],
             "recent_matches": [
+                {
+                    "time": "20261115T210331.000Z",
+                    "result": "loss",
+                    "player": "Jackhammer",
+                    "tag": "2CJYG9UG"
+                },
                 {
                     "time": "20261114T213839.000Z",
                     "result": "win",
@@ -656247,6 +656247,52 @@
                     "id": 26000053,
                     "name": "Rascals",
                     "icon": "https://api-assets.clashroyale.com/cards/300/KV48DfwVHKx9XCjzBdk3daT_Eb52Me4VgjVO7WctRc4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000009-26000014-26000018-26000025-26000048-26000063-27000010-28000009": {
+            "cards": [
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000063,
+                    "name": "Electro Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/tN9h6lnMNPCNsx0LMFmvpHgznbDZ1fBRkx-C7UfNmfY.png"
+                },
+                {
+                    "id": 26000048,
+                    "name": "Night Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NpCrXDEDBBJgNv9QrBAcJmmMFbS7pe3KCY8xJ5VB18A.png"
+                },
+                {
+                    "id": 26000025,
+                    "name": "Guards",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/1ArKfLJxYo6_NU_S9cAeIrfbXqWH0oULVJXedxBXQlU.png"
+                },
+                {
+                    "id": 26000009,
+                    "name": "Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/npdmCnET7jmVjJvjJQkFnNSNnDxYHDBigbvIAloFMds.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                },
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
                 }
             ],
             "seen": 1,
