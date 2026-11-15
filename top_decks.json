@@ -27,7 +27,7 @@
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
             "#2CJYG9UG": "20261115T115345.000Z",
-            "#2PUQYJC02": "20261115T183650.000Z",
+            "#2PUQYJC02": "20261115T184459.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
             "#2V800VCQ0": "20261115T125605.000Z",
             "#2UQUPYQCJ": "20260810T113227.000Z",
@@ -115,7 +115,7 @@
             "#V8VGG0LUG": "20260803T085547.000Z",
             "#2V2QYJGCG": "20260804T011752.000Z",
             "#UQV90UP09": "20260810T190628.000Z",
-            "#JV80YYJRJ": "20261115T112311.000Z",
+            "#JV80YYJRJ": "20261115T184248.000Z",
             "#VP8P9UG8V": "20260817T002911.000Z",
             "#G9QR0YVU": "20260908T165202.000Z",
             "#200PGVGQ9U": "20260811T201941.000Z",
@@ -5611,7 +5611,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
                 }
             ],
-            "wins": 8,
+            "wins": 9,
             "losses": 6,
             "players": [
                 "Wario"
@@ -5620,6 +5620,12 @@
                 "2PUQYJC02"
             ],
             "recent_matches": [
+                {
+                    "time": "20261115T184131.000Z",
+                    "result": "win",
+                    "player": "Wario",
+                    "tag": "2PUQYJC02"
+                },
                 {
                     "time": "20261114T120654.000Z",
                     "result": "win",
@@ -8290,7 +8296,7 @@
                 }
             ],
             "wins": 6,
-            "losses": 8,
+            "losses": 9,
             "players": [
                 "Wario"
             ],
@@ -8298,6 +8304,12 @@
                 "2PUQYJC02"
             ],
             "recent_matches": [
+                {
+                    "time": "20261115T184459.000Z",
+                    "result": "loss",
+                    "player": "Wario",
+                    "tag": "2PUQYJC02"
+                },
                 {
                     "time": "20261114T121010.000Z",
                     "result": "loss",
@@ -655175,6 +655187,98 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000004-26000012-26000014-26000019-26000026-26000035-26000063-28000024": {
+            "cards": [
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                },
+                {
+                    "id": 26000035,
+                    "name": "Lumberjack",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
+                },
+                {
+                    "id": 26000063,
+                    "name": "Electro Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/tN9h6lnMNPCNsx0LMFmvpHgznbDZ1fBRkx-C7UfNmfY.png"
+                },
+                {
+                    "id": 28000024,
+                    "name": "Goblin Curse",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OQPfGgT5mHEUvPuKKt0plZT0PNtIjCqUgQ3Rm86dQ2k.png"
+                },
+                {
+                    "id": 26000019,
+                    "name": "Spear Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/FSDFotjaXidI4ku_WFpVCTWS1hKGnFh1sxX0lxM43_E.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000034-26000035-26000040-26000043-26000056-27000010-28000008-28000015": {
+            "cards": [
+                {
+                    "id": 26000043,
+                    "name": "Elite Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/C88C5JH_F3lLZj6K-tLcMo5DPjrFmvzIb1R2M6xCfTE.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 28000015,
+                    "name": "Barbarian Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Gb0G1yNy0i5cIGUHin8uoFWxqntNtRPhY_jeMXg7HnA.png"
+                },
+                {
+                    "id": 26000035,
+                    "name": "Lumberjack",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/E6RWrnCuk13xMX5OE1EQtLEKTZQV6B78d00y8PlXt6Q.png"
+                },
+                {
+                    "id": 28000008,
+                    "name": "Zap",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                },
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
