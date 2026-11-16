@@ -16,7 +16,7 @@
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20261115T210015.000Z",
-            "#QULCQGGG": "20261116T072820.000Z",
+            "#QULCQGGG": "20261116T105705.000Z",
             "#JRGC9RRQG": "20261116T094609.000Z",
             "#QVQGCV8Y9": "20261115T014827.000Z",
             "#Q8L0RJ8Y8": "20261116T052440.000Z",
@@ -29,7 +29,7 @@
             "#2CJYG9UG": "20261115T210331.000Z",
             "#2PUQYJC02": "20261115T184459.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20261116T104738.000Z",
+            "#2V800VCQ0": "20261116T105229.000Z",
             "#2UQUPYQCJ": "20260810T113227.000Z",
             "#JUUR8UGL8": "20261115T123535.000Z",
             "#2U09UULRR": "20261116T050716.000Z",
@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20261116T104744.000Z",
+            "#YUQVVVLQ": "20261116T105650.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20261115T222314.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
@@ -2294,7 +2294,7 @@
                 }
             ],
             "wins": 11,
-            "losses": 10,
+            "losses": 11,
             "players": [
                 "Desteoyer"
             ],
@@ -2302,6 +2302,12 @@
                 "2V800VCQ0"
             ],
             "recent_matches": [
+                {
+                    "time": "20261116T105229.000Z",
+                    "result": "loss",
+                    "player": "Desteoyer",
+                    "tag": "2V800VCQ0"
+                },
                 {
                     "time": "20261115T123110.000Z",
                     "result": "win",
@@ -6158,7 +6164,7 @@
                 }
             ],
             "wins": 5,
-            "losses": 11,
+            "losses": 10,
             "players": [
                 "kl.kranker Affe"
             ],
@@ -6252,12 +6258,6 @@
                 },
                 {
                     "time": "20261018T141820.000Z",
-                    "result": "loss",
-                    "player": "kl.kranker Affe",
-                    "tag": "RLJPJL8C2"
-                },
-                {
-                    "time": "20261017T105549.000Z",
                     "result": "loss",
                     "player": "kl.kranker Affe",
                     "tag": "RLJPJL8C2"
@@ -657851,6 +657851,52 @@
                     "id": 26000047,
                     "name": "Royal Recruits",
                     "icon": "https://api-assets.clashroyale.com/cards/300/jcNyYGUiXXNz3kuz8NBkHNKNREQKraXlb_Ts7rhCIdM.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000004-26000007-26000037-26000041-26000055-26000095-27000012-28000011": {
+            "cards": [
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 27000012,
+                    "name": "Goblin Cage",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vD24bBgK4rSq7wx5QEbuqChtPMRFviL_ep76GwQw1yA.png"
+                },
+                {
+                    "id": 26000095,
+                    "name": "Goblin Demolisher",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/KVVOgdn40xasFLYuQv8Go_U_LCV7wSG9q9eE1H7f3Qk.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 26000037,
+                    "name": "Inferno Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
                 }
             ],
             "seen": 1,
