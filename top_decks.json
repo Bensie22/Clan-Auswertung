@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20261117T222830.000Z",
+            "#YUQVVVLQ": "20261117T223608.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20261117T214411.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
@@ -5984,7 +5984,7 @@
                 }
             ],
             "wins": 8,
-            "losses": 5,
+            "losses": 4,
             "players": [
                 "Bensie"
             ],
@@ -6063,12 +6063,6 @@
                     "result": "loss",
                     "player": "Bensie",
                     "tag": "2QRVR9L8"
-                },
-                {
-                    "time": "20261018T224025.000Z",
-                    "result": "loss",
-                    "player": "Bensie",
-                    "tag": "2QRVR9L8"
                 }
             ]
         },
@@ -6115,7 +6109,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
                 }
             ],
-            "wins": 9,
+            "wins": 8,
             "losses": 3,
             "players": [
                 "Bensie"
@@ -6187,12 +6181,6 @@
                 {
                     "time": "20261024T074213.000Z",
                     "result": "loss",
-                    "player": "Bensie",
-                    "tag": "2QRVR9L8"
-                },
-                {
-                    "time": "20261018T223709.000Z",
-                    "result": "win",
                     "player": "Bensie",
                     "tag": "2QRVR9L8"
                 }
@@ -8211,7 +8199,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
                 }
             ],
-            "wins": 3,
+            "wins": 4,
             "losses": 9,
             "players": [
                 "April#"
@@ -8220,6 +8208,12 @@
                 "YUQVVVLQ"
             ],
             "recent_matches": [
+                {
+                    "time": "20261117T223248.000Z",
+                    "result": "win",
+                    "player": "April#",
+                    "tag": "YUQVVVLQ"
+                },
                 {
                     "time": "20261116T212016.000Z",
                     "result": "loss",
@@ -342195,8 +342189,8 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/Icp8BIyyfBTj1ncCJS7mb82SY7TPV-MAE-J2L2R48DI.png"
                 }
             ],
-            "seen": 1,
-            "losses": 1
+            "seen": 2,
+            "losses": 2
         },
         "26000004-26000008-26000035-26000041-26000042-26000049-26000050-28000015": {
             "cards": [
@@ -658769,6 +658763,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000000-26000026-26000041-26000084-27000003-28000003-28000004-28000017": {
+            "cards": [
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 28000017,
+                    "name": "Giant Snowball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/7MaJLa6hK9WN2_VIshuh5DIDfGwm0wEv98gXtAxLDPs.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                },
+                {
+                    "id": 26000084,
+                    "name": "Electro Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/WKd4-IAFsgPpMo7dDi9sujmYjRhOMEWiE07OUJpvD9g.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 28000003,
+                    "name": "Rocket",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ie07nQNK9CjhKOa4-arFAewi4EroqaA-86Xo7r5tx94.png"
+                },
+                {
+                    "id": 27000003,
+                    "name": "Inferno Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
