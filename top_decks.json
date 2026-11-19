@@ -43,7 +43,7 @@
             "#RLJPJL8C2": "20261119T124749.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
-            "#UUPCULU9V": "20261118T150426.000Z",
+            "#UUPCULU9V": "20261119T175948.000Z",
             "#202VP2QL9P": "20260724T185949.000Z",
             "#LVUGLUCP9": "20261115T193723.000Z",
             "#20QGJVPG8Q": "20260712T214357.000Z",
@@ -4171,7 +4171,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
                 }
             ],
-            "wins": 13,
+            "wins": 14,
             "losses": 14,
             "players": [
                 "OmniOni"
@@ -4180,6 +4180,12 @@
                 "UUPCULU9V"
             ],
             "recent_matches": [
+                {
+                    "time": "20261119T175948.000Z",
+                    "result": "win",
+                    "player": "OmniOni",
+                    "tag": "UUPCULU9V"
+                },
                 {
                     "time": "20261118T145510.000Z",
                     "result": "loss",
@@ -661505,6 +661511,52 @@
                     "id": 26000064,
                     "name": "Firecracker",
                     "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000004-26000013-26000018-26000037-26000059-26000083-28000001-28000018": {
+            "cards": [
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000013,
+                    "name": "Bomber",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
+                },
+                {
+                    "id": 28000018,
+                    "name": "Royal Delivery",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LPg7AGjGI3_xmi7gLLgGC50yKM1jJ2teWkZfoHJcIZo.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000083,
+                    "name": "Mother Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fO-Xah8XZkYKaSK9SCp3wnzwxtvIhun9NVY-zzte1Ng.png"
+                },
+                {
+                    "id": 26000037,
+                    "name": "Inferno Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/y5HDbKtTbWG6En6TGWU0xoVIGs1-iQpIP4HC-VM7u8A.png"
+                },
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
                 }
             ],
             "seen": 1,
