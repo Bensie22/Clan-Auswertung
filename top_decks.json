@@ -37,7 +37,7 @@
             "#8QYYL8LCQ": "20261119T032531.000Z",
             "#8P0J8P0L": "20261119T131530.000Z",
             "#Y882QLJQJ": "",
-            "#CUJ9PJ2UV": "20261119T160727.000Z",
+            "#CUJ9PJ2UV": "20261119T161206.000Z",
             "#2P0U2RLGY": "20261115T200419.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20261119T124749.000Z",
@@ -84,7 +84,7 @@
             "#VP82QGC8Y": "20261117T214411.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
             "#GRGCY0R8": "20261119T120227.000Z",
-            "#P2YQ2QQUV": "20261118T220340.000Z",
+            "#P2YQ2QQUV": "20261119T161533.000Z",
             "#JG8Q0GPU9": "20260713T010600.000Z",
             "#9QV99QVCV": "20260701T045607.000Z",
             "#JQ08UR882": "20260619T100820.000Z",
@@ -846,7 +846,7 @@
                 }
             ],
             "wins": 11,
-            "losses": 7,
+            "losses": 6,
             "players": [
                 "Erastus"
             ],
@@ -953,12 +953,6 @@
                 {
                     "time": "20261025T090006.000Z",
                     "result": "win",
-                    "player": "Erastus",
-                    "tag": "Q8L0RJ8Y8"
-                },
-                {
-                    "time": "20261020T161154.000Z",
-                    "result": "loss",
                     "player": "Erastus",
                     "tag": "Q8L0RJ8Y8"
                 }
@@ -3776,7 +3770,7 @@
                 }
             ],
             "wins": 8,
-            "losses": 6,
+            "losses": 7,
             "players": [
                 "AaleDieter"
             ],
@@ -3784,6 +3778,12 @@
                 "CUJ9PJ2UV"
             ],
             "recent_matches": [
+                {
+                    "time": "20261119T161206.000Z",
+                    "result": "loss",
+                    "player": "AaleDieter",
+                    "tag": "CUJ9PJ2UV"
+                },
                 {
                     "time": "20261115T114933.000Z",
                     "result": "loss",
@@ -6337,7 +6337,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/I1M20_Zs_p_BS1NaNIVQjuMJkYI_1-ePtwYZahn0JXQ.png"
                 }
             ],
-            "wins": 11,
+            "wins": 10,
             "losses": 7,
             "players": [
                 "Erastus"
@@ -6445,12 +6445,6 @@
                 {
                     "time": "20261023T081642.000Z",
                     "result": "loss",
-                    "player": "Erastus",
-                    "tag": "Q8L0RJ8Y8"
-                },
-                {
-                    "time": "20261020T161939.000Z",
-                    "result": "win",
                     "player": "Erastus",
                     "tag": "Q8L0RJ8Y8"
                 }
@@ -661077,6 +661071,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000000-26000013-26000014-26000043-26000045-26000051-27000006-28000001": {
+            "cards": [
+                {
+                    "id": 26000043,
+                    "name": "Elite Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/C88C5JH_F3lLZj6K-tLcMo5DPjrFmvzIb1R2M6xCfTE.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000013,
+                    "name": "Bomber",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/12n1CesxKIcqVYntjxcF36EFA-ONw7Z-DoL0_rQrbdo.png"
+                },
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000051,
+                    "name": "Ram Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
