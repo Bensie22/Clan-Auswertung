@@ -24,26 +24,6 @@
       "name": "anna-maria",
       "scenario": "STRIKE",
       "priority": 4
-    },
-    {
-      "name": "Erastus",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Theezy",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Citykingalex",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
-      "name": "Desteoyer",
-      "scenario": "TOP",
-      "priority": 2
     }
   ],
   "smart": [
@@ -614,72 +594,6 @@
         "recommended_action": "kick_review"
       }
     ],
-    "core": [
-      {
-        "name": "Citykingalex",
-        "player_tag": "#QULCQGGG",
-        "role": "member",
-        "score": 90.0,
-        "fame": 3200,
-        "strikes": 0,
-        "donations": 160,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢🟢",
-        "reason": "Fame über 2800",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Theezy",
-        "player_tag": "#JUUR8UGL8",
-        "role": "member",
-        "score": 91.03,
-        "fame": 2950,
-        "strikes": 0,
-        "donations": 80,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢🟢",
-        "reason": "Fame über 2800",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Erastus",
-        "player_tag": "#Q8L0RJ8Y8",
-        "role": "member",
-        "score": 92.07,
-        "fame": 2850,
-        "strikes": 0,
-        "donations": 192,
-        "participation_count": 10,
-        "trend": "🟢🟢🟢🟢🟢🟢",
-        "reason": "Fame über 2800",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "Desteoyer",
-        "player_tag": "#2V800VCQ0",
-        "role": "member",
-        "score": 87.83,
-        "fame": 2850,
-        "strikes": 0,
-        "donations": 114,
-        "participation_count": 10,
-        "trend": "🟡🟡🟡🟡🟢🟢",
-        "reason": "Fame über 2800",
-        "recommended_action": "promote_review"
-      },
-      {
-        "name": "mauza",
-        "player_tag": "#2P0U2RLGY",
-        "role": "member",
-        "score": 79.63,
-        "fame": 2850,
-        "strikes": 0,
-        "donations": 42,
-        "participation_count": 9,
-        "trend": "🟢🟢🟢🟢🟢🟢",
-        "reason": "Fame über 2800",
-        "recommended_action": "promote_review"
-      }
-    ]
+    "core": []
   }
 }
