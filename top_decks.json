@@ -9,7 +9,7 @@
             "#UJ2P9UYUV": "20261119T055915.000Z",
             "#P0JYR9YUY": "20261119T081311.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
-            "#YQ82VR9JQ": "20261120T034821.000Z",
+            "#YQ82VR9JQ": "20261120T055049.000Z",
             "#G02LC9C8": "20261120T053903.000Z",
             "#2U8288CVY": "20261119T121206.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
@@ -40,7 +40,7 @@
             "#CUJ9PJ2UV": "20261119T212120.000Z",
             "#2P0U2RLGY": "20261115T200419.000Z",
             "#8P89UPQ0": "",
-            "#RLJPJL8C2": "20261119T124749.000Z",
+            "#RLJPJL8C2": "20261120T060041.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
             "#UUPCULU9V": "20261119T181111.000Z",
@@ -5870,7 +5870,7 @@
                 }
             ],
             "wins": 5,
-            "losses": 9,
+            "losses": 10,
             "players": [
                 "kl.kranker Affe"
             ],
@@ -5878,6 +5878,12 @@
                 "RLJPJL8C2"
             ],
             "recent_matches": [
+                {
+                    "time": "20261120T060041.000Z",
+                    "result": "loss",
+                    "player": "kl.kranker Affe",
+                    "tag": "RLJPJL8C2"
+                },
                 {
                     "time": "20261115T171208.000Z",
                     "result": "loss",
@@ -663235,6 +663241,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000012-26000023-26000065-26000102-27000001-28000009-28000010-28000015": {
+            "cards": [
+                {
+                    "id": 28000010,
+                    "name": "Graveyard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Icp8BIyyfBTj1ncCJS7mb82SY7TPV-MAE-J2L2R48DI.png"
+                },
+                {
+                    "id": 26000065,
+                    "name": "Mighty Miner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Cd9R56yraxTvJiD8xJ2qT2OdsHyh94FqOAarXpbyelo.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 27000001,
+                    "name": "Goblin Hut",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/l8ZdzzNLcwB4u7ihGgxNFQOjCT_njFuAhZr7D6PRF7E.png"
+                },
+                {
+                    "id": 26000102,
+                    "name": "Berserker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NA6W8S1JBYBlOPwD3dNvJLFvVDKq-UuBs_J3i3ewLFI.png"
+                },
+                {
+                    "id": 26000023,
+                    "name": "Ice Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W3dkw0HTw9n1jB-zbknY2w3wHuyuLxSRIAV5fUT1SEY.png"
+                },
+                {
+                    "id": 28000015,
+                    "name": "Barbarian Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Gb0G1yNy0i5cIGUHin8uoFWxqntNtRPhY_jeMXg7HnA.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
