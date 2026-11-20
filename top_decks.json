@@ -34,11 +34,11 @@
             "#JUUR8UGL8": "20261119T204408.000Z",
             "#2U09UULRR": "20261120T132305.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
-            "#8QYYL8LCQ": "20261120T032152.000Z",
+            "#8QYYL8LCQ": "20261120T222821.000Z",
             "#8P0J8P0L": "20261120T190503.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20261120T183256.000Z",
-            "#2P0U2RLGY": "20261120T083301.000Z",
+            "#2P0U2RLGY": "20261120T223002.000Z",
             "#8P89UPQ0": "",
             "#RLJPJL8C2": "20261120T134412.000Z",
             "#RG02LG88": "20260405T075546.000Z",
@@ -10371,7 +10371,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/QJB-QK1QJHdw4hjpAwVSyZBozc2ZWAR9pQ-SMUyKaT0.png"
                 }
             ],
-            "wins": 7,
+            "wins": 8,
             "losses": 7,
             "players": [
                 "mauza"
@@ -10380,6 +10380,12 @@
                 "2P0U2RLGY"
             ],
             "recent_matches": [
+                {
+                    "time": "20261120T223002.000Z",
+                    "result": "win",
+                    "player": "mauza",
+                    "tag": "2P0U2RLGY"
+                },
                 {
                     "time": "20261120T083301.000Z",
                     "result": "loss",
@@ -667213,6 +667219,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000000-26000004-26000017-26000021-26000061-26000064-28000009-28000011": {
+            "cards": [
+                {
+                    "id": 26000004,
+                    "name": "P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/MlArURKhn_zWAZY-Xj1qIRKLVKquarG25BXDjUQajNs.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 26000064,
+                    "name": "Firecracker",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
+                },
+                {
+                    "id": 28000009,
+                    "name": "Poison",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/98HDkG2189yOULcVG9jz2QbJKtfuhH21DIrIjkOjxI8.png"
+                },
+                {
+                    "id": 26000061,
+                    "name": "Fisherman",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/U2KZ3g0wyufcuA5P2Xrn3Z3lr1WiJmc5S0IWOZHgizQ.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
