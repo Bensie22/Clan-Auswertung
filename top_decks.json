@@ -52,7 +52,7 @@
             "#Q2GRGLQR": "20261121T083007.000Z",
             "#J9RQPGLVP": "20260713T204019.000Z",
             "#8GYCJY0U": "20260413T131504.000Z",
-            "#9VLRQ9GR9": "20261121T123935.000Z",
+            "#9VLRQ9GR9": "20261121T171952.000Z",
             "#29RLRYLQL": "20260420T155237.000Z",
             "#QGGU22L9": "20260420T144732.000Z",
             "#2RQU00RLR": "20260421T120601.000Z",
@@ -136,7 +136,7 @@
             "#C2LU8Y8QP": "20261005T111606.000Z",
             "#2VYC2C8J": "20261011T132442.000Z",
             "#20989CY0PC": "20261120T160854.000Z",
-            "#G002YL80C": "20261121T102048.000Z",
+            "#G002YL80C": "20261121T171615.000Z",
             "#2CRVPL0GC": "20261121T003337.000Z",
             "#22P998VGV": "20261105T204952.000Z",
             "#LYRGV2QGQ": "20261030T212035.000Z",
@@ -5942,7 +5942,7 @@
                 }
             ],
             "wins": 4,
-            "losses": 11,
+            "losses": 12,
             "players": [
                 "DST"
             ],
@@ -5950,6 +5950,12 @@
                 "9VLRQ9GR9"
             ],
             "recent_matches": [
+                {
+                    "time": "20261121T171952.000Z",
+                    "result": "loss",
+                    "player": "DST",
+                    "tag": "9VLRQ9GR9"
+                },
                 {
                     "time": "20261120T131932.000Z",
                     "result": "loss",
@@ -670823,6 +670829,52 @@
                     "id": 26000040,
                     "name": "Dart Goblin",
                     "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000006-26000007-26000012-26000058-26000059-26000069-27000003-27000006": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                },
+                {
+                    "id": 26000069,
+                    "name": "Skeleton King",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dCd69_wN9f8DxwuqOGtR4QgWhHIPIaTNxZ1e23RzAAc.png"
+                },
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 26000058,
+                    "name": "Wall Breakers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_xPphEfC8eEwFNrfU3cMQG9-f5JaLQ31ARCA7l3XtW4.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 27000003,
+                    "name": "Inferno Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
                 }
             ],
             "seen": 1,
