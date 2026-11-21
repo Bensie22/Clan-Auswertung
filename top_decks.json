@@ -93,7 +93,7 @@
             "#P00PQ9CUQ": "20260613T120503.000Z",
             "#PVYJ80YCL": "20260619T140927.000Z",
             "#RP9RVGQJU": "20260615T092432.000Z",
-            "#P0G2GYJQ9": "20261121T163809.000Z",
+            "#P0G2GYJQ9": "20261121T164135.000Z",
             "#8P2GV8UQY": "20260718T102217.000Z",
             "#VV2JR990": "20260622T193820.000Z",
             "#YYJR9R0GR": "20260713T093713.000Z",
@@ -144,7 +144,7 @@
             "#80UYP82PG": "20261026T233457.000Z",
             "#2R9YVUCU8": "20261118T175647.000Z",
             "#2YPY28Y2": "20261121T162712.000Z",
-            "#CUQ2RUYQL": "20261121T163857.000Z"
+            "#CUQ2RUYQL": "20261121T164825.000Z"
         }
     },
     "decks": {
@@ -11806,7 +11806,7 @@
                 }
             ],
             "wins": 2,
-            "losses": 3,
+            "losses": 4,
             "players": [
                 "Reklaminator"
             ],
@@ -11814,6 +11814,12 @@
                 "P0G2GYJQ9"
             ],
             "recent_matches": [
+                {
+                    "time": "20261121T164135.000Z",
+                    "result": "loss",
+                    "player": "Reklaminator",
+                    "tag": "P0G2GYJQ9"
+                },
                 {
                     "time": "20261120T102224.000Z",
                     "result": "loss",
@@ -670771,6 +670777,52 @@
                     "id": 28000001,
                     "name": "Arrows",
                     "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000011-26000014-26000040-26000047-26000056-26000057-28000001-28000006": {
+            "cards": [
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000047,
+                    "name": "Royal Recruits",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jcNyYGUiXXNz3kuz8NBkHNKNREQKraXlb_Ts7rhCIdM.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 28000006,
+                    "name": "Mirror",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/wC6Cm9rKLEOk72zTsukVwxewKIoO4ZcMJun54zCPWvA.png"
+                },
+                {
+                    "id": 26000057,
+                    "name": "Flying Machine",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/hzKNE3QwFcrSrDDRuVW3QY_OnrDPijSiIp-PsWgFevE.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
                 }
             ],
             "seen": 1,
