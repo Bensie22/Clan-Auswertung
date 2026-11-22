@@ -93,7 +93,7 @@
             "#P00PQ9CUQ": "20260613T120503.000Z",
             "#PVYJ80YCL": "20260619T140927.000Z",
             "#RP9RVGQJU": "20260615T092432.000Z",
-            "#P0G2GYJQ9": "20261121T164135.000Z",
+            "#P0G2GYJQ9": "20261122T103433.000Z",
             "#8P2GV8UQY": "20260718T102217.000Z",
             "#VV2JR990": "20260622T193820.000Z",
             "#YYJR9R0GR": "20260713T093713.000Z",
@@ -192,7 +192,7 @@
                 }
             ],
             "wins": 14,
-            "losses": 4,
+            "losses": 3,
             "players": [
                 "HardcoreSoldier"
             ],
@@ -299,12 +299,6 @@
                 {
                     "time": "20261024T133013.000Z",
                     "result": "win",
-                    "player": "HardcoreSoldier",
-                    "tag": "GRGCY0R8"
-                },
-                {
-                    "time": "20261023T103759.000Z",
-                    "result": "loss",
                     "player": "HardcoreSoldier",
                     "tag": "GRGCY0R8"
                 }
@@ -5330,7 +5324,7 @@
                 }
             ],
             "wins": 8,
-            "losses": 8,
+            "losses": 7,
             "players": [
                 "Wario"
             ],
@@ -5425,12 +5419,6 @@
                 {
                     "time": "20261025T163924.000Z",
                     "result": "win",
-                    "player": "Wario",
-                    "tag": "2PUQYJC02"
-                },
-                {
-                    "time": "20261023T103527.000Z",
-                    "result": "loss",
                     "player": "Wario",
                     "tag": "2PUQYJC02"
                 }
@@ -7827,7 +7815,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/QWDdXMKJNpv0go-HYaWQWP6p8uIOHjqn-zX7G0p3DyM.png"
                 }
             ],
-            "wins": 7,
+            "wins": 6,
             "losses": 9,
             "players": [
                 "Wario"
@@ -7923,12 +7911,6 @@
                 {
                     "time": "20261025T164252.000Z",
                     "result": "loss",
-                    "player": "Wario",
-                    "tag": "2PUQYJC02"
-                },
-                {
-                    "time": "20261023T104012.000Z",
-                    "result": "win",
                     "player": "Wario",
                     "tag": "2PUQYJC02"
                 }
@@ -10330,7 +10312,7 @@
                 }
             ],
             "wins": 9,
-            "losses": 12,
+            "losses": 13,
             "players": [
                 "Reklaminator"
             ],
@@ -10338,6 +10320,12 @@
                 "P0G2GYJQ9"
             ],
             "recent_matches": [
+                {
+                    "time": "20261122T103433.000Z",
+                    "result": "loss",
+                    "player": "Reklaminator",
+                    "tag": "P0G2GYJQ9"
+                },
                 {
                     "time": "20261121T163809.000Z",
                     "result": "loss",
@@ -672787,6 +672775,52 @@
                     "id": 26000034,
                     "name": "Bowler",
                     "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000008-26000012-26000016-26000017-26000019-26000020-26000051-28000001": {
+            "cards": [
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 26000008,
+                    "name": "Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/TvJsuu2S4yhyk1jVYUAQwdKOnW4U77KuWWOTPOWnwfI.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 26000019,
+                    "name": "Spear Goblins",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/FSDFotjaXidI4ku_WFpVCTWS1hKGnFh1sxX0lxM43_E.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000020,
+                    "name": "Giant Skeleton",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0p0gd0XaVRu1Hb1iSG1hTYbz2AN6aEiZnhaAib5O8Z8.png"
+                },
+                {
+                    "id": 26000051,
+                    "name": "Ram Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
                 }
             ],
             "seen": 1,
