@@ -40,7 +40,7 @@
             "#CUJ9PJ2UV": "20261122T094349.000Z",
             "#2P0U2RLGY": "20261120T223002.000Z",
             "#8P89UPQ0": "",
-            "#RLJPJL8C2": "20261120T134412.000Z",
+            "#RLJPJL8C2": "20261122T104600.000Z",
             "#RG02LG88": "20260405T075546.000Z",
             "#29L2P9YJ": "20260331T230948.000Z",
             "#UUPCULU9V": "20261121T201236.000Z",
@@ -5468,7 +5468,7 @@
                 }
             ],
             "wins": 9,
-            "losses": 7,
+            "losses": 6,
             "players": [
                 "Wario"
             ],
@@ -5562,12 +5562,6 @@
                 },
                 {
                     "time": "20261025T164618.000Z",
-                    "result": "loss",
-                    "player": "Wario",
-                    "tag": "2PUQYJC02"
-                },
-                {
-                    "time": "20261023T104333.000Z",
                     "result": "loss",
                     "player": "Wario",
                     "tag": "2PUQYJC02"
@@ -6032,7 +6026,7 @@
                 }
             ],
             "wins": 4,
-            "losses": 10,
+            "losses": 11,
             "players": [
                 "kl.kranker Affe"
             ],
@@ -6040,6 +6034,12 @@
                 "RLJPJL8C2"
             ],
             "recent_matches": [
+                {
+                    "time": "20261122T104600.000Z",
+                    "result": "loss",
+                    "player": "kl.kranker Affe",
+                    "tag": "RLJPJL8C2"
+                },
                 {
                     "time": "20261120T060041.000Z",
                     "result": "loss",
@@ -8044,7 +8044,7 @@
                 }
             ],
             "wins": 6,
-            "losses": 10,
+            "losses": 9,
             "players": [
                 "Wario"
             ],
@@ -8138,12 +8138,6 @@
                 },
                 {
                     "time": "20261025T165129.000Z",
-                    "result": "loss",
-                    "player": "Wario",
-                    "tag": "2PUQYJC02"
-                },
-                {
-                    "time": "20261023T104651.000Z",
                     "result": "loss",
                     "player": "Wario",
                     "tag": "2PUQYJC02"
@@ -672821,6 +672815,52 @@
                     "id": 26000051,
                     "name": "Ram Rider",
                     "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000000-26000012-26000015-26000016-26000017-26000026-26000053-28000004": {
+            "cards": [
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 26000053,
+                    "name": "Rascals",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/KV48DfwVHKx9XCjzBdk3daT_Eb52Me4VgjVO7WctRc4.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
                 }
             ],
             "seen": 1,
