@@ -31,6 +31,11 @@
       "priority": 2
     },
     {
+      "name": "bes",
+      "scenario": "TOP",
+      "priority": 2
+    },
+    {
       "name": "OneAndOnly",
       "scenario": "TOP",
       "priority": 2
@@ -41,22 +46,17 @@
       "priority": 2
     },
     {
-      "name": "bes",
-      "scenario": "TOP",
-      "priority": 2
-    },
-    {
       "name": "SankKiI9",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "OmniOni",
+      "name": "chris",
       "scenario": "TOP",
       "priority": 2
     },
     {
-      "name": "chris",
+      "name": "OmniOni",
       "scenario": "TOP",
       "priority": 2
     }
@@ -64,7 +64,12 @@
   "smart": [
     {
       "name": "Erastus",
-      "score": 92.07,
+      "score": 92.2,
+      "status": "STARK"
+    },
+    {
+      "name": "bes",
+      "score": 92.1,
       "status": "STARK"
     },
     {
@@ -79,37 +84,27 @@
     },
     {
       "name": "SirHenry87",
-      "score": 90.87,
-      "status": "STARK"
-    },
-    {
-      "name": "Johan",
-      "score": 90.33,
-      "status": "STARK"
-    },
-    {
-      "name": "Dolphin",
-      "score": 90.27,
+      "score": 91.0,
       "status": "STARK"
     },
     {
       "name": "Citykingalex",
-      "score": 90.0,
+      "score": 90.13,
       "status": "STARK"
     },
     {
-      "name": "bes",
-      "score": 89.3,
+      "name": "Dolphin",
+      "score": 90.13,
       "status": "STARK"
     },
     {
-      "name": "Swordfish",
-      "score": 89.17,
+      "name": "Johan",
+      "score": 90.07,
       "status": "STARK"
     },
     {
       "name": "SankKiI9",
-      "score": 89.1,
+      "score": 89.5,
       "status": "STARK"
     },
     {
@@ -118,18 +113,13 @@
       "status": "STARK"
     },
     {
-      "name": "kl.kranker Affe",
-      "score": 88.17,
+      "name": "Swordfish",
+      "score": 88.2,
       "status": "STARK"
     },
     {
-      "name": "Desteoyer",
-      "score": 87.83,
-      "status": "STARK"
-    },
-    {
-      "name": "Bensie",
-      "score": 87.73,
+      "name": "chris",
+      "score": 87.7,
       "status": "STARK"
     },
     {
@@ -138,53 +128,63 @@
       "status": "STARK"
     },
     {
+      "name": "Bensie",
+      "score": 86.83,
+      "status": "STARK"
+    },
+    {
       "name": "seroo",
-      "score": 86.9,
+      "score": 86.5,
       "status": "STARK"
     },
     {
       "name": "AaleDieter",
-      "score": 86.13,
-      "status": "STARK"
-    },
-    {
-      "name": "chris",
-      "score": 86.07,
+      "score": 86.4,
       "status": "STARK"
     },
     {
       "name": "rote sonne",
+      "score": 86.4,
+      "status": "STARK"
+    },
+    {
+      "name": "Reklaminator",
       "score": 86.07,
       "status": "STARK"
     },
     {
-      "name": "_spc07",
-      "score": 85.17,
+      "name": "kl.kranker Affe",
+      "score": 85.9,
       "status": "STARK"
     },
     {
-      "name": "Jackhammer",
-      "score": 85.13,
-      "status": "STARK"
-    },
-    {
-      "name": "mad 3ad y gawad",
-      "score": 85.07,
-      "status": "STARK"
-    },
-    {
-      "name": "LazyFrog",
-      "score": 84.47,
+      "name": "mauza",
+      "score": 85.63,
       "status": "STARK"
     },
     {
       "name": "elazeto",
-      "score": 83.5,
+      "score": 85.5,
       "status": "STARK"
     },
     {
-      "name": "Nati",
-      "score": 82.93,
+      "name": "LazyFrog",
+      "score": 84.97,
+      "status": "STARK"
+    },
+    {
+      "name": "mad 3ad y gawad",
+      "score": 84.93,
+      "status": "STARK"
+    },
+    {
+      "name": "_spc07",
+      "score": 84.9,
+      "status": "STARK"
+    },
+    {
+      "name": "Desteoyer",
+      "score": 84.83,
       "status": "STARK"
     },
     {
@@ -194,12 +194,17 @@
     },
     {
       "name": "agostini",
-      "score": 82.57,
+      "score": 82.43,
       "status": "STARK"
     },
     {
-      "name": "Reklaminator",
-      "score": 82.07,
+      "name": "Jackhammer",
+      "score": 82.37,
+      "status": "STARK"
+    },
+    {
+      "name": "Nati",
+      "score": 80.8,
       "status": "STARK"
     },
     {
@@ -208,58 +213,48 @@
       "status": "STARK"
     },
     {
-      "name": "Naughty",
-      "score": 80.24,
-      "status": "STARK"
-    },
-    {
-      "name": "mauza",
-      "score": 79.63,
+      "name": "Hocho2000",
+      "score": 79.73,
       "status": "OK"
     },
     {
-      "name": "April#",
-      "score": 78.27,
+      "name": "Naughty",
+      "score": 78.97,
       "status": "OK"
     },
     {
       "name": "DST",
-      "score": 76.73,
+      "score": 76.97,
       "status": "OK"
     },
     {
-      "name": "Hocho2000",
-      "score": 76.67,
+      "name": "April#",
+      "score": 76.4,
       "status": "OK"
     },
     {
       "name": "Denis",
-      "score": 75.83,
-      "status": "OK"
-    },
-    {
-      "name": "Deniz",
-      "score": 72.5,
-      "status": "OK"
-    },
-    {
-      "name": "Flauschos",
-      "score": 72.2,
-      "status": "OK"
-    },
-    {
-      "name": "hi2oka",
-      "score": 71.83,
+      "score": 75.23,
       "status": "OK"
     },
     {
       "name": "lukasl 5",
-      "score": 69.23,
+      "score": 71.87,
       "status": "OK"
     },
     {
-      "name": "HRVAT85",
-      "score": 66.87,
+      "name": "Flauschos",
+      "score": 71.33,
+      "status": "OK"
+    },
+    {
+      "name": "hi2oka",
+      "score": 70.37,
+      "status": "OK"
+    },
+    {
+      "name": "Deniz",
+      "score": 66.23,
       "status": "OK"
     },
     {
@@ -268,50 +263,60 @@
       "status": "OK"
     },
     {
+      "name": "HRVAT85",
+      "score": 61.03,
+      "status": "OK"
+    },
+    {
       "name": "Chico",
-      "score": 59.43,
+      "score": 57.57,
       "status": "RISIKO"
     },
     {
       "name": "DyC",
-      "score": 54.73,
+      "score": 54.03,
       "status": "RISIKO"
     },
     {
       "name": "Rainer",
-      "score": 53.83,
-      "status": "RISIKO"
-    },
-    {
-      "name": "anna-maria",
-      "score": 38.07,
+      "score": 51.07,
       "status": "RISIKO"
     },
     {
       "name": "King tursu",
-      "score": 35.6,
+      "score": 33.83,
+      "status": "RISIKO"
+    },
+    {
+      "name": "anna-maria",
+      "score": 31.27,
       "status": "RISIKO"
     },
     {
       "name": "Abmelker Ju",
-      "score": 31.6,
+      "score": 24.93,
       "status": "RISIKO"
     },
     {
       "name": "pacemenn",
-      "score": 23.33,
+      "score": 21.67,
       "status": "RISIKO"
     },
     {
       "name": "alvaro.G.",
-      "score": 8.33,
+      "score": 7.62,
       "status": "RISIKO"
     }
   ],
   "coaching": [
     {
       "name": "Erastus",
-      "score": 92.07,
+      "score": 92.2,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "bes",
+      "score": 92.1,
       "tip": "Weiter so"
     },
     {
@@ -326,37 +331,27 @@
     },
     {
       "name": "SirHenry87",
-      "score": 90.87,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Johan",
-      "score": 90.33,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Dolphin",
-      "score": 90.27,
+      "score": 91.0,
       "tip": "Weiter so"
     },
     {
       "name": "Citykingalex",
-      "score": 90.0,
+      "score": 90.13,
       "tip": "Weiter so"
     },
     {
-      "name": "bes",
-      "score": 89.3,
+      "name": "Dolphin",
+      "score": 90.13,
       "tip": "Weiter so"
     },
     {
-      "name": "Swordfish",
-      "score": 89.17,
+      "name": "Johan",
+      "score": 90.07,
       "tip": "Weiter so"
     },
     {
       "name": "SankKiI9",
-      "score": 89.1,
+      "score": 89.5,
       "tip": "Weiter so"
     },
     {
@@ -365,18 +360,13 @@
       "tip": "Weiter so"
     },
     {
-      "name": "kl.kranker Affe",
-      "score": 88.17,
+      "name": "Swordfish",
+      "score": 88.2,
       "tip": "Weiter so"
     },
     {
-      "name": "Desteoyer",
-      "score": 87.83,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Bensie",
-      "score": 87.73,
+      "name": "chris",
+      "score": 87.7,
       "tip": "Weiter so"
     },
     {
@@ -385,53 +375,63 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Bensie",
+      "score": 86.83,
+      "tip": "Weiter so"
+    },
+    {
       "name": "seroo",
-      "score": 86.9,
+      "score": 86.5,
       "tip": "Weiter so"
     },
     {
       "name": "AaleDieter",
-      "score": 86.13,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "chris",
-      "score": 86.07,
+      "score": 86.4,
       "tip": "Weiter so"
     },
     {
       "name": "rote sonne",
+      "score": 86.4,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Reklaminator",
       "score": 86.07,
       "tip": "Weiter so"
     },
     {
-      "name": "_spc07",
-      "score": 85.17,
+      "name": "kl.kranker Affe",
+      "score": 85.9,
       "tip": "Weiter so"
     },
     {
-      "name": "Jackhammer",
-      "score": 85.13,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "mad 3ad y gawad",
-      "score": 85.07,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "LazyFrog",
-      "score": 84.47,
+      "name": "mauza",
+      "score": 85.63,
       "tip": "Weiter so"
     },
     {
       "name": "elazeto",
-      "score": 83.5,
+      "score": 85.5,
       "tip": "Weiter so"
     },
     {
-      "name": "Nati",
-      "score": 82.93,
+      "name": "LazyFrog",
+      "score": 84.97,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "mad 3ad y gawad",
+      "score": 84.93,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "_spc07",
+      "score": 84.9,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Desteoyer",
+      "score": 84.83,
       "tip": "Weiter so"
     },
     {
@@ -441,12 +441,17 @@
     },
     {
       "name": "agostini",
-      "score": 82.57,
+      "score": 82.43,
       "tip": "Weiter so"
     },
     {
-      "name": "Reklaminator",
-      "score": 82.07,
+      "name": "Jackhammer",
+      "score": 82.37,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Nati",
+      "score": 80.8,
       "tip": "Weiter so"
     },
     {
@@ -455,58 +460,48 @@
       "tip": "Weiter so"
     },
     {
+      "name": "Hocho2000",
+      "score": 79.73,
+      "tip": "Weiter so"
+    },
+    {
       "name": "Naughty",
-      "score": 80.24,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "mauza",
-      "score": 79.63,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "April#",
-      "score": 78.27,
+      "score": 78.97,
       "tip": "Weiter so"
     },
     {
       "name": "DST",
-      "score": 76.73,
+      "score": 76.97,
       "tip": "Weiter so"
     },
     {
-      "name": "Hocho2000",
-      "score": 76.67,
+      "name": "April#",
+      "score": 76.4,
       "tip": "Weiter so"
     },
     {
       "name": "Denis",
-      "score": 75.83,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Deniz",
-      "score": 72.5,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "Flauschos",
-      "score": 72.2,
-      "tip": "Weiter so"
-    },
-    {
-      "name": "hi2oka",
-      "score": 71.83,
+      "score": 75.23,
       "tip": "Weiter so"
     },
     {
       "name": "lukasl 5",
-      "score": 69.23,
-      "tip": "Konstanz verbessern"
+      "score": 71.87,
+      "tip": "Weiter so"
     },
     {
-      "name": "HRVAT85",
-      "score": 66.87,
+      "name": "Flauschos",
+      "score": 71.33,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "hi2oka",
+      "score": 70.37,
+      "tip": "Weiter so"
+    },
+    {
+      "name": "Deniz",
+      "score": 66.23,
       "tip": "Konstanz verbessern"
     },
     {
@@ -515,43 +510,48 @@
       "tip": "Konstanz verbessern"
     },
     {
+      "name": "HRVAT85",
+      "score": 61.03,
+      "tip": "Konstanz verbessern"
+    },
+    {
       "name": "Chico",
-      "score": 59.43,
+      "score": 57.57,
       "tip": "Konstanz verbessern"
     },
     {
       "name": "DyC",
-      "score": 54.73,
+      "score": 54.03,
       "tip": "Konstanz verbessern"
     },
     {
       "name": "Rainer",
-      "score": 53.83,
+      "score": 51.07,
       "tip": "Konstanz verbessern"
     },
     {
-      "name": "anna-maria",
-      "score": 38.07,
+      "name": "King tursu",
+      "score": 33.83,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
-      "name": "King tursu",
-      "score": 35.6,
+      "name": "anna-maria",
+      "score": 31.27,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
       "name": "Abmelker Ju",
-      "score": 31.6,
+      "score": 24.93,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
       "name": "pacemenn",
-      "score": 23.33,
+      "score": 21.67,
       "tip": "Mehr Teilnahme notwendig"
     },
     {
       "name": "alvaro.G.",
-      "score": 8.33,
+      "score": 7.62,
       "tip": "Mehr Teilnahme notwendig"
     }
   ],
@@ -562,7 +562,7 @@
         "name": "alvaro.G.",
         "player_tag": "#2CRVPL0GC",
         "role": "member",
-        "score": 8.33,
+        "score": 7.62,
         "strikes": 1,
         "donations": 70,
         "participation_count": 3,
@@ -574,7 +574,7 @@
         "name": "pacemenn",
         "player_tag": "#2R9YVUCU8",
         "role": "member",
-        "score": 23.33,
+        "score": 21.67,
         "strikes": 1,
         "donations": 46,
         "participation_count": 1,
@@ -586,7 +586,7 @@
         "name": "Abmelker Ju",
         "player_tag": "#CUQ2RUYQL",
         "role": "member",
-        "score": 31.6,
+        "score": 24.93,
         "strikes": 0,
         "donations": 0,
         "participation_count": 2,
@@ -595,26 +595,26 @@
         "recommended_action": "kick_review"
       },
       {
-        "name": "King tursu",
-        "player_tag": "#20989CY0PC",
+        "name": "anna-maria",
+        "player_tag": "#RR0GV9L00",
         "role": "member",
-        "score": 35.6,
-        "strikes": 1,
-        "donations": 71,
-        "participation_count": 6,
-        "trend": "🔴🔴🔴🔴",
+        "score": 31.27,
+        "strikes": 0,
+        "donations": 13,
+        "participation_count": 7,
+        "trend": "🟡🟡🟡🟡🟡🔴",
         "reason": "Score unter 40",
         "recommended_action": "kick_review"
       },
       {
-        "name": "anna-maria",
-        "player_tag": "#RR0GV9L00",
+        "name": "King tursu",
+        "player_tag": "#20989CY0PC",
         "role": "member",
-        "score": 38.07,
-        "strikes": 0,
-        "donations": 13,
-        "participation_count": 8,
-        "trend": "🟡🟡🟡🟡🟡🔴",
+        "score": 33.83,
+        "strikes": 1,
+        "donations": 71,
+        "participation_count": 7,
+        "trend": "🔴🔴🔴🔴",
         "reason": "Score unter 40",
         "recommended_action": "kick_review"
       }
@@ -624,7 +624,7 @@
         "name": "Erastus",
         "player_tag": "#Q8L0RJ8Y8",
         "role": "member",
-        "score": 92.07,
+        "score": 92.2,
         "fame": 3300,
         "strikes": 0,
         "donations": 548,
@@ -637,7 +637,7 @@
         "name": "Citykingalex",
         "player_tag": "#QULCQGGG",
         "role": "member",
-        "score": 90.0,
+        "score": 90.13,
         "fame": 3300,
         "strikes": 0,
         "donations": 226,
@@ -650,7 +650,7 @@
         "name": "bes",
         "player_tag": "#LLQQJCLC",
         "role": "member",
-        "score": 89.3,
+        "score": 92.1,
         "fame": 3150,
         "strikes": 0,
         "donations": 254,
@@ -663,7 +663,7 @@
         "name": "SankKiI9",
         "player_tag": "#89CJRRV8",
         "role": "member",
-        "score": 89.1,
+        "score": 89.5,
         "fame": 3000,
         "strikes": 0,
         "donations": 848,
@@ -676,7 +676,7 @@
         "name": "chris",
         "player_tag": "#YQ82VR9JQ",
         "role": "member",
-        "score": 86.07,
+        "score": 87.7,
         "fame": 2800,
         "strikes": 0,
         "donations": 711,
