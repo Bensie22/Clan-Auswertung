@@ -7,7 +7,7 @@
             "#2QRVR9L8": "20261123T054026.000Z",
             "#ULYJ2CQP": "20261122T111800.000Z",
             "#UJ2P9UYUV": "20261122T195314.000Z",
-            "#P0JYR9YUY": "20261123T091908.000Z",
+            "#P0JYR9YUY": "20261123T092326.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
             "#YQ82VR9JQ": "20261123T073637.000Z",
             "#G02LC9C8": "20261122T160638.000Z",
@@ -22,7 +22,7 @@
             "#Q8L0RJ8Y8": "20261123T073719.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20261123T084703.000Z",
-            "#LLQQJCLC": "20261122T175502.000Z",
+            "#LLQQJCLC": "20261123T092304.000Z",
             "#2VJR80RL": "20261122T230851.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
@@ -127,7 +127,7 @@
             "#Y8LJ8VRJL": "20260926T140816.000Z",
             "#JJVYUP8C": "20260919T184831.000Z",
             "#CCPC2Q9GU": "20260927T092950.000Z",
-            "#G8L2Q900": "20261123T092039.000Z",
+            "#G8L2Q900": "20261123T093108.000Z",
             "#88QGQUUY": "20261122T180443.000Z",
             "#UJCPPUJLJ": "20261118T072016.000Z",
             "#98QP8YG2G": "20261004T195105.000Z",
@@ -2917,7 +2917,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
                 }
             ],
-            "wins": 3,
+            "wins": 4,
             "losses": 4,
             "players": [
                 "Chico"
@@ -2926,6 +2926,12 @@
                 "P0JYR9YUY"
             ],
             "recent_matches": [
+                {
+                    "time": "20261123T092326.000Z",
+                    "result": "win",
+                    "player": "Chico",
+                    "tag": "P0JYR9YUY"
+                },
                 {
                     "time": "20261120T085740.000Z",
                     "result": "win",
@@ -676407,6 +676413,52 @@
                     "id": 26000003,
                     "name": "Giant",
                     "icon": "https://api-assets.clashroyale.com/cards/300/Axr4ox5_b7edmLsoHxBX3vmgijAIibuF6RImTbqLlXE.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000001-26000018-26000021-26000026-26000040-26000055-28000000-28000018": {
+            "cards": [
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000018,
+                    "name": "Mini P.E.K.K.A",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Fmltc4j3Ve9vO_xhHHPEO3PRP3SmU2oKp2zkZQHRZT4.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                },
+                {
+                    "id": 28000018,
+                    "name": "Royal Delivery",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LPg7AGjGI3_xmi7gLLgGC50yKM1jJ2teWkZfoHJcIZo.png"
+                },
+                {
+                    "id": 28000000,
+                    "name": "Fireball",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/lZD9MILQv7O-P3XBr_xOLS5idwuz3_7Ws9G60U36yhc.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
                 }
             ],
             "seen": 1,
