@@ -17,7 +17,7 @@
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20261122T211749.000Z",
             "#QULCQGGG": "20261124T130340.000Z",
-            "#JRGC9RRQG": "20261124T101938.000Z",
+            "#JRGC9RRQG": "20261124T142159.000Z",
             "#QVQGCV8Y9": "20261124T072716.000Z",
             "#Q8L0RJ8Y8": "20261124T133715.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20261124T122510.000Z",
+            "#YUQVVVLQ": "20261124T142747.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20261123T203149.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
@@ -6140,7 +6140,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
                 }
             ],
-            "wins": 5,
+            "wins": 4,
             "losses": 8,
             "players": [
                 "SankKiI9"
@@ -6218,12 +6218,6 @@
                 {
                     "time": "20261029T231657.000Z",
                     "result": "loss",
-                    "player": "SankKiI9",
-                    "tag": "89CJRRV8"
-                },
-                {
-                    "time": "20261025T142127.000Z",
-                    "result": "win",
                     "player": "SankKiI9",
                     "tag": "89CJRRV8"
                 }
@@ -7385,7 +7379,7 @@
                 }
             ],
             "wins": 1,
-            "losses": 4,
+            "losses": 3,
             "players": [
                 "AaleDieter"
             ],
@@ -7414,12 +7408,6 @@
                 {
                     "time": "20261029T134259.000Z",
                     "result": "win",
-                    "player": "AaleDieter",
-                    "tag": "CUJ9PJ2UV"
-                },
-                {
-                    "time": "20261025T142437.000Z",
-                    "result": "loss",
                     "player": "AaleDieter",
                     "tag": "CUJ9PJ2UV"
                 }
@@ -11147,7 +11135,7 @@
                 }
             ],
             "wins": 3,
-            "losses": 2,
+            "losses": 3,
             "players": [
                 "April#"
             ],
@@ -11155,6 +11143,12 @@
                 "YUQVVVLQ"
             ],
             "recent_matches": [
+                {
+                    "time": "20261124T142747.000Z",
+                    "result": "loss",
+                    "player": "April#",
+                    "tag": "YUQVVVLQ"
+                },
                 {
                     "time": "20261122T211018.000Z",
                     "result": "win",
@@ -677386,6 +677380,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000001-26000008-26000015-26000027-26000039-26000049-26000068-27000010": {
+            "cards": [
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 26000039,
+                    "name": "Mega Minion",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/-T_e4YLbuhPBKbYnBwQfXgynNpp5eOIN_0RracYwL9c.png"
+                },
+                {
+                    "id": 26000008,
+                    "name": "Barbarians",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/TvJsuu2S4yhyk1jVYUAQwdKOnW4U77KuWWOTPOWnwfI.png"
+                },
+                {
+                    "id": 26000027,
+                    "name": "Dark Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/M7fXlrKXHu2IvpSGpk36kXVstslbR08Bbxcy0jQcln8.png"
+                },
+                {
+                    "id": 26000068,
+                    "name": "Battle Healer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/KdwXcoigS2Kg-cgA7BJJIANbUJG6SNgjetRQ-MegZ08.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 26000049,
+                    "name": "Bats",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/EnIcvO21hxiNpoI-zO6MDjLmzwPbq8Z4JPo2OKoVUjU.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
