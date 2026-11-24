@@ -19,7 +19,7 @@
             "#QULCQGGG": "20261123T074502.000Z",
             "#JRGC9RRQG": "20261123T210401.000Z",
             "#QVQGCV8Y9": "20261124T072716.000Z",
-            "#Q8L0RJ8Y8": "20261123T073719.000Z",
+            "#Q8L0RJ8Y8": "20261124T083028.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20261124T081813.000Z",
             "#LLQQJCLC": "20261124T062612.000Z",
@@ -835,7 +835,7 @@
                 }
             ],
             "wins": 14,
-            "losses": 6,
+            "losses": 7,
             "players": [
                 "Erastus"
             ],
@@ -843,6 +843,12 @@
                 "Q8L0RJ8Y8"
             ],
             "recent_matches": [
+                {
+                    "time": "20261124T083028.000Z",
+                    "result": "loss",
+                    "player": "Erastus",
+                    "tag": "Q8L0RJ8Y8"
+                },
                 {
                     "time": "20261122T084153.000Z",
                     "result": "win",
@@ -3951,7 +3957,7 @@
                 }
             ],
             "wins": 5,
-            "losses": 9,
+            "losses": 8,
             "players": [
                 "Flauschos"
             ],
@@ -4034,12 +4040,6 @@
                 {
                     "time": "20261025T182833.000Z",
                     "result": "win",
-                    "player": "Flauschos",
-                    "tag": "PPR2QQC0U"
-                },
-                {
-                    "time": "20261025T082131.000Z",
-                    "result": "loss",
                     "player": "Flauschos",
                     "tag": "PPR2QQC0U"
                 }
@@ -676924,6 +676924,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000000-26000021-26000044-26000052-26000055-27000006-27000010-28000001": {
+            "cards": [
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 27000010,
+                    "name": "Furnace",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/iqbDiG7yYRIzvCPXdt9zPb3IvMt7F7Gi4wIPnh2x4aI.png"
+                },
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000044,
+                    "name": "Hunter",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/VNabB1WKnYtYRSG7X_FZfnZjQDHTBs9A96OGMFmecrA.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 26000052,
+                    "name": "Zappies",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QZfHRpLRmutZbCr5fpLnTpIp89vLI6NrAwzGZ8tHEc4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
