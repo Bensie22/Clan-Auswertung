@@ -9,7 +9,7 @@
             "#UJ2P9UYUV": "20261123T221609.000Z",
             "#P0JYR9YUY": "20261124T094344.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
-            "#YQ82VR9JQ": "20261124T103843.000Z",
+            "#YQ82VR9JQ": "20261124T104136.000Z",
             "#G02LC9C8": "20261124T054731.000Z",
             "#2U8288CVY": "20261122T125146.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
@@ -11380,7 +11380,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/3En2cz0ISQAaMTHY3hj3rTveFN2kJYq-H4VxvdJNvCM.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
             "players": [
                 "chris"
@@ -11389,6 +11389,12 @@
                 "YQ82VR9JQ"
             ],
             "recent_matches": [
+                {
+                    "time": "20261124T104136.000Z",
+                    "result": "win",
+                    "player": "chris",
+                    "tag": "YQ82VR9JQ"
+                },
                 {
                     "time": "20261123T145528.000Z",
                     "result": "win",
@@ -677170,6 +677176,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000012-26000040-26000051-26000059-26000062-27000006-27000009-28000001": {
+            "cards": [
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                },
+                {
+                    "id": 26000040,
+                    "name": "Dart Goblin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/BmpK3bqEAviflqHCdxxnfm-_l3pRPJw3qxHkwS55nCY.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                },
+                {
+                    "id": 27000009,
+                    "name": "Tombstone",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/LjSfSbwQfkZuRJY4pVxKspZ-a0iM5KAhU8w-a_N5Z7Y.png"
+                },
+                {
+                    "id": 26000051,
+                    "name": "Ram Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
+                },
+                {
+                    "id": 27000006,
+                    "name": "Tesla",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/OiwnGrxFMNiHetYEerE-UZt0L_uYNzFY7qV_CA_OxR4.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
