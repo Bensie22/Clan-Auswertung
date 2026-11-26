@@ -16,9 +16,9 @@
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
             "#PPR2QQC0U": "20261122T211749.000Z",
-            "#QULCQGGG": "20261124T130340.000Z",
+            "#QULCQGGG": "20261126T113021.000Z",
             "#JRGC9RRQG": "20261126T092019.000Z",
-            "#QVQGCV8Y9": "20261126T111842.000Z",
+            "#QVQGCV8Y9": "20261126T112557.000Z",
             "#Q8L0RJ8Y8": "20261125T193849.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20261126T085434.000Z",
@@ -26,7 +26,7 @@
             "#2VJR80RL": "20261122T230851.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
-            "#2CJYG9UG": "20261126T111836.000Z",
+            "#2CJYG9UG": "20261126T112202.000Z",
             "#2PUQYJC02": "20261125T204458.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
             "#2V800VCQ0": "20261126T104656.000Z",
@@ -71,7 +71,7 @@
             "#GJVVGUYJC": "20260518T141110.000Z",
             "#UQVCVVVJL": "20261125T105129.000Z",
             "#22CVYQP8R": "20260509T062429.000Z",
-            "#89CJRRV8": "20261125T000929.000Z",
+            "#89CJRRV8": "20261126T112902.000Z",
             "#VL989Y20J": "20260516T051537.000Z",
             "#RULG988Y": "20260606T102155.000Z",
             "#99909G00": "20260512T084926.000Z",
@@ -145,7 +145,7 @@
             "#2R9YVUCU8": "20261118T175647.000Z",
             "#2YPY28Y2": "20261125T203139.000Z",
             "#CUQ2RUYQL": "20261123T193126.000Z",
-            "#JVGUJ00RP": "20261126T094309.000Z"
+            "#JVGUJ00RP": "20261126T112904.000Z"
         }
     },
     "decks": {
@@ -2307,7 +2307,7 @@
                 }
             ],
             "wins": 7,
-            "losses": 7,
+            "losses": 8,
             "players": [
                 "Citykingalex"
             ],
@@ -2315,6 +2315,12 @@
                 "QULCQGGG"
             ],
             "recent_matches": [
+                {
+                    "time": "20261126T113021.000Z",
+                    "result": "loss",
+                    "player": "Citykingalex",
+                    "tag": "QULCQGGG"
+                },
                 {
                     "time": "20261123T071842.000Z",
                     "result": "loss",
@@ -678380,6 +678386,52 @@
                     "id": 28000008,
                     "name": "Zap",
                     "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
+        },
+        "26000000-26000017-26000056-26000058-26000059-26000067-27000003-28000004": {
+            "cards": [
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000000,
+                    "name": "Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 27000003,
+                    "name": "Inferno Tower",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/GSHY_wrooMMLET6bG_WJB8redtwx66c4i80ipi4gYOM.png"
+                },
+                {
+                    "id": 26000058,
+                    "name": "Wall Breakers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_xPphEfC8eEwFNrfU3cMQG9-f5JaLQ31ARCA7l3XtW4.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 26000067,
+                    "name": "Elixir Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/puhMsZjCIqy21HW3hYxjrk_xt8NIPyFqjRy-BeLKZwo.png"
                 }
             ],
             "seen": 1,
