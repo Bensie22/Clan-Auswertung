@@ -9,7 +9,7 @@
             "#UJ2P9UYUV": "20261126T134351.000Z",
             "#P0JYR9YUY": "20261126T090110.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
-            "#YQ82VR9JQ": "20261126T140931.000Z",
+            "#YQ82VR9JQ": "20261126T141107.000Z",
             "#G02LC9C8": "20261126T132722.000Z",
             "#2U8288CVY": "20261126T133630.000Z",
             "#2L8LLRUYV": "20260418T100346.000Z",
@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20261126T140706.000Z",
+            "#YUQVVVLQ": "20261126T141309.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20261125T223348.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
@@ -11038,7 +11038,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/3En2cz0ISQAaMTHY3hj3rTveFN2kJYq-H4VxvdJNvCM.png"
                 }
             ],
-            "wins": 3,
+            "wins": 4,
             "losses": 0,
             "players": [
                 "chris"
@@ -11047,6 +11047,12 @@
                 "YQ82VR9JQ"
             ],
             "recent_matches": [
+                {
+                    "time": "20261126T141107.000Z",
+                    "result": "win",
+                    "player": "chris",
+                    "tag": "YQ82VR9JQ"
+                },
                 {
                     "time": "20261125T204738.000Z",
                     "result": "win",
@@ -679072,6 +679078,52 @@
                     "id": 26000022,
                     "name": "Minion Horde",
                     "icon": "https://api-assets.clashroyale.com/cards/300/Wyjq5l0IXHTkX9Rmpap6HaH08MvjbxFp1xBO9a47YSI.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000007-26000015-26000034-26000036-26000056-26000063-26000103-28000007": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000103,
+                    "name": "Boss Bandit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nuceG9o7rAyvyc7D3sp2QSiRYtSOEgraq0NJkDf729s.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 26000034,
+                    "name": "Bowler",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SU4qFXmbQXWjvASxVI6z9IJuTYolx4A0MKK90sTIE88.png"
+                },
+                {
+                    "id": 26000063,
+                    "name": "Electro Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/tN9h6lnMNPCNsx0LMFmvpHgznbDZ1fBRkx-C7UfNmfY.png"
+                },
+                {
+                    "id": 26000036,
+                    "name": "Battle Ram",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dyc50V2cplKi4H7pq1B3I36pl_sEH5DQrNHboS_dbbM.png"
+                },
+                {
+                    "id": 28000007,
+                    "name": "Lightning",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fpnESbYqe5GyZmaVVYe-SEu7tE0Kxh_HZyVigzvLjks.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
                 }
             ],
             "seen": 1,
