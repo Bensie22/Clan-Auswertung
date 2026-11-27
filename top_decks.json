@@ -5,7 +5,7 @@
             "#L8PV090J": "20261126T203859.000Z",
             "#22CQPRR0J": "20260430T153050.000Z",
             "#2QRVR9L8": "20261127T060929.000Z",
-            "#ULYJ2CQP": "20261127T094958.000Z",
+            "#ULYJ2CQP": "20261127T095958.000Z",
             "#UJ2P9UYUV": "20261127T083445.000Z",
             "#P0JYR9YUY": "20261127T084609.000Z",
             "#R22R8GYG": "20260512T134220.000Z",
@@ -15,14 +15,14 @@
             "#2L8LLRUYV": "20260418T100346.000Z",
             "#Y8PVULPU0": "20260410T091410.000Z",
             "#9CG2CRRJG": "20260510T191323.000Z",
-            "#PPR2QQC0U": "20261122T211749.000Z",
+            "#PPR2QQC0U": "20261127T095427.000Z",
             "#QULCQGGG": "20261126T120657.000Z",
             "#JRGC9RRQG": "20261127T022524.000Z",
             "#QVQGCV8Y9": "20261127T070435.000Z",
             "#Q8L0RJ8Y8": "20261126T173241.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20261127T085448.000Z",
-            "#LLQQJCLC": "20261127T085010.000Z",
+            "#LLQQJCLC": "20261127T095931.000Z",
             "#2VJR80RL": "20261127T001844.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
             "#PYG8RLUJ": "20260413T105340.000Z",
@@ -79,7 +79,7 @@
             "#GC2VQJVQR": "20260518T075040.000Z",
             "#UP0G0P09L": "20260517T192640.000Z",
             "#YPURGGJQ": "20260528T170655.000Z",
-            "#YUQVVVLQ": "20261126T221601.000Z",
+            "#YUQVVVLQ": "20261127T095700.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
             "#VP82QGC8Y": "20261126T221601.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
@@ -127,7 +127,7 @@
             "#Y8LJ8VRJL": "20260926T140816.000Z",
             "#JJVYUP8C": "20260919T184831.000Z",
             "#CCPC2Q9GU": "20260927T092950.000Z",
-            "#G8L2Q900": "20261127T094706.000Z",
+            "#G8L2Q900": "20261127T095712.000Z",
             "#88QGQUUY": "20261127T093132.000Z",
             "#UJCPPUJLJ": "20261118T072016.000Z",
             "#98QP8YG2G": "20261004T195105.000Z",
@@ -3734,7 +3734,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
                 }
             ],
-            "wins": 5,
+            "wins": 6,
             "losses": 9,
             "players": [
                 "Flauschos"
@@ -3743,6 +3743,12 @@
                 "PPR2QQC0U"
             ],
             "recent_matches": [
+                {
+                    "time": "20261127T095427.000Z",
+                    "result": "win",
+                    "player": "Flauschos",
+                    "tag": "PPR2QQC0U"
+                },
                 {
                     "time": "20261122T211212.000Z",
                     "result": "loss",
@@ -682274,6 +682280,52 @@
             ],
             "seen": 1,
             "losses": 1
+        },
+        "26000006-26000016-26000041-26000052-26000059-26000060-26000080-28000011": {
+            "cards": [
+                {
+                    "id": 26000060,
+                    "name": "Goblin Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/SoW16cY3jXBwaTDvb39DkqiVsoFVaDWbzf5QBYphJrY.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                },
+                {
+                    "id": 26000059,
+                    "name": "Royal Hogs",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/ASSQJG_MoVq9e81HZzo4bynMnyLNpNJMfSLb3hqydOw.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 26000080,
+                    "name": "Skeleton Dragons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qPOtg9uONh47_NLxGhhFc_ww9PlZ6z3Ry507q1NZUXs.png"
+                },
+                {
+                    "id": 26000016,
+                    "name": "Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/3JntJV62aY0G1Qh6LIs-ek-0ayeYFY3VItpG7cb9I60.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000052,
+                    "name": "Zappies",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QZfHRpLRmutZbCr5fpLnTpIp89vLI6NrAwzGZ8tHEc4.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
         }
     }
 }
