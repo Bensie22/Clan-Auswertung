@@ -21,7 +21,7 @@
             "#QVQGCV8Y9": "20261127T140304.000Z",
             "#Q8L0RJ8Y8": "20261127T165507.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
-            "#2CPRGY8G": "20261127T161951.000Z",
+            "#2CPRGY8G": "20261127T213510.000Z",
             "#LLQQJCLC": "20261127T100926.000Z",
             "#2VJR80RL": "20261127T001844.000Z",
             "#R0LGYVLP": "20260320T165616.000Z",
@@ -31,11 +31,11 @@
             "#YQVQYUYRV": "20260525T095543.000Z",
             "#2V800VCQ0": "20261127T111406.000Z",
             "#2UQUPYQCJ": "20260810T113227.000Z",
-            "#JUUR8UGL8": "20261127T212839.000Z",
+            "#JUUR8UGL8": "20261127T213455.000Z",
             "#2U09UULRR": "20261127T154209.000Z",
             "#YJ0LUU0JJ": "20260506T153037.000Z",
             "#8QYYL8LCQ": "20261127T204721.000Z",
-            "#8P0J8P0L": "20261127T200100.000Z",
+            "#8P0J8P0L": "20261127T213803.000Z",
             "#Y882QLJQJ": "",
             "#CUJ9PJ2UV": "20261127T181511.000Z",
             "#2P0U2RLGY": "20261127T203936.000Z",
@@ -3224,7 +3224,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
                 }
             ],
-            "wins": 7,
+            "wins": 8,
             "losses": 10,
             "players": [
                 "OneAndOnly"
@@ -3233,6 +3233,12 @@
                 "8P0J8P0L"
             ],
             "recent_matches": [
+                {
+                    "time": "20261127T213803.000Z",
+                    "result": "win",
+                    "player": "OneAndOnly",
+                    "tag": "8P0J8P0L"
+                },
                 {
                     "time": "20261126T175221.000Z",
                     "result": "win",
@@ -10834,7 +10840,7 @@
                     "icon": "https://api-assets.clashroyale.com/cards/300/Y4yWvdwBCg2FpAZgs8T09Gy34WOwpLZW-ttL52Ae8NE.png"
                 }
             ],
-            "wins": 1,
+            "wins": 2,
             "losses": 2,
             "players": [
                 "Theezy"
@@ -10843,6 +10849,12 @@
                 "JUUR8UGL8"
             ],
             "recent_matches": [
+                {
+                    "time": "20261127T213455.000Z",
+                    "result": "win",
+                    "player": "Theezy",
+                    "tag": "JUUR8UGL8"
+                },
                 {
                     "time": "20261121T220330.000Z",
                     "result": "loss",
@@ -11763,66 +11775,6 @@
                 }
             ]
         },
-        "26000000-26000002-26000010-26000019-26000055-26000064-26000072-28000008": {
-            "cards": [
-                {
-                    "id": 26000055,
-                    "name": "Mega Knight",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
-                },
-                {
-                    "id": 26000072,
-                    "name": "Archer Queen",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/p7OQmOAFTery7zCzlpDdm-LOD1kINTm42AwIHchZfWk.png"
-                },
-                {
-                    "id": 26000064,
-                    "name": "Firecracker",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/c1rL3LO1U2D9-TkeFfAC18gP3AO8ztSwrcHMZplwL2Q.png"
-                },
-                {
-                    "id": 26000000,
-                    "name": "Knight",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
-                },
-                {
-                    "id": 26000010,
-                    "name": "Skeletons",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/oO7iKMU5m0cdxhYPZA3nWQiAUh2yoGgdThLWB1rVSec.png"
-                },
-                {
-                    "id": 26000002,
-                    "name": "Goblins",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/X_DQUye_OaS3QN6VC9CPw05Fit7wvSm3XegXIXKP--0.png"
-                },
-                {
-                    "id": 28000008,
-                    "name": "Zap",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/7dxh2-yCBy1x44GrBaL29vjqnEEeJXHEAlsi5g6D1eY.png"
-                },
-                {
-                    "id": 26000019,
-                    "name": "Spear Goblins",
-                    "icon": "https://api-assets.clashroyale.com/cards/300/FSDFotjaXidI4ku_WFpVCTWS1hKGnFh1sxX0lxM43_E.png"
-                }
-            ],
-            "wins": 1,
-            "losses": 0,
-            "players": [
-                "Naughty"
-            ],
-            "tags": [
-                "G8L2Q900"
-            ],
-            "recent_matches": [
-                {
-                    "time": "20261127T174256.000Z",
-                    "result": "win",
-                    "player": "Naughty",
-                    "tag": "G8L2Q900"
-                }
-            ]
-        },
         "26000002-26000019-26000021-26000026-26000037-26000047-26000062-28000007": {
             "cards": [
                 {
@@ -12060,6 +12012,66 @@
                     "result": "win",
                     "player": "SirHenry87",
                     "tag": "8QYYL8LCQ"
+                }
+            ]
+        },
+        "26000001-26000021-26000025-26000027-26000055-26000056-26000080-28000015": {
+            "cards": [
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 28000015,
+                    "name": "Barbarian Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Gb0G1yNy0i5cIGUHin8uoFWxqntNtRPhY_jeMXg7HnA.png"
+                },
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                },
+                {
+                    "id": 26000001,
+                    "name": "Archers",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
+                },
+                {
+                    "id": 26000025,
+                    "name": "Guards",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/1ArKfLJxYo6_NU_S9cAeIrfbXqWH0oULVJXedxBXQlU.png"
+                },
+                {
+                    "id": 26000027,
+                    "name": "Dark Prince",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/M7fXlrKXHu2IvpSGpk36kXVstslbR08Bbxcy0jQcln8.png"
+                },
+                {
+                    "id": 26000021,
+                    "name": "Hog Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Ubu0oUl8tZkusnkZf8Xv9Vno5IO29Y-jbZ4fhoNJ5oc.png"
+                },
+                {
+                    "id": 26000080,
+                    "name": "Skeleton Dragons",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qPOtg9uONh47_NLxGhhFc_ww9PlZ6z3Ry507q1NZUXs.png"
+                }
+            ],
+            "wins": 1,
+            "losses": 0,
+            "players": [
+                "Theezy"
+            ],
+            "tags": [
+                "JUUR8UGL8"
+            ],
+            "recent_matches": [
+                {
+                    "time": "20261127T213127.000Z",
+                    "result": "win",
+                    "player": "Theezy",
+                    "tag": "JUUR8UGL8"
                 }
             ]
         }
@@ -684968,6 +684980,144 @@
                     "id": 26000083,
                     "name": "Mother Witch",
                     "icon": "https://api-assets.clashroyale.com/cards/300/fO-Xah8XZkYKaSK9SCp3wnzwxtvIhun9NVY-zzte1Ng.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000006-26000011-26000012-26000017-26000055-26000056-26000069-26000083": {
+            "cards": [
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000017,
+                    "name": "Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Mej7vnv4H_3p_8qPs_N6_GKahy6HDr7pU7i9eTHS84U.png"
+                },
+                {
+                    "id": 26000069,
+                    "name": "Skeleton King",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dCd69_wN9f8DxwuqOGtR4QgWhHIPIaTNxZ1e23RzAAc.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 26000083,
+                    "name": "Mother Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fO-Xah8XZkYKaSK9SCp3wnzwxtvIhun9NVY-zzte1Ng.png"
+                },
+                {
+                    "id": 26000056,
+                    "name": "Skeleton Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/vCB4DWCcrGbTkarjcOiVz4aNDx6GWLm0yUepg9E1MGo.png"
+                },
+                {
+                    "id": 26000006,
+                    "name": "Balloon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/qBipxLo-3hhCnPrApp2Nn3b2NgrSrvwzWytvREev0CY.png"
+                },
+                {
+                    "id": 26000055,
+                    "name": "Mega Knight",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/O2NycChSNhn_UK9nqBXUhhC_lILkiANzPuJjtjoz0CE.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000014-26000024-26000025-26000026-26000031-26000041-26000045-26000083": {
+            "cards": [
+                {
+                    "id": 26000024,
+                    "name": "Royal Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mnlRaNtmfpQx2e6mp70sLd0ND-pKPF70Cf87_agEKg4.png"
+                },
+                {
+                    "id": 26000045,
+                    "name": "Executioner",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/9XL5BP2mqzV8kza6KF8rOxrpCZTyuGLp2l413DTjEoM.png"
+                },
+                {
+                    "id": 26000014,
+                    "name": "Musketeer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Tex1C48UTq9FKtAX-3tzG0FJmc9jzncUZG3bb5Vf-Ds.png"
+                },
+                {
+                    "id": 26000025,
+                    "name": "Guards",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/1ArKfLJxYo6_NU_S9cAeIrfbXqWH0oULVJXedxBXQlU.png"
+                },
+                {
+                    "id": 26000041,
+                    "name": "Goblin Gang",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/NHflxzVAQT4oAz7eDfdueqpictb5vrWezn1nuqFhE4w.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                },
+                {
+                    "id": 26000031,
+                    "name": "Fire Spirit",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/16-BqusVvynIgYI8_Jci3LDC-r8AI_xaIYLgXqtlmS8.png"
+                },
+                {
+                    "id": 26000083,
+                    "name": "Mother Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fO-Xah8XZkYKaSK9SCp3wnzwxtvIhun9NVY-zzte1Ng.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 0
+        },
+        "26000012-26000015-26000026-26000039-26000051-26000067-26000106-28000011": {
+            "cards": [
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 26000039,
+                    "name": "Mega Minion",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/-T_e4YLbuhPBKbYnBwQfXgynNpp5eOIN_0RracYwL9c.png"
+                },
+                {
+                    "id": 26000106,
+                    "name": "Ronin",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/X0dTFs7OGUavreDEzOtYd_YNZ8Zly6qgAE-dd-bNfWU.png"
+                },
+                {
+                    "id": 26000026,
+                    "name": "Princess",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/bAwMcqp9EKVIKH3ZLm_m0MqZFSG72zG-vKxpx8aKoVs.png"
+                },
+                {
+                    "id": 28000011,
+                    "name": "The Log",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/_iDwuDLexHPFZ_x4_a0eP-rxCS6vwWgTs6DLauwwoaY.png"
+                },
+                {
+                    "id": 26000051,
+                    "name": "Ram Rider",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/QaJyerT7f7oMyZ3Fv1glKymtLSvx7YUXisAulxl7zRI.png"
+                },
+                {
+                    "id": 26000067,
+                    "name": "Elixir Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/puhMsZjCIqy21HW3hYxjrk_xt8NIPyFqjRy-BeLKZwo.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
                 }
             ],
             "seen": 1,
