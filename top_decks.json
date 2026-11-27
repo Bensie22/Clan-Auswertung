@@ -81,7 +81,7 @@
             "#YPURGGJQ": "20260528T170655.000Z",
             "#YUQVVVLQ": "20261127T173105.000Z",
             "#JVRRPYQ9Q": "20260520T044915.000Z",
-            "#VP82QGC8Y": "20261127T214900.000Z",
+            "#VP82QGC8Y": "20261127T215242.000Z",
             "#GLGY98U08": "20260712T133249.000Z",
             "#GRGCY0R8": "20261127T202300.000Z",
             "#P2YQ2QQUV": "20261127T195552.000Z",
@@ -4473,7 +4473,7 @@
                 }
             ],
             "wins": 8,
-            "losses": 8,
+            "losses": 9,
             "players": [
                 "mad 3ad y gawad"
             ],
@@ -4481,6 +4481,12 @@
                 "VP82QGC8Y"
             ],
             "recent_matches": [
+                {
+                    "time": "20261127T215242.000Z",
+                    "result": "loss",
+                    "player": "mad 3ad y gawad",
+                    "tag": "VP82QGC8Y"
+                },
                 {
                     "time": "20261126T212847.000Z",
                     "result": "loss",
@@ -685266,6 +685272,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000012-26000022-26000024-26000033-27000000-28000001-28000004-28000013": {
+            "cards": [
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 27000000,
+                    "name": "Cannon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/nZK1y-beLxO5vnlyUhK6-2zH2NzXJwqykcosqQ1cmZ8.png"
+                },
+                {
+                    "id": 26000022,
+                    "name": "Minion Horde",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Wyjq5l0IXHTkX9Rmpap6HaH08MvjbxFp1xBO9a47YSI.png"
+                },
+                {
+                    "id": 28000004,
+                    "name": "Goblin Barrel",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/CoZdp5PpsTH858l212lAMeJxVJ0zxv9V-f5xC8Bvj5g.png"
+                },
+                {
+                    "id": 26000033,
+                    "name": "Sparky",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/2GKMkBrArZXgQxf2ygFjDs4VvGYPbx8F6Lj_68iVhIM.png"
+                },
+                {
+                    "id": 28000013,
+                    "name": "Clone",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mHVCet-1TkwWq-pxVIU2ZWY9_2z7Z7wtP25ArEUsP_g.png"
+                },
+                {
+                    "id": 26000024,
+                    "name": "Royal Giant",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/mnlRaNtmfpQx2e6mp70sLd0ND-pKPF70Cf87_agEKg4.png"
+                },
+                {
+                    "id": 28000001,
+                    "name": "Arrows",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Flsoci-Y6y8ZFVi5uRFTmgkPnCmMyMVrU7YmmuPvSBo.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
