@@ -18,7 +18,7 @@
             "#PPR2QQC0U": "20261128T083851.000Z",
             "#QULCQGGG": "20261128T104359.000Z",
             "#JRGC9RRQG": "20261128T104423.000Z",
-            "#QVQGCV8Y9": "20261128T110013.000Z",
+            "#QVQGCV8Y9": "20261128T111019.000Z",
             "#Q8L0RJ8Y8": "20261128T104030.000Z",
             "#P2GUCG2Y": "20260607T121252.000Z",
             "#2CPRGY8G": "20261128T105356.000Z",
@@ -29,7 +29,7 @@
             "#2CJYG9UG": "20261127T210356.000Z",
             "#2PUQYJC02": "20261127T181601.000Z",
             "#YQVQYUYRV": "20260525T095543.000Z",
-            "#2V800VCQ0": "20261128T082218.000Z",
+            "#2V800VCQ0": "20261128T110711.000Z",
             "#2UQUPYQCJ": "20260810T113227.000Z",
             "#JUUR8UGL8": "20261127T213455.000Z",
             "#2U09UULRR": "20261128T104845.000Z",
@@ -1353,7 +1353,7 @@
                 }
             ],
             "wins": 8,
-            "losses": 8,
+            "losses": 7,
             "players": [
                 "Johan"
             ],
@@ -1448,12 +1448,6 @@
                 {
                     "time": "20261030T134310.000Z",
                     "result": "win",
-                    "player": "Johan",
-                    "tag": "UQVCVVVJL"
-                },
-                {
-                    "time": "20261029T110635.000Z",
-                    "result": "loss",
                     "player": "Johan",
                     "tag": "UQVCVVVJL"
                 }
@@ -2199,7 +2193,7 @@
                 }
             ],
             "wins": 9,
-            "losses": 15,
+            "losses": 16,
             "players": [
                 "Desteoyer"
             ],
@@ -2207,6 +2201,12 @@
                 "2V800VCQ0"
             ],
             "recent_matches": [
+                {
+                    "time": "20261128T110322.000Z",
+                    "result": "loss",
+                    "player": "Desteoyer",
+                    "tag": "2V800VCQ0"
+                },
                 {
                     "time": "20261127T111406.000Z",
                     "result": "win",
@@ -687566,6 +687566,52 @@
             ],
             "seen": 1,
             "losses": 0
+        },
+        "26000007-26000011-26000012-26000015-26000042-26000062-26000067-26000069": {
+            "cards": [
+                {
+                    "id": 26000007,
+                    "name": "Witch",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cfwk1vzehVyHC-uloEIH6NOI0hOdofCutR5PyhIgO6w.png"
+                },
+                {
+                    "id": 26000069,
+                    "name": "Skeleton King",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/dCd69_wN9f8DxwuqOGtR4QgWhHIPIaTNxZ1e23RzAAc.png"
+                },
+                {
+                    "id": 26000011,
+                    "name": "Valkyrie",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/0lIoYf3Y_plFTzo95zZL93JVxpfb3MMgFDDhgSDGU9A.png"
+                },
+                {
+                    "id": 26000042,
+                    "name": "Electro Wizard",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/RsFaHgB3w6vXsTjXdPr3x8l_GbV9TbOUCvIx07prbrQ.png"
+                },
+                {
+                    "id": 26000015,
+                    "name": "Baby Dragon",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/cjC9n4AvEZJ3urkVh-rwBkJ-aRSsydIMqSAV48hAih0.png"
+                },
+                {
+                    "id": 26000067,
+                    "name": "Elixir Golem",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/puhMsZjCIqy21HW3hYxjrk_xt8NIPyFqjRy-BeLKZwo.png"
+                },
+                {
+                    "id": 26000012,
+                    "name": "Skeleton Army",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/fAOToOi1pRy7svN2xQS6mDkhQw2pj9m_17FauaNqyl4.png"
+                },
+                {
+                    "id": 26000062,
+                    "name": "Magic Archer",
+                    "icon": "https://api-assets.clashroyale.com/cards/300/Avli3W7BxU9HQ2SoLiXnBgGx25FoNXUSFm7OcAk68ek.png"
+                }
+            ],
+            "seen": 1,
+            "losses": 1
         }
     }
 }
